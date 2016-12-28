@@ -15,7 +15,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Web", "Conscienc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Mobile.Hosts.Android", "Conscience.Mobile.Hosts.Android\Conscience.Mobile.Hosts.Android.csproj", "{980A3295-1239-48B1-B3D4-65C573496108}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Mobile.Test", "Conscience.Mobile.Test\Conscience.Mobile.Test.csproj", "{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{30C6CD95-4293-436F-8B26-B59A50E0C8F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Plugins", "Conscience.Plugins\Conscience.Plugins.csproj", "{888D7C06-2980-4D5B-BD47-AD119B311F64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Plugins.Droid", "Conscience.Plugins.Droid\Conscience.Plugins.Droid.csproj", "{354C9A87-682D-4650-94F4-721748893C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Plugins.iOS", "Conscience.Plugins.iOS\Conscience.Plugins.iOS.csproj", "{B8C78798-2844-45D5-B3CD-FD51E1378AB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,14 +55,25 @@ Global
 		{980A3295-1239-48B1-B3D4-65C573496108}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{980A3295-1239-48B1-B3D4-65C573496108}.Release|Any CPU.Build.0 = Release|Any CPU
 		{980A3295-1239-48B1-B3D4-65C573496108}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{786EF9FE-D0D7-49A3-9FC1-B7E52811F0EF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{888D7C06-2980-4D5B-BD47-AD119B311F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888D7C06-2980-4D5B-BD47-AD119B311F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888D7C06-2980-4D5B-BD47-AD119B311F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888D7C06-2980-4D5B-BD47-AD119B311F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{354C9A87-682D-4650-94F4-721748893C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{354C9A87-682D-4650-94F4-721748893C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{354C9A87-682D-4650-94F4-721748893C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{354C9A87-682D-4650-94F4-721748893C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8C78798-2844-45D5-B3CD-FD51E1378AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8C78798-2844-45D5-B3CD-FD51E1378AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8C78798-2844-45D5-B3CD-FD51E1378AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8C78798-2844-45D5-B3CD-FD51E1378AB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{888D7C06-2980-4D5B-BD47-AD119B311F64} = {30C6CD95-4293-436F-8B26-B59A50E0C8F4}
+		{354C9A87-682D-4650-94F4-721748893C2E} = {30C6CD95-4293-436F-8B26-B59A50E0C8F4}
+		{B8C78798-2844-45D5-B3CD-FD51E1378AB9} = {30C6CD95-4293-436F-8B26-B59A50E0C8F4}
 	EndGlobalSection
 EndGlobal

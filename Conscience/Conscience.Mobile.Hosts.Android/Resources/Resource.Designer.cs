@@ -26,6 +26,29 @@ namespace Conscience.Mobile.Hosts.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxBind = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxBind;
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxDropDownItemTemplate;
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxGroupItemTemplate;
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxItemTemplate;
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxLang = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxLang;
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxSource = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxSource;
+			global::Conscience.Plugins.Droid.Resource.Attribute.MvxTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxTemplate;
+			global::Conscience.Plugins.Droid.Resource.Id.MvvmCrossTagId = global::Conscience.Mobile.Hosts.Android.Resource.Id.MvvmCrossTagId;
+			global::Conscience.Plugins.Droid.Resource.Id.MvxBindingTagUnique = global::Conscience.Mobile.Hosts.Android.Resource.Id.MvxBindingTagUnique;
+			global::Conscience.Plugins.Droid.Resource.String.ApplicationName = global::Conscience.Mobile.Hosts.Android.Resource.String.ApplicationName;
+			global::Conscience.Plugins.Droid.Resource.String.Hello = global::Conscience.Mobile.Hosts.Android.Resource.String.Hello;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxBinding = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxBinding;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxBinding_MvxBind = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxBinding_MvxBind;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxBinding_MvxLang = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxBinding_MvxLang;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxControl = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxControl;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxControl_MvxTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxControl_MvxTemplate;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxExpandableListView = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxExpandableListView;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxImageView = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxImageView;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxImageView_MvxSource = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxImageView_MvxSource;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxListView = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxListView;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
+			global::Conscience.Plugins.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Styleable.MvxListView_MvxItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxBind = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxBind;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxGroupItemTemplate;
