@@ -8,6 +8,11 @@ namespace Conscience.Domain
 {
     public class User
     {
+        public User()
+        {
+            Notifications = new List<Notification>();
+        }
+
         public Guid Id
         {
             get;

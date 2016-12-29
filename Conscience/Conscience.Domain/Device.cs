@@ -9,6 +9,11 @@ namespace Conscience.Domain
 {
     public class Device
     {
+        public Device()
+        {
+            Locations = new List<Location>();
+        }
+
         public int Id
         {
             get;
