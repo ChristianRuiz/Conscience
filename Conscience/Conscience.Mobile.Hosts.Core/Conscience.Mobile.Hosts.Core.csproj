@@ -92,6 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Conscience.Domain\Conscience.Domain.csproj">
+      <Project>{8ec70403-8b75-47fc-8885-16dda1f3e7fd}</Project>
+      <Name>Conscience.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conscience.Plugins\Conscience.Plugins.csproj">
       <Project>{888d7c06-2980-4d5b-bd47-ad119b311f64}</Project>
       <Name>Conscience.Plugins</Name>

@@ -177,6 +177,10 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Conscience.Domain\Conscience.Domain.csproj">
+      <Project>{8ec70403-8b75-47fc-8885-16dda1f3e7fd}</Project>
+      <Name>Conscience.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conscience.Mobile.Hosts.Core\Conscience.Mobile.Hosts.Core.csproj">
       <Project>{e9b00445-7d5d-4fa7-bfe1-e8efe13d1bfd}</Project>
       <Name>Conscience.Mobile.Hosts.Core</Name>

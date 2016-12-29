@@ -5,10 +5,10 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Conscience.Domain.Enums;
 
 namespace Conscience.Plugins.Droid
 {
@@ -24,8 +24,8 @@ namespace Conscience.Plugins.Droid
                     {
                         using (var battery = Application.Context.RegisterReceiver(null, filter))
                         {
-                            var level = battery.GetIntExtra(BatteryManager.ExtraLevel, -1);
-                            var scale = battery.GetIntExtra(BatteryManager.ExtraScale, -1);
+                            var level = battery.GetIntExtra(Android.OS.BatteryManager.ExtraLevel, -1);
+                            var scale = battery.GetIntExtra(Android.OS.BatteryManager.ExtraScale, -1);
 
                             return (int)Math.Floor(level * 100D / scale);
                         }
@@ -50,14 +50,14 @@ namespace Conscience.Plugins.Droid
                     {
                         using (var battery = Application.Context.RegisterReceiver(null, filter))
                         {
-                            int status = battery.GetIntExtra(BatteryManager.ExtraStatus, -1);
+                            int status = battery.GetIntExtra(Android.OS.BatteryManager.ExtraStatus, -1);
                             var isCharging = status == (int)BatteryStatus.Charging || status == (int)BatteryStatus.Full;
 
-                            var chargePlug = battery.GetIntExtra(BatteryManager.ExtraPlugged, -1);
-                            var usbCharge = chargePlug == (int)BatteryPlugged.Usb;
-                            var acCharge = chargePlug == (int)BatteryPlugged.Ac;
+                            var chargePlug = battery.GetIntExtra(Android.OS.BatteryManager.ExtraPlugged, -1);
+                            var usbCharge = chargePlug == (int)Android.OS.BatteryPlugged.Usb;
+                            var acCharge = chargePlug == (int)Android.OS.BatteryPlugged.Ac;
                             bool wirelessCharge = false;
-                            wirelessCharge = chargePlug == (int)BatteryPlugged.Wireless;
+                            wirelessCharge = chargePlug == (int)Android.OS.BatteryPlugged.Wireless;
 
                             isCharging = (usbCharge || acCharge || wirelessCharge);
                             if (isCharging)
@@ -97,15 +97,15 @@ namespace Conscience.Plugins.Droid
                     {
                         using (var battery = Application.Context.RegisterReceiver(null, filter))
                         {
-                            int status = battery.GetIntExtra(BatteryManager.ExtraStatus, -1);
+                            int status = battery.GetIntExtra(Android.OS.BatteryManager.ExtraStatus, -1);
                             var isCharging = status == (int)BatteryStatus.Charging || status == (int)BatteryStatus.Full;
 
-                            var chargePlug = battery.GetIntExtra(BatteryManager.ExtraPlugged, -1);
-                            var usbCharge = chargePlug == (int)BatteryPlugged.Usb;
-                            var acCharge = chargePlug == (int)BatteryPlugged.Ac;
+                            var chargePlug = battery.GetIntExtra(Android.OS.BatteryManager.ExtraPlugged, -1);
+                            var usbCharge = chargePlug == (int)Android.OS.BatteryPlugged.Usb;
+                            var acCharge = chargePlug == (int)Android.OS.BatteryPlugged.Ac;
 
                             bool wirelessCharge = false;
-                            wirelessCharge = chargePlug == (int)BatteryPlugged.Wireless;
+                            wirelessCharge = chargePlug == (int)Android.OS.BatteryPlugged.Wireless;
 
                             isCharging = (usbCharge || acCharge || wirelessCharge);
 
