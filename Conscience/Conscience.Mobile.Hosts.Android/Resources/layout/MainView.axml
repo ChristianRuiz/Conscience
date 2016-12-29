@@ -44,4 +44,10 @@
         android:layout_height="wrap_content"
         android:textSize="40dp"
         local:MvxBind="Text BatteryLevel" />
+  <Button  
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Play number"
+        android:id="@+id/btnNumber" 
+        local:MvxBind="Click PlayRandomNumberCommand" />
 </LinearLayout>

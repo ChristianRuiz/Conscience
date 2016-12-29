@@ -67,8 +67,8 @@
       <HintPath>..\packages\MvvmCross.Plugin.Network.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Network.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MvvmCross.Plugins.SoundEffects, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvvmCross.Plugin.SoundEffects.4.3.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.SoundEffects.dll</HintPath>
+    <Reference Include="MvvmCross.Plugins.ResourceLoader, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.Plugin.ResourceLoader.4.4.0\lib\portable-win+net45+wp8+win8+wpa81\MvvmCross.Plugins.ResourceLoader.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MvvmCross.Plugins.Sqlite, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -96,6 +96,18 @@
       <Project>{888d7c06-2980-4d5b-bd47-ad119b311f64}</Project>
       <Name>Conscience.Plugins</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Audio\Numbers\1.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\10.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\2.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\3.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\4.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\5.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\6.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\7.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\8.mp3" />
+    <EmbeddedResource Include="Audio\Numbers\9.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

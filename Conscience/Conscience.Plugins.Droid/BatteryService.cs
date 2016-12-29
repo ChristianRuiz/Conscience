@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace Conscience.Plugins.Android
+namespace Conscience.Plugins.Droid
 {
     public class BatteryService : IBatteryService
     {

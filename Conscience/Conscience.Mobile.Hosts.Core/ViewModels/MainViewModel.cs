@@ -4,6 +4,7 @@ using MvvmCross.Plugins.Location;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
     public class MainViewModel : MvxViewModel
     {
         IMvxLocationWatcher _locationWatcher;
+        IAudioService _audioService;
         IBatteryService _batteryService;
         Timer _batteryTimer;
 
@@ -83,10 +85,11 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
         }
 
 
-        public MainViewModel(IMvxLocationWatcher locationWatcher, IBatteryService batteryService)
+        public MainViewModel(IMvxLocationWatcher locationWatcher, IBatteryService batteryService, IAudioService audioService)
         {
             _locationWatcher = locationWatcher;
             _batteryService = batteryService;
+            _audioService = audioService;
         }
         
         public override void Start()
@@ -113,6 +116,28 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
         {
             BatteryLevel = _batteryService.RemainingChargePercent;
             BatteryStatus = _batteryService.Status.ToString();
+        }
+
+        private System.Windows.Input.ICommand _playRandomNumberCommand;
+        public System.Windows.Input.ICommand PlayRandomNumberCommand
+        {
+            get
+            {
+                _playRandomNumberCommand = _playRandomNumberCommand ?? new MvxCommand(PlayRandomNumber);
+                return _playRandomNumberCommand;
+            }
+        }
+
+        private void PlayRandomNumber()
+        {
+            var random = new Random().Next(10) + 1;
+
+            var path = "Conscience.Mobile.Hosts.Core.Audio.Numbers." + random + ".mp3";
+
+            var assembly = GetType().GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream(path);
+            
+            _audioService.PlaySound(stream);
         }
     }
 }
