@@ -2,18 +2,22 @@
     ViewBag.Title = "Hosts location";
 }
 
-<div class="jumbotron">
-    <h2>@ViewBag.Title</h2>
-</div>
-
 <div class="row">
     
-
-    <ul id="usersList">
-    </ul>
-
-    <button id="btnTestConnection" style="margin-top:40px">Test host connection</button>
-    <button id="btnTestLocation" style="margin-top:40px">Test host location update</button>
+    <table>
+        <thead>
+            <tr><th>Name</th> <th>Latitude</th> <th>Longitude</th> <th>TimeStamp</th><th></th></tr>
+        </thead>
+        <tbody data-bind="foreach: Users">
+            <tr>
+                <td data-bind="text: UserName"></td>
+                <td data-bind="text: Location().Latitude"></td>
+                <td data-bind="text: Location().Longitude"></td>
+                <td data-bind="text: Location().TimeStamp"></td>
+                <td><button data-bind="click: SendNotification">Send notification</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 
@@ -21,52 +25,12 @@
     <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
     
+    <script src="~/Scripts/Models/User.js"></script>
+    <script src="~/Scripts/ViewModels/HomeViewModel.js"></script>
+
     <script>
-        var users = {};
+        var viewModel = new HomeViewModel();
 
-        function addUser(userId, userName) {
-            var html = '<li id="' + userId + '"><strong>' + htmlEncode(userName) + '</strong></li>';
-
-            if ($('#' + userId).length === 0) {
-                $('#usersList').append(html);
-            }
-            else {
-                $('#' + userId).html(html);
-            }
-        }
-
-        $(function () {
-            var hostsHub = $.connection.HostsHub;
-
-            hostsHub.client.hostConnected = function (user) {
-                addUser(user.Id, user.UserName);
-            };
-
-            hostsHub.client.locationUpdated = function (userId, userName, location) {
-                addUser(userId, userName);
-                $('#' + userId).html('<strong>' + htmlEncode(userName) + '</strong>' + ' - ' + location.Latitude + ' - ' + location.Longitude + ' - ' + location.TimeStamp);
-            };
-
-            hostsHub.client.hostDisconnected = function (userId) {
-                $('#' + userId).remove();
-            };
-
-            $.connection.hub.start().done(function () {
-                hostsHub.server.subscribeWeb();
-
-                $('#btnTestConnection').click(function () {
-                    hostsHub.server.subscribeHost();
-                });
-
-                $('#btnTestLocation').click(function () {
-                    hostsHub.server.locationUpdates([{ Latitude: 1.99, Longitude: 41.56 }, { Latitude: 1.98, Longitude: 41.57 }]);
-                });
-            });
-        });
-        // This optional function html-encodes messages for display in the page.
-        function htmlEncode(value) {
-            var encodedValue = $('<div />').text(value).html();
-            return encodedValue;
-        }
+        ko.applyBindings(viewModel);
     </script>
 }

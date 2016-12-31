@@ -27,6 +27,8 @@ namespace Conscience.Mobile.Hosts.Core.Services
         private List<Location> LocationsBuffer = new List<Location>();
         private string _locationError;
 
+        public event EventHandler<HostsEventArgs<Location>> LocationUpdated;
+
         public HostsService(IMvxLocationWatcher locationWatcher, IBatteryService batteryService, IAudioService audioService)
         {
             _locationWatcher = locationWatcher;
@@ -44,6 +46,9 @@ namespace Conscience.Mobile.Hosts.Core.Services
             _hostsHub = _hubConn.CreateHubProxy("HostsHub");
 
             await _hubConn.Start();
+
+            _hostsHub.On<NotificationAudio>("NotificationAudio", HandleNotificationSound);
+
             await _hostsHub.Invoke("SubscribeHost");
         }
 
@@ -115,7 +120,10 @@ namespace Conscience.Mobile.Hosts.Core.Services
             }
         }
 
-        public event EventHandler<HostsEventArgs<Location>> LocationUpdated;
+        public void HandleNotificationSound(NotificationAudio notification)
+        {
+            PlayRandomNumber();
+        }
     }
 
     public class HostsEventArgs<T> : EventArgs
