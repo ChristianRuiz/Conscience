@@ -18,6 +18,9 @@
             </tr>
         </tbody>
     </table>
+
+    <div id="map" style="height:400px"></div>
+
 </div>
 
 
@@ -25,11 +28,13 @@
     <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
     <script src="~/signalr/hubs"></script>
     
+    <script src="~/Scripts/OpenLayers.js"></script>
+
     <script src="~/Scripts/Models/User.js"></script>
     <script src="~/Scripts/ViewModels/HomeViewModel.js"></script>
 
     <script>
-        var viewModel = new HomeViewModel();
+        var viewModel = new HomeViewModel("map");
 
         ko.applyBindings(viewModel);
     </script>

@@ -1,4 +1,4 @@
-﻿function HomeViewModel() {
+﻿function HomeViewModel(mapId) {
     var self = this;
     var hostsHub;
 
@@ -43,4 +43,65 @@
             hostsHub.server.subscribeWeb();
         });
     });
+
+    var options = {
+        controls: [
+          new OpenLayers.Control.Navigation(),
+          new OpenLayers.Control.PanZoomBar(),
+          new OpenLayers.Control.Attribution()
+        ]
+    };
+
+    var map = new OpenLayers.Map(mapId, options);
+    map.addLayer(new OpenLayers.Layer.OSM());
+    var markers = new OpenLayers.Layer.Markers("Markers");
+    var userMarkers = {};
+    map.addLayer(markers);
+    map.zoomToMaxExtent();
+
+    var mapZoomed = false;
+
+    self.Users.subscribe(function (changes) {
+
+        changes.forEach(function (change) {
+            if (change.status === 'added') {
+                var user = change.value;
+
+                if (user.Location().Longitude === '') {
+
+                    user.Location.subscribe(function () {
+                        var marker = userMarkers[user.Id()];
+
+                        if (marker != null) {
+                            markers.removeMarker(marker);
+                        }
+
+                        var position = new OpenLayers.LonLat(user.Location().Longitude, user.Location().Latitude).transform(
+                                            new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                                            map.getProjectionObject() // to Spherical Mercator Projection
+                                          );
+
+                        marker = new OpenLayers.Marker(position);
+                        markers.addMarker(marker);
+
+                        userMarkers[user.Id()] = marker;
+
+                        if (!mapZoomed) {
+                            map.setCenter(position, 6);
+                            mapZoomed = true;
+                        }
+                    });
+                }
+            } else if (change.status === 'deleted') {
+                var user = change.value;
+
+                var marker = userMarkers[user.Id()];
+
+                if (marker != null) {
+                    markers.removeMarker(marker);
+                }
+            }
+        });
+
+    }, null, "arrayChange");
 }
