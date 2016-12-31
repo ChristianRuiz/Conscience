@@ -14,8 +14,11 @@ namespace Conscience.Mobile.Hosts.Core.Services
 {
     public class HostsService
     {
+#if DEBUG
         private const string ServerUrl = "http://192.168.1.42/";
-
+#else
+        private const string ServerUrl = "http://consciencelarp.azurewebsites.net/";
+#endif
         IMvxLocationWatcher _locationWatcher;
         IAudioService _audioService;
         IBatteryService _batteryService;

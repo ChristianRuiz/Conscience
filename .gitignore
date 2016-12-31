@@ -156,3 +156,4 @@ $RECYCLE.BIN/
 .DS_Store
 *.orig
 Conscience/Conscience.Web/App_Data/
+Conscience/Conscience.Web/Mobile/
