@@ -24,18 +24,31 @@
     <script>
         var users = {};
 
+        function addUser(userId, userName) {
+            var html = '<li id="' + userId + '"><strong>' + htmlEncode(userName) + '</strong></li>';
+
+            if ($('#' + userId).length === 0) {
+                $('#usersList').append(html);
+            }
+            else {
+                $('#' + userId).html(html);
+            }
+        }
+
         $(function () {
             var hostsHub = $.connection.HostsHub;
 
             hostsHub.client.hostConnected = function (user) {
-                // Add the message to the page.
-                $('#usersList').append('<li id="' + user.Id + '"><strong>' + htmlEncode(user.UserName) + '</strong></li>');
+                addUser(user.Id, user.UserName);
             };
 
-            hostsHub.client.locationUpdated = function (userId, location) {
-                var userName = $('#' + userId).text().split('-')[0].trim();
-                // Add the message to the page.
+            hostsHub.client.locationUpdated = function (userId, userName, location) {
+                addUser(userId, userName);
                 $('#' + userId).html('<strong>' + htmlEncode(userName) + '</strong>' + ' - ' + location.Latitude + ' - ' + location.Longitude + ' - ' + location.TimeStamp);
+            };
+
+            hostsHub.client.hostDisconnected = function (userId) {
+                $('#' + userId).remove();
             };
 
             $.connection.hub.start().done(function () {

@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MvvmCross.Droid.Views;
+using Conscience.Mobile.Hosts.Android.Services;
 
 namespace Conscience.Mobile.Hosts.Android.Views
 {
@@ -20,6 +21,8 @@ namespace Conscience.Mobile.Hosts.Android.Views
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.MainView);
+
+            StartService(new Intent(this, typeof(HostsServiceImplementation)));
         }
     }
 }

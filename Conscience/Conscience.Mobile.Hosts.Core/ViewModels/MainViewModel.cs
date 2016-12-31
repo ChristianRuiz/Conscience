@@ -1,4 +1,7 @@
-﻿using Conscience.Plugins;
+﻿using Conscience.Domain;
+using Conscience.Mobile.Hosts.Core.Services;
+using Conscience.Plugins;
+using Microsoft.AspNet.SignalR.Client;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Plugins.Location;
 using System;
@@ -13,7 +16,7 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
 {
     public class MainViewModel : MvxViewModel
     {
-        IMvxLocationWatcher _locationWatcher;
+        HostsService _hostsService;
         IAudioService _audioService;
         IBatteryService _batteryService;
         Timer _batteryTimer;
@@ -85,31 +88,32 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
         }
 
 
-        public MainViewModel(IMvxLocationWatcher locationWatcher, IBatteryService batteryService, IAudioService audioService)
+        public MainViewModel(HostsService hostsService, IBatteryService batteryService, IAudioService audioService)
         {
-            _locationWatcher = locationWatcher;
+            _hostsService = hostsService;
             _batteryService = batteryService;
             _audioService = audioService;
         }
         
         public override void Start()
         {
-            _locationWatcher.Start(new MvxLocationOptions() { Accuracy = MvxLocationAccuracy.Fine }, GeoLocationSuccess, GeoLocationFailure);
+            _hostsService.LocationUpdated += HostsService_LocationUpdated;
 
             _batteryTimer = new Timer(BatteryServiceTimerTick, null, TimeSpan.FromMinutes(0), TimeSpan.FromSeconds(5));
         }
 
-        private void GeoLocationSuccess(MvxGeoLocation geo)
+        private void HostsService_LocationUpdated(object sender, HostsEventArgs<Location> e)
         {
-            Error = string.Empty;
-            Latitude = geo.Coordinates.Latitude;
-            Longitude = geo.Coordinates.Longitude;
-            Accuracy = geo.Coordinates.Accuracy;
-        }
+            var location = e.Data;
 
-        private void GeoLocationFailure(MvxLocationError error)
-        {
-            Error = error.Code.ToString();
+            Error = e.Error;
+
+            if (location != null)
+            {
+                Latitude = location.Latitude;
+                Longitude = location.Longitude;
+                Accuracy = location.Accuracy;
+            }
         }
 
         private void BatteryServiceTimerTick(object status)

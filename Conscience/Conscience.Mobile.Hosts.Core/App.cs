@@ -1,4 +1,5 @@
-﻿using Conscience.Mobile.Hosts.Core.ViewModels;
+﻿using Conscience.Mobile.Hosts.Core.Services;
+using Conscience.Mobile.Hosts.Core.ViewModels;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using System;
@@ -14,6 +15,7 @@ namespace Conscience.Mobile.Hosts.Core
         public override void Initialize()
         {
             CreatableTypes();
+            Mvx.ConstructAndRegisterSingleton<HostsService, HostsService>();
             Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<MainViewModel>());
         }
     }

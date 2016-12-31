@@ -35,7 +35,7 @@ namespace Conscience.Web.Hubs
         {
             if (Users.ContainsKey(Context.ConnectionId))
             {
-                Clients.Group("Web").NotifyDisconnected(Users[Context.ConnectionId].Id);
+                Clients.Group("Web").HostDisconnected(Users[Context.ConnectionId].Id);
                 Users.Remove(Context.ConnectionId);
             }
 
@@ -77,7 +77,7 @@ namespace Conscience.Web.Hubs
             //Hack: To avoid sending dates from javascript during the PoC
             user.Device.CurrentLocation.TimeStamp = DateTime.Now;
 
-            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.Device.CurrentLocation);
+            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.Device.CurrentLocation);
         }
     }
 }
