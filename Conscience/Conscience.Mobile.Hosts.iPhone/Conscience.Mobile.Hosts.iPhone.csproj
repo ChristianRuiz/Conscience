@@ -203,6 +203,7 @@
     <Compile Include="Views\MainView.designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Bootstrap\ConsciencePluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Conscience.Core\Conscience.Core.csproj">

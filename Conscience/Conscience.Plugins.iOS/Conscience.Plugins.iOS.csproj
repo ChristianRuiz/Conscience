@@ -71,6 +71,7 @@
     <Compile Include="BatteryService.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AudioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
