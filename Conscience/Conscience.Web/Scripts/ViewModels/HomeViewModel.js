@@ -52,8 +52,14 @@
         ]
     };
 
+    var apiKey = "Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB";
+
     var map = new OpenLayers.Map(mapId, options);
-    map.addLayer(new OpenLayers.Layer.OSM());
+    //map.addLayer(new OpenLayers.Layer.OSM());
+    map.addLayer(new OpenLayers.Layer.Bing({
+        key: apiKey,
+        type: "Aerial"
+    }));
     var markers = new OpenLayers.Layer.Markers("Markers");
     var userMarkers = {};
     map.addLayer(markers);
