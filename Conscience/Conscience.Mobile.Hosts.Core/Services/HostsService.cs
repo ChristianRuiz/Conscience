@@ -41,7 +41,7 @@ namespace Conscience.Mobile.Hosts.Core.Services
 
         public async void Start()
         {
-            _locationWatcher.Start(new MvxLocationOptions() { Accuracy = MvxLocationAccuracy.Fine }, GeoLocationSuccess, GeoLocationFailure);
+            _locationWatcher.Start(new MvxLocationOptions() { Accuracy = MvxLocationAccuracy.Fine, TrackingMode = MvxLocationTrackingMode.Background }, GeoLocationSuccess, GeoLocationFailure);
             
             _hubTimer = new Timer(HubTimerTick, null, TimeSpan.FromMinutes(0), TimeSpan.FromSeconds(10));
 
