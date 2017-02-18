@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Stats
+    public class CharacterInHost
     {
         public int Id
         {
@@ -14,19 +14,13 @@ namespace Conscience.Domain
             set;
         }
 
-        public string Name
+        public Character Character
         {
             get;
             set;
         }
 
-        public int Value
-        {
-            get;
-            set;
-        }
-
-        public Host Host
+        public DateTime AssignedOn
         {
             get;
             set;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Stats
+    public class Memory
     {
         public int Id
         {
@@ -14,19 +14,19 @@ namespace Conscience.Domain
             set;
         }
 
-        public string Name
+        public int Name
         {
             get;
             set;
         }
 
-        public int Value
+        public int Description
         {
             get;
             set;
         }
 
-        public Host Host
+        public Audio Audio
         {
             get;
             set;

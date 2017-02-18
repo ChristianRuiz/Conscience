@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Stats
+    public class Character
     {
         public int Id
         {
@@ -14,19 +14,25 @@ namespace Conscience.Domain
             set;
         }
 
-        public string Name
+        public List<Memory> Memories
         {
             get;
             set;
         }
 
-        public int Value
+        public List<Trigger> Triggers
         {
             get;
             set;
         }
 
-        public Host Host
+        public List<CharacterInPlot> Plots
+        {
+            get;
+            set;
+        }
+
+        public List<PlotEvent> PlotEvents
         {
             get;
             set;

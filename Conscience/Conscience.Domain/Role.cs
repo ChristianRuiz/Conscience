@@ -14,7 +14,7 @@ namespace Conscience.Domain
             set;
         }
         
-        public string UserName
+        public string Name
         {
             get;
             set;

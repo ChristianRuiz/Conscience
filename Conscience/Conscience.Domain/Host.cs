@@ -6,9 +6,23 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Host
+    public class Host : User
     {
-        public int Id
+        public List<CharacterInHost> Characters
+        {
+            get;
+            set;
+        }
+
+        public CharacterInHost CurrentCharacter
+        {
+            get
+            {
+                return Characters.Last();
+            }
+        }
+
+        public List<CoreMemory> CoreMemories
         {
             get;
             set;

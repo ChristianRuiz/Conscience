@@ -37,18 +37,28 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Audio.cs" />
+    <Compile Include="Character.cs" />
+    <Compile Include="CharacterInHost.cs" />
+    <Compile Include="CharacterInPlot.cs" />
+    <Compile Include="CoreMemory.cs" />
+    <Compile Include="Employee.cs" />
     <Compile Include="Enums\BatteryStatus.cs" />
     <Compile Include="Device.cs" />
     <Compile Include="Enums\PowerSource.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Memory.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="NotificationAudio.cs" />
     <Compile Include="NotificationPlotChange.cs" />
     <Compile Include="NotificationStatChange.cs" />
+    <Compile Include="Plot.cs" />
+    <Compile Include="PlotEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Stats.cs" />
+    <Compile Include="Trigger.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

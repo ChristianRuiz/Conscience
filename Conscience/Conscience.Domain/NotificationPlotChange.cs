@@ -8,5 +8,16 @@ namespace Conscience.Domain
 {
     public class NotificationPlotChange : Notification
     {
+        public Plot Plot
+        {
+            get;
+            set;
+        }
+        
+        public List<Character> Characters
+        {
+            get;
+            set;
+        }   
     }
 }

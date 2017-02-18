@@ -36,13 +36,7 @@ namespace Conscience.Domain
             get;
             set;
         }
-
-        public Host Host
-        {
-            get;
-            set;
-        }
-
+        
         public List<Notification> Notifications
         {
             get;
