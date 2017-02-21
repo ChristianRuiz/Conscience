@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Concience.DataAccess
 {
-    public class ConscienceIdentityUser : User, IUser<int>
+    public class ConscienceAccount : Account, IUser<int>
     {
     }
 }

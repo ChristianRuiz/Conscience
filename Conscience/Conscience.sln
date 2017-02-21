@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Plugins.iOS", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Mobile.Hosts.iPhone", "Conscience.Mobile.Hosts.iPhone\Conscience.Mobile.Hosts.iPhone.csproj", "{41A1C35A-2AAC-4269-B24F-526446CE00F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conscience.Application", "Conscience.Application\Conscience.Application.csproj", "{CACA36EE-257A-4328-A29F-8E71C0344069}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,6 +159,18 @@ Global
 		{41A1C35A-2AAC-4269-B24F-526446CE00F9}.Release|iPhone.Build.0 = Release|iPhone
 		{41A1C35A-2AAC-4269-B24F-526446CE00F9}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{41A1C35A-2AAC-4269-B24F-526446CE00F9}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Release|iPhone.Build.0 = Release|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CACA36EE-257A-4328-A29F-8E71C0344069}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

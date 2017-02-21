@@ -146,7 +146,7 @@ namespace Conscience.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ConscienceIdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new ConscienceAccount { UserName = model.Email, Email = model.Email };
                 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -363,7 +363,7 @@ namespace Conscience.Web.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ConscienceIdentityUser { UserName = model.Email, Email = model.Email };
+                var user = new ConscienceAccount { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

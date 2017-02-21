@@ -1,0 +1,25 @@
+﻿using Conscience.Domain;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Entity;
+
+namespace Concience.DataAccess.Repositories
+{
+    public class PlotRepository : BaseRepository<Plot>
+    {
+        public PlotRepository(ConscienceContext context) : base(context)
+        {
+        }
+
+        protected override IDbSet<Plot> DbSet
+        {
+            get
+            {
+                return _context.Plots;
+            }
+        }
+    }
+}

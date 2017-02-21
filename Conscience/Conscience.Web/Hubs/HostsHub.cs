@@ -15,7 +15,7 @@ namespace Conscience.Web.Hubs
         private const string GroupHosts = "Hosts";
         private const string GroupWeb = "Web";
 
-        private static Dictionary<string, User> Users = new Dictionary<string, User>();
+        private static Dictionary<string, Account> Users = new Dictionary<string, Account>();
 
         public override Task OnConnected()
         {
@@ -46,10 +46,13 @@ namespace Conscience.Web.Hubs
         {
             if (!Users.ContainsKey(Context.ConnectionId))
             {
-                var user = new User
+                var user = new Account
                 {
                     UserName = "User " + (Users.Count + 1),
-                    Device = new Device()
+                    User = new User
+                    {
+                        Device = new Device()
+                    }
                 };
 
                 Users.Add(Context.ConnectionId, user);
@@ -71,12 +74,12 @@ namespace Conscience.Web.Hubs
         public void LocationUpdates(List<Location> locations)
         {
             var user = Users[Context.ConnectionId];
-            user.Device.Locations.AddRange(locations);
+            user.User.Device.Locations.AddRange(locations);
 
             //Hack: To avoid sending dates from javascript during the PoC
-            user.Device.CurrentLocation.TimeStamp = DateTime.Now;
+            user.User.Device.CurrentLocation.TimeStamp = DateTime.Now;
 
-            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.Device.CurrentLocation);
+            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.User.Device.CurrentLocation);
         }
 
         public void SendNotification(int userId)

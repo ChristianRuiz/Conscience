@@ -6,27 +6,42 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class User
+    public class Account
     {
+        public Account()
+        {
+        }
+
         public int Id
         {
             get;
             set;
         }
 
-        public Device Device
+        public string Email
+        {
+            get;
+            set;
+        }
+        public string UserName
         {
             get;
             set;
         }
 
-        public List<Notification> Notifications
+        public string PasswordHash
         {
             get;
             set;
         }
 
-        public Account Account
+        public User User
+        {
+            get;
+            set;
+        }
+
+        public List<Role> Roles
         {
             get;
             set;

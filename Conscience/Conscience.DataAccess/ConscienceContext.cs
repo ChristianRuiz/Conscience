@@ -15,7 +15,13 @@ namespace Concience.DataAccess
         {
         }
 
-        public DbSet<ConscienceIdentityUser> Users
+        public DbSet<ConscienceAccount> Accounts
+        {
+            get;
+            set;
+        }
+
+        public DbSet<User> Users
         {
             get;
             set;
@@ -67,7 +73,9 @@ namespace Concience.DataAccess
         {
             modelBuilder.HasDefaultSchema("Conscience");
 
-            modelBuilder.Entity<ConscienceIdentityUser>().HasOptional(u => u.Device);
+            modelBuilder.Entity<Account>().HasOptional(a => a.User).WithRequired(u => u.Account);
+            modelBuilder.Entity<Account>().HasMany(a => a.Roles);
+            modelBuilder.Entity<User>().HasOptional(u => u.Device);
             modelBuilder.Entity<Device>().HasMany(d => d.Locations);
             modelBuilder.Entity<Host>().ToTable("Hosts");
             modelBuilder.Entity<Employee>().ToTable("Employees");

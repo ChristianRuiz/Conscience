@@ -352,6 +352,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Conscience.Application\Conscience.Application.csproj">
+      <Project>{caca36ee-257a-4328-a29f-8e71c0344069}</Project>
+      <Name>Conscience.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conscience.DataAccess\Conscience.DataAccess.csproj">
       <Project>{fabfc1e9-0b45-4a95-97ef-1b73d9950ade}</Project>
       <Name>Conscience.DataAccess</Name>

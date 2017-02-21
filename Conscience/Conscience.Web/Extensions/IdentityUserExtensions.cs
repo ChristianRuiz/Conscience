@@ -11,7 +11,7 @@ namespace Conscience.Web
 {
     public static class IdentityUserExtensions
     {
-        public static async Task<ClaimsIdentity> GenerateUserIdentityAsync(this ConscienceIdentityUser user, ApplicationUserManager manager)
+        public static async Task<ClaimsIdentity> GenerateUserIdentityAsync(this ConscienceAccount user, ApplicationUserManager manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);

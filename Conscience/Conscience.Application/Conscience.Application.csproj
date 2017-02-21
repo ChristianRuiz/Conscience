@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FABFC1E9-0B45-4A95-97EF-1B73D9950ADE}</ProjectGuid>
+    <ProjectGuid>{CACA36EE-257A-4328-A29F-8E71C0344069}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Concience.DataAccess</RootNamespace>
-    <AssemblyName>Concience.DataAccess</AssemblyName>
+    <RootNamespace>Conscience.Application</RootNamespace>
+    <AssemblyName>Conscience.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,19 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="GraphQL, Version=0.14.6.657, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.0.14.6.657\lib\net45\GraphQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="GraphQL-Parser, Version=2.0.0.17, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL-Parser.2.0.0\lib\net45\GraphQL-Parser.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.Core">
-      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,29 +52,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConscienceContext.cs" />
-    <Compile Include="ConscienceDbInitializer.cs" />
-    <Compile Include="ConscienceAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AudioRepository.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Repositories\CharacterRepository.cs" />
-    <Compile Include="Repositories\DeviceRepository.cs" />
-    <Compile Include="Repositories\MemoryRepository.cs" />
-    <Compile Include="Repositories\AccountRepository.cs" />
-    <Compile Include="Repositories\NotificationRepository.cs" />
-    <Compile Include="Repositories\PlotRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Conscience.DataAccess\Conscience.DataAccess.csproj">
+      <Project>{fabfc1e9-0b45-4a95-97ef-1b73d9950ade}</Project>
+      <Name>Conscience.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Conscience.Domain\Conscience.Domain.csproj">
       <Project>{8ec70403-8b75-47fc-8885-16dda1f3e7fd}</Project>
       <Name>Conscience.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Graph\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
