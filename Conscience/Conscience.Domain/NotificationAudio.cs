@@ -8,7 +8,7 @@ namespace Conscience.Domain
 {
     public class NotificationAudio : Notification
     {
-        public string AudioUrl
+        public Audio Audio
         {
             get;
             set;

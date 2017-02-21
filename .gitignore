@@ -157,3 +157,4 @@ $RECYCLE.BIN/
 *.orig
 Conscience/Conscience.Web/App_Data/
 Conscience/Conscience.Web/Mobile/
+Conscience/Conscience.Web/_bin_deployableAssemblies/

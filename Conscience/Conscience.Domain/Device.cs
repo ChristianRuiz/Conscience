@@ -11,7 +11,6 @@ namespace Conscience.Domain
     {
         public Device()
         {
-            Locations = new List<Location>();
         }
 
         public int Id

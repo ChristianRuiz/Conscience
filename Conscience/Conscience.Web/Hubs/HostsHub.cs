@@ -48,7 +48,6 @@ namespace Conscience.Web.Hubs
             {
                 var user = new User
                 {
-                    Id = Guid.NewGuid(),
                     UserName = "User " + (Users.Count + 1),
                     Device = new Device()
                 };
@@ -80,7 +79,7 @@ namespace Conscience.Web.Hubs
             Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.Device.CurrentLocation);
         }
 
-        public void SendNotification(Guid userId)
+        public void SendNotification(int userId)
         {
             var user = Users.FirstOrDefault(u => u.Value.Id == userId);
             Clients.Client(user.Key).NotificationAudio(new NotificationAudio());

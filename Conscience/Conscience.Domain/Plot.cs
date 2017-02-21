@@ -31,5 +31,11 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public List<PlotEvent> Events
+        {
+            get;
+            set;
+        }
     }
 }

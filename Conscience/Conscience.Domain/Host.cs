@@ -27,5 +27,11 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public List<Stats> Stats
+        {
+            get;
+            set;
+        }
     }
 }

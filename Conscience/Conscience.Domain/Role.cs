@@ -8,7 +8,7 @@ namespace Conscience.Domain
 {
     public class Role
     {
-        public Guid Id
+        public int Id
         {
             get;
             set;

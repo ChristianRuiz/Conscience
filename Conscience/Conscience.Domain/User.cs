@@ -10,10 +10,9 @@ namespace Conscience.Domain
     {
         public User()
         {
-            Notifications = new List<Notification>();
         }
 
-        public Guid Id
+        public int Id
         {
             get;
             set;
@@ -24,13 +23,18 @@ namespace Conscience.Domain
             get;
             set;
         }
-
         public string UserName
         {
             get;
             set;
         }
-        
+
+        public string PasswordHash
+        {
+            get;
+            set;
+        }
+
         public Device Device
         {
             get;
@@ -38,6 +42,12 @@ namespace Conscience.Domain
         }
         
         public List<Notification> Notifications
+        {
+            get;
+            set;
+        }
+
+        public List<Role> Roles
         {
             get;
             set;

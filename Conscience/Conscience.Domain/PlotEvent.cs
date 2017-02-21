@@ -32,6 +32,12 @@ namespace Conscience.Domain
             set;
         }
 
+        public Plot Plot
+        {
+            get;
+            set;
+        }
+
         public List<Character> Characters
         {
             get;
