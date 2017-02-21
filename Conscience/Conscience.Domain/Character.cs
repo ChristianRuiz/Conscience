@@ -14,6 +14,12 @@ namespace Conscience.Domain
             set;
         }
 
+        public int Description
+        {
+            get;
+            set;
+        }
+
         public List<Memory> Memories
         {
             get;

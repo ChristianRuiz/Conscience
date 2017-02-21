@@ -27,5 +27,10 @@ namespace Conscience.Web.Controllers
 
             return View();
         }
+
+        public ActionResult GraphQL()
+        {
+            return View();
+        }
     }
 }

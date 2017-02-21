@@ -38,6 +38,22 @@
       <HintPath>..\packages\GraphQL-Parser.2.0.0\lib\net45\GraphQL-Parser.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -52,6 +68,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\DynamicLibrary.cs" />
+    <Compile Include="Extensions\GraphFieldExtensions.cs" />
+    <Compile Include="Extensions\GraphQLQueriableExtensions.cs" />
+    <Compile Include="Extensions\OrderByExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Graph\ConscienceArguments.cs" />
+    <Compile Include="Graph\ConscienceGraphQueryExecuter.cs" />
+    <Compile Include="Graph\ConscienceMutation.cs" />
+    <Compile Include="Graph\ConscienceQuery.cs" />
+    <Compile Include="Graph\ConscienceSchema.cs" />
+    <Compile Include="Graph\Entities\Accounts\AccountGraphType.cs" />
+    <Compile Include="Graph\Entities\Accounts\AccountMutation.cs" />
+    <Compile Include="Graph\Entities\Accounts\AccountQuery.cs" />
+    <Compile Include="Graph\Entities\Characters\CharacterGraphType.cs" />
+    <Compile Include="Graph\Entities\Employees\EmployeeGraphType.cs" />
+    <Compile Include="Graph\Entities\Hosts\HostGraphType.cs" />
+    <Compile Include="Graph\Entities\Roles\RoleGraphType.cs" />
+    <Compile Include="Graph\Entities\Users\UserGraphType.cs" />
+    <Compile Include="Graph\GraphQLQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,9 +102,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Graph\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
