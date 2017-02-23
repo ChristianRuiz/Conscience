@@ -88,6 +88,7 @@
     <Compile Include="Graph\Entities\Users\UserGraphType.cs" />
     <Compile Include="Graph\GraphQLQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IUsersIdentityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Conscience.DataAccess\Conscience.DataAccess.csproj">

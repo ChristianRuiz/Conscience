@@ -9,6 +9,8 @@ using GraphQL;
 using GraphQL.Http;
 using GraphQL.Types;
 using Conscience.Application.Graph;
+using Conscience.Application.Services;
+using Conscience.Web.Identity;
 
 namespace Conscience.Web
 {
@@ -40,13 +42,15 @@ namespace Conscience.Web
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterInstance<IUnityContainer>(container);
+            container.RegisterInstance(container);
 
             container.RegisterType<ConscienceContext, ConscienceContext>();
 
             container.RegisterInstance<IDocumentExecuter>(new DocumentExecuter());
             container.RegisterInstance<IDocumentWriter>(new DocumentWriter(true));
             container.RegisterInstance(new ConscienceSchema(type => (GraphType)container.Resolve(type)));
+
+            container.RegisterType<IUsersIdentityService, UsersIdentityService>();
         }
     }
 }

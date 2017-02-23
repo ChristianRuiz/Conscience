@@ -1,4 +1,5 @@
 ﻿using Concience.DataAccess.Repositories;
+using Conscience.Application.Services;
 using GraphQL.Types;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,29 @@ namespace Conscience.Application.Graph.Entities.Accounts
 {
     public class AccountMutation : ObjectGraphType<object>
     {
-        public AccountMutation(AccountRepository accountRepo)
+        public AccountMutation(IUsersIdentityService accountService)
         {
             Name = "AccountMutation";
 
-            Field<ListGraphType<AccountGraphType>>("register", 
+            Field<AccountGraphType>("register", 
                 arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },
                     new QueryArgument<StringGraphType> { Name = "email", Description = "email" },
-                    new QueryArgument<StringGraphType> { Name = "password", Description = "password" }
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
-                resolve: context => { throw new NotImplementedException(); });
+                resolve: context => accountService.RegisterAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("email"), context.GetArgument<string>("password")))
+                .AddPermission(ConsciencePermissions.AllowAnonymous);
+
+            Field<AccountGraphType>("login",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
+                    ),
+                resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password")))
+                .AddPermission(ConsciencePermissions.AllowAnonymous);
+
+            Field<AccountGraphType>("logout",
+                resolve: context => accountService.LogoffAsync());
         }
     }
 }

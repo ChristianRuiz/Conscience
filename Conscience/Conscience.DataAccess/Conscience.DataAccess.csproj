@@ -64,6 +64,7 @@
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\PlotRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
