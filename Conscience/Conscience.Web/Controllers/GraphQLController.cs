@@ -1,4 +1,5 @@
 ﻿using Conscience.Application.Graph;
+using Conscience.Application.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,14 @@ namespace Conscience.Web.Controllers
     public class GraphQLController : ApiController
     {
         private readonly ConscienceGraphQueryExecuter _executer;
+        private readonly IUsersIdentityService _usersService;
 
         public GraphQLController(
-            ConscienceGraphQueryExecuter executer)
+            ConscienceGraphQueryExecuter executer,
+            IUsersIdentityService usersService)
         {
             _executer = executer;
+            _usersService = usersService;
         }
 
         // This will display an example error
@@ -31,7 +35,7 @@ namespace Conscience.Web.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request, GraphQLQuery query)
         {
-            var result = await _executer.ExecuteQuery(query);
+            var result = await _executer.ExecuteQuery(query, _usersService.CurrentUser);
 
             var httpResult = result.Errors?.Count > 0
                 ? HttpStatusCode.BadRequest

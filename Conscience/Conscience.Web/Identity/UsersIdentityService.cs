@@ -49,6 +49,20 @@ namespace Conscience.Web.Identity
             }
         }
 
+        public ConscienceAccount CurrentUser
+        {
+            get
+            {
+                if (HttpContext.Current.GetOwinContext().Authentication.User.Identity.IsAuthenticated)
+                {
+                    var userId = HttpContext.Current.GetOwinContext().Authentication.User.Identity.GetUserId<int>();
+                    return UserManager.Users.FirstOrDefault(u => u.Id == userId);
+                }
+
+                return null;
+            }
+        }
+
         public async Task ChangePasswordAsync(int userId, string newPassword)
         {
             //TODO: Check if we need an admin method
@@ -61,9 +75,9 @@ namespace Conscience.Web.Identity
 
             if (result != SignInStatus.Success)
                 throw new ArgumentException(result.ToString());
-
+            
             var user = UserManager.Users.FirstOrDefault(u => u.UserName == username);
-
+            
             return user;
         }
 

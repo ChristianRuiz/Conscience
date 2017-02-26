@@ -303,6 +303,9 @@
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\graphi\graphiql.css" />
+    <Content Include="Scripts\graphi\graphiql.min.js" />
+    <Content Include="Scripts\graphi\react-dom.min.js" />
+    <Content Include="Scripts\graphi\react.min.js" />
     <Content Include="Scripts\graphi\swapi.js" />
     <Content Include="Scripts\img\east-mini.png" />
     <Content Include="Scripts\img\marker.png" />

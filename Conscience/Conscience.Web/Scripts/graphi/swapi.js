@@ -1464,9 +1464,12 @@ function _interopRequireDefault(obj) {
 
       return fetch(window.location.origin + '/api/graphql', {
           method: 'post',
+          credentials: 'same-origin',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(graphQLParams),
-      }).then(response => response.json());
+      }).then(function (response) {
+          return response.json()
+      });
   }
 
   function onEditQuery(query) {
@@ -1524,13 +1527,13 @@ function _interopRequireDefault(obj) {
   }
 
   function loadAssets(done) {
-    var styles = ['//cdn.jsdelivr.net/graphiql/' + GRAPHIQL_VERSION + '/graphiql.css'];
+    var styles = ['/Scripts/graphi/graphiql.css'];
     styles.forEach(loadStyles);
 
     var scripts = {
-      graphiql: '//cdn.jsdelivr.net/graphiql/' + GRAPHIQL_VERSION + '/graphiql.min.js',
-      react: '//cdn.jsdelivr.net/react/15.3.2/react.min.js',
-      'react-dom': '//cdn.jsdelivr.net/react/15.3.2/react-dom.min.js'
+        graphiql: '/Scripts/graphi/graphiql.min.js',
+        react: '/Scripts/graphi/react.min.js',
+        'react-dom': '/Scripts/graphi/react-dom.min.js'
     };
 
     function loaded(key) {

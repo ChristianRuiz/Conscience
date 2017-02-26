@@ -1,6 +1,9 @@
-﻿using GraphQL;
+﻿using Conscience.Domain;
+using GraphQL;
 using GraphQL.Builders;
+using GraphQL.Language.AST;
 using GraphQL.Types;
+using GraphQL.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +22,13 @@ namespace Conscience.Application.Graph
             return permissions.Any();
         }
         
-        public static bool HasPermission(this IProvideMetadata type, ConsciencePermissions permission)
+        public static bool HasPermission(this IProvideMetadata type, RoleTypes permission)
         {
             var permissions = type.GetMetadata<IEnumerable<string>>(PermissionsKey, new List<string>());
             return permissions.Any(x => string.Equals(x, permission.ToString()));
         }
 
-        public static IProvideMetadata AddPermissions(this IProvideMetadata type, params ConsciencePermissions[] permissions)
+        public static IProvideMetadata AddPermissions(this IProvideMetadata type, params RoleTypes[] permissions)
         {
             foreach(var permission in permissions)
             {
@@ -35,7 +38,7 @@ namespace Conscience.Application.Graph
             return type;
         }
 
-        public static IProvideMetadata AddPermission(this IProvideMetadata type, ConsciencePermissions permission)
+        public static IProvideMetadata AddPermission(this IProvideMetadata type, RoleTypes permission)
         {
             var permissions = type.GetMetadata<List<string>>(PermissionsKey);
 
@@ -51,25 +54,61 @@ namespace Conscience.Application.Graph
         }
 
         public static FieldBuilder<TSourceType, TReturnType> AddPermissions<TSourceType, TReturnType>(
-            this FieldBuilder<TSourceType, TReturnType> builder, params ConsciencePermissions[] permissions)
+            this FieldBuilder<TSourceType, TReturnType> builder, params RoleTypes[] permissions)
         {
             builder.FieldType.AddPermissions(permissions);
             return builder;
         }
 
         public static FieldBuilder<TSourceType, TReturnType> AddPermission<TSourceType, TReturnType>(
-            this FieldBuilder<TSourceType, TReturnType> builder, ConsciencePermissions permission)
+            this FieldBuilder<TSourceType, TReturnType> builder, RoleTypes permission)
         {
             builder.FieldType.AddPermission(permission);
             return builder;
         }
+
+        public static NodeOfTypeCount GetFieldsCount<T>(this EnterLeaveListener _) where T : INode
+        {
+            var fieldsCount = new NodeOfTypeCount();
+            bool isFirstNode = true;
+
+            _.Match<T>(fieldAst =>
+            {
+                if (isFirstNode)
+                {
+                    isFirstNode = false;
+
+                    fieldsCount.Count++;
+
+                    fieldsCount.Count += GetChildrenCount<T>(fieldAst.Children);
+                }
+            });
+
+            return fieldsCount;
+        }
+
+        private static int GetChildrenCount<T>(IEnumerable<INode> children)
+        {
+            var childOfType = 0;
+
+            foreach (var node in children)
+            {
+                if (node is T)
+                    childOfType++;
+
+                childOfType += GetChildrenCount<T>(node.Children);
+            }
+
+            return childOfType;
+        }
     }
 
-    public enum ConsciencePermissions
+    public class NodeOfTypeCount
     {
-        AllowAnonymous,
-        BeezyAdmin,
-        CommunityMember,
-        CommunityOwner
+        public int Count
+        {
+            get;
+            set;
+        }
     }
 }

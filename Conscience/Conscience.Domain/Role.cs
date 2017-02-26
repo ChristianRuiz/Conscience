@@ -20,4 +20,16 @@ namespace Conscience.Domain
             set;
         }
     }
+
+    public enum RoleTypes
+    {
+        Admin,
+        CompanyAdmin,
+        CompanyQA,
+        CompanyBehaviour,
+        CompanyPlot,
+        CompanyMaintenance,
+        Host,
+        Anonymous
+    }
 }

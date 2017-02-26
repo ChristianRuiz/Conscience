@@ -9,6 +9,8 @@ namespace Conscience.Application.Services
 {
     public interface IUsersIdentityService
     {
+        ConscienceAccount CurrentUser { get; }
+
         Task<ConscienceAccount> RegisterAsync(string username, string email, string password);
 
         Task<ConscienceAccount> LoginAsync(string username, string password);

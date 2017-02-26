@@ -1,5 +1,6 @@
 ﻿using Concience.DataAccess.Repositories;
 using Conscience.Application.Services;
+using Conscience.Domain;
 using GraphQL.Types;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
                 resolve: context => accountService.RegisterAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("email"), context.GetArgument<string>("password")))
-                .AddPermission(ConsciencePermissions.AllowAnonymous);
+                .AddPermission(RoleTypes.Anonymous);
 
             Field<AccountGraphType>("login",
                 arguments: new QueryArguments(
@@ -31,10 +32,10 @@ namespace Conscience.Application.Graph.Entities.Accounts
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
                 resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password")))
-                .AddPermission(ConsciencePermissions.AllowAnonymous);
+                .AddPermission(RoleTypes.Anonymous);
 
             Field<AccountGraphType>("logout",
-                resolve: context => accountService.LogoffAsync());
+                resolve: context => { accountService.LogoffAsync(); return null; });
         }
     }
 }

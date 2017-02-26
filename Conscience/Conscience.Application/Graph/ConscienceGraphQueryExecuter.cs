@@ -1,7 +1,9 @@
-﻿using GraphQL;
+﻿using Conscience.Application.Graph.ValidationRules;
+using GraphQL;
 using GraphQL.Http;
 using GraphQL.Instrumentation;
 using GraphQL.Types;
+using GraphQL.Validation;
 using GraphQL.Validation.Complexity;
 using System;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace Conscience.Application.Graph
             };
         }
 
-        public async Task<ExecutionResult> ExecuteQuery(GraphQLQuery query)
+        public async Task<ExecutionResult> ExecuteQuery(GraphQLQuery query, object userContext = null)
         {
             var inputs = query.Variables.ToInputs();
             var queryToExecute = query.Query;
@@ -50,8 +52,8 @@ namespace Conscience.Application.Graph
                 _.OperationName = query.OperationName;
                 _.Inputs = inputs;
 
-                //_.ValidationRules = new List<IValidationRule> { new BeezyMemberValidationRule(), new BeezyAdminValidationRule() };
-                //_.UserContext = new BeezyUserContext { CurrentUser = new Model.User("User 1", "beezy\\user1") { IsAdmin = true } };
+                _.ValidationRules = new List<IValidationRule> { new MembershipValidationRule() };
+                _.UserContext = userContext;
 
                 _.ComplexityConfiguration = new ComplexityConfiguration { MaxDepth = 15 };
                 _.FieldMiddleware.Use<InstrumentFieldsMiddleware>();
