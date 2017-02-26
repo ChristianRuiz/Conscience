@@ -19,20 +19,25 @@ namespace Conscience.Web
     /// </summary>
     public class UnityConfig
     {
-        #region Unity Container
-        private static Lazy<IUnityContainer> container = new Lazy<IUnityContainer>(() =>
-        {
-            var container = new UnityContainer();
-            RegisterTypes(container);
-            return container;
-        });
+        private static object _syncLock = new object();
+        private static IUnityContainer _container;
 
+        #region Unity Container
         /// <summary>
         /// Gets the configured Unity container.
         /// </summary>
         public static IUnityContainer GetConfiguredContainer()
         {
-            return container.Value;
+            lock (_syncLock)
+            {
+                if (_container == null)
+                {
+                    _container = new UnityContainer();
+                    RegisterTypes(_container);
+                }
+            }
+
+            return _container;
         }
         #endregion
 
