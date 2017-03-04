@@ -22,7 +22,7 @@ namespace Concience.DataAccess.Repositories
             }
         }
 
-        public IQueryable<Host> GetAllHosts()
+        public IQueryable<Host> GetAllHosts(Account currentUser)
         {
             return GetAll().OfType<Host>();
         }

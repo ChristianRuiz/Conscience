@@ -8,6 +8,11 @@ namespace Conscience.Domain
 {
     public class Role
     {
+        public Role()
+        {
+            Accounts = new HashSet<Account>();
+        }
+
         public int Id
         {
             get;
@@ -15,6 +20,12 @@ namespace Conscience.Domain
         }
         
         public string Name
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Account> Accounts
         {
             get;
             set;

@@ -8,6 +8,14 @@ namespace Conscience.Domain
 {
     public class Character
     {
+        public Character()
+        {
+            Memories = new HashSet<Memory>();
+            Triggers = new HashSet<Trigger>();
+            Plots = new HashSet<CharacterInPlot>();
+            PlotEvents = new HashSet<PlotEvent>();
+        }
+
         public int Id
         {
             get;
@@ -20,25 +28,25 @@ namespace Conscience.Domain
             set;
         }
 
-        public List<Memory> Memories
+        public virtual ICollection<Memory> Memories
         {
             get;
             set;
         }
 
-        public List<Trigger> Triggers
+        public virtual ICollection<Trigger> Triggers
         {
             get;
             set;
         }
 
-        public List<CharacterInPlot> Plots
+        public virtual ICollection<CharacterInPlot> Plots
         {
             get;
             set;
         }
 
-        public List<PlotEvent> PlotEvents
+        public virtual ICollection<PlotEvent> PlotEvents
         {
             get;
             set;

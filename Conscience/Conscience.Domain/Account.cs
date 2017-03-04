@@ -10,7 +10,7 @@ namespace Conscience.Domain
     {
         public Account()
         {
-            Roles = new List<Role>();
+            Roles = new HashSet<Role>();
         }
 
         public int Id
@@ -36,13 +36,19 @@ namespace Conscience.Domain
             set;
         }
 
-        public User User
+        public Host Host
         {
             get;
             set;
         }
 
-        public List<Role> Roles
+        public Employee Employee
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Role> Roles
         {
             get;
             set;

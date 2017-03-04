@@ -8,6 +8,11 @@ namespace Conscience.Domain
 {
     public class PlotEvent
     {
+        public PlotEvent()
+        {
+            Characters = new HashSet<Character>();
+        }
+
         public int Id
         {
             get;
@@ -38,7 +43,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public List<Character> Characters
+        public virtual ICollection<Character> Characters
         {
             get;
             set;

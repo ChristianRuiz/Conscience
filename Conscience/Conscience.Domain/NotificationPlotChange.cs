@@ -8,13 +8,18 @@ namespace Conscience.Domain
 {
     public class NotificationPlotChange : Notification
     {
+        public NotificationPlotChange()
+        {
+            Characters = new HashSet<Character>();
+        }
+
         public Plot Plot
         {
             get;
             set;
         }
         
-        public List<Character> Characters
+        public virtual ICollection<Character> Characters
         {
             get;
             set;

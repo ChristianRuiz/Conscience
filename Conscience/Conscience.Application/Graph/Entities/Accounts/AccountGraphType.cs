@@ -21,8 +21,8 @@ namespace Conscience.Application.Graph.Entities.Accounts
             Field(a => a.Id);
             Field(a => a.UserName);
             Field(a => a.Email);
-            Field<HostGraphType>("host", resolve: context => context.Source.User as Host);
-            Field<EmployeeGraphType>("employee", resolve: context => context.Source.User as Employee);
+            Field<HostGraphType>("host", resolve: context => context.Source.Host);
+            Field<EmployeeGraphType>("employee", resolve: context => context.Source.Employee);
             Field<ListGraphType<RoleGraphType>>("roles", resolve: context => context.Source.Roles).AddPermission(RoleTypes.Admin);
         }
     }

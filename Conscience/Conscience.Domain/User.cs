@@ -8,6 +8,11 @@ namespace Conscience.Domain
 {
     public class User
     {
+        public User()
+        {
+            Notifications = new HashSet<Notification>();
+        }
+
         public int Id
         {
             get;
@@ -20,7 +25,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public List<Notification> Notifications
+        public virtual ICollection<Notification> Notifications
         {
             get;
             set;

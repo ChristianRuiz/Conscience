@@ -9,10 +9,6 @@ namespace Conscience.Domain
 {
     public class Device
     {
-        public Device()
-        {
-        }
-
         public int Id
         {
             get;

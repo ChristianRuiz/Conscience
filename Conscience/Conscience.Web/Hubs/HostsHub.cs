@@ -49,7 +49,7 @@ namespace Conscience.Web.Hubs
                 var user = new Account
                 {
                     UserName = "User " + (Users.Count + 1),
-                    User = new User
+                    Host = new Host
                     {
                         Device = new Device()
                     }
@@ -74,12 +74,12 @@ namespace Conscience.Web.Hubs
         public void LocationUpdates(List<Location> locations)
         {
             var user = Users[Context.ConnectionId];
-            user.User.Device.Locations.AddRange(locations);
+            user.Host.Device.Locations.AddRange(locations);
 
             //Hack: To avoid sending dates from javascript during the PoC
-            user.User.Device.CurrentLocation.TimeStamp = DateTime.Now;
+            user.Host.Device.CurrentLocation.TimeStamp = DateTime.Now;
 
-            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.User.Device.CurrentLocation);
+            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.Host.Device.CurrentLocation);
         }
 
         public void SendNotification(int userId)

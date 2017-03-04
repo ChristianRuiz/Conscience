@@ -78,13 +78,14 @@ namespace Concience.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("Conscience");
-
-            modelBuilder.Entity<Account>().HasOptional(a => a.User).WithRequired(u => u.Account);
-            modelBuilder.Entity<Account>().HasMany(a => a.Roles);
+            
+            modelBuilder.Entity<Account>().HasMany(a => a.Roles).WithMany(r => r.Accounts);
             modelBuilder.Entity<User>().HasOptional(u => u.Device);
             modelBuilder.Entity<Device>().HasMany(d => d.Locations);
             modelBuilder.Entity<Host>().ToTable("Hosts");
             modelBuilder.Entity<Employee>().ToTable("Employees");
+            modelBuilder.Entity<Employee>().HasRequired(e => e.Account).WithOptional(a => a.Employee);
+            modelBuilder.Entity<Host>().HasRequired(e => e.Account).WithOptional(a => a.Host);
             modelBuilder.Entity<Host>().HasMany(h => h.Stats).WithRequired(s => s.Host);
             modelBuilder.Entity<Host>().HasMany(h => h.CoreMemories);
             modelBuilder.Entity<Host>().HasMany(h => h.Characters);

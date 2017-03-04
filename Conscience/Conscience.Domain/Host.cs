@@ -8,7 +8,14 @@ namespace Conscience.Domain
 {
     public class Host : User
     {
-        public List<CharacterInHost> Characters
+        public Host()
+        {
+            Characters = new HashSet<CharacterInHost>();
+            CoreMemories = new HashSet<CoreMemory>();
+            Stats = new HashSet<Stats>();
+        }
+
+        public virtual ICollection<CharacterInHost> Characters
         {
             get;
             set;
@@ -22,13 +29,19 @@ namespace Conscience.Domain
             }
         }
 
-        public List<CoreMemory> CoreMemories
+        public virtual ICollection<CoreMemory> CoreMemories
         {
             get;
             set;
         }
 
-        public List<Stats> Stats
+        public virtual ICollection<Stats> Stats
+        {
+            get;
+            set;
+        }
+
+        public bool Hidden
         {
             get;
             set;
