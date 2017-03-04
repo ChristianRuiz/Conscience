@@ -27,8 +27,8 @@ namespace Conscience.Web
             var container = UnityActivator.Start();
             
             var context = container.Resolve<ConscienceContext>();
-            if (context.Database.CreateIfNotExists())
-                context.Database.Initialize(false);
+            context.Database.CreateIfNotExists();
+            context.Database.Initialize(false);
         }
     }
 }

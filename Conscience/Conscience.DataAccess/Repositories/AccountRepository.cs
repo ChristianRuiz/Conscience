@@ -22,18 +22,18 @@ namespace Concience.DataAccess.Repositories
             }
         }
 
-        public IQueryable<ConscienceAccount> GetAllHosts(Account currentUser)
+        public IQueryable<Account> GetAllHosts(Account currentUser)
         {
-            var hosts = GetAll().Where(a => a.Host != null);
+            var hosts = _context.Users.OfType<Host>().Select(e => e.Account);
             if (!currentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()
                                         || r.Name == RoleTypes.CompanyAdmin.ToString()))
                 hosts = hosts.Where(a => !a.Host.Hidden);
             return hosts;
         }
 
-        public IQueryable<ConscienceAccount> GetAllEmployees()
+        public IQueryable<Account> GetAllEmployees()
         {
-            return GetAll().Where(a => a.Employee != null);
+            return _context.Users.OfType<Employee>().Select(e => e.Account);
         }
     }
 }

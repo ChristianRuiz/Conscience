@@ -24,12 +24,12 @@ namespace Conscience.Application.Graph.Entities.Accounts
 
             Field<ListGraphType<AccountGraphType>>("getAllEmployees",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountRepo.GetAll().Where(a => a.Employee != null).ApplyPaginationAndOrderBy(context))
+                resolve: context => accountRepo.GetAllEmployees().ApplyPaginationAndOrderBy(context))
                 .AddQAPermissions();
 
             Field<ListGraphType<AccountGraphType>>("getAllHosts",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountRepo.GetAll().Where(a => a.Host != null).ApplyPaginationAndOrderBy(context))
+                resolve: context => accountRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context))
                 .AddBehaviourAndPlotPermissions();
 
             Field<AccountGraphType>("getCurrent",
