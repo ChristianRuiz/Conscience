@@ -52,7 +52,7 @@ namespace Conscience.Application.Graph
                 _.OperationName = query.OperationName;
                 _.Inputs = inputs;
 
-                _.ValidationRules = new List<IValidationRule> { new MembershipValidationRule() };
+                _.ValidationRules = new List<IValidationRule> { new MembershipValidationRule(), new RolesValidationRule() };
                 _.UserContext = userContext;
 
                 _.ComplexityConfiguration = new ComplexityConfiguration { MaxDepth = 15 };

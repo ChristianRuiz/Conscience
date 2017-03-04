@@ -26,13 +26,12 @@ namespace Conscience.Application.Graph.ValidationRules
                     {
                         var fieldDef = context.TypeInfo.GetFieldDef();
                         
-                        //TODO: Comprobar con el usuario
                         if (fieldDef != null)
                         {
                             var permissions = fieldDef.GetAllPermission();
-                            var userRoles = account.Roles.Select(r => r.Name).ToList().Select(r => r.ToLowerInvariant());
+                            var userRoles = account.Roles.Select(r => r.Name).ToList();
 
-                            if (permissions.Any(p => !userRoles.Contains(p)))
+                            if (permissions.Any() && !permissions.Any(p => userRoles.Contains(p)))
                             {
                                 context.ReportError(new ValidationError(
                                     context.OriginalQuery,

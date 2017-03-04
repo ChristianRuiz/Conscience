@@ -24,11 +24,11 @@ namespace Concience.DataAccess.Repositories
 
         public IQueryable<Account> GetAllHosts(Account currentUser)
         {
-            var hosts = _context.Users.OfType<Host>().Select(e => e.Account);
+            var hosts = _context.Users.OfType<Host>();
             if (!currentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()
                                         || r.Name == RoleTypes.CompanyAdmin.ToString()))
-                hosts = hosts.Where(a => !a.Host.Hidden);
-            return hosts;
+                hosts = hosts.Where(h => !h.Hidden);
+            return hosts.Select(e => e.Account);
         }
 
         public IQueryable<Account> GetAllEmployees()
