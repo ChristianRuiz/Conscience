@@ -28,6 +28,12 @@ namespace Conscience.Application.Graph
             return permissions.Any(x => string.Equals(x, permission.ToString()));
         }
 
+        public static IEnumerable<string> GetAllPermission(this IProvideMetadata type)
+        {
+            var permissions = type.GetMetadata<IEnumerable<string>>(PermissionsKey, new List<string>());
+            return permissions.Where(p => p != RoleTypes.Anonymous.ToString());
+        }
+
         public static IProvideMetadata AddPermissions(this IProvideMetadata type, params RoleTypes[] permissions)
         {
             foreach(var permission in permissions)
@@ -65,6 +71,42 @@ namespace Conscience.Application.Graph
         {
             builder.FieldType.AddPermission(permission);
             return builder;
+        }
+
+        public static IProvideMetadata AddAdminPermissions(this IProvideMetadata type)
+        {
+            return type.AddPermissions(RoleTypes.Admin, RoleTypes.CompanyAdmin);
+        }
+
+        public static IProvideMetadata AddQAPermissions(this IProvideMetadata type)
+        {
+            return type.AddAdminPermissions().AddPermission(RoleTypes.CompanyQA);
+        }
+
+        public static IProvideMetadata AddPlotPermissions(this IProvideMetadata type)
+        {
+            return type.AddQAPermissions().AddPermission(RoleTypes.CompanyPlot);
+        }
+
+        public static IProvideMetadata AddBehaviourPermissions(this IProvideMetadata type)
+        {
+            return type.AddQAPermissions().AddPermission(RoleTypes.CompanyBehaviour);
+        }
+
+        public static IProvideMetadata AddBehaviourAndPlotPermissions(this IProvideMetadata type)
+        {
+            return type.AddBehaviourPermissions().AddPermission(RoleTypes.CompanyPlot);
+        }
+
+        public static IProvideMetadata AddMaintenancePermissions(this IProvideMetadata type)
+        {
+            return type.AddBehaviourAndPlotPermissions()
+                .AddPermission(RoleTypes.CompanyMaintenance);
+        }
+
+        public static IProvideMetadata AddHostPermissions(this IProvideMetadata type)
+        {
+            return type.AddPermissions(RoleTypes.Admin, RoleTypes.Host);
         }
 
         public static NodeOfTypeCount GetFieldsCount<T>(this EnterLeaveListener _) where T : INode

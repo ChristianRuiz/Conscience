@@ -10,6 +10,7 @@ namespace Conscience.Domain
     {
         public Account()
         {
+            Roles = new List<Role>();
         }
 
         public int Id

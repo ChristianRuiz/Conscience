@@ -32,7 +32,9 @@ namespace Conscience.Application.Graph.ValidationRules
 
                         var fieldDef = context.TypeInfo.GetFieldDef();
 
-                        if (fieldDef != null && fieldDef.HasPermission(RoleTypes.Anonymous))
+                        if (fieldDef != null && 
+                            (fieldDef.GetType().FullName.StartsWith("GraphQL.Introspection") 
+                            || fieldDef.HasPermission(RoleTypes.Anonymous)))
                             hasAnyAnynomousPermissions = true;
 
                         if (fieldsCount.Count == 0 && !hasAnyAnynomousPermissions)

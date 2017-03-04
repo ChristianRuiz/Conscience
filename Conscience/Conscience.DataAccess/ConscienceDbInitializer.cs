@@ -9,16 +9,28 @@ namespace Concience.DataAccess
 {
     public class ConscienceDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ConscienceContext>
     {
+        public override void InitializeDatabase(ConscienceContext context)
+        {
+            base.InitializeDatabase(context);
+            Seed(context);
+        }
+
         protected override void Seed(ConscienceContext context)
         {
             var adminRole = new Role { Name = RoleTypes.Admin.ToString() };
             context.Roles.Add(adminRole);
-            context.Roles.Add(new Role { Name = RoleTypes.CompanyAdmin.ToString() });
-            context.Roles.Add(new Role { Name = RoleTypes.CompanyQA.ToString() });
-            context.Roles.Add(new Role { Name = RoleTypes.CompanyBehaviour.ToString() });
-            context.Roles.Add(new Role { Name = RoleTypes.CompanyPlot.ToString() });
-            context.Roles.Add(new Role { Name = RoleTypes.CompanyMaintenance.ToString() });
-            context.Roles.Add(new Role { Name = RoleTypes.Host.ToString() });
+            var companyAdminRole = new Role { Name = RoleTypes.CompanyAdmin.ToString() };
+            context.Roles.Add(companyAdminRole);
+            var companyQARole = new Role { Name = RoleTypes.CompanyQA.ToString() };
+            context.Roles.Add(companyQARole);
+            var companyBehaviourRole = new Role { Name = RoleTypes.CompanyBehaviour.ToString() };
+            context.Roles.Add(companyBehaviourRole);
+            var companyPlotRole = new Role { Name = RoleTypes.CompanyPlot.ToString() };
+            context.Roles.Add(companyPlotRole);
+            var companyManteinanceRole = new Role { Name = RoleTypes.CompanyMaintenance.ToString() };
+            context.Roles.Add(companyManteinanceRole);
+            var hostRole = new Role { Name = RoleTypes.Host.ToString() };
+            context.Roles.Add(hostRole);
             context.SaveChanges();
 
             var arnold = new ConscienceAccount
@@ -26,9 +38,58 @@ namespace Concience.DataAccess
                 UserName = "arnold",
                 PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
             };
-
             arnold.Roles.Add(adminRole);
             context.Accounts.Add(arnold);
+
+            var ford = new ConscienceAccount
+            {
+                UserName = "ford",
+                PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+            };
+            ford.Roles.Add(companyAdminRole);
+            context.Accounts.Add(ford);
+
+            var theresa = new ConscienceAccount
+            {
+                UserName = "theresa",
+                PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+            };
+            theresa.Roles.Add(companyQARole);
+            context.Accounts.Add(theresa);
+
+            var elsie = new ConscienceAccount
+            {
+                UserName = "elsie",
+                PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+            };
+            elsie.Roles.Add(companyBehaviourRole);
+            context.Accounts.Add(elsie);
+
+            var bernard = new ConscienceAccount
+            {
+                UserName = "bernard",
+                PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+            };
+            bernard.Roles.Add(companyBehaviourRole);
+            bernard.Roles.Add(hostRole);
+            context.Accounts.Add(bernard);
+
+            var sizemore = new ConscienceAccount
+            {
+                UserName = "sizemore",
+                PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+            };
+            sizemore.Roles.Add(companyPlotRole);
+            context.Accounts.Add(sizemore);
+
+            var dolores = new ConscienceAccount
+            {
+                UserName = "dolores",
+                PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+            };
+            dolores.Roles.Add(hostRole);
+            context.Accounts.Add(dolores);
+
             context.SaveChanges();
         }
     }
