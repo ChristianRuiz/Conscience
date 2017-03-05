@@ -1,5 +1,5 @@
-﻿using Concience.DataAccess;
-using Concience.DataAccess.Repositories;
+﻿using Conscience.DataAccess;
+using Conscience.DataAccess.Repositories;
 using Conscience.Domain;
 using Microsoft.AspNet.Identity;
 using System;

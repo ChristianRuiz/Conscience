@@ -1,4 +1,4 @@
-﻿using Concience.DataAccess.Repositories;
+﻿using Conscience.DataAccess.Repositories;
 using Conscience.Application.Services;
 using Conscience.Domain;
 using GraphQL.Types;

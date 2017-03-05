@@ -5,14 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Concience.DataAccess
+namespace Conscience.DataAccess
 {
     public class ConscienceDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ConscienceContext>
     {
         public override void InitializeDatabase(ConscienceContext context)
         {
-            base.InitializeDatabase(context);
-            Seed(context);
+            if (!context.Roles.Any())
+            {
+                base.InitializeDatabase(context);
+                Seed(context);
+            }
         }
 
         protected override void Seed(ConscienceContext context)

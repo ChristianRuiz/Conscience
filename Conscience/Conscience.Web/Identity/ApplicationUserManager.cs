@@ -1,4 +1,4 @@
-﻿using Concience.DataAccess;
+﻿using Conscience.DataAccess;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;

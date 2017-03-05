@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace Concience.DataAccess.Repositories
+namespace Conscience.DataAccess.Repositories
 {
     public class AccountRepository : BaseRepository<ConscienceAccount>
     {
-        public AccountRepository(ConscienceContext context) : base(context)
+        private readonly UserRepository _userRepo;
+
+        public AccountRepository(ConscienceContext context, UserRepository userRepo) : base(context)
         {
+            _userRepo = userRepo;
         }
 
         protected override IDbSet<ConscienceAccount> DbSet
@@ -24,16 +27,12 @@ namespace Concience.DataAccess.Repositories
 
         public IQueryable<Account> GetAllHosts(Account currentUser)
         {
-            var hosts = _context.Users.OfType<Host>();
-            if (!currentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()
-                                        || r.Name == RoleTypes.CompanyAdmin.ToString()))
-                hosts = hosts.Where(h => !h.Hidden);
-            return hosts.Select(e => e.Account);
+            return _userRepo.GetAllHosts(currentUser).Select(e => e.Account);
         }
 
         public IQueryable<Account> GetAllEmployees()
         {
-            return _context.Users.OfType<Employee>().Select(e => e.Account);
+            return _userRepo.GetAllEmployees().Select(e => e.Account);
         }
     }
 }

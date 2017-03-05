@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace Concience.DataAccess.Repositories
+namespace Conscience.DataAccess.Repositories
 {
     public class MemoryRepository : BaseRepository<Memory>
     {

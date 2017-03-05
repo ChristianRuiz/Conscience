@@ -1,4 +1,4 @@
-﻿using Concience.DataAccess.Repositories;
+﻿using Conscience.DataAccess.Repositories;
 using Conscience.Application.Services;
 using Conscience.Domain;
 using GraphQL.Types;
@@ -21,17 +21,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => accountRepo.GetAll().ApplyPaginationAndOrderBy(context))
                 .AddAdminPermissions();
-
-            Field<ListGraphType<AccountGraphType>>("getAllEmployees",
-                arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountRepo.GetAllEmployees().ApplyPaginationAndOrderBy(context))
-                .AddQAPermissions();
-
-            Field<ListGraphType<AccountGraphType>>("getAllHosts",
-                arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context))
-                .AddBehaviourAndPlotPermissions();
-
+            
             Field<AccountGraphType>("getCurrent",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => accountService.CurrentUser);

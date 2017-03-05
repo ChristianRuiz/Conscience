@@ -1,4 +1,4 @@
-﻿using Concience.DataAccess;
+﻿using Conscience.DataAccess;
 using Conscience.Application.Graph;
 using Conscience.Domain;
 using GraphQL.Language.AST;

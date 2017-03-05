@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Concience.DataAccess
+namespace Conscience.DataAccess
 {
     public class ConscienceAccount : Account, IUser<int>
     {

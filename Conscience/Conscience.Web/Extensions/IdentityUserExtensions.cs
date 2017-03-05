@@ -1,4 +1,4 @@
-﻿using Concience.DataAccess;
+﻿using Conscience.DataAccess;
 using Conscience.Web.Identity;
 using Microsoft.AspNet.Identity;
 using System;

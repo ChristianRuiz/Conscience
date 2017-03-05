@@ -7,8 +7,8 @@
     <ProjectGuid>{FABFC1E9-0B45-4A95-97EF-1B73D9950ADE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Concience.DataAccess</RootNamespace>
-    <AssemblyName>Concience.DataAccess</AssemblyName>
+    <RootNamespace>Conscience.DataAccess</RootNamespace>
+    <AssemblyName>Conscience.DataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -55,6 +55,7 @@
     <Compile Include="ConscienceContext.cs" />
     <Compile Include="ConscienceDbInitializer.cs" />
     <Compile Include="ConscienceAccount.cs" />
+    <Compile Include="Extensions\IQueryableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AudioRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />

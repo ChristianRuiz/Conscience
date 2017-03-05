@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using Conscience.Web.Models;
-using Concience.DataAccess;
+using Conscience.DataAccess;
 using Conscience.Web.Identity;
 
 namespace Conscience.Web

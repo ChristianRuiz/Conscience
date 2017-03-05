@@ -71,6 +71,7 @@
     <Compile Include="Extensions\DynamicLibrary.cs" />
     <Compile Include="Extensions\GraphFieldExtensions.cs" />
     <Compile Include="Extensions\GraphQLQueriableExtensions.cs" />
+    <Compile Include="Extensions\LazyLoadExtensions.cs" />
     <Compile Include="Extensions\OrderByExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Graph\ConscienceArguments.cs" />
@@ -82,7 +83,9 @@
     <Compile Include="Graph\Entities\Accounts\AccountMutation.cs" />
     <Compile Include="Graph\Entities\Accounts\AccountQuery.cs" />
     <Compile Include="Graph\Entities\Characters\CharacterGraphType.cs" />
+    <Compile Include="Graph\Entities\Employees\EmployeeQuery.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeGraphType.cs" />
+    <Compile Include="Graph\Entities\Hosts\HostQuery.cs" />
     <Compile Include="Graph\Entities\Hosts\HostGraphType.cs" />
     <Compile Include="Graph\Entities\Roles\RoleGraphType.cs" />
     <Compile Include="Graph\Entities\Users\UserGraphType.cs" />

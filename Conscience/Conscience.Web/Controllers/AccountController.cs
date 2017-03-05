@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Conscience.Web.Models;
-using Concience.DataAccess;
+using Conscience.DataAccess;
 using Conscience.Application.Services;
 
 namespace Conscience.Web.Controllers
