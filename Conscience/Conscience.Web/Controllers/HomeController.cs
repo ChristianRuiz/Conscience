@@ -11,10 +11,10 @@ namespace Conscience.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Map");
         }
 
-        public ActionResult GraphQL()
+        public ActionResult Map()
         {
             return View();
         }
