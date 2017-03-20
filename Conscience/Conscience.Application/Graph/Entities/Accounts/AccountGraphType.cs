@@ -26,4 +26,12 @@ namespace Conscience.Application.Graph.Entities.Accounts
             Field<ListGraphType<RoleGraphType>>("roles", resolve: context => context.Source.Roles).AddAdminPermissions();
         }
     }
+
+    public class RoleEnumeration : EnumerationGraphType<RoleTypes>
+    {
+        public RoleEnumeration()
+        {
+            Name = "Roles";
+        }
+    }
 }

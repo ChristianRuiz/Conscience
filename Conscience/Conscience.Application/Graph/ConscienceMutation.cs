@@ -1,4 +1,5 @@
 ﻿using Conscience.Application.Graph.Entities.Accounts;
+using Conscience.Application.Graph.Entities.Employees;
 using GraphQL.Types;
 using Microsoft.Practices.Unity;
 using System;
@@ -16,6 +17,8 @@ namespace Conscience.Application.Graph
             Name = "Mutation";
 
             Field<AccountMutation>("accounts", resolve: context => container.Resolve<AccountMutation>());
+
+            Field<EmployeeMutation>("employees", resolve: context => container.Resolve<EmployeeMutation>());
         }
     }
 }

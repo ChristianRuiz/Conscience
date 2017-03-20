@@ -34,5 +34,14 @@ namespace Conscience.DataAccess.Repositories
         {
             return _userRepo.GetAllEmployees().Select(e => e.Account);
         }
+
+        public Account AddRole(int accountId, RoleTypes role)
+        {
+            var account = DbSet.First(a => a.Id == accountId);
+            var roleToAdd = _context.Roles.First(r => r.Name == role.ToString());
+            account.Roles.Add(roleToAdd);
+            _context.SaveChanges();
+            return account;
+        }
     }
 }

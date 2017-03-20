@@ -13,18 +13,26 @@ namespace Conscience.Application.Graph.Entities.Accounts
 {
     public class AccountMutation : ObjectGraphType<object>
     {
-        public AccountMutation(IUsersIdentityService accountService)
+        public AccountMutation(IUsersIdentityService accountService, AccountRepository accountRepo)
         {
             Name = "AccountMutation";
 
-            Field<AccountGraphType>("register", 
+            Field<AccountGraphType>("addAccount", 
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },
                     new QueryArgument<StringGraphType> { Name = "email", Description = "email" },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
                 resolve: context => accountService.RegisterAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("email"), context.GetArgument<string>("password")))
-                .AddPermission(RoleTypes.Anonymous);
+                .AddPermission(RoleTypes.Admin);
+
+            Field<AccountGraphType>("addRole",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "accountId", Description = "account id" },
+                    new QueryArgument<NonNullGraphType<RoleEnumeration>> { Name = "role", Description = "role" }
+                    ),
+                resolve: context => accountRepo.AddRole(context.GetArgument<int>("accountId"), context.GetArgument<RoleTypes>("role")))
+                .AddPermission(RoleTypes.Admin);
 
             Field<AccountGraphType>("login",
                 arguments: new QueryArguments(

@@ -83,6 +83,7 @@
     <Compile Include="Graph\Entities\Accounts\AccountMutation.cs" />
     <Compile Include="Graph\Entities\Accounts\AccountQuery.cs" />
     <Compile Include="Graph\Entities\Characters\CharacterGraphType.cs" />
+    <Compile Include="Graph\Entities\Employees\EmployeeMutation.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeQuery.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeGraphType.cs" />
     <Compile Include="Graph\Entities\Hosts\HostQuery.cs" />

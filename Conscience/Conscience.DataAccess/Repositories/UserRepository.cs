@@ -35,5 +35,29 @@ namespace Conscience.DataAccess.Repositories
         {
             return GetAll().OfType<Employee>();
         }
+
+        public Employee AddEmployee(int accountId)
+        {
+            var account = _context.Accounts.First(a => a.Id == accountId);
+            var employee = new Employee
+            {
+                Account = account
+            };
+            DbSet.Add(employee);
+            _context.SaveChanges();
+            return employee;
+        }
+
+        public Host AddHost(int accountId)
+        {
+            var account = _context.Accounts.First(a => a.Id == accountId);
+            var employee = new Host
+            {
+                Account = account
+            };
+            DbSet.Add(employee);
+            _context.SaveChanges();
+            return employee;
+        }
     }
 }

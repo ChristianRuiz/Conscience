@@ -47,15 +47,23 @@ namespace Conscience.Web
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterInstance(container, new ContainerControlledLifetimeManager());
+            container.RegisterTypes(AllClasses.FromLoadedAssemblies(), WithMappings.None, WithName.Default, x => DefaultLifetimeManager);
 
-            container.RegisterType<ConscienceContext, ConscienceContext>();
+            container.RegisterInstance(container, new ContainerControlledLifetimeManager());
 
             container.RegisterInstance<IDocumentExecuter>(new DocumentExecuter());
             container.RegisterInstance<IDocumentWriter>(new DocumentWriter(true));
             container.RegisterInstance(new ConscienceSchema(type => (GraphType)container.Resolve(type)));
 
-            container.RegisterType<IUsersIdentityService, UsersIdentityService>();
+            container.RegisterType<IUsersIdentityService, UsersIdentityService>(DefaultLifetimeManager);
+        }
+
+        protected static LifetimeManager DefaultLifetimeManager
+        {
+            get
+            {
+                return new PerRequestLifetimeManager();
+            }
         }
     }
 }
