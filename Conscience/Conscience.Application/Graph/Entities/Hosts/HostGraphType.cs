@@ -1,4 +1,6 @@
 ﻿using Conscience.Application.Graph.Entities.Characters;
+using Conscience.Application.Graph.Entities.Memories;
+using Conscience.Application.Graph.Entities.Stats;
 using Conscience.Application.Graph.Entities.Users;
 using Conscience.Domain;
 using GraphQL.Types;
@@ -18,6 +20,8 @@ namespace Conscience.Application.Graph.Entities.Hosts
 
             Field<CharacterGraphType>("currentCharacter", resolve: context => context.Source.CurrentCharacter);
             Field<ListGraphType<CharacterGraphType>>("characters", resolve: context => context.Source.Characters);
+            Field<ListGraphType<CoreMemoryGraphType>>("coreMemories", resolve: context => context.Source.CoreMemories);
+            Field<ListGraphType<StatsGraphType>>("stats", resolve: context => context.Source.Stats);
         }
     }
 }
