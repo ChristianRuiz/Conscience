@@ -270,6 +270,7 @@
     <Compile Include="Controllers\Api\GraphQLController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GraphQLController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Extensions\IdentityUserExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -301,6 +302,7 @@
     <None Include="Properties\PublishProfiles\consciencelarp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\conscience\main.js" />
     <Content Include="Scripts\graphi\graphiql.css" />
     <Content Include="Scripts\graphi\graphiql.min.js" />
     <Content Include="Scripts\graphi\react-dom.min.js" />
@@ -347,6 +349,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\GraphQL\Index.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
