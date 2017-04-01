@@ -1,7 +1,9 @@
 ﻿using Conscience.Application.Graph;
 using Conscience.Application.Services;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,12 +31,15 @@ namespace Conscience.Web.Controllers.Api
         [HttpGet]
         public Task<HttpResponseMessage> GetAsync(HttpRequestMessage request)
         {
-            return PostAsync(request, new GraphQLQuery { Query = "query foo { hero }", Variables = "" });
+            return PostAsync(request, new GraphQLQuery { Query = "query foo { hero }" });
         }
 
         [HttpPost]
         public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request, GraphQLQuery query)
         {
+            if (query == null)
+                query = await TryGetQueryFromRequestAsync(request);
+            
             var result = await _executer.ExecuteQuery(query, _usersService.CurrentUser);
 
             var httpResult = result.Errors?.Count > 0
@@ -47,6 +52,22 @@ namespace Conscience.Web.Controllers.Api
             response.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
             return response;
+        }
+
+        private async Task<GraphQLQuery> TryGetQueryFromRequestAsync(HttpRequestMessage request)
+        {
+            try
+            {
+                var stream = await request.Content.ReadAsStreamAsync();
+                stream.Position = 0;
+                var json = new StreamReader(stream).ReadToEnd();
+                var query = JsonConvert.DeserializeObject<GraphQLQuery>(json);
+                return query;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

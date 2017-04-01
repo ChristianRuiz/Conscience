@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,15 @@ namespace Conscience.Application.Graph
     {
         public GraphQLQuery()
         {
-            Variables = string.Empty;
+            Variables = new { };
         }
 
         public string OperationName { get; set; }
+
         public string NamedQuery { get; set; }
+
         public string Query { get; set; }
-        public string Variables { get; set; }
+
+        public dynamic Variables { get; set; }
     }
 }

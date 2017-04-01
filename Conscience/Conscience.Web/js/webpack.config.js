@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: [ './src/pages/login.js' ],
+  entry: [ './src/pages/employees-list.js' ], //'./src/pages/login.js',
   output: {
     filename: '../../Scripts/conscience/[name].js',
     path: path.resolve(__dirname, 'dist')
@@ -13,7 +13,8 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', "stage-1", "stage-2", 'react']
+          presets: ['es2015', "stage-1", "stage-2", 'react'],
+          plugins: [ path.resolve(__dirname, 'src/plugins/babelRelayPlugin') ]
         }
       }
     ]

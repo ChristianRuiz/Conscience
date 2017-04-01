@@ -5,6 +5,7 @@ using GraphQL.Instrumentation;
 using GraphQL.Types;
 using GraphQL.Validation;
 using GraphQL.Validation.Complexity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,8 @@ namespace Conscience.Application.Graph
 
         public async Task<ExecutionResult> ExecuteQuery(GraphQLQuery query, object userContext = null)
         {
-            var inputs = query.Variables.ToInputs();
+            string variables = JsonConvert.SerializeObject(query.Variables);
+            var inputs = variables.ToInputs();
             var queryToExecute = query.Query;
 
             if (!string.IsNullOrWhiteSpace(query.NamedQuery))

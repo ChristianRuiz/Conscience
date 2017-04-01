@@ -11,7 +11,7 @@ namespace Conscience.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View("Map");
+            return View();
         }
 
         public ActionResult Map()

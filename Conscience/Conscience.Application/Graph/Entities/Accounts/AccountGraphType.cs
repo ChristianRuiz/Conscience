@@ -18,7 +18,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
         {
             Name = "Account";
 
-            Field(a => a.Id);
+            Field<StringGraphType>("id", resolve: context => context.Source.Id.ToString());
             Field(a => a.UserName);
             Field(a => a.Email);
             Field<HostGraphType>("host", resolve: context => context.Source.Host);

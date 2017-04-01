@@ -15,7 +15,7 @@ namespace Conscience.Application.Graph.Entities.Users
         {
             Name = "User";
 
-            Field(u => u.Id);
+            Field<StringGraphType>("id", resolve: context => context.Source.Id.ToString());
             Field<AccountGraphType>("account", resolve: context => context.Source.Account);
         }
     }
