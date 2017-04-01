@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Roles
 {
-    public class RoleGraphType : ObjectGraphType<Role>
+    public class RoleGraphType : ConscienceGraphType<Role>
     {
         public RoleGraphType()
         {
             Name = "Role";
-
-            Field(r => r.Id);
+            
             Field(r => r.Name);
         }
     }

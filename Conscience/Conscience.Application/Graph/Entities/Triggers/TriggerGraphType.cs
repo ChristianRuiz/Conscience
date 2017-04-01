@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Triggers
 {
-    public class TriggerGraphType : ObjectGraphType<Trigger>
+    public class TriggerGraphType : ConscienceGraphType<Trigger>
     {
         public TriggerGraphType()
         {
             Name = "Trigger";
-
-            Field(t => t.Id);
+            
             Field(t => t.Description);
         }
     }

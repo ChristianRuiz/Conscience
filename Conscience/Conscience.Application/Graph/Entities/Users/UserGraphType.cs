@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Users
 {
-    public class UserGraphType<T> : ObjectGraphType<T> where T : User
+    public class UserGraphType<T> : ConscienceGraphType<T> where T : User
     {
         public UserGraphType()
         {
             Name = "User";
-
-            Field<StringGraphType>("id", resolve: context => context.Source.Id.ToString());
+            
             Field<AccountGraphType>("account", resolve: context => context.Source.Account);
         }
     }

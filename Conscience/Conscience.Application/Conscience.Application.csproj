@@ -73,6 +73,7 @@
     <Compile Include="Extensions\GraphQLQueriableExtensions.cs" />
     <Compile Include="Extensions\LazyLoadExtensions.cs" />
     <Compile Include="Extensions\OrderByExtensions.cs" />
+    <Compile Include="Extensions\IdentifierExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Graph\ConscienceArguments.cs" />
     <Compile Include="Graph\ConscienceGraphQueryExecuter.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Graph\Entities\Accounts\AccountQuery.cs" />
     <Compile Include="Graph\Entities\Audios\AudioGraphType.cs" />
     <Compile Include="Graph\Entities\Characters\CharacterGraphType.cs" />
+    <Compile Include="Graph\Entities\ConscienceGraphType.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeMutation.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeQuery.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeGraphType.cs" />

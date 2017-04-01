@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Plots
 {
-    public class PlotEventGraphType : ObjectGraphType<PlotEvent>
+    public class PlotEventGraphType : ConscienceGraphType<PlotEvent>
     {
         public PlotEventGraphType()
         {
             Name = "PlotEvent";
-
-            Field(p => p.Id);
+            
             Field(p => p.Description);
             Field(p => p.Hour);
             Field(p => p.Minute);

@@ -12,13 +12,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Accounts
 {
-    public class AccountGraphType : ObjectGraphType<Account>
+    public class AccountGraphType : ConscienceGraphType<Account>
     {
         public AccountGraphType()
         {
             Name = "Account";
-
-            Field<StringGraphType>("id", resolve: context => context.Source.Id.ToString());
+            
             Field(a => a.UserName);
             Field(a => a.Email);
             Field<HostGraphType>("host", resolve: context => context.Source.Host);

@@ -11,13 +11,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Characters
 {
-    public class CharacterGraphType : ObjectGraphType<Character>
+    public class CharacterGraphType : ConscienceGraphType<Character>
     {
         public CharacterGraphType()
         {
             Name = "Character";
-
-            Field(c => c.Id);
+            
             Field(c => c.Description);
             Field<ListGraphType<MemoryGraphType<Memory>>>("memories", resolve: context => context.Source.Memories);
             Field<ListGraphType<TriggerGraphType>>("triggers", resolve: context => context.Source.Triggers);

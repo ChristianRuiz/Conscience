@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Plots
 {
-    public class PlotGraphType : ObjectGraphType<Plot>
+    public class PlotGraphType : ConscienceGraphType<Plot>
     {
         public PlotGraphType()
         {
             Name = "Plot";
-
-            Field(p => p.Id);
+            
             Field(p => p.Name);
             Field(p => p.Description);
             Field<PlotEventGraphType>("events", resolve: context => context.Source.Events);

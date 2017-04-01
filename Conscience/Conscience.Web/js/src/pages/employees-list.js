@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Relay from 'react-relay'
 
 import EmployeesList from '../components/employees-list'
+import ConsciencePage from './conscience-page'
 
 class EmployeesRoute extends Relay.Route {
     static routeName = 'Employees';
@@ -17,8 +16,4 @@ class EmployeesRoute extends Relay.Route {
     }
 }
 
-Relay.injectNetworkLayer(new Relay.DefaultNetworkLayer('/api/graphql', { credentials: 'same-origin' }));
-
-ReactDOM.render(<Relay.RootContainer Component={EmployeesList}
-                    route={new EmployeesRoute()}
-                />, document.getElementById('main'));
+new ConsciencePage(EmployeesList, EmployeesRoute);

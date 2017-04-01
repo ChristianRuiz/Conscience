@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Audios
 {
-    public class AudioGraphType : ObjectGraphType<Audio>
+    public class AudioGraphType : ConscienceGraphType<Audio>
     {
         public AudioGraphType()
         {
             Name = "Audio";
-
-            Field(c => c.Id);
+            
             Field(c => c.IsEmbeded);
             Field(c => c.Path);
         }
