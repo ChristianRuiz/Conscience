@@ -11,7 +11,7 @@ namespace Conscience.Application.Graph
     {
         public GraphQLQuery()
         {
-            Variables = new { };
+            Variables = new Dictionary<string, object>();
         }
 
         public string OperationName { get; set; }
@@ -20,6 +20,6 @@ namespace Conscience.Application.Graph
 
         public string Query { get; set; }
 
-        public dynamic Variables { get; set; }
+        public Dictionary<string, object> Variables { get; set; }
     }
 }

@@ -302,7 +302,8 @@
     <None Include="Properties\PublishProfiles\consciencelarp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\conscience\main.js" />
+    <Content Include="Scripts\conscience\employees-list.js" />
+    <Content Include="Scripts\conscience\login.js" />
     <Content Include="Scripts\graphi\graphiql.css" />
     <Content Include="Scripts\graphi\graphiql.min.js" />
     <Content Include="Scripts\graphi\react-dom.min.js" />

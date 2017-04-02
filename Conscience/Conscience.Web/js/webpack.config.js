@@ -1,7 +1,10 @@
 var path = require('path');
 
 module.exports = {
-  entry: [ './src/pages/employees-list.js' ], //'./src/pages/login.js',
+  entry: { 
+    'login': './src/pages/login.js',
+    'employees-list': './src/pages/employees-list.js' 
+  },
   output: {
     filename: '../../Scripts/conscience/[name].js',
     path: path.resolve(__dirname, 'dist')

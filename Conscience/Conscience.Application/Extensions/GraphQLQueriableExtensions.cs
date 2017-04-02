@@ -72,7 +72,7 @@ namespace Conscience.Application
                 if (subFieldNames.Any())
                     fieldNames.AddRange(subFieldNames);
             }
-
+            
             return fieldNames;
         }
     }

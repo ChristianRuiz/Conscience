@@ -1460,7 +1460,7 @@ function _interopRequireDefault(obj) {
   }
 
   function fetcher(graphQLParams) {
-      graphQLParams.variables = JSON.stringify(graphQLParams.variables);
+      //graphQLParams.variables = JSON.stringify(graphQLParams.variables);
 
       return fetch(window.location.origin + '/api/graphql', {
           method: 'post',

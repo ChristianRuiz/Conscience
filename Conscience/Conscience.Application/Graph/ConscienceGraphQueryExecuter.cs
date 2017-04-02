@@ -38,8 +38,6 @@ namespace Conscience.Application.Graph
 
         public async Task<ExecutionResult> ExecuteQuery(GraphQLQuery query, object userContext = null)
         {
-            string variables = JsonConvert.SerializeObject(query.Variables);
-            var inputs = variables.ToInputs();
             var queryToExecute = query.Query;
 
             if (!string.IsNullOrWhiteSpace(query.NamedQuery))
@@ -52,7 +50,7 @@ namespace Conscience.Application.Graph
                 _.Schema = _schema;
                 _.Query = queryToExecute;
                 _.OperationName = query.OperationName;
-                _.Inputs = inputs;
+                _.Inputs = new Inputs(query.Variables);
 
                 _.ValidationRules = new List<IValidationRule> { new MembershipValidationRule(), new RolesValidationRule() };
                 _.UserContext = userContext;
