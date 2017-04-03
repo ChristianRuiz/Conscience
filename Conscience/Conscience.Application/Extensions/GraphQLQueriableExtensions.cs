@@ -32,7 +32,7 @@ namespace Conscience.Application
 
         public static IQueryable<T> AvoidLazyLoad<T>(this IQueryable<T> queryable, ResolveFieldContext<object> context, params Expression<Func<T, object>>[] lazyLoadFields)
         {
-            var fieldNames = context.Operation.SelectionSet.GetSelectionFieldNames();
+            var fieldNames = context.GetSelectionFieldNames(context.Operation.SelectionSet);
 
             foreach (var fieldName in fieldNames)
             {
@@ -61,18 +61,28 @@ namespace Conscience.Application
             return Expression.Property(GetNestedExprProp(expr, propertiesWithoutLast), lastProperty);
         }
 
-        public static List<string> GetSelectionFieldNames(this SelectionSet selectionSet)
+        public static List<string> GetSelectionFieldNames(this ResolveFieldContext<object> context, SelectionSet selectionSet)
         {
-            var fields = selectionSet.Selections.OfType<GraphQL.Language.AST.Field>();
+            var fields = selectionSet.Selections.OfType<Field>();
             var fieldNames = fields.Select(f => f.Name).ToList();
 
             foreach (var field in fields)
             {
-                var subFieldNames = field.SelectionSet.GetSelectionFieldNames();
+                var subFieldNames = context.GetSelectionFieldNames(field.SelectionSet);
                 if (subFieldNames.Any())
                     fieldNames.AddRange(subFieldNames);
             }
-            
+
+            var fragments = selectionSet.Selections.OfType<FragmentSpread>();
+
+            foreach(var fragment in fragments)
+            {
+                var fragmentDefinition = context.Fragments.First(f => f.Name == fragment.Name);
+                var subFieldNames = context.GetSelectionFieldNames(fragmentDefinition.SelectionSet);
+                if (subFieldNames.Any())
+                    fieldNames.AddRange(subFieldNames);
+            }
+
             return fieldNames;
         }
     }
