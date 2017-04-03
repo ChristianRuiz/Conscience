@@ -1,20 +1,110 @@
-#Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Conscience
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+There are two main Apps:
+  - Aleph Site: WebApp for the company to manage the hosts
+  - Hosts Mobile App: Xamarin App for iOS and Android that is connected to the Aleph Site
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+### Frontend configuration
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+You need to browse a cmd to "\Conscience\Conscience.Web\js\" and run:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+```sh
+$ npm install
+$ npm run build
+```
+
+Optionally you can run the watcher to avoid building multple times:
+
+```sh
+$ npm run watch
+```
+
+Every time the GraphQL schema is updated on server side, you need to run:
+
+```sh
+$ npm run schema
+$ npm run build
+```
+
+### Backend configuration
+
+You need to open the "Conscience.Web.sln" with Visual Studio 2015 and build the entire solution. It will restore the NuGet packages and build the project. Once build, you can configure the Conscience.Web proejct to run with the local IIS on "http://localhost" or you can enable the IIS Express and let Visual Studio configure and start it on F5.
+
+The urls on the environment:
+
+| Url | Description |
+| ------ | ------ |
+| / | GraphiQL environment to test queries |
+| /Login | Login page (work in progress) |
+| /Home | List of employees (work in progress) |
+
+### GraphQL
+
+To start testing GraphQL you need to perform a login mutation on the GraphiQL test environment ("/"):
+
+```sh
+mutation Login($userName: String!, $password: String!) {
+  accounts
+  {
+    login(userName:$userName, password:$password)
+    {
+      id
+    }
+  }
+}
+```
+
+With Query Variables:
+
+```sh
+{"userName": "arnold", "password": "123456" }
+```
+
+Once logged, you can browse the "/Home" page and you should be retreaving multiple Employees. You can also test some queries or logout using the GraphiQL interface:
+
+```sh
+query GetAll {
+  employees {
+    getAll {
+      account {
+        userName,
+        id
+      },
+      id
+    }
+  }
+}
+```
+
+```sh
+query EmployeesQuery 
+{  
+	employees { ...F0  }
+} 
+
+fragment F0 on EmployeeQuery 
+{  
+	getAll 
+	{    
+		account 
+		{      
+			userName,      
+			id    
+			},    
+		id  
+	}
+}
+```
+
+```sh
+mutation Logout {
+  accounts
+  {
+    logout
+    {
+      id
+    }
+  }
+}
+```
+
