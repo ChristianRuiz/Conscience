@@ -24,7 +24,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
                 resolve: context => accountService.RegisterAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("email"), context.GetArgument<string>("password")))
-                .AddPermission(RoleTypes.Admin);
+                .AddPermission(RoleTypes.Admin).RequiresMembership();
 
             Field<AccountGraphType>("addRole",
                 arguments: new QueryArguments(
@@ -32,18 +32,17 @@ namespace Conscience.Application.Graph.Entities.Accounts
                     new QueryArgument<NonNullGraphType<RoleEnumeration>> { Name = "role", Description = "role" }
                     ),
                 resolve: context => accountRepo.AddRole(context.GetArgument<int>("accountId"), context.GetArgument<RoleTypes>("role")))
-                .AddPermission(RoleTypes.Admin);
+                .AddPermission(RoleTypes.Admin).RequiresMembership();
 
             Field<AccountGraphType>("login",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
-                resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password")))
-                .AddPermission(RoleTypes.Anonymous);
+                resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password")));
 
             Field<AccountGraphType>("logout",
-                resolve: context => { accountService.LogoffAsync(); return null; });
+                resolve: context => { accountService.LogoffAsync(); return null; }).RequiresMembership();
         }
     }
 }

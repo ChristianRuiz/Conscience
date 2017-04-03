@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GraphQL, Version=0.14.6.657, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GraphQL.0.14.6.657\lib\net45\GraphQL.dll</HintPath>
+    <Reference Include="GraphQL, Version=0.15.1.678, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.0.15.1.678\lib\net45\GraphQL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GraphQL-Parser, Version=2.0.0.17, Culture=neutral, processorArchitecture=MSIL">

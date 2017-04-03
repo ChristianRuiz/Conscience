@@ -15,6 +15,17 @@ namespace Conscience.Application.Graph
     public static class GraphFieldExtensions
     {
         public static readonly string PermissionsKey = "Permissions";
+        public static readonly string RequiresMembershipKey = "RequiresMembership";
+
+        public static bool DoesFieldRequiresMembership(this IProvideMetadata type)
+        {
+            return type.GetMetadata(RequiresMembershipKey, false);
+        }
+
+        public static void RequiresMembership(this IProvideMetadata type)
+        {
+            type.Metadata[RequiresMembershipKey] = true;
+        }
 
         public static bool HasSpecificPermissions(this IProvideMetadata type)
         {
@@ -31,7 +42,7 @@ namespace Conscience.Application.Graph
         public static IEnumerable<string> GetAllPermission(this IProvideMetadata type)
         {
             var permissions = type.GetMetadata<IEnumerable<string>>(PermissionsKey, new List<string>());
-            return permissions.Where(p => p != RoleTypes.Anonymous.ToString());
+            return permissions;
         }
 
         public static IProvideMetadata AddPermissions(this IProvideMetadata type, params RoleTypes[] permissions)
@@ -107,50 +118,6 @@ namespace Conscience.Application.Graph
         public static IProvideMetadata AddHostPermissions(this IProvideMetadata type)
         {
             return type.AddPermissions(RoleTypes.Admin, RoleTypes.Host);
-        }
-
-        public static NodeOfTypeCount GetFieldsCount<T>(this EnterLeaveListener _) where T : INode
-        {
-            var fieldsCount = new NodeOfTypeCount();
-            bool isFirstNode = true;
-
-            _.Match<T>(fieldAst =>
-            {
-                if (isFirstNode)
-                {
-                    isFirstNode = false;
-
-                    fieldsCount.Count++;
-
-                    fieldsCount.Count += GetChildrenCount<T>(fieldAst.Children);
-                }
-            });
-
-            return fieldsCount;
-        }
-
-        private static int GetChildrenCount<T>(IEnumerable<INode> children)
-        {
-            var childOfType = 0;
-
-            foreach (var node in children)
-            {
-                if (node is T)
-                    childOfType++;
-
-                childOfType += GetChildrenCount<T>(node.Children);
-            }
-
-            return childOfType;
-        }
-    }
-
-    public class NodeOfTypeCount
-    {
-        public int Count
-        {
-            get;
-            set;
         }
     }
 }
