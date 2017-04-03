@@ -36,7 +36,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
 
             Field<AccountGraphType>("login",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<InputConscienceGraphType>> { Name = "userName", Description = "user name" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
                 resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password")))
