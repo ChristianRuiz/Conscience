@@ -14,8 +14,8 @@ class LoginBox extends React.Component {
         this._doLogin = this._doLogin.bind(this);
         
         this.state = {
-            userName: '',
-            password: '',
+            userName: 'arnold',//TODO: This values are just for development
+            password: '123456',
             hasError: false
         };
     }
@@ -25,6 +25,7 @@ class LoginBox extends React.Component {
                     <div>
                         <TextField 
                             hintText="User name"
+                            value={this.state.userName}
                             onChange={ e => this.setState({userName: e.target.value})  }
                         />
                     </div>
@@ -32,6 +33,7 @@ class LoginBox extends React.Component {
                         <TextField
                             type="password"
                             hintText="Password"
+                            value={this.state.password}
                             onChange={ e => this.setState({password: e.target.value}) }
                         />
                     </div>
