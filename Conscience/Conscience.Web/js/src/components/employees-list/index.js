@@ -29,7 +29,7 @@ class EmployeesList extends React.Component {
     }
 }
 
-const query = gql`query getEmployees {
+const query = gql`query GetEmployees {
             employees {
                 getAll {
                         id,

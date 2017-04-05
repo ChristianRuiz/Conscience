@@ -15374,6 +15374,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactApollo = __webpack_require__(126);
 
+var _apolloClient = __webpack_require__(205);
+
 var _MuiThemeProvider = __webpack_require__(331);
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
@@ -15387,8 +15389,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var client = new _reactApollo.ApolloClient({
-    networkInterface: (0, _reactApollo.createNetworkInterface)({
+    networkInterface: (0, _apolloClient.createBatchingNetworkInterface)({
         uri: '/api/graphql',
+        batchInterval: 10,
         opts: {
             credentials: 'same-origin'
         }
