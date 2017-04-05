@@ -1,13 +1,13 @@
 import React from 'react';
+import { graphql, gql } from 'react-apollo';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import Relay from 'react-relay';
 
 const style = {
   margin: 12,
 };
 
-export default class LoginBox extends React.Component {
+class LoginBox extends React.Component {
     constructor(props) {
         super(props);
         
@@ -15,7 +15,8 @@ export default class LoginBox extends React.Component {
         
         this.state = {
             userName: '',
-            password: ''
+            password: '',
+            hasError: false
         };
     }
     
@@ -34,6 +35,9 @@ export default class LoginBox extends React.Component {
                             onChange={ e => this.setState({password: e.target.value}) }
                         />
                     </div>
+                    {this.state.hasError &&
+                        <h2>Login error</h2>
+                    }
                     <div>
                         <RaisedButton label="Login" primary={true} style={style} onClick={this._doLogin} />
                     </div>
@@ -41,32 +45,27 @@ export default class LoginBox extends React.Component {
     }
 
     _doLogin() {
-        console.log("Click " + this.state.userName + " - " + this.state.password);
-        
-        //TODO: Change the server implementation to match Relay mutation specifications
-        // this.props.relay.commitUpdate(
-        //     new LoginMutation({userName: this.state.userName, passsword: this.state.password})
-        // );
+        this.props.mutate({
+            variables: { userName: this.state.userName, password: this.state.password }
+        })
+        .then(({ data }) => {
+            document.location.href = "/Home";
+        }).catch((error) => {
+            this.setState({hasError: true});
+        });
     }
 }
 
-// class LoginMutation extends Relay.Mutation
-// {
-//     getMutation() {
-//         return Relay.QL`
-//             mutation Login($userName: String!, $password: String!) {
-//                 accounts
-//                 {
-//                     login(userName:$userName, password:$password)
-//                     {
-//                         id
-//                     }
-//                 }
-//             }
-//         `;
-//     }
+const mutation = gql`
+mutation Login($userName: String!, $password: String!) {
+  accounts
+  {
+    login(userName:$userName, password:$password)
+    {
+      id
+    }
+  }
+}
+`;
 
-//     getVariables() {
-//         return {userName: this.props.userName, password: this.props.password};
-//     }
-// }
+export default graphql(mutation)(LoginBox);

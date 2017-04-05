@@ -1,12 +1,14 @@
 import React from 'react';
-import Relay from 'react-relay';
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { graphql, gql } from 'react-apollo';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
 class EmployeesList extends React.Component {
     render() {
-        let employeeRows = this.props.employees.getAll.map(employee => {
+        if (this.props.data.loading) {
+            return (<div>Loading...</div>)
+        }
+
+        let employeeRows = this.props.data.employees.getAll.map(employee => {
             return <TableRow key={employee.id}>
                         <TableRowColumn>{employee.account.userName}</TableRowColumn>
                         <TableRowColumn>{employee.department}</TableRowColumn>
@@ -27,20 +29,17 @@ class EmployeesList extends React.Component {
     }
 }
 
-EmployeesList = Relay.createContainer(EmployeesList, {
-    fragments: {
-        employees: () => Relay.QL`
-            fragment on EmployeeQuery {
+const query = gql`query getEmployees {
+            employees {
                 getAll {
-                    id,
-                    account {
-                        userName
-                    },
-                    department
+                        id,
+                        account {
+                            userName
+                        },
+                        department
                 }
             }
-        `
-    }
-});
+        }
+      `;
 
-export default EmployeesList;
+export default graphql(query)(EmployeesList);

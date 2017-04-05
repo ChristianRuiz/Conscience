@@ -1,19 +1,13 @@
-import Relay from 'react-relay'
-
-import EmployeesList from '../components/employees-list'
+import React from 'react'
 import ConsciencePage from './conscience-page'
+import Header from '../components/header'
+import EmployeesList from '../components/employees-list'
 
-class EmployeesRoute extends Relay.Route {
-    static routeName = 'Employees';
-    static queries = {
-        employees: (Component) => Relay.QL`
-        query EmployeesQuery {
-            employees {
-                ${Component.getFragment('employees')}
-            }
-        }
-        `
-    }
+const EmployeesPage = ({}) => {
+    return <div>
+            <div><Header/></div>
+            <EmployeesList/>
+            </div>;
 }
 
-new ConsciencePage(EmployeesList, EmployeesRoute);
+new ConsciencePage(EmployeesPage);

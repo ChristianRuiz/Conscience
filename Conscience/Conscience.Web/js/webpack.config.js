@@ -16,7 +16,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', "stage-1", "stage-2", 'react'],
+          presets: ['es2015', "stage-0", "stage-1", "stage-2", 'react'],
           plugins: [ path.resolve(__dirname, 'src/plugins/babelRelayPlugin') ]
         }
       }
