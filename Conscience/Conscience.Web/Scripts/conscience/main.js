@@ -16290,7 +16290,7 @@ function buildConciencePage(rootComponent) {
       { client: client },
       _react2.default.createElement(
         _reactRouterDom.HashRouter,
-        null,
+        { hashType: 'noslash' },
         _react2.default.createElement(rootComponent)
       )
     )

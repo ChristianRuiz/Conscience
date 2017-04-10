@@ -26,7 +26,7 @@ export default function buildConciencePage(rootComponent) {
   ReactDOM.render(
     <MuiThemeProvider>
       <ApolloProvider client={client}>
-        <Router>
+        <Router hashType="noslash">
           { React.createElement(rootComponent) }
         </Router>
       </ApolloProvider>
