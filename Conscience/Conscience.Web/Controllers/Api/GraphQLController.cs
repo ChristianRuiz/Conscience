@@ -39,26 +39,21 @@ namespace Conscience.Web.Controllers.Api
         public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
         {
             var queries = await TryGetQueriesFromRequestAsync(request);
-
-            if (queries == null)
-                queries = new GraphQLQuery[] { await TryGetQueryFromRequestAsync(request) };
-
-            if (queries.Count() == 0)
-                throw new ArgumentException("No GraphQL query found in the request");
-
+            
             var hasAnyErrors = false;
             var json = string.Empty;
             
-            if (queries.Count() == 1)
+            if (queries == null)
             {
-                var result = await _executer.ExecuteQuery(queries.First(), _usersService.CurrentUser);
+                var query = await TryGetQueryFromRequestAsync(request);
+
+                var result = await _executer.ExecuteQuery(query, _usersService.CurrentUser);
 
                 hasAnyErrors = hasAnyErrors || result.Errors?.Count > 0;
 
                 json = _executer.GetJSON(result);
             }
-
-            if (queries != null)
+            else
             {
                 List<string> jsons = new List<string>();
 
