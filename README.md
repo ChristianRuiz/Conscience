@@ -34,9 +34,9 @@ The urls on the environment:
 
 | Url | Description |
 | ------ | ------ |
-| / | GraphiQL environment to test queries |
+| /GraphQL | GraphiQL environment to test queries |
 | /Login | Login page (work in progress) |
-| /Home | List of employees (work in progress) |
+| / | List of employees (work in progress) |
 
 ### GraphQL
 

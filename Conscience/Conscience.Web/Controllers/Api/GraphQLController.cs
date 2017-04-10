@@ -82,8 +82,9 @@ namespace Conscience.Web.Controllers.Api
         private async Task<GraphQLQuery[]> TryGetQueriesFromRequestAsync(HttpRequestMessage request)
         {
             var queries = await TryGetFromRequestAsync<GraphQLQuery[]>(request);
-            foreach (var query in queries)
-                FixOperationName(query);
+            if (queries != null)
+                foreach (var query in queries)
+                    FixOperationName(query);
             return queries;
         }
 
