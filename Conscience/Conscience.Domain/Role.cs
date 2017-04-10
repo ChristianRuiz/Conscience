@@ -40,7 +40,6 @@ namespace Conscience.Domain
         CompanyBehaviour,
         CompanyPlot,
         CompanyMaintenance,
-        Host,
-        Anonymous
+        Host
     }
 }

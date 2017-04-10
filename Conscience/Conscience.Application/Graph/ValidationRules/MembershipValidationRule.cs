@@ -22,22 +22,11 @@ namespace Conscience.Application.Graph.ValidationRules
             {
                 if (account == null)
                 {
-                    var fieldsCount = _.GetFieldsCount<Field>();
-
-                    var hasAnyAnynomousPermissions = false;
-
                     _.Match<Field>(fieldAst =>
                     {
-                        fieldsCount.Count--;
-
                         var fieldDef = context.TypeInfo.GetFieldDef();
-
-                        if (fieldDef != null && 
-                            (fieldDef.GetType().FullName.StartsWith("GraphQL.Introspection") 
-                            || fieldDef.HasPermission(RoleTypes.Anonymous)))
-                            hasAnyAnynomousPermissions = true;
-
-                        if (fieldsCount.Count == 0 && !hasAnyAnynomousPermissions)
+                        
+                        if (fieldDef.DoesFieldRequiresMembership())
                             context.ReportError(new ValidationError(
                                 context.OriginalQuery,
                                 "auth-required",
