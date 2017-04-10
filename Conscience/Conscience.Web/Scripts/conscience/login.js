@@ -15421,6 +15421,7 @@ module.exports = function(module) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = buildConciencePage;
 
 var _react = __webpack_require__(4);
 
@@ -15444,8 +15445,6 @@ var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 var client = new _reactApollo.ApolloClient({
   networkInterface: (0, _apolloClient.createBatchingNetworkInterface)({
     uri: '/api/graphql',
@@ -15456,9 +15455,7 @@ var client = new _reactApollo.ApolloClient({
   })
 });
 
-var ConsciencePage = function ConsciencePage(rootComponent) {
-  _classCallCheck(this, ConsciencePage);
-
+function buildConciencePage(rootComponent) {
   // Needed for onTouchTap
   (0, _reactTapEventPlugin2.default)();
 
@@ -15471,9 +15468,7 @@ var ConsciencePage = function ConsciencePage(rootComponent) {
       _react2.default.createElement(rootComponent)
     )
   ), document.getElementById('main'));
-};
-
-exports.default = ConsciencePage;
+}
 
 /***/ }),
 /* 195 */
@@ -43328,7 +43323,7 @@ var _loginBox2 = _interopRequireDefault(_loginBox);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-new _consciencePage2.default(_loginBox2.default);
+(0, _consciencePage2.default)(_loginBox2.default);
 
 /***/ }),
 /* 458 */,

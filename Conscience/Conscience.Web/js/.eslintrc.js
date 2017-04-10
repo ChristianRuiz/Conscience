@@ -13,6 +13,10 @@ module.exports = {
     "comma-dangle": ["error", "never"],
     "no-underscore-dangle": ["error", { "allowAfterThis": true }]
   },
+  globals: {
+    "document": true,
+    "window": true
+  },
   plugins: [
     'graphql'
   ]

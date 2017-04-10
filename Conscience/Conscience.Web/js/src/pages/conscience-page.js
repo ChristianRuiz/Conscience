@@ -18,15 +18,13 @@ const client = new ApolloClient({
   })
 });
 
-export default class ConsciencePage {
-  constructor(rootComponent) {
+export default function buildConciencePage(rootComponent) {
         // Needed for onTouchTap
-    injectTapEventPlugin();
+  injectTapEventPlugin();
 
-    ReactDOM.render(<MuiThemeProvider>
-      <ApolloProvider client={client}>
-        { React.createElement(rootComponent) }
-      </ApolloProvider>
-    </MuiThemeProvider>, document.getElementById('main'));
-  }
+  ReactDOM.render(<MuiThemeProvider>
+    <ApolloProvider client={client}>
+      { React.createElement(rootComponent) }
+    </ApolloProvider>
+  </MuiThemeProvider>, document.getElementById('main'));
 }

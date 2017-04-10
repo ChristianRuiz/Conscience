@@ -1,5 +1,5 @@
 import React from 'react';
-import ConsciencePage from './conscience-page';
+import buildConciencePage from './conscience-page';
 import Header from '../components/header';
 import EmployeesList from '../components/employees-list';
 
@@ -8,4 +8,4 @@ const EmployeesPage = () => <div>
   <EmployeesList />
 </div>;
 
-new ConsciencePage(EmployeesPage);
+buildConciencePage(EmployeesPage);
