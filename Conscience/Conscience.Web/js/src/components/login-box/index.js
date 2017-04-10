@@ -25,7 +25,7 @@ class LoginBox extends React.Component {
       variables: { userName: this.state.userName, password: this.state.password }
     })
         .then(() => {
-          document.location.href = '/Home';
+          document.location.href = '/';
         }).catch(() => {
           this.setState({ hasError: true });
         });

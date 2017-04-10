@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
   entry: { 
     'login': './src/pages/login.js',
-    'employees-list': './src/pages/employees-list.js' 
+    'main': './src/pages/main.js' 
   },
   output: {
     filename: '../../Scripts/conscience/[name].js',

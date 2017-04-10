@@ -81,12 +81,23 @@ namespace Conscience.Web.Controllers.Api
 
         private async Task<GraphQLQuery[]> TryGetQueriesFromRequestAsync(HttpRequestMessage request)
         {
-            return await TryGetFromRequestAsync<GraphQLQuery[]>(request);
+            var queries = await TryGetFromRequestAsync<GraphQLQuery[]>(request);
+            foreach (var query in queries)
+                FixOperationName(query);
+            return queries;
         }
 
         private async Task<GraphQLQuery> TryGetQueryFromRequestAsync(HttpRequestMessage request)
         {
-            return await TryGetFromRequestAsync<GraphQLQuery>(request);
+            var query = await TryGetFromRequestAsync<GraphQLQuery>(request);
+            FixOperationName(query);
+            return query;
+        }
+
+        private static void FixOperationName(GraphQLQuery query)
+        {
+            if (query.OperationName == "null")
+                query.OperationName = null;
         }
 
         private async Task<T> TryGetFromRequestAsync<T>(HttpRequestMessage request)

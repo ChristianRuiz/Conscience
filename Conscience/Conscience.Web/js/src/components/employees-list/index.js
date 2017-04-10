@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 
@@ -42,4 +43,4 @@ const query = gql`query GetEmployees {
         }
       `;
 
-export default graphql(query)(EmployeesList);
+export default withRouter(graphql(query)(EmployeesList));

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import {
   ApolloClient,
   ApolloProvider
@@ -22,9 +23,13 @@ export default function buildConciencePage(rootComponent) {
         // Needed for onTouchTap
   injectTapEventPlugin();
 
-  ReactDOM.render(<MuiThemeProvider>
-    <ApolloProvider client={client}>
-      { React.createElement(rootComponent) }
-    </ApolloProvider>
-  </MuiThemeProvider>, document.getElementById('main'));
+  ReactDOM.render(
+    <MuiThemeProvider>
+      <ApolloProvider client={client}>
+        <Router>
+          { React.createElement(rootComponent) }
+        </Router>
+      </ApolloProvider>
+    </MuiThemeProvider>
+    , document.getElementById('main'));
 }
