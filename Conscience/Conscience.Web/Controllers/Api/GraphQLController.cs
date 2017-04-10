@@ -99,6 +99,8 @@ namespace Conscience.Web.Controllers.Api
         {
             if (query.OperationName == "null")
                 query.OperationName = null;
+            if (query.Variables == null)
+                query.Variables = new Dictionary<string, object>();
         }
 
         private async Task<T> TryGetFromRequestAsync<T>(HttpRequestMessage request)
