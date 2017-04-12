@@ -14,10 +14,5 @@ namespace Conscience.Web.Controllers
         {
             return View();
         }
-
-        public ActionResult Map()
-        {
-            return View();
-        }
     }
 }

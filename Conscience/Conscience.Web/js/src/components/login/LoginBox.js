@@ -25,7 +25,15 @@ class LoginBox extends React.Component {
       variables: { userName: this.state.userName, password: this.state.password }
     })
         .then(() => {
-          document.location.href = '/';
+          let redirectUrl = '/';
+          if (document.location.search && document.location.search.indexOf('ReturnUrl') > 0) {
+            redirectUrl = decodeURIComponent(document.location.search.substring(document.location.search.indexOf('=') + 1));
+            if (document.location.hash) {
+              redirectUrl += document.location.hash;
+            }
+          }
+
+          document.location.href = redirectUrl;
         }).catch(() => {
           this.setState({ hasError: true });
         });

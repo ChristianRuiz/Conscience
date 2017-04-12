@@ -47702,7 +47702,15 @@ var LoginBox = function (_React$Component) {
       this.props.mutate({
         variables: { userName: this.state.userName, password: this.state.password }
       }).then(function () {
-        document.location.href = '/';
+        var redirectUrl = '/';
+        if (document.location.search && document.location.search.indexOf('ReturnUrl') > 0) {
+          redirectUrl = decodeURIComponent(document.location.search.substring(document.location.search.indexOf('=') + 1));
+          if (document.location.hash) {
+            redirectUrl += document.location.hash;
+          }
+        }
+
+        document.location.href = redirectUrl;
       }).catch(function () {
         _this2.setState({ hasError: true });
       });
