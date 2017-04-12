@@ -1,14 +1,16 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import EmployeesList from './components/employees-list';
-import HostsList from './components/hosts-list';
+import MapPage from './components/map/MapPage';
+import EmployeesPage from './components/employees/EmployeesPage';
+import HostsPage from './components/hosts/HostPage';
 import NotFound from './components/not-found';
 
 const Routes = () =>
   <Switch>
-    <Route path="/" exact component={EmployeesList} />
-    <Route path="/hosts" component={HostsList} />
+    <Route path="/" exact component={EmployeesPage} />
+    <Route path="/hosts" component={HostsPage} />
+    <Route path="/map" component={MapPage} />
     <Route component={NotFound} />
   </Switch>;
 

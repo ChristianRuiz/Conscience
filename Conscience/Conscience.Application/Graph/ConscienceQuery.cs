@@ -17,7 +17,7 @@ namespace Conscience.Application.Graph
         {
             Name = "Query";
 
-            Field<AccountQuery>("accounts", resolve: context => container.Resolve<AccountQuery>());
+            Field<AccountQuery>("accounts", resolve: context => container.Resolve<AccountQuery>()).RequiresMembership();
             Field<EmployeeQuery>("employees", resolve: context => container.Resolve<EmployeeQuery>()).RequiresMembership();
             Field<HostQuery>("hosts", resolve: context => container.Resolve<HostQuery>()).RequiresMembership();
         }

@@ -6,9 +6,12 @@ using System.Web;
 using System.Threading.Tasks;
 using Conscience.Domain;
 using Microsoft.AspNet.SignalR.Hubs;
+using Microsoft.AspNet.Identity;
+using Conscience.Application.Services;
 
 namespace Conscience.Web.Hubs
 {
+    [Authorize]
     [HubName("HostsHub")]
     public class HostsHub : Hub
     {
@@ -16,6 +19,13 @@ namespace Conscience.Web.Hubs
         private const string GroupWeb = "Web";
 
         private static Dictionary<string, Account> Users = new Dictionary<string, Account>();
+
+        private readonly IUsersIdentityService _identityService;
+
+        public HostsHub(IUsersIdentityService identityService)
+        {
+            _identityService = identityService;
+        }
 
         public override Task OnConnected()
         {
@@ -46,9 +56,11 @@ namespace Conscience.Web.Hubs
         {
             if (!Users.ContainsKey(Context.ConnectionId))
             {
+                var identity = Context.Request.User.Identity;
+
                 var user = new Account
                 {
-                    UserName = "User " + (Users.Count + 1),
+                    UserName = identity.Name,
                     Host = new Host
                     {
                         Device = new Device()

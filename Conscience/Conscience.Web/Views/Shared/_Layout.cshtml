@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Conscience</title>
-    @Styles.Render("~/Content/css")
+    <link rel="stylesheet" type="text/css" href="/Content/leaflet.css" />
 </head>
 <body>
     
@@ -12,8 +12,6 @@
         @RenderBody()
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

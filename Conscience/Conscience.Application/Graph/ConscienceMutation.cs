@@ -18,7 +18,7 @@ namespace Conscience.Application.Graph
 
             Field<AccountMutation>("accounts", resolve: context => container.Resolve<AccountMutation>());
 
-            Field<EmployeeMutation>("employees", resolve: context => container.Resolve<EmployeeMutation>());
+            Field<EmployeeMutation>("employees", resolve: context => container.Resolve<EmployeeMutation>()).RequiresMembership(); ;
         }
     }
 }
