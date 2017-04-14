@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 579);
+/******/ 	return __webpack_require__(__webpack_require__.s = 582);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -46244,14 +46244,154 @@ module.exports = function() {
 /* 569 */,
 /* 570 */,
 /* 571 */,
-/* 572 */,
+/* 572 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nmutation Login($userName: String!, $password: String!) {\n  accounts\n  {\n    login(userName:$userName, password:$password)\n    {\n      id\n    }\n  }\n}\n'], ['\nmutation Login($userName: String!, $password: String!) {\n  accounts\n  {\n    login(userName:$userName, password:$password)\n    {\n      id\n    }\n  }\n}\n']);
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactApollo = __webpack_require__(119);
+
+var _TextField = __webpack_require__(715);
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = __webpack_require__(389);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var style = {
+  margin: 12
+};
+
+var LoginBox = function (_React$Component) {
+  _inherits(LoginBox, _React$Component);
+
+  function LoginBox(props) {
+    _classCallCheck(this, LoginBox);
+
+    var _this = _possibleConstructorReturn(this, (LoginBox.__proto__ || Object.getPrototypeOf(LoginBox)).call(this, props));
+
+    _this._doLogin = _this._doLogin.bind(_this);
+
+    _this.state = {
+      userName: 'arnold', // TODO: This values are just for development
+      password: '123456',
+      hasError: false
+    };
+    return _this;
+  }
+
+  _createClass(LoginBox, [{
+    key: '_doLogin',
+    value: function _doLogin() {
+      var _this2 = this;
+
+      this.props.mutate({
+        variables: { userName: this.state.userName, password: this.state.password }
+      }).then(function () {
+        var redirectUrl = '/';
+        if (document.location.search && document.location.search.indexOf('ReturnUrl') > 0) {
+          redirectUrl = decodeURIComponent(document.location.search.substring(document.location.search.indexOf('=') + 1));
+          if (document.location.hash) {
+            redirectUrl += document.location.hash;
+          }
+        }
+
+        document.location.href = redirectUrl;
+      }).catch(function () {
+        _this2.setState({ hasError: true });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_TextField2.default, {
+            hintText: 'User name',
+            value: this.state.userName,
+            onChange: function onChange(e) {
+              return _this3.setState({ userName: e.target.value });
+            }
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_TextField2.default, {
+            type: 'password',
+            hintText: 'Password',
+            value: this.state.password,
+            onChange: function onChange(e) {
+              return _this3.setState({ password: e.target.value });
+            }
+          })
+        ),
+        this.state.hasError && _react2.default.createElement(
+          'h2',
+          null,
+          'Login error'
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          _react2.default.createElement(_RaisedButton2.default, { label: 'Login', primary: true, style: style, onClick: this._doLogin })
+        )
+      );
+    }
+  }]);
+
+  return LoginBox;
+}(_react2.default.Component);
+
+LoginBox.propTypes = {
+  mutate: _react2.default.PropTypes.func.isRequired
+};
+
+var mutation = (0, _reactApollo.gql)(_templateObject);
+
+exports.default = (0, _reactApollo.graphql)(mutation)(LoginBox);
+
+/***/ }),
 /* 573 */,
 /* 574 */,
 /* 575 */,
 /* 576 */,
 /* 577 */,
 /* 578 */,
-/* 579 */
+/* 579 */,
+/* 580 */,
+/* 581 */,
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46261,7 +46401,7 @@ var _consciencePage = __webpack_require__(226);
 
 var _consciencePage2 = _interopRequireDefault(_consciencePage);
 
-var _LoginBox = __webpack_require__(757);
+var _LoginBox = __webpack_require__(572);
 
 var _LoginBox2 = _interopRequireDefault(_LoginBox);
 
@@ -46270,9 +46410,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _consciencePage2.default)(_LoginBox2.default);
 
 /***/ }),
-/* 580 */,
-/* 581 */,
-/* 582 */,
 /* 583 */,
 /* 584 */,
 /* 585 */,
@@ -46397,7 +46534,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /* 704 */,
 /* 705 */,
 /* 706 */,
-/* 707 */
+/* 707 */,
+/* 708 */,
+/* 709 */,
+/* 710 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46646,7 +46786,7 @@ exports.default = EnhancedTextarea;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 708 */
+/* 711 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46704,19 +46844,19 @@ var _transitions = __webpack_require__(28);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _EnhancedTextarea = __webpack_require__(707);
+var _EnhancedTextarea = __webpack_require__(710);
 
 var _EnhancedTextarea2 = _interopRequireDefault(_EnhancedTextarea);
 
-var _TextFieldHint = __webpack_require__(709);
+var _TextFieldHint = __webpack_require__(712);
 
 var _TextFieldHint2 = _interopRequireDefault(_TextFieldHint);
 
-var _TextFieldLabel = __webpack_require__(710);
+var _TextFieldLabel = __webpack_require__(713);
 
 var _TextFieldLabel2 = _interopRequireDefault(_TextFieldLabel);
 
-var _TextFieldUnderline = __webpack_require__(711);
+var _TextFieldUnderline = __webpack_require__(714);
 
 var _TextFieldUnderline2 = _interopRequireDefault(_TextFieldUnderline);
 
@@ -47228,7 +47368,7 @@ exports.default = TextField;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 709 */
+/* 712 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47311,7 +47451,7 @@ exports.default = TextFieldHint;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 710 */
+/* 713 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47431,7 +47571,7 @@ exports.default = TextFieldLabel;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 711 */
+/* 714 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47570,7 +47710,7 @@ exports.default = TextFieldUnderline;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 712 */
+/* 715 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47581,191 +47721,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _TextField = __webpack_require__(708);
+var _TextField = __webpack_require__(711);
 
 var _TextField2 = _interopRequireDefault(_TextField);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _TextField2.default;
-
-/***/ }),
-/* 713 */,
-/* 714 */,
-/* 715 */,
-/* 716 */,
-/* 717 */,
-/* 718 */,
-/* 719 */,
-/* 720 */,
-/* 721 */,
-/* 722 */,
-/* 723 */,
-/* 724 */,
-/* 725 */,
-/* 726 */,
-/* 727 */,
-/* 728 */,
-/* 729 */,
-/* 730 */,
-/* 731 */,
-/* 732 */,
-/* 733 */,
-/* 734 */,
-/* 735 */,
-/* 736 */,
-/* 737 */,
-/* 738 */,
-/* 739 */,
-/* 740 */,
-/* 741 */,
-/* 742 */,
-/* 743 */,
-/* 744 */,
-/* 745 */,
-/* 746 */,
-/* 747 */,
-/* 748 */,
-/* 749 */,
-/* 750 */,
-/* 751 */,
-/* 752 */,
-/* 753 */,
-/* 754 */,
-/* 755 */,
-/* 756 */,
-/* 757 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _templateObject = _taggedTemplateLiteral(['\nmutation Login($userName: String!, $password: String!) {\n  accounts\n  {\n    login(userName:$userName, password:$password)\n    {\n      id\n    }\n  }\n}\n'], ['\nmutation Login($userName: String!, $password: String!) {\n  accounts\n  {\n    login(userName:$userName, password:$password)\n    {\n      id\n    }\n  }\n}\n']);
-
-var _react = __webpack_require__(1);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactApollo = __webpack_require__(119);
-
-var _TextField = __webpack_require__(712);
-
-var _TextField2 = _interopRequireDefault(_TextField);
-
-var _RaisedButton = __webpack_require__(389);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var style = {
-  margin: 12
-};
-
-var LoginBox = function (_React$Component) {
-  _inherits(LoginBox, _React$Component);
-
-  function LoginBox(props) {
-    _classCallCheck(this, LoginBox);
-
-    var _this = _possibleConstructorReturn(this, (LoginBox.__proto__ || Object.getPrototypeOf(LoginBox)).call(this, props));
-
-    _this._doLogin = _this._doLogin.bind(_this);
-
-    _this.state = {
-      userName: 'arnold', // TODO: This values are just for development
-      password: '123456',
-      hasError: false
-    };
-    return _this;
-  }
-
-  _createClass(LoginBox, [{
-    key: '_doLogin',
-    value: function _doLogin() {
-      var _this2 = this;
-
-      this.props.mutate({
-        variables: { userName: this.state.userName, password: this.state.password }
-      }).then(function () {
-        var redirectUrl = '/';
-        if (document.location.search && document.location.search.indexOf('ReturnUrl') > 0) {
-          redirectUrl = decodeURIComponent(document.location.search.substring(document.location.search.indexOf('=') + 1));
-          if (document.location.hash) {
-            redirectUrl += document.location.hash;
-          }
-        }
-
-        document.location.href = redirectUrl;
-      }).catch(function () {
-        _this2.setState({ hasError: true });
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
-
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_TextField2.default, {
-            hintText: 'User name',
-            value: this.state.userName,
-            onChange: function onChange(e) {
-              return _this3.setState({ userName: e.target.value });
-            }
-          })
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_TextField2.default, {
-            type: 'password',
-            hintText: 'Password',
-            value: this.state.password,
-            onChange: function onChange(e) {
-              return _this3.setState({ password: e.target.value });
-            }
-          })
-        ),
-        this.state.hasError && _react2.default.createElement(
-          'h2',
-          null,
-          'Login error'
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_RaisedButton2.default, { label: 'Login', primary: true, style: style, onClick: this._doLogin })
-        )
-      );
-    }
-  }]);
-
-  return LoginBox;
-}(_react2.default.Component);
-
-var mutation = (0, _reactApollo.gql)(_templateObject);
-
-exports.default = (0, _reactApollo.graphql)(mutation)(LoginBox);
 
 /***/ })
 /******/ ]);

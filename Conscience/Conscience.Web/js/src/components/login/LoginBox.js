@@ -66,6 +66,10 @@ class LoginBox extends React.Component {
   }
 }
 
+LoginBox.propTypes = {
+  mutate: React.PropTypes.func.isRequired
+};
+
 const mutation = gql`
 mutation Login($userName: String!, $password: String!) {
   accounts

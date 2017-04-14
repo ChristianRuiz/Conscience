@@ -30,6 +30,10 @@ class EmployeesList extends React.Component {
   }
 }
 
+EmployeesList.propTypes = {
+  data: React.PropTypes.object.isRequired
+};
+
 const query = gql`query GetEmployees {
             employees {
                 getAll {

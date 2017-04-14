@@ -23,6 +23,11 @@ class LogoutButton extends React.Component {
   }
 }
 
+LogoutButton.propTypes = {
+  data: React.PropTypes.object.isRequired,
+  mutate: React.PropTypes.func.isRequired
+};
+
 const mutation = gql`
 mutation Logout {
   accounts

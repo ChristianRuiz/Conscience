@@ -28,6 +28,10 @@ class HostsList extends React.Component {
   }
 }
 
+HostsList.propTypes = {
+  data: React.PropTypes.object.isRequired
+};
+
 const query = gql`query GetHosts {
             hosts {
               getAll {
