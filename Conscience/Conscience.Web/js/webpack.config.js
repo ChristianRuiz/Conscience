@@ -1,9 +1,10 @@
 const path = require('path');
+require('babel-polyfill');
 
 module.exports = {
   entry: {
-    login: './src/pages/login.js',
-    main: './src/pages/main.js'
+    login: ['babel-polyfill', './src/pages/login.js'],
+    main: ['babel-polyfill', './src/pages/main.js']
   },
   output: {
     filename: '../../Scripts/conscience/[name].js',
