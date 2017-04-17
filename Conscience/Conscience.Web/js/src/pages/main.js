@@ -2,7 +2,7 @@ import React from 'react';
 import Routes from '../routes';
 
 import buildConciencePage from './conscience-page';
-import Header from '../components/header';
+import Header from '../components/common/Header';
 
 const App = () =>
   <div>
