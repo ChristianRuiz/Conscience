@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.DataAccess.Repositories
 {
-    public abstract class BaseRepository<T> where T : class
+    public abstract class BaseRepository<T> : IRepository where T : class
     {
         protected ConscienceContext _context;
 

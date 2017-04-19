@@ -1,4 +1,5 @@
 ﻿using Conscience.Application.Graph.Entities.Accounts;
+using Conscience.Application.Graph.Entities.Devices;
 using Conscience.Domain;
 using GraphQL.Types;
 using System;
@@ -16,6 +17,7 @@ namespace Conscience.Application.Graph.Entities.Users
             Name = "User";
             
             Field<AccountGraphType>("account", resolve: context => context.Source.Account);
+            Field<DeviceGraphType>("device", resolve: context => context.Source.Device);
         }
     }
 }

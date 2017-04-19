@@ -96,13 +96,14 @@ namespace Conscience.DataAccess
                 context.Accounts.Add(dolores);
 
                 context.SaveChanges();
-
+                
                 context.Users.Add(new Employee { Account = ford });
                 context.Users.Add(new Employee { Account = theresa });
                 context.Users.Add(new Employee { Account = elsie });
                 context.Users.Add(new Employee { Account = bernard });
                 context.Users.Add(new Employee { Account = sizemore });
 
+                context.Users.Add(new Host { Account = arnold, Hidden = true });
                 context.Users.Add(new Host { Account = bernard, Hidden = true });
                 context.Users.Add(new Host { Account = dolores });
 

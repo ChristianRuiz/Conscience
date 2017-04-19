@@ -58,6 +58,7 @@
     <Compile Include="Extensions\IQueryableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AudioRepository.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\CharacterRepository.cs" />
     <Compile Include="Repositories\DeviceRepository.cs" />

@@ -2,7 +2,6 @@
 using Microsoft.Owin;
 using Owin;
 using Conscience.DataAccess;
-using Conscience.Web.Models;
 using System.Web.Mvc;
 using System.Web.Http;
 using System.Web.Routing;
@@ -22,10 +21,14 @@ namespace Conscience.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ConfigureAuth(app);
-            app.MapSignalR();
+            
+            app.MapSignalR(new Microsoft.AspNet.SignalR.HubConfiguration
+            {
+                Resolver = new SignalRDependencyResolver(UnityConfig.CreateConfiguredContainer(() => new HierarchicalLifetimeManager()))
+            });
 
             var container = UnityActivator.Start();
-            
+
             var context = container.Resolve<ConscienceContext>();
             context.Database.CreateIfNotExists();
             context.Database.Initialize(false);

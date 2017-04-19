@@ -11,9 +11,9 @@ namespace Conscience.Application.Graph.Entities
     {
         public ConscienceGraphType()
         {
-            Field<StringGraphType>("id", resolve: context => {
+            Field<IntGraphType>("id", resolve: context => {
                 var id = context.Source.GetType().GetProperty("Id");
-                return id.GetValue(context.Source).ToString().ToGraphId();
+                return id.GetValue(context.Source);
                 });
         }
     }

@@ -59,5 +59,50 @@ namespace Conscience.DataAccess.Repositories
             _context.SaveChanges();
             return employee;
         }
+
+        public void UserDisconnected(User user)
+        {
+            if (user.Device != null)
+            {
+                user.Device.Online = false;
+                _context.SaveChanges();
+            }
+        }
+
+        public User GetById(int userId)
+        {
+            var user = DbSet.Include(u => u.Account).FirstOrDefault(u => u.Id == userId);
+            if (user == null)
+                throw new ArgumentException("There is no user with id: " + userId);
+            return user;
+        }
+
+        public void UpdateDevice(User user, string deviceId)
+        {
+            if (user.Device == null)
+            {
+                user.Device = new Device();
+                _context.Devices.Add(user.Device);
+            }
+
+            user.Device.DeviceId = deviceId;
+            user.Device.Online = true;
+            user.Device.LastConnection = DateTime.Now;
+            _context.SaveChanges();
+        }
+
+        public User GetByAccountId(int accountId)
+        {
+            return DbSet.FirstOrDefault(u => u.Account.Id == accountId);
+        }
+
+        public User UpdateLocations(int userId, List<Location> locations)
+        {
+            var user = GetById(userId);
+            user.Device.Locations.AddRange(locations);
+            user.Device.LastConnection = DateTime.Now;
+            _context.SaveChanges();
+            return user;
+        }
     }
 }

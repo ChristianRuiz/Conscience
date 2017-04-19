@@ -5,7 +5,6 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Conscience.Web.Models;
 using Conscience.DataAccess;
 using Conscience.Web.Identity;
 

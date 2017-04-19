@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1051);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1054);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -902,7 +902,7 @@ module.exports = function(it){
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(558), __esModule: true };
+module.exports = { "default": __webpack_require__(559), __esModule: true };
 
 /***/ }),
 /* 18 */
@@ -946,11 +946,11 @@ exports.default = function () {
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(550);
+var _setPrototypeOf = __webpack_require__(551);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(549);
+var _create = __webpack_require__(550);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -1488,11 +1488,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(1020)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(1023)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(1019)();
+  module.exports = __webpack_require__(1022)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
@@ -15134,7 +15134,7 @@ var ctx      = __webpack_require__(52)
   , IObject  = __webpack_require__(106)
   , toObject = __webpack_require__(22)
   , toLength = __webpack_require__(16)
-  , asc      = __webpack_require__(370);
+  , asc      = __webpack_require__(371);
 module.exports = function(TYPE, $create){
   var IS_MAP        = TYPE == 1
     , IS_FILTER     = TYPE == 2
@@ -17992,7 +17992,7 @@ module.exports = function(it){
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_anywhere__ = __webpack_require__(614);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_anywhere__ = __webpack_require__(615);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_anywhere___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_graphql_anywhere__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storeUtils__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__queries_getFromAST__ = __webpack_require__(70);
@@ -19090,7 +19090,7 @@ module.exports = isArray;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__queries_getFromAST__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__storeUtils__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__queries_directives__ = __webpack_require__(359);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__queries_directives__ = __webpack_require__(360);
 /* harmony export (immutable) */ __webpack_exports__["a"] = writeQueryToStore;
 /* harmony export (immutable) */ __webpack_exports__["b"] = writeResultToStore;
 /* unused harmony export writeSelectionSetToStore */
@@ -19633,11 +19633,11 @@ module.exports = ReactInstanceMap;
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(552);
+var _iterator = __webpack_require__(553);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(551);
+var _symbol = __webpack_require__(552);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -19655,7 +19655,7 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(840);
+var freeGlobal = __webpack_require__(841);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -20103,7 +20103,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.print = print;
 
-var _visitor = __webpack_require__(619);
+var _visitor = __webpack_require__(620);
 
 /**
  * Converts an AST into a string, using one set of reasonable
@@ -21772,6 +21772,65 @@ module.exports = setInnerHTML;
 
 /***/ }),
 /* 143 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(784);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(785);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(325);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(786);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(787);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(788);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(789);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(790);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(791);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(792);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(793);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(794);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(795);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***/ }),
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21781,11 +21840,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _pick2 = __webpack_require__(994);
+var _pick2 = __webpack_require__(998);
 
 var _pick3 = _interopRequireDefault(_pick2);
 
-var _isEqual2 = __webpack_require__(853);
+var _isEqual2 = __webpack_require__(854);
 
 var _isEqual3 = _interopRequireDefault(_isEqual2);
 
@@ -21871,7 +21930,7 @@ Path.childContextTypes = {
 exports.default = Path;
 
 /***/ }),
-/* 144 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21890,65 +21949,6 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _propTypes2.default.instanceOf(_leaflet.Map);
-
-/***/ }),
-/* 145 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__ = __webpack_require__(784);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "BrowserRouter", function() { return __WEBPACK_IMPORTED_MODULE_0__BrowserRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__HashRouter__ = __webpack_require__(785);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "HashRouter", function() { return __WEBPACK_IMPORTED_MODULE_1__HashRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Link__ = __webpack_require__(325);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Link", function() { return __WEBPACK_IMPORTED_MODULE_2__Link__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__ = __webpack_require__(786);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MemoryRouter", function() { return __WEBPACK_IMPORTED_MODULE_3__MemoryRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__NavLink__ = __webpack_require__(787);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "NavLink", function() { return __WEBPACK_IMPORTED_MODULE_4__NavLink__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Prompt__ = __webpack_require__(788);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Prompt", function() { return __WEBPACK_IMPORTED_MODULE_5__Prompt__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Redirect__ = __webpack_require__(789);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Redirect", function() { return __WEBPACK_IMPORTED_MODULE_6__Redirect__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Route__ = __webpack_require__(790);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Route", function() { return __WEBPACK_IMPORTED_MODULE_7__Route__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Router__ = __webpack_require__(791);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Router", function() { return __WEBPACK_IMPORTED_MODULE_8__Router__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__StaticRouter__ = __webpack_require__(792);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "StaticRouter", function() { return __WEBPACK_IMPORTED_MODULE_9__StaticRouter__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Switch__ = __webpack_require__(793);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "Switch", function() { return __WEBPACK_IMPORTED_MODULE_10__Switch__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__matchPath__ = __webpack_require__(794);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "matchPath", function() { return __WEBPACK_IMPORTED_MODULE_11__matchPath__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__withRouter__ = __webpack_require__(795);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "withRouter", function() { return __WEBPACK_IMPORTED_MODULE_12__withRouter__["a"]; });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /***/ }),
 /* 146 */
@@ -22472,7 +22472,7 @@ var ApolloError = (function (_super) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getFromAST__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_cloneDeep__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_cloneDeep__ = __webpack_require__(366);
 /* harmony export (immutable) */ __webpack_exports__["a"] = addTypenameToDocument;
 
 
@@ -22526,8 +22526,8 @@ function addTypenameToDocument(doc) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(335);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_store__ = __webpack_require__(240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__queries_store__ = __webpack_require__(360);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations_store__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__queries_store__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mutations_store__ = __webpack_require__(359);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__optimistic_data_store__ = __webpack_require__(242);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_4__optimistic_data_store__["a"]; });
 /* harmony export (immutable) */ __webpack_exports__["b"] = createApolloReducer;
@@ -23692,7 +23692,7 @@ module.exports = function(it){
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(563);
+var aFunction = __webpack_require__(564);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -23743,7 +23743,7 @@ module.exports = true;
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject    = __webpack_require__(87)
-  , dPs         = __webpack_require__(579)
+  , dPs         = __webpack_require__(580)
   , enumBugKeys = __webpack_require__(184)
   , IE_PROTO    = __webpack_require__(189)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
@@ -23758,7 +23758,7 @@ var createDict = function(){
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(569).appendChild(iframe);
+  __webpack_require__(570).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -24072,8 +24072,8 @@ module.exports = exports['default'];
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(907),
-    getValue = __webpack_require__(946);
+var baseIsNative = __webpack_require__(911),
+    getValue = __webpack_require__(950);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -24706,7 +24706,7 @@ exports.compose = redux_1.compose;
 var apollo_client_1 = __webpack_require__(241);
 exports.ApolloClient = apollo_client_1.default;
 exports.createNetworkInterface = apollo_client_1.createNetworkInterface;
-var graphql_tag_1 = __webpack_require__(618);
+var graphql_tag_1 = __webpack_require__(619);
 exports.gql = graphql_tag_1.default;
 //# sourceMappingURL=browser.js.map
 
@@ -26830,7 +26830,7 @@ exports.default = _shallowEqual2.default;
 
 "use strict";
 
-var $at  = __webpack_require__(582)(true);
+var $at  = __webpack_require__(583)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
 __webpack_require__(282)(String, 'String', function(iterated){
@@ -26864,8 +26864,8 @@ module.exports = Symbol;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(230),
-    getRawTag = __webpack_require__(945),
-    objectToString = __webpack_require__(973);
+    getRawTag = __webpack_require__(949),
+    objectToString = __webpack_require__(977);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -26898,9 +26898,9 @@ module.exports = baseGetTag;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(102),
-    isKey = __webpack_require__(672),
-    stringToPath = __webpack_require__(985),
-    toString = __webpack_require__(858);
+    isKey = __webpack_require__(673),
+    stringToPath = __webpack_require__(989),
+    toString = __webpack_require__(859);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -26924,7 +26924,7 @@ module.exports = castPath;
 /* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(681);
+var isSymbol = __webpack_require__(682);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -26986,9 +26986,9 @@ module.exports = isObjectLike;
 /* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(831),
-    baseKeys = __webpack_require__(910),
-    isArrayLike = __webpack_require__(677);
+var arrayLikeKeys = __webpack_require__(832),
+    baseKeys = __webpack_require__(914),
+    isArrayLike = __webpack_require__(678);
 
 /**
  * Creates an array of the own enumerable property names of `object`.
@@ -27056,7 +27056,7 @@ var _layerContainer = __webpack_require__(238);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -27397,7 +27397,7 @@ var TransactionDataProxy = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_proxy__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__queries_getFromAST__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__storeUtils__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__replaceQueryResults__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__replaceQueryResults__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__readFromStore__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_errorHandling__ = __webpack_require__(245);
 /* harmony export (immutable) */ __webpack_exports__["a"] = data;
@@ -27555,7 +27555,7 @@ function data(previousState, action, queries, mutations, config) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__transport_networkInterface__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__transport_batchedNetworkInterface__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__transport_batchedNetworkInterface__ = __webpack_require__(364);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_graphql_language_printer__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_graphql_language_printer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_graphql_language_printer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store__ = __webpack_require__(152);
@@ -27566,7 +27566,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__queries_networkStatus__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__queries_queryTransform__ = __webpack_require__(151);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__errors_ApolloError__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ApolloClient__ = __webpack_require__(354);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ApolloClient__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__data_storeUtils__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__data_fragmentMatcher__ = __webpack_require__(149);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createNetworkInterface", function() { return __WEBPACK_IMPORTED_MODULE_0__transport_networkInterface__["a"]; });
@@ -28532,25 +28532,25 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
 /* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(554), __esModule: true };
+module.exports = { "default": __webpack_require__(555), __esModule: true };
 
 /***/ }),
 /* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(555), __esModule: true };
+module.exports = { "default": __webpack_require__(556), __esModule: true };
 
 /***/ }),
 /* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(557), __esModule: true };
+module.exports = { "default": __webpack_require__(558), __esModule: true };
 
 /***/ }),
 /* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(559), __esModule: true };
+module.exports = { "default": __webpack_require__(560), __esModule: true };
 
 /***/ }),
 /* 279 */
@@ -28594,7 +28594,7 @@ var LIBRARY        = __webpack_require__(185)
   , hide           = __webpack_require__(95)
   , has            = __webpack_require__(81)
   , Iterators      = __webpack_require__(109)
-  , $iterCreate    = __webpack_require__(573)
+  , $iterCreate    = __webpack_require__(574)
   , setToStringTag = __webpack_require__(188)
   , getPrototypeOf = __webpack_require__(285)
   , ITERATOR       = __webpack_require__(48)('iterator')
@@ -28715,7 +28715,7 @@ module.exports = Object.getPrototypeOf || function(O){
 
 var has          = __webpack_require__(81)
   , toIObject    = __webpack_require__(82)
-  , arrayIndexOf = __webpack_require__(565)(false)
+  , arrayIndexOf = __webpack_require__(566)(false)
   , IE_PROTO     = __webpack_require__(189)('IE_PROTO');
 
 module.exports = function(object, names){
@@ -28936,9 +28936,9 @@ module.exports = getActiveElement;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var getFromAST_1 = __webpack_require__(613);
-var directives_1 = __webpack_require__(612);
-var storeUtils_1 = __webpack_require__(615);
+var getFromAST_1 = __webpack_require__(614);
+var directives_1 = __webpack_require__(613);
+var storeUtils_1 = __webpack_require__(616);
 function graphql(resolver, document, rootValue, contextValue, variableValues, execOptions) {
     if (execOptions === void 0) { execOptions = {}; }
     var mainDefinition = getFromAST_1.getMainDefinition(document);
@@ -29155,7 +29155,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = sortPrefixedStyle;
 
-var _isPrefixedProperty = __webpack_require__(648);
+var _isPrefixedProperty = __webpack_require__(649);
 
 var _isPrefixedProperty2 = _interopRequireDefault(_isPrefixedProperty);
 
@@ -29181,7 +29181,7 @@ module.exports = exports['default'];
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__root_js__ = __webpack_require__(658);
 
 
 /** Built-in value references. */
@@ -29195,9 +29195,9 @@ var Symbol = __WEBPACK_IMPORTED_MODULE_0__root_js__["a" /* default */].Symbol;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(651);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(653);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(658);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseGetTag_js__ = __webpack_require__(652);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getPrototype_js__ = __webpack_require__(654);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__isObjectLike_js__ = __webpack_require__(659);
 
 
 
@@ -29266,8 +29266,8 @@ function isPlainObject(value) {
 /* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assignValue = __webpack_require__(666),
-    baseAssignValue = __webpack_require__(833);
+var assignValue = __webpack_require__(667),
+    baseAssignValue = __webpack_require__(834);
 
 /**
  * Copies properties of `source` to `object`.
@@ -30277,7 +30277,7 @@ module.exports = ReactHostComponent;
 
 var ReactDOMSelection = __webpack_require__(732);
 
-var containsNode = __webpack_require__(599);
+var containsNode = __webpack_require__(600);
 var focusNode = __webpack_require__(291);
 var getActiveElement = __webpack_require__(292);
 
@@ -31612,7 +31612,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _reduce2 = __webpack_require__(996);
+var _reduce2 = __webpack_require__(1000);
 
 var _reduce3 = _interopRequireDefault(_reduce2);
 
@@ -31620,11 +31620,11 @@ var _keys2 = __webpack_require__(235);
 
 var _keys3 = _interopRequireDefault(_keys2);
 
-var _forEach2 = __webpack_require__(851);
+var _forEach2 = __webpack_require__(852);
 
 var _forEach3 = _interopRequireDefault(_forEach2);
 
-var _clone2 = __webpack_require__(986);
+var _clone2 = __webpack_require__(990);
 
 var _clone3 = _interopRequireDefault(_clone2);
 
@@ -31767,7 +31767,7 @@ var _controlPosition = __webpack_require__(237);
 
 var _controlPosition2 = _interopRequireDefault(_controlPosition);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -33661,11 +33661,11 @@ module.exports = __webpack_require__(825);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {
 
-__webpack_require__(548);
+__webpack_require__(549);
 
 __webpack_require__(823);
 
-__webpack_require__(368);
+__webpack_require__(369);
 
 if (global._babelPolyfill) {
   throw new Error("only one instance of babel-polyfill is allowed");
@@ -33693,7 +33693,7 @@ define(String.prototype, "padRight", "".padEnd);
 /* 340 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof   = __webpack_require__(566)
+var classof   = __webpack_require__(567)
   , ITERATOR  = __webpack_require__(48)('iterator')
   , Iterators = __webpack_require__(109);
 module.exports = __webpack_require__(34).getIteratorMethod = function(it){
@@ -33706,7 +33706,7 @@ module.exports = __webpack_require__(34).getIteratorMethod = function(it){
 /* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(585);
+__webpack_require__(586);
 var global        = __webpack_require__(64)
   , hide          = __webpack_require__(95)
   , Iterators     = __webpack_require__(109)
@@ -33876,11 +33876,11 @@ for (var alias in aliases) {
 /* 343 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(959),
-    listCacheDelete = __webpack_require__(960),
-    listCacheGet = __webpack_require__(961),
-    listCacheHas = __webpack_require__(962),
-    listCacheSet = __webpack_require__(963);
+var listCacheClear = __webpack_require__(963),
+    listCacheDelete = __webpack_require__(964),
+    listCacheGet = __webpack_require__(965),
+    listCacheHas = __webpack_require__(966),
+    listCacheSet = __webpack_require__(967);
 
 /**
  * Creates an list cache object.
@@ -33914,7 +33914,7 @@ module.exports = ListCache;
 /* 344 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(674);
+var eq = __webpack_require__(675);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -33971,7 +33971,7 @@ module.exports = baseGet;
 /* 346 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(957);
+var isKeyable = __webpack_require__(961);
 
 /**
  * Gets the data for `map`.
@@ -34015,7 +34015,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _Paper = __webpack_require__(682);
+var _Paper = __webpack_require__(683);
 
 var _Paper2 = _interopRequireDefault(_Paper);
 
@@ -34025,6 +34025,26 @@ exports.default = _Paper2.default;
 
 /***/ }),
 /* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _RaisedButton = __webpack_require__(684);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _RaisedButton2.default;
+
+/***/ }),
+/* 350 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34226,7 +34246,7 @@ exports.default = FocusRipple;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 350 */
+/* 351 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34260,7 +34280,7 @@ var _inherits2 = __webpack_require__(19);
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
-var _toArray2 = __webpack_require__(553);
+var _toArray2 = __webpack_require__(554);
 
 var _toArray3 = _interopRequireDefault(_toArray2);
 
@@ -34539,7 +34559,7 @@ exports.default = TouchRipple;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 351 */
+/* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34584,7 +34604,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 352 */
+/* 353 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34600,7 +34620,7 @@ var _propTypes = __webpack_require__(27);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _latlngList = __webpack_require__(353);
+var _latlngList = __webpack_require__(354);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
@@ -34609,7 +34629,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _propTypes2.default.oneOfType([_propTypes2.default.instanceOf(_leaflet.LatLngBounds), _latlngList2.default]);
 
 /***/ }),
-/* 353 */
+/* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34632,18 +34652,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _propTypes2.default.arrayOf(_latlng2.default);
 
 /***/ }),
-/* 354 */
+/* 355 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__transport_networkInterface__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_fragmentMatcher__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store__ = __webpack_require__(152);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_QueryManager__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_QueryManager__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_environment__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__data_storeUtils__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__data_proxy__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__version__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__version__ = __webpack_require__(367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__version___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__version__);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -34879,25 +34899,25 @@ var ApolloClient = (function () {
 //# sourceMappingURL=ApolloClient.js.map
 
 /***/ }),
-/* 355 */
+/* 356 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__transport_Deduplicator__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__transport_Deduplicator__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_isEqual__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__types__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__queries_networkStatus__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__queries_getFromAST__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__queries_queryTransform__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__data_resultReducers__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__data_resultReducers__ = __webpack_require__(358);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__data_fragmentMatcher__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_environment__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__util_maybeDeepFreeze__ = __webpack_require__(246);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_graphql_language_printer__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_graphql_language_printer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_graphql_language_printer__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__data_readFromStore__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__scheduler_scheduler__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__scheduler_scheduler__ = __webpack_require__(362);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__util_Observable__ = __webpack_require__(243);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__errors_ApolloError__ = __webpack_require__(150);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ObservableQuery__ = __webpack_require__(147);
@@ -35602,7 +35622,7 @@ var QueryManager = (function () {
 //# sourceMappingURL=QueryManager.js.map
 
 /***/ }),
-/* 356 */
+/* 357 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35632,7 +35652,7 @@ function replaceQueryResults(state, _a, config) {
 //# sourceMappingURL=replaceQueryResults.js.map
 
 /***/ }),
-/* 357 */
+/* 358 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35678,7 +35698,7 @@ function createStoreReducer(resultReducer, document, variables, config) {
 //# sourceMappingURL=resultReducers.js.map
 
 /***/ }),
-/* 358 */
+/* 359 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35722,7 +35742,7 @@ function mutations(previousState, action) {
 //# sourceMappingURL=store.js.map
 
 /***/ }),
-/* 359 */
+/* 360 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35774,7 +35794,7 @@ function shouldInclude(selection, variables) {
 //# sourceMappingURL=directives.js.map
 
 /***/ }),
-/* 360 */
+/* 361 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35902,7 +35922,7 @@ function resetQueryState(state, action) {
 //# sourceMappingURL=store.js.map
 
 /***/ }),
-/* 361 */
+/* 362 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36009,7 +36029,7 @@ var QueryScheduler = (function () {
 //# sourceMappingURL=scheduler.js.map
 
 /***/ }),
-/* 362 */
+/* 363 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36051,14 +36071,14 @@ var Deduplicator = (function () {
 //# sourceMappingURL=Deduplicator.js.map
 
 /***/ }),
-/* 363 */
+/* 364 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__ = __webpack_require__(338);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_whatwg_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_whatwg_fetch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__networkInterface__ = __webpack_require__(153);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__batching__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__batching__ = __webpack_require__(365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_assign__ = __webpack_require__(244);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return HTTPBatchedNetworkInterface; });
 /* harmony export (immutable) */ __webpack_exports__["a"] = createBatchingNetworkInterface;
@@ -36233,7 +36253,7 @@ function createBatchingNetworkInterface(options) {
 //# sourceMappingURL=batchedNetworkInterface.js.map
 
 /***/ }),
-/* 364 */
+/* 365 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36296,7 +36316,7 @@ var QueryBatcher = (function () {
 //# sourceMappingURL=batching.js.map
 
 /***/ }),
-/* 365 */
+/* 366 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36319,13 +36339,13 @@ function cloneDeep(value) {
 //# sourceMappingURL=cloneDeep.js.map
 
 /***/ }),
-/* 366 */
+/* 367 */
 /***/ (function(module, exports) {
 
 exports.version = "1.0.2"
 
 /***/ }),
-/* 367 */
+/* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36344,7 +36364,7 @@ var _reactDom = __webpack_require__(84);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRouterDom = __webpack_require__(145);
+var _reactRouterDom = __webpack_require__(143);
 
 var _reactApollo = __webpack_require__(204);
 
@@ -36390,14 +36410,14 @@ function buildConciencePage(rootComponent) {
 }
 
 /***/ }),
-/* 368 */
+/* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(377);
+__webpack_require__(378);
 module.exports = __webpack_require__(51).RegExp.escape;
 
 /***/ }),
-/* 369 */
+/* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(9)
@@ -36418,18 +36438,18 @@ module.exports = function(original){
 };
 
 /***/ }),
-/* 370 */
+/* 371 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(369);
+var speciesConstructor = __webpack_require__(370);
 
 module.exports = function(original, length){
   return new (speciesConstructor(original))(length);
 };
 
 /***/ }),
-/* 371 */
+/* 372 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36444,7 +36464,7 @@ module.exports = function(hint){
 };
 
 /***/ }),
-/* 372 */
+/* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -36464,7 +36484,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 373 */
+/* 374 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(75)
@@ -36479,12 +36499,12 @@ module.exports = function(object, el){
 };
 
 /***/ }),
-/* 374 */
+/* 375 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var path      = __webpack_require__(375)
+var path      = __webpack_require__(376)
   , invoke    = __webpack_require__(125)
   , aFunction = __webpack_require__(28);
 module.exports = function(/* ...pargs */){
@@ -36508,13 +36528,13 @@ module.exports = function(/* ...pargs */){
 };
 
 /***/ }),
-/* 375 */
+/* 376 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(6);
 
 /***/ }),
-/* 376 */
+/* 377 */
 /***/ (function(module, exports) {
 
 module.exports = function(regExp, replace){
@@ -36527,18 +36547,18 @@ module.exports = function(regExp, replace){
 };
 
 /***/ }),
-/* 377 */
+/* 378 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/benjamingr/RexExp.escape
 var $export = __webpack_require__(0)
-  , $re     = __webpack_require__(376)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+  , $re     = __webpack_require__(377)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
 
 /***/ }),
-/* 378 */
+/* 379 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
@@ -36549,7 +36569,7 @@ $export($export.P, 'Array', {copyWithin: __webpack_require__(248)});
 __webpack_require__(89)('copyWithin');
 
 /***/ }),
-/* 379 */
+/* 380 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36565,7 +36585,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].every, true), 'Array
 });
 
 /***/ }),
-/* 380 */
+/* 381 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
@@ -36576,7 +36596,7 @@ $export($export.P, 'Array', {fill: __webpack_require__(154)});
 __webpack_require__(89)('fill');
 
 /***/ }),
-/* 381 */
+/* 382 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36592,7 +36612,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].filter, true), 'Arra
 });
 
 /***/ }),
-/* 382 */
+/* 383 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36612,7 +36632,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(89)(KEY);
 
 /***/ }),
-/* 383 */
+/* 384 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36632,7 +36652,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(89)(KEY);
 
 /***/ }),
-/* 384 */
+/* 385 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36649,7 +36669,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ }),
-/* 385 */
+/* 386 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36693,7 +36713,7 @@ $export($export.S + $export.F * !__webpack_require__(127)(function(iter){ Array.
 
 
 /***/ }),
-/* 386 */
+/* 387 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36714,7 +36734,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(43)($nati
 });
 
 /***/ }),
-/* 387 */
+/* 388 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
@@ -36723,7 +36743,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Array', {isArray: __webpack_require__(162)});
 
 /***/ }),
-/* 388 */
+/* 389 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36741,7 +36761,7 @@ $export($export.P + $export.F * (__webpack_require__(106) != Object || !__webpac
 });
 
 /***/ }),
-/* 389 */
+/* 390 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36769,7 +36789,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(43)($nati
 });
 
 /***/ }),
-/* 390 */
+/* 391 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36785,7 +36805,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].map, true), 'Array',
 });
 
 /***/ }),
-/* 391 */
+/* 392 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36810,7 +36830,7 @@ $export($export.S + $export.F * __webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 392 */
+/* 393 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36826,7 +36846,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].reduceRight, true), 
 });
 
 /***/ }),
-/* 393 */
+/* 394 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36842,7 +36862,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].reduce, true), 'Arra
 });
 
 /***/ }),
-/* 394 */
+/* 395 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36876,7 +36896,7 @@ $export($export.P + $export.F * __webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 395 */
+/* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36892,7 +36912,7 @@ $export($export.P + $export.F * !__webpack_require__(43)([].some, true), 'Array'
 });
 
 /***/ }),
-/* 396 */
+/* 397 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36921,13 +36941,13 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ }),
-/* 397 */
+/* 398 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(77)('Array');
 
 /***/ }),
-/* 398 */
+/* 399 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.3.1 / 15.9.4.4 Date.now()
@@ -36936,7 +36956,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
 
 /***/ }),
-/* 399 */
+/* 400 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36970,7 +36990,7 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ }),
-/* 400 */
+/* 401 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -36990,16 +37010,16 @@ $export($export.P + $export.F * __webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 401 */
+/* 402 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_PRIMITIVE = __webpack_require__(10)('toPrimitive')
   , proto        = Date.prototype;
 
-if(!(TO_PRIMITIVE in proto))__webpack_require__(29)(proto, TO_PRIMITIVE, __webpack_require__(371));
+if(!(TO_PRIMITIVE in proto))__webpack_require__(29)(proto, TO_PRIMITIVE, __webpack_require__(372));
 
 /***/ }),
-/* 402 */
+/* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DateProto    = Date.prototype
@@ -37015,7 +37035,7 @@ if(new Date(NaN) + '' != INVALID_DATE){
 }
 
 /***/ }),
-/* 403 */
+/* 404 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
@@ -37024,7 +37044,7 @@ var $export = __webpack_require__(0);
 $export($export.P, 'Function', {bind: __webpack_require__(251)});
 
 /***/ }),
-/* 404 */
+/* 405 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37043,7 +37063,7 @@ if(!(HAS_INSTANCE in FunctionProto))__webpack_require__(13).f(FunctionProto, HAS
 }});
 
 /***/ }),
-/* 405 */
+/* 406 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(13).f
@@ -37073,7 +37093,7 @@ NAME in FProto || __webpack_require__(12) && dP(FProto, NAME, {
 });
 
 /***/ }),
-/* 406 */
+/* 407 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.3 Math.acosh(x)
@@ -37096,7 +37116,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ }),
-/* 407 */
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.5 Math.asinh(x)
@@ -37111,7 +37131,7 @@ function asinh(x){
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
 
 /***/ }),
-/* 408 */
+/* 409 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.7 Math.atanh(x)
@@ -37126,7 +37146,7 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ }),
-/* 409 */
+/* 410 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.9 Math.cbrt(x)
@@ -37140,7 +37160,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 410 */
+/* 411 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.11 Math.clz32(x)
@@ -37153,7 +37173,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 411 */
+/* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.12 Math.cosh(x)
@@ -37167,7 +37187,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 412 */
+/* 413 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -37177,7 +37197,7 @@ var $export = __webpack_require__(0)
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
 
 /***/ }),
-/* 413 */
+/* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
@@ -37208,7 +37228,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 414 */
+/* 415 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -37238,7 +37258,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 415 */
+/* 416 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.18 Math.imul(x, y)
@@ -37260,7 +37280,7 @@ $export($export.S + $export.F * __webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 416 */
+/* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.21 Math.log10(x)
@@ -37273,7 +37293,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 417 */
+/* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.20 Math.log1p(x)
@@ -37282,7 +37302,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', {log1p: __webpack_require__(259)});
 
 /***/ }),
-/* 418 */
+/* 419 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.22 Math.log2(x)
@@ -37295,7 +37315,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 419 */
+/* 420 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.28 Math.sign(x)
@@ -37304,7 +37324,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Math', {sign: __webpack_require__(166)});
 
 /***/ }),
-/* 420 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.30 Math.sinh(x)
@@ -37324,7 +37344,7 @@ $export($export.S + $export.F * __webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 421 */
+/* 422 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.33 Math.tanh(x)
@@ -37341,7 +37361,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 422 */
+/* 423 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.34 Math.trunc(x)
@@ -37354,7 +37374,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 423 */
+/* 424 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37429,7 +37449,7 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
 }
 
 /***/ }),
-/* 424 */
+/* 425 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.1 Number.EPSILON
@@ -37438,7 +37458,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
 
 /***/ }),
-/* 425 */
+/* 426 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.2 Number.isFinite(number)
@@ -37452,7 +37472,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 426 */
+/* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
@@ -37461,7 +37481,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {isInteger: __webpack_require__(256)});
 
 /***/ }),
-/* 427 */
+/* 428 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.4 Number.isNaN(number)
@@ -37474,7 +37494,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 428 */
+/* 429 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.5 Number.isSafeInteger(number)
@@ -37489,7 +37509,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 429 */
+/* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -37498,7 +37518,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
 
 /***/ }),
-/* 430 */
+/* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -37507,7 +37527,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
 
 /***/ }),
-/* 431 */
+/* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(0)
@@ -37516,7 +37536,7 @@ var $export     = __webpack_require__(0)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
 
 /***/ }),
-/* 432 */
+/* 433 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
@@ -37525,7 +37545,7 @@ var $export   = __webpack_require__(0)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
 
 /***/ }),
-/* 433 */
+/* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37644,7 +37664,7 @@ $export($export.P + $export.F * (!!$toFixed && (
 });
 
 /***/ }),
-/* 434 */
+/* 435 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37668,7 +37688,7 @@ $export($export.P + $export.F * ($fails(function(){
 });
 
 /***/ }),
-/* 435 */
+/* 436 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
@@ -37677,7 +37697,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F, 'Object', {assign: __webpack_require__(260)});
 
 /***/ }),
-/* 436 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
@@ -37685,7 +37705,7 @@ var $export = __webpack_require__(0)
 $export($export.S, 'Object', {create: __webpack_require__(73)});
 
 /***/ }),
-/* 437 */
+/* 438 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -37693,7 +37713,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(12), 'Object', {defineProperties: __webpack_require__(261)});
 
 /***/ }),
-/* 438 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -37701,7 +37721,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(12), 'Object', {defineProperty: __webpack_require__(13).f});
 
 /***/ }),
-/* 439 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
@@ -37715,7 +37735,7 @@ __webpack_require__(46)('freeze', function($freeze){
 });
 
 /***/ }),
-/* 440 */
+/* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
@@ -37729,7 +37749,7 @@ __webpack_require__(46)('getOwnPropertyDescriptor', function(){
 });
 
 /***/ }),
-/* 441 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
@@ -37738,7 +37758,7 @@ __webpack_require__(46)('getOwnPropertyNames', function(){
 });
 
 /***/ }),
-/* 442 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -37752,7 +37772,7 @@ __webpack_require__(46)('getPrototypeOf', function(){
 });
 
 /***/ }),
-/* 443 */
+/* 444 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.11 Object.isExtensible(O)
@@ -37765,7 +37785,7 @@ __webpack_require__(46)('isExtensible', function($isExtensible){
 });
 
 /***/ }),
-/* 444 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.12 Object.isFrozen(O)
@@ -37778,7 +37798,7 @@ __webpack_require__(46)('isFrozen', function($isFrozen){
 });
 
 /***/ }),
-/* 445 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.13 Object.isSealed(O)
@@ -37791,7 +37811,7 @@ __webpack_require__(46)('isSealed', function($isSealed){
 });
 
 /***/ }),
-/* 446 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
@@ -37799,7 +37819,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', {is: __webpack_require__(268)});
 
 /***/ }),
-/* 447 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -37813,7 +37833,7 @@ __webpack_require__(46)('keys', function(){
 });
 
 /***/ }),
-/* 448 */
+/* 449 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.15 Object.preventExtensions(O)
@@ -37827,7 +37847,7 @@ __webpack_require__(46)('preventExtensions', function($preventExtensions){
 });
 
 /***/ }),
-/* 449 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.17 Object.seal(O)
@@ -37841,7 +37861,7 @@ __webpack_require__(46)('seal', function($seal){
 });
 
 /***/ }),
-/* 450 */
+/* 451 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
@@ -37849,7 +37869,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Object', {setPrototypeOf: __webpack_require__(168).set});
 
 /***/ }),
-/* 451 */
+/* 452 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -37865,7 +37885,7 @@ if(test + '' != '[object z]'){
 }
 
 /***/ }),
-/* 452 */
+/* 453 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(0)
@@ -37874,7 +37894,7 @@ var $export     = __webpack_require__(0)
 $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
 
 /***/ }),
-/* 453 */
+/* 454 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
@@ -37883,7 +37903,7 @@ var $export   = __webpack_require__(0)
 $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
 
 /***/ }),
-/* 454 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38188,7 +38208,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(127)(functio
 });
 
 /***/ }),
-/* 455 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
@@ -38209,7 +38229,7 @@ $export($export.S + $export.F * !__webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 456 */
+/* 457 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
@@ -38261,7 +38281,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ }),
-/* 457 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
@@ -38288,7 +38308,7 @@ $export($export.S + $export.F * __webpack_require__(7)(function(){
 });
 
 /***/ }),
-/* 458 */
+/* 459 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -38304,7 +38324,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 459 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38336,7 +38356,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 460 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -38351,7 +38371,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 461 */
+/* 462 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.8 Reflect.getPrototypeOf(target)
@@ -38366,7 +38386,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 462 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
@@ -38392,7 +38412,7 @@ function get(target, propertyKey/*, receiver*/){
 $export($export.S, 'Reflect', {get: get});
 
 /***/ }),
-/* 463 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.9 Reflect.has(target, propertyKey)
@@ -38405,7 +38425,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 464 */
+/* 465 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.10 Reflect.isExtensible(target)
@@ -38421,7 +38441,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 465 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.11 Reflect.ownKeys(target)
@@ -38430,7 +38450,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Reflect', {ownKeys: __webpack_require__(265)});
 
 /***/ }),
-/* 466 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.12 Reflect.preventExtensions(target)
@@ -38451,7 +38471,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 467 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
@@ -38471,7 +38491,7 @@ if(setProto)$export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 468 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
@@ -38507,7 +38527,7 @@ function set(target, propertyKey, V/*, receiver*/){
 $export($export.S, 'Reflect', {set: set});
 
 /***/ }),
-/* 469 */
+/* 470 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global            = __webpack_require__(6)
@@ -38555,7 +38575,7 @@ if(__webpack_require__(12) && (!CORRECT_NEW || __webpack_require__(7)(function()
 __webpack_require__(77)('RegExp');
 
 /***/ }),
-/* 470 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@match logic
@@ -38570,7 +38590,7 @@ __webpack_require__(123)('match', 1, function(defined, MATCH, $match){
 });
 
 /***/ }),
-/* 471 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@replace logic
@@ -38587,7 +38607,7 @@ __webpack_require__(123)('replace', 2, function(defined, REPLACE, $replace){
 });
 
 /***/ }),
-/* 472 */
+/* 473 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@search logic
@@ -38602,7 +38622,7 @@ __webpack_require__(123)('search', 1, function(defined, SEARCH, $search){
 });
 
 /***/ }),
-/* 473 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@split logic
@@ -38677,7 +38697,7 @@ __webpack_require__(123)('split', 2, function(defined, SPLIT, $split){
 });
 
 /***/ }),
-/* 474 */
+/* 475 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38708,7 +38728,7 @@ if(__webpack_require__(7)(function(){ return $toString.call({source: 'a', flags:
 }
 
 /***/ }),
-/* 475 */
+/* 476 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38721,7 +38741,7 @@ __webpack_require__(31)('anchor', function(createHTML){
 });
 
 /***/ }),
-/* 476 */
+/* 477 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38734,7 +38754,7 @@ __webpack_require__(31)('big', function(createHTML){
 });
 
 /***/ }),
-/* 477 */
+/* 478 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38747,7 +38767,7 @@ __webpack_require__(31)('blink', function(createHTML){
 });
 
 /***/ }),
-/* 478 */
+/* 479 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38760,7 +38780,7 @@ __webpack_require__(31)('bold', function(createHTML){
 });
 
 /***/ }),
-/* 479 */
+/* 480 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38775,7 +38795,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 480 */
+/* 481 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38801,7 +38821,7 @@ $export($export.P + $export.F * __webpack_require__(158)(ENDS_WITH), 'String', {
 });
 
 /***/ }),
-/* 481 */
+/* 482 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38814,7 +38834,7 @@ __webpack_require__(31)('fixed', function(createHTML){
 });
 
 /***/ }),
-/* 482 */
+/* 483 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38827,7 +38847,7 @@ __webpack_require__(31)('fontcolor', function(createHTML){
 });
 
 /***/ }),
-/* 483 */
+/* 484 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38840,7 +38860,7 @@ __webpack_require__(31)('fontsize', function(createHTML){
 });
 
 /***/ }),
-/* 484 */
+/* 485 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export        = __webpack_require__(0)
@@ -38868,7 +38888,7 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ }),
-/* 485 */
+/* 486 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38886,7 +38906,7 @@ $export($export.P + $export.F * __webpack_require__(158)(INCLUDES), 'String', {
 });
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38899,7 +38919,7 @@ __webpack_require__(31)('italics', function(createHTML){
 });
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38922,7 +38942,7 @@ __webpack_require__(164)(String, 'String', function(iterated){
 });
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38935,7 +38955,7 @@ __webpack_require__(31)('link', function(createHTML){
 });
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
@@ -38958,7 +38978,7 @@ $export($export.S, 'String', {
 });
 
 /***/ }),
-/* 490 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -38969,7 +38989,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 491 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38982,7 +39002,7 @@ __webpack_require__(31)('small', function(createHTML){
 });
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39006,7 +39026,7 @@ $export($export.P + $export.F * __webpack_require__(158)(STARTS_WITH), 'String',
 });
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39019,7 +39039,7 @@ __webpack_require__(31)('strike', function(createHTML){
 });
 
 /***/ }),
-/* 494 */
+/* 495 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39032,7 +39052,7 @@ __webpack_require__(31)('sub', function(createHTML){
 });
 
 /***/ }),
-/* 495 */
+/* 496 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39045,7 +39065,7 @@ __webpack_require__(31)('sup', function(createHTML){
 });
 
 /***/ }),
-/* 496 */
+/* 497 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39058,7 +39078,7 @@ __webpack_require__(93)('trim', function($trim){
 });
 
 /***/ }),
-/* 497 */
+/* 498 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39077,8 +39097,8 @@ var global         = __webpack_require__(6)
   , wks            = __webpack_require__(10)
   , wksExt         = __webpack_require__(270)
   , wksDefine      = __webpack_require__(177)
-  , keyOf          = __webpack_require__(373)
-  , enumKeys       = __webpack_require__(372)
+  , keyOf          = __webpack_require__(374)
+  , enumKeys       = __webpack_require__(373)
   , isArray        = __webpack_require__(162)
   , anObject       = __webpack_require__(5)
   , toIObject      = __webpack_require__(32)
@@ -39299,7 +39319,7 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 498 */
+/* 499 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39351,7 +39371,7 @@ $export($export.P + $export.U + $export.F * __webpack_require__(7)(function(){
 __webpack_require__(77)(ARRAY_BUFFER);
 
 /***/ }),
-/* 499 */
+/* 500 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -39360,7 +39380,7 @@ $export($export.G + $export.W + $export.F * !__webpack_require__(131).ABV, {
 });
 
 /***/ }),
-/* 500 */
+/* 501 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Float32', 4, function(init){
@@ -39370,7 +39390,7 @@ __webpack_require__(54)('Float32', 4, function(init){
 });
 
 /***/ }),
-/* 501 */
+/* 502 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Float64', 8, function(init){
@@ -39380,7 +39400,7 @@ __webpack_require__(54)('Float64', 8, function(init){
 });
 
 /***/ }),
-/* 502 */
+/* 503 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Int16', 2, function(init){
@@ -39390,7 +39410,7 @@ __webpack_require__(54)('Int16', 2, function(init){
 });
 
 /***/ }),
-/* 503 */
+/* 504 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Int32', 4, function(init){
@@ -39400,7 +39420,7 @@ __webpack_require__(54)('Int32', 4, function(init){
 });
 
 /***/ }),
-/* 504 */
+/* 505 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Int8', 1, function(init){
@@ -39410,7 +39430,7 @@ __webpack_require__(54)('Int8', 1, function(init){
 });
 
 /***/ }),
-/* 505 */
+/* 506 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint16', 2, function(init){
@@ -39420,7 +39440,7 @@ __webpack_require__(54)('Uint16', 2, function(init){
 });
 
 /***/ }),
-/* 506 */
+/* 507 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint32', 4, function(init){
@@ -39430,7 +39450,7 @@ __webpack_require__(54)('Uint32', 4, function(init){
 });
 
 /***/ }),
-/* 507 */
+/* 508 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint8', 1, function(init){
@@ -39440,7 +39460,7 @@ __webpack_require__(54)('Uint8', 1, function(init){
 });
 
 /***/ }),
-/* 508 */
+/* 509 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(54)('Uint8', 1, function(init){
@@ -39450,7 +39470,7 @@ __webpack_require__(54)('Uint8', 1, function(init){
 }, true);
 
 /***/ }),
-/* 509 */
+/* 510 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39468,7 +39488,7 @@ __webpack_require__(122)('WeakSet', function(get){
 }, weak, false, true);
 
 /***/ }),
-/* 510 */
+/* 511 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39486,7 +39506,7 @@ $export($export.P, 'Array', {
 __webpack_require__(89)('includes');
 
 /***/ }),
-/* 511 */
+/* 512 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
@@ -39503,7 +39523,7 @@ $export($export.G, {
 });
 
 /***/ }),
-/* 512 */
+/* 513 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-is-error
@@ -39517,7 +39537,7 @@ $export($export.S, 'Error', {
 });
 
 /***/ }),
-/* 513 */
+/* 514 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -39526,7 +39546,7 @@ var $export  = __webpack_require__(0);
 $export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(253)('Map')});
 
 /***/ }),
-/* 514 */
+/* 515 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -39542,7 +39562,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 515 */
+/* 516 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -39563,7 +39583,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 516 */
+/* 517 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -39579,7 +39599,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 517 */
+/* 518 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -39600,7 +39620,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 518 */
+/* 519 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39618,7 +39638,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(128), 'Object
 });
 
 /***/ }),
-/* 519 */
+/* 520 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39636,7 +39656,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(128), 'Object
 });
 
 /***/ }),
-/* 520 */
+/* 521 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -39650,7 +39670,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 521 */
+/* 522 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
@@ -39674,7 +39694,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 522 */
+/* 523 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39698,7 +39718,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(128), 'Object
 });
 
 /***/ }),
-/* 523 */
+/* 524 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39722,7 +39742,7 @@ __webpack_require__(12) && $export($export.P + __webpack_require__(128), 'Object
 });
 
 /***/ }),
-/* 524 */
+/* 525 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
@@ -39736,7 +39756,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 525 */
+/* 526 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -39941,7 +39961,7 @@ $export($export.G, {Observable: $Observable});
 __webpack_require__(77)('Observable');
 
 /***/ }),
-/* 526 */
+/* 527 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(53)
@@ -39954,7 +39974,7 @@ metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue
 }});
 
 /***/ }),
-/* 527 */
+/* 528 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(53)
@@ -39974,7 +39994,7 @@ metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 528 */
+/* 529 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Set                     = __webpack_require__(273)
@@ -39998,7 +40018,7 @@ metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */)
 }});
 
 /***/ }),
-/* 529 */
+/* 530 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(53)
@@ -40020,7 +40040,7 @@ metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ }),
-/* 530 */
+/* 531 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                = __webpack_require__(53)
@@ -40033,7 +40053,7 @@ metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetK
 }});
 
 /***/ }),
-/* 531 */
+/* 532 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(53)
@@ -40047,7 +40067,7 @@ metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 532 */
+/* 533 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(53)
@@ -40068,7 +40088,7 @@ metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ }),
-/* 533 */
+/* 534 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(53)
@@ -40082,7 +40102,7 @@ metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 534 */
+/* 535 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(53)
@@ -40102,7 +40122,7 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
 }});
 
 /***/ }),
-/* 535 */
+/* 536 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
@@ -40111,7 +40131,7 @@ var $export  = __webpack_require__(0);
 $export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(253)('Set')});
 
 /***/ }),
-/* 536 */
+/* 537 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40127,7 +40147,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 537 */
+/* 538 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40163,7 +40183,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 538 */
+/* 539 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40179,7 +40199,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 539 */
+/* 540 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40195,7 +40215,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 540 */
+/* 541 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40208,7 +40228,7 @@ __webpack_require__(93)('trimLeft', function($trim){
 }, 'trimStart');
 
 /***/ }),
-/* 541 */
+/* 542 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40221,19 +40241,19 @@ __webpack_require__(93)('trimRight', function($trim){
 }, 'trimEnd');
 
 /***/ }),
-/* 542 */
+/* 543 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(177)('asyncIterator');
 
 /***/ }),
-/* 543 */
+/* 544 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(177)('observable');
 
 /***/ }),
-/* 544 */
+/* 545 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-global
@@ -40242,7 +40262,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'System', {global: __webpack_require__(6)});
 
 /***/ }),
-/* 545 */
+/* 546 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $iterators    = __webpack_require__(179)
@@ -40269,7 +40289,7 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 }
 
 /***/ }),
-/* 546 */
+/* 547 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
@@ -40280,14 +40300,14 @@ $export($export.G + $export.B, {
 });
 
 /***/ }),
-/* 547 */
+/* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
 var global     = __webpack_require__(6)
   , $export    = __webpack_require__(0)
   , invoke     = __webpack_require__(125)
-  , partial    = __webpack_require__(374)
+  , partial    = __webpack_require__(375)
   , navigator  = global.navigator
   , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
 var wrap = function(set){
@@ -40305,36 +40325,35 @@ $export($export.G + $export.B + $export.F * MSIE, {
 });
 
 /***/ }),
-/* 548 */
+/* 549 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(497);
-__webpack_require__(436);
-__webpack_require__(438);
+__webpack_require__(498);
 __webpack_require__(437);
-__webpack_require__(440);
-__webpack_require__(442);
-__webpack_require__(447);
-__webpack_require__(441);
 __webpack_require__(439);
-__webpack_require__(449);
-__webpack_require__(448);
-__webpack_require__(444);
-__webpack_require__(445);
+__webpack_require__(438);
+__webpack_require__(441);
 __webpack_require__(443);
-__webpack_require__(435);
-__webpack_require__(446);
+__webpack_require__(448);
+__webpack_require__(442);
+__webpack_require__(440);
 __webpack_require__(450);
+__webpack_require__(449);
+__webpack_require__(445);
+__webpack_require__(446);
+__webpack_require__(444);
+__webpack_require__(436);
+__webpack_require__(447);
 __webpack_require__(451);
-__webpack_require__(403);
-__webpack_require__(405);
-__webpack_require__(404);
-__webpack_require__(453);
 __webpack_require__(452);
-__webpack_require__(423);
-__webpack_require__(433);
-__webpack_require__(434);
+__webpack_require__(404);
+__webpack_require__(406);
+__webpack_require__(405);
+__webpack_require__(454);
+__webpack_require__(453);
 __webpack_require__(424);
+__webpack_require__(434);
+__webpack_require__(435);
 __webpack_require__(425);
 __webpack_require__(426);
 __webpack_require__(427);
@@ -40343,7 +40362,7 @@ __webpack_require__(429);
 __webpack_require__(430);
 __webpack_require__(431);
 __webpack_require__(432);
-__webpack_require__(406);
+__webpack_require__(433);
 __webpack_require__(407);
 __webpack_require__(408);
 __webpack_require__(409);
@@ -40360,142 +40379,137 @@ __webpack_require__(419);
 __webpack_require__(420);
 __webpack_require__(421);
 __webpack_require__(422);
-__webpack_require__(484);
-__webpack_require__(489);
-__webpack_require__(496);
-__webpack_require__(487);
-__webpack_require__(479);
-__webpack_require__(480);
+__webpack_require__(423);
 __webpack_require__(485);
 __webpack_require__(490);
-__webpack_require__(492);
-__webpack_require__(475);
+__webpack_require__(497);
+__webpack_require__(488);
+__webpack_require__(480);
+__webpack_require__(481);
+__webpack_require__(486);
+__webpack_require__(491);
+__webpack_require__(493);
 __webpack_require__(476);
 __webpack_require__(477);
 __webpack_require__(478);
-__webpack_require__(481);
+__webpack_require__(479);
 __webpack_require__(482);
 __webpack_require__(483);
-__webpack_require__(486);
-__webpack_require__(488);
-__webpack_require__(491);
-__webpack_require__(493);
+__webpack_require__(484);
+__webpack_require__(487);
+__webpack_require__(489);
+__webpack_require__(492);
 __webpack_require__(494);
 __webpack_require__(495);
-__webpack_require__(398);
-__webpack_require__(400);
+__webpack_require__(496);
 __webpack_require__(399);
-__webpack_require__(402);
 __webpack_require__(401);
-__webpack_require__(387);
+__webpack_require__(400);
+__webpack_require__(403);
+__webpack_require__(402);
+__webpack_require__(388);
+__webpack_require__(386);
+__webpack_require__(392);
+__webpack_require__(389);
+__webpack_require__(395);
+__webpack_require__(397);
 __webpack_require__(385);
 __webpack_require__(391);
-__webpack_require__(388);
-__webpack_require__(394);
-__webpack_require__(396);
-__webpack_require__(384);
-__webpack_require__(390);
-__webpack_require__(381);
-__webpack_require__(395);
-__webpack_require__(379);
-__webpack_require__(393);
-__webpack_require__(392);
-__webpack_require__(386);
-__webpack_require__(389);
-__webpack_require__(378);
-__webpack_require__(380);
-__webpack_require__(383);
 __webpack_require__(382);
-__webpack_require__(397);
+__webpack_require__(396);
+__webpack_require__(380);
+__webpack_require__(394);
+__webpack_require__(393);
+__webpack_require__(387);
+__webpack_require__(390);
+__webpack_require__(379);
+__webpack_require__(381);
+__webpack_require__(384);
+__webpack_require__(383);
+__webpack_require__(398);
 __webpack_require__(179);
-__webpack_require__(469);
-__webpack_require__(474);
-__webpack_require__(272);
 __webpack_require__(470);
+__webpack_require__(475);
+__webpack_require__(272);
 __webpack_require__(471);
 __webpack_require__(472);
 __webpack_require__(473);
-__webpack_require__(454);
+__webpack_require__(474);
+__webpack_require__(455);
 __webpack_require__(271);
 __webpack_require__(273);
 __webpack_require__(274);
-__webpack_require__(509);
-__webpack_require__(498);
+__webpack_require__(510);
 __webpack_require__(499);
-__webpack_require__(504);
-__webpack_require__(507);
-__webpack_require__(508);
-__webpack_require__(502);
+__webpack_require__(500);
 __webpack_require__(505);
+__webpack_require__(508);
+__webpack_require__(509);
 __webpack_require__(503);
 __webpack_require__(506);
-__webpack_require__(500);
+__webpack_require__(504);
+__webpack_require__(507);
 __webpack_require__(501);
-__webpack_require__(455);
+__webpack_require__(502);
 __webpack_require__(456);
 __webpack_require__(457);
 __webpack_require__(458);
 __webpack_require__(459);
-__webpack_require__(462);
 __webpack_require__(460);
-__webpack_require__(461);
 __webpack_require__(463);
+__webpack_require__(461);
+__webpack_require__(462);
 __webpack_require__(464);
 __webpack_require__(465);
 __webpack_require__(466);
-__webpack_require__(468);
 __webpack_require__(467);
-__webpack_require__(510);
-__webpack_require__(536);
-__webpack_require__(539);
-__webpack_require__(538);
-__webpack_require__(540);
-__webpack_require__(541);
+__webpack_require__(469);
+__webpack_require__(468);
+__webpack_require__(511);
 __webpack_require__(537);
+__webpack_require__(540);
+__webpack_require__(539);
+__webpack_require__(541);
 __webpack_require__(542);
+__webpack_require__(538);
 __webpack_require__(543);
-__webpack_require__(521);
-__webpack_require__(524);
-__webpack_require__(520);
-__webpack_require__(518);
-__webpack_require__(519);
-__webpack_require__(522);
-__webpack_require__(523);
-__webpack_require__(513);
-__webpack_require__(535);
 __webpack_require__(544);
-__webpack_require__(512);
+__webpack_require__(522);
+__webpack_require__(525);
+__webpack_require__(521);
+__webpack_require__(519);
+__webpack_require__(520);
+__webpack_require__(523);
+__webpack_require__(524);
 __webpack_require__(514);
-__webpack_require__(516);
+__webpack_require__(536);
+__webpack_require__(545);
+__webpack_require__(513);
 __webpack_require__(515);
 __webpack_require__(517);
-__webpack_require__(526);
+__webpack_require__(516);
+__webpack_require__(518);
 __webpack_require__(527);
-__webpack_require__(529);
 __webpack_require__(528);
-__webpack_require__(531);
 __webpack_require__(530);
+__webpack_require__(529);
 __webpack_require__(532);
+__webpack_require__(531);
 __webpack_require__(533);
 __webpack_require__(534);
-__webpack_require__(511);
-__webpack_require__(525);
+__webpack_require__(535);
+__webpack_require__(512);
+__webpack_require__(526);
+__webpack_require__(548);
 __webpack_require__(547);
 __webpack_require__(546);
-__webpack_require__(545);
 module.exports = __webpack_require__(51);
-
-/***/ }),
-/* 549 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(556), __esModule: true };
 
 /***/ }),
 /* 550 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(560), __esModule: true };
+module.exports = { "default": __webpack_require__(557), __esModule: true };
 
 /***/ }),
 /* 551 */
@@ -40511,6 +40525,12 @@ module.exports = { "default": __webpack_require__(562), __esModule: true };
 
 /***/ }),
 /* 553 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(563), __esModule: true };
+
+/***/ }),
+/* 554 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40529,29 +40549,19 @@ exports.default = function (arr) {
 };
 
 /***/ }),
-/* 554 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(229);
-__webpack_require__(584);
-module.exports = __webpack_require__(34).Array.from;
-
-/***/ }),
 /* 555 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(586);
-module.exports = __webpack_require__(34).Object.assign;
+__webpack_require__(229);
+__webpack_require__(585);
+module.exports = __webpack_require__(34).Array.from;
 
 /***/ }),
 /* 556 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(587);
-var $Object = __webpack_require__(34).Object;
-module.exports = function create(P, D){
-  return $Object.create(P, D);
-};
+module.exports = __webpack_require__(34).Object.assign;
 
 /***/ }),
 /* 557 */
@@ -40559,8 +40569,8 @@ module.exports = function create(P, D){
 
 __webpack_require__(588);
 var $Object = __webpack_require__(34).Object;
-module.exports = function defineProperty(it, key, desc){
-  return $Object.defineProperty(it, key, desc);
+module.exports = function create(P, D){
+  return $Object.create(P, D);
 };
 
 /***/ }),
@@ -40568,34 +40578,44 @@ module.exports = function defineProperty(it, key, desc){
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(589);
-module.exports = __webpack_require__(34).Object.getPrototypeOf;
+var $Object = __webpack_require__(34).Object;
+module.exports = function defineProperty(it, key, desc){
+  return $Object.defineProperty(it, key, desc);
+};
 
 /***/ }),
 /* 559 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(590);
-module.exports = __webpack_require__(34).Object.keys;
+module.exports = __webpack_require__(34).Object.getPrototypeOf;
 
 /***/ }),
 /* 560 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(591);
-module.exports = __webpack_require__(34).Object.setPrototypeOf;
+module.exports = __webpack_require__(34).Object.keys;
 
 /***/ }),
 /* 561 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(593);
 __webpack_require__(592);
-__webpack_require__(594);
-__webpack_require__(595);
-module.exports = __webpack_require__(34).Symbol;
+module.exports = __webpack_require__(34).Object.setPrototypeOf;
 
 /***/ }),
 /* 562 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(594);
+__webpack_require__(593);
+__webpack_require__(595);
+__webpack_require__(596);
+module.exports = __webpack_require__(34).Symbol;
+
+/***/ }),
+/* 563 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(229);
@@ -40603,7 +40623,7 @@ __webpack_require__(341);
 module.exports = __webpack_require__(194).f('iterator');
 
 /***/ }),
-/* 563 */
+/* 564 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -40612,20 +40632,20 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 564 */
+/* 565 */
 /***/ (function(module, exports) {
 
 module.exports = function(){ /* empty */ };
 
 /***/ }),
-/* 565 */
+/* 566 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = __webpack_require__(82)
   , toLength  = __webpack_require__(289)
-  , toIndex   = __webpack_require__(583);
+  , toIndex   = __webpack_require__(584);
 module.exports = function(IS_INCLUDES){
   return function($this, el, fromIndex){
     var O      = toIObject($this)
@@ -40644,7 +40664,7 @@ module.exports = function(IS_INCLUDES){
 };
 
 /***/ }),
-/* 566 */
+/* 567 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
@@ -40672,7 +40692,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 567 */
+/* 568 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40686,7 +40706,7 @@ module.exports = function(object, index, value){
 };
 
 /***/ }),
-/* 568 */
+/* 569 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
@@ -40706,13 +40726,13 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 569 */
+/* 570 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(64).document && document.documentElement;
 
 /***/ }),
-/* 570 */
+/* 571 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
@@ -40725,7 +40745,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 571 */
+/* 572 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -40735,7 +40755,7 @@ module.exports = Array.isArray || function isArray(arg){
 };
 
 /***/ }),
-/* 572 */
+/* 573 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -40752,7 +40772,7 @@ module.exports = function(iterator, fn, value, entries){
 };
 
 /***/ }),
-/* 573 */
+/* 574 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40771,7 +40791,7 @@ module.exports = function(Constructor, NAME, next){
 };
 
 /***/ }),
-/* 574 */
+/* 575 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR     = __webpack_require__(48)('iterator')
@@ -40797,7 +40817,7 @@ module.exports = function(exec, skipClosing){
 };
 
 /***/ }),
-/* 575 */
+/* 576 */
 /***/ (function(module, exports) {
 
 module.exports = function(done, value){
@@ -40805,7 +40825,7 @@ module.exports = function(done, value){
 };
 
 /***/ }),
-/* 576 */
+/* 577 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(96)
@@ -40820,7 +40840,7 @@ module.exports = function(object, el){
 };
 
 /***/ }),
-/* 577 */
+/* 578 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var META     = __webpack_require__(133)('meta')
@@ -40878,7 +40898,7 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 578 */
+/* 579 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -40917,7 +40937,7 @@ module.exports = !$assign || __webpack_require__(94)(function(){
 } : $assign;
 
 /***/ }),
-/* 579 */
+/* 580 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP       = __webpack_require__(65)
@@ -40935,7 +40955,7 @@ module.exports = __webpack_require__(80) ? Object.defineProperties : function de
 };
 
 /***/ }),
-/* 580 */
+/* 581 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -40960,7 +40980,7 @@ module.exports.f = function getOwnPropertyNames(it){
 
 
 /***/ }),
-/* 581 */
+/* 582 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
@@ -40990,7 +41010,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 582 */
+/* 583 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(191)
@@ -41012,7 +41032,7 @@ module.exports = function(TO_STRING){
 };
 
 /***/ }),
-/* 583 */
+/* 584 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(191)
@@ -41024,7 +41044,7 @@ module.exports = function(index, length){
 };
 
 /***/ }),
-/* 584 */
+/* 585 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41032,13 +41052,13 @@ module.exports = function(index, length){
 var ctx            = __webpack_require__(182)
   , $export        = __webpack_require__(63)
   , toObject       = __webpack_require__(111)
-  , call           = __webpack_require__(572)
-  , isArrayIter    = __webpack_require__(570)
+  , call           = __webpack_require__(573)
+  , isArrayIter    = __webpack_require__(571)
   , toLength       = __webpack_require__(289)
-  , createProperty = __webpack_require__(567)
+  , createProperty = __webpack_require__(568)
   , getIterFn      = __webpack_require__(340);
 
-$export($export.S + $export.F * !__webpack_require__(574)(function(iter){ Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !__webpack_require__(575)(function(iter){ Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
     var O       = toObject(arrayLike)
@@ -41068,13 +41088,13 @@ $export($export.S + $export.F * !__webpack_require__(574)(function(iter){ Array.
 
 
 /***/ }),
-/* 585 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(564)
-  , step             = __webpack_require__(575)
+var addToUnscopables = __webpack_require__(565)
+  , step             = __webpack_require__(576)
   , Iterators        = __webpack_require__(109)
   , toIObject        = __webpack_require__(82);
 
@@ -41108,16 +41128,16 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 586 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(63);
 
-$export($export.S + $export.F, 'Object', {assign: __webpack_require__(578)});
+$export($export.S + $export.F, 'Object', {assign: __webpack_require__(579)});
 
 /***/ }),
-/* 587 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(63)
@@ -41125,7 +41145,7 @@ var $export = __webpack_require__(63)
 $export($export.S, 'Object', {create: __webpack_require__(186)});
 
 /***/ }),
-/* 588 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(63);
@@ -41133,7 +41153,7 @@ var $export = __webpack_require__(63);
 $export($export.S + $export.F * !__webpack_require__(80), 'Object', {defineProperty: __webpack_require__(65).f});
 
 /***/ }),
-/* 589 */
+/* 590 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -41147,7 +41167,7 @@ __webpack_require__(287)('getPrototypeOf', function(){
 });
 
 /***/ }),
-/* 590 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -41161,21 +41181,21 @@ __webpack_require__(287)('keys', function(){
 });
 
 /***/ }),
-/* 591 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(63);
-$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(581).set});
+$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(582).set});
 
 /***/ }),
-/* 592 */
+/* 593 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 593 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -41186,7 +41206,7 @@ var global         = __webpack_require__(64)
   , DESCRIPTORS    = __webpack_require__(80)
   , $export        = __webpack_require__(63)
   , redefine       = __webpack_require__(288)
-  , META           = __webpack_require__(577).KEY
+  , META           = __webpack_require__(578).KEY
   , $fails         = __webpack_require__(94)
   , shared         = __webpack_require__(190)
   , setToStringTag = __webpack_require__(188)
@@ -41194,15 +41214,15 @@ var global         = __webpack_require__(64)
   , wks            = __webpack_require__(48)
   , wksExt         = __webpack_require__(194)
   , wksDefine      = __webpack_require__(193)
-  , keyOf          = __webpack_require__(576)
-  , enumKeys       = __webpack_require__(568)
-  , isArray        = __webpack_require__(571)
+  , keyOf          = __webpack_require__(577)
+  , enumKeys       = __webpack_require__(569)
+  , isArray        = __webpack_require__(572)
   , anObject       = __webpack_require__(87)
   , toIObject      = __webpack_require__(82)
   , toPrimitive    = __webpack_require__(192)
   , createDesc     = __webpack_require__(110)
   , _create        = __webpack_require__(186)
-  , gOPNExt        = __webpack_require__(580)
+  , gOPNExt        = __webpack_require__(581)
   , $GOPD          = __webpack_require__(283)
   , $DP            = __webpack_require__(65)
   , $keys          = __webpack_require__(96)
@@ -41416,19 +41436,19 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 594 */
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(193)('asyncIterator');
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(193)('observable');
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -42014,7 +42034,7 @@ __webpack_require__(193)('observable');
 
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42051,7 +42071,7 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42068,7 +42088,7 @@ module.exports = camelize;
 
 
 
-var camelize = __webpack_require__(597);
+var camelize = __webpack_require__(598);
 
 var msPattern = /^-ms-/;
 
@@ -42096,7 +42116,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42113,7 +42133,7 @@ module.exports = camelizeStyleName;
  * 
  */
 
-var isTextNode = __webpack_require__(607);
+var isTextNode = __webpack_require__(608);
 
 /*eslint-disable no-bitwise */
 
@@ -42141,7 +42161,7 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42274,7 +42294,7 @@ module.exports = createArrayFromMixed;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42295,8 +42315,8 @@ module.exports = createArrayFromMixed;
 
 var ExecutionEnvironment = __webpack_require__(21);
 
-var createArrayFromMixed = __webpack_require__(600);
-var getMarkupWrap = __webpack_require__(602);
+var createArrayFromMixed = __webpack_require__(601);
+var getMarkupWrap = __webpack_require__(603);
 var invariant = __webpack_require__(3);
 
 /**
@@ -42364,7 +42384,7 @@ module.exports = createNodesFromMarkup;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42465,7 +42485,7 @@ module.exports = getMarkupWrap;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42509,7 +42529,7 @@ function getUnboundedScrollPosition(scrollable) {
 module.exports = getUnboundedScrollPosition;
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42547,7 +42567,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42564,7 +42584,7 @@ module.exports = hyphenate;
 
 
 
-var hyphenate = __webpack_require__(604);
+var hyphenate = __webpack_require__(605);
 
 var msPattern = /^ms-/;
 
@@ -42591,7 +42611,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42621,7 +42641,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42638,7 +42658,7 @@ module.exports = isNode;
  * @typechecks
  */
 
-var isNode = __webpack_require__(606);
+var isNode = __webpack_require__(607);
 
 /**
  * @param {*} object The object to check.
@@ -42651,7 +42671,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42691,7 +42711,7 @@ var keyOf = function keyOf(oneKeyObj) {
 module.exports = keyOf;
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42726,7 +42746,7 @@ function memoizeStringOnly(callback) {
 module.exports = memoizeStringOnly;
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42754,7 +42774,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = performance || {};
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42771,7 +42791,7 @@ module.exports = performance || {};
  * @typechecks
  */
 
-var performance = __webpack_require__(610);
+var performance = __webpack_require__(611);
 
 var performanceNow;
 
@@ -42793,7 +42813,7 @@ if (performance.now) {
 module.exports = performanceNow;
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42849,7 +42869,7 @@ exports.shouldInclude = shouldInclude;
 //# sourceMappingURL=directives.js.map
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42911,13 +42931,13 @@ exports.getMainDefinition = getMainDefinition;
 //# sourceMappingURL=getFromAST.js.map
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var utilities_1 = __webpack_require__(616);
+var utilities_1 = __webpack_require__(617);
 exports.filter = utilities_1.filter;
 exports.check = utilities_1.check;
 exports.propType = utilities_1.propType;
@@ -42926,7 +42946,7 @@ exports.default = graphql_1.graphql;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43016,7 +43036,7 @@ exports.graphQLResultHasError = graphQLResultHasError;
 //# sourceMappingURL=storeUtils.js.map
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43093,7 +43113,7 @@ exports.propType = propType;
 //# sourceMappingURL=utilities.js.map
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports) {
 
 module.exports =
@@ -45164,10 +45184,10 @@ module.exports =
 /******/ ]);
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var parse = __webpack_require__(617).parse;
+var parse = __webpack_require__(618).parse;
 
 // Strip insignificant whitespace
 // Note that this could do a lot more, such as reorder fields etc.
@@ -45336,7 +45356,7 @@ module.exports = gql;
 
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -45732,7 +45752,7 @@ function getVisitFn(visitor, kind, isLeaving) {
 }
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46046,7 +46066,7 @@ var createBrowserHistory = function createBrowserHistory() {
 exports.default = createBrowserHistory;
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46374,7 +46394,7 @@ var createHashHistory = function createHashHistory() {
 exports.default = createHashHistory;
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46550,7 +46570,7 @@ var createMemoryHistory = function createMemoryHistory() {
 exports.default = createMemoryHistory;
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46607,7 +46627,7 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46621,15 +46641,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 // special flexbox specifications
 
 
-var _prefixAll2 = __webpack_require__(645);
+var _prefixAll2 = __webpack_require__(646);
 
 var _prefixAll3 = _interopRequireDefault(_prefixAll2);
 
-var _getBrowserInformation = __webpack_require__(646);
+var _getBrowserInformation = __webpack_require__(647);
 
 var _getBrowserInformation2 = _interopRequireDefault(_getBrowserInformation);
 
-var _getPrefixedKeyframes = __webpack_require__(647);
+var _getPrefixedKeyframes = __webpack_require__(648);
 
 var _getPrefixedKeyframes2 = _interopRequireDefault(_getPrefixedKeyframes);
 
@@ -46641,47 +46661,47 @@ var _sortPrefixedStyle = __webpack_require__(297);
 
 var _sortPrefixedStyle2 = _interopRequireDefault(_sortPrefixedStyle);
 
-var _prefixProps = __webpack_require__(635);
+var _prefixProps = __webpack_require__(636);
 
 var _prefixProps2 = _interopRequireDefault(_prefixProps);
 
-var _position = __webpack_require__(631);
+var _position = __webpack_require__(632);
 
 var _position2 = _interopRequireDefault(_position);
 
-var _calc = __webpack_require__(625);
+var _calc = __webpack_require__(626);
 
 var _calc2 = _interopRequireDefault(_calc);
 
-var _zoomCursor = __webpack_require__(634);
+var _zoomCursor = __webpack_require__(635);
 
 var _zoomCursor2 = _interopRequireDefault(_zoomCursor);
 
-var _grabCursor = __webpack_require__(629);
+var _grabCursor = __webpack_require__(630);
 
 var _grabCursor2 = _interopRequireDefault(_grabCursor);
 
-var _flex = __webpack_require__(626);
+var _flex = __webpack_require__(627);
 
 var _flex2 = _interopRequireDefault(_flex);
 
-var _sizing = __webpack_require__(632);
+var _sizing = __webpack_require__(633);
 
 var _sizing2 = _interopRequireDefault(_sizing);
 
-var _gradient = __webpack_require__(630);
+var _gradient = __webpack_require__(631);
 
 var _gradient2 = _interopRequireDefault(_gradient);
 
-var _transition = __webpack_require__(633);
+var _transition = __webpack_require__(634);
 
 var _transition2 = _interopRequireDefault(_transition);
 
-var _flexboxIE = __webpack_require__(627);
+var _flexboxIE = __webpack_require__(628);
 
 var _flexboxIE2 = _interopRequireDefault(_flexboxIE);
 
-var _flexboxOld = __webpack_require__(628);
+var _flexboxOld = __webpack_require__(629);
 
 var _flexboxOld2 = _interopRequireDefault(_flexboxOld);
 
@@ -46842,7 +46862,7 @@ function assignStyles(base) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 625 */
+/* 626 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46877,7 +46897,7 @@ function calc(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 626 */
+/* 627 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46914,7 +46934,7 @@ function flex(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 627 */
+/* 628 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46979,7 +46999,7 @@ function flexboxIE(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 628 */
+/* 629 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47051,7 +47071,7 @@ function flexboxOld(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 629 */
+/* 630 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47087,7 +47107,7 @@ function grabCursor(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 630 */
+/* 631 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47124,7 +47144,7 @@ function gradient(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 631 */
+/* 632 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47157,7 +47177,7 @@ function position(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 632 */
+/* 633 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47208,7 +47228,7 @@ function sizing(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 633 */
+/* 634 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47226,7 +47246,7 @@ var _hyphenateStyleName = __webpack_require__(295);
 
 var _hyphenateStyleName2 = _interopRequireDefault(_hyphenateStyleName);
 
-var _unprefixProperty = __webpack_require__(649);
+var _unprefixProperty = __webpack_require__(650);
 
 var _unprefixProperty2 = _interopRequireDefault(_unprefixProperty);
 
@@ -47275,7 +47295,7 @@ function transition(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 634 */
+/* 635 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47312,7 +47332,7 @@ function zoomCursor(_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 635 */
+/* 636 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47325,7 +47345,7 @@ exports.default = { "chrome": { "transform": 35, "transformOrigin": 35, "transfo
 module.exports = exports["default"];
 
 /***/ }),
-/* 636 */
+/* 637 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47356,7 +47376,7 @@ function calc(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 637 */
+/* 638 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47388,7 +47408,7 @@ function cursor(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 638 */
+/* 639 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47410,7 +47430,7 @@ function flex(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 639 */
+/* 640 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47448,7 +47468,7 @@ function flexboxIE(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 640 */
+/* 641 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47490,7 +47510,7 @@ function flexboxOld(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 641 */
+/* 642 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47521,7 +47541,7 @@ function gradient(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 642 */
+/* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47539,7 +47559,7 @@ function position(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 643 */
+/* 644 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47581,7 +47601,7 @@ function sizing(property, value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 644 */
+/* 645 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47669,7 +47689,7 @@ function prefixValue(value) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 645 */
+/* 646 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47692,39 +47712,39 @@ var _sortPrefixedStyle = __webpack_require__(297);
 
 var _sortPrefixedStyle2 = _interopRequireDefault(_sortPrefixedStyle);
 
-var _position = __webpack_require__(642);
+var _position = __webpack_require__(643);
 
 var _position2 = _interopRequireDefault(_position);
 
-var _calc = __webpack_require__(636);
+var _calc = __webpack_require__(637);
 
 var _calc2 = _interopRequireDefault(_calc);
 
-var _cursor = __webpack_require__(637);
+var _cursor = __webpack_require__(638);
 
 var _cursor2 = _interopRequireDefault(_cursor);
 
-var _flex = __webpack_require__(638);
+var _flex = __webpack_require__(639);
 
 var _flex2 = _interopRequireDefault(_flex);
 
-var _sizing = __webpack_require__(643);
+var _sizing = __webpack_require__(644);
 
 var _sizing2 = _interopRequireDefault(_sizing);
 
-var _gradient = __webpack_require__(641);
+var _gradient = __webpack_require__(642);
 
 var _gradient2 = _interopRequireDefault(_gradient);
 
-var _transition = __webpack_require__(644);
+var _transition = __webpack_require__(645);
 
 var _transition2 = _interopRequireDefault(_transition);
 
-var _flexboxIE = __webpack_require__(639);
+var _flexboxIE = __webpack_require__(640);
 
 var _flexboxIE2 = _interopRequireDefault(_flexboxIE);
 
-var _flexboxOld = __webpack_require__(640);
+var _flexboxOld = __webpack_require__(641);
 
 var _flexboxOld2 = _interopRequireDefault(_flexboxOld);
 
@@ -47790,7 +47810,7 @@ function assignStyles(base) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 646 */
+/* 647 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47800,7 +47820,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _bowser = __webpack_require__(596);
+var _bowser = __webpack_require__(597);
 
 var _bowser2 = _interopRequireDefault(_bowser);
 
@@ -47904,7 +47924,7 @@ exports.default = function (userAgent) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 647 */
+/* 648 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47930,7 +47950,7 @@ exports.default = function (_ref) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 648 */
+/* 649 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47947,7 +47967,7 @@ exports.default = function (property) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 649 */
+/* 650 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47965,7 +47985,7 @@ exports.default = function (property) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 650 */
+/* 651 */
 /***/ (function(module, exports) {
 
 module.exports = Array.isArray || function (arr) {
@@ -47974,13 +47994,13 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 651 */
+/* 652 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Symbol_js__ = __webpack_require__(298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(654);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(655);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getRawTag_js__ = __webpack_require__(655);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__objectToString_js__ = __webpack_require__(656);
 
 
 
@@ -48012,7 +48032,7 @@ function baseGetTag(value) {
 
 
 /***/ }),
-/* 652 */
+/* 653 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48024,11 +48044,11 @@ var freeGlobal = typeof global == 'object' && global && global.Object === Object
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(69)))
 
 /***/ }),
-/* 653 */
+/* 654 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(656);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__overArg_js__ = __webpack_require__(657);
 
 
 /** Built-in value references. */
@@ -48038,7 +48058,7 @@ var getPrototype = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__overArg_js
 
 
 /***/ }),
-/* 654 */
+/* 655 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48092,7 +48112,7 @@ function getRawTag(value) {
 
 
 /***/ }),
-/* 655 */
+/* 656 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48121,7 +48141,7 @@ function objectToString(value) {
 
 
 /***/ }),
-/* 656 */
+/* 657 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48143,11 +48163,11 @@ function overArg(func, transform) {
 
 
 /***/ }),
-/* 657 */
+/* 658 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(652);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__ = __webpack_require__(653);
 
 
 /** Detect free variable `self`. */
@@ -48160,7 +48180,7 @@ var root = __WEBPACK_IMPORTED_MODULE_0__freeGlobal_js__["a" /* default */] || fr
 
 
 /***/ }),
-/* 658 */
+/* 659 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48196,7 +48216,7 @@ function isObjectLike(value) {
 
 
 /***/ }),
-/* 659 */
+/* 660 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -50410,7 +50430,7 @@ module.exports = merge;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69), __webpack_require__(146)(module)))
 
 /***/ }),
-/* 660 */
+/* 661 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -50920,7 +50940,7 @@ module.exports = pick;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69)))
 
 /***/ }),
-/* 661 */
+/* 662 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(199),
@@ -50933,14 +50953,14 @@ module.exports = Map;
 
 
 /***/ }),
-/* 662 */
+/* 663 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(964),
-    mapCacheDelete = __webpack_require__(965),
-    mapCacheGet = __webpack_require__(966),
-    mapCacheHas = __webpack_require__(967),
-    mapCacheSet = __webpack_require__(968);
+var mapCacheClear = __webpack_require__(968),
+    mapCacheDelete = __webpack_require__(969),
+    mapCacheGet = __webpack_require__(970),
+    mapCacheHas = __webpack_require__(971),
+    mapCacheSet = __webpack_require__(972);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -50971,15 +50991,15 @@ module.exports = MapCache;
 
 
 /***/ }),
-/* 663 */
+/* 664 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(343),
-    stackClear = __webpack_require__(980),
-    stackDelete = __webpack_require__(981),
-    stackGet = __webpack_require__(982),
-    stackHas = __webpack_require__(983),
-    stackSet = __webpack_require__(984);
+    stackClear = __webpack_require__(984),
+    stackDelete = __webpack_require__(985),
+    stackGet = __webpack_require__(986),
+    stackHas = __webpack_require__(987),
+    stackSet = __webpack_require__(988);
 
 /**
  * Creates a stack cache object to store key-value pairs.
@@ -51004,7 +51024,7 @@ module.exports = Stack;
 
 
 /***/ }),
-/* 664 */
+/* 665 */
 /***/ (function(module, exports) {
 
 /**
@@ -51030,7 +51050,7 @@ module.exports = arrayPush;
 
 
 /***/ }),
-/* 665 */
+/* 666 */
 /***/ (function(module, exports) {
 
 /**
@@ -51062,11 +51082,11 @@ module.exports = arrayReduce;
 
 
 /***/ }),
-/* 666 */
+/* 667 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(833),
-    eq = __webpack_require__(674);
+var baseAssignValue = __webpack_require__(834),
+    eq = __webpack_require__(675);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -51096,10 +51116,10 @@ module.exports = assignValue;
 
 
 /***/ }),
-/* 667 */
+/* 668 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqualDeep = __webpack_require__(905),
+var baseIsEqualDeep = __webpack_require__(909),
     isObjectLike = __webpack_require__(234);
 
 /**
@@ -51130,10 +51150,10 @@ module.exports = baseIsEqual;
 
 
 /***/ }),
-/* 668 */
+/* 669 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Uint8Array = __webpack_require__(829);
+var Uint8Array = __webpack_require__(830);
 
 /**
  * Creates a clone of `arrayBuffer`.
@@ -51152,10 +51172,10 @@ module.exports = cloneArrayBuffer;
 
 
 /***/ }),
-/* 669 */
+/* 670 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(848);
+var overArg = __webpack_require__(849);
 
 /** Built-in value references. */
 var getPrototype = overArg(Object.getPrototypeOf, Object);
@@ -51164,11 +51184,11 @@ module.exports = getPrototype;
 
 
 /***/ }),
-/* 670 */
+/* 671 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayFilter = __webpack_require__(895),
-    stubArray = __webpack_require__(857);
+var arrayFilter = __webpack_require__(899),
+    stubArray = __webpack_require__(858);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -51200,7 +51220,7 @@ module.exports = getSymbols;
 
 
 /***/ }),
-/* 671 */
+/* 672 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -51228,11 +51248,11 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 672 */
+/* 673 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(102),
-    isSymbol = __webpack_require__(681);
+    isSymbol = __webpack_require__(682);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -51263,7 +51283,7 @@ module.exports = isKey;
 
 
 /***/ }),
-/* 673 */
+/* 674 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -51287,7 +51307,7 @@ module.exports = isPrototype;
 
 
 /***/ }),
-/* 674 */
+/* 675 */
 /***/ (function(module, exports) {
 
 /**
@@ -51330,7 +51350,7 @@ module.exports = eq;
 
 
 /***/ }),
-/* 675 */
+/* 676 */
 /***/ (function(module, exports) {
 
 /**
@@ -51357,10 +51377,10 @@ module.exports = identity;
 
 
 /***/ }),
-/* 676 */
+/* 677 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(904),
+var baseIsArguments = __webpack_require__(908),
     isObjectLike = __webpack_require__(234);
 
 /** Used for built-in method references. */
@@ -51399,11 +51419,11 @@ module.exports = isArguments;
 
 
 /***/ }),
-/* 677 */
+/* 678 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(679),
-    isLength = __webpack_require__(680);
+var isFunction = __webpack_require__(680),
+    isLength = __webpack_require__(681);
 
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
@@ -51438,11 +51458,11 @@ module.exports = isArrayLike;
 
 
 /***/ }),
-/* 678 */
+/* 679 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(117),
-    stubFalse = __webpack_require__(997);
+    stubFalse = __webpack_require__(1001);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -51483,7 +51503,7 @@ module.exports = isBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(146)(module)))
 
 /***/ }),
-/* 679 */
+/* 680 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(231),
@@ -51526,7 +51546,7 @@ module.exports = isFunction;
 
 
 /***/ }),
-/* 680 */
+/* 681 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -51567,7 +51587,7 @@ module.exports = isLength;
 
 
 /***/ }),
-/* 681 */
+/* 682 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(231),
@@ -51602,7 +51622,7 @@ module.exports = isSymbol;
 
 
 /***/ }),
-/* 682 */
+/* 683 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -51756,7 +51776,7 @@ exports.default = Paper;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 683 */
+/* 684 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -52255,26 +52275,6 @@ exports.default = RaisedButton;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 684 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _RaisedButton = __webpack_require__(683);
-
-var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _RaisedButton2.default;
-
-/***/ }),
 /* 685 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52684,7 +52684,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _childUtils = __webpack_require__(301);
 
-var _events = __webpack_require__(351);
+var _events = __webpack_require__(352);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -52692,11 +52692,11 @@ var _keycode = __webpack_require__(342);
 
 var _keycode2 = _interopRequireDefault(_keycode);
 
-var _FocusRipple = __webpack_require__(349);
+var _FocusRipple = __webpack_require__(350);
 
 var _FocusRipple2 = _interopRequireDefault(_FocusRipple);
 
-var _TouchRipple = __webpack_require__(350);
+var _TouchRipple = __webpack_require__(351);
 
 var _TouchRipple2 = _interopRequireDefault(_TouchRipple);
 
@@ -53490,7 +53490,7 @@ var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
 exports.default = getMuiTheme;
 
-var _lodash = __webpack_require__(659);
+var _lodash = __webpack_require__(660);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -54015,7 +54015,7 @@ exports.default = function (muiTheme) {
   }
 };
 
-var _inlineStylePrefixer = __webpack_require__(624);
+var _inlineStylePrefixer = __webpack_require__(625);
 
 var _inlineStylePrefixer2 = _interopRequireDefault(_inlineStylePrefixer);
 
@@ -54235,7 +54235,7 @@ function rtl(muiTheme) {
 /* 701 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isarray = __webpack_require__(650)
+var isarray = __webpack_require__(651)
 
 /**
  * Expose `pathToRegexp`.
@@ -54774,11 +54774,11 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = __webpack_require__(2);
-var pick = __webpack_require__(660);
+var pick = __webpack_require__(661);
 var shallowEqual_1 = __webpack_require__(707);
 var invariant = __webpack_require__(83);
 var assign = __webpack_require__(11);
-var hoistNonReactStatics = __webpack_require__(623);
+var hoistNonReactStatics = __webpack_require__(624);
 var parser_1 = __webpack_require__(706);
 var defaultMapPropsToOptions = function (props) { return ({}); };
 var defaultMapResultToProps = function (props) { return props; };
@@ -55760,10 +55760,10 @@ var CSSProperty = __webpack_require__(303);
 var ExecutionEnvironment = __webpack_require__(21);
 var ReactInstrumentation = __webpack_require__(38);
 
-var camelizeStyleName = __webpack_require__(598);
+var camelizeStyleName = __webpack_require__(599);
 var dangerousStyleValue = __webpack_require__(770);
-var hyphenateStyleName = __webpack_require__(605);
-var memoizeStringOnly = __webpack_require__(609);
+var hyphenateStyleName = __webpack_require__(606);
+var memoizeStringOnly = __webpack_require__(610);
 var warning = __webpack_require__(4);
 
 var processStyleName = memoizeStringOnly(function (styleName) {
@@ -56302,7 +56302,7 @@ var _prodInvariant = __webpack_require__(8);
 var DOMLazyTree = __webpack_require__(97);
 var ExecutionEnvironment = __webpack_require__(21);
 
-var createNodesFromMarkup = __webpack_require__(601);
+var createNodesFromMarkup = __webpack_require__(602);
 var emptyFunction = __webpack_require__(26);
 var invariant = __webpack_require__(3);
 
@@ -60675,7 +60675,7 @@ var ReactHostOperationHistoryHook = __webpack_require__(743);
 var ReactComponentTreeHook = __webpack_require__(24);
 var ExecutionEnvironment = __webpack_require__(21);
 
-var performanceNow = __webpack_require__(611);
+var performanceNow = __webpack_require__(612);
 var warning = __webpack_require__(4);
 
 var hooks = [];
@@ -61272,7 +61272,7 @@ var ReactDOMComponentTree = __webpack_require__(14);
 var ReactUpdates = __webpack_require__(49);
 
 var getEventTarget = __webpack_require__(216);
-var getUnboundedScrollPosition = __webpack_require__(603);
+var getUnboundedScrollPosition = __webpack_require__(604);
 
 /**
  * Find the deepest React component completely containing the root of the
@@ -65143,7 +65143,7 @@ exports.default = GridLayer;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createBrowserHistory__ = __webpack_require__(620);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createBrowserHistory__ = __webpack_require__(621);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createBrowserHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_history_createBrowserHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(39);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65200,7 +65200,7 @@ BrowserRouter.propTypes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createHashHistory__ = __webpack_require__(621);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createHashHistory__ = __webpack_require__(622);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createHashHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_history_createHashHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router__ = __webpack_require__(39);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65406,7 +65406,7 @@ NavLink.defaultProps = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createMemoryHistory__ = __webpack_require__(622);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createMemoryHistory__ = __webpack_require__(623);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_history_createMemoryHistory___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_history_createMemoryHistory__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Router__ = __webpack_require__(221);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65939,7 +65939,7 @@ var SyntheticUIEvent = __webpack_require__(101);
 var TouchEventUtils = __webpack_require__(803);
 var ViewportMetrics = __webpack_require__(212);
 
-var keyOf = __webpack_require__(608);
+var keyOf = __webpack_require__(609);
 var topLevelTypes = EventConstants.topLevelTypes;
 
 var isStartish = EventPluginUtils.isStartish;
@@ -69581,6 +69581,13 @@ module.exports = function() {
 /* 829 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(888);
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69)))
+
+/***/ }),
+/* 830 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var root = __webpack_require__(117);
 
 /** Built-in value references. */
@@ -69590,7 +69597,7 @@ module.exports = Uint8Array;
 
 
 /***/ }),
-/* 830 */
+/* 831 */
 /***/ (function(module, exports) {
 
 /**
@@ -69618,15 +69625,15 @@ module.exports = arrayEach;
 
 
 /***/ }),
-/* 831 */
+/* 832 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(922),
-    isArguments = __webpack_require__(676),
+var baseTimes = __webpack_require__(926),
+    isArguments = __webpack_require__(677),
     isArray = __webpack_require__(102),
-    isBuffer = __webpack_require__(678),
-    isIndex = __webpack_require__(671),
-    isTypedArray = __webpack_require__(854);
+    isBuffer = __webpack_require__(679),
+    isIndex = __webpack_require__(672),
+    isTypedArray = __webpack_require__(855);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -69673,7 +69680,7 @@ module.exports = arrayLikeKeys;
 
 
 /***/ }),
-/* 832 */
+/* 833 */
 /***/ (function(module, exports) {
 
 /**
@@ -69700,10 +69707,10 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 833 */
+/* 834 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(837);
+var defineProperty = __webpack_require__(838);
 
 /**
  * The base implementation of `assignValue` and `assignMergeValue` without
@@ -69731,26 +69738,26 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 834 */
+/* 835 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(663),
-    arrayEach = __webpack_require__(830),
-    assignValue = __webpack_require__(666),
-    baseAssign = __webpack_require__(897),
-    baseAssignIn = __webpack_require__(898),
-    cloneBuffer = __webpack_require__(928),
-    copyArray = __webpack_require__(935),
-    copySymbols = __webpack_require__(936),
-    copySymbolsIn = __webpack_require__(937),
-    getAllKeys = __webpack_require__(841),
-    getAllKeysIn = __webpack_require__(842),
-    getTag = __webpack_require__(844),
-    initCloneArray = __webpack_require__(953),
-    initCloneByTag = __webpack_require__(954),
-    initCloneObject = __webpack_require__(955),
+var Stack = __webpack_require__(664),
+    arrayEach = __webpack_require__(831),
+    assignValue = __webpack_require__(667),
+    baseAssign = __webpack_require__(901),
+    baseAssignIn = __webpack_require__(902),
+    cloneBuffer = __webpack_require__(932),
+    copyArray = __webpack_require__(939),
+    copySymbols = __webpack_require__(940),
+    copySymbolsIn = __webpack_require__(941),
+    getAllKeys = __webpack_require__(842),
+    getAllKeysIn = __webpack_require__(843),
+    getTag = __webpack_require__(845),
+    initCloneArray = __webpack_require__(957),
+    initCloneByTag = __webpack_require__(958),
+    initCloneObject = __webpack_require__(959),
     isArray = __webpack_require__(102),
-    isBuffer = __webpack_require__(678),
+    isBuffer = __webpack_require__(679),
     isObject = __webpack_require__(200),
     keys = __webpack_require__(235);
 
@@ -69890,11 +69897,11 @@ module.exports = baseClone;
 
 
 /***/ }),
-/* 835 */
+/* 836 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseForOwn = __webpack_require__(902),
-    createBaseEach = __webpack_require__(939);
+var baseForOwn = __webpack_require__(906),
+    createBaseEach = __webpack_require__(943);
 
 /**
  * The base implementation of `_.forEach` without support for iteratee shorthands.
@@ -69910,10 +69917,10 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 836 */
+/* 837 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(664),
+var arrayPush = __webpack_require__(665),
     isArray = __webpack_require__(102);
 
 /**
@@ -69936,7 +69943,7 @@ module.exports = baseGetAllKeys;
 
 
 /***/ }),
-/* 837 */
+/* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(199);
@@ -69953,12 +69960,12 @@ module.exports = defineProperty;
 
 
 /***/ }),
-/* 838 */
+/* 839 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var SetCache = __webpack_require__(890),
-    arraySome = __webpack_require__(896),
-    cacheHas = __webpack_require__(926);
+var SetCache = __webpack_require__(894),
+    arraySome = __webpack_require__(900),
+    cacheHas = __webpack_require__(930);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -70042,12 +70049,12 @@ module.exports = equalArrays;
 
 
 /***/ }),
-/* 839 */
+/* 840 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var flatten = __webpack_require__(988),
-    overRest = __webpack_require__(974),
-    setToString = __webpack_require__(978);
+var flatten = __webpack_require__(992),
+    overRest = __webpack_require__(978),
+    setToString = __webpack_require__(982);
 
 /**
  * A specialized version of `baseRest` which flattens the rest array.
@@ -70064,7 +70071,7 @@ module.exports = flatRest;
 
 
 /***/ }),
-/* 840 */
+/* 841 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -70075,11 +70082,11 @@ module.exports = freeGlobal;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69)))
 
 /***/ }),
-/* 841 */
+/* 842 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(836),
-    getSymbols = __webpack_require__(670),
+var baseGetAllKeys = __webpack_require__(837),
+    getSymbols = __webpack_require__(671),
     keys = __webpack_require__(235);
 
 /**
@@ -70097,12 +70104,12 @@ module.exports = getAllKeys;
 
 
 /***/ }),
-/* 842 */
+/* 843 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetAllKeys = __webpack_require__(836),
-    getSymbolsIn = __webpack_require__(843),
-    keysIn = __webpack_require__(855);
+var baseGetAllKeys = __webpack_require__(837),
+    getSymbolsIn = __webpack_require__(844),
+    keysIn = __webpack_require__(856);
 
 /**
  * Creates an array of own and inherited enumerable property names and
@@ -70120,13 +70127,13 @@ module.exports = getAllKeysIn;
 
 
 /***/ }),
-/* 843 */
+/* 844 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(664),
-    getPrototype = __webpack_require__(669),
-    getSymbols = __webpack_require__(670),
-    stubArray = __webpack_require__(857);
+var arrayPush = __webpack_require__(665),
+    getPrototype = __webpack_require__(670),
+    getSymbols = __webpack_require__(671),
+    stubArray = __webpack_require__(858);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeGetSymbols = Object.getOwnPropertySymbols;
@@ -70151,16 +70158,16 @@ module.exports = getSymbolsIn;
 
 
 /***/ }),
-/* 844 */
+/* 845 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DataView = __webpack_require__(886),
-    Map = __webpack_require__(661),
-    Promise = __webpack_require__(888),
-    Set = __webpack_require__(889),
-    WeakMap = __webpack_require__(891),
+var DataView = __webpack_require__(890),
+    Map = __webpack_require__(662),
+    Promise = __webpack_require__(892),
+    Set = __webpack_require__(893),
+    WeakMap = __webpack_require__(895),
     baseGetTag = __webpack_require__(231),
-    toSource = __webpack_require__(850);
+    toSource = __webpack_require__(851);
 
 /** `Object#toString` result references. */
 var mapTag = '[object Map]',
@@ -70215,7 +70222,7 @@ module.exports = getTag;
 
 
 /***/ }),
-/* 845 */
+/* 846 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(200);
@@ -70236,7 +70243,7 @@ module.exports = isStrictComparable;
 
 
 /***/ }),
-/* 846 */
+/* 847 */
 /***/ (function(module, exports) {
 
 /**
@@ -70260,7 +70267,7 @@ module.exports = mapToArray;
 
 
 /***/ }),
-/* 847 */
+/* 848 */
 /***/ (function(module, exports) {
 
 /**
@@ -70286,7 +70293,7 @@ module.exports = matchesStrictComparable;
 
 
 /***/ }),
-/* 848 */
+/* 849 */
 /***/ (function(module, exports) {
 
 /**
@@ -70307,7 +70314,7 @@ module.exports = overArg;
 
 
 /***/ }),
-/* 849 */
+/* 850 */
 /***/ (function(module, exports) {
 
 /**
@@ -70331,7 +70338,7 @@ module.exports = setToArray;
 
 
 /***/ }),
-/* 850 */
+/* 851 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -70363,12 +70370,12 @@ module.exports = toSource;
 
 
 /***/ }),
-/* 851 */
+/* 852 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(830),
-    baseEach = __webpack_require__(835),
-    castFunction = __webpack_require__(927),
+var arrayEach = __webpack_require__(831),
+    baseEach = __webpack_require__(836),
+    castFunction = __webpack_require__(931),
     isArray = __webpack_require__(102);
 
 /**
@@ -70410,11 +70417,11 @@ module.exports = forEach;
 
 
 /***/ }),
-/* 852 */
+/* 853 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(903),
-    hasPath = __webpack_require__(947);
+var baseHasIn = __webpack_require__(907),
+    hasPath = __webpack_require__(951);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -70450,10 +70457,10 @@ module.exports = hasIn;
 
 
 /***/ }),
-/* 853 */
+/* 854 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqual = __webpack_require__(667);
+var baseIsEqual = __webpack_require__(668);
 
 /**
  * Performs a deep comparison between two values to determine if they are
@@ -70491,12 +70498,12 @@ module.exports = isEqual;
 
 
 /***/ }),
-/* 854 */
+/* 855 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsTypedArray = __webpack_require__(908),
-    baseUnary = __webpack_require__(924),
-    nodeUtil = __webpack_require__(972);
+var baseIsTypedArray = __webpack_require__(912),
+    baseUnary = __webpack_require__(928),
+    nodeUtil = __webpack_require__(976);
 
 /* Node.js helper references. */
 var nodeIsTypedArray = nodeUtil && nodeUtil.isTypedArray;
@@ -70524,12 +70531,12 @@ module.exports = isTypedArray;
 
 
 /***/ }),
-/* 855 */
+/* 856 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeKeys = __webpack_require__(831),
-    baseKeysIn = __webpack_require__(911),
-    isArrayLike = __webpack_require__(677);
+var arrayLikeKeys = __webpack_require__(832),
+    baseKeysIn = __webpack_require__(915),
+    isArrayLike = __webpack_require__(678);
 
 /**
  * Creates an array of the own and inherited enumerable property names of `object`.
@@ -70562,17 +70569,17 @@ module.exports = keysIn;
 
 
 /***/ }),
-/* 856 */
+/* 857 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(832),
-    baseClone = __webpack_require__(834),
-    baseUnset = __webpack_require__(925),
+var arrayMap = __webpack_require__(833),
+    baseClone = __webpack_require__(835),
+    baseUnset = __webpack_require__(929),
     castPath = __webpack_require__(232),
     copyObject = __webpack_require__(300),
-    customOmitClone = __webpack_require__(941),
-    flatRest = __webpack_require__(839),
-    getAllKeysIn = __webpack_require__(842);
+    customOmitClone = __webpack_require__(945),
+    flatRest = __webpack_require__(840),
+    getAllKeysIn = __webpack_require__(843);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1,
@@ -70625,7 +70632,7 @@ module.exports = omit;
 
 
 /***/ }),
-/* 857 */
+/* 858 */
 /***/ (function(module, exports) {
 
 /**
@@ -70654,10 +70661,10 @@ module.exports = stubArray;
 
 
 /***/ }),
-/* 858 */
+/* 859 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(923);
+var baseToString = __webpack_require__(927);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -70688,26 +70695,6 @@ module.exports = toString;
 
 
 /***/ }),
-/* 859 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _Checkbox = __webpack_require__(999);
-
-var _Checkbox2 = _interopRequireDefault(_Checkbox);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _Checkbox2.default;
-
-/***/ }),
 /* 860 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -70719,7 +70706,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _SvgIcon = __webpack_require__(1000);
+var _Checkbox = __webpack_require__(1003);
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _Checkbox2.default;
+
+/***/ }),
+/* 861 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _SvgIcon = __webpack_require__(1004);
 
 var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
@@ -70728,7 +70735,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = _SvgIcon2.default;
 
 /***/ }),
-/* 861 */
+/* 862 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70774,7 +70781,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Tooltip = __webpack_require__(1014);
+var _Tooltip = __webpack_require__(1018);
 
 var _Tooltip2 = _interopRequireDefault(_Tooltip);
 
@@ -70933,7 +70940,7 @@ exports.default = TableHeaderColumn;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 862 */
+/* 863 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70944,27 +70951,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = exports.TableRowColumn = exports.TableRow = exports.TableHeaderColumn = exports.TableHeader = exports.TableFooter = exports.TableBody = exports.Table = undefined;
 
-var _Table2 = __webpack_require__(1001);
+var _Table2 = __webpack_require__(1005);
 
 var _Table3 = _interopRequireDefault(_Table2);
 
-var _TableBody2 = __webpack_require__(1002);
+var _TableBody2 = __webpack_require__(1006);
 
 var _TableBody3 = _interopRequireDefault(_TableBody2);
 
-var _TableFooter2 = __webpack_require__(1003);
+var _TableFooter2 = __webpack_require__(1007);
 
 var _TableFooter3 = _interopRequireDefault(_TableFooter2);
 
-var _TableHeader2 = __webpack_require__(1004);
+var _TableHeader2 = __webpack_require__(1008);
 
 var _TableHeader3 = _interopRequireDefault(_TableHeader2);
 
-var _TableHeaderColumn2 = __webpack_require__(861);
+var _TableHeaderColumn2 = __webpack_require__(862);
 
 var _TableHeaderColumn3 = _interopRequireDefault(_TableHeaderColumn2);
 
-var _TableRow2 = __webpack_require__(1005);
+var _TableRow2 = __webpack_require__(1009);
 
 var _TableRow3 = _interopRequireDefault(_TableRow2);
 
@@ -70984,7 +70991,2968 @@ exports.TableRowColumn = _TableRowColumn3.default;
 exports.default = _Table3.default;
 
 /***/ }),
-/* 863 */
+/* 864 */
+/***/ (function(module, exports) {
+
+/* jquery.signalR.core.js */
+/*global window:false */
+/*!
+ * ASP.NET SignalR JavaScript Library v2.2.1
+ * http://signalr.net/
+ *
+ * Copyright (c) .NET Foundation. All rights reserved.
+ * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+ *
+ */
+
+/// <reference path="Scripts/jquery-1.6.4.js" />
+/// <reference path="jquery.signalR.version.js" />
+(function ($, window, undefined) {
+
+    var resources = {
+        nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the SignalR client JavaScript file.",
+        noTransportOnInit: "No transport could be initialized successfully. Try specifying a different transport or none at all for auto initialization.",
+        errorOnNegotiate: "Error during negotiation request.",
+        stoppedWhileLoading: "The connection was stopped during page load.",
+        stoppedWhileNegotiating: "The connection was stopped during the negotiate request.",
+        errorParsingNegotiateResponse: "Error parsing negotiate response.",
+        errorDuringStartRequest: "Error during start request. Stopping the connection.",
+        stoppedDuringStartRequest: "The connection was stopped during the start request.",
+        errorParsingStartResponse: "Error parsing start response: '{0}'. Stopping the connection.",
+        invalidStartResponse: "Invalid start response: '{0}'. Stopping the connection.",
+        protocolIncompatible: "You are using a version of the client that isn't compatible with the server. Client version {0}, server version {1}.",
+        sendFailed: "Send failed.",
+        parseFailed: "Failed at parsing response: {0}",
+        longPollFailed: "Long polling request failed.",
+        eventSourceFailedToConnect: "EventSource failed to connect.",
+        eventSourceError: "Error raised by EventSource",
+        webSocketClosed: "WebSocket closed.",
+        pingServerFailedInvalidResponse: "Invalid ping response when pinging server: '{0}'.",
+        pingServerFailed: "Failed to ping server.",
+        pingServerFailedStatusCode: "Failed to ping server.  Server responded with status code {0}, stopping the connection.",
+        pingServerFailedParse: "Failed to parse ping server response, stopping the connection.",
+        noConnectionTransport: "Connection is in an invalid state, there is no transport active.",
+        webSocketsInvalidState: "The Web Socket transport is in an invalid state, transitioning into reconnecting.",
+        reconnectTimeout: "Couldn't reconnect within the configured timeout of {0} ms, disconnecting.",
+        reconnectWindowTimeout: "The client has been inactive since {0} and it has exceeded the inactivity timeout of {1} ms. Stopping the connection."
+    };
+
+    if (typeof ($) !== "function") {
+        // no jQuery!
+        throw new Error(resources.nojQuery);
+    }
+
+    var signalR,
+        _connection,
+        _pageLoaded = (window.document.readyState === "complete"),
+        _pageWindow = $(window),
+        _negotiateAbortText = "__Negotiate Aborted__",
+        events = {
+            onStart: "onStart",
+            onStarting: "onStarting",
+            onReceived: "onReceived",
+            onError: "onError",
+            onConnectionSlow: "onConnectionSlow",
+            onReconnecting: "onReconnecting",
+            onReconnect: "onReconnect",
+            onStateChanged: "onStateChanged",
+            onDisconnect: "onDisconnect"
+        },
+        ajaxDefaults = {
+            processData: true,
+            timeout: null,
+            async: true,
+            global: false,
+            cache: false
+        },
+        log = function (msg, logging) {
+            if (logging === false) {
+                return;
+            }
+            var m;
+            if (typeof (window.console) === "undefined") {
+                return;
+            }
+            m = "[" + new Date().toTimeString() + "] SignalR: " + msg;
+            if (window.console.debug) {
+                window.console.debug(m);
+            } else if (window.console.log) {
+                window.console.log(m);
+            }
+        },
+
+        changeState = function (connection, expectedState, newState) {
+            if (expectedState === connection.state) {
+                connection.state = newState;
+
+                $(connection).triggerHandler(events.onStateChanged, [{ oldState: expectedState, newState: newState }]);
+                return true;
+            }
+
+            return false;
+        },
+
+        isDisconnecting = function (connection) {
+            return connection.state === signalR.connectionState.disconnected;
+        },
+
+        supportsKeepAlive = function (connection) {
+            return connection._.keepAliveData.activated &&
+                   connection.transport.supportsKeepAlive(connection);
+        },
+
+        configureStopReconnectingTimeout = function (connection) {
+            var stopReconnectingTimeout,
+                onReconnectTimeout;
+
+            // Check if this connection has already been configured to stop reconnecting after a specified timeout.
+            // Without this check if a connection is stopped then started events will be bound multiple times.
+            if (!connection._.configuredStopReconnectingTimeout) {
+                onReconnectTimeout = function (connection) {
+                    var message = signalR._.format(signalR.resources.reconnectTimeout, connection.disconnectTimeout);
+                    connection.log(message);
+                    $(connection).triggerHandler(events.onError, [signalR._.error(message, /* source */ "TimeoutException")]);
+                    connection.stop(/* async */ false, /* notifyServer */ false);
+                };
+
+                connection.reconnecting(function () {
+                    var connection = this;
+
+                    // Guard against state changing in a previous user defined even handler
+                    if (connection.state === signalR.connectionState.reconnecting) {
+                        stopReconnectingTimeout = window.setTimeout(function () { onReconnectTimeout(connection); }, connection.disconnectTimeout);
+                    }
+                });
+
+                connection.stateChanged(function (data) {
+                    if (data.oldState === signalR.connectionState.reconnecting) {
+                        // Clear the pending reconnect timeout check
+                        window.clearTimeout(stopReconnectingTimeout);
+                    }
+                });
+
+                connection._.configuredStopReconnectingTimeout = true;
+            }
+        };
+
+    signalR = function (url, qs, logging) {
+        /// <summary>Creates a new SignalR connection for the given url</summary>
+        /// <param name="url" type="String">The URL of the long polling endpoint</param>
+        /// <param name="qs" type="Object">
+        ///     [Optional] Custom querystring parameters to add to the connection URL.
+        ///     If an object, every non-function member will be added to the querystring.
+        ///     If a string, it's added to the QS as specified.
+        /// </param>
+        /// <param name="logging" type="Boolean">
+        ///     [Optional] A flag indicating whether connection logging is enabled to the browser
+        ///     console/log. Defaults to false.
+        /// </param>
+
+        return new signalR.fn.init(url, qs, logging);
+    };
+
+    signalR._ = {
+        defaultContentType: "application/x-www-form-urlencoded; charset=UTF-8",
+
+        ieVersion: (function () {
+            var version,
+                matches;
+
+            if (window.navigator.appName === 'Microsoft Internet Explorer') {
+                // Check if the user agent has the pattern "MSIE (one or more numbers).(one or more numbers)";
+                matches = /MSIE ([0-9]+\.[0-9]+)/.exec(window.navigator.userAgent);
+
+                if (matches) {
+                    version = window.parseFloat(matches[1]);
+                }
+            }
+
+            // undefined value means not IE
+            return version;
+        })(),
+
+        error: function (message, source, context) {
+            var e = new Error(message);
+            e.source = source;
+
+            if (typeof context !== "undefined") {
+                e.context = context;
+            }
+
+            return e;
+        },
+
+        transportError: function (message, transport, source, context) {
+            var e = this.error(message, source, context);
+            e.transport = transport ? transport.name : undefined;
+            return e;
+        },
+
+        format: function () {
+            /// <summary>Usage: format("Hi {0}, you are {1}!", "Foo", 100) </summary>
+            var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i++) {
+                s = s.replace("{" + i + "}", arguments[i + 1]);
+            }
+            return s;
+        },
+
+        firefoxMajorVersion: function (userAgent) {
+            // Firefox user agents: http://useragentstring.com/pages/Firefox/
+            var matches = userAgent.match(/Firefox\/(\d+)/);
+            if (!matches || !matches.length || matches.length < 2) {
+                return 0;
+            }
+            return parseInt(matches[1], 10 /* radix */);
+        },
+
+        configurePingInterval: function (connection) {
+            var config = connection._.config,
+                onFail = function (error) {
+                    $(connection).triggerHandler(events.onError, [error]);
+                };
+
+            if (config && !connection._.pingIntervalId && config.pingInterval) {
+                connection._.pingIntervalId = window.setInterval(function () {
+                    signalR.transports._logic.pingServer(connection).fail(onFail);
+                }, config.pingInterval);
+            }
+        }
+    };
+
+    signalR.events = events;
+
+    signalR.resources = resources;
+
+    signalR.ajaxDefaults = ajaxDefaults;
+
+    signalR.changeState = changeState;
+
+    signalR.isDisconnecting = isDisconnecting;
+
+    signalR.connectionState = {
+        connecting: 0,
+        connected: 1,
+        reconnecting: 2,
+        disconnected: 4
+    };
+
+    signalR.hub = {
+        start: function () {
+            // This will get replaced with the real hub connection start method when hubs is referenced correctly
+            throw new Error("SignalR: Error loading hubs. Ensure your hubs reference is correct, e.g. <script src='/signalr/js'></script>.");
+        }
+    };
+
+    // .on() was added in version 1.7.0, .load() was removed in version 3.0.0 so we fallback to .load() if .on() does
+    // not exist to not break existing applications
+    if (typeof _pageWindow.on == "function") {
+        _pageWindow.on("load", function () { _pageLoaded = true; });
+    }
+    else {
+        _pageWindow.load(function () { _pageLoaded = true; });
+    }
+
+    function validateTransport(requestedTransport, connection) {
+        /// <summary>Validates the requested transport by cross checking it with the pre-defined signalR.transports</summary>
+        /// <param name="requestedTransport" type="Object">The designated transports that the user has specified.</param>
+        /// <param name="connection" type="signalR">The connection that will be using the requested transports.  Used for logging purposes.</param>
+        /// <returns type="Object" />
+
+        if ($.isArray(requestedTransport)) {
+            // Go through transport array and remove an "invalid" tranports
+            for (var i = requestedTransport.length - 1; i >= 0; i--) {
+                var transport = requestedTransport[i];
+                if ($.type(transport) !== "string" || !signalR.transports[transport]) {
+                    connection.log("Invalid transport: " + transport + ", removing it from the transports list.");
+                    requestedTransport.splice(i, 1);
+                }
+            }
+
+            // Verify we still have transports left, if we dont then we have invalid transports
+            if (requestedTransport.length === 0) {
+                connection.log("No transports remain within the specified transport array.");
+                requestedTransport = null;
+            }
+        } else if (!signalR.transports[requestedTransport] && requestedTransport !== "auto") {
+            connection.log("Invalid transport: " + requestedTransport.toString() + ".");
+            requestedTransport = null;
+        } else if (requestedTransport === "auto" && signalR._.ieVersion <= 8) {
+            // If we're doing an auto transport and we're IE8 then force longPolling, #1764
+            return ["longPolling"];
+
+        }
+
+        return requestedTransport;
+    }
+
+    function getDefaultPort(protocol) {
+        if (protocol === "http:") {
+            return 80;
+        } else if (protocol === "https:") {
+            return 443;
+        }
+    }
+
+    function addDefaultPort(protocol, url) {
+        // Remove ports  from url.  We have to check if there's a / or end of line
+        // following the port in order to avoid removing ports such as 8080.
+        if (url.match(/:\d+$/)) {
+            return url;
+        } else {
+            return url + ":" + getDefaultPort(protocol);
+        }
+    }
+
+    function ConnectingMessageBuffer(connection, drainCallback) {
+        var that = this,
+            buffer = [];
+
+        that.tryBuffer = function (message) {
+            if (connection.state === $.signalR.connectionState.connecting) {
+                buffer.push(message);
+
+                return true;
+            }
+
+            return false;
+        };
+
+        that.drain = function () {
+            // Ensure that the connection is connected when we drain (do not want to drain while a connection is not active)
+            if (connection.state === $.signalR.connectionState.connected) {
+                while (buffer.length > 0) {
+                    drainCallback(buffer.shift());
+                }
+            }
+        };
+
+        that.clear = function () {
+            buffer = [];
+        };
+    }
+
+    signalR.fn = signalR.prototype = {
+        init: function (url, qs, logging) {
+            var $connection = $(this);
+
+            this.url = url;
+            this.qs = qs;
+            this.lastError = null;
+            this._ = {
+                keepAliveData: {},
+                connectingMessageBuffer: new ConnectingMessageBuffer(this, function (message) {
+                    $connection.triggerHandler(events.onReceived, [message]);
+                }),
+                lastMessageAt: new Date().getTime(),
+                lastActiveAt: new Date().getTime(),
+                beatInterval: 5000, // Default value, will only be overridden if keep alive is enabled,
+                beatHandle: null,
+                totalTransportConnectTimeout: 0 // This will be the sum of the TransportConnectTimeout sent in response to negotiate and connection.transportConnectTimeout
+            };
+            if (typeof (logging) === "boolean") {
+                this.logging = logging;
+            }
+        },
+
+        _parseResponse: function (response) {
+            var that = this;
+
+            if (!response) {
+                return response;
+            } else if (typeof response === "string") {
+                return that.json.parse(response);
+            } else {
+                return response;
+            }
+        },
+
+        _originalJson: window.JSON,
+
+        json: window.JSON,
+
+        isCrossDomain: function (url, against) {
+            /// <summary>Checks if url is cross domain</summary>
+            /// <param name="url" type="String">The base URL</param>
+            /// <param name="against" type="Object">
+            ///     An optional argument to compare the URL against, if not specified it will be set to window.location.
+            ///     If specified it must contain a protocol and a host property.
+            /// </param>
+            var link;
+
+            url = $.trim(url);
+
+            against = against || window.location;
+
+            if (url.indexOf("http") !== 0) {
+                return false;
+            }
+
+            // Create an anchor tag.
+            link = window.document.createElement("a");
+            link.href = url;
+
+            // When checking for cross domain we have to special case port 80 because the window.location will remove the
+            return link.protocol + addDefaultPort(link.protocol, link.host) !== against.protocol + addDefaultPort(against.protocol, against.host);
+        },
+
+        ajaxDataType: "text",
+
+        contentType: "application/json; charset=UTF-8",
+
+        logging: false,
+
+        state: signalR.connectionState.disconnected,
+
+        clientProtocol: "1.5",
+
+        reconnectDelay: 2000,
+
+        transportConnectTimeout: 0,
+
+        disconnectTimeout: 30000, // This should be set by the server in response to the negotiate request (30s default)
+
+        reconnectWindow: 30000, // This should be set by the server in response to the negotiate request
+
+        keepAliveWarnAt: 2 / 3, // Warn user of slow connection if we breach the X% mark of the keep alive timeout
+
+        start: function (options, callback) {
+            /// <summary>Starts the connection</summary>
+            /// <param name="options" type="Object">Options map</param>
+            /// <param name="callback" type="Function">A callback function to execute when the connection has started</param>
+            var connection = this,
+                config = {
+                    pingInterval: 300000,
+                    waitForPageLoad: true,
+                    transport: "auto",
+                    jsonp: false
+                },
+                initialize,
+                deferred = connection._deferral || $.Deferred(), // Check to see if there is a pre-existing deferral that's being built on, if so we want to keep using it
+                parser = window.document.createElement("a");
+
+            connection.lastError = null;
+
+            // Persist the deferral so that if start is called multiple times the same deferral is used.
+            connection._deferral = deferred;
+
+            if (!connection.json) {
+                // no JSON!
+                throw new Error("SignalR: No JSON parser found. Please ensure json2.js is referenced before the SignalR.js file if you need to support clients without native JSON parsing support, e.g. IE<8.");
+            }
+
+            if ($.type(options) === "function") {
+                // Support calling with single callback parameter
+                callback = options;
+            } else if ($.type(options) === "object") {
+                $.extend(config, options);
+                if ($.type(config.callback) === "function") {
+                    callback = config.callback;
+                }
+            }
+
+            config.transport = validateTransport(config.transport, connection);
+
+            // If the transport is invalid throw an error and abort start
+            if (!config.transport) {
+                throw new Error("SignalR: Invalid transport(s) specified, aborting start.");
+            }
+
+            connection._.config = config;
+
+            // Check to see if start is being called prior to page load
+            // If waitForPageLoad is true we then want to re-direct function call to the window load event
+            if (!_pageLoaded && config.waitForPageLoad === true) {
+                connection._.deferredStartHandler = function () {
+                    connection.start(options, callback);
+                };
+                _pageWindow.bind("load", connection._.deferredStartHandler);
+
+                return deferred.promise();
+            }
+
+            // If we're already connecting just return the same deferral as the original connection start
+            if (connection.state === signalR.connectionState.connecting) {
+                return deferred.promise();
+            } else if (changeState(connection,
+                            signalR.connectionState.disconnected,
+                            signalR.connectionState.connecting) === false) {
+                // We're not connecting so try and transition into connecting.
+                // If we fail to transition then we're either in connected or reconnecting.
+
+                deferred.resolve(connection);
+                return deferred.promise();
+            }
+
+            configureStopReconnectingTimeout(connection);
+
+            // Resolve the full url
+            parser.href = connection.url;
+            if (!parser.protocol || parser.protocol === ":") {
+                connection.protocol = window.document.location.protocol;
+                connection.host = parser.host || window.document.location.host;
+            } else {
+                connection.protocol = parser.protocol;
+                connection.host = parser.host;
+            }
+
+            connection.baseUrl = connection.protocol + "//" + connection.host;
+
+            // Set the websocket protocol
+            connection.wsProtocol = connection.protocol === "https:" ? "wss://" : "ws://";
+
+            // If jsonp with no/auto transport is specified, then set the transport to long polling
+            // since that is the only transport for which jsonp really makes sense.
+            // Some developers might actually choose to specify jsonp for same origin requests
+            // as demonstrated by Issue #623.
+            if (config.transport === "auto" && config.jsonp === true) {
+                config.transport = "longPolling";
+            }
+
+            // If the url is protocol relative, prepend the current windows protocol to the url.
+            if (connection.url.indexOf("//") === 0) {
+                connection.url = window.location.protocol + connection.url;
+                connection.log("Protocol relative URL detected, normalizing it to '" + connection.url + "'.");
+            }
+
+            if (this.isCrossDomain(connection.url)) {
+                connection.log("Auto detected cross domain url.");
+
+                if (config.transport === "auto") {
+                    // TODO: Support XDM with foreverFrame
+                    config.transport = ["webSockets", "serverSentEvents", "longPolling"];
+                }
+
+                if (typeof (config.withCredentials) === "undefined") {
+                    config.withCredentials = true;
+                }
+
+                // Determine if jsonp is the only choice for negotiation, ajaxSend and ajaxAbort.
+                // i.e. if the browser doesn't supports CORS
+                // If it is, ignore any preference to the contrary, and switch to jsonp.
+                if (!config.jsonp) {
+                    config.jsonp = !$.support.cors;
+
+                    if (config.jsonp) {
+                        connection.log("Using jsonp because this browser doesn't support CORS.");
+                    }
+                }
+
+                connection.contentType = signalR._.defaultContentType;
+            }
+
+            connection.withCredentials = config.withCredentials;
+
+            connection.ajaxDataType = config.jsonp ? "jsonp" : "text";
+
+            $(connection).bind(events.onStart, function (e, data) {
+                if ($.type(callback) === "function") {
+                    callback.call(connection);
+                }
+                deferred.resolve(connection);
+            });
+
+            connection._.initHandler = signalR.transports._logic.initHandler(connection);
+
+            initialize = function (transports, index) {
+                var noTransportError = signalR._.error(resources.noTransportOnInit);
+
+                index = index || 0;
+                if (index >= transports.length) {
+                    if (index === 0) {
+                        connection.log("No transports supported by the server were selected.");
+                    } else if (index === 1) {
+                        connection.log("No fallback transports were selected.");
+                    } else {
+                        connection.log("Fallback transports exhausted.");
+                    }
+
+                    // No transport initialized successfully
+                    $(connection).triggerHandler(events.onError, [noTransportError]);
+                    deferred.reject(noTransportError);
+                    // Stop the connection if it has connected and move it into the disconnected state
+                    connection.stop();
+                    return;
+                }
+
+                // The connection was aborted
+                if (connection.state === signalR.connectionState.disconnected) {
+                    return;
+                }
+
+                var transportName = transports[index],
+                    transport = signalR.transports[transportName],
+                    onFallback = function () {
+                        initialize(transports, index + 1);
+                    };
+
+                connection.transport = transport;
+
+                try {
+                    connection._.initHandler.start(transport, function () { // success
+                        // Firefox 11+ doesn't allow sync XHR withCredentials: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#withCredentials
+                        var isFirefox11OrGreater = signalR._.firefoxMajorVersion(window.navigator.userAgent) >= 11,
+                            asyncAbort = !!connection.withCredentials && isFirefox11OrGreater;
+
+                        connection.log("The start request succeeded. Transitioning to the connected state.");
+
+                        if (supportsKeepAlive(connection)) {
+                            signalR.transports._logic.monitorKeepAlive(connection);
+                        }
+
+                        signalR.transports._logic.startHeartbeat(connection);
+
+                        // Used to ensure low activity clients maintain their authentication.
+                        // Must be configured once a transport has been decided to perform valid ping requests.
+                        signalR._.configurePingInterval(connection);
+
+                        if (!changeState(connection,
+                                            signalR.connectionState.connecting,
+                                            signalR.connectionState.connected)) {
+                            connection.log("WARNING! The connection was not in the connecting state.");
+                        }
+
+                        // Drain any incoming buffered messages (messages that came in prior to connect)
+                        connection._.connectingMessageBuffer.drain();
+
+                        $(connection).triggerHandler(events.onStart);
+
+                        // wire the stop handler for when the user leaves the page
+                        _pageWindow.bind("unload", function () {
+                            connection.log("Window unloading, stopping the connection.");
+
+                            connection.stop(asyncAbort);
+                        });
+
+                        if (isFirefox11OrGreater) {
+                            // Firefox does not fire cross-domain XHRs in the normal unload handler on tab close.
+                            // #2400
+                            _pageWindow.bind("beforeunload", function () {
+                                // If connection.stop() runs runs in beforeunload and fails, it will also fail
+                                // in unload unless connection.stop() runs after a timeout.
+                                window.setTimeout(function () {
+                                    connection.stop(asyncAbort);
+                                }, 0);
+                            });
+                        }
+                    }, onFallback);
+                }
+                catch (error) {
+                    connection.log(transport.name + " transport threw '" + error.message + "' when attempting to start.");
+                    onFallback();
+                }
+            };
+
+            var url = connection.url + "/negotiate",
+                onFailed = function (error, connection) {
+                    var err = signalR._.error(resources.errorOnNegotiate, error, connection._.negotiateRequest);
+
+                    $(connection).triggerHandler(events.onError, err);
+                    deferred.reject(err);
+                    // Stop the connection if negotiate failed
+                    connection.stop();
+                };
+
+            $(connection).triggerHandler(events.onStarting);
+
+            url = signalR.transports._logic.prepareQueryString(connection, url);
+
+            connection.log("Negotiating with '" + url + "'.");
+
+            // Save the ajax negotiate request object so we can abort it if stop is called while the request is in flight.
+            connection._.negotiateRequest = signalR.transports._logic.ajax(connection, {
+                url: url,
+                error: function (error, statusText) {
+                    // We don't want to cause any errors if we're aborting our own negotiate request.
+                    if (statusText !== _negotiateAbortText) {
+                        onFailed(error, connection);
+                    } else {
+                        // This rejection will noop if the deferred has already been resolved or rejected.
+                        deferred.reject(signalR._.error(resources.stoppedWhileNegotiating, null /* error */, connection._.negotiateRequest));
+                    }
+                },
+                success: function (result) {
+                    var res,
+                        keepAliveData,
+                        protocolError,
+                        transports = [],
+                        supportedTransports = [];
+
+                    try {
+                        res = connection._parseResponse(result);
+                    } catch (error) {
+                        onFailed(signalR._.error(resources.errorParsingNegotiateResponse, error), connection);
+                        return;
+                    }
+
+                    keepAliveData = connection._.keepAliveData;
+                    connection.appRelativeUrl = res.Url;
+                    connection.id = res.ConnectionId;
+                    connection.token = res.ConnectionToken;
+                    connection.webSocketServerUrl = res.WebSocketServerUrl;
+
+                    // The long poll timeout is the ConnectionTimeout plus 10 seconds
+                    connection._.pollTimeout = res.ConnectionTimeout * 1000 + 10000; // in ms
+
+                    // Once the server has labeled the PersistentConnection as Disconnected, we should stop attempting to reconnect
+                    // after res.DisconnectTimeout seconds.
+                    connection.disconnectTimeout = res.DisconnectTimeout * 1000; // in ms
+
+                    // Add the TransportConnectTimeout from the response to the transportConnectTimeout from the client to calculate the total timeout
+                    connection._.totalTransportConnectTimeout = connection.transportConnectTimeout + res.TransportConnectTimeout * 1000;
+
+                    // If we have a keep alive
+                    if (res.KeepAliveTimeout) {
+                        // Register the keep alive data as activated
+                        keepAliveData.activated = true;
+
+                        // Timeout to designate when to force the connection into reconnecting converted to milliseconds
+                        keepAliveData.timeout = res.KeepAliveTimeout * 1000;
+
+                        // Timeout to designate when to warn the developer that the connection may be dead or is not responding.
+                        keepAliveData.timeoutWarning = keepAliveData.timeout * connection.keepAliveWarnAt;
+
+                        // Instantiate the frequency in which we check the keep alive.  It must be short in order to not miss/pick up any changes
+                        connection._.beatInterval = (keepAliveData.timeout - keepAliveData.timeoutWarning) / 3;
+                    } else {
+                        keepAliveData.activated = false;
+                    }
+
+                    connection.reconnectWindow = connection.disconnectTimeout + (keepAliveData.timeout || 0);
+
+                    if (!res.ProtocolVersion || res.ProtocolVersion !== connection.clientProtocol) {
+                        protocolError = signalR._.error(signalR._.format(resources.protocolIncompatible, connection.clientProtocol, res.ProtocolVersion));
+                        $(connection).triggerHandler(events.onError, [protocolError]);
+                        deferred.reject(protocolError);
+
+                        return;
+                    }
+
+                    $.each(signalR.transports, function (key) {
+                        if ((key.indexOf("_") === 0) || (key === "webSockets" && !res.TryWebSockets)) {
+                            return true;
+                        }
+                        supportedTransports.push(key);
+                    });
+
+                    if ($.isArray(config.transport)) {
+                        $.each(config.transport, function (_, transport) {
+                            if ($.inArray(transport, supportedTransports) >= 0) {
+                                transports.push(transport);
+                            }
+                        });
+                    } else if (config.transport === "auto") {
+                        transports = supportedTransports;
+                    } else if ($.inArray(config.transport, supportedTransports) >= 0) {
+                        transports.push(config.transport);
+                    }
+
+                    initialize(transports);
+                }
+            });
+
+            return deferred.promise();
+        },
+
+        starting: function (callback) {
+            /// <summary>Adds a callback that will be invoked before anything is sent over the connection</summary>
+            /// <param name="callback" type="Function">A callback function to execute before the connection is fully instantiated.</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onStarting, function (e, data) {
+                callback.call(connection);
+            });
+            return connection;
+        },
+
+        send: function (data) {
+            /// <summary>Sends data over the connection</summary>
+            /// <param name="data" type="String">The data to send over the connection</param>
+            /// <returns type="signalR" />
+            var connection = this;
+
+            if (connection.state === signalR.connectionState.disconnected) {
+                // Connection hasn't been started yet
+                throw new Error("SignalR: Connection must be started before data can be sent. Call .start() before .send()");
+            }
+
+            if (connection.state === signalR.connectionState.connecting) {
+                // Connection hasn't been started yet
+                throw new Error("SignalR: Connection has not been fully initialized. Use .start().done() or .start().fail() to run logic after the connection has started.");
+            }
+
+            connection.transport.send(connection, data);
+            // REVIEW: Should we return deferred here?
+            return connection;
+        },
+
+        received: function (callback) {
+            /// <summary>Adds a callback that will be invoked after anything is received over the connection</summary>
+            /// <param name="callback" type="Function">A callback function to execute when any data is received on the connection</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onReceived, function (e, data) {
+                callback.call(connection, data);
+            });
+            return connection;
+        },
+
+        stateChanged: function (callback) {
+            /// <summary>Adds a callback that will be invoked when the connection state changes</summary>
+            /// <param name="callback" type="Function">A callback function to execute when the connection state changes</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onStateChanged, function (e, data) {
+                callback.call(connection, data);
+            });
+            return connection;
+        },
+
+        error: function (callback) {
+            /// <summary>Adds a callback that will be invoked after an error occurs with the connection</summary>
+            /// <param name="callback" type="Function">A callback function to execute when an error occurs on the connection</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onError, function (e, errorData, sendData) {
+                connection.lastError = errorData;
+                // In practice 'errorData' is the SignalR built error object.
+                // In practice 'sendData' is undefined for all error events except those triggered by
+                // 'ajaxSend' and 'webSockets.send'.'sendData' is the original send payload.
+                callback.call(connection, errorData, sendData);
+            });
+            return connection;
+        },
+
+        disconnected: function (callback) {
+            /// <summary>Adds a callback that will be invoked when the client disconnects</summary>
+            /// <param name="callback" type="Function">A callback function to execute when the connection is broken</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onDisconnect, function (e, data) {
+                callback.call(connection);
+            });
+            return connection;
+        },
+
+        connectionSlow: function (callback) {
+            /// <summary>Adds a callback that will be invoked when the client detects a slow connection</summary>
+            /// <param name="callback" type="Function">A callback function to execute when the connection is slow</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onConnectionSlow, function (e, data) {
+                callback.call(connection);
+            });
+
+            return connection;
+        },
+
+        reconnecting: function (callback) {
+            /// <summary>Adds a callback that will be invoked when the underlying transport begins reconnecting</summary>
+            /// <param name="callback" type="Function">A callback function to execute when the connection enters a reconnecting state</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onReconnecting, function (e, data) {
+                callback.call(connection);
+            });
+            return connection;
+        },
+
+        reconnected: function (callback) {
+            /// <summary>Adds a callback that will be invoked when the underlying transport reconnects</summary>
+            /// <param name="callback" type="Function">A callback function to execute when the connection is restored</param>
+            /// <returns type="signalR" />
+            var connection = this;
+            $(connection).bind(events.onReconnect, function (e, data) {
+                callback.call(connection);
+            });
+            return connection;
+        },
+
+        stop: function (async, notifyServer) {
+            /// <summary>Stops listening</summary>
+            /// <param name="async" type="Boolean">Whether or not to asynchronously abort the connection</param>
+            /// <param name="notifyServer" type="Boolean">Whether we want to notify the server that we are aborting the connection</param>
+            /// <returns type="signalR" />
+            var connection = this,
+                // Save deferral because this is always cleaned up
+                deferral = connection._deferral;
+
+            // Verify that we've bound a load event.
+            if (connection._.deferredStartHandler) {
+                // Unbind the event.
+                _pageWindow.unbind("load", connection._.deferredStartHandler);
+            }
+
+            // Always clean up private non-timeout based state.
+            delete connection._.config;
+            delete connection._.deferredStartHandler;
+
+            // This needs to be checked despite the connection state because a connection start can be deferred until page load.
+            // If we've deferred the start due to a page load we need to unbind the "onLoad" -> start event.
+            if (!_pageLoaded && (!connection._.config || connection._.config.waitForPageLoad === true)) {
+                connection.log("Stopping connection prior to negotiate.");
+
+                // If we have a deferral we should reject it
+                if (deferral) {
+                    deferral.reject(signalR._.error(resources.stoppedWhileLoading));
+                }
+
+                // Short-circuit because the start has not been fully started.
+                return;
+            }
+
+            if (connection.state === signalR.connectionState.disconnected) {
+                return;
+            }
+
+            connection.log("Stopping connection.");
+
+            // Clear this no matter what
+            window.clearTimeout(connection._.beatHandle);
+            window.clearInterval(connection._.pingIntervalId);
+
+            if (connection.transport) {
+                connection.transport.stop(connection);
+
+                if (notifyServer !== false) {
+                    connection.transport.abort(connection, async);
+                }
+
+                if (supportsKeepAlive(connection)) {
+                    signalR.transports._logic.stopMonitoringKeepAlive(connection);
+                }
+
+                connection.transport = null;
+            }
+
+            if (connection._.negotiateRequest) {
+                // If the negotiation request has already completed this will noop.
+                connection._.negotiateRequest.abort(_negotiateAbortText);
+                delete connection._.negotiateRequest;
+            }
+
+            // Ensure that initHandler.stop() is called before connection._deferral is deleted
+            if (connection._.initHandler) {
+                connection._.initHandler.stop();
+            }
+
+            delete connection._deferral;
+            delete connection.messageId;
+            delete connection.groupsToken;
+            delete connection.id;
+            delete connection._.pingIntervalId;
+            delete connection._.lastMessageAt;
+            delete connection._.lastActiveAt;
+
+            // Clear out our message buffer
+            connection._.connectingMessageBuffer.clear();
+
+            // Trigger the disconnect event
+            changeState(connection, connection.state, signalR.connectionState.disconnected);
+            $(connection).triggerHandler(events.onDisconnect);
+
+            return connection;
+        },
+
+        log: function (msg) {
+            log(msg, this.logging);
+        }
+    };
+
+    signalR.fn.init.prototype = signalR.fn;
+
+    signalR.noConflict = function () {
+        /// <summary>Reinstates the original value of $.connection and returns the signalR object for manual assignment</summary>
+        /// <returns type="signalR" />
+        if ($.connection === signalR) {
+            $.connection = _connection;
+        }
+        return signalR;
+    };
+
+    if ($.connection) {
+        _connection = $.connection;
+    }
+
+    $.connection = $.signalR = signalR;
+
+}(window.jQuery, window));
+/* jquery.signalR.transports.common.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+/*global window:false */
+/// <reference path="jquery.signalR.core.js" />
+
+(function ($, window, undefined) {
+
+    var signalR = $.signalR,
+        events = $.signalR.events,
+        changeState = $.signalR.changeState,
+        startAbortText = "__Start Aborted__",
+        transportLogic;
+
+    signalR.transports = {};
+
+    function beat(connection) {
+        if (connection._.keepAliveData.monitoring) {
+            checkIfAlive(connection);
+        }
+
+        // Ensure that we successfully marked active before continuing the heartbeat.
+        if (transportLogic.markActive(connection)) {
+            connection._.beatHandle = window.setTimeout(function () {
+                beat(connection);
+            }, connection._.beatInterval);
+        }
+    }
+
+    function checkIfAlive(connection) {
+        var keepAliveData = connection._.keepAliveData,
+            timeElapsed;
+
+        // Only check if we're connected
+        if (connection.state === signalR.connectionState.connected) {
+            timeElapsed = new Date().getTime() - connection._.lastMessageAt;
+
+            // Check if the keep alive has completely timed out
+            if (timeElapsed >= keepAliveData.timeout) {
+                connection.log("Keep alive timed out.  Notifying transport that connection has been lost.");
+
+                // Notify transport that the connection has been lost
+                connection.transport.lostConnection(connection);
+            } else if (timeElapsed >= keepAliveData.timeoutWarning) {
+                // This is to assure that the user only gets a single warning
+                if (!keepAliveData.userNotified) {
+                    connection.log("Keep alive has been missed, connection may be dead/slow.");
+                    $(connection).triggerHandler(events.onConnectionSlow);
+                    keepAliveData.userNotified = true;
+                }
+            } else {
+                keepAliveData.userNotified = false;
+            }
+        }
+    }
+
+    function getAjaxUrl(connection, path) {
+        var url = connection.url + path;
+
+        if (connection.transport) {
+            url += "?transport=" + connection.transport.name;
+        }
+
+        return transportLogic.prepareQueryString(connection, url);
+    }
+
+    function InitHandler(connection) {
+        this.connection = connection;
+
+        this.startRequested = false;
+        this.startCompleted = false;
+        this.connectionStopped = false;
+    }
+
+    InitHandler.prototype = {
+        start: function (transport, onSuccess, onFallback) {
+            var that = this,
+                connection = that.connection,
+                failCalled = false;
+
+            if (that.startRequested || that.connectionStopped) {
+                connection.log("WARNING! " + transport.name + " transport cannot be started. Initialization ongoing or completed.");
+                return;
+            }
+
+            connection.log(transport.name + " transport starting.");
+
+            transport.start(connection, function () {
+                if (!failCalled) {
+                    that.initReceived(transport, onSuccess);
+                }
+            }, function (error) {
+                // Don't allow the same transport to cause onFallback to be called twice
+                if (!failCalled) {
+                    failCalled = true;
+                    that.transportFailed(transport, error, onFallback);
+                }
+
+                // Returns true if the transport should stop;
+                // false if it should attempt to reconnect
+                return !that.startCompleted || that.connectionStopped;
+            });
+
+            that.transportTimeoutHandle = window.setTimeout(function () {
+                if (!failCalled) {
+                    failCalled = true;
+                    connection.log(transport.name + " transport timed out when trying to connect.");
+                    that.transportFailed(transport, undefined, onFallback);
+                }
+            }, connection._.totalTransportConnectTimeout);
+        },
+
+        stop: function () {
+            this.connectionStopped = true;
+            window.clearTimeout(this.transportTimeoutHandle);
+            signalR.transports._logic.tryAbortStartRequest(this.connection);
+        },
+
+        initReceived: function (transport, onSuccess) {
+            var that = this,
+                connection = that.connection;
+
+            if (that.startRequested) {
+                connection.log("WARNING! The client received multiple init messages.");
+                return;
+            }
+
+            if (that.connectionStopped) {
+                return;
+            }
+
+            that.startRequested = true;
+            window.clearTimeout(that.transportTimeoutHandle);
+
+            connection.log(transport.name + " transport connected. Initiating start request.");
+            signalR.transports._logic.ajaxStart(connection, function () {
+                that.startCompleted = true;
+                onSuccess();
+            });
+        },
+
+        transportFailed: function (transport, error, onFallback) {
+            var connection = this.connection,
+                deferred = connection._deferral,
+                wrappedError;
+
+            if (this.connectionStopped) {
+                return;
+            }
+
+            window.clearTimeout(this.transportTimeoutHandle);
+
+            if (!this.startRequested) {
+                transport.stop(connection);
+
+                connection.log(transport.name + " transport failed to connect. Attempting to fall back.");
+                onFallback();
+            } else if (!this.startCompleted) {
+                // Do not attempt to fall back if a start request is ongoing during a transport failure.
+                // Instead, trigger an error and stop the connection.
+                wrappedError = signalR._.error(signalR.resources.errorDuringStartRequest, error);
+
+                connection.log(transport.name + " transport failed during the start request. Stopping the connection.");
+                $(connection).triggerHandler(events.onError, [wrappedError]);
+                if (deferred) {
+                    deferred.reject(wrappedError);
+                }
+
+                connection.stop();
+            } else {
+                // The start request has completed, but the connection has not stopped.
+                // No need to do anything here. The transport should attempt its normal reconnect logic.
+            }
+        }
+    };
+
+    transportLogic = signalR.transports._logic = {
+        ajax: function (connection, options) {
+            return $.ajax(
+                $.extend(/*deep copy*/ true, {}, $.signalR.ajaxDefaults, {
+                    type: "GET",
+                    data: {},
+                    xhrFields: { withCredentials: connection.withCredentials },
+                    contentType: connection.contentType,
+                    dataType: connection.ajaxDataType
+                }, options));
+        },
+
+        pingServer: function (connection) {
+            /// <summary>Pings the server</summary>
+            /// <param name="connection" type="signalr">Connection associated with the server ping</param>
+            /// <returns type="signalR" />
+            var url,
+                xhr,
+                deferral = $.Deferred();
+
+            if (connection.transport) {
+                url = connection.url + "/ping";
+
+                url = transportLogic.addQs(url, connection.qs);
+
+                xhr = transportLogic.ajax(connection, {
+                    url: url,
+                    success: function (result) {
+                        var data;
+
+                        try {
+                            data = connection._parseResponse(result);
+                        }
+                        catch (error) {
+                            deferral.reject(
+                                signalR._.transportError(
+                                    signalR.resources.pingServerFailedParse,
+                                    connection.transport,
+                                    error,
+                                    xhr
+                                )
+                            );
+                            connection.stop();
+                            return;
+                        }
+
+                        if (data.Response === "pong") {
+                            deferral.resolve();
+                        }
+                        else {
+                            deferral.reject(
+                                signalR._.transportError(
+                                    signalR._.format(signalR.resources.pingServerFailedInvalidResponse, result),
+                                    connection.transport,
+                                    null /* error */,
+                                    xhr
+                                )
+                            );
+                        }
+                    },
+                    error: function (error) {
+                        if (error.status === 401 || error.status === 403) {
+                            deferral.reject(
+                                signalR._.transportError(
+                                    signalR._.format(signalR.resources.pingServerFailedStatusCode, error.status),
+                                    connection.transport,
+                                    error,
+                                    xhr
+                                )
+                            );
+                            connection.stop();
+                        }
+                        else {
+                            deferral.reject(
+                                signalR._.transportError(
+                                    signalR.resources.pingServerFailed,
+                                    connection.transport,
+                                    error,
+                                    xhr
+                                )
+                            );
+                        }
+                    }
+                });
+            }
+            else {
+                deferral.reject(
+                    signalR._.transportError(
+                        signalR.resources.noConnectionTransport,
+                        connection.transport
+                    )
+                );
+            }
+
+            return deferral.promise();
+        },
+
+        prepareQueryString: function (connection, url) {
+            var preparedUrl;
+
+            // Use addQs to start since it handles the ?/& prefix for us
+            preparedUrl = transportLogic.addQs(url, "clientProtocol=" + connection.clientProtocol);
+
+            // Add the user-specified query string params if any
+            preparedUrl = transportLogic.addQs(preparedUrl, connection.qs);
+
+            if (connection.token) {
+                preparedUrl += "&connectionToken=" + window.encodeURIComponent(connection.token);
+            }
+
+            if (connection.data) {
+                preparedUrl += "&connectionData=" + window.encodeURIComponent(connection.data);
+            }
+
+            return preparedUrl;
+        },
+
+        addQs: function (url, qs) {
+            var appender = url.indexOf("?") !== -1 ? "&" : "?",
+                firstChar;
+
+            if (!qs) {
+                return url;
+            }
+
+            if (typeof (qs) === "object") {
+                return url + appender + $.param(qs);
+            }
+
+            if (typeof (qs) === "string") {
+                firstChar = qs.charAt(0);
+
+                if (firstChar === "?" || firstChar === "&") {
+                    appender = "";
+                }
+
+                return url + appender + qs;
+            }
+
+            throw new Error("Query string property must be either a string or object.");
+        },
+
+        // BUG #2953: The url needs to be same otherwise it will cause a memory leak
+        getUrl: function (connection, transport, reconnecting, poll, ajaxPost) {
+            /// <summary>Gets the url for making a GET based connect request</summary>
+            var baseUrl = transport === "webSockets" ? "" : connection.baseUrl,
+                url = baseUrl + connection.appRelativeUrl,
+                qs = "transport=" + transport;
+
+            if (!ajaxPost && connection.groupsToken) {
+                qs += "&groupsToken=" + window.encodeURIComponent(connection.groupsToken);
+            }
+
+            if (!reconnecting) {
+                url += "/connect";
+            } else {
+                if (poll) {
+                    // longPolling transport specific
+                    url += "/poll";
+                } else {
+                    url += "/reconnect";
+                }
+
+                if (!ajaxPost && connection.messageId) {
+                    qs += "&messageId=" + window.encodeURIComponent(connection.messageId);
+                }
+            }
+            url += "?" + qs;
+            url = transportLogic.prepareQueryString(connection, url);
+
+            if (!ajaxPost) {
+                url += "&tid=" + Math.floor(Math.random() * 11);
+            }
+
+            return url;
+        },
+
+        maximizePersistentResponse: function (minPersistentResponse) {
+            return {
+                MessageId: minPersistentResponse.C,
+                Messages: minPersistentResponse.M,
+                Initialized: typeof (minPersistentResponse.S) !== "undefined" ? true : false,
+                ShouldReconnect: typeof (minPersistentResponse.T) !== "undefined" ? true : false,
+                LongPollDelay: minPersistentResponse.L,
+                GroupsToken: minPersistentResponse.G
+            };
+        },
+
+        updateGroups: function (connection, groupsToken) {
+            if (groupsToken) {
+                connection.groupsToken = groupsToken;
+            }
+        },
+
+        stringifySend: function (connection, message) {
+            if (typeof (message) === "string" || typeof (message) === "undefined" || message === null) {
+                return message;
+            }
+            return connection.json.stringify(message);
+        },
+
+        ajaxSend: function (connection, data) {
+            var payload = transportLogic.stringifySend(connection, data),
+                url = getAjaxUrl(connection, "/send"),
+                xhr,
+                onFail = function (error, connection) {
+                    $(connection).triggerHandler(events.onError, [signalR._.transportError(signalR.resources.sendFailed, connection.transport, error, xhr), data]);
+                };
+
+
+            xhr = transportLogic.ajax(connection, {
+                url: url,
+                type: connection.ajaxDataType === "jsonp" ? "GET" : "POST",
+                contentType: signalR._.defaultContentType,
+                data: {
+                    data: payload
+                },
+                success: function (result) {
+                    var res;
+
+                    if (result) {
+                        try {
+                            res = connection._parseResponse(result);
+                        }
+                        catch (error) {
+                            onFail(error, connection);
+                            connection.stop();
+                            return;
+                        }
+
+                        transportLogic.triggerReceived(connection, res);
+                    }
+                },
+                error: function (error, textStatus) {
+                    if (textStatus === "abort" || textStatus === "parsererror") {
+                        // The parsererror happens for sends that don't return any data, and hence
+                        // don't write the jsonp callback to the response. This is harder to fix on the server
+                        // so just hack around it on the client for now.
+                        return;
+                    }
+
+                    onFail(error, connection);
+                }
+            });
+
+            return xhr;
+        },
+
+        ajaxAbort: function (connection, async) {
+            if (typeof (connection.transport) === "undefined") {
+                return;
+            }
+
+            // Async by default unless explicitly overidden
+            async = typeof async === "undefined" ? true : async;
+
+            var url = getAjaxUrl(connection, "/abort");
+
+            transportLogic.ajax(connection, {
+                url: url,
+                async: async,
+                timeout: 1000,
+                type: "POST"
+            });
+
+            connection.log("Fired ajax abort async = " + async + ".");
+        },
+
+        ajaxStart: function (connection, onSuccess) {
+            var rejectDeferred = function (error) {
+                    var deferred = connection._deferral;
+                    if (deferred) {
+                        deferred.reject(error);
+                    }
+                },
+                triggerStartError = function (error) {
+                    connection.log("The start request failed. Stopping the connection.");
+                    $(connection).triggerHandler(events.onError, [error]);
+                    rejectDeferred(error);
+                    connection.stop();
+                };
+
+            connection._.startRequest = transportLogic.ajax(connection, {
+                url: getAjaxUrl(connection, "/start"),
+                success: function (result, statusText, xhr) {
+                    var data;
+
+                    try {
+                        data = connection._parseResponse(result);
+                    } catch (error) {
+                        triggerStartError(signalR._.error(
+                            signalR._.format(signalR.resources.errorParsingStartResponse, result),
+                            error, xhr));
+                        return;
+                    }
+
+                    if (data.Response === "started") {
+                        onSuccess();
+                    } else {
+                        triggerStartError(signalR._.error(
+                            signalR._.format(signalR.resources.invalidStartResponse, result),
+                            null /* error */, xhr));
+                    }
+                },
+                error: function (xhr, statusText, error) {
+                    if (statusText !== startAbortText) {
+                        triggerStartError(signalR._.error(
+                            signalR.resources.errorDuringStartRequest,
+                            error, xhr));
+                    } else {
+                        // Stop has been called, no need to trigger the error handler
+                        // or stop the connection again with onStartError
+                        connection.log("The start request aborted because connection.stop() was called.");
+                        rejectDeferred(signalR._.error(
+                            signalR.resources.stoppedDuringStartRequest,
+                            null /* error */, xhr));
+                    }
+                }
+            });
+        },
+
+        tryAbortStartRequest: function (connection) {
+            if (connection._.startRequest) {
+                // If the start request has already completed this will noop.
+                connection._.startRequest.abort(startAbortText);
+                delete connection._.startRequest;
+            }
+        },
+
+        tryInitialize: function (connection, persistentResponse, onInitialized) {
+            if (persistentResponse.Initialized && onInitialized) {
+                onInitialized();
+            } else if (persistentResponse.Initialized) {
+                connection.log("WARNING! The client received an init message after reconnecting.");
+            }
+
+        },
+
+        triggerReceived: function (connection, data) {
+            if (!connection._.connectingMessageBuffer.tryBuffer(data)) {
+                $(connection).triggerHandler(events.onReceived, [data]);
+            }
+        },
+
+        processMessages: function (connection, minData, onInitialized) {
+            var data;
+
+            // Update the last message time stamp
+            transportLogic.markLastMessage(connection);
+
+            if (minData) {
+                data = transportLogic.maximizePersistentResponse(minData);
+
+                transportLogic.updateGroups(connection, data.GroupsToken);
+
+                if (data.MessageId) {
+                    connection.messageId = data.MessageId;
+                }
+
+                if (data.Messages) {
+                    $.each(data.Messages, function (index, message) {
+                        transportLogic.triggerReceived(connection, message);
+                    });
+
+                    transportLogic.tryInitialize(connection, data, onInitialized);
+                }
+            }
+        },
+
+        monitorKeepAlive: function (connection) {
+            var keepAliveData = connection._.keepAliveData;
+
+            // If we haven't initiated the keep alive timeouts then we need to
+            if (!keepAliveData.monitoring) {
+                keepAliveData.monitoring = true;
+
+                transportLogic.markLastMessage(connection);
+
+                // Save the function so we can unbind it on stop
+                connection._.keepAliveData.reconnectKeepAliveUpdate = function () {
+                    // Mark a new message so that keep alive doesn't time out connections
+                    transportLogic.markLastMessage(connection);
+                };
+
+                // Update Keep alive on reconnect
+                $(connection).bind(events.onReconnect, connection._.keepAliveData.reconnectKeepAliveUpdate);
+
+                connection.log("Now monitoring keep alive with a warning timeout of " + keepAliveData.timeoutWarning + ", keep alive timeout of " + keepAliveData.timeout + " and disconnecting timeout of " + connection.disconnectTimeout);
+            } else {
+                connection.log("Tried to monitor keep alive but it's already being monitored.");
+            }
+        },
+
+        stopMonitoringKeepAlive: function (connection) {
+            var keepAliveData = connection._.keepAliveData;
+
+            // Only attempt to stop the keep alive monitoring if its being monitored
+            if (keepAliveData.monitoring) {
+                // Stop monitoring
+                keepAliveData.monitoring = false;
+
+                // Remove the updateKeepAlive function from the reconnect event
+                $(connection).unbind(events.onReconnect, connection._.keepAliveData.reconnectKeepAliveUpdate);
+
+                // Clear all the keep alive data
+                connection._.keepAliveData = {};
+                connection.log("Stopping the monitoring of the keep alive.");
+            }
+        },
+
+        startHeartbeat: function (connection) {
+            connection._.lastActiveAt = new Date().getTime();
+            beat(connection);
+        },
+
+        markLastMessage: function (connection) {
+            connection._.lastMessageAt = new Date().getTime();
+        },
+
+        markActive: function (connection) {
+            if (transportLogic.verifyLastActive(connection)) {
+                connection._.lastActiveAt = new Date().getTime();
+                return true;
+            }
+
+            return false;
+        },
+
+        isConnectedOrReconnecting: function (connection) {
+            return connection.state === signalR.connectionState.connected ||
+                   connection.state === signalR.connectionState.reconnecting;
+        },
+
+        ensureReconnectingState: function (connection) {
+            if (changeState(connection,
+                        signalR.connectionState.connected,
+                        signalR.connectionState.reconnecting) === true) {
+                $(connection).triggerHandler(events.onReconnecting);
+            }
+            return connection.state === signalR.connectionState.reconnecting;
+        },
+
+        clearReconnectTimeout: function (connection) {
+            if (connection && connection._.reconnectTimeout) {
+                window.clearTimeout(connection._.reconnectTimeout);
+                delete connection._.reconnectTimeout;
+            }
+        },
+
+        verifyLastActive: function (connection) {
+            if (new Date().getTime() - connection._.lastActiveAt >= connection.reconnectWindow) {
+                var message = signalR._.format(signalR.resources.reconnectWindowTimeout, new Date(connection._.lastActiveAt), connection.reconnectWindow);
+                connection.log(message);
+                $(connection).triggerHandler(events.onError, [signalR._.error(message, /* source */ "TimeoutException")]);
+                connection.stop(/* async */ false, /* notifyServer */ false);
+                return false;
+            }
+
+            return true;
+        },
+
+        reconnect: function (connection, transportName) {
+            var transport = signalR.transports[transportName];
+
+            // We should only set a reconnectTimeout if we are currently connected
+            // and a reconnectTimeout isn't already set.
+            if (transportLogic.isConnectedOrReconnecting(connection) && !connection._.reconnectTimeout) {
+                // Need to verify before the setTimeout occurs because an application sleep could occur during the setTimeout duration.
+                if (!transportLogic.verifyLastActive(connection)) {
+                    return;
+                }
+
+                connection._.reconnectTimeout = window.setTimeout(function () {
+                    if (!transportLogic.verifyLastActive(connection)) {
+                        return;
+                    }
+
+                    transport.stop(connection);
+
+                    if (transportLogic.ensureReconnectingState(connection)) {
+                        connection.log(transportName + " reconnecting.");
+                        transport.start(connection);
+                    }
+                }, connection.reconnectDelay);
+            }
+        },
+
+        handleParseFailure: function (connection, result, error, onFailed, context) {
+            var wrappedError = signalR._.transportError(
+                signalR._.format(signalR.resources.parseFailed, result),
+                connection.transport,
+                error,
+                context);
+
+            // If we're in the initialization phase trigger onFailed, otherwise stop the connection.
+            if (onFailed && onFailed(wrappedError)) {
+                connection.log("Failed to parse server response while attempting to connect.");
+            } else {
+                $(connection).triggerHandler(events.onError, [wrappedError]);
+                connection.stop();
+            }
+        },
+
+        initHandler: function (connection) {
+            return new InitHandler(connection);
+        },
+
+        foreverFrame: {
+            count: 0,
+            connections: {}
+        }
+    };
+
+}(window.jQuery, window));
+/* jquery.signalR.transports.webSockets.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+/*global window:false */
+/// <reference path="jquery.signalR.transports.common.js" />
+
+(function ($, window, undefined) {
+
+    var signalR = $.signalR,
+        events = $.signalR.events,
+        changeState = $.signalR.changeState,
+        transportLogic = signalR.transports._logic;
+
+    signalR.transports.webSockets = {
+        name: "webSockets",
+
+        supportsKeepAlive: function () {
+            return true;
+        },
+
+        send: function (connection, data) {
+            var payload = transportLogic.stringifySend(connection, data);
+
+            try {
+                connection.socket.send(payload);
+            } catch (ex) {
+                $(connection).triggerHandler(events.onError,
+                    [signalR._.transportError(
+                        signalR.resources.webSocketsInvalidState,
+                        connection.transport,
+                        ex,
+                        connection.socket
+                    ),
+                    data]);
+            }
+        },
+
+        start: function (connection, onSuccess, onFailed) {
+            var url,
+                opened = false,
+                that = this,
+                reconnecting = !onSuccess,
+                $connection = $(connection);
+
+            if (!window.WebSocket) {
+                onFailed();
+                return;
+            }
+
+            if (!connection.socket) {
+                if (connection.webSocketServerUrl) {
+                    url = connection.webSocketServerUrl;
+                } else {
+                    url = connection.wsProtocol + connection.host;
+                }
+
+                url += transportLogic.getUrl(connection, this.name, reconnecting);
+
+                connection.log("Connecting to websocket endpoint '" + url + "'.");
+                connection.socket = new window.WebSocket(url);
+
+                connection.socket.onopen = function () {
+                    opened = true;
+                    connection.log("Websocket opened.");
+
+                    transportLogic.clearReconnectTimeout(connection);
+
+                    if (changeState(connection,
+                                    signalR.connectionState.reconnecting,
+                                    signalR.connectionState.connected) === true) {
+                        $connection.triggerHandler(events.onReconnect);
+                    }
+                };
+
+                connection.socket.onclose = function (event) {
+                    var error;
+
+                    // Only handle a socket close if the close is from the current socket.
+                    // Sometimes on disconnect the server will push down an onclose event
+                    // to an expired socket.
+
+                    if (this === connection.socket) {
+                        if (opened && typeof event.wasClean !== "undefined" && event.wasClean === false) {
+                            // Ideally this would use the websocket.onerror handler (rather than checking wasClean in onclose) but
+                            // I found in some circumstances Chrome won't call onerror. This implementation seems to work on all browsers.
+                            error = signalR._.transportError(
+                                signalR.resources.webSocketClosed,
+                                connection.transport,
+                                event);
+
+                            connection.log("Unclean disconnect from websocket: " + (event.reason || "[no reason given]."));
+                        } else {
+                            connection.log("Websocket closed.");
+                        }
+
+                        if (!onFailed || !onFailed(error)) {
+                            if (error) {
+                                $(connection).triggerHandler(events.onError, [error]);
+                            }
+
+                            that.reconnect(connection);
+                        }
+                    }
+                };
+
+                connection.socket.onmessage = function (event) {
+                    var data;
+
+                    try {
+                        data = connection._parseResponse(event.data);
+                    }
+                    catch (error) {
+                        transportLogic.handleParseFailure(connection, event.data, error, onFailed, event);
+                        return;
+                    }
+
+                    if (data) {
+                        // data.M is PersistentResponse.Messages
+                        if ($.isEmptyObject(data) || data.M) {
+                            transportLogic.processMessages(connection, data, onSuccess);
+                        } else {
+                            // For websockets we need to trigger onReceived
+                            // for callbacks to outgoing hub calls.
+                            transportLogic.triggerReceived(connection, data);
+                        }
+                    }
+                };
+            }
+        },
+
+        reconnect: function (connection) {
+            transportLogic.reconnect(connection, this.name);
+        },
+
+        lostConnection: function (connection) {
+            this.reconnect(connection);
+        },
+
+        stop: function (connection) {
+            // Don't trigger a reconnect after stopping
+            transportLogic.clearReconnectTimeout(connection);
+
+            if (connection.socket) {
+                connection.log("Closing the Websocket.");
+                connection.socket.close();
+                connection.socket = null;
+            }
+        },
+
+        abort: function (connection, async) {
+            transportLogic.ajaxAbort(connection, async);
+        }
+    };
+
+}(window.jQuery, window));
+/* jquery.signalR.transports.serverSentEvents.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+/*global window:false */
+/// <reference path="jquery.signalR.transports.common.js" />
+
+(function ($, window, undefined) {
+
+    var signalR = $.signalR,
+        events = $.signalR.events,
+        changeState = $.signalR.changeState,
+        transportLogic = signalR.transports._logic,
+        clearReconnectAttemptTimeout = function (connection) {
+            window.clearTimeout(connection._.reconnectAttemptTimeoutHandle);
+            delete connection._.reconnectAttemptTimeoutHandle;
+        };
+
+    signalR.transports.serverSentEvents = {
+        name: "serverSentEvents",
+
+        supportsKeepAlive: function () {
+            return true;
+        },
+
+        timeOut: 3000,
+
+        start: function (connection, onSuccess, onFailed) {
+            var that = this,
+                opened = false,
+                $connection = $(connection),
+                reconnecting = !onSuccess,
+                url;
+
+            if (connection.eventSource) {
+                connection.log("The connection already has an event source. Stopping it.");
+                connection.stop();
+            }
+
+            if (!window.EventSource) {
+                if (onFailed) {
+                    connection.log("This browser doesn't support SSE.");
+                    onFailed();
+                }
+                return;
+            }
+
+            url = transportLogic.getUrl(connection, this.name, reconnecting);
+
+            try {
+                connection.log("Attempting to connect to SSE endpoint '" + url + "'.");
+                connection.eventSource = new window.EventSource(url, { withCredentials: connection.withCredentials });
+            }
+            catch (e) {
+                connection.log("EventSource failed trying to connect with error " + e.Message + ".");
+                if (onFailed) {
+                    // The connection failed, call the failed callback
+                    onFailed();
+                } else {
+                    $connection.triggerHandler(events.onError, [signalR._.transportError(signalR.resources.eventSourceFailedToConnect, connection.transport, e)]);
+                    if (reconnecting) {
+                        // If we were reconnecting, rather than doing initial connect, then try reconnect again
+                        that.reconnect(connection);
+                    }
+                }
+                return;
+            }
+
+            if (reconnecting) {
+                connection._.reconnectAttemptTimeoutHandle = window.setTimeout(function () {
+                    if (opened === false) {
+                        // If we're reconnecting and the event source is attempting to connect,
+                        // don't keep retrying. This causes duplicate connections to spawn.
+                        if (connection.eventSource.readyState !== window.EventSource.OPEN) {
+                            // If we were reconnecting, rather than doing initial connect, then try reconnect again
+                            that.reconnect(connection);
+                        }
+                    }
+                },
+                that.timeOut);
+            }
+
+            connection.eventSource.addEventListener("open", function (e) {
+                connection.log("EventSource connected.");
+
+                clearReconnectAttemptTimeout(connection);
+                transportLogic.clearReconnectTimeout(connection);
+
+                if (opened === false) {
+                    opened = true;
+
+                    if (changeState(connection,
+                                         signalR.connectionState.reconnecting,
+                                         signalR.connectionState.connected) === true) {
+                        $connection.triggerHandler(events.onReconnect);
+                    }
+                }
+            }, false);
+
+            connection.eventSource.addEventListener("message", function (e) {
+                var res;
+
+                // process messages
+                if (e.data === "initialized") {
+                    return;
+                }
+
+                try {
+                    res = connection._parseResponse(e.data);
+                }
+                catch (error) {
+                    transportLogic.handleParseFailure(connection, e.data, error, onFailed, e);
+                    return;
+                }
+
+                transportLogic.processMessages(connection, res, onSuccess);
+            }, false);
+
+            connection.eventSource.addEventListener("error", function (e) {
+                var error = signalR._.transportError(
+                    signalR.resources.eventSourceError,
+                    connection.transport,
+                    e);
+
+                // Only handle an error if the error is from the current Event Source.
+                // Sometimes on disconnect the server will push down an error event
+                // to an expired Event Source.
+                if (this !== connection.eventSource) {
+                    return;
+                }
+
+                if (onFailed && onFailed(error)) {
+                    return;
+                }
+
+                connection.log("EventSource readyState: " + connection.eventSource.readyState + ".");
+
+                if (e.eventPhase === window.EventSource.CLOSED) {
+                    // We don't use the EventSource's native reconnect function as it
+                    // doesn't allow us to change the URL when reconnecting. We need
+                    // to change the URL to not include the /connect suffix, and pass
+                    // the last message id we received.
+                    connection.log("EventSource reconnecting due to the server connection ending.");
+                    that.reconnect(connection);
+                } else {
+                    // connection error
+                    connection.log("EventSource error.");
+                    $connection.triggerHandler(events.onError, [error]);
+                }
+            }, false);
+        },
+
+        reconnect: function (connection) {
+            transportLogic.reconnect(connection, this.name);
+        },
+
+        lostConnection: function (connection) {
+            this.reconnect(connection);
+        },
+
+        send: function (connection, data) {
+            transportLogic.ajaxSend(connection, data);
+        },
+
+        stop: function (connection) {
+            // Don't trigger a reconnect after stopping
+            clearReconnectAttemptTimeout(connection);
+            transportLogic.clearReconnectTimeout(connection);
+
+            if (connection && connection.eventSource) {
+                connection.log("EventSource calling close().");
+                connection.eventSource.close();
+                connection.eventSource = null;
+                delete connection.eventSource;
+            }
+        },
+
+        abort: function (connection, async) {
+            transportLogic.ajaxAbort(connection, async);
+        }
+    };
+
+}(window.jQuery, window));
+/* jquery.signalR.transports.foreverFrame.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+/*global window:false */
+/// <reference path="jquery.signalR.transports.common.js" />
+
+(function ($, window, undefined) {
+
+    var signalR = $.signalR,
+        events = $.signalR.events,
+        changeState = $.signalR.changeState,
+        transportLogic = signalR.transports._logic,
+        createFrame = function () {
+            var frame = window.document.createElement("iframe");
+            frame.setAttribute("style", "position:absolute;top:0;left:0;width:0;height:0;visibility:hidden;");
+            return frame;
+        },
+        // Used to prevent infinite loading icon spins in older versions of ie
+        // We build this object inside a closure so we don't pollute the rest of
+        // the foreverFrame transport with unnecessary functions/utilities.
+        loadPreventer = (function () {
+            var loadingFixIntervalId = null,
+                loadingFixInterval = 1000,
+                attachedTo = 0;
+
+            return {
+                prevent: function () {
+                    // Prevent additional iframe removal procedures from newer browsers
+                    if (signalR._.ieVersion <= 8) {
+                        // We only ever want to set the interval one time, so on the first attachedTo
+                        if (attachedTo === 0) {
+                            // Create and destroy iframe every 3 seconds to prevent loading icon, super hacky
+                            loadingFixIntervalId = window.setInterval(function () {
+                                var tempFrame = createFrame();
+
+                                window.document.body.appendChild(tempFrame);
+                                window.document.body.removeChild(tempFrame);
+
+                                tempFrame = null;
+                            }, loadingFixInterval);
+                        }
+
+                        attachedTo++;
+                    }
+                },
+                cancel: function () {
+                    // Only clear the interval if there's only one more object that the loadPreventer is attachedTo
+                    if (attachedTo === 1) {
+                        window.clearInterval(loadingFixIntervalId);
+                    }
+
+                    if (attachedTo > 0) {
+                        attachedTo--;
+                    }
+                }
+            };
+        })();
+
+    signalR.transports.foreverFrame = {
+        name: "foreverFrame",
+
+        supportsKeepAlive: function () {
+            return true;
+        },
+
+        // Added as a value here so we can create tests to verify functionality
+        iframeClearThreshold: 50,
+
+        start: function (connection, onSuccess, onFailed) {
+            var that = this,
+                frameId = (transportLogic.foreverFrame.count += 1),
+                url,
+                frame = createFrame(),
+                frameLoadHandler = function () {
+                    connection.log("Forever frame iframe finished loading and is no longer receiving messages.");
+                    if (!onFailed || !onFailed()) {
+                        that.reconnect(connection);
+                    }
+                };
+
+            if (window.EventSource) {
+                // If the browser supports SSE, don't use Forever Frame
+                if (onFailed) {
+                    connection.log("Forever Frame is not supported by SignalR on browsers with SSE support.");
+                    onFailed();
+                }
+                return;
+            }
+
+            frame.setAttribute("data-signalr-connection-id", connection.id);
+
+            // Start preventing loading icon
+            // This will only perform work if the loadPreventer is not attached to another connection.
+            loadPreventer.prevent();
+
+            // Build the url
+            url = transportLogic.getUrl(connection, this.name);
+            url += "&frameId=" + frameId;
+
+            // add frame to the document prior to setting URL to avoid caching issues.
+            window.document.documentElement.appendChild(frame);
+
+            connection.log("Binding to iframe's load event.");
+
+            if (frame.addEventListener) {
+                frame.addEventListener("load", frameLoadHandler, false);
+            } else if (frame.attachEvent) {
+                frame.attachEvent("onload", frameLoadHandler);
+            }
+
+            frame.src = url;
+            transportLogic.foreverFrame.connections[frameId] = connection;
+
+            connection.frame = frame;
+            connection.frameId = frameId;
+
+            if (onSuccess) {
+                connection.onSuccess = function () {
+                    connection.log("Iframe transport started.");
+                    onSuccess();
+                };
+            }
+        },
+
+        reconnect: function (connection) {
+            var that = this;
+
+            // Need to verify connection state and verify before the setTimeout occurs because an application sleep could occur during the setTimeout duration.
+            if (transportLogic.isConnectedOrReconnecting(connection) && transportLogic.verifyLastActive(connection)) {
+                window.setTimeout(function () {
+                    // Verify that we're ok to reconnect.
+                    if (!transportLogic.verifyLastActive(connection)) {
+                        return;
+                    }
+
+                    if (connection.frame && transportLogic.ensureReconnectingState(connection)) {
+                        var frame = connection.frame,
+                            src = transportLogic.getUrl(connection, that.name, true) + "&frameId=" + connection.frameId;
+                        connection.log("Updating iframe src to '" + src + "'.");
+                        frame.src = src;
+                    }
+                }, connection.reconnectDelay);
+            }
+        },
+
+        lostConnection: function (connection) {
+            this.reconnect(connection);
+        },
+
+        send: function (connection, data) {
+            transportLogic.ajaxSend(connection, data);
+        },
+
+        receive: function (connection, data) {
+            var cw,
+                body,
+                response;
+
+            if (connection.json !== connection._originalJson) {
+                // If there's a custom JSON parser configured then serialize the object
+                // using the original (browser) JSON parser and then deserialize it using
+                // the custom parser (connection._parseResponse does that). This is so we
+                // can easily send the response from the server as "raw" JSON but still
+                // support custom JSON deserialization in the browser.
+                data = connection._originalJson.stringify(data);
+            }
+
+            response = connection._parseResponse(data);
+
+            transportLogic.processMessages(connection, response, connection.onSuccess);
+
+            // Protect against connection stopping from a callback trigger within the processMessages above.
+            if (connection.state === $.signalR.connectionState.connected) {
+                // Delete the script & div elements
+                connection.frameMessageCount = (connection.frameMessageCount || 0) + 1;
+                if (connection.frameMessageCount > signalR.transports.foreverFrame.iframeClearThreshold) {
+                    connection.frameMessageCount = 0;
+                    cw = connection.frame.contentWindow || connection.frame.contentDocument;
+                    if (cw && cw.document && cw.document.body) {
+                        body = cw.document.body;
+
+                        // Remove all the child elements from the iframe's body to conserver memory
+                        while (body.firstChild) {
+                            body.removeChild(body.firstChild);
+                        }
+                    }
+                }
+            }
+        },
+
+        stop: function (connection) {
+            var cw = null;
+
+            // Stop attempting to prevent loading icon
+            loadPreventer.cancel();
+
+            if (connection.frame) {
+                if (connection.frame.stop) {
+                    connection.frame.stop();
+                } else {
+                    try {
+                        cw = connection.frame.contentWindow || connection.frame.contentDocument;
+                        if (cw.document && cw.document.execCommand) {
+                            cw.document.execCommand("Stop");
+                        }
+                    }
+                    catch (e) {
+                        connection.log("Error occurred when stopping foreverFrame transport. Message = " + e.message + ".");
+                    }
+                }
+
+                // Ensure the iframe is where we left it
+                if (connection.frame.parentNode === window.document.body) {
+                    window.document.body.removeChild(connection.frame);
+                }
+
+                delete transportLogic.foreverFrame.connections[connection.frameId];
+                connection.frame = null;
+                connection.frameId = null;
+                delete connection.frame;
+                delete connection.frameId;
+                delete connection.onSuccess;
+                delete connection.frameMessageCount;
+                connection.log("Stopping forever frame.");
+            }
+        },
+
+        abort: function (connection, async) {
+            transportLogic.ajaxAbort(connection, async);
+        },
+
+        getConnection: function (id) {
+            return transportLogic.foreverFrame.connections[id];
+        },
+
+        started: function (connection) {
+            if (changeState(connection,
+                signalR.connectionState.reconnecting,
+                signalR.connectionState.connected) === true) {
+
+                $(connection).triggerHandler(events.onReconnect);
+            }
+        }
+    };
+
+}(window.jQuery, window));
+/* jquery.signalR.transports.longPolling.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+/*global window:false */
+/// <reference path="jquery.signalR.transports.common.js" />
+
+(function ($, window, undefined) {
+
+    var signalR = $.signalR,
+        events = $.signalR.events,
+        changeState = $.signalR.changeState,
+        isDisconnecting = $.signalR.isDisconnecting,
+        transportLogic = signalR.transports._logic;
+
+    signalR.transports.longPolling = {
+        name: "longPolling",
+
+        supportsKeepAlive: function () {
+            return false;
+        },
+
+        reconnectDelay: 3000,
+
+        start: function (connection, onSuccess, onFailed) {
+            /// <summary>Starts the long polling connection</summary>
+            /// <param name="connection" type="signalR">The SignalR connection to start</param>
+            var that = this,
+                fireConnect = function () {
+                    fireConnect = $.noop;
+
+                    connection.log("LongPolling connected.");
+
+                    if (onSuccess) {
+                        onSuccess();
+                    } else {
+                        connection.log("WARNING! The client received an init message after reconnecting.");
+                    }
+                },
+                tryFailConnect = function (error) {
+                    if (onFailed(error)) {
+                        connection.log("LongPolling failed to connect.");
+                        return true;
+                    }
+
+                    return false;
+                },
+                privateData = connection._,
+                reconnectErrors = 0,
+                fireReconnected = function (instance) {
+                    window.clearTimeout(privateData.reconnectTimeoutId);
+                    privateData.reconnectTimeoutId = null;
+
+                    if (changeState(instance,
+                                    signalR.connectionState.reconnecting,
+                                    signalR.connectionState.connected) === true) {
+                        // Successfully reconnected!
+                        instance.log("Raising the reconnect event");
+                        $(instance).triggerHandler(events.onReconnect);
+                    }
+                },
+                // 1 hour
+                maxFireReconnectedTimeout = 3600000;
+
+            if (connection.pollXhr) {
+                connection.log("Polling xhr requests already exists, aborting.");
+                connection.stop();
+            }
+
+            connection.messageId = null;
+
+            privateData.reconnectTimeoutId = null;
+
+            privateData.pollTimeoutId = window.setTimeout(function () {
+                (function poll(instance, raiseReconnect) {
+                    var messageId = instance.messageId,
+                        connect = (messageId === null),
+                        reconnecting = !connect,
+                        polling = !raiseReconnect,
+                        url = transportLogic.getUrl(instance, that.name, reconnecting, polling, true /* use Post for longPolling */),
+                        postData = {};
+
+                    if (instance.messageId) {
+                        postData.messageId = instance.messageId;
+                    }
+
+                    if (instance.groupsToken) {
+                        postData.groupsToken = instance.groupsToken;
+                    }
+
+                    // If we've disconnected during the time we've tried to re-instantiate the poll then stop.
+                    if (isDisconnecting(instance) === true) {
+                        return;
+                    }
+
+                    connection.log("Opening long polling request to '" + url + "'.");
+                    instance.pollXhr = transportLogic.ajax(connection, {
+                        xhrFields: {
+                            onprogress: function () {
+                                transportLogic.markLastMessage(connection);
+                            }
+                        },
+                        url: url,
+                        type: "POST",
+                        contentType: signalR._.defaultContentType,
+                        data: postData,
+                        timeout: connection._.pollTimeout,
+                        success: function (result) {
+                            var minData,
+                                delay = 0,
+                                data,
+                                shouldReconnect;
+
+                            connection.log("Long poll complete.");
+
+                            // Reset our reconnect errors so if we transition into a reconnecting state again we trigger
+                            // reconnected quickly
+                            reconnectErrors = 0;
+
+                            try {
+                                // Remove any keep-alives from the beginning of the result
+                                minData = connection._parseResponse(result);
+                            }
+                            catch (error) {
+                                transportLogic.handleParseFailure(instance, result, error, tryFailConnect, instance.pollXhr);
+                                return;
+                            }
+
+                            // If there's currently a timeout to trigger reconnect, fire it now before processing messages
+                            if (privateData.reconnectTimeoutId !== null) {
+                                fireReconnected(instance);
+                            }
+
+                            if (minData) {
+                                data = transportLogic.maximizePersistentResponse(minData);
+                            }
+
+                            transportLogic.processMessages(instance, minData, fireConnect);
+
+                            if (data &&
+                                $.type(data.LongPollDelay) === "number") {
+                                delay = data.LongPollDelay;
+                            }
+
+                            if (isDisconnecting(instance) === true) {
+                                return;
+                            }
+
+                            shouldReconnect = data && data.ShouldReconnect;
+                            if (shouldReconnect) {
+                                // Transition into the reconnecting state
+                                // If this fails then that means that the user transitioned the connection into a invalid state in processMessages.
+                                if (!transportLogic.ensureReconnectingState(instance)) {
+                                    return;
+                                }
+                            }
+
+                            // We never want to pass a raiseReconnect flag after a successful poll.  This is handled via the error function
+                            if (delay > 0) {
+                                privateData.pollTimeoutId = window.setTimeout(function () {
+                                    poll(instance, shouldReconnect);
+                                }, delay);
+                            } else {
+                                poll(instance, shouldReconnect);
+                            }
+                        },
+
+                        error: function (data, textStatus) {
+                            var error = signalR._.transportError(signalR.resources.longPollFailed, connection.transport, data, instance.pollXhr);
+
+                            // Stop trying to trigger reconnect, connection is in an error state
+                            // If we're not in the reconnect state this will noop
+                            window.clearTimeout(privateData.reconnectTimeoutId);
+                            privateData.reconnectTimeoutId = null;
+
+                            if (textStatus === "abort") {
+                                connection.log("Aborted xhr request.");
+                                return;
+                            }
+
+                            if (!tryFailConnect(error)) {
+
+                                // Increment our reconnect errors, we assume all errors to be reconnect errors
+                                // In the case that it's our first error this will cause Reconnect to be fired
+                                // after 1 second due to reconnectErrors being = 1.
+                                reconnectErrors++;
+
+                                if (connection.state !== signalR.connectionState.reconnecting) {
+                                    connection.log("An error occurred using longPolling. Status = " + textStatus + ".  Response = " + data.responseText + ".");
+                                    $(instance).triggerHandler(events.onError, [error]);
+                                }
+
+                                // We check the state here to verify that we're not in an invalid state prior to verifying Reconnect.
+                                // If we're not in connected or reconnecting then the next ensureReconnectingState check will fail and will return.
+                                // Therefore we don't want to change that failure code path.
+                                if ((connection.state === signalR.connectionState.connected ||
+                                    connection.state === signalR.connectionState.reconnecting) &&
+                                    !transportLogic.verifyLastActive(connection)) {
+                                    return;
+                                }
+
+                                // Transition into the reconnecting state
+                                // If this fails then that means that the user transitioned the connection into the disconnected or connecting state within the above error handler trigger.
+                                if (!transportLogic.ensureReconnectingState(instance)) {
+                                    return;
+                                }
+
+                                // Call poll with the raiseReconnect flag as true after the reconnect delay
+                                privateData.pollTimeoutId = window.setTimeout(function () {
+                                    poll(instance, true);
+                                }, that.reconnectDelay);
+                            }
+                        }
+                    });
+
+                    // This will only ever pass after an error has occurred via the poll ajax procedure.
+                    if (reconnecting && raiseReconnect === true) {
+                        // We wait to reconnect depending on how many times we've failed to reconnect.
+                        // This is essentially a heuristic that will exponentially increase in wait time before
+                        // triggering reconnected.  This depends on the "error" handler of Poll to cancel this
+                        // timeout if it triggers before the Reconnected event fires.
+                        // The Math.min at the end is to ensure that the reconnect timeout does not overflow.
+                        privateData.reconnectTimeoutId = window.setTimeout(function () { fireReconnected(instance); }, Math.min(1000 * (Math.pow(2, reconnectErrors) - 1), maxFireReconnectedTimeout));
+                    }
+                }(connection));
+            }, 250); // Have to delay initial poll so Chrome doesn't show loader spinner in tab
+        },
+
+        lostConnection: function (connection) {
+            if (connection.pollXhr) {
+                connection.pollXhr.abort("lostConnection");
+            }
+        },
+
+        send: function (connection, data) {
+            transportLogic.ajaxSend(connection, data);
+        },
+
+        stop: function (connection) {
+            /// <summary>Stops the long polling connection</summary>
+            /// <param name="connection" type="signalR">The SignalR connection to stop</param>
+
+            window.clearTimeout(connection._.pollTimeoutId);
+            window.clearTimeout(connection._.reconnectTimeoutId);
+
+            delete connection._.pollTimeoutId;
+            delete connection._.reconnectTimeoutId;
+
+            if (connection.pollXhr) {
+                connection.pollXhr.abort();
+                connection.pollXhr = null;
+                delete connection.pollXhr;
+            }
+        },
+
+        abort: function (connection, async) {
+            transportLogic.ajaxAbort(connection, async);
+        }
+    };
+
+}(window.jQuery, window));
+/* jquery.signalR.hubs.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+/*global window:false */
+/// <reference path="jquery.signalR.core.js" />
+
+(function ($, window, undefined) {
+
+    var eventNamespace = ".hubProxy",
+        signalR = $.signalR;
+
+    function makeEventName(event) {
+        return event + eventNamespace;
+    }
+
+    // Equivalent to Array.prototype.map
+    function map(arr, fun, thisp) {
+        var i,
+            length = arr.length,
+            result = [];
+        for (i = 0; i < length; i += 1) {
+            if (arr.hasOwnProperty(i)) {
+                result[i] = fun.call(thisp, arr[i], i, arr);
+            }
+        }
+        return result;
+    }
+
+    function getArgValue(a) {
+        return $.isFunction(a) ? null : ($.type(a) === "undefined" ? null : a);
+    }
+
+    function hasMembers(obj) {
+        for (var key in obj) {
+            // If we have any properties in our callback map then we have callbacks and can exit the loop via return
+            if (obj.hasOwnProperty(key)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function clearInvocationCallbacks(connection, error) {
+        /// <param name="connection" type="hubConnection" />
+        var callbacks = connection._.invocationCallbacks,
+            callback;
+
+        if (hasMembers(callbacks)) {
+            connection.log("Clearing hub invocation callbacks with error: " + error + ".");
+        }
+
+        // Reset the callback cache now as we have a local var referencing it
+        connection._.invocationCallbackId = 0;
+        delete connection._.invocationCallbacks;
+        connection._.invocationCallbacks = {};
+
+        // Loop over the callbacks and invoke them.
+        // We do this using a local var reference and *after* we've cleared the cache
+        // so that if a fail callback itself tries to invoke another method we don't
+        // end up with its callback in the list we're looping over.
+        for (var callbackId in callbacks) {
+            callback = callbacks[callbackId];
+            callback.method.call(callback.scope, { E: error });
+        }
+    }
+
+    // hubProxy
+    function hubProxy(hubConnection, hubName) {
+        /// <summary>
+        ///     Creates a new proxy object for the given hub connection that can be used to invoke
+        ///     methods on server hubs and handle client method invocation requests from the server.
+        /// </summary>
+        return new hubProxy.fn.init(hubConnection, hubName);
+    }
+
+    hubProxy.fn = hubProxy.prototype = {
+        init: function (connection, hubName) {
+            this.state = {};
+            this.connection = connection;
+            this.hubName = hubName;
+            this._ = {
+                callbackMap: {}
+            };
+        },
+
+        constructor: hubProxy,
+
+        hasSubscriptions: function () {
+            return hasMembers(this._.callbackMap);
+        },
+
+        on: function (eventName, callback) {
+            /// <summary>Wires up a callback to be invoked when a invocation request is received from the server hub.</summary>
+            /// <param name="eventName" type="String">The name of the hub event to register the callback for.</param>
+            /// <param name="callback" type="Function">The callback to be invoked.</param>
+            var that = this,
+                callbackMap = that._.callbackMap;
+
+            // Normalize the event name to lowercase
+            eventName = eventName.toLowerCase();
+
+            // If there is not an event registered for this callback yet we want to create its event space in the callback map.
+            if (!callbackMap[eventName]) {
+                callbackMap[eventName] = {};
+            }
+
+            // Map the callback to our encompassed function
+            callbackMap[eventName][callback] = function (e, data) {
+                callback.apply(that, data);
+            };
+
+            $(that).bind(makeEventName(eventName), callbackMap[eventName][callback]);
+
+            return that;
+        },
+
+        off: function (eventName, callback) {
+            /// <summary>Removes the callback invocation request from the server hub for the given event name.</summary>
+            /// <param name="eventName" type="String">The name of the hub event to unregister the callback for.</param>
+            /// <param name="callback" type="Function">The callback to be invoked.</param>
+            var that = this,
+                callbackMap = that._.callbackMap,
+                callbackSpace;
+
+            // Normalize the event name to lowercase
+            eventName = eventName.toLowerCase();
+
+            callbackSpace = callbackMap[eventName];
+
+            // Verify that there is an event space to unbind
+            if (callbackSpace) {
+                // Only unbind if there's an event bound with eventName and a callback with the specified callback
+                if (callbackSpace[callback]) {
+                    $(that).unbind(makeEventName(eventName), callbackSpace[callback]);
+
+                    // Remove the callback from the callback map
+                    delete callbackSpace[callback];
+
+                    // Check if there are any members left on the event, if not we need to destroy it.
+                    if (!hasMembers(callbackSpace)) {
+                        delete callbackMap[eventName];
+                    }
+                } else if (!callback) { // Check if we're removing the whole event and we didn't error because of an invalid callback
+                    $(that).unbind(makeEventName(eventName));
+
+                    delete callbackMap[eventName];
+                }
+            }
+
+            return that;
+        },
+
+        invoke: function (methodName) {
+            /// <summary>Invokes a server hub method with the given arguments.</summary>
+            /// <param name="methodName" type="String">The name of the server hub method.</param>
+
+            var that = this,
+                connection = that.connection,
+                args = $.makeArray(arguments).slice(1),
+                argValues = map(args, getArgValue),
+                data = { H: that.hubName, M: methodName, A: argValues, I: connection._.invocationCallbackId },
+                d = $.Deferred(),
+                callback = function (minResult) {
+                    var result = that._maximizeHubResponse(minResult),
+                        source,
+                        error;
+
+                    // Update the hub state
+                    $.extend(that.state, result.State);
+
+                    if (result.Progress) {
+                        if (d.notifyWith) {
+                            // Progress is only supported in jQuery 1.7+
+                            d.notifyWith(that, [result.Progress.Data]);
+                        } else if(!connection._.progressjQueryVersionLogged) {
+                            connection.log("A hub method invocation progress update was received but the version of jQuery in use (" + $.prototype.jquery + ") does not support progress updates. Upgrade to jQuery 1.7+ to receive progress notifications.");
+                            connection._.progressjQueryVersionLogged = true;
+                        }
+                    } else if (result.Error) {
+                        // Server hub method threw an exception, log it & reject the deferred
+                        if (result.StackTrace) {
+                            connection.log(result.Error + "\n" + result.StackTrace + ".");
+                        }
+
+                        // result.ErrorData is only set if a HubException was thrown
+                        source = result.IsHubException ? "HubException" : "Exception";
+                        error = signalR._.error(result.Error, source);
+                        error.data = result.ErrorData;
+
+                        connection.log(that.hubName + "." + methodName + " failed to execute. Error: " + error.message);
+                        d.rejectWith(that, [error]);
+                    } else {
+                        // Server invocation succeeded, resolve the deferred
+                        connection.log("Invoked " + that.hubName + "." + methodName);
+                        d.resolveWith(that, [result.Result]);
+                    }
+                };
+
+            connection._.invocationCallbacks[connection._.invocationCallbackId.toString()] = { scope: that, method: callback };
+            connection._.invocationCallbackId += 1;
+
+            if (!$.isEmptyObject(that.state)) {
+                data.S = that.state;
+            }
+
+            connection.log("Invoking " + that.hubName + "." + methodName);
+            connection.send(data);
+
+            return d.promise();
+        },
+
+        _maximizeHubResponse: function (minHubResponse) {
+            return {
+                State: minHubResponse.S,
+                Result: minHubResponse.R,
+                Progress: minHubResponse.P ? {
+                    Id: minHubResponse.P.I,
+                    Data: minHubResponse.P.D
+                } : null,
+                Id: minHubResponse.I,
+                IsHubException: minHubResponse.H,
+                Error: minHubResponse.E,
+                StackTrace: minHubResponse.T,
+                ErrorData: minHubResponse.D
+            };
+        }
+    };
+
+    hubProxy.fn.init.prototype = hubProxy.fn;
+
+    // hubConnection
+    function hubConnection(url, options) {
+        /// <summary>Creates a new hub connection.</summary>
+        /// <param name="url" type="String">[Optional] The hub route url, defaults to "/signalr".</param>
+        /// <param name="options" type="Object">[Optional] Settings to use when creating the hubConnection.</param>
+        var settings = {
+            qs: null,
+            logging: false,
+            useDefaultPath: true
+        };
+
+        $.extend(settings, options);
+
+        if (!url || settings.useDefaultPath) {
+            url = (url || "") + "/signalr";
+        }
+        return new hubConnection.fn.init(url, settings);
+    }
+
+    hubConnection.fn = hubConnection.prototype = $.connection();
+
+    hubConnection.fn.init = function (url, options) {
+        var settings = {
+                qs: null,
+                logging: false,
+                useDefaultPath: true
+            },
+            connection = this;
+
+        $.extend(settings, options);
+
+        // Call the base constructor
+        $.signalR.fn.init.call(connection, url, settings.qs, settings.logging);
+
+        // Object to store hub proxies for this connection
+        connection.proxies = {};
+
+        connection._.invocationCallbackId = 0;
+        connection._.invocationCallbacks = {};
+
+        // Wire up the received handler
+        connection.received(function (minData) {
+            var data, proxy, dataCallbackId, callback, hubName, eventName;
+            if (!minData) {
+                return;
+            }
+
+            // We have to handle progress updates first in order to ensure old clients that receive
+            // progress updates enter the return value branch and then no-op when they can't find
+            // the callback in the map (because the minData.I value will not be a valid callback ID)
+            if (typeof (minData.P) !== "undefined") {
+                // Process progress notification
+                dataCallbackId = minData.P.I.toString();
+                callback = connection._.invocationCallbacks[dataCallbackId];
+                if (callback) {
+                    callback.method.call(callback.scope, minData);
+                }
+            } else if (typeof (minData.I) !== "undefined") {
+                // We received the return value from a server method invocation, look up callback by id and call it
+                dataCallbackId = minData.I.toString();
+                callback = connection._.invocationCallbacks[dataCallbackId];
+                if (callback) {
+                    // Delete the callback from the proxy
+                    connection._.invocationCallbacks[dataCallbackId] = null;
+                    delete connection._.invocationCallbacks[dataCallbackId];
+
+                    // Invoke the callback
+                    callback.method.call(callback.scope, minData);
+                }
+            } else {
+                data = this._maximizeClientHubInvocation(minData);
+
+                // We received a client invocation request, i.e. broadcast from server hub
+                connection.log("Triggering client hub event '" + data.Method + "' on hub '" + data.Hub + "'.");
+
+                // Normalize the names to lowercase
+                hubName = data.Hub.toLowerCase();
+                eventName = data.Method.toLowerCase();
+
+                // Trigger the local invocation event
+                proxy = this.proxies[hubName];
+
+                // Update the hub state
+                $.extend(proxy.state, data.State);
+                $(proxy).triggerHandler(makeEventName(eventName), [data.Args]);
+            }
+        });
+
+        connection.error(function (errData, origData) {
+            var callbackId, callback;
+
+            if (!origData) {
+                // No original data passed so this is not a send error
+                return;
+            }
+
+            callbackId = origData.I;
+            callback = connection._.invocationCallbacks[callbackId];
+
+            // Verify that there is a callback bound (could have been cleared)
+            if (callback) {
+                // Delete the callback
+                connection._.invocationCallbacks[callbackId] = null;
+                delete connection._.invocationCallbacks[callbackId];
+
+                // Invoke the callback with an error to reject the promise
+                callback.method.call(callback.scope, { E: errData });
+            }
+        });
+
+        connection.reconnecting(function () {
+            if (connection.transport && connection.transport.name === "webSockets") {
+                clearInvocationCallbacks(connection, "Connection started reconnecting before invocation result was received.");
+            }
+        });
+
+        connection.disconnected(function () {
+            clearInvocationCallbacks(connection, "Connection was disconnected before invocation result was received.");
+        });
+    };
+
+    hubConnection.fn._maximizeClientHubInvocation = function (minClientHubInvocation) {
+        return {
+            Hub: minClientHubInvocation.H,
+            Method: minClientHubInvocation.M,
+            Args: minClientHubInvocation.A,
+            State: minClientHubInvocation.S
+        };
+    };
+
+    hubConnection.fn._registerSubscribedHubs = function () {
+        /// <summary>
+        ///     Sets the starting event to loop through the known hubs and register any new hubs
+        ///     that have been added to the proxy.
+        /// </summary>
+        var connection = this;
+
+        if (!connection._subscribedToHubs) {
+            connection._subscribedToHubs = true;
+            connection.starting(function () {
+                // Set the connection's data object with all the hub proxies with active subscriptions.
+                // These proxies will receive notifications from the server.
+                var subscribedHubs = [];
+
+                $.each(connection.proxies, function (key) {
+                    if (this.hasSubscriptions()) {
+                        subscribedHubs.push({ name: key });
+                        connection.log("Client subscribed to hub '" + key + "'.");
+                    }
+                });
+
+                if (subscribedHubs.length === 0) {
+                    connection.log("No hubs have been subscribed to.  The client will not receive data from hubs.  To fix, declare at least one client side function prior to connection start for each hub you wish to subscribe to.");
+                }
+
+                connection.data = connection.json.stringify(subscribedHubs);
+            });
+        }
+    };
+
+    hubConnection.fn.createHubProxy = function (hubName) {
+        /// <summary>
+        ///     Creates a new proxy object for the given hub connection that can be used to invoke
+        ///     methods on server hubs and handle client method invocation requests from the server.
+        /// </summary>
+        /// <param name="hubName" type="String">
+        ///     The name of the hub on the server to create the proxy for.
+        /// </param>
+
+        // Normalize the name to lowercase
+        hubName = hubName.toLowerCase();
+
+        var proxy = this.proxies[hubName];
+        if (!proxy) {
+            proxy = hubProxy(this, hubName);
+            this.proxies[hubName] = proxy;
+        }
+
+        this._registerSubscribedHubs();
+
+        return proxy;
+    };
+
+    hubConnection.fn.init.prototype = hubConnection.fn;
+
+    $.hubConnection = hubConnection;
+
+}(window.jQuery, window));
+/* jquery.signalR.version.js */
+// Copyright (c) .NET Foundation. All rights reserved.
+// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
+
+
+/*global window:false */
+/// <reference path="jquery.signalR.core.js" />
+(function ($, undefined) {
+    $.signalR.version = "2.2.1";
+}(window.jQuery));
+
+
+/***/ }),
+/* 865 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71005,7 +73973,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 864 */
+/* 866 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71016,27 +73984,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ZoomControl = exports.WMSTileLayer = exports.Tooltip = exports.TileLayer = exports.ScaleControl = exports.Rectangle = exports.Popup = exports.Polyline = exports.Polygon = exports.Path = exports.Pane = exports.Marker = exports.MapLayer = exports.MapControl = exports.MapComponent = exports.Map = exports.LayersControl = exports.LayerGroup = exports.ImageOverlay = exports.GridLayer = exports.GeoJSON = exports.FeatureGroup = exports.CircleMarker = exports.Circle = exports.AttributionControl = exports.PropTypes = undefined;
 
-var _propTypes = __webpack_require__(1042);
+var _propTypes = __webpack_require__(1045);
 
 var _PropTypes = _interopRequireWildcard(_propTypes);
 
-var _AttributionControl2 = __webpack_require__(1022);
+var _AttributionControl2 = __webpack_require__(1025);
 
 var _AttributionControl3 = _interopRequireDefault(_AttributionControl2);
 
-var _Circle2 = __webpack_require__(1023);
+var _Circle2 = __webpack_require__(1026);
 
 var _Circle3 = _interopRequireDefault(_Circle2);
 
-var _CircleMarker2 = __webpack_require__(1024);
+var _CircleMarker2 = __webpack_require__(1027);
 
 var _CircleMarker3 = _interopRequireDefault(_CircleMarker2);
 
-var _FeatureGroup2 = __webpack_require__(1025);
+var _FeatureGroup2 = __webpack_require__(1028);
 
 var _FeatureGroup3 = _interopRequireDefault(_FeatureGroup2);
 
-var _GeoJSON2 = __webpack_require__(1026);
+var _GeoJSON2 = __webpack_require__(1029);
 
 var _GeoJSON3 = _interopRequireDefault(_GeoJSON2);
 
@@ -71044,19 +74012,19 @@ var _GridLayer2 = __webpack_require__(783);
 
 var _GridLayer3 = _interopRequireDefault(_GridLayer2);
 
-var _ImageOverlay2 = __webpack_require__(1027);
+var _ImageOverlay2 = __webpack_require__(1030);
 
 var _ImageOverlay3 = _interopRequireDefault(_ImageOverlay2);
 
-var _LayerGroup2 = __webpack_require__(1028);
+var _LayerGroup2 = __webpack_require__(1031);
 
 var _LayerGroup3 = _interopRequireDefault(_LayerGroup2);
 
-var _LayersControl2 = __webpack_require__(1029);
+var _LayersControl2 = __webpack_require__(1032);
 
 var _LayersControl3 = _interopRequireDefault(_LayersControl2);
 
-var _Map2 = __webpack_require__(1030);
+var _Map2 = __webpack_require__(1033);
 
 var _Map3 = _interopRequireDefault(_Map2);
 
@@ -71072,51 +74040,51 @@ var _MapLayer2 = __webpack_require__(236);
 
 var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
-var _Marker2 = __webpack_require__(1031);
+var _Marker2 = __webpack_require__(1034);
 
 var _Marker3 = _interopRequireDefault(_Marker2);
 
-var _Pane2 = __webpack_require__(1032);
+var _Pane2 = __webpack_require__(1035);
 
 var _Pane3 = _interopRequireDefault(_Pane2);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
-var _Polygon2 = __webpack_require__(1033);
+var _Polygon2 = __webpack_require__(1036);
 
 var _Polygon3 = _interopRequireDefault(_Polygon2);
 
-var _Polyline2 = __webpack_require__(1034);
+var _Polyline2 = __webpack_require__(1037);
 
 var _Polyline3 = _interopRequireDefault(_Polyline2);
 
-var _Popup2 = __webpack_require__(1035);
+var _Popup2 = __webpack_require__(1038);
 
 var _Popup3 = _interopRequireDefault(_Popup2);
 
-var _Rectangle2 = __webpack_require__(1036);
+var _Rectangle2 = __webpack_require__(1039);
 
 var _Rectangle3 = _interopRequireDefault(_Rectangle2);
 
-var _ScaleControl2 = __webpack_require__(1037);
+var _ScaleControl2 = __webpack_require__(1040);
 
 var _ScaleControl3 = _interopRequireDefault(_ScaleControl2);
 
-var _TileLayer2 = __webpack_require__(1038);
+var _TileLayer2 = __webpack_require__(1041);
 
 var _TileLayer3 = _interopRequireDefault(_TileLayer2);
 
-var _Tooltip2 = __webpack_require__(1039);
+var _Tooltip2 = __webpack_require__(1042);
 
 var _Tooltip3 = _interopRequireDefault(_Tooltip2);
 
-var _WMSTileLayer2 = __webpack_require__(1040);
+var _WMSTileLayer2 = __webpack_require__(1043);
 
 var _WMSTileLayer3 = _interopRequireDefault(_WMSTileLayer2);
 
-var _ZoomControl2 = __webpack_require__(1041);
+var _ZoomControl2 = __webpack_require__(1044);
 
 var _ZoomControl3 = _interopRequireDefault(_ZoomControl2);
 
@@ -71152,7 +74120,7 @@ exports.WMSTileLayer = _WMSTileLayer3.default;
 exports.ZoomControl = _ZoomControl3.default;
 
 /***/ }),
-/* 865 */
+/* 867 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71166,7 +74134,7 @@ var createHelper = function createHelper(func, helperName) {
   if (process.env.NODE_ENV !== 'production' && setDisplayName) {
     var _ret = function () {
       /* eslint-disable global-require */
-      var wrapDisplayName = __webpack_require__(1049).default;
+      var wrapDisplayName = __webpack_require__(1052).default;
       /* eslint-enable global-require */
 
       if (noArgs) {
@@ -71204,7 +74172,7 @@ exports.default = createHelper;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 866 */
+/* 868 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71212,7 +74180,7 @@ exports.default = createHelper;
 
 exports.__esModule = true;
 
-var _shouldUpdate = __webpack_require__(1047);
+var _shouldUpdate = __webpack_require__(1050);
 
 var _shouldUpdate2 = _interopRequireDefault(_shouldUpdate);
 
@@ -71220,7 +74188,7 @@ var _shallowEqual = __webpack_require__(228);
 
 var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-var _createHelper = __webpack_require__(865);
+var _createHelper = __webpack_require__(867);
 
 var _createHelper2 = _interopRequireDefault(_createHelper);
 
@@ -71233,8 +74201,8 @@ var pure = (0, _shouldUpdate2.default)(function (props, nextProps) {
 exports.default = (0, _createHelper2.default)(pure, 'pure', true, true);
 
 /***/ }),
-/* 867 */,
-/* 868 */
+/* 869 */,
+/* 870 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71244,15 +74212,15 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _routes = __webpack_require__(879);
+var _routes = __webpack_require__(884);
 
 var _routes2 = _interopRequireDefault(_routes);
 
-var _consciencePage = __webpack_require__(367);
+var _consciencePage = __webpack_require__(368);
 
 var _consciencePage2 = _interopRequireDefault(_consciencePage);
 
-var _Header = __webpack_require__(869);
+var _Header = __webpack_require__(871);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -71274,7 +74242,7 @@ var App = function App() {
 (0, _consciencePage2.default)(App);
 
 /***/ }),
-/* 869 */
+/* 871 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71288,9 +74256,9 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(145);
+var _reactRouterDom = __webpack_require__(143);
 
-var _LogoutButton = __webpack_require__(876);
+var _LogoutButton = __webpack_require__(880);
 
 var _LogoutButton2 = _interopRequireDefault(_LogoutButton);
 
@@ -71312,8 +74280,13 @@ var Header = function Header() {
     ),
     _react2.default.createElement(
       _reactRouterDom.Link,
-      { to: '/SitePages/Map.aspx' },
+      { to: '/map' },
       'Map'
+    ),
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/client-test' },
+      'Client test'
     ),
     _react2.default.createElement(_LogoutButton2.default, null)
   );
@@ -71322,7 +74295,7 @@ var Header = function Header() {
 exports.default = Header;
 
 /***/ }),
-/* 870 */
+/* 872 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71349,7 +74322,7 @@ var NotFound = function NotFound() {
 exports.default = NotFound;
 
 /***/ }),
-/* 871 */
+/* 873 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71367,11 +74340,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(145);
+var _reactRouterDom = __webpack_require__(143);
 
 var _reactApollo = __webpack_require__(204);
 
-var _Table = __webpack_require__(862);
+var _Table = __webpack_require__(863);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71462,7 +74435,7 @@ var query = (0, _reactApollo.gql)(_templateObject);
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactApollo.graphql)(query)(EmployeesList));
 
 /***/ }),
-/* 872 */
+/* 874 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71476,7 +74449,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _EmployeesList = __webpack_require__(871);
+var _EmployeesList = __webpack_require__(873);
 
 var _EmployeesList2 = _interopRequireDefault(_EmployeesList);
 
@@ -71493,7 +74466,156 @@ var EmployeesPage = function EmployeesPage() {
 exports.default = EmployeesPage;
 
 /***/ }),
-/* 873 */
+/* 875 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(143);
+
+var _jquery = __webpack_require__(829);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+__webpack_require__(864);
+
+var _RaisedButton = __webpack_require__(349);
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HostClientTest = function (_React$Component) {
+  _inherits(HostClientTest, _React$Component);
+
+  function HostClientTest(props) {
+    _classCallCheck(this, HostClientTest);
+
+    var _this = _possibleConstructorReturn(this, (HostClientTest.__proto__ || Object.getPrototypeOf(HostClientTest)).call(this, props));
+
+    _this._connect = _this._connect.bind(_this);
+    _this._updateLocation = _this._updateLocation.bind(_this);
+    _this._disconnect = _this._disconnect.bind(_this);
+
+    _this.state = {
+      isConnected: false
+    };
+
+    var connection = _jquery2.default.hubConnection('/signalr/hubs');
+    _this.proxy = connection.createHubProxy('HostsHub');
+
+    connection.start().done(function () {
+      console.log('Now connected, connection ID=' + connection.id);
+    }).fail(function () {
+      console.log('Could not connect');
+    });
+    return _this;
+  }
+
+  _createClass(HostClientTest, [{
+    key: '_connect',
+    value: function _connect() {
+      var _this2 = this;
+
+      this.proxy.invoke('subscribeHost', 'TestReactClient').done(function () {
+        _this2.setState({ isConnected: true });
+      });
+    }
+  }, {
+    key: '_updateLocation',
+    value: function _updateLocation() {
+      var location = { Latitude: 37.048601, Longitude: -2.4216117 };
+
+      var random = Math.random() / 1000;
+
+      location.Latitude += random;
+
+      random = Math.random() / 1000;
+
+      location.Longitude += random;
+
+      this.proxy.invoke('locationUpdates', [location]);
+    }
+  }, {
+    key: '_disconnect',
+    value: function _disconnect() {
+      var _this3 = this;
+
+      this.proxy.close().done(function () {
+        _this3.setState({ isConnected: false });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      if (!this.state.isConnected) {
+        return _react2.default.createElement(_RaisedButton2.default, { label: 'Connect', onClick: this._connect });
+      }
+
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_RaisedButton2.default, { label: 'Disconnect', onClick: this._disconnect }),
+        _react2.default.createElement(_RaisedButton2.default, { label: 'Update Location', onClick: this._updateLocation })
+      );
+    }
+  }]);
+
+  return HostClientTest;
+}(_react2.default.Component);
+
+exports.default = (0, _reactRouterDom.withRouter)(HostClientTest);
+
+/***/ }),
+/* 876 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _HostClientTest = __webpack_require__(875);
+
+var _HostClientTest2 = _interopRequireDefault(_HostClientTest);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HostClientTestPage = function HostClientTestPage() {
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(_HostClientTest2.default, null)
+  );
+};
+
+exports.default = HostClientTestPage;
+
+/***/ }),
+/* 877 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71511,11 +74633,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(145);
+var _reactRouterDom = __webpack_require__(143);
 
 var _reactApollo = __webpack_require__(204);
 
-var _Table = __webpack_require__(862);
+var _Table = __webpack_require__(863);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71596,7 +74718,7 @@ var query = (0, _reactApollo.gql)(_templateObject);
 exports.default = (0, _reactRouterDom.withRouter)((0, _reactApollo.graphql)(query)(HostsList));
 
 /***/ }),
-/* 874 */
+/* 878 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71610,7 +74732,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HostList = __webpack_require__(873);
+var _HostList = __webpack_require__(877);
 
 var _HostList2 = _interopRequireDefault(_HostList);
 
@@ -71627,8 +74749,8 @@ var HostPage = function HostPage() {
 exports.default = HostPage;
 
 /***/ }),
-/* 875 */,
-/* 876 */
+/* 879 */,
+/* 880 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71649,7 +74771,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactApollo = __webpack_require__(204);
 
-var _RaisedButton = __webpack_require__(684);
+var _RaisedButton = __webpack_require__(349);
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
@@ -71717,7 +74839,7 @@ var query = (0, _reactApollo.gql)(_templateObject2);
 exports.default = (0, _reactApollo.compose)((0, _reactApollo.graphql)(mutation), (0, _reactApollo.graphql)(query))(LogoutButton);
 
 /***/ }),
-/* 877 */
+/* 881 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71733,17 +74855,21 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(145);
+var _reactRouterDom = __webpack_require__(143);
 
-var _reactLeaflet = __webpack_require__(864);
+var _reactLeaflet = __webpack_require__(866);
 
-var _reactLeafletBing = __webpack_require__(1021);
+var _reactLeafletBing = __webpack_require__(1024);
 
-var _jquery = __webpack_require__(884);
+var _jquery = __webpack_require__(829);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-__webpack_require__(1017);
+__webpack_require__(864);
+
+var _HostPopup = __webpack_require__(882);
+
+var _HostPopup2 = _interopRequireDefault(_HostPopup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -71761,24 +74887,26 @@ var ConscienceMap = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (ConscienceMap.__proto__ || Object.getPrototypeOf(ConscienceMap)).call(this, props));
 
+    _this.addHost = _this.addHost.bind(_this);
+
     _this.state = {
-      hosts: [{
-        location: {
-          latitude: 37.048601,
-          longitude: -2.4216117
-        }
-      }]
+      defaultPosition: [37.048601, -2.4216117],
+      hosts: []
     };
 
     var connection = _jquery2.default.hubConnection('/signalr/hubs');
     var proxy = connection.createHubProxy('HostsHub');
 
-    proxy.on('hostConnected', function (user) {
-      console.log('hostConnected ' + JSON.stringify(user));
+    proxy.on('hostConnected', function (userId, userName, location) {
+      console.log('hostConnected ' + userId + ' ' + userName + ' ' + JSON.stringify(location));
+
+      _this.addHost(userId, userName, location);
     });
 
     proxy.on('locationUpdated', function (userId, userName, location) {
-      console.log('locationUpdated ' + userId + ' ' + userName + ' ' + location);
+      console.log('locationUpdated ' + userId + ' ' + userName + ' ' + JSON.stringify(location));
+
+      _this.addHost(userId, userName, location);
     });
 
     proxy.on('hostDisconnected', function (userId) {
@@ -71795,32 +74923,42 @@ var ConscienceMap = function (_React$Component) {
   }
 
   _createClass(ConscienceMap, [{
+    key: 'addHost',
+    value: function addHost(userId, userName, location) {
+      var hosts = this.state.hosts.filter(function (h) {
+        return h.userId !== userId;
+      });
+      var host = { userId: userId, userName: userName };
+
+      if (location) {
+        host.location = [location.Latitude, location.Longitude];
+      }
+
+      this.setState({ hosts: hosts.concat(host) });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var position = [this.state.hosts[0].location.latitude, this.state.hosts[0].location.longitude];
-
       return _react2.default.createElement(
         'div',
         null,
         _react2.default.createElement(
           _reactLeaflet.Map,
-          { center: position, zoom: 18, style: { height: 500 } },
+          { center: this.state.defaultPosition, zoom: 18, style: { height: 500 } },
           _react2.default.createElement(_reactLeafletBing.BingLayer, { bingkey: 'Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB' }),
-          _react2.default.createElement(
-            _reactLeaflet.Marker,
-            { position: position },
-            _react2.default.createElement(
-              _reactLeaflet.Popup,
-              null,
+          this.state.hosts.filter(function (h) {
+            return h.location;
+          }).map(function (host) {
+            return _react2.default.createElement(
+              _reactLeaflet.Marker,
+              { position: host.location, key: host.userId },
               _react2.default.createElement(
-                'span',
+                _reactLeaflet.Popup,
                 null,
-                'A pretty CSS3 popup. ',
-                _react2.default.createElement('br', null),
-                ' Easily customizable.'
+                _react2.default.createElement(_HostPopup2.default, { host: host })
               )
-            )
-          )
+            );
+          })
         )
       );
     }
@@ -71832,7 +74970,7 @@ var ConscienceMap = function (_React$Component) {
 exports.default = (0, _reactRouterDom.withRouter)(ConscienceMap);
 
 /***/ }),
-/* 878 */
+/* 882 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71846,7 +74984,43 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ConscienceMap = __webpack_require__(877);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var HostPopup = function HostPopup(_ref) {
+  var host = _ref.host;
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      host.userName
+    )
+  );
+};
+
+HostPopup.propTypes = {
+  host: _react2.default.PropTypes.object.isRequired
+};
+
+exports.default = HostPopup;
+
+/***/ }),
+/* 883 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _ConscienceMap = __webpack_require__(881);
 
 var _ConscienceMap2 = _interopRequireDefault(_ConscienceMap);
 
@@ -71863,7 +75037,7 @@ var MapPage = function MapPage() {
 exports.default = MapPage;
 
 /***/ }),
-/* 879 */
+/* 884 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71877,21 +75051,25 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(145);
+var _reactRouterDom = __webpack_require__(143);
 
-var _MapPage = __webpack_require__(878);
+var _MapPage = __webpack_require__(883);
 
 var _MapPage2 = _interopRequireDefault(_MapPage);
 
-var _EmployeesPage = __webpack_require__(872);
+var _EmployeesPage = __webpack_require__(874);
 
 var _EmployeesPage2 = _interopRequireDefault(_EmployeesPage);
 
-var _HostPage = __webpack_require__(874);
+var _HostPage = __webpack_require__(878);
 
 var _HostPage2 = _interopRequireDefault(_HostPage);
 
-var _NotFound = __webpack_require__(870);
+var _HostClientTestPage = __webpack_require__(876);
+
+var _HostClientTestPage2 = _interopRequireDefault(_HostClientTestPage);
+
+var _NotFound = __webpack_require__(872);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
@@ -71904,6 +75082,7 @@ var Routes = function Routes() {
     _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _EmployeesPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/hosts', component: _HostPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/map', component: _MapPage2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/client-test', component: _HostClientTestPage2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
   );
 };
@@ -71911,21 +75090,21 @@ var Routes = function Routes() {
 exports.default = Routes;
 
 /***/ }),
-/* 880 */
+/* 885 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(881), __esModule: true };
+module.exports = { "default": __webpack_require__(886), __esModule: true };
 
 /***/ }),
-/* 881 */
+/* 886 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(341);
 __webpack_require__(229);
-module.exports = __webpack_require__(882);
+module.exports = __webpack_require__(887);
 
 /***/ }),
-/* 882 */
+/* 887 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject = __webpack_require__(87)
@@ -71937,21 +75116,14 @@ module.exports = __webpack_require__(34).getIterator = function(it){
 };
 
 /***/ }),
-/* 883 */
+/* 888 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(885);
+/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["$"] = __webpack_require__(889);
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69)))
 
 /***/ }),
-/* 884 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {module.exports = global["jQuery"] = __webpack_require__(883);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(69)))
-
-/***/ }),
-/* 885 */
+/* 889 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -82211,7 +85383,7 @@ return jQuery;
 
 
 /***/ }),
-/* 886 */
+/* 890 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(199),
@@ -82224,14 +85396,14 @@ module.exports = DataView;
 
 
 /***/ }),
-/* 887 */
+/* 891 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(948),
-    hashDelete = __webpack_require__(949),
-    hashGet = __webpack_require__(950),
-    hashHas = __webpack_require__(951),
-    hashSet = __webpack_require__(952);
+var hashClear = __webpack_require__(952),
+    hashDelete = __webpack_require__(953),
+    hashGet = __webpack_require__(954),
+    hashHas = __webpack_require__(955),
+    hashSet = __webpack_require__(956);
 
 /**
  * Creates a hash object.
@@ -82262,7 +85434,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 888 */
+/* 892 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(199),
@@ -82275,7 +85447,7 @@ module.exports = Promise;
 
 
 /***/ }),
-/* 889 */
+/* 893 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(199),
@@ -82288,12 +85460,12 @@ module.exports = Set;
 
 
 /***/ }),
-/* 890 */
+/* 894 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(662),
-    setCacheAdd = __webpack_require__(976),
-    setCacheHas = __webpack_require__(977);
+var MapCache = __webpack_require__(663),
+    setCacheAdd = __webpack_require__(980),
+    setCacheHas = __webpack_require__(981);
 
 /**
  *
@@ -82321,7 +85493,7 @@ module.exports = SetCache;
 
 
 /***/ }),
-/* 891 */
+/* 895 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(199),
@@ -82334,7 +85506,7 @@ module.exports = WeakMap;
 
 
 /***/ }),
-/* 892 */
+/* 896 */
 /***/ (function(module, exports) {
 
 /**
@@ -82355,7 +85527,7 @@ module.exports = addMapEntry;
 
 
 /***/ }),
-/* 893 */
+/* 897 */
 /***/ (function(module, exports) {
 
 /**
@@ -82376,7 +85548,7 @@ module.exports = addSetEntry;
 
 
 /***/ }),
-/* 894 */
+/* 898 */
 /***/ (function(module, exports) {
 
 /**
@@ -82403,7 +85575,7 @@ module.exports = apply;
 
 
 /***/ }),
-/* 895 */
+/* 899 */
 /***/ (function(module, exports) {
 
 /**
@@ -82434,7 +85606,7 @@ module.exports = arrayFilter;
 
 
 /***/ }),
-/* 896 */
+/* 900 */
 /***/ (function(module, exports) {
 
 /**
@@ -82463,7 +85635,7 @@ module.exports = arraySome;
 
 
 /***/ }),
-/* 897 */
+/* 901 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(300),
@@ -82486,11 +85658,11 @@ module.exports = baseAssign;
 
 
 /***/ }),
-/* 898 */
+/* 902 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(300),
-    keysIn = __webpack_require__(855);
+    keysIn = __webpack_require__(856);
 
 /**
  * The base implementation of `_.assignIn` without support for multiple sources
@@ -82509,7 +85681,7 @@ module.exports = baseAssignIn;
 
 
 /***/ }),
-/* 899 */
+/* 903 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(200);
@@ -82545,11 +85717,11 @@ module.exports = baseCreate;
 
 
 /***/ }),
-/* 900 */
+/* 904 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(664),
-    isFlattenable = __webpack_require__(956);
+var arrayPush = __webpack_require__(665),
+    isFlattenable = __webpack_require__(960);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -82589,10 +85761,10 @@ module.exports = baseFlatten;
 
 
 /***/ }),
-/* 901 */
+/* 905 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var createBaseFor = __webpack_require__(940);
+var createBaseFor = __webpack_require__(944);
 
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
@@ -82611,10 +85783,10 @@ module.exports = baseFor;
 
 
 /***/ }),
-/* 902 */
+/* 906 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFor = __webpack_require__(901),
+var baseFor = __webpack_require__(905),
     keys = __webpack_require__(235);
 
 /**
@@ -82633,7 +85805,7 @@ module.exports = baseForOwn;
 
 
 /***/ }),
-/* 903 */
+/* 907 */
 /***/ (function(module, exports) {
 
 /**
@@ -82652,7 +85824,7 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 904 */
+/* 908 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(231),
@@ -82676,17 +85848,17 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 905 */
+/* 909 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(663),
-    equalArrays = __webpack_require__(838),
-    equalByTag = __webpack_require__(942),
-    equalObjects = __webpack_require__(943),
-    getTag = __webpack_require__(844),
+var Stack = __webpack_require__(664),
+    equalArrays = __webpack_require__(839),
+    equalByTag = __webpack_require__(946),
+    equalObjects = __webpack_require__(947),
+    getTag = __webpack_require__(845),
     isArray = __webpack_require__(102),
-    isBuffer = __webpack_require__(678),
-    isTypedArray = __webpack_require__(854);
+    isBuffer = __webpack_require__(679),
+    isTypedArray = __webpack_require__(855);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -82765,11 +85937,11 @@ module.exports = baseIsEqualDeep;
 
 
 /***/ }),
-/* 906 */
+/* 910 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(663),
-    baseIsEqual = __webpack_require__(667);
+var Stack = __webpack_require__(664),
+    baseIsEqual = __webpack_require__(668);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -82833,13 +86005,13 @@ module.exports = baseIsMatch;
 
 
 /***/ }),
-/* 907 */
+/* 911 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(679),
-    isMasked = __webpack_require__(958),
+var isFunction = __webpack_require__(680),
+    isMasked = __webpack_require__(962),
     isObject = __webpack_require__(200),
-    toSource = __webpack_require__(850);
+    toSource = __webpack_require__(851);
 
 /**
  * Used to match `RegExp`
@@ -82886,11 +86058,11 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 908 */
+/* 912 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(231),
-    isLength = __webpack_require__(680),
+    isLength = __webpack_require__(681),
     isObjectLike = __webpack_require__(234);
 
 /** `Object#toString` result references. */
@@ -82952,14 +86124,14 @@ module.exports = baseIsTypedArray;
 
 
 /***/ }),
-/* 909 */
+/* 913 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseMatches = __webpack_require__(912),
-    baseMatchesProperty = __webpack_require__(913),
-    identity = __webpack_require__(675),
+var baseMatches = __webpack_require__(916),
+    baseMatchesProperty = __webpack_require__(917),
+    identity = __webpack_require__(676),
     isArray = __webpack_require__(102),
-    property = __webpack_require__(995);
+    property = __webpack_require__(999);
 
 /**
  * The base implementation of `_.iteratee`.
@@ -82989,11 +86161,11 @@ module.exports = baseIteratee;
 
 
 /***/ }),
-/* 910 */
+/* 914 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPrototype = __webpack_require__(673),
-    nativeKeys = __webpack_require__(970);
+var isPrototype = __webpack_require__(674),
+    nativeKeys = __webpack_require__(974);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -83025,12 +86197,12 @@ module.exports = baseKeys;
 
 
 /***/ }),
-/* 911 */
+/* 915 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(200),
-    isPrototype = __webpack_require__(673),
-    nativeKeysIn = __webpack_require__(971);
+    isPrototype = __webpack_require__(674),
+    nativeKeysIn = __webpack_require__(975);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -83064,12 +86236,12 @@ module.exports = baseKeysIn;
 
 
 /***/ }),
-/* 912 */
+/* 916 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsMatch = __webpack_require__(906),
-    getMatchData = __webpack_require__(944),
-    matchesStrictComparable = __webpack_require__(847);
+var baseIsMatch = __webpack_require__(910),
+    getMatchData = __webpack_require__(948),
+    matchesStrictComparable = __webpack_require__(848);
 
 /**
  * The base implementation of `_.matches` which doesn't clone `source`.
@@ -83092,15 +86264,15 @@ module.exports = baseMatches;
 
 
 /***/ }),
-/* 913 */
+/* 917 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsEqual = __webpack_require__(667),
-    get = __webpack_require__(989),
-    hasIn = __webpack_require__(852),
-    isKey = __webpack_require__(672),
-    isStrictComparable = __webpack_require__(845),
-    matchesStrictComparable = __webpack_require__(847),
+var baseIsEqual = __webpack_require__(668),
+    get = __webpack_require__(993),
+    hasIn = __webpack_require__(853),
+    isKey = __webpack_require__(673),
+    isStrictComparable = __webpack_require__(846),
+    matchesStrictComparable = __webpack_require__(848),
     toKey = __webpack_require__(233);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -83131,11 +86303,11 @@ module.exports = baseMatchesProperty;
 
 
 /***/ }),
-/* 914 */
+/* 918 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var basePickBy = __webpack_require__(915),
-    hasIn = __webpack_require__(852);
+var basePickBy = __webpack_require__(919),
+    hasIn = __webpack_require__(853);
 
 /**
  * The base implementation of `_.pick` without support for individual
@@ -83156,11 +86328,11 @@ module.exports = basePick;
 
 
 /***/ }),
-/* 915 */
+/* 919 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(345),
-    baseSet = __webpack_require__(919),
+    baseSet = __webpack_require__(923),
     castPath = __webpack_require__(232);
 
 /**
@@ -83192,7 +86364,7 @@ module.exports = basePickBy;
 
 
 /***/ }),
-/* 916 */
+/* 920 */
 /***/ (function(module, exports) {
 
 /**
@@ -83212,7 +86384,7 @@ module.exports = baseProperty;
 
 
 /***/ }),
-/* 917 */
+/* 921 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(345);
@@ -83234,7 +86406,7 @@ module.exports = basePropertyDeep;
 
 
 /***/ }),
-/* 918 */
+/* 922 */
 /***/ (function(module, exports) {
 
 /**
@@ -83263,12 +86435,12 @@ module.exports = baseReduce;
 
 
 /***/ }),
-/* 919 */
+/* 923 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assignValue = __webpack_require__(666),
+var assignValue = __webpack_require__(667),
     castPath = __webpack_require__(232),
-    isIndex = __webpack_require__(671),
+    isIndex = __webpack_require__(672),
     isObject = __webpack_require__(200),
     toKey = __webpack_require__(233);
 
@@ -83316,12 +86488,12 @@ module.exports = baseSet;
 
 
 /***/ }),
-/* 920 */
+/* 924 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var constant = __webpack_require__(987),
-    defineProperty = __webpack_require__(837),
-    identity = __webpack_require__(675);
+var constant = __webpack_require__(991),
+    defineProperty = __webpack_require__(838),
+    identity = __webpack_require__(676);
 
 /**
  * The base implementation of `setToString` without support for hot loop shorting.
@@ -83344,7 +86516,7 @@ module.exports = baseSetToString;
 
 
 /***/ }),
-/* 921 */
+/* 925 */
 /***/ (function(module, exports) {
 
 /**
@@ -83381,7 +86553,7 @@ module.exports = baseSlice;
 
 
 /***/ }),
-/* 922 */
+/* 926 */
 /***/ (function(module, exports) {
 
 /**
@@ -83407,13 +86579,13 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 923 */
+/* 927 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(230),
-    arrayMap = __webpack_require__(832),
+    arrayMap = __webpack_require__(833),
     isArray = __webpack_require__(102),
-    isSymbol = __webpack_require__(681);
+    isSymbol = __webpack_require__(682);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -83450,7 +86622,7 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 924 */
+/* 928 */
 /***/ (function(module, exports) {
 
 /**
@@ -83470,12 +86642,12 @@ module.exports = baseUnary;
 
 
 /***/ }),
-/* 925 */
+/* 929 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(232),
-    last = __webpack_require__(992),
-    parent = __webpack_require__(975),
+    last = __webpack_require__(996),
+    parent = __webpack_require__(979),
     toKey = __webpack_require__(233);
 
 /**
@@ -83496,7 +86668,7 @@ module.exports = baseUnset;
 
 
 /***/ }),
-/* 926 */
+/* 930 */
 /***/ (function(module, exports) {
 
 /**
@@ -83515,10 +86687,10 @@ module.exports = cacheHas;
 
 
 /***/ }),
-/* 927 */
+/* 931 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var identity = __webpack_require__(675);
+var identity = __webpack_require__(676);
 
 /**
  * Casts `value` to `identity` if it's not a function.
@@ -83535,7 +86707,7 @@ module.exports = castFunction;
 
 
 /***/ }),
-/* 928 */
+/* 932 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(117);
@@ -83577,10 +86749,10 @@ module.exports = cloneBuffer;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(146)(module)))
 
 /***/ }),
-/* 929 */
+/* 933 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(668);
+var cloneArrayBuffer = __webpack_require__(669);
 
 /**
  * Creates a clone of `dataView`.
@@ -83599,12 +86771,12 @@ module.exports = cloneDataView;
 
 
 /***/ }),
-/* 930 */
+/* 934 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addMapEntry = __webpack_require__(892),
-    arrayReduce = __webpack_require__(665),
-    mapToArray = __webpack_require__(846);
+var addMapEntry = __webpack_require__(896),
+    arrayReduce = __webpack_require__(666),
+    mapToArray = __webpack_require__(847);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1;
@@ -83627,7 +86799,7 @@ module.exports = cloneMap;
 
 
 /***/ }),
-/* 931 */
+/* 935 */
 /***/ (function(module, exports) {
 
 /** Used to match `RegExp` flags from their coerced string values. */
@@ -83650,12 +86822,12 @@ module.exports = cloneRegExp;
 
 
 /***/ }),
-/* 932 */
+/* 936 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var addSetEntry = __webpack_require__(893),
-    arrayReduce = __webpack_require__(665),
-    setToArray = __webpack_require__(849);
+var addSetEntry = __webpack_require__(897),
+    arrayReduce = __webpack_require__(666),
+    setToArray = __webpack_require__(850);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1;
@@ -83678,7 +86850,7 @@ module.exports = cloneSet;
 
 
 /***/ }),
-/* 933 */
+/* 937 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(230);
@@ -83702,10 +86874,10 @@ module.exports = cloneSymbol;
 
 
 /***/ }),
-/* 934 */
+/* 938 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(668);
+var cloneArrayBuffer = __webpack_require__(669);
 
 /**
  * Creates a clone of `typedArray`.
@@ -83724,7 +86896,7 @@ module.exports = cloneTypedArray;
 
 
 /***/ }),
-/* 935 */
+/* 939 */
 /***/ (function(module, exports) {
 
 /**
@@ -83750,11 +86922,11 @@ module.exports = copyArray;
 
 
 /***/ }),
-/* 936 */
+/* 940 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(300),
-    getSymbols = __webpack_require__(670);
+    getSymbols = __webpack_require__(671);
 
 /**
  * Copies own symbols of `source` to `object`.
@@ -83772,11 +86944,11 @@ module.exports = copySymbols;
 
 
 /***/ }),
-/* 937 */
+/* 941 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var copyObject = __webpack_require__(300),
-    getSymbolsIn = __webpack_require__(843);
+    getSymbolsIn = __webpack_require__(844);
 
 /**
  * Copies own and inherited symbols of `source` to `object`.
@@ -83794,7 +86966,7 @@ module.exports = copySymbolsIn;
 
 
 /***/ }),
-/* 938 */
+/* 942 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(117);
@@ -83806,10 +86978,10 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 939 */
+/* 943 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArrayLike = __webpack_require__(677);
+var isArrayLike = __webpack_require__(678);
 
 /**
  * Creates a `baseEach` or `baseEachRight` function.
@@ -83844,7 +87016,7 @@ module.exports = createBaseEach;
 
 
 /***/ }),
-/* 940 */
+/* 944 */
 /***/ (function(module, exports) {
 
 /**
@@ -83875,10 +87047,10 @@ module.exports = createBaseFor;
 
 
 /***/ }),
-/* 941 */
+/* 945 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isPlainObject = __webpack_require__(990);
+var isPlainObject = __webpack_require__(994);
 
 /**
  * Used by `_.omit` to customize its `_.cloneDeep` use to only clone plain
@@ -83897,15 +87069,15 @@ module.exports = customOmitClone;
 
 
 /***/ }),
-/* 942 */
+/* 946 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(230),
-    Uint8Array = __webpack_require__(829),
-    eq = __webpack_require__(674),
-    equalArrays = __webpack_require__(838),
-    mapToArray = __webpack_require__(846),
-    setToArray = __webpack_require__(849);
+    Uint8Array = __webpack_require__(830),
+    eq = __webpack_require__(675),
+    equalArrays = __webpack_require__(839),
+    mapToArray = __webpack_require__(847),
+    setToArray = __webpack_require__(850);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1,
@@ -84015,10 +87187,10 @@ module.exports = equalByTag;
 
 
 /***/ }),
-/* 943 */
+/* 947 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(841);
+var getAllKeys = __webpack_require__(842);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -84110,10 +87282,10 @@ module.exports = equalObjects;
 
 
 /***/ }),
-/* 944 */
+/* 948 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isStrictComparable = __webpack_require__(845),
+var isStrictComparable = __webpack_require__(846),
     keys = __webpack_require__(235);
 
 /**
@@ -84140,7 +87312,7 @@ module.exports = getMatchData;
 
 
 /***/ }),
-/* 945 */
+/* 949 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(230);
@@ -84192,7 +87364,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 946 */
+/* 950 */
 /***/ (function(module, exports) {
 
 /**
@@ -84211,14 +87383,14 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 947 */
+/* 951 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(232),
-    isArguments = __webpack_require__(676),
+    isArguments = __webpack_require__(677),
     isArray = __webpack_require__(102),
-    isIndex = __webpack_require__(671),
-    isLength = __webpack_require__(680),
+    isIndex = __webpack_require__(672),
+    isLength = __webpack_require__(681),
     toKey = __webpack_require__(233);
 
 /**
@@ -84256,7 +87428,7 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 948 */
+/* 952 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(347);
@@ -84277,7 +87449,7 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 949 */
+/* 953 */
 /***/ (function(module, exports) {
 
 /**
@@ -84300,7 +87472,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 950 */
+/* 954 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(347);
@@ -84336,7 +87508,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 951 */
+/* 955 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(347);
@@ -84365,7 +87537,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 952 */
+/* 956 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(347);
@@ -84394,7 +87566,7 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 953 */
+/* 957 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -84426,16 +87598,16 @@ module.exports = initCloneArray;
 
 
 /***/ }),
-/* 954 */
+/* 958 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var cloneArrayBuffer = __webpack_require__(668),
-    cloneDataView = __webpack_require__(929),
-    cloneMap = __webpack_require__(930),
-    cloneRegExp = __webpack_require__(931),
-    cloneSet = __webpack_require__(932),
-    cloneSymbol = __webpack_require__(933),
-    cloneTypedArray = __webpack_require__(934);
+var cloneArrayBuffer = __webpack_require__(669),
+    cloneDataView = __webpack_require__(933),
+    cloneMap = __webpack_require__(934),
+    cloneRegExp = __webpack_require__(935),
+    cloneSet = __webpack_require__(936),
+    cloneSymbol = __webpack_require__(937),
+    cloneTypedArray = __webpack_require__(938);
 
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
@@ -84512,12 +87684,12 @@ module.exports = initCloneByTag;
 
 
 /***/ }),
-/* 955 */
+/* 959 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseCreate = __webpack_require__(899),
-    getPrototype = __webpack_require__(669),
-    isPrototype = __webpack_require__(673);
+var baseCreate = __webpack_require__(903),
+    getPrototype = __webpack_require__(670),
+    isPrototype = __webpack_require__(674);
 
 /**
  * Initializes an object clone.
@@ -84536,11 +87708,11 @@ module.exports = initCloneObject;
 
 
 /***/ }),
-/* 956 */
+/* 960 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(230),
-    isArguments = __webpack_require__(676),
+    isArguments = __webpack_require__(677),
     isArray = __webpack_require__(102);
 
 /** Built-in value references. */
@@ -84562,7 +87734,7 @@ module.exports = isFlattenable;
 
 
 /***/ }),
-/* 957 */
+/* 961 */
 /***/ (function(module, exports) {
 
 /**
@@ -84583,10 +87755,10 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 958 */
+/* 962 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(938);
+var coreJsData = __webpack_require__(942);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -84609,7 +87781,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 959 */
+/* 963 */
 /***/ (function(module, exports) {
 
 /**
@@ -84628,7 +87800,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 960 */
+/* 964 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(344);
@@ -84669,7 +87841,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 961 */
+/* 965 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(344);
@@ -84694,7 +87866,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 962 */
+/* 966 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(344);
@@ -84716,7 +87888,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 963 */
+/* 967 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(344);
@@ -84748,12 +87920,12 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 964 */
+/* 968 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(887),
+var Hash = __webpack_require__(891),
     ListCache = __webpack_require__(343),
-    Map = __webpack_require__(661);
+    Map = __webpack_require__(662);
 
 /**
  * Removes all key-value entries from the map.
@@ -84775,7 +87947,7 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 965 */
+/* 969 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(346);
@@ -84799,7 +87971,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 966 */
+/* 970 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(346);
@@ -84821,7 +87993,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 967 */
+/* 971 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(346);
@@ -84843,7 +88015,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 968 */
+/* 972 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(346);
@@ -84871,10 +88043,10 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 969 */
+/* 973 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(993);
+var memoize = __webpack_require__(997);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -84903,10 +88075,10 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 970 */
+/* 974 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var overArg = __webpack_require__(848);
+var overArg = __webpack_require__(849);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeKeys = overArg(Object.keys, Object);
@@ -84915,7 +88087,7 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 971 */
+/* 975 */
 /***/ (function(module, exports) {
 
 /**
@@ -84941,10 +88113,10 @@ module.exports = nativeKeysIn;
 
 
 /***/ }),
-/* 972 */
+/* 976 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(840);
+/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(841);
 
 /** Detect free variable `exports`. */
 var freeExports = typeof exports == 'object' && exports && !exports.nodeType && exports;
@@ -84970,7 +88142,7 @@ module.exports = nodeUtil;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(146)(module)))
 
 /***/ }),
-/* 973 */
+/* 977 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -84998,10 +88170,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 974 */
+/* 978 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(894);
+var apply = __webpack_require__(898);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -85040,11 +88212,11 @@ module.exports = overRest;
 
 
 /***/ }),
-/* 975 */
+/* 979 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(345),
-    baseSlice = __webpack_require__(921);
+    baseSlice = __webpack_require__(925);
 
 /**
  * Gets the parent value at `path` of `object`.
@@ -85062,7 +88234,7 @@ module.exports = parent;
 
 
 /***/ }),
-/* 976 */
+/* 980 */
 /***/ (function(module, exports) {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -85087,7 +88259,7 @@ module.exports = setCacheAdd;
 
 
 /***/ }),
-/* 977 */
+/* 981 */
 /***/ (function(module, exports) {
 
 /**
@@ -85107,11 +88279,11 @@ module.exports = setCacheHas;
 
 
 /***/ }),
-/* 978 */
+/* 982 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSetToString = __webpack_require__(920),
-    shortOut = __webpack_require__(979);
+var baseSetToString = __webpack_require__(924),
+    shortOut = __webpack_require__(983);
 
 /**
  * Sets the `toString` method of `func` to return `string`.
@@ -85127,7 +88299,7 @@ module.exports = setToString;
 
 
 /***/ }),
-/* 979 */
+/* 983 */
 /***/ (function(module, exports) {
 
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
@@ -85170,7 +88342,7 @@ module.exports = shortOut;
 
 
 /***/ }),
-/* 980 */
+/* 984 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(343);
@@ -85191,7 +88363,7 @@ module.exports = stackClear;
 
 
 /***/ }),
-/* 981 */
+/* 985 */
 /***/ (function(module, exports) {
 
 /**
@@ -85215,7 +88387,7 @@ module.exports = stackDelete;
 
 
 /***/ }),
-/* 982 */
+/* 986 */
 /***/ (function(module, exports) {
 
 /**
@@ -85235,7 +88407,7 @@ module.exports = stackGet;
 
 
 /***/ }),
-/* 983 */
+/* 987 */
 /***/ (function(module, exports) {
 
 /**
@@ -85255,12 +88427,12 @@ module.exports = stackHas;
 
 
 /***/ }),
-/* 984 */
+/* 988 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(343),
-    Map = __webpack_require__(661),
-    MapCache = __webpack_require__(662);
+    Map = __webpack_require__(662),
+    MapCache = __webpack_require__(663);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -85295,10 +88467,10 @@ module.exports = stackSet;
 
 
 /***/ }),
-/* 985 */
+/* 989 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(969);
+var memoizeCapped = __webpack_require__(973);
 
 /** Used to match property names within property paths. */
 var reLeadingDot = /^\./,
@@ -85329,10 +88501,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 986 */
+/* 990 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseClone = __webpack_require__(834);
+var baseClone = __webpack_require__(835);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_SYMBOLS_FLAG = 4;
@@ -85371,7 +88543,7 @@ module.exports = clone;
 
 
 /***/ }),
-/* 987 */
+/* 991 */
 /***/ (function(module, exports) {
 
 /**
@@ -85403,10 +88575,10 @@ module.exports = constant;
 
 
 /***/ }),
-/* 988 */
+/* 992 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFlatten = __webpack_require__(900);
+var baseFlatten = __webpack_require__(904);
 
 /**
  * Flattens `array` a single level deep.
@@ -85431,7 +88603,7 @@ module.exports = flatten;
 
 
 /***/ }),
-/* 989 */
+/* 993 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGet = __webpack_require__(345);
@@ -85470,11 +88642,11 @@ module.exports = get;
 
 
 /***/ }),
-/* 990 */
+/* 994 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(231),
-    getPrototype = __webpack_require__(669),
+    getPrototype = __webpack_require__(670),
     isObjectLike = __webpack_require__(234);
 
 /** `Object#toString` result references. */
@@ -85538,7 +88710,7 @@ module.exports = isPlainObject;
 
 
 /***/ }),
-/* 991 */
+/* 995 */
 /***/ (function(module, exports) {
 
 /**
@@ -85566,7 +88738,7 @@ module.exports = isUndefined;
 
 
 /***/ }),
-/* 992 */
+/* 996 */
 /***/ (function(module, exports) {
 
 /**
@@ -85592,10 +88764,10 @@ module.exports = last;
 
 
 /***/ }),
-/* 993 */
+/* 997 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(662);
+var MapCache = __webpack_require__(663);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -85671,11 +88843,11 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 994 */
+/* 998 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var basePick = __webpack_require__(914),
-    flatRest = __webpack_require__(839);
+var basePick = __webpack_require__(918),
+    flatRest = __webpack_require__(840);
 
 /**
  * Creates an object composed of the picked `object` properties.
@@ -85702,12 +88874,12 @@ module.exports = pick;
 
 
 /***/ }),
-/* 995 */
+/* 999 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseProperty = __webpack_require__(916),
-    basePropertyDeep = __webpack_require__(917),
-    isKey = __webpack_require__(672),
+var baseProperty = __webpack_require__(920),
+    basePropertyDeep = __webpack_require__(921),
+    isKey = __webpack_require__(673),
     toKey = __webpack_require__(233);
 
 /**
@@ -85740,13 +88912,13 @@ module.exports = property;
 
 
 /***/ }),
-/* 996 */
+/* 1000 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayReduce = __webpack_require__(665),
-    baseEach = __webpack_require__(835),
-    baseIteratee = __webpack_require__(909),
-    baseReduce = __webpack_require__(918),
+var arrayReduce = __webpack_require__(666),
+    baseEach = __webpack_require__(836),
+    baseIteratee = __webpack_require__(913),
+    baseReduce = __webpack_require__(922),
     isArray = __webpack_require__(102);
 
 /**
@@ -85797,7 +88969,7 @@ module.exports = reduce;
 
 
 /***/ }),
-/* 997 */
+/* 1001 */
 /***/ (function(module, exports) {
 
 /**
@@ -85821,10 +88993,10 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 998 */
+/* 1002 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toString = __webpack_require__(858);
+var toString = __webpack_require__(859);
 
 /** Used to generate unique IDs. */
 var idCounter = 0;
@@ -85855,7 +89027,7 @@ module.exports = uniqueId;
 
 
 /***/ }),
-/* 999 */
+/* 1003 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85901,7 +89073,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _EnhancedSwitch = __webpack_require__(1013);
+var _EnhancedSwitch = __webpack_require__(1017);
 
 var _EnhancedSwitch2 = _interopRequireDefault(_EnhancedSwitch);
 
@@ -85909,11 +89081,11 @@ var _transitions = __webpack_require__(56);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _checkBoxOutlineBlank = __webpack_require__(1015);
+var _checkBoxOutlineBlank = __webpack_require__(1019);
 
 var _checkBoxOutlineBlank2 = _interopRequireDefault(_checkBoxOutlineBlank);
 
-var _checkBox = __webpack_require__(1016);
+var _checkBox = __webpack_require__(1020);
 
 var _checkBox2 = _interopRequireDefault(_checkBox);
 
@@ -86152,7 +89324,7 @@ exports.default = Checkbox;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1000 */
+/* 1004 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86320,7 +89492,7 @@ exports.default = SvgIcon;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1001 */
+/* 1005 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86688,7 +89860,7 @@ exports.default = Table;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1002 */
+/* 1006 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -86698,7 +89870,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _getIterator2 = __webpack_require__(880);
+var _getIterator2 = __webpack_require__(885);
 
 var _getIterator3 = _interopRequireDefault(_getIterator2);
 
@@ -86742,7 +89914,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Checkbox = __webpack_require__(859);
+var _Checkbox = __webpack_require__(860);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
@@ -86750,7 +89922,7 @@ var _TableRowColumn = __webpack_require__(685);
 
 var _TableRowColumn2 = _interopRequireDefault(_TableRowColumn);
 
-var _ClickAwayListener = __webpack_require__(1012);
+var _ClickAwayListener = __webpack_require__(1016);
 
 var _ClickAwayListener2 = _interopRequireDefault(_ClickAwayListener);
 
@@ -87221,7 +90393,7 @@ exports.default = TableBody;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1003 */
+/* 1007 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87378,7 +90550,7 @@ exports.default = TableFooter;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1004 */
+/* 1008 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87416,11 +90588,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Checkbox = __webpack_require__(859);
+var _Checkbox = __webpack_require__(860);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
-var _TableHeaderColumn = __webpack_require__(861);
+var _TableHeaderColumn = __webpack_require__(862);
 
 var _TableHeaderColumn2 = _interopRequireDefault(_TableHeaderColumn);
 
@@ -87633,7 +90805,7 @@ exports.default = TableHeader;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1005 */
+/* 1009 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87914,13 +91086,13 @@ exports.default = TableRow;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1006 */,
-/* 1007 */,
-/* 1008 */,
-/* 1009 */,
 /* 1010 */,
 /* 1011 */,
-/* 1012 */
+/* 1012 */,
+/* 1013 */,
+/* 1014 */,
+/* 1015 */,
+/* 1016 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -87956,7 +91128,7 @@ var _reactDom = __webpack_require__(84);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _events = __webpack_require__(351);
+var _events = __webpack_require__(352);
 
 var _events2 = _interopRequireDefault(_events);
 
@@ -88052,7 +91224,7 @@ exports.default = ClickAwayListener;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1013 */
+/* 1017 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88110,11 +91282,11 @@ var _transitions = __webpack_require__(56);
 
 var _transitions2 = _interopRequireDefault(_transitions);
 
-var _FocusRipple = __webpack_require__(349);
+var _FocusRipple = __webpack_require__(350);
 
 var _FocusRipple2 = _interopRequireDefault(_FocusRipple);
 
-var _TouchRipple = __webpack_require__(350);
+var _TouchRipple = __webpack_require__(351);
 
 var _TouchRipple2 = _interopRequireDefault(_TouchRipple);
 
@@ -88509,7 +91681,7 @@ exports.default = EnhancedSwitch;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1014 */
+/* 1018 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88740,7 +91912,7 @@ exports.default = Tooltip;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1015 */
+/* 1019 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88754,11 +91926,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _pure = __webpack_require__(866);
+var _pure = __webpack_require__(868);
 
 var _pure2 = _interopRequireDefault(_pure);
 
-var _SvgIcon = __webpack_require__(860);
+var _SvgIcon = __webpack_require__(861);
 
 var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
@@ -88778,7 +91950,7 @@ ToggleCheckBoxOutlineBlank.muiName = 'SvgIcon';
 exports.default = ToggleCheckBoxOutlineBlank;
 
 /***/ }),
-/* 1016 */
+/* 1020 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -88792,11 +91964,11 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _pure = __webpack_require__(866);
+var _pure = __webpack_require__(868);
 
 var _pure2 = _interopRequireDefault(_pure);
 
-var _SvgIcon = __webpack_require__(860);
+var _SvgIcon = __webpack_require__(861);
 
 var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
 
@@ -88816,2968 +91988,7 @@ ToggleCheckBox.muiName = 'SvgIcon';
 exports.default = ToggleCheckBox;
 
 /***/ }),
-/* 1017 */
-/***/ (function(module, exports) {
-
-/* jquery.signalR.core.js */
-/*global window:false */
-/*!
- * ASP.NET SignalR JavaScript Library v2.2.1
- * http://signalr.net/
- *
- * Copyright (c) .NET Foundation. All rights reserved.
- * Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
- *
- */
-
-/// <reference path="Scripts/jquery-1.6.4.js" />
-/// <reference path="jquery.signalR.version.js" />
-(function ($, window, undefined) {
-
-    var resources = {
-        nojQuery: "jQuery was not found. Please ensure jQuery is referenced before the SignalR client JavaScript file.",
-        noTransportOnInit: "No transport could be initialized successfully. Try specifying a different transport or none at all for auto initialization.",
-        errorOnNegotiate: "Error during negotiation request.",
-        stoppedWhileLoading: "The connection was stopped during page load.",
-        stoppedWhileNegotiating: "The connection was stopped during the negotiate request.",
-        errorParsingNegotiateResponse: "Error parsing negotiate response.",
-        errorDuringStartRequest: "Error during start request. Stopping the connection.",
-        stoppedDuringStartRequest: "The connection was stopped during the start request.",
-        errorParsingStartResponse: "Error parsing start response: '{0}'. Stopping the connection.",
-        invalidStartResponse: "Invalid start response: '{0}'. Stopping the connection.",
-        protocolIncompatible: "You are using a version of the client that isn't compatible with the server. Client version {0}, server version {1}.",
-        sendFailed: "Send failed.",
-        parseFailed: "Failed at parsing response: {0}",
-        longPollFailed: "Long polling request failed.",
-        eventSourceFailedToConnect: "EventSource failed to connect.",
-        eventSourceError: "Error raised by EventSource",
-        webSocketClosed: "WebSocket closed.",
-        pingServerFailedInvalidResponse: "Invalid ping response when pinging server: '{0}'.",
-        pingServerFailed: "Failed to ping server.",
-        pingServerFailedStatusCode: "Failed to ping server.  Server responded with status code {0}, stopping the connection.",
-        pingServerFailedParse: "Failed to parse ping server response, stopping the connection.",
-        noConnectionTransport: "Connection is in an invalid state, there is no transport active.",
-        webSocketsInvalidState: "The Web Socket transport is in an invalid state, transitioning into reconnecting.",
-        reconnectTimeout: "Couldn't reconnect within the configured timeout of {0} ms, disconnecting.",
-        reconnectWindowTimeout: "The client has been inactive since {0} and it has exceeded the inactivity timeout of {1} ms. Stopping the connection."
-    };
-
-    if (typeof ($) !== "function") {
-        // no jQuery!
-        throw new Error(resources.nojQuery);
-    }
-
-    var signalR,
-        _connection,
-        _pageLoaded = (window.document.readyState === "complete"),
-        _pageWindow = $(window),
-        _negotiateAbortText = "__Negotiate Aborted__",
-        events = {
-            onStart: "onStart",
-            onStarting: "onStarting",
-            onReceived: "onReceived",
-            onError: "onError",
-            onConnectionSlow: "onConnectionSlow",
-            onReconnecting: "onReconnecting",
-            onReconnect: "onReconnect",
-            onStateChanged: "onStateChanged",
-            onDisconnect: "onDisconnect"
-        },
-        ajaxDefaults = {
-            processData: true,
-            timeout: null,
-            async: true,
-            global: false,
-            cache: false
-        },
-        log = function (msg, logging) {
-            if (logging === false) {
-                return;
-            }
-            var m;
-            if (typeof (window.console) === "undefined") {
-                return;
-            }
-            m = "[" + new Date().toTimeString() + "] SignalR: " + msg;
-            if (window.console.debug) {
-                window.console.debug(m);
-            } else if (window.console.log) {
-                window.console.log(m);
-            }
-        },
-
-        changeState = function (connection, expectedState, newState) {
-            if (expectedState === connection.state) {
-                connection.state = newState;
-
-                $(connection).triggerHandler(events.onStateChanged, [{ oldState: expectedState, newState: newState }]);
-                return true;
-            }
-
-            return false;
-        },
-
-        isDisconnecting = function (connection) {
-            return connection.state === signalR.connectionState.disconnected;
-        },
-
-        supportsKeepAlive = function (connection) {
-            return connection._.keepAliveData.activated &&
-                   connection.transport.supportsKeepAlive(connection);
-        },
-
-        configureStopReconnectingTimeout = function (connection) {
-            var stopReconnectingTimeout,
-                onReconnectTimeout;
-
-            // Check if this connection has already been configured to stop reconnecting after a specified timeout.
-            // Without this check if a connection is stopped then started events will be bound multiple times.
-            if (!connection._.configuredStopReconnectingTimeout) {
-                onReconnectTimeout = function (connection) {
-                    var message = signalR._.format(signalR.resources.reconnectTimeout, connection.disconnectTimeout);
-                    connection.log(message);
-                    $(connection).triggerHandler(events.onError, [signalR._.error(message, /* source */ "TimeoutException")]);
-                    connection.stop(/* async */ false, /* notifyServer */ false);
-                };
-
-                connection.reconnecting(function () {
-                    var connection = this;
-
-                    // Guard against state changing in a previous user defined even handler
-                    if (connection.state === signalR.connectionState.reconnecting) {
-                        stopReconnectingTimeout = window.setTimeout(function () { onReconnectTimeout(connection); }, connection.disconnectTimeout);
-                    }
-                });
-
-                connection.stateChanged(function (data) {
-                    if (data.oldState === signalR.connectionState.reconnecting) {
-                        // Clear the pending reconnect timeout check
-                        window.clearTimeout(stopReconnectingTimeout);
-                    }
-                });
-
-                connection._.configuredStopReconnectingTimeout = true;
-            }
-        };
-
-    signalR = function (url, qs, logging) {
-        /// <summary>Creates a new SignalR connection for the given url</summary>
-        /// <param name="url" type="String">The URL of the long polling endpoint</param>
-        /// <param name="qs" type="Object">
-        ///     [Optional] Custom querystring parameters to add to the connection URL.
-        ///     If an object, every non-function member will be added to the querystring.
-        ///     If a string, it's added to the QS as specified.
-        /// </param>
-        /// <param name="logging" type="Boolean">
-        ///     [Optional] A flag indicating whether connection logging is enabled to the browser
-        ///     console/log. Defaults to false.
-        /// </param>
-
-        return new signalR.fn.init(url, qs, logging);
-    };
-
-    signalR._ = {
-        defaultContentType: "application/x-www-form-urlencoded; charset=UTF-8",
-
-        ieVersion: (function () {
-            var version,
-                matches;
-
-            if (window.navigator.appName === 'Microsoft Internet Explorer') {
-                // Check if the user agent has the pattern "MSIE (one or more numbers).(one or more numbers)";
-                matches = /MSIE ([0-9]+\.[0-9]+)/.exec(window.navigator.userAgent);
-
-                if (matches) {
-                    version = window.parseFloat(matches[1]);
-                }
-            }
-
-            // undefined value means not IE
-            return version;
-        })(),
-
-        error: function (message, source, context) {
-            var e = new Error(message);
-            e.source = source;
-
-            if (typeof context !== "undefined") {
-                e.context = context;
-            }
-
-            return e;
-        },
-
-        transportError: function (message, transport, source, context) {
-            var e = this.error(message, source, context);
-            e.transport = transport ? transport.name : undefined;
-            return e;
-        },
-
-        format: function () {
-            /// <summary>Usage: format("Hi {0}, you are {1}!", "Foo", 100) </summary>
-            var s = arguments[0];
-            for (var i = 0; i < arguments.length - 1; i++) {
-                s = s.replace("{" + i + "}", arguments[i + 1]);
-            }
-            return s;
-        },
-
-        firefoxMajorVersion: function (userAgent) {
-            // Firefox user agents: http://useragentstring.com/pages/Firefox/
-            var matches = userAgent.match(/Firefox\/(\d+)/);
-            if (!matches || !matches.length || matches.length < 2) {
-                return 0;
-            }
-            return parseInt(matches[1], 10 /* radix */);
-        },
-
-        configurePingInterval: function (connection) {
-            var config = connection._.config,
-                onFail = function (error) {
-                    $(connection).triggerHandler(events.onError, [error]);
-                };
-
-            if (config && !connection._.pingIntervalId && config.pingInterval) {
-                connection._.pingIntervalId = window.setInterval(function () {
-                    signalR.transports._logic.pingServer(connection).fail(onFail);
-                }, config.pingInterval);
-            }
-        }
-    };
-
-    signalR.events = events;
-
-    signalR.resources = resources;
-
-    signalR.ajaxDefaults = ajaxDefaults;
-
-    signalR.changeState = changeState;
-
-    signalR.isDisconnecting = isDisconnecting;
-
-    signalR.connectionState = {
-        connecting: 0,
-        connected: 1,
-        reconnecting: 2,
-        disconnected: 4
-    };
-
-    signalR.hub = {
-        start: function () {
-            // This will get replaced with the real hub connection start method when hubs is referenced correctly
-            throw new Error("SignalR: Error loading hubs. Ensure your hubs reference is correct, e.g. <script src='/signalr/js'></script>.");
-        }
-    };
-
-    // .on() was added in version 1.7.0, .load() was removed in version 3.0.0 so we fallback to .load() if .on() does
-    // not exist to not break existing applications
-    if (typeof _pageWindow.on == "function") {
-        _pageWindow.on("load", function () { _pageLoaded = true; });
-    }
-    else {
-        _pageWindow.load(function () { _pageLoaded = true; });
-    }
-
-    function validateTransport(requestedTransport, connection) {
-        /// <summary>Validates the requested transport by cross checking it with the pre-defined signalR.transports</summary>
-        /// <param name="requestedTransport" type="Object">The designated transports that the user has specified.</param>
-        /// <param name="connection" type="signalR">The connection that will be using the requested transports.  Used for logging purposes.</param>
-        /// <returns type="Object" />
-
-        if ($.isArray(requestedTransport)) {
-            // Go through transport array and remove an "invalid" tranports
-            for (var i = requestedTransport.length - 1; i >= 0; i--) {
-                var transport = requestedTransport[i];
-                if ($.type(transport) !== "string" || !signalR.transports[transport]) {
-                    connection.log("Invalid transport: " + transport + ", removing it from the transports list.");
-                    requestedTransport.splice(i, 1);
-                }
-            }
-
-            // Verify we still have transports left, if we dont then we have invalid transports
-            if (requestedTransport.length === 0) {
-                connection.log("No transports remain within the specified transport array.");
-                requestedTransport = null;
-            }
-        } else if (!signalR.transports[requestedTransport] && requestedTransport !== "auto") {
-            connection.log("Invalid transport: " + requestedTransport.toString() + ".");
-            requestedTransport = null;
-        } else if (requestedTransport === "auto" && signalR._.ieVersion <= 8) {
-            // If we're doing an auto transport and we're IE8 then force longPolling, #1764
-            return ["longPolling"];
-
-        }
-
-        return requestedTransport;
-    }
-
-    function getDefaultPort(protocol) {
-        if (protocol === "http:") {
-            return 80;
-        } else if (protocol === "https:") {
-            return 443;
-        }
-    }
-
-    function addDefaultPort(protocol, url) {
-        // Remove ports  from url.  We have to check if there's a / or end of line
-        // following the port in order to avoid removing ports such as 8080.
-        if (url.match(/:\d+$/)) {
-            return url;
-        } else {
-            return url + ":" + getDefaultPort(protocol);
-        }
-    }
-
-    function ConnectingMessageBuffer(connection, drainCallback) {
-        var that = this,
-            buffer = [];
-
-        that.tryBuffer = function (message) {
-            if (connection.state === $.signalR.connectionState.connecting) {
-                buffer.push(message);
-
-                return true;
-            }
-
-            return false;
-        };
-
-        that.drain = function () {
-            // Ensure that the connection is connected when we drain (do not want to drain while a connection is not active)
-            if (connection.state === $.signalR.connectionState.connected) {
-                while (buffer.length > 0) {
-                    drainCallback(buffer.shift());
-                }
-            }
-        };
-
-        that.clear = function () {
-            buffer = [];
-        };
-    }
-
-    signalR.fn = signalR.prototype = {
-        init: function (url, qs, logging) {
-            var $connection = $(this);
-
-            this.url = url;
-            this.qs = qs;
-            this.lastError = null;
-            this._ = {
-                keepAliveData: {},
-                connectingMessageBuffer: new ConnectingMessageBuffer(this, function (message) {
-                    $connection.triggerHandler(events.onReceived, [message]);
-                }),
-                lastMessageAt: new Date().getTime(),
-                lastActiveAt: new Date().getTime(),
-                beatInterval: 5000, // Default value, will only be overridden if keep alive is enabled,
-                beatHandle: null,
-                totalTransportConnectTimeout: 0 // This will be the sum of the TransportConnectTimeout sent in response to negotiate and connection.transportConnectTimeout
-            };
-            if (typeof (logging) === "boolean") {
-                this.logging = logging;
-            }
-        },
-
-        _parseResponse: function (response) {
-            var that = this;
-
-            if (!response) {
-                return response;
-            } else if (typeof response === "string") {
-                return that.json.parse(response);
-            } else {
-                return response;
-            }
-        },
-
-        _originalJson: window.JSON,
-
-        json: window.JSON,
-
-        isCrossDomain: function (url, against) {
-            /// <summary>Checks if url is cross domain</summary>
-            /// <param name="url" type="String">The base URL</param>
-            /// <param name="against" type="Object">
-            ///     An optional argument to compare the URL against, if not specified it will be set to window.location.
-            ///     If specified it must contain a protocol and a host property.
-            /// </param>
-            var link;
-
-            url = $.trim(url);
-
-            against = against || window.location;
-
-            if (url.indexOf("http") !== 0) {
-                return false;
-            }
-
-            // Create an anchor tag.
-            link = window.document.createElement("a");
-            link.href = url;
-
-            // When checking for cross domain we have to special case port 80 because the window.location will remove the
-            return link.protocol + addDefaultPort(link.protocol, link.host) !== against.protocol + addDefaultPort(against.protocol, against.host);
-        },
-
-        ajaxDataType: "text",
-
-        contentType: "application/json; charset=UTF-8",
-
-        logging: false,
-
-        state: signalR.connectionState.disconnected,
-
-        clientProtocol: "1.5",
-
-        reconnectDelay: 2000,
-
-        transportConnectTimeout: 0,
-
-        disconnectTimeout: 30000, // This should be set by the server in response to the negotiate request (30s default)
-
-        reconnectWindow: 30000, // This should be set by the server in response to the negotiate request
-
-        keepAliveWarnAt: 2 / 3, // Warn user of slow connection if we breach the X% mark of the keep alive timeout
-
-        start: function (options, callback) {
-            /// <summary>Starts the connection</summary>
-            /// <param name="options" type="Object">Options map</param>
-            /// <param name="callback" type="Function">A callback function to execute when the connection has started</param>
-            var connection = this,
-                config = {
-                    pingInterval: 300000,
-                    waitForPageLoad: true,
-                    transport: "auto",
-                    jsonp: false
-                },
-                initialize,
-                deferred = connection._deferral || $.Deferred(), // Check to see if there is a pre-existing deferral that's being built on, if so we want to keep using it
-                parser = window.document.createElement("a");
-
-            connection.lastError = null;
-
-            // Persist the deferral so that if start is called multiple times the same deferral is used.
-            connection._deferral = deferred;
-
-            if (!connection.json) {
-                // no JSON!
-                throw new Error("SignalR: No JSON parser found. Please ensure json2.js is referenced before the SignalR.js file if you need to support clients without native JSON parsing support, e.g. IE<8.");
-            }
-
-            if ($.type(options) === "function") {
-                // Support calling with single callback parameter
-                callback = options;
-            } else if ($.type(options) === "object") {
-                $.extend(config, options);
-                if ($.type(config.callback) === "function") {
-                    callback = config.callback;
-                }
-            }
-
-            config.transport = validateTransport(config.transport, connection);
-
-            // If the transport is invalid throw an error and abort start
-            if (!config.transport) {
-                throw new Error("SignalR: Invalid transport(s) specified, aborting start.");
-            }
-
-            connection._.config = config;
-
-            // Check to see if start is being called prior to page load
-            // If waitForPageLoad is true we then want to re-direct function call to the window load event
-            if (!_pageLoaded && config.waitForPageLoad === true) {
-                connection._.deferredStartHandler = function () {
-                    connection.start(options, callback);
-                };
-                _pageWindow.bind("load", connection._.deferredStartHandler);
-
-                return deferred.promise();
-            }
-
-            // If we're already connecting just return the same deferral as the original connection start
-            if (connection.state === signalR.connectionState.connecting) {
-                return deferred.promise();
-            } else if (changeState(connection,
-                            signalR.connectionState.disconnected,
-                            signalR.connectionState.connecting) === false) {
-                // We're not connecting so try and transition into connecting.
-                // If we fail to transition then we're either in connected or reconnecting.
-
-                deferred.resolve(connection);
-                return deferred.promise();
-            }
-
-            configureStopReconnectingTimeout(connection);
-
-            // Resolve the full url
-            parser.href = connection.url;
-            if (!parser.protocol || parser.protocol === ":") {
-                connection.protocol = window.document.location.protocol;
-                connection.host = parser.host || window.document.location.host;
-            } else {
-                connection.protocol = parser.protocol;
-                connection.host = parser.host;
-            }
-
-            connection.baseUrl = connection.protocol + "//" + connection.host;
-
-            // Set the websocket protocol
-            connection.wsProtocol = connection.protocol === "https:" ? "wss://" : "ws://";
-
-            // If jsonp with no/auto transport is specified, then set the transport to long polling
-            // since that is the only transport for which jsonp really makes sense.
-            // Some developers might actually choose to specify jsonp for same origin requests
-            // as demonstrated by Issue #623.
-            if (config.transport === "auto" && config.jsonp === true) {
-                config.transport = "longPolling";
-            }
-
-            // If the url is protocol relative, prepend the current windows protocol to the url.
-            if (connection.url.indexOf("//") === 0) {
-                connection.url = window.location.protocol + connection.url;
-                connection.log("Protocol relative URL detected, normalizing it to '" + connection.url + "'.");
-            }
-
-            if (this.isCrossDomain(connection.url)) {
-                connection.log("Auto detected cross domain url.");
-
-                if (config.transport === "auto") {
-                    // TODO: Support XDM with foreverFrame
-                    config.transport = ["webSockets", "serverSentEvents", "longPolling"];
-                }
-
-                if (typeof (config.withCredentials) === "undefined") {
-                    config.withCredentials = true;
-                }
-
-                // Determine if jsonp is the only choice for negotiation, ajaxSend and ajaxAbort.
-                // i.e. if the browser doesn't supports CORS
-                // If it is, ignore any preference to the contrary, and switch to jsonp.
-                if (!config.jsonp) {
-                    config.jsonp = !$.support.cors;
-
-                    if (config.jsonp) {
-                        connection.log("Using jsonp because this browser doesn't support CORS.");
-                    }
-                }
-
-                connection.contentType = signalR._.defaultContentType;
-            }
-
-            connection.withCredentials = config.withCredentials;
-
-            connection.ajaxDataType = config.jsonp ? "jsonp" : "text";
-
-            $(connection).bind(events.onStart, function (e, data) {
-                if ($.type(callback) === "function") {
-                    callback.call(connection);
-                }
-                deferred.resolve(connection);
-            });
-
-            connection._.initHandler = signalR.transports._logic.initHandler(connection);
-
-            initialize = function (transports, index) {
-                var noTransportError = signalR._.error(resources.noTransportOnInit);
-
-                index = index || 0;
-                if (index >= transports.length) {
-                    if (index === 0) {
-                        connection.log("No transports supported by the server were selected.");
-                    } else if (index === 1) {
-                        connection.log("No fallback transports were selected.");
-                    } else {
-                        connection.log("Fallback transports exhausted.");
-                    }
-
-                    // No transport initialized successfully
-                    $(connection).triggerHandler(events.onError, [noTransportError]);
-                    deferred.reject(noTransportError);
-                    // Stop the connection if it has connected and move it into the disconnected state
-                    connection.stop();
-                    return;
-                }
-
-                // The connection was aborted
-                if (connection.state === signalR.connectionState.disconnected) {
-                    return;
-                }
-
-                var transportName = transports[index],
-                    transport = signalR.transports[transportName],
-                    onFallback = function () {
-                        initialize(transports, index + 1);
-                    };
-
-                connection.transport = transport;
-
-                try {
-                    connection._.initHandler.start(transport, function () { // success
-                        // Firefox 11+ doesn't allow sync XHR withCredentials: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest#withCredentials
-                        var isFirefox11OrGreater = signalR._.firefoxMajorVersion(window.navigator.userAgent) >= 11,
-                            asyncAbort = !!connection.withCredentials && isFirefox11OrGreater;
-
-                        connection.log("The start request succeeded. Transitioning to the connected state.");
-
-                        if (supportsKeepAlive(connection)) {
-                            signalR.transports._logic.monitorKeepAlive(connection);
-                        }
-
-                        signalR.transports._logic.startHeartbeat(connection);
-
-                        // Used to ensure low activity clients maintain their authentication.
-                        // Must be configured once a transport has been decided to perform valid ping requests.
-                        signalR._.configurePingInterval(connection);
-
-                        if (!changeState(connection,
-                                            signalR.connectionState.connecting,
-                                            signalR.connectionState.connected)) {
-                            connection.log("WARNING! The connection was not in the connecting state.");
-                        }
-
-                        // Drain any incoming buffered messages (messages that came in prior to connect)
-                        connection._.connectingMessageBuffer.drain();
-
-                        $(connection).triggerHandler(events.onStart);
-
-                        // wire the stop handler for when the user leaves the page
-                        _pageWindow.bind("unload", function () {
-                            connection.log("Window unloading, stopping the connection.");
-
-                            connection.stop(asyncAbort);
-                        });
-
-                        if (isFirefox11OrGreater) {
-                            // Firefox does not fire cross-domain XHRs in the normal unload handler on tab close.
-                            // #2400
-                            _pageWindow.bind("beforeunload", function () {
-                                // If connection.stop() runs runs in beforeunload and fails, it will also fail
-                                // in unload unless connection.stop() runs after a timeout.
-                                window.setTimeout(function () {
-                                    connection.stop(asyncAbort);
-                                }, 0);
-                            });
-                        }
-                    }, onFallback);
-                }
-                catch (error) {
-                    connection.log(transport.name + " transport threw '" + error.message + "' when attempting to start.");
-                    onFallback();
-                }
-            };
-
-            var url = connection.url + "/negotiate",
-                onFailed = function (error, connection) {
-                    var err = signalR._.error(resources.errorOnNegotiate, error, connection._.negotiateRequest);
-
-                    $(connection).triggerHandler(events.onError, err);
-                    deferred.reject(err);
-                    // Stop the connection if negotiate failed
-                    connection.stop();
-                };
-
-            $(connection).triggerHandler(events.onStarting);
-
-            url = signalR.transports._logic.prepareQueryString(connection, url);
-
-            connection.log("Negotiating with '" + url + "'.");
-
-            // Save the ajax negotiate request object so we can abort it if stop is called while the request is in flight.
-            connection._.negotiateRequest = signalR.transports._logic.ajax(connection, {
-                url: url,
-                error: function (error, statusText) {
-                    // We don't want to cause any errors if we're aborting our own negotiate request.
-                    if (statusText !== _negotiateAbortText) {
-                        onFailed(error, connection);
-                    } else {
-                        // This rejection will noop if the deferred has already been resolved or rejected.
-                        deferred.reject(signalR._.error(resources.stoppedWhileNegotiating, null /* error */, connection._.negotiateRequest));
-                    }
-                },
-                success: function (result) {
-                    var res,
-                        keepAliveData,
-                        protocolError,
-                        transports = [],
-                        supportedTransports = [];
-
-                    try {
-                        res = connection._parseResponse(result);
-                    } catch (error) {
-                        onFailed(signalR._.error(resources.errorParsingNegotiateResponse, error), connection);
-                        return;
-                    }
-
-                    keepAliveData = connection._.keepAliveData;
-                    connection.appRelativeUrl = res.Url;
-                    connection.id = res.ConnectionId;
-                    connection.token = res.ConnectionToken;
-                    connection.webSocketServerUrl = res.WebSocketServerUrl;
-
-                    // The long poll timeout is the ConnectionTimeout plus 10 seconds
-                    connection._.pollTimeout = res.ConnectionTimeout * 1000 + 10000; // in ms
-
-                    // Once the server has labeled the PersistentConnection as Disconnected, we should stop attempting to reconnect
-                    // after res.DisconnectTimeout seconds.
-                    connection.disconnectTimeout = res.DisconnectTimeout * 1000; // in ms
-
-                    // Add the TransportConnectTimeout from the response to the transportConnectTimeout from the client to calculate the total timeout
-                    connection._.totalTransportConnectTimeout = connection.transportConnectTimeout + res.TransportConnectTimeout * 1000;
-
-                    // If we have a keep alive
-                    if (res.KeepAliveTimeout) {
-                        // Register the keep alive data as activated
-                        keepAliveData.activated = true;
-
-                        // Timeout to designate when to force the connection into reconnecting converted to milliseconds
-                        keepAliveData.timeout = res.KeepAliveTimeout * 1000;
-
-                        // Timeout to designate when to warn the developer that the connection may be dead or is not responding.
-                        keepAliveData.timeoutWarning = keepAliveData.timeout * connection.keepAliveWarnAt;
-
-                        // Instantiate the frequency in which we check the keep alive.  It must be short in order to not miss/pick up any changes
-                        connection._.beatInterval = (keepAliveData.timeout - keepAliveData.timeoutWarning) / 3;
-                    } else {
-                        keepAliveData.activated = false;
-                    }
-
-                    connection.reconnectWindow = connection.disconnectTimeout + (keepAliveData.timeout || 0);
-
-                    if (!res.ProtocolVersion || res.ProtocolVersion !== connection.clientProtocol) {
-                        protocolError = signalR._.error(signalR._.format(resources.protocolIncompatible, connection.clientProtocol, res.ProtocolVersion));
-                        $(connection).triggerHandler(events.onError, [protocolError]);
-                        deferred.reject(protocolError);
-
-                        return;
-                    }
-
-                    $.each(signalR.transports, function (key) {
-                        if ((key.indexOf("_") === 0) || (key === "webSockets" && !res.TryWebSockets)) {
-                            return true;
-                        }
-                        supportedTransports.push(key);
-                    });
-
-                    if ($.isArray(config.transport)) {
-                        $.each(config.transport, function (_, transport) {
-                            if ($.inArray(transport, supportedTransports) >= 0) {
-                                transports.push(transport);
-                            }
-                        });
-                    } else if (config.transport === "auto") {
-                        transports = supportedTransports;
-                    } else if ($.inArray(config.transport, supportedTransports) >= 0) {
-                        transports.push(config.transport);
-                    }
-
-                    initialize(transports);
-                }
-            });
-
-            return deferred.promise();
-        },
-
-        starting: function (callback) {
-            /// <summary>Adds a callback that will be invoked before anything is sent over the connection</summary>
-            /// <param name="callback" type="Function">A callback function to execute before the connection is fully instantiated.</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onStarting, function (e, data) {
-                callback.call(connection);
-            });
-            return connection;
-        },
-
-        send: function (data) {
-            /// <summary>Sends data over the connection</summary>
-            /// <param name="data" type="String">The data to send over the connection</param>
-            /// <returns type="signalR" />
-            var connection = this;
-
-            if (connection.state === signalR.connectionState.disconnected) {
-                // Connection hasn't been started yet
-                throw new Error("SignalR: Connection must be started before data can be sent. Call .start() before .send()");
-            }
-
-            if (connection.state === signalR.connectionState.connecting) {
-                // Connection hasn't been started yet
-                throw new Error("SignalR: Connection has not been fully initialized. Use .start().done() or .start().fail() to run logic after the connection has started.");
-            }
-
-            connection.transport.send(connection, data);
-            // REVIEW: Should we return deferred here?
-            return connection;
-        },
-
-        received: function (callback) {
-            /// <summary>Adds a callback that will be invoked after anything is received over the connection</summary>
-            /// <param name="callback" type="Function">A callback function to execute when any data is received on the connection</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onReceived, function (e, data) {
-                callback.call(connection, data);
-            });
-            return connection;
-        },
-
-        stateChanged: function (callback) {
-            /// <summary>Adds a callback that will be invoked when the connection state changes</summary>
-            /// <param name="callback" type="Function">A callback function to execute when the connection state changes</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onStateChanged, function (e, data) {
-                callback.call(connection, data);
-            });
-            return connection;
-        },
-
-        error: function (callback) {
-            /// <summary>Adds a callback that will be invoked after an error occurs with the connection</summary>
-            /// <param name="callback" type="Function">A callback function to execute when an error occurs on the connection</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onError, function (e, errorData, sendData) {
-                connection.lastError = errorData;
-                // In practice 'errorData' is the SignalR built error object.
-                // In practice 'sendData' is undefined for all error events except those triggered by
-                // 'ajaxSend' and 'webSockets.send'.'sendData' is the original send payload.
-                callback.call(connection, errorData, sendData);
-            });
-            return connection;
-        },
-
-        disconnected: function (callback) {
-            /// <summary>Adds a callback that will be invoked when the client disconnects</summary>
-            /// <param name="callback" type="Function">A callback function to execute when the connection is broken</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onDisconnect, function (e, data) {
-                callback.call(connection);
-            });
-            return connection;
-        },
-
-        connectionSlow: function (callback) {
-            /// <summary>Adds a callback that will be invoked when the client detects a slow connection</summary>
-            /// <param name="callback" type="Function">A callback function to execute when the connection is slow</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onConnectionSlow, function (e, data) {
-                callback.call(connection);
-            });
-
-            return connection;
-        },
-
-        reconnecting: function (callback) {
-            /// <summary>Adds a callback that will be invoked when the underlying transport begins reconnecting</summary>
-            /// <param name="callback" type="Function">A callback function to execute when the connection enters a reconnecting state</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onReconnecting, function (e, data) {
-                callback.call(connection);
-            });
-            return connection;
-        },
-
-        reconnected: function (callback) {
-            /// <summary>Adds a callback that will be invoked when the underlying transport reconnects</summary>
-            /// <param name="callback" type="Function">A callback function to execute when the connection is restored</param>
-            /// <returns type="signalR" />
-            var connection = this;
-            $(connection).bind(events.onReconnect, function (e, data) {
-                callback.call(connection);
-            });
-            return connection;
-        },
-
-        stop: function (async, notifyServer) {
-            /// <summary>Stops listening</summary>
-            /// <param name="async" type="Boolean">Whether or not to asynchronously abort the connection</param>
-            /// <param name="notifyServer" type="Boolean">Whether we want to notify the server that we are aborting the connection</param>
-            /// <returns type="signalR" />
-            var connection = this,
-                // Save deferral because this is always cleaned up
-                deferral = connection._deferral;
-
-            // Verify that we've bound a load event.
-            if (connection._.deferredStartHandler) {
-                // Unbind the event.
-                _pageWindow.unbind("load", connection._.deferredStartHandler);
-            }
-
-            // Always clean up private non-timeout based state.
-            delete connection._.config;
-            delete connection._.deferredStartHandler;
-
-            // This needs to be checked despite the connection state because a connection start can be deferred until page load.
-            // If we've deferred the start due to a page load we need to unbind the "onLoad" -> start event.
-            if (!_pageLoaded && (!connection._.config || connection._.config.waitForPageLoad === true)) {
-                connection.log("Stopping connection prior to negotiate.");
-
-                // If we have a deferral we should reject it
-                if (deferral) {
-                    deferral.reject(signalR._.error(resources.stoppedWhileLoading));
-                }
-
-                // Short-circuit because the start has not been fully started.
-                return;
-            }
-
-            if (connection.state === signalR.connectionState.disconnected) {
-                return;
-            }
-
-            connection.log("Stopping connection.");
-
-            // Clear this no matter what
-            window.clearTimeout(connection._.beatHandle);
-            window.clearInterval(connection._.pingIntervalId);
-
-            if (connection.transport) {
-                connection.transport.stop(connection);
-
-                if (notifyServer !== false) {
-                    connection.transport.abort(connection, async);
-                }
-
-                if (supportsKeepAlive(connection)) {
-                    signalR.transports._logic.stopMonitoringKeepAlive(connection);
-                }
-
-                connection.transport = null;
-            }
-
-            if (connection._.negotiateRequest) {
-                // If the negotiation request has already completed this will noop.
-                connection._.negotiateRequest.abort(_negotiateAbortText);
-                delete connection._.negotiateRequest;
-            }
-
-            // Ensure that initHandler.stop() is called before connection._deferral is deleted
-            if (connection._.initHandler) {
-                connection._.initHandler.stop();
-            }
-
-            delete connection._deferral;
-            delete connection.messageId;
-            delete connection.groupsToken;
-            delete connection.id;
-            delete connection._.pingIntervalId;
-            delete connection._.lastMessageAt;
-            delete connection._.lastActiveAt;
-
-            // Clear out our message buffer
-            connection._.connectingMessageBuffer.clear();
-
-            // Trigger the disconnect event
-            changeState(connection, connection.state, signalR.connectionState.disconnected);
-            $(connection).triggerHandler(events.onDisconnect);
-
-            return connection;
-        },
-
-        log: function (msg) {
-            log(msg, this.logging);
-        }
-    };
-
-    signalR.fn.init.prototype = signalR.fn;
-
-    signalR.noConflict = function () {
-        /// <summary>Reinstates the original value of $.connection and returns the signalR object for manual assignment</summary>
-        /// <returns type="signalR" />
-        if ($.connection === signalR) {
-            $.connection = _connection;
-        }
-        return signalR;
-    };
-
-    if ($.connection) {
-        _connection = $.connection;
-    }
-
-    $.connection = $.signalR = signalR;
-
-}(window.jQuery, window));
-/* jquery.signalR.transports.common.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-/*global window:false */
-/// <reference path="jquery.signalR.core.js" />
-
-(function ($, window, undefined) {
-
-    var signalR = $.signalR,
-        events = $.signalR.events,
-        changeState = $.signalR.changeState,
-        startAbortText = "__Start Aborted__",
-        transportLogic;
-
-    signalR.transports = {};
-
-    function beat(connection) {
-        if (connection._.keepAliveData.monitoring) {
-            checkIfAlive(connection);
-        }
-
-        // Ensure that we successfully marked active before continuing the heartbeat.
-        if (transportLogic.markActive(connection)) {
-            connection._.beatHandle = window.setTimeout(function () {
-                beat(connection);
-            }, connection._.beatInterval);
-        }
-    }
-
-    function checkIfAlive(connection) {
-        var keepAliveData = connection._.keepAliveData,
-            timeElapsed;
-
-        // Only check if we're connected
-        if (connection.state === signalR.connectionState.connected) {
-            timeElapsed = new Date().getTime() - connection._.lastMessageAt;
-
-            // Check if the keep alive has completely timed out
-            if (timeElapsed >= keepAliveData.timeout) {
-                connection.log("Keep alive timed out.  Notifying transport that connection has been lost.");
-
-                // Notify transport that the connection has been lost
-                connection.transport.lostConnection(connection);
-            } else if (timeElapsed >= keepAliveData.timeoutWarning) {
-                // This is to assure that the user only gets a single warning
-                if (!keepAliveData.userNotified) {
-                    connection.log("Keep alive has been missed, connection may be dead/slow.");
-                    $(connection).triggerHandler(events.onConnectionSlow);
-                    keepAliveData.userNotified = true;
-                }
-            } else {
-                keepAliveData.userNotified = false;
-            }
-        }
-    }
-
-    function getAjaxUrl(connection, path) {
-        var url = connection.url + path;
-
-        if (connection.transport) {
-            url += "?transport=" + connection.transport.name;
-        }
-
-        return transportLogic.prepareQueryString(connection, url);
-    }
-
-    function InitHandler(connection) {
-        this.connection = connection;
-
-        this.startRequested = false;
-        this.startCompleted = false;
-        this.connectionStopped = false;
-    }
-
-    InitHandler.prototype = {
-        start: function (transport, onSuccess, onFallback) {
-            var that = this,
-                connection = that.connection,
-                failCalled = false;
-
-            if (that.startRequested || that.connectionStopped) {
-                connection.log("WARNING! " + transport.name + " transport cannot be started. Initialization ongoing or completed.");
-                return;
-            }
-
-            connection.log(transport.name + " transport starting.");
-
-            transport.start(connection, function () {
-                if (!failCalled) {
-                    that.initReceived(transport, onSuccess);
-                }
-            }, function (error) {
-                // Don't allow the same transport to cause onFallback to be called twice
-                if (!failCalled) {
-                    failCalled = true;
-                    that.transportFailed(transport, error, onFallback);
-                }
-
-                // Returns true if the transport should stop;
-                // false if it should attempt to reconnect
-                return !that.startCompleted || that.connectionStopped;
-            });
-
-            that.transportTimeoutHandle = window.setTimeout(function () {
-                if (!failCalled) {
-                    failCalled = true;
-                    connection.log(transport.name + " transport timed out when trying to connect.");
-                    that.transportFailed(transport, undefined, onFallback);
-                }
-            }, connection._.totalTransportConnectTimeout);
-        },
-
-        stop: function () {
-            this.connectionStopped = true;
-            window.clearTimeout(this.transportTimeoutHandle);
-            signalR.transports._logic.tryAbortStartRequest(this.connection);
-        },
-
-        initReceived: function (transport, onSuccess) {
-            var that = this,
-                connection = that.connection;
-
-            if (that.startRequested) {
-                connection.log("WARNING! The client received multiple init messages.");
-                return;
-            }
-
-            if (that.connectionStopped) {
-                return;
-            }
-
-            that.startRequested = true;
-            window.clearTimeout(that.transportTimeoutHandle);
-
-            connection.log(transport.name + " transport connected. Initiating start request.");
-            signalR.transports._logic.ajaxStart(connection, function () {
-                that.startCompleted = true;
-                onSuccess();
-            });
-        },
-
-        transportFailed: function (transport, error, onFallback) {
-            var connection = this.connection,
-                deferred = connection._deferral,
-                wrappedError;
-
-            if (this.connectionStopped) {
-                return;
-            }
-
-            window.clearTimeout(this.transportTimeoutHandle);
-
-            if (!this.startRequested) {
-                transport.stop(connection);
-
-                connection.log(transport.name + " transport failed to connect. Attempting to fall back.");
-                onFallback();
-            } else if (!this.startCompleted) {
-                // Do not attempt to fall back if a start request is ongoing during a transport failure.
-                // Instead, trigger an error and stop the connection.
-                wrappedError = signalR._.error(signalR.resources.errorDuringStartRequest, error);
-
-                connection.log(transport.name + " transport failed during the start request. Stopping the connection.");
-                $(connection).triggerHandler(events.onError, [wrappedError]);
-                if (deferred) {
-                    deferred.reject(wrappedError);
-                }
-
-                connection.stop();
-            } else {
-                // The start request has completed, but the connection has not stopped.
-                // No need to do anything here. The transport should attempt its normal reconnect logic.
-            }
-        }
-    };
-
-    transportLogic = signalR.transports._logic = {
-        ajax: function (connection, options) {
-            return $.ajax(
-                $.extend(/*deep copy*/ true, {}, $.signalR.ajaxDefaults, {
-                    type: "GET",
-                    data: {},
-                    xhrFields: { withCredentials: connection.withCredentials },
-                    contentType: connection.contentType,
-                    dataType: connection.ajaxDataType
-                }, options));
-        },
-
-        pingServer: function (connection) {
-            /// <summary>Pings the server</summary>
-            /// <param name="connection" type="signalr">Connection associated with the server ping</param>
-            /// <returns type="signalR" />
-            var url,
-                xhr,
-                deferral = $.Deferred();
-
-            if (connection.transport) {
-                url = connection.url + "/ping";
-
-                url = transportLogic.addQs(url, connection.qs);
-
-                xhr = transportLogic.ajax(connection, {
-                    url: url,
-                    success: function (result) {
-                        var data;
-
-                        try {
-                            data = connection._parseResponse(result);
-                        }
-                        catch (error) {
-                            deferral.reject(
-                                signalR._.transportError(
-                                    signalR.resources.pingServerFailedParse,
-                                    connection.transport,
-                                    error,
-                                    xhr
-                                )
-                            );
-                            connection.stop();
-                            return;
-                        }
-
-                        if (data.Response === "pong") {
-                            deferral.resolve();
-                        }
-                        else {
-                            deferral.reject(
-                                signalR._.transportError(
-                                    signalR._.format(signalR.resources.pingServerFailedInvalidResponse, result),
-                                    connection.transport,
-                                    null /* error */,
-                                    xhr
-                                )
-                            );
-                        }
-                    },
-                    error: function (error) {
-                        if (error.status === 401 || error.status === 403) {
-                            deferral.reject(
-                                signalR._.transportError(
-                                    signalR._.format(signalR.resources.pingServerFailedStatusCode, error.status),
-                                    connection.transport,
-                                    error,
-                                    xhr
-                                )
-                            );
-                            connection.stop();
-                        }
-                        else {
-                            deferral.reject(
-                                signalR._.transportError(
-                                    signalR.resources.pingServerFailed,
-                                    connection.transport,
-                                    error,
-                                    xhr
-                                )
-                            );
-                        }
-                    }
-                });
-            }
-            else {
-                deferral.reject(
-                    signalR._.transportError(
-                        signalR.resources.noConnectionTransport,
-                        connection.transport
-                    )
-                );
-            }
-
-            return deferral.promise();
-        },
-
-        prepareQueryString: function (connection, url) {
-            var preparedUrl;
-
-            // Use addQs to start since it handles the ?/& prefix for us
-            preparedUrl = transportLogic.addQs(url, "clientProtocol=" + connection.clientProtocol);
-
-            // Add the user-specified query string params if any
-            preparedUrl = transportLogic.addQs(preparedUrl, connection.qs);
-
-            if (connection.token) {
-                preparedUrl += "&connectionToken=" + window.encodeURIComponent(connection.token);
-            }
-
-            if (connection.data) {
-                preparedUrl += "&connectionData=" + window.encodeURIComponent(connection.data);
-            }
-
-            return preparedUrl;
-        },
-
-        addQs: function (url, qs) {
-            var appender = url.indexOf("?") !== -1 ? "&" : "?",
-                firstChar;
-
-            if (!qs) {
-                return url;
-            }
-
-            if (typeof (qs) === "object") {
-                return url + appender + $.param(qs);
-            }
-
-            if (typeof (qs) === "string") {
-                firstChar = qs.charAt(0);
-
-                if (firstChar === "?" || firstChar === "&") {
-                    appender = "";
-                }
-
-                return url + appender + qs;
-            }
-
-            throw new Error("Query string property must be either a string or object.");
-        },
-
-        // BUG #2953: The url needs to be same otherwise it will cause a memory leak
-        getUrl: function (connection, transport, reconnecting, poll, ajaxPost) {
-            /// <summary>Gets the url for making a GET based connect request</summary>
-            var baseUrl = transport === "webSockets" ? "" : connection.baseUrl,
-                url = baseUrl + connection.appRelativeUrl,
-                qs = "transport=" + transport;
-
-            if (!ajaxPost && connection.groupsToken) {
-                qs += "&groupsToken=" + window.encodeURIComponent(connection.groupsToken);
-            }
-
-            if (!reconnecting) {
-                url += "/connect";
-            } else {
-                if (poll) {
-                    // longPolling transport specific
-                    url += "/poll";
-                } else {
-                    url += "/reconnect";
-                }
-
-                if (!ajaxPost && connection.messageId) {
-                    qs += "&messageId=" + window.encodeURIComponent(connection.messageId);
-                }
-            }
-            url += "?" + qs;
-            url = transportLogic.prepareQueryString(connection, url);
-
-            if (!ajaxPost) {
-                url += "&tid=" + Math.floor(Math.random() * 11);
-            }
-
-            return url;
-        },
-
-        maximizePersistentResponse: function (minPersistentResponse) {
-            return {
-                MessageId: minPersistentResponse.C,
-                Messages: minPersistentResponse.M,
-                Initialized: typeof (minPersistentResponse.S) !== "undefined" ? true : false,
-                ShouldReconnect: typeof (minPersistentResponse.T) !== "undefined" ? true : false,
-                LongPollDelay: minPersistentResponse.L,
-                GroupsToken: minPersistentResponse.G
-            };
-        },
-
-        updateGroups: function (connection, groupsToken) {
-            if (groupsToken) {
-                connection.groupsToken = groupsToken;
-            }
-        },
-
-        stringifySend: function (connection, message) {
-            if (typeof (message) === "string" || typeof (message) === "undefined" || message === null) {
-                return message;
-            }
-            return connection.json.stringify(message);
-        },
-
-        ajaxSend: function (connection, data) {
-            var payload = transportLogic.stringifySend(connection, data),
-                url = getAjaxUrl(connection, "/send"),
-                xhr,
-                onFail = function (error, connection) {
-                    $(connection).triggerHandler(events.onError, [signalR._.transportError(signalR.resources.sendFailed, connection.transport, error, xhr), data]);
-                };
-
-
-            xhr = transportLogic.ajax(connection, {
-                url: url,
-                type: connection.ajaxDataType === "jsonp" ? "GET" : "POST",
-                contentType: signalR._.defaultContentType,
-                data: {
-                    data: payload
-                },
-                success: function (result) {
-                    var res;
-
-                    if (result) {
-                        try {
-                            res = connection._parseResponse(result);
-                        }
-                        catch (error) {
-                            onFail(error, connection);
-                            connection.stop();
-                            return;
-                        }
-
-                        transportLogic.triggerReceived(connection, res);
-                    }
-                },
-                error: function (error, textStatus) {
-                    if (textStatus === "abort" || textStatus === "parsererror") {
-                        // The parsererror happens for sends that don't return any data, and hence
-                        // don't write the jsonp callback to the response. This is harder to fix on the server
-                        // so just hack around it on the client for now.
-                        return;
-                    }
-
-                    onFail(error, connection);
-                }
-            });
-
-            return xhr;
-        },
-
-        ajaxAbort: function (connection, async) {
-            if (typeof (connection.transport) === "undefined") {
-                return;
-            }
-
-            // Async by default unless explicitly overidden
-            async = typeof async === "undefined" ? true : async;
-
-            var url = getAjaxUrl(connection, "/abort");
-
-            transportLogic.ajax(connection, {
-                url: url,
-                async: async,
-                timeout: 1000,
-                type: "POST"
-            });
-
-            connection.log("Fired ajax abort async = " + async + ".");
-        },
-
-        ajaxStart: function (connection, onSuccess) {
-            var rejectDeferred = function (error) {
-                    var deferred = connection._deferral;
-                    if (deferred) {
-                        deferred.reject(error);
-                    }
-                },
-                triggerStartError = function (error) {
-                    connection.log("The start request failed. Stopping the connection.");
-                    $(connection).triggerHandler(events.onError, [error]);
-                    rejectDeferred(error);
-                    connection.stop();
-                };
-
-            connection._.startRequest = transportLogic.ajax(connection, {
-                url: getAjaxUrl(connection, "/start"),
-                success: function (result, statusText, xhr) {
-                    var data;
-
-                    try {
-                        data = connection._parseResponse(result);
-                    } catch (error) {
-                        triggerStartError(signalR._.error(
-                            signalR._.format(signalR.resources.errorParsingStartResponse, result),
-                            error, xhr));
-                        return;
-                    }
-
-                    if (data.Response === "started") {
-                        onSuccess();
-                    } else {
-                        triggerStartError(signalR._.error(
-                            signalR._.format(signalR.resources.invalidStartResponse, result),
-                            null /* error */, xhr));
-                    }
-                },
-                error: function (xhr, statusText, error) {
-                    if (statusText !== startAbortText) {
-                        triggerStartError(signalR._.error(
-                            signalR.resources.errorDuringStartRequest,
-                            error, xhr));
-                    } else {
-                        // Stop has been called, no need to trigger the error handler
-                        // or stop the connection again with onStartError
-                        connection.log("The start request aborted because connection.stop() was called.");
-                        rejectDeferred(signalR._.error(
-                            signalR.resources.stoppedDuringStartRequest,
-                            null /* error */, xhr));
-                    }
-                }
-            });
-        },
-
-        tryAbortStartRequest: function (connection) {
-            if (connection._.startRequest) {
-                // If the start request has already completed this will noop.
-                connection._.startRequest.abort(startAbortText);
-                delete connection._.startRequest;
-            }
-        },
-
-        tryInitialize: function (connection, persistentResponse, onInitialized) {
-            if (persistentResponse.Initialized && onInitialized) {
-                onInitialized();
-            } else if (persistentResponse.Initialized) {
-                connection.log("WARNING! The client received an init message after reconnecting.");
-            }
-
-        },
-
-        triggerReceived: function (connection, data) {
-            if (!connection._.connectingMessageBuffer.tryBuffer(data)) {
-                $(connection).triggerHandler(events.onReceived, [data]);
-            }
-        },
-
-        processMessages: function (connection, minData, onInitialized) {
-            var data;
-
-            // Update the last message time stamp
-            transportLogic.markLastMessage(connection);
-
-            if (minData) {
-                data = transportLogic.maximizePersistentResponse(minData);
-
-                transportLogic.updateGroups(connection, data.GroupsToken);
-
-                if (data.MessageId) {
-                    connection.messageId = data.MessageId;
-                }
-
-                if (data.Messages) {
-                    $.each(data.Messages, function (index, message) {
-                        transportLogic.triggerReceived(connection, message);
-                    });
-
-                    transportLogic.tryInitialize(connection, data, onInitialized);
-                }
-            }
-        },
-
-        monitorKeepAlive: function (connection) {
-            var keepAliveData = connection._.keepAliveData;
-
-            // If we haven't initiated the keep alive timeouts then we need to
-            if (!keepAliveData.monitoring) {
-                keepAliveData.monitoring = true;
-
-                transportLogic.markLastMessage(connection);
-
-                // Save the function so we can unbind it on stop
-                connection._.keepAliveData.reconnectKeepAliveUpdate = function () {
-                    // Mark a new message so that keep alive doesn't time out connections
-                    transportLogic.markLastMessage(connection);
-                };
-
-                // Update Keep alive on reconnect
-                $(connection).bind(events.onReconnect, connection._.keepAliveData.reconnectKeepAliveUpdate);
-
-                connection.log("Now monitoring keep alive with a warning timeout of " + keepAliveData.timeoutWarning + ", keep alive timeout of " + keepAliveData.timeout + " and disconnecting timeout of " + connection.disconnectTimeout);
-            } else {
-                connection.log("Tried to monitor keep alive but it's already being monitored.");
-            }
-        },
-
-        stopMonitoringKeepAlive: function (connection) {
-            var keepAliveData = connection._.keepAliveData;
-
-            // Only attempt to stop the keep alive monitoring if its being monitored
-            if (keepAliveData.monitoring) {
-                // Stop monitoring
-                keepAliveData.monitoring = false;
-
-                // Remove the updateKeepAlive function from the reconnect event
-                $(connection).unbind(events.onReconnect, connection._.keepAliveData.reconnectKeepAliveUpdate);
-
-                // Clear all the keep alive data
-                connection._.keepAliveData = {};
-                connection.log("Stopping the monitoring of the keep alive.");
-            }
-        },
-
-        startHeartbeat: function (connection) {
-            connection._.lastActiveAt = new Date().getTime();
-            beat(connection);
-        },
-
-        markLastMessage: function (connection) {
-            connection._.lastMessageAt = new Date().getTime();
-        },
-
-        markActive: function (connection) {
-            if (transportLogic.verifyLastActive(connection)) {
-                connection._.lastActiveAt = new Date().getTime();
-                return true;
-            }
-
-            return false;
-        },
-
-        isConnectedOrReconnecting: function (connection) {
-            return connection.state === signalR.connectionState.connected ||
-                   connection.state === signalR.connectionState.reconnecting;
-        },
-
-        ensureReconnectingState: function (connection) {
-            if (changeState(connection,
-                        signalR.connectionState.connected,
-                        signalR.connectionState.reconnecting) === true) {
-                $(connection).triggerHandler(events.onReconnecting);
-            }
-            return connection.state === signalR.connectionState.reconnecting;
-        },
-
-        clearReconnectTimeout: function (connection) {
-            if (connection && connection._.reconnectTimeout) {
-                window.clearTimeout(connection._.reconnectTimeout);
-                delete connection._.reconnectTimeout;
-            }
-        },
-
-        verifyLastActive: function (connection) {
-            if (new Date().getTime() - connection._.lastActiveAt >= connection.reconnectWindow) {
-                var message = signalR._.format(signalR.resources.reconnectWindowTimeout, new Date(connection._.lastActiveAt), connection.reconnectWindow);
-                connection.log(message);
-                $(connection).triggerHandler(events.onError, [signalR._.error(message, /* source */ "TimeoutException")]);
-                connection.stop(/* async */ false, /* notifyServer */ false);
-                return false;
-            }
-
-            return true;
-        },
-
-        reconnect: function (connection, transportName) {
-            var transport = signalR.transports[transportName];
-
-            // We should only set a reconnectTimeout if we are currently connected
-            // and a reconnectTimeout isn't already set.
-            if (transportLogic.isConnectedOrReconnecting(connection) && !connection._.reconnectTimeout) {
-                // Need to verify before the setTimeout occurs because an application sleep could occur during the setTimeout duration.
-                if (!transportLogic.verifyLastActive(connection)) {
-                    return;
-                }
-
-                connection._.reconnectTimeout = window.setTimeout(function () {
-                    if (!transportLogic.verifyLastActive(connection)) {
-                        return;
-                    }
-
-                    transport.stop(connection);
-
-                    if (transportLogic.ensureReconnectingState(connection)) {
-                        connection.log(transportName + " reconnecting.");
-                        transport.start(connection);
-                    }
-                }, connection.reconnectDelay);
-            }
-        },
-
-        handleParseFailure: function (connection, result, error, onFailed, context) {
-            var wrappedError = signalR._.transportError(
-                signalR._.format(signalR.resources.parseFailed, result),
-                connection.transport,
-                error,
-                context);
-
-            // If we're in the initialization phase trigger onFailed, otherwise stop the connection.
-            if (onFailed && onFailed(wrappedError)) {
-                connection.log("Failed to parse server response while attempting to connect.");
-            } else {
-                $(connection).triggerHandler(events.onError, [wrappedError]);
-                connection.stop();
-            }
-        },
-
-        initHandler: function (connection) {
-            return new InitHandler(connection);
-        },
-
-        foreverFrame: {
-            count: 0,
-            connections: {}
-        }
-    };
-
-}(window.jQuery, window));
-/* jquery.signalR.transports.webSockets.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-
-/*global window:false */
-/// <reference path="jquery.signalR.transports.common.js" />
-
-(function ($, window, undefined) {
-
-    var signalR = $.signalR,
-        events = $.signalR.events,
-        changeState = $.signalR.changeState,
-        transportLogic = signalR.transports._logic;
-
-    signalR.transports.webSockets = {
-        name: "webSockets",
-
-        supportsKeepAlive: function () {
-            return true;
-        },
-
-        send: function (connection, data) {
-            var payload = transportLogic.stringifySend(connection, data);
-
-            try {
-                connection.socket.send(payload);
-            } catch (ex) {
-                $(connection).triggerHandler(events.onError,
-                    [signalR._.transportError(
-                        signalR.resources.webSocketsInvalidState,
-                        connection.transport,
-                        ex,
-                        connection.socket
-                    ),
-                    data]);
-            }
-        },
-
-        start: function (connection, onSuccess, onFailed) {
-            var url,
-                opened = false,
-                that = this,
-                reconnecting = !onSuccess,
-                $connection = $(connection);
-
-            if (!window.WebSocket) {
-                onFailed();
-                return;
-            }
-
-            if (!connection.socket) {
-                if (connection.webSocketServerUrl) {
-                    url = connection.webSocketServerUrl;
-                } else {
-                    url = connection.wsProtocol + connection.host;
-                }
-
-                url += transportLogic.getUrl(connection, this.name, reconnecting);
-
-                connection.log("Connecting to websocket endpoint '" + url + "'.");
-                connection.socket = new window.WebSocket(url);
-
-                connection.socket.onopen = function () {
-                    opened = true;
-                    connection.log("Websocket opened.");
-
-                    transportLogic.clearReconnectTimeout(connection);
-
-                    if (changeState(connection,
-                                    signalR.connectionState.reconnecting,
-                                    signalR.connectionState.connected) === true) {
-                        $connection.triggerHandler(events.onReconnect);
-                    }
-                };
-
-                connection.socket.onclose = function (event) {
-                    var error;
-
-                    // Only handle a socket close if the close is from the current socket.
-                    // Sometimes on disconnect the server will push down an onclose event
-                    // to an expired socket.
-
-                    if (this === connection.socket) {
-                        if (opened && typeof event.wasClean !== "undefined" && event.wasClean === false) {
-                            // Ideally this would use the websocket.onerror handler (rather than checking wasClean in onclose) but
-                            // I found in some circumstances Chrome won't call onerror. This implementation seems to work on all browsers.
-                            error = signalR._.transportError(
-                                signalR.resources.webSocketClosed,
-                                connection.transport,
-                                event);
-
-                            connection.log("Unclean disconnect from websocket: " + (event.reason || "[no reason given]."));
-                        } else {
-                            connection.log("Websocket closed.");
-                        }
-
-                        if (!onFailed || !onFailed(error)) {
-                            if (error) {
-                                $(connection).triggerHandler(events.onError, [error]);
-                            }
-
-                            that.reconnect(connection);
-                        }
-                    }
-                };
-
-                connection.socket.onmessage = function (event) {
-                    var data;
-
-                    try {
-                        data = connection._parseResponse(event.data);
-                    }
-                    catch (error) {
-                        transportLogic.handleParseFailure(connection, event.data, error, onFailed, event);
-                        return;
-                    }
-
-                    if (data) {
-                        // data.M is PersistentResponse.Messages
-                        if ($.isEmptyObject(data) || data.M) {
-                            transportLogic.processMessages(connection, data, onSuccess);
-                        } else {
-                            // For websockets we need to trigger onReceived
-                            // for callbacks to outgoing hub calls.
-                            transportLogic.triggerReceived(connection, data);
-                        }
-                    }
-                };
-            }
-        },
-
-        reconnect: function (connection) {
-            transportLogic.reconnect(connection, this.name);
-        },
-
-        lostConnection: function (connection) {
-            this.reconnect(connection);
-        },
-
-        stop: function (connection) {
-            // Don't trigger a reconnect after stopping
-            transportLogic.clearReconnectTimeout(connection);
-
-            if (connection.socket) {
-                connection.log("Closing the Websocket.");
-                connection.socket.close();
-                connection.socket = null;
-            }
-        },
-
-        abort: function (connection, async) {
-            transportLogic.ajaxAbort(connection, async);
-        }
-    };
-
-}(window.jQuery, window));
-/* jquery.signalR.transports.serverSentEvents.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-
-/*global window:false */
-/// <reference path="jquery.signalR.transports.common.js" />
-
-(function ($, window, undefined) {
-
-    var signalR = $.signalR,
-        events = $.signalR.events,
-        changeState = $.signalR.changeState,
-        transportLogic = signalR.transports._logic,
-        clearReconnectAttemptTimeout = function (connection) {
-            window.clearTimeout(connection._.reconnectAttemptTimeoutHandle);
-            delete connection._.reconnectAttemptTimeoutHandle;
-        };
-
-    signalR.transports.serverSentEvents = {
-        name: "serverSentEvents",
-
-        supportsKeepAlive: function () {
-            return true;
-        },
-
-        timeOut: 3000,
-
-        start: function (connection, onSuccess, onFailed) {
-            var that = this,
-                opened = false,
-                $connection = $(connection),
-                reconnecting = !onSuccess,
-                url;
-
-            if (connection.eventSource) {
-                connection.log("The connection already has an event source. Stopping it.");
-                connection.stop();
-            }
-
-            if (!window.EventSource) {
-                if (onFailed) {
-                    connection.log("This browser doesn't support SSE.");
-                    onFailed();
-                }
-                return;
-            }
-
-            url = transportLogic.getUrl(connection, this.name, reconnecting);
-
-            try {
-                connection.log("Attempting to connect to SSE endpoint '" + url + "'.");
-                connection.eventSource = new window.EventSource(url, { withCredentials: connection.withCredentials });
-            }
-            catch (e) {
-                connection.log("EventSource failed trying to connect with error " + e.Message + ".");
-                if (onFailed) {
-                    // The connection failed, call the failed callback
-                    onFailed();
-                } else {
-                    $connection.triggerHandler(events.onError, [signalR._.transportError(signalR.resources.eventSourceFailedToConnect, connection.transport, e)]);
-                    if (reconnecting) {
-                        // If we were reconnecting, rather than doing initial connect, then try reconnect again
-                        that.reconnect(connection);
-                    }
-                }
-                return;
-            }
-
-            if (reconnecting) {
-                connection._.reconnectAttemptTimeoutHandle = window.setTimeout(function () {
-                    if (opened === false) {
-                        // If we're reconnecting and the event source is attempting to connect,
-                        // don't keep retrying. This causes duplicate connections to spawn.
-                        if (connection.eventSource.readyState !== window.EventSource.OPEN) {
-                            // If we were reconnecting, rather than doing initial connect, then try reconnect again
-                            that.reconnect(connection);
-                        }
-                    }
-                },
-                that.timeOut);
-            }
-
-            connection.eventSource.addEventListener("open", function (e) {
-                connection.log("EventSource connected.");
-
-                clearReconnectAttemptTimeout(connection);
-                transportLogic.clearReconnectTimeout(connection);
-
-                if (opened === false) {
-                    opened = true;
-
-                    if (changeState(connection,
-                                         signalR.connectionState.reconnecting,
-                                         signalR.connectionState.connected) === true) {
-                        $connection.triggerHandler(events.onReconnect);
-                    }
-                }
-            }, false);
-
-            connection.eventSource.addEventListener("message", function (e) {
-                var res;
-
-                // process messages
-                if (e.data === "initialized") {
-                    return;
-                }
-
-                try {
-                    res = connection._parseResponse(e.data);
-                }
-                catch (error) {
-                    transportLogic.handleParseFailure(connection, e.data, error, onFailed, e);
-                    return;
-                }
-
-                transportLogic.processMessages(connection, res, onSuccess);
-            }, false);
-
-            connection.eventSource.addEventListener("error", function (e) {
-                var error = signalR._.transportError(
-                    signalR.resources.eventSourceError,
-                    connection.transport,
-                    e);
-
-                // Only handle an error if the error is from the current Event Source.
-                // Sometimes on disconnect the server will push down an error event
-                // to an expired Event Source.
-                if (this !== connection.eventSource) {
-                    return;
-                }
-
-                if (onFailed && onFailed(error)) {
-                    return;
-                }
-
-                connection.log("EventSource readyState: " + connection.eventSource.readyState + ".");
-
-                if (e.eventPhase === window.EventSource.CLOSED) {
-                    // We don't use the EventSource's native reconnect function as it
-                    // doesn't allow us to change the URL when reconnecting. We need
-                    // to change the URL to not include the /connect suffix, and pass
-                    // the last message id we received.
-                    connection.log("EventSource reconnecting due to the server connection ending.");
-                    that.reconnect(connection);
-                } else {
-                    // connection error
-                    connection.log("EventSource error.");
-                    $connection.triggerHandler(events.onError, [error]);
-                }
-            }, false);
-        },
-
-        reconnect: function (connection) {
-            transportLogic.reconnect(connection, this.name);
-        },
-
-        lostConnection: function (connection) {
-            this.reconnect(connection);
-        },
-
-        send: function (connection, data) {
-            transportLogic.ajaxSend(connection, data);
-        },
-
-        stop: function (connection) {
-            // Don't trigger a reconnect after stopping
-            clearReconnectAttemptTimeout(connection);
-            transportLogic.clearReconnectTimeout(connection);
-
-            if (connection && connection.eventSource) {
-                connection.log("EventSource calling close().");
-                connection.eventSource.close();
-                connection.eventSource = null;
-                delete connection.eventSource;
-            }
-        },
-
-        abort: function (connection, async) {
-            transportLogic.ajaxAbort(connection, async);
-        }
-    };
-
-}(window.jQuery, window));
-/* jquery.signalR.transports.foreverFrame.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-
-/*global window:false */
-/// <reference path="jquery.signalR.transports.common.js" />
-
-(function ($, window, undefined) {
-
-    var signalR = $.signalR,
-        events = $.signalR.events,
-        changeState = $.signalR.changeState,
-        transportLogic = signalR.transports._logic,
-        createFrame = function () {
-            var frame = window.document.createElement("iframe");
-            frame.setAttribute("style", "position:absolute;top:0;left:0;width:0;height:0;visibility:hidden;");
-            return frame;
-        },
-        // Used to prevent infinite loading icon spins in older versions of ie
-        // We build this object inside a closure so we don't pollute the rest of
-        // the foreverFrame transport with unnecessary functions/utilities.
-        loadPreventer = (function () {
-            var loadingFixIntervalId = null,
-                loadingFixInterval = 1000,
-                attachedTo = 0;
-
-            return {
-                prevent: function () {
-                    // Prevent additional iframe removal procedures from newer browsers
-                    if (signalR._.ieVersion <= 8) {
-                        // We only ever want to set the interval one time, so on the first attachedTo
-                        if (attachedTo === 0) {
-                            // Create and destroy iframe every 3 seconds to prevent loading icon, super hacky
-                            loadingFixIntervalId = window.setInterval(function () {
-                                var tempFrame = createFrame();
-
-                                window.document.body.appendChild(tempFrame);
-                                window.document.body.removeChild(tempFrame);
-
-                                tempFrame = null;
-                            }, loadingFixInterval);
-                        }
-
-                        attachedTo++;
-                    }
-                },
-                cancel: function () {
-                    // Only clear the interval if there's only one more object that the loadPreventer is attachedTo
-                    if (attachedTo === 1) {
-                        window.clearInterval(loadingFixIntervalId);
-                    }
-
-                    if (attachedTo > 0) {
-                        attachedTo--;
-                    }
-                }
-            };
-        })();
-
-    signalR.transports.foreverFrame = {
-        name: "foreverFrame",
-
-        supportsKeepAlive: function () {
-            return true;
-        },
-
-        // Added as a value here so we can create tests to verify functionality
-        iframeClearThreshold: 50,
-
-        start: function (connection, onSuccess, onFailed) {
-            var that = this,
-                frameId = (transportLogic.foreverFrame.count += 1),
-                url,
-                frame = createFrame(),
-                frameLoadHandler = function () {
-                    connection.log("Forever frame iframe finished loading and is no longer receiving messages.");
-                    if (!onFailed || !onFailed()) {
-                        that.reconnect(connection);
-                    }
-                };
-
-            if (window.EventSource) {
-                // If the browser supports SSE, don't use Forever Frame
-                if (onFailed) {
-                    connection.log("Forever Frame is not supported by SignalR on browsers with SSE support.");
-                    onFailed();
-                }
-                return;
-            }
-
-            frame.setAttribute("data-signalr-connection-id", connection.id);
-
-            // Start preventing loading icon
-            // This will only perform work if the loadPreventer is not attached to another connection.
-            loadPreventer.prevent();
-
-            // Build the url
-            url = transportLogic.getUrl(connection, this.name);
-            url += "&frameId=" + frameId;
-
-            // add frame to the document prior to setting URL to avoid caching issues.
-            window.document.documentElement.appendChild(frame);
-
-            connection.log("Binding to iframe's load event.");
-
-            if (frame.addEventListener) {
-                frame.addEventListener("load", frameLoadHandler, false);
-            } else if (frame.attachEvent) {
-                frame.attachEvent("onload", frameLoadHandler);
-            }
-
-            frame.src = url;
-            transportLogic.foreverFrame.connections[frameId] = connection;
-
-            connection.frame = frame;
-            connection.frameId = frameId;
-
-            if (onSuccess) {
-                connection.onSuccess = function () {
-                    connection.log("Iframe transport started.");
-                    onSuccess();
-                };
-            }
-        },
-
-        reconnect: function (connection) {
-            var that = this;
-
-            // Need to verify connection state and verify before the setTimeout occurs because an application sleep could occur during the setTimeout duration.
-            if (transportLogic.isConnectedOrReconnecting(connection) && transportLogic.verifyLastActive(connection)) {
-                window.setTimeout(function () {
-                    // Verify that we're ok to reconnect.
-                    if (!transportLogic.verifyLastActive(connection)) {
-                        return;
-                    }
-
-                    if (connection.frame && transportLogic.ensureReconnectingState(connection)) {
-                        var frame = connection.frame,
-                            src = transportLogic.getUrl(connection, that.name, true) + "&frameId=" + connection.frameId;
-                        connection.log("Updating iframe src to '" + src + "'.");
-                        frame.src = src;
-                    }
-                }, connection.reconnectDelay);
-            }
-        },
-
-        lostConnection: function (connection) {
-            this.reconnect(connection);
-        },
-
-        send: function (connection, data) {
-            transportLogic.ajaxSend(connection, data);
-        },
-
-        receive: function (connection, data) {
-            var cw,
-                body,
-                response;
-
-            if (connection.json !== connection._originalJson) {
-                // If there's a custom JSON parser configured then serialize the object
-                // using the original (browser) JSON parser and then deserialize it using
-                // the custom parser (connection._parseResponse does that). This is so we
-                // can easily send the response from the server as "raw" JSON but still
-                // support custom JSON deserialization in the browser.
-                data = connection._originalJson.stringify(data);
-            }
-
-            response = connection._parseResponse(data);
-
-            transportLogic.processMessages(connection, response, connection.onSuccess);
-
-            // Protect against connection stopping from a callback trigger within the processMessages above.
-            if (connection.state === $.signalR.connectionState.connected) {
-                // Delete the script & div elements
-                connection.frameMessageCount = (connection.frameMessageCount || 0) + 1;
-                if (connection.frameMessageCount > signalR.transports.foreverFrame.iframeClearThreshold) {
-                    connection.frameMessageCount = 0;
-                    cw = connection.frame.contentWindow || connection.frame.contentDocument;
-                    if (cw && cw.document && cw.document.body) {
-                        body = cw.document.body;
-
-                        // Remove all the child elements from the iframe's body to conserver memory
-                        while (body.firstChild) {
-                            body.removeChild(body.firstChild);
-                        }
-                    }
-                }
-            }
-        },
-
-        stop: function (connection) {
-            var cw = null;
-
-            // Stop attempting to prevent loading icon
-            loadPreventer.cancel();
-
-            if (connection.frame) {
-                if (connection.frame.stop) {
-                    connection.frame.stop();
-                } else {
-                    try {
-                        cw = connection.frame.contentWindow || connection.frame.contentDocument;
-                        if (cw.document && cw.document.execCommand) {
-                            cw.document.execCommand("Stop");
-                        }
-                    }
-                    catch (e) {
-                        connection.log("Error occurred when stopping foreverFrame transport. Message = " + e.message + ".");
-                    }
-                }
-
-                // Ensure the iframe is where we left it
-                if (connection.frame.parentNode === window.document.body) {
-                    window.document.body.removeChild(connection.frame);
-                }
-
-                delete transportLogic.foreverFrame.connections[connection.frameId];
-                connection.frame = null;
-                connection.frameId = null;
-                delete connection.frame;
-                delete connection.frameId;
-                delete connection.onSuccess;
-                delete connection.frameMessageCount;
-                connection.log("Stopping forever frame.");
-            }
-        },
-
-        abort: function (connection, async) {
-            transportLogic.ajaxAbort(connection, async);
-        },
-
-        getConnection: function (id) {
-            return transportLogic.foreverFrame.connections[id];
-        },
-
-        started: function (connection) {
-            if (changeState(connection,
-                signalR.connectionState.reconnecting,
-                signalR.connectionState.connected) === true) {
-
-                $(connection).triggerHandler(events.onReconnect);
-            }
-        }
-    };
-
-}(window.jQuery, window));
-/* jquery.signalR.transports.longPolling.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-
-/*global window:false */
-/// <reference path="jquery.signalR.transports.common.js" />
-
-(function ($, window, undefined) {
-
-    var signalR = $.signalR,
-        events = $.signalR.events,
-        changeState = $.signalR.changeState,
-        isDisconnecting = $.signalR.isDisconnecting,
-        transportLogic = signalR.transports._logic;
-
-    signalR.transports.longPolling = {
-        name: "longPolling",
-
-        supportsKeepAlive: function () {
-            return false;
-        },
-
-        reconnectDelay: 3000,
-
-        start: function (connection, onSuccess, onFailed) {
-            /// <summary>Starts the long polling connection</summary>
-            /// <param name="connection" type="signalR">The SignalR connection to start</param>
-            var that = this,
-                fireConnect = function () {
-                    fireConnect = $.noop;
-
-                    connection.log("LongPolling connected.");
-
-                    if (onSuccess) {
-                        onSuccess();
-                    } else {
-                        connection.log("WARNING! The client received an init message after reconnecting.");
-                    }
-                },
-                tryFailConnect = function (error) {
-                    if (onFailed(error)) {
-                        connection.log("LongPolling failed to connect.");
-                        return true;
-                    }
-
-                    return false;
-                },
-                privateData = connection._,
-                reconnectErrors = 0,
-                fireReconnected = function (instance) {
-                    window.clearTimeout(privateData.reconnectTimeoutId);
-                    privateData.reconnectTimeoutId = null;
-
-                    if (changeState(instance,
-                                    signalR.connectionState.reconnecting,
-                                    signalR.connectionState.connected) === true) {
-                        // Successfully reconnected!
-                        instance.log("Raising the reconnect event");
-                        $(instance).triggerHandler(events.onReconnect);
-                    }
-                },
-                // 1 hour
-                maxFireReconnectedTimeout = 3600000;
-
-            if (connection.pollXhr) {
-                connection.log("Polling xhr requests already exists, aborting.");
-                connection.stop();
-            }
-
-            connection.messageId = null;
-
-            privateData.reconnectTimeoutId = null;
-
-            privateData.pollTimeoutId = window.setTimeout(function () {
-                (function poll(instance, raiseReconnect) {
-                    var messageId = instance.messageId,
-                        connect = (messageId === null),
-                        reconnecting = !connect,
-                        polling = !raiseReconnect,
-                        url = transportLogic.getUrl(instance, that.name, reconnecting, polling, true /* use Post for longPolling */),
-                        postData = {};
-
-                    if (instance.messageId) {
-                        postData.messageId = instance.messageId;
-                    }
-
-                    if (instance.groupsToken) {
-                        postData.groupsToken = instance.groupsToken;
-                    }
-
-                    // If we've disconnected during the time we've tried to re-instantiate the poll then stop.
-                    if (isDisconnecting(instance) === true) {
-                        return;
-                    }
-
-                    connection.log("Opening long polling request to '" + url + "'.");
-                    instance.pollXhr = transportLogic.ajax(connection, {
-                        xhrFields: {
-                            onprogress: function () {
-                                transportLogic.markLastMessage(connection);
-                            }
-                        },
-                        url: url,
-                        type: "POST",
-                        contentType: signalR._.defaultContentType,
-                        data: postData,
-                        timeout: connection._.pollTimeout,
-                        success: function (result) {
-                            var minData,
-                                delay = 0,
-                                data,
-                                shouldReconnect;
-
-                            connection.log("Long poll complete.");
-
-                            // Reset our reconnect errors so if we transition into a reconnecting state again we trigger
-                            // reconnected quickly
-                            reconnectErrors = 0;
-
-                            try {
-                                // Remove any keep-alives from the beginning of the result
-                                minData = connection._parseResponse(result);
-                            }
-                            catch (error) {
-                                transportLogic.handleParseFailure(instance, result, error, tryFailConnect, instance.pollXhr);
-                                return;
-                            }
-
-                            // If there's currently a timeout to trigger reconnect, fire it now before processing messages
-                            if (privateData.reconnectTimeoutId !== null) {
-                                fireReconnected(instance);
-                            }
-
-                            if (minData) {
-                                data = transportLogic.maximizePersistentResponse(minData);
-                            }
-
-                            transportLogic.processMessages(instance, minData, fireConnect);
-
-                            if (data &&
-                                $.type(data.LongPollDelay) === "number") {
-                                delay = data.LongPollDelay;
-                            }
-
-                            if (isDisconnecting(instance) === true) {
-                                return;
-                            }
-
-                            shouldReconnect = data && data.ShouldReconnect;
-                            if (shouldReconnect) {
-                                // Transition into the reconnecting state
-                                // If this fails then that means that the user transitioned the connection into a invalid state in processMessages.
-                                if (!transportLogic.ensureReconnectingState(instance)) {
-                                    return;
-                                }
-                            }
-
-                            // We never want to pass a raiseReconnect flag after a successful poll.  This is handled via the error function
-                            if (delay > 0) {
-                                privateData.pollTimeoutId = window.setTimeout(function () {
-                                    poll(instance, shouldReconnect);
-                                }, delay);
-                            } else {
-                                poll(instance, shouldReconnect);
-                            }
-                        },
-
-                        error: function (data, textStatus) {
-                            var error = signalR._.transportError(signalR.resources.longPollFailed, connection.transport, data, instance.pollXhr);
-
-                            // Stop trying to trigger reconnect, connection is in an error state
-                            // If we're not in the reconnect state this will noop
-                            window.clearTimeout(privateData.reconnectTimeoutId);
-                            privateData.reconnectTimeoutId = null;
-
-                            if (textStatus === "abort") {
-                                connection.log("Aborted xhr request.");
-                                return;
-                            }
-
-                            if (!tryFailConnect(error)) {
-
-                                // Increment our reconnect errors, we assume all errors to be reconnect errors
-                                // In the case that it's our first error this will cause Reconnect to be fired
-                                // after 1 second due to reconnectErrors being = 1.
-                                reconnectErrors++;
-
-                                if (connection.state !== signalR.connectionState.reconnecting) {
-                                    connection.log("An error occurred using longPolling. Status = " + textStatus + ".  Response = " + data.responseText + ".");
-                                    $(instance).triggerHandler(events.onError, [error]);
-                                }
-
-                                // We check the state here to verify that we're not in an invalid state prior to verifying Reconnect.
-                                // If we're not in connected or reconnecting then the next ensureReconnectingState check will fail and will return.
-                                // Therefore we don't want to change that failure code path.
-                                if ((connection.state === signalR.connectionState.connected ||
-                                    connection.state === signalR.connectionState.reconnecting) &&
-                                    !transportLogic.verifyLastActive(connection)) {
-                                    return;
-                                }
-
-                                // Transition into the reconnecting state
-                                // If this fails then that means that the user transitioned the connection into the disconnected or connecting state within the above error handler trigger.
-                                if (!transportLogic.ensureReconnectingState(instance)) {
-                                    return;
-                                }
-
-                                // Call poll with the raiseReconnect flag as true after the reconnect delay
-                                privateData.pollTimeoutId = window.setTimeout(function () {
-                                    poll(instance, true);
-                                }, that.reconnectDelay);
-                            }
-                        }
-                    });
-
-                    // This will only ever pass after an error has occurred via the poll ajax procedure.
-                    if (reconnecting && raiseReconnect === true) {
-                        // We wait to reconnect depending on how many times we've failed to reconnect.
-                        // This is essentially a heuristic that will exponentially increase in wait time before
-                        // triggering reconnected.  This depends on the "error" handler of Poll to cancel this
-                        // timeout if it triggers before the Reconnected event fires.
-                        // The Math.min at the end is to ensure that the reconnect timeout does not overflow.
-                        privateData.reconnectTimeoutId = window.setTimeout(function () { fireReconnected(instance); }, Math.min(1000 * (Math.pow(2, reconnectErrors) - 1), maxFireReconnectedTimeout));
-                    }
-                }(connection));
-            }, 250); // Have to delay initial poll so Chrome doesn't show loader spinner in tab
-        },
-
-        lostConnection: function (connection) {
-            if (connection.pollXhr) {
-                connection.pollXhr.abort("lostConnection");
-            }
-        },
-
-        send: function (connection, data) {
-            transportLogic.ajaxSend(connection, data);
-        },
-
-        stop: function (connection) {
-            /// <summary>Stops the long polling connection</summary>
-            /// <param name="connection" type="signalR">The SignalR connection to stop</param>
-
-            window.clearTimeout(connection._.pollTimeoutId);
-            window.clearTimeout(connection._.reconnectTimeoutId);
-
-            delete connection._.pollTimeoutId;
-            delete connection._.reconnectTimeoutId;
-
-            if (connection.pollXhr) {
-                connection.pollXhr.abort();
-                connection.pollXhr = null;
-                delete connection.pollXhr;
-            }
-        },
-
-        abort: function (connection, async) {
-            transportLogic.ajaxAbort(connection, async);
-        }
-    };
-
-}(window.jQuery, window));
-/* jquery.signalR.hubs.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-/*global window:false */
-/// <reference path="jquery.signalR.core.js" />
-
-(function ($, window, undefined) {
-
-    var eventNamespace = ".hubProxy",
-        signalR = $.signalR;
-
-    function makeEventName(event) {
-        return event + eventNamespace;
-    }
-
-    // Equivalent to Array.prototype.map
-    function map(arr, fun, thisp) {
-        var i,
-            length = arr.length,
-            result = [];
-        for (i = 0; i < length; i += 1) {
-            if (arr.hasOwnProperty(i)) {
-                result[i] = fun.call(thisp, arr[i], i, arr);
-            }
-        }
-        return result;
-    }
-
-    function getArgValue(a) {
-        return $.isFunction(a) ? null : ($.type(a) === "undefined" ? null : a);
-    }
-
-    function hasMembers(obj) {
-        for (var key in obj) {
-            // If we have any properties in our callback map then we have callbacks and can exit the loop via return
-            if (obj.hasOwnProperty(key)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    function clearInvocationCallbacks(connection, error) {
-        /// <param name="connection" type="hubConnection" />
-        var callbacks = connection._.invocationCallbacks,
-            callback;
-
-        if (hasMembers(callbacks)) {
-            connection.log("Clearing hub invocation callbacks with error: " + error + ".");
-        }
-
-        // Reset the callback cache now as we have a local var referencing it
-        connection._.invocationCallbackId = 0;
-        delete connection._.invocationCallbacks;
-        connection._.invocationCallbacks = {};
-
-        // Loop over the callbacks and invoke them.
-        // We do this using a local var reference and *after* we've cleared the cache
-        // so that if a fail callback itself tries to invoke another method we don't
-        // end up with its callback in the list we're looping over.
-        for (var callbackId in callbacks) {
-            callback = callbacks[callbackId];
-            callback.method.call(callback.scope, { E: error });
-        }
-    }
-
-    // hubProxy
-    function hubProxy(hubConnection, hubName) {
-        /// <summary>
-        ///     Creates a new proxy object for the given hub connection that can be used to invoke
-        ///     methods on server hubs and handle client method invocation requests from the server.
-        /// </summary>
-        return new hubProxy.fn.init(hubConnection, hubName);
-    }
-
-    hubProxy.fn = hubProxy.prototype = {
-        init: function (connection, hubName) {
-            this.state = {};
-            this.connection = connection;
-            this.hubName = hubName;
-            this._ = {
-                callbackMap: {}
-            };
-        },
-
-        constructor: hubProxy,
-
-        hasSubscriptions: function () {
-            return hasMembers(this._.callbackMap);
-        },
-
-        on: function (eventName, callback) {
-            /// <summary>Wires up a callback to be invoked when a invocation request is received from the server hub.</summary>
-            /// <param name="eventName" type="String">The name of the hub event to register the callback for.</param>
-            /// <param name="callback" type="Function">The callback to be invoked.</param>
-            var that = this,
-                callbackMap = that._.callbackMap;
-
-            // Normalize the event name to lowercase
-            eventName = eventName.toLowerCase();
-
-            // If there is not an event registered for this callback yet we want to create its event space in the callback map.
-            if (!callbackMap[eventName]) {
-                callbackMap[eventName] = {};
-            }
-
-            // Map the callback to our encompassed function
-            callbackMap[eventName][callback] = function (e, data) {
-                callback.apply(that, data);
-            };
-
-            $(that).bind(makeEventName(eventName), callbackMap[eventName][callback]);
-
-            return that;
-        },
-
-        off: function (eventName, callback) {
-            /// <summary>Removes the callback invocation request from the server hub for the given event name.</summary>
-            /// <param name="eventName" type="String">The name of the hub event to unregister the callback for.</param>
-            /// <param name="callback" type="Function">The callback to be invoked.</param>
-            var that = this,
-                callbackMap = that._.callbackMap,
-                callbackSpace;
-
-            // Normalize the event name to lowercase
-            eventName = eventName.toLowerCase();
-
-            callbackSpace = callbackMap[eventName];
-
-            // Verify that there is an event space to unbind
-            if (callbackSpace) {
-                // Only unbind if there's an event bound with eventName and a callback with the specified callback
-                if (callbackSpace[callback]) {
-                    $(that).unbind(makeEventName(eventName), callbackSpace[callback]);
-
-                    // Remove the callback from the callback map
-                    delete callbackSpace[callback];
-
-                    // Check if there are any members left on the event, if not we need to destroy it.
-                    if (!hasMembers(callbackSpace)) {
-                        delete callbackMap[eventName];
-                    }
-                } else if (!callback) { // Check if we're removing the whole event and we didn't error because of an invalid callback
-                    $(that).unbind(makeEventName(eventName));
-
-                    delete callbackMap[eventName];
-                }
-            }
-
-            return that;
-        },
-
-        invoke: function (methodName) {
-            /// <summary>Invokes a server hub method with the given arguments.</summary>
-            /// <param name="methodName" type="String">The name of the server hub method.</param>
-
-            var that = this,
-                connection = that.connection,
-                args = $.makeArray(arguments).slice(1),
-                argValues = map(args, getArgValue),
-                data = { H: that.hubName, M: methodName, A: argValues, I: connection._.invocationCallbackId },
-                d = $.Deferred(),
-                callback = function (minResult) {
-                    var result = that._maximizeHubResponse(minResult),
-                        source,
-                        error;
-
-                    // Update the hub state
-                    $.extend(that.state, result.State);
-
-                    if (result.Progress) {
-                        if (d.notifyWith) {
-                            // Progress is only supported in jQuery 1.7+
-                            d.notifyWith(that, [result.Progress.Data]);
-                        } else if(!connection._.progressjQueryVersionLogged) {
-                            connection.log("A hub method invocation progress update was received but the version of jQuery in use (" + $.prototype.jquery + ") does not support progress updates. Upgrade to jQuery 1.7+ to receive progress notifications.");
-                            connection._.progressjQueryVersionLogged = true;
-                        }
-                    } else if (result.Error) {
-                        // Server hub method threw an exception, log it & reject the deferred
-                        if (result.StackTrace) {
-                            connection.log(result.Error + "\n" + result.StackTrace + ".");
-                        }
-
-                        // result.ErrorData is only set if a HubException was thrown
-                        source = result.IsHubException ? "HubException" : "Exception";
-                        error = signalR._.error(result.Error, source);
-                        error.data = result.ErrorData;
-
-                        connection.log(that.hubName + "." + methodName + " failed to execute. Error: " + error.message);
-                        d.rejectWith(that, [error]);
-                    } else {
-                        // Server invocation succeeded, resolve the deferred
-                        connection.log("Invoked " + that.hubName + "." + methodName);
-                        d.resolveWith(that, [result.Result]);
-                    }
-                };
-
-            connection._.invocationCallbacks[connection._.invocationCallbackId.toString()] = { scope: that, method: callback };
-            connection._.invocationCallbackId += 1;
-
-            if (!$.isEmptyObject(that.state)) {
-                data.S = that.state;
-            }
-
-            connection.log("Invoking " + that.hubName + "." + methodName);
-            connection.send(data);
-
-            return d.promise();
-        },
-
-        _maximizeHubResponse: function (minHubResponse) {
-            return {
-                State: minHubResponse.S,
-                Result: minHubResponse.R,
-                Progress: minHubResponse.P ? {
-                    Id: minHubResponse.P.I,
-                    Data: minHubResponse.P.D
-                } : null,
-                Id: minHubResponse.I,
-                IsHubException: minHubResponse.H,
-                Error: minHubResponse.E,
-                StackTrace: minHubResponse.T,
-                ErrorData: minHubResponse.D
-            };
-        }
-    };
-
-    hubProxy.fn.init.prototype = hubProxy.fn;
-
-    // hubConnection
-    function hubConnection(url, options) {
-        /// <summary>Creates a new hub connection.</summary>
-        /// <param name="url" type="String">[Optional] The hub route url, defaults to "/signalr".</param>
-        /// <param name="options" type="Object">[Optional] Settings to use when creating the hubConnection.</param>
-        var settings = {
-            qs: null,
-            logging: false,
-            useDefaultPath: true
-        };
-
-        $.extend(settings, options);
-
-        if (!url || settings.useDefaultPath) {
-            url = (url || "") + "/signalr";
-        }
-        return new hubConnection.fn.init(url, settings);
-    }
-
-    hubConnection.fn = hubConnection.prototype = $.connection();
-
-    hubConnection.fn.init = function (url, options) {
-        var settings = {
-                qs: null,
-                logging: false,
-                useDefaultPath: true
-            },
-            connection = this;
-
-        $.extend(settings, options);
-
-        // Call the base constructor
-        $.signalR.fn.init.call(connection, url, settings.qs, settings.logging);
-
-        // Object to store hub proxies for this connection
-        connection.proxies = {};
-
-        connection._.invocationCallbackId = 0;
-        connection._.invocationCallbacks = {};
-
-        // Wire up the received handler
-        connection.received(function (minData) {
-            var data, proxy, dataCallbackId, callback, hubName, eventName;
-            if (!minData) {
-                return;
-            }
-
-            // We have to handle progress updates first in order to ensure old clients that receive
-            // progress updates enter the return value branch and then no-op when they can't find
-            // the callback in the map (because the minData.I value will not be a valid callback ID)
-            if (typeof (minData.P) !== "undefined") {
-                // Process progress notification
-                dataCallbackId = minData.P.I.toString();
-                callback = connection._.invocationCallbacks[dataCallbackId];
-                if (callback) {
-                    callback.method.call(callback.scope, minData);
-                }
-            } else if (typeof (minData.I) !== "undefined") {
-                // We received the return value from a server method invocation, look up callback by id and call it
-                dataCallbackId = minData.I.toString();
-                callback = connection._.invocationCallbacks[dataCallbackId];
-                if (callback) {
-                    // Delete the callback from the proxy
-                    connection._.invocationCallbacks[dataCallbackId] = null;
-                    delete connection._.invocationCallbacks[dataCallbackId];
-
-                    // Invoke the callback
-                    callback.method.call(callback.scope, minData);
-                }
-            } else {
-                data = this._maximizeClientHubInvocation(minData);
-
-                // We received a client invocation request, i.e. broadcast from server hub
-                connection.log("Triggering client hub event '" + data.Method + "' on hub '" + data.Hub + "'.");
-
-                // Normalize the names to lowercase
-                hubName = data.Hub.toLowerCase();
-                eventName = data.Method.toLowerCase();
-
-                // Trigger the local invocation event
-                proxy = this.proxies[hubName];
-
-                // Update the hub state
-                $.extend(proxy.state, data.State);
-                $(proxy).triggerHandler(makeEventName(eventName), [data.Args]);
-            }
-        });
-
-        connection.error(function (errData, origData) {
-            var callbackId, callback;
-
-            if (!origData) {
-                // No original data passed so this is not a send error
-                return;
-            }
-
-            callbackId = origData.I;
-            callback = connection._.invocationCallbacks[callbackId];
-
-            // Verify that there is a callback bound (could have been cleared)
-            if (callback) {
-                // Delete the callback
-                connection._.invocationCallbacks[callbackId] = null;
-                delete connection._.invocationCallbacks[callbackId];
-
-                // Invoke the callback with an error to reject the promise
-                callback.method.call(callback.scope, { E: errData });
-            }
-        });
-
-        connection.reconnecting(function () {
-            if (connection.transport && connection.transport.name === "webSockets") {
-                clearInvocationCallbacks(connection, "Connection started reconnecting before invocation result was received.");
-            }
-        });
-
-        connection.disconnected(function () {
-            clearInvocationCallbacks(connection, "Connection was disconnected before invocation result was received.");
-        });
-    };
-
-    hubConnection.fn._maximizeClientHubInvocation = function (minClientHubInvocation) {
-        return {
-            Hub: minClientHubInvocation.H,
-            Method: minClientHubInvocation.M,
-            Args: minClientHubInvocation.A,
-            State: minClientHubInvocation.S
-        };
-    };
-
-    hubConnection.fn._registerSubscribedHubs = function () {
-        /// <summary>
-        ///     Sets the starting event to loop through the known hubs and register any new hubs
-        ///     that have been added to the proxy.
-        /// </summary>
-        var connection = this;
-
-        if (!connection._subscribedToHubs) {
-            connection._subscribedToHubs = true;
-            connection.starting(function () {
-                // Set the connection's data object with all the hub proxies with active subscriptions.
-                // These proxies will receive notifications from the server.
-                var subscribedHubs = [];
-
-                $.each(connection.proxies, function (key) {
-                    if (this.hasSubscriptions()) {
-                        subscribedHubs.push({ name: key });
-                        connection.log("Client subscribed to hub '" + key + "'.");
-                    }
-                });
-
-                if (subscribedHubs.length === 0) {
-                    connection.log("No hubs have been subscribed to.  The client will not receive data from hubs.  To fix, declare at least one client side function prior to connection start for each hub you wish to subscribe to.");
-                }
-
-                connection.data = connection.json.stringify(subscribedHubs);
-            });
-        }
-    };
-
-    hubConnection.fn.createHubProxy = function (hubName) {
-        /// <summary>
-        ///     Creates a new proxy object for the given hub connection that can be used to invoke
-        ///     methods on server hubs and handle client method invocation requests from the server.
-        /// </summary>
-        /// <param name="hubName" type="String">
-        ///     The name of the hub on the server to create the proxy for.
-        /// </param>
-
-        // Normalize the name to lowercase
-        hubName = hubName.toLowerCase();
-
-        var proxy = this.proxies[hubName];
-        if (!proxy) {
-            proxy = hubProxy(this, hubName);
-            this.proxies[hubName] = proxy;
-        }
-
-        this._registerSubscribedHubs();
-
-        return proxy;
-    };
-
-    hubConnection.fn.init.prototype = hubConnection.fn;
-
-    $.hubConnection = hubConnection;
-
-}(window.jQuery, window));
-/* jquery.signalR.version.js */
-// Copyright (c) .NET Foundation. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
-
-
-/*global window:false */
-/// <reference path="jquery.signalR.core.js" />
-(function ($, undefined) {
-    $.signalR.version = "2.2.1";
-}(window.jQuery));
-
-
-/***/ }),
-/* 1018 */
+/* 1021 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91795,7 +92006,7 @@ exports.default = ToggleCheckBox;
 if (process.env.NODE_ENV !== 'production') {
   var invariant = __webpack_require__(3);
   var warning = __webpack_require__(4);
-  var ReactPropTypesSecret = __webpack_require__(863);
+  var ReactPropTypesSecret = __webpack_require__(865);
   var loggedTypeFailures = {};
 }
 
@@ -91846,7 +92057,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1019 */
+/* 1022 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91907,7 +92118,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 1020 */
+/* 1023 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -91926,8 +92137,8 @@ var emptyFunction = __webpack_require__(26);
 var invariant = __webpack_require__(3);
 var warning = __webpack_require__(4);
 
-var ReactPropTypesSecret = __webpack_require__(863);
-var checkPropTypes = __webpack_require__(1018);
+var ReactPropTypesSecret = __webpack_require__(865);
+var checkPropTypes = __webpack_require__(1021);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -92387,12 +92598,12 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1021 */
+/* 1024 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
-		module.exports = factory(__webpack_require__(2), __webpack_require__(864));
+		module.exports = factory(__webpack_require__(2), __webpack_require__(866));
 	else if(typeof define === 'function' && define.amd)
 		define(["react", "react-leaflet"], factory);
 	else if(typeof exports === 'object')
@@ -92671,7 +92882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 1022 */
+/* 1025 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92733,7 +92944,7 @@ AttributionControl.propTypes = {
 exports.default = AttributionControl;
 
 /***/ }),
-/* 1023 */
+/* 1026 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92759,7 +92970,7 @@ var _latlng = __webpack_require__(220);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -92816,7 +93027,7 @@ Circle.propTypes = {
 exports.default = Circle;
 
 /***/ }),
-/* 1024 */
+/* 1027 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92842,7 +93053,7 @@ var _latlng = __webpack_require__(220);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -92898,7 +93109,7 @@ CircleMarker.propTypes = {
 exports.default = CircleMarker;
 
 /***/ }),
-/* 1025 */
+/* 1028 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92926,7 +93137,7 @@ var _layerContainer = __webpack_require__(238);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -92981,7 +93192,7 @@ FeatureGroup.childContextTypes = {
 exports.default = FeatureGroup;
 
 /***/ }),
-/* 1026 */
+/* 1029 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -92991,7 +93202,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _isFunction2 = __webpack_require__(679);
+var _isFunction2 = __webpack_require__(680);
 
 var _isFunction3 = _interopRequireDefault(_isFunction2);
 
@@ -93007,7 +93218,7 @@ var _children = __webpack_require__(58);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -93061,7 +93272,7 @@ GeoJSON.propTypes = {
 exports.default = GeoJSON;
 
 /***/ }),
-/* 1027 */
+/* 1030 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93079,7 +93290,7 @@ var _propTypes = __webpack_require__(27);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _bounds = __webpack_require__(352);
+var _bounds = __webpack_require__(353);
 
 var _bounds2 = _interopRequireDefault(_bounds);
 
@@ -93156,7 +93367,7 @@ ImageOverlay.childContextTypes = {
 exports.default = ImageOverlay;
 
 /***/ }),
-/* 1028 */
+/* 1031 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93220,7 +93431,7 @@ LayerGroup.childContextTypes = {
 exports.default = LayerGroup;
 
 /***/ }),
-/* 1029 */
+/* 1032 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93258,7 +93469,7 @@ var _layerContainer = __webpack_require__(238);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -93514,7 +93725,7 @@ LayersControl.BaseLayer = BaseLayer;
 LayersControl.Overlay = Overlay;
 
 /***/ }),
-/* 1030 */
+/* 1033 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93524,11 +93735,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _omit2 = __webpack_require__(856);
+var _omit2 = __webpack_require__(857);
 
 var _omit3 = _interopRequireDefault(_omit2);
 
-var _isUndefined2 = __webpack_require__(991);
+var _isUndefined2 = __webpack_require__(995);
 
 var _isUndefined3 = _interopRequireDefault(_isUndefined2);
 
@@ -93548,7 +93759,7 @@ var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _bounds = __webpack_require__(352);
+var _bounds = __webpack_require__(353);
 
 var _bounds2 = _interopRequireDefault(_bounds);
 
@@ -93564,7 +93775,7 @@ var _layerContainer = __webpack_require__(238);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -93746,7 +93957,7 @@ Map.childContextTypes = {
 exports.default = Map;
 
 /***/ }),
-/* 1031 */
+/* 1034 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93853,7 +94064,7 @@ Marker.childContextTypes = {
 exports.default = Marker;
 
 /***/ }),
-/* 1032 */
+/* 1035 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -93863,15 +94074,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _uniqueId2 = __webpack_require__(998);
+var _uniqueId2 = __webpack_require__(1002);
 
 var _uniqueId3 = _interopRequireDefault(_uniqueId2);
 
-var _omit2 = __webpack_require__(856);
+var _omit2 = __webpack_require__(857);
 
 var _omit3 = _interopRequireDefault(_omit2);
 
-var _forEach2 = __webpack_require__(851);
+var _forEach2 = __webpack_require__(852);
 
 var _forEach3 = _interopRequireDefault(_forEach2);
 
@@ -93893,7 +94104,7 @@ var _children = __webpack_require__(58);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -94081,7 +94292,7 @@ exports.default = Pane;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1033 */
+/* 1036 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94103,11 +94314,11 @@ var _children = __webpack_require__(58);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _latlngList = __webpack_require__(353);
+var _latlngList = __webpack_require__(354);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -94163,7 +94374,7 @@ Polygon.propTypes = {
 exports.default = Polygon;
 
 /***/ }),
-/* 1034 */
+/* 1037 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94185,11 +94396,11 @@ var _children = __webpack_require__(58);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _latlngList = __webpack_require__(353);
+var _latlngList = __webpack_require__(354);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -94242,7 +94453,7 @@ Polyline.propTypes = {
 exports.default = Polyline;
 
 /***/ }),
-/* 1035 */
+/* 1038 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94270,7 +94481,7 @@ var _latlng = __webpack_require__(220);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -94418,7 +94629,7 @@ Popup.contextTypes = {
 exports.default = Popup;
 
 /***/ }),
-/* 1036 */
+/* 1039 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94436,7 +94647,7 @@ var _propTypes = __webpack_require__(27);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _bounds = __webpack_require__(352);
+var _bounds = __webpack_require__(353);
 
 var _bounds2 = _interopRequireDefault(_bounds);
 
@@ -94444,7 +94655,7 @@ var _children = __webpack_require__(58);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _Path2 = __webpack_require__(143);
+var _Path2 = __webpack_require__(144);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -94498,7 +94709,7 @@ Rectangle.propTypes = {
 exports.default = Rectangle;
 
 /***/ }),
-/* 1037 */
+/* 1040 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94563,7 +94774,7 @@ ScaleControl.propTypes = {
 exports.default = ScaleControl;
 
 /***/ }),
-/* 1038 */
+/* 1041 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94642,7 +94853,7 @@ TileLayer.propTypes = {
 exports.default = TileLayer;
 
 /***/ }),
-/* 1039 */
+/* 1042 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94666,7 +94877,7 @@ var _react = __webpack_require__(2);
 
 var _reactDom = __webpack_require__(84);
 
-var _map = __webpack_require__(144);
+var _map = __webpack_require__(145);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -94788,7 +94999,7 @@ Tooltip.contextTypes = {
 exports.default = Tooltip;
 
 /***/ }),
-/* 1040 */
+/* 1043 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94798,7 +95009,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _isEqual2 = __webpack_require__(853);
+var _isEqual2 = __webpack_require__(854);
 
 var _isEqual3 = _interopRequireDefault(_isEqual2);
 
@@ -94885,7 +95096,7 @@ WMSTileLayer.propTypes = {
 exports.default = WMSTileLayer;
 
 /***/ }),
-/* 1041 */
+/* 1044 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94950,7 +95161,7 @@ ZoomControl.propTypes = {
 exports.default = ZoomControl;
 
 /***/ }),
-/* 1042 */
+/* 1045 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -94961,7 +95172,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.map = exports.layerContainer = exports.latlngList = exports.latlng = exports.controlPosition = exports.children = exports.bounds = undefined;
 
-var _bounds2 = __webpack_require__(352);
+var _bounds2 = __webpack_require__(353);
 
 var _bounds3 = _interopRequireDefault(_bounds2);
 
@@ -94977,7 +95188,7 @@ var _latlng2 = __webpack_require__(220);
 
 var _latlng3 = _interopRequireDefault(_latlng2);
 
-var _latlngList2 = __webpack_require__(353);
+var _latlngList2 = __webpack_require__(354);
 
 var _latlngList3 = _interopRequireDefault(_latlngList2);
 
@@ -94985,7 +95196,7 @@ var _layerContainer2 = __webpack_require__(238);
 
 var _layerContainer3 = _interopRequireDefault(_layerContainer2);
 
-var _map2 = __webpack_require__(144);
+var _map2 = __webpack_require__(145);
 
 var _map3 = _interopRequireDefault(_map2);
 
@@ -95000,7 +95211,7 @@ exports.layerContainer = _layerContainer3.default;
 exports.map = _map3.default;
 
 /***/ }),
-/* 1043 */
+/* 1046 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95008,11 +95219,11 @@ exports.map = _map3.default;
 
 exports.__esModule = true;
 
-var _createEagerElementUtil = __webpack_require__(1048);
+var _createEagerElementUtil = __webpack_require__(1051);
 
 var _createEagerElementUtil2 = _interopRequireDefault(_createEagerElementUtil);
 
-var _isReferentiallyTransparentFunctionComponent = __webpack_require__(1046);
+var _isReferentiallyTransparentFunctionComponent = __webpack_require__(1049);
 
 var _isReferentiallyTransparentFunctionComponent2 = _interopRequireDefault(_isReferentiallyTransparentFunctionComponent);
 
@@ -95028,7 +95239,7 @@ var createFactory = function createFactory(type) {
 exports.default = createFactory;
 
 /***/ }),
-/* 1044 */
+/* 1047 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95050,7 +95261,7 @@ var getDisplayName = function getDisplayName(Component) {
 exports.default = getDisplayName;
 
 /***/ }),
-/* 1045 */
+/* 1048 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95064,7 +95275,7 @@ var isClassComponent = function isClassComponent(Component) {
 exports.default = isClassComponent;
 
 /***/ }),
-/* 1046 */
+/* 1049 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95072,7 +95283,7 @@ exports.default = isClassComponent;
 
 exports.__esModule = true;
 
-var _isClassComponent = __webpack_require__(1045);
+var _isClassComponent = __webpack_require__(1048);
 
 var _isClassComponent2 = _interopRequireDefault(_isClassComponent);
 
@@ -95086,7 +95297,7 @@ exports.default = isReferentiallyTransparentFunctionComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 1047 */
+/* 1050 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95096,11 +95307,11 @@ exports.__esModule = true;
 
 var _react = __webpack_require__(2);
 
-var _createHelper = __webpack_require__(865);
+var _createHelper = __webpack_require__(867);
 
 var _createHelper2 = _interopRequireDefault(_createHelper);
 
-var _createEagerFactory = __webpack_require__(1043);
+var _createEagerFactory = __webpack_require__(1046);
 
 var _createEagerFactory2 = _interopRequireDefault(_createEagerFactory);
 
@@ -95140,7 +95351,7 @@ var shouldUpdate = function shouldUpdate(test) {
 exports.default = (0, _createHelper2.default)(shouldUpdate, 'shouldUpdate');
 
 /***/ }),
-/* 1048 */
+/* 1051 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95180,7 +95391,7 @@ var createEagerElementUtil = function createEagerElementUtil(hasKey, isReferenti
 exports.default = createEagerElementUtil;
 
 /***/ }),
-/* 1049 */
+/* 1052 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -95188,7 +95399,7 @@ exports.default = createEagerElementUtil;
 
 exports.__esModule = true;
 
-var _getDisplayName = __webpack_require__(1044);
+var _getDisplayName = __webpack_require__(1047);
 
 var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
 
@@ -95201,12 +95412,12 @@ var wrapDisplayName = function wrapDisplayName(BaseComponent, hocName) {
 exports.default = wrapDisplayName;
 
 /***/ }),
-/* 1050 */,
-/* 1051 */
+/* 1053 */,
+/* 1054 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(339);
-module.exports = __webpack_require__(868);
+module.exports = __webpack_require__(870);
 
 
 /***/ })

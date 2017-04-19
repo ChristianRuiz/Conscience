@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ using Conscience.Domain;
 using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.AspNet.Identity;
 using Conscience.Application.Services;
+using Conscience.DataAccess.Repositories;
+using Microsoft.Practices.Unity;
 
 namespace Conscience.Web.Hubs
 {
@@ -15,18 +18,40 @@ namespace Conscience.Web.Hubs
     [HubName("HostsHub")]
     public class HostsHub : Hub
     {
+        private IUnityContainer _container;
+
+        public HostsHub(IUnityContainer container)
+        {
+            _container = container.CreateChildContainer();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _container.Dispose(); // child container destroyed. all resolved objects disposed.
+            base.Dispose(disposing);
+        }
+
+        public UserRepository UserRepository
+        {
+            get
+            {
+                return _container.Resolve<UserRepository>();
+            }
+        }
+
+        public AccountRepository AccountRepository
+        {
+            get
+            {
+                return _container.Resolve<AccountRepository>();
+            }
+        }
+        
         private const string GroupHosts = "Hosts";
         private const string GroupWeb = "Web";
 
-        private static Dictionary<string, Account> Users = new Dictionary<string, Account>();
-
-        private readonly IUsersIdentityService _identityService;
-
-        public HostsHub(IUsersIdentityService identityService)
-        {
-            _identityService = identityService;
-        }
-
+        private static Dictionary<string, int> Users = new Dictionary<string, int>();
+        
         public override Task OnConnected()
         {
             RegisterCurrentUser();
@@ -45,8 +70,11 @@ namespace Conscience.Web.Hubs
         {
             if (Users.ContainsKey(Context.ConnectionId))
             {
-                Clients.Group("Web").HostDisconnected(Users[Context.ConnectionId].Id);
+                var userId = Users[Context.ConnectionId];
+                Clients.Group("Web").HostDisconnected(userId);
                 Users.Remove(Context.ConnectionId);
+                var user = UserRepository.GetById(userId);
+                UserRepository.UserDisconnected(user);
             }
 
             return base.OnDisconnected(stopCalled);
@@ -56,25 +84,20 @@ namespace Conscience.Web.Hubs
         {
             if (!Users.ContainsKey(Context.ConnectionId))
             {
-                var identity = Context.Request.User.Identity;
-
-                var user = new Account
-                {
-                    UserName = identity.Name,
-                    Host = new Host
-                    {
-                        Device = new Device()
-                    }
-                };
-
-                Users.Add(Context.ConnectionId, user);
+                var accountId = Context.Request.User.Identity.GetUserId<int>();
+                var user = UserRepository.GetByAccountId(accountId);
+                Users.Add(Context.ConnectionId, user.Id);
             }
         }
 
-        public void SubscribeHost()
+        public void SubscribeHost(string deviceId)
         {
-            var user = Users[Context.ConnectionId];
-            Clients.Group(GroupWeb).HostConnected(user);
+            RegisterCurrentUser();
+
+            var userId = Users[Context.ConnectionId];
+            var user = UserRepository.GetById(userId);
+            UserRepository.UpdateDevice(user, deviceId);
+            Clients.Group(GroupWeb).HostConnected(user.Id, user.Account.UserName, user.Device.CurrentLocation);
             Groups.Add(Context.ConnectionId, GroupHosts);
         }
 
@@ -85,19 +108,21 @@ namespace Conscience.Web.Hubs
 
         public void LocationUpdates(List<Location> locations)
         {
-            var user = Users[Context.ConnectionId];
-            user.Host.Device.Locations.AddRange(locations);
+            var userId = Users[Context.ConnectionId];
 
-            //Hack: To avoid sending dates from javascript during the PoC
-            user.Host.Device.CurrentLocation.TimeStamp = DateTime.Now;
+            //ToDo: Location must be send by the client
+            foreach (var location in locations)
+                location.TimeStamp = DateTime.Now;
 
-            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.UserName, user.Host.Device.CurrentLocation);
+            var user = UserRepository.UpdateLocations(userId, locations);
+            
+            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.Account.UserName, user.Device.CurrentLocation);
         }
 
         public void SendNotification(int userId)
         {
-            var user = Users.FirstOrDefault(u => u.Value.Id == userId);
-            Clients.Client(user.Key).NotificationAudio(new NotificationAudio());
+            var userRegistration = Users.First(u => u.Value == userId);
+            Clients.Client(userRegistration.Key).NotificationAudio(new NotificationAudio());
         }
     }
 }

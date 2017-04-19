@@ -5,28 +5,32 @@ import { BingLayer } from 'react-leaflet-bing';
 import $ from 'jquery';
 import 'ms-signalr-client';
 
+import HostPopup from './HostPopup';
+
 class ConscienceMap extends React.Component {
   constructor(props) {
     super(props);
 
+    this.addHost = this.addHost.bind(this);
+
     this.state = {
-      hosts: [{
-        location: {
-          latitude: 37.048601,
-          longitude: -2.4216117
-        }
-      }]
+      defaultPosition: [37.048601, -2.4216117],
+      hosts: []
     };
 
     const connection = $.hubConnection('/signalr/hubs');
     const proxy = connection.createHubProxy('HostsHub');
 
-    proxy.on('hostConnected', (user) => {
-      console.log(`hostConnected ${JSON.stringify(user)}`);
+    proxy.on('hostConnected', (userId, userName, location) => {
+      console.log(`hostConnected ${userId} ${userName} ${JSON.stringify(location)}`);
+
+      this.addHost(userId, userName, location);
     });
 
     proxy.on('locationUpdated', (userId, userName, location) => {
-      console.log(`locationUpdated ${userId} ${userName} ${location}`);
+      console.log(`locationUpdated ${userId} ${userName} ${JSON.stringify(location)}`);
+
+      this.addHost(userId, userName, location);
     });
 
     proxy.on('hostDisconnected', (userId) => {
@@ -41,20 +45,29 @@ class ConscienceMap extends React.Component {
     .fail(() => { console.log('Could not connect'); });
   }
 
-  render() {
-    const position = [
-      this.state.hosts[0].location.latitude,
-      this.state.hosts[0].location.longitude
-    ];
+  addHost(userId, userName, location) {
+    const hosts = this.state.hosts.filter(h => h.userId !== userId);
+    const host = { userId, userName };
 
+    if (location) {
+      host.location = [location.Latitude, location.Longitude];
+    }
+
+    this.setState({ hosts: hosts.concat(host) });
+  }
+
+  render() {
     return (<div>
-      <Map center={position} zoom={18} style={{ height: 500 }}>
+      <Map center={this.state.defaultPosition} zoom={18} style={{ height: 500 }}>
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
-        <Marker position={position}>
-          <Popup>
-            <span>A pretty CSS3 popup. <br /> Easily customizable.</span>
-          </Popup>
-        </Marker>
+        {
+          this.state.hosts.filter(h => h.location).map(host =>
+            <Marker position={host.location} key={host.userId}>
+              <Popup>
+                <HostPopup host={host} />
+              </Popup>
+            </Marker>)
+        }
       </Map>
     </div>);
   }

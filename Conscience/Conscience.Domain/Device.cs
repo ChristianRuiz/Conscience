@@ -9,6 +9,11 @@ namespace Conscience.Domain
 {
     public class Device
     {
+        public Device()
+        {
+            Locations = new List<Location>();
+        }
+
         public int Id
         {
             get;
@@ -27,7 +32,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public Guid DeviceId
+        public string DeviceId
         {
             get;
             set;

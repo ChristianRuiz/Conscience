@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Conscience.Web.Models;
 using Conscience.DataAccess;
 using Conscience.Application.Services;
 using System.Net;

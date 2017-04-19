@@ -80,6 +80,7 @@ namespace Conscience.DataAccess
             modelBuilder.HasDefaultSchema("Conscience");
             
             modelBuilder.Entity<Account>().HasMany(a => a.Roles).WithMany(r => r.Accounts);
+            modelBuilder.Entity<User>().HasRequired(u => u.Account);
             modelBuilder.Entity<User>().HasOptional(u => u.Device);
             modelBuilder.Entity<Device>().HasMany(d => d.Locations);
             modelBuilder.Entity<Host>().ToTable("Hosts");

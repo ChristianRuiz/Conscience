@@ -25,6 +25,14 @@ namespace Conscience.DataAccess.Repositories
             }
         }
 
+        public Account GetById(int accountId)
+        {
+            var account = DbSet.Include(a => a.Host).Include(a => a.Employee).Where(a => a.Id == accountId).ToList().FirstOrDefault();
+            if (account == null)
+                throw new ArgumentException("There is no account with id: " + accountId);
+            return account;
+        }
+
         public IQueryable<Account> GetAllHosts(Account currentUser)
         {
             return _userRepo.GetAllHosts(currentUser).Select(e => e.Account);
