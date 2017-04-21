@@ -31,14 +31,6 @@ namespace Conscience.Web.Hubs
             base.Dispose(disposing);
         }
 
-        public UserRepository UserRepository
-        {
-            get
-            {
-                return _container.Resolve<UserRepository>();
-            }
-        }
-
         public AccountRepository AccountRepository
         {
             get
@@ -73,8 +65,8 @@ namespace Conscience.Web.Hubs
                 var userId = Users[Context.ConnectionId];
                 Clients.Group("Web").HostDisconnected(userId);
                 Users.Remove(Context.ConnectionId);
-                var user = UserRepository.GetById(userId);
-                UserRepository.UserDisconnected(user);
+                var account = AccountRepository.GetById(userId);
+                AccountRepository.UserDisconnected(account);
             }
 
             return base.OnDisconnected(stopCalled);
@@ -85,8 +77,7 @@ namespace Conscience.Web.Hubs
             if (!Users.ContainsKey(Context.ConnectionId))
             {
                 var accountId = Context.Request.User.Identity.GetUserId<int>();
-                var user = UserRepository.GetByAccountId(accountId);
-                Users.Add(Context.ConnectionId, user.Id);
+                Users.Add(Context.ConnectionId, accountId);
             }
         }
 
@@ -94,10 +85,10 @@ namespace Conscience.Web.Hubs
         {
             RegisterCurrentUser();
 
-            var userId = Users[Context.ConnectionId];
-            var user = UserRepository.GetById(userId);
-            UserRepository.UpdateDevice(user, deviceId);
-            Clients.Group(GroupWeb).HostConnected(user.Id, user.Account.UserName, user.Device.CurrentLocation);
+            var accountId = Users[Context.ConnectionId];
+            var account = AccountRepository.GetById(accountId);
+            AccountRepository.UpdateDevice(account, deviceId);
+            Clients.Group(GroupWeb).HostConnected(account.Host.Id, account.UserName, account.Device.CurrentLocation);
             Groups.Add(Context.ConnectionId, GroupHosts);
         }
 
@@ -108,15 +99,15 @@ namespace Conscience.Web.Hubs
 
         public void LocationUpdates(List<Location> locations)
         {
-            var userId = Users[Context.ConnectionId];
+            var accountId = Users[Context.ConnectionId];
 
             //ToDo: Location must be send by the client
             foreach (var location in locations)
                 location.TimeStamp = DateTime.Now;
 
-            var user = UserRepository.UpdateLocations(userId, locations);
+            var account = AccountRepository.UpdateLocations(accountId, locations);
             
-            Clients.Group(GroupWeb).LocationUpdated(user.Id, user.Account.UserName, user.Device.CurrentLocation);
+            Clients.Group(GroupWeb).LocationUpdated(account.Host.Id, account.UserName, account.Device.CurrentLocation);
         }
 
         public void SendNotification(int userId)

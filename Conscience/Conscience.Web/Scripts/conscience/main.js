@@ -74936,6 +74936,16 @@ var ConscienceMap = function (_React$Component) {
 
       this.setState({ hosts: hosts.concat(host) });
     }
+
+    /* componentWillReceiveProps(newProps) {
+      if (!newProps.data.loading) {
+        newProps.data.hosts.getAll.forEach(h => {
+          if (h.device && h.device.online)
+          addHost(h.id, h.account.userName, h.device.currentLocation)
+        });
+      }
+    }*/
+
   }, {
     key: 'render',
     value: function render() {
@@ -74966,6 +74976,25 @@ var ConscienceMap = function (_React$Component) {
 
   return ConscienceMap;
 }(_react2.default.Component);
+
+/* const query = gql`query GetHosts {
+            hosts {
+                getAll {
+                        id,
+                        account {
+                            userName
+                        },
+                        device {
+                          currentLocation {
+                            latitude,
+                            longitude
+                          },
+                          online
+                        }
+                }
+            }
+        }
+      `;*/
 
 exports.default = (0, _reactRouterDom.withRouter)(ConscienceMap);
 

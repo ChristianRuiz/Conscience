@@ -1,4 +1,4 @@
-﻿using Conscience.Application.Graph.Entities.Users;
+﻿using Conscience.Application.Graph.Entities.Accounts;
 using Conscience.Domain;
 using GraphQL.Types;
 using System;
@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Employees
 {
-    public class EmployeeGraphType : UserGraphType<Employee>
+    public class EmployeeGraphType : ConscienceGraphType<Employee>
     {
         public EmployeeGraphType()
         {
             Name = "Employee";
 
+            Field<AccountGraphType>("account", resolve: context => context.Source.Account);
             Field<StringGraphType>("department", resolve: c => {
                 var role = c.Source.Account.Roles.FirstOrDefault(r => r.Name.StartsWith("Company"));
                 if (role == null)

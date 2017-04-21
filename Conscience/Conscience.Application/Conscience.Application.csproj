@@ -103,7 +103,6 @@
     <Compile Include="Graph\Entities\Roles\RoleGraphType.cs" />
     <Compile Include="Graph\Entities\Stats\StatsGraphType.cs" />
     <Compile Include="Graph\Entities\Triggers\TriggerGraphType.cs" />
-    <Compile Include="Graph\Entities\Users\UserGraphType.cs" />
     <Compile Include="Graph\GraphQLQuery.cs" />
     <Compile Include="Graph\ValidationRules\RolesValidationRule.cs" />
     <Compile Include="Graph\ValidationRules\MembershipValidationRule.cs" />

@@ -27,11 +27,18 @@ namespace Conscience.DataAccess
             set;
         }
 
-        public DbSet<User> Users
+        public DbSet<Host> Hosts
         {
             get;
             set;
         }
+
+        public DbSet<Employee> Employees
+        {
+            get;
+            set;
+        }
+
 
         public DbSet<Device> Devices
         {
@@ -80,11 +87,8 @@ namespace Conscience.DataAccess
             modelBuilder.HasDefaultSchema("Conscience");
             
             modelBuilder.Entity<Account>().HasMany(a => a.Roles).WithMany(r => r.Accounts);
-            modelBuilder.Entity<User>().HasRequired(u => u.Account);
-            modelBuilder.Entity<User>().HasOptional(u => u.Device);
+            modelBuilder.Entity<Account>().HasOptional(u => u.Device);
             modelBuilder.Entity<Device>().HasMany(d => d.Locations);
-            modelBuilder.Entity<Host>().ToTable("Hosts");
-            modelBuilder.Entity<Employee>().ToTable("Employees");
             modelBuilder.Entity<Employee>().HasRequired(e => e.Account).WithOptional(a => a.Employee);
             modelBuilder.Entity<Host>().HasRequired(e => e.Account).WithOptional(a => a.Host);
             modelBuilder.Entity<Host>().HasMany(h => h.Stats).WithRequired(s => s.Host);

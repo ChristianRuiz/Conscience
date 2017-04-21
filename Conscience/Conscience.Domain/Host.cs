@@ -7,13 +7,32 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Host : User
+    public class Host
     {
         public Host()
         {
+            Notifications = new HashSet<Notification>();
             Characters = new HashSet<CharacterInHost>();
             CoreMemories = new HashSet<CoreMemory>();
             Stats = new HashSet<Stats>();
+        }
+
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Notification> Notifications
+        {
+            get;
+            set;
+        }
+
+        public Account Account
+        {
+            get;
+            set;
         }
 
         public virtual ICollection<CharacterInHost> Characters

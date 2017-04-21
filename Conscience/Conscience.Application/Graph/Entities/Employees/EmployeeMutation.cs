@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.Employees
 {
     public class EmployeeMutation : ObjectGraphType<object>
     {
-        public EmployeeMutation(UserRepository userRepo)
+        public EmployeeMutation(EmployeeRepository userRepo)
         {
             Name = "EmployeeMutation";
 

@@ -67,7 +67,8 @@
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\PlotRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Repositories\HostRepository.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

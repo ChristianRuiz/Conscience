@@ -19,7 +19,8 @@ namespace Conscience.Application.Graph.Entities.Accounts
 
             Field<ListGraphType<AccountGraphType>>("getAll", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountRepo.GetAll().ApplyPaginationAndOrderBy(context))
+                resolve: context => accountRepo.GetAll().ApplyPaginationAndOrderBy(context)
+                .AvoidLazyLoad(context, a => a.Host, a => a.Employee, a => a.Device))
                 .AddAdminPermissions();
             
             Field<AccountGraphType>("getCurrent",

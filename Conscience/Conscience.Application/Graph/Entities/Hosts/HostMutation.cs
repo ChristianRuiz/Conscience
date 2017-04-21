@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
 {
     public class HostMutation : ObjectGraphType<object>
     {
-        public HostMutation(UserRepository userRepo)
+        public HostMutation(HostRepository hostRepo)
         {
             Name = "HostMutation";
 
@@ -21,7 +21,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "accountId", Description = "account id" }
                     ),
-                resolve: context => userRepo.AddHost(context.GetArgument<int>("accountId")))
+                resolve: context => hostRepo.AddHost(context.GetArgument<int>("accountId")))
                 .AddQAPermissions();
         }
     }

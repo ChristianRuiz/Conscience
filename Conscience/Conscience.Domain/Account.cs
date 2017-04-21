@@ -48,6 +48,12 @@ namespace Conscience.Domain
             set;
         }
 
+        public Device Device
+        {
+            get;
+            set;
+        }
+
         public virtual ICollection<Role> Roles
         {
             get;

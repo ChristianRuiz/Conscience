@@ -6,7 +6,29 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Employee : User
+    public class Employee
     {
+        public Employee()
+        {
+            Notifications = new HashSet<Notification>();
+        }
+
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Notification> Notifications
+        {
+            get;
+            set;
+        }
+
+        public Account Account
+        {
+            get;
+            set;
+        }
     }
 }

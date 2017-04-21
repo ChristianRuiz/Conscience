@@ -13,14 +13,14 @@ namespace Conscience.Application.Graph.Entities.Hosts
 {
     public class HostQuery : ObjectGraphType<object>
     {
-        public HostQuery(UserRepository userRepo, IUsersIdentityService accountService)
+        public HostQuery(HostRepository hostRepo, IUsersIdentityService accountService)
         {
             Name = "HostQuery";
 
             Field<ListGraphType<HostGraphType>>("getAll", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => userRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context)
-                .AvoidLazyLoad(context, h => h.Account, h => h.Device, h => h.Notifications, h => h.Characters, h => h.CoreMemories, h => h.CurrentCharacter, h => h.Device))
+                resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context)
+                .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemories, h => h.CurrentCharacter, h => h.Account, h => h.Account.Device))
                 .AddBehaviourAndPlotPermissions();
         }
     }

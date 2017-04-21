@@ -10,11 +10,8 @@ namespace Conscience.DataAccess.Repositories
 {
     public class AccountRepository : BaseRepository<ConscienceAccount>
     {
-        private readonly UserRepository _userRepo;
-
-        public AccountRepository(ConscienceContext context, UserRepository userRepo) : base(context)
+        public AccountRepository(ConscienceContext context) : base(context)
         {
-            _userRepo = userRepo;
         }
 
         protected override IDbSet<ConscienceAccount> DbSet
@@ -35,12 +32,12 @@ namespace Conscience.DataAccess.Repositories
 
         public IQueryable<Account> GetAllHosts(Account currentUser)
         {
-            return _userRepo.GetAllHosts(currentUser).Select(e => e.Account);
+            return DbSet.Where(a => a.Host != null);
         }
 
         public IQueryable<Account> GetAllEmployees()
         {
-            return _userRepo.GetAllEmployees().Select(e => e.Account);
+            return DbSet.Where(a => a.Employee != null);
         }
 
         public Account AddRole(int accountId, RoleTypes role)
@@ -50,6 +47,38 @@ namespace Conscience.DataAccess.Repositories
             account.Roles.Add(roleToAdd);
             _context.SaveChanges();
             return account;
+        }
+
+        public void UpdateDevice(Account account, string deviceId)
+        {
+            if (account.Device == null)
+            {
+                account.Device = new Device();
+                _context.Devices.Add(account.Device);
+            }
+
+            account.Device.DeviceId = deviceId;
+            account.Device.Online = true;
+            account.Device.LastConnection = DateTime.Now;
+            _context.SaveChanges();
+        }
+
+        public Account UpdateLocations(int accountId, List<Location> locations)
+        {
+            var account = GetById(accountId);
+            account.Device.Locations.AddRange(locations);
+            account.Device.LastConnection = DateTime.Now;
+            _context.SaveChanges();
+            return account;
+        }
+
+        public void UserDisconnected(Account account)
+        {
+            if (account.Device != null)
+            {
+                account.Device.Online = false;
+                _context.SaveChanges();
+            }
         }
     }
 }

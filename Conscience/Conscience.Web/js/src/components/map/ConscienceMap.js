@@ -56,6 +56,15 @@ class ConscienceMap extends React.Component {
     this.setState({ hosts: hosts.concat(host) });
   }
 
+  /* componentWillReceiveProps(newProps) {
+    if (!newProps.data.loading) {
+      newProps.data.hosts.getAll.forEach(h => {
+        if (h.device && h.device.online)
+        addHost(h.id, h.account.userName, h.device.currentLocation)
+      });
+    }
+  }*/
+
   render() {
     return (<div>
       <Map center={this.state.defaultPosition} zoom={18} style={{ height: 500 }}>
@@ -72,5 +81,24 @@ class ConscienceMap extends React.Component {
     </div>);
   }
 }
+
+/* const query = gql`query GetHosts {
+            hosts {
+                getAll {
+                        id,
+                        account {
+                            userName
+                        },
+                        device {
+                          currentLocation {
+                            latitude,
+                            longitude
+                          },
+                          online
+                        }
+                }
+            }
+        }
+      `;*/
 
 export default withRouter(ConscienceMap);
