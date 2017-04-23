@@ -36,19 +36,19 @@ namespace Conscience.Domain
             set;
         }
 
-        public Host Host
+        public virtual Host Host
         {
             get;
             set;
         }
 
-        public Employee Employee
+        public virtual Employee Employee
         {
             get;
             set;
         }
 
-        public Device Device
+        public virtual Device Device
         {
             get;
             set;

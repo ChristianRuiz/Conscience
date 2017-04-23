@@ -3,6 +3,7 @@ import Routes from '../routes';
 
 import buildConciencePage from './conscience-page';
 import Header from '../components/common/Header';
+import SignalRClient from '../components/common/SignalRClient';
 
 const App = () =>
   <div>
@@ -11,6 +12,8 @@ const App = () =>
     </div>
 
     <Routes />
+
+    <SignalRClient />
   </div>;
 
 buildConciencePage(App);

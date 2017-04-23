@@ -50,7 +50,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public List<Location> Locations { get; set; }
+        public virtual List<Location> Locations { get; set; }
 
         public Location CurrentLocation
         {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const HostPopup = ({ host }) =>
   <div>
-    <p>{host.userName}</p>
+    <p>{host.account.userName}</p>
   </div>;
 
 HostPopup.propTypes = {

@@ -74224,6 +74224,10 @@ var _Header = __webpack_require__(871);
 
 var _Header2 = _interopRequireDefault(_Header);
 
+var _SignalRClient = __webpack_require__(1055);
+
+var _SignalRClient2 = _interopRequireDefault(_SignalRClient);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
@@ -74235,7 +74239,8 @@ var App = function App() {
       null,
       _react2.default.createElement(_Header2.default, null)
     ),
-    _react2.default.createElement(_routes2.default, null)
+    _react2.default.createElement(_routes2.default, null),
+    _react2.default.createElement(_SignalRClient2.default, null)
   );
 };
 
@@ -74847,27 +74852,27 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _templateObject = _taggedTemplateLiteral(['query GetHostsForMap {\n            hosts {\n                getAll {\n                        id,\n                        account {\n                            userName,\n                            device {\n                              currentLocation {\n                                latitude,\n                                longitude\n                              },\n                              online\n                            }\n                        }\n                }\n            }\n        }\n      '], ['query GetHostsForMap {\n            hosts {\n                getAll {\n                        id,\n                        account {\n                            userName,\n                            device {\n                              currentLocation {\n                                latitude,\n                                longitude\n                              },\n                              online\n                            }\n                        }\n                }\n            }\n        }\n      ']);
+
 var _react = __webpack_require__(2);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(143);
 
+var _reactApollo = __webpack_require__(204);
+
 var _reactLeaflet = __webpack_require__(866);
 
 var _reactLeafletBing = __webpack_require__(1024);
-
-var _jquery = __webpack_require__(829);
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-__webpack_require__(864);
 
 var _HostPopup = __webpack_require__(882);
 
 var _HostPopup2 = _interopRequireDefault(_HostPopup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -74883,73 +74888,19 @@ var ConscienceMap = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (ConscienceMap.__proto__ || Object.getPrototypeOf(ConscienceMap)).call(this, props));
 
-    _this.addHost = _this.addHost.bind(_this);
-
     _this.state = {
-      defaultPosition: [37.048601, -2.4216117],
-      hosts: []
+      defaultPosition: [37.048601, -2.4216117]
     };
-
-    var connection = _jquery2.default.hubConnection('/signalr/hubs');
-    var proxy = connection.createHubProxy('HostsHub');
-
-    proxy.on('hostConnected', function (userId, userName, location) {
-      console.log('hostConnected ' + userId + ' ' + userName + ' ' + JSON.stringify(location));
-
-      _this.addHost(userId, userName, location);
-    });
-
-    proxy.on('locationUpdated', function (userId, userName, location) {
-      console.log('locationUpdated ' + userId + ' ' + userName + ' ' + JSON.stringify(location));
-
-      _this.addHost(userId, userName, location);
-    });
-
-    proxy.on('hostDisconnected', function (userId) {
-      console.log('hostDisconnected ' + userId);
-
-      var hosts = _this.state.hosts.filter(function (h) {
-        return h.userId !== userId;
-      });
-      _this.setState({ hosts: hosts });
-    });
-
-    connection.start().done(function () {
-      console.log('Now connected, connection ID=' + connection.id);
-      proxy.invoke('subscribeWeb');
-    }).fail(function () {
-      console.log('Could not connect');
-    });
     return _this;
   }
 
   _createClass(ConscienceMap, [{
-    key: 'addHost',
-    value: function addHost(userId, userName, location) {
-      var hosts = this.state.hosts.filter(function (h) {
-        return h.userId !== userId;
-      });
-      var host = { userId: userId, userName: userName };
-
-      if (location) {
-        host.location = [location.Latitude, location.Longitude];
-      }
-
-      this.setState({ hosts: hosts.concat(host) });
-    }
-
-    /* componentWillReceiveProps(newProps) {
-      if (!newProps.data.loading) {
-        newProps.data.hosts.getAll.forEach(h => {
-          if (h.device && h.device.online)
-          addHost(h.id, h.account.userName, h.device.currentLocation)
-        });
-      }
-    }*/
-
-  }, {
     key: 'render',
     value: function render() {
+      if (this.props.data.loading) {
+        return _react2.default.createElement('div', null);
+      }
+
       return _react2.default.createElement(
         'div',
         null,
@@ -74957,12 +74908,15 @@ var ConscienceMap = function (_React$Component) {
           _reactLeaflet.Map,
           { center: this.state.defaultPosition, zoom: 18, style: { height: 500 } },
           _react2.default.createElement(_reactLeafletBing.BingLayer, { bingkey: 'Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB' }),
-          this.state.hosts.filter(function (h) {
-            return h.location;
+          this.props.data.hosts.getAll.filter(function (host) {
+            return host.account.device && host.account.device.currentLocation;
           }).map(function (host) {
             return _react2.default.createElement(
               _reactLeaflet.Marker,
-              { position: host.location, key: host.userId },
+              {
+                key: host.id,
+                position: [host.account.device.currentLocation.latitude, host.account.device.currentLocation.longitude]
+              },
               _react2.default.createElement(
                 _reactLeaflet.Popup,
                 null,
@@ -74978,26 +74932,13 @@ var ConscienceMap = function (_React$Component) {
   return ConscienceMap;
 }(_react2.default.Component);
 
-/* const query = gql`query GetHosts {
-            hosts {
-                getAll {
-                        id,
-                        account {
-                            userName
-                        },
-                        device {
-                          currentLocation {
-                            latitude,
-                            longitude
-                          },
-                          online
-                        }
-                }
-            }
-        }
-      `;*/
+ConscienceMap.propTypes = {
+  data: _react2.default.PropTypes.object.isRequired
+};
 
-exports.default = (0, _reactRouterDom.withRouter)(ConscienceMap);
+var query = (0, _reactApollo.gql)(_templateObject);
+
+exports.default = (0, _reactRouterDom.withRouter)((0, _reactApollo.graphql)(query)(ConscienceMap));
 
 /***/ }),
 /* 882 */
@@ -75024,7 +74965,7 @@ var HostPopup = function HostPopup(_ref) {
     _react2.default.createElement(
       'p',
       null,
-      host.userName
+      host.account.userName
     )
   );
 };
@@ -95449,6 +95390,129 @@ exports.default = wrapDisplayName;
 __webpack_require__(339);
 module.exports = __webpack_require__(870);
 
+
+/***/ }),
+/* 1055 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['query GetHostsForMap {\n            hosts {\n                getAll {\n                        id,\n                        account {\n                            userName,\n                            device {\n                              currentLocation {\n                                latitude,\n                                longitude\n                              },\n                              online\n                            }\n                        }\n                }\n            }\n        }\n    '], ['query GetHostsForMap {\n            hosts {\n                getAll {\n                        id,\n                        account {\n                            userName,\n                            device {\n                              currentLocation {\n                                latitude,\n                                longitude\n                              },\n                              online\n                            }\n                        }\n                }\n            }\n        }\n    ']);
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactApollo = __webpack_require__(204);
+
+var _jquery = __webpack_require__(829);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+__webpack_require__(864);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SignalRClient = function (_React$Component) {
+  _inherits(SignalRClient, _React$Component);
+
+  function SignalRClient(props) {
+    _classCallCheck(this, SignalRClient);
+
+    var _this = _possibleConstructorReturn(this, (SignalRClient.__proto__ || Object.getPrototypeOf(SignalRClient)).call(this, props));
+
+    _this.addHost = _this.addHost.bind(_this);
+
+    var connection = _jquery2.default.hubConnection('/signalr/hubs');
+    var proxy = connection.createHubProxy('HostsHub');
+
+    proxy.on('hostConnected', function (userId, userName, location) {
+      console.log('hostConnected ' + userId + ' ' + userName + ' ' + JSON.stringify(location));
+
+      _this.addHost(userId, userName, location);
+    });
+
+    proxy.on('locationUpdated', function (userId, userName, location) {
+      console.log('locationUpdated ' + userId + ' ' + userName + ' ' + JSON.stringify(location));
+
+      _this.addHost(userId, userName, location);
+    });
+
+    proxy.on('hostDisconnected', function (userId) {
+      console.log('hostDisconnected ' + userId);
+
+      // TODO: Implement
+    });
+
+    connection.start().done(function () {
+      console.log('Now connected, connection ID=' + connection.id);
+      proxy.invoke('subscribeWeb');
+    }).fail(function () {
+      console.log('Could not connect');
+    });
+    return _this;
+  }
+
+  _createClass(SignalRClient, [{
+    key: 'addHost',
+    value: function addHost(userId, userName, location) {
+      var query = (0, _reactApollo.gql)(_templateObject);
+
+      var data = void 0;
+
+      try {
+        data = this.props.client.readQuery({ query: query });
+      } catch (e) {
+        console.log('There are no hosts on the cache');
+        return;
+      }
+
+      var host = data.hosts.getAll.find(function (h) {
+        return h.id === userId;
+      });
+
+      if (!host) {
+        console.warn('There is no host cached with id: ' + userId);
+        return;
+      }
+
+      if (location) {
+        host.account.device.currentLocation.latitude = location.Latitude;
+        host.account.device.currentLocation.longitude = location.Longitude;
+      }
+
+      this.props.client.writeQuery({ query: query, data: data });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement('div', null);
+    }
+  }]);
+
+  return SignalRClient;
+}(_react2.default.Component);
+
+SignalRClient.propTypes = {
+  client: _react2.default.PropTypes.object.isRequired
+};
+
+exports.default = (0, _reactApollo.withApollo)(SignalRClient);
 
 /***/ })
 /******/ ]);
