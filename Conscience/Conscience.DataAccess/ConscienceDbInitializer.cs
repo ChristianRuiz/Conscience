@@ -102,8 +102,7 @@ namespace Conscience.DataAccess
                 context.Employees.Add(new Employee { Account = elsie });
                 context.Employees.Add(new Employee { Account = bernard });
                 context.Employees.Add(new Employee { Account = sizemore });
-
-                context.Hosts.Add(new Host { Account = arnold, Hidden = true });
+                
                 context.Hosts.Add(new Host { Account = bernard, Hidden = true });
                 context.Hosts.Add(new Host { Account = dolores });
 

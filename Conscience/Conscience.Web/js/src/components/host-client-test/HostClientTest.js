@@ -16,18 +16,17 @@ class HostClientTest extends React.Component {
       isConnected: false
     };
 
-    const connection = $.hubConnection('/signalr/hubs');
-    this.proxy = connection.createHubProxy('HostsHub');
-
-    connection.start()
-    .done(() => {
-      console.log(`Now connected, connection ID=${connection.id}`);
-    })
-    .fail(() => { console.log('Could not connect'); });
+    this.connection = $.hubConnection('/signalr/hubs');
+    this.proxy = this.connection.createHubProxy('HostsHub');
   }
 
   _connect() {
-    this.proxy.invoke('subscribeHost', 'TestReactClient').done(() => { this.setState({ isConnected: true }); });
+    this.connection.start()
+    .done(() => {
+      console.log(`Now connected, connection ID=${this.connection.id}`);
+      this.proxy.invoke('subscribeHost', 'TestReactClient').done(() => { this.setState({ isConnected: true }); });
+    })
+    .fail(() => { console.log('Could not connect'); });
   }
 
   _updateLocation() {
@@ -45,7 +44,8 @@ class HostClientTest extends React.Component {
   }
 
   _disconnect() {
-    this.proxy.close().done(() => { this.setState({ isConnected: false }); });
+    this.connection.stop();
+    this.setState({ isConnected: false });
   }
 
   render() {

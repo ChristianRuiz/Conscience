@@ -19,13 +19,7 @@ namespace Conscience.Domain
             get;
             set;
         }
-
-        public bool Online
-        {
-            get;
-            set;
-        }
-
+        
         public DateTime LastConnection
         {
             get;
@@ -66,6 +60,14 @@ namespace Conscience.Domain
                     return null;
 
                 return Locations.LastOrDefault();
+            }
+        }
+
+        public bool Online
+        {
+            get
+            {
+                return (DateTime.Now - LastConnection) < TimeSpan.FromMinutes(2);
             }
         }
     }

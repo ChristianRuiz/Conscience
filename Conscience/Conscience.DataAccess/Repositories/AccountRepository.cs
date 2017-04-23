@@ -58,7 +58,6 @@ namespace Conscience.DataAccess.Repositories
             }
 
             account.Device.DeviceId = deviceId;
-            account.Device.Online = true;
             account.Device.LastConnection = DateTime.Now;
             _context.SaveChanges();
         }
@@ -70,15 +69,6 @@ namespace Conscience.DataAccess.Repositories
             account.Device.LastConnection = DateTime.Now;
             _context.SaveChanges();
             return account;
-        }
-
-        public void UserDisconnected(Account account)
-        {
-            if (account.Device != null)
-            {
-                account.Device.Online = false;
-                _context.SaveChanges();
-            }
         }
     }
 }

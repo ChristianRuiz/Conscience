@@ -35,6 +35,9 @@ class ConscienceMap extends React.Component {
 
     proxy.on('hostDisconnected', (userId) => {
       console.log(`hostDisconnected ${userId}`);
+
+      const hosts = this.state.hosts.filter(h => h.userId !== userId);
+      this.setState({ hosts });
     });
 
     connection.start()

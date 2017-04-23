@@ -65,8 +65,6 @@ namespace Conscience.Web.Hubs
                 var userId = Users[Context.ConnectionId];
                 Clients.Group("Web").HostDisconnected(userId);
                 Users.Remove(Context.ConnectionId);
-                var account = AccountRepository.GetById(userId);
-                AccountRepository.UserDisconnected(account);
             }
 
             return base.OnDisconnected(stopCalled);

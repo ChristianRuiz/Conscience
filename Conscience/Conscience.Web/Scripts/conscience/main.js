@@ -74518,14 +74518,8 @@ var HostClientTest = function (_React$Component) {
       isConnected: false
     };
 
-    var connection = _jquery2.default.hubConnection('/signalr/hubs');
-    _this.proxy = connection.createHubProxy('HostsHub');
-
-    connection.start().done(function () {
-      console.log('Now connected, connection ID=' + connection.id);
-    }).fail(function () {
-      console.log('Could not connect');
-    });
+    _this.connection = _jquery2.default.hubConnection('/signalr/hubs');
+    _this.proxy = _this.connection.createHubProxy('HostsHub');
     return _this;
   }
 
@@ -74534,8 +74528,13 @@ var HostClientTest = function (_React$Component) {
     value: function _connect() {
       var _this2 = this;
 
-      this.proxy.invoke('subscribeHost', 'TestReactClient').done(function () {
-        _this2.setState({ isConnected: true });
+      this.connection.start().done(function () {
+        console.log('Now connected, connection ID=' + _this2.connection.id);
+        _this2.proxy.invoke('subscribeHost', 'TestReactClient').done(function () {
+          _this2.setState({ isConnected: true });
+        });
+      }).fail(function () {
+        console.log('Could not connect');
       });
     }
   }, {
@@ -74556,11 +74555,8 @@ var HostClientTest = function (_React$Component) {
   }, {
     key: '_disconnect',
     value: function _disconnect() {
-      var _this3 = this;
-
-      this.proxy.close().done(function () {
-        _this3.setState({ isConnected: false });
-      });
+      this.connection.stop();
+      this.setState({ isConnected: false });
     }
   }, {
     key: 'render',
@@ -74911,6 +74907,11 @@ var ConscienceMap = function (_React$Component) {
 
     proxy.on('hostDisconnected', function (userId) {
       console.log('hostDisconnected ' + userId);
+
+      var hosts = _this.state.hosts.filter(function (h) {
+        return h.userId !== userId;
+      });
+      _this.setState({ hosts: hosts });
     });
 
     connection.start().done(function () {
