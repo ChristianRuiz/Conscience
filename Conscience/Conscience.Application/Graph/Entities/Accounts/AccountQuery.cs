@@ -17,13 +17,13 @@ namespace Conscience.Application.Graph.Entities.Accounts
         {
             Name = "AccountQuery";
 
-            Field<ListGraphType<AccountGraphType>>("getAll", 
+            Field<ListGraphType<AccountGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => accountRepo.GetAll().ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, a => a.Host, a => a.Employee, a => a.Device))
                 .AddAdminPermissions();
             
-            Field<AccountGraphType>("getCurrent",
+            Field<AccountGraphType>("current",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => accountService.CurrentUser).CurrentUserQuery();
         }

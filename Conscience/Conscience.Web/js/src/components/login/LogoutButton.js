@@ -18,7 +18,7 @@ class LogoutButton extends React.Component {
   }
 
   render() {
-    return (<div>{!this.props.data.loading && <label>{this.props.data.accounts.getCurrent.userName}</label>}
+    return (<div>{!this.props.data.loading && <label>{this.props.data.accounts.current.userName}</label>}
       <RaisedButton label="Logout" primary onClick={this._doLogout} /></div>);
   }
 }
@@ -44,7 +44,7 @@ const query = gql`
 query GetCurrentUser {
   accounts
   {
-    getCurrent
+    current
     {
       userName
     }

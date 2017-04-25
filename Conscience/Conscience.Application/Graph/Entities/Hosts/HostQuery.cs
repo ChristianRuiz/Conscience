@@ -17,7 +17,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
         {
             Name = "HostQuery";
 
-            Field<ListGraphType<HostGraphType>>("getAll", 
+            Field<ListGraphType<HostGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemories, h => h.CurrentCharacter, h => h.Account, h => h.Account.Device))

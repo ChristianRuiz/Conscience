@@ -10,7 +10,7 @@ class HostsList extends React.Component {
     }
 
     const hostRows =
-    this.props.data.hosts.getAll.map(host =>
+    this.props.data.hosts.all.map(host =>
       <TableRow key={host.id}>
         <TableRowColumn>{host.account.userName}</TableRowColumn>
       </TableRow>);
@@ -34,7 +34,7 @@ HostsList.propTypes = {
 
 const query = gql`query GetHosts {
             hosts {
-              getAll {
+              all {
                 id,
                 account {
                   userName

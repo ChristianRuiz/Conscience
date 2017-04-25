@@ -17,7 +17,7 @@ namespace Conscience.Application.Graph.Entities.Employees
         {
             Name = "EmployeeQuery";
 
-            Field<ListGraphType<EmployeeGraphType>>("getAll", 
+            Field<ListGraphType<EmployeeGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => userRepo.GetAllEmployees().ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, e => e.Account, e => e.Notifications))

@@ -41,7 +41,7 @@ class SignalRClient extends React.Component {
   addHost(userId, userName, location) {
     const query = gql`query GetHostsForMap {
             hosts {
-                getAll {
+                all {
                         id,
                         account {
                             userName,
@@ -67,7 +67,7 @@ class SignalRClient extends React.Component {
       return;
     }
 
-    const host = data.hosts.getAll.find(h => h.id === userId);
+    const host = data.hosts.all.find(h => h.id === userId);
 
     if (!host) {
       console.warn(`There is no host cached with id: ${userId}`);

@@ -25,7 +25,7 @@ class ConscienceMap extends React.Component {
       <Map center={this.state.defaultPosition} zoom={18} style={{ height: 500 }}>
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
         {
-          this.props.data.hosts.getAll
+          this.props.data.hosts.all
           .filter(host => host.account.device && host.account.device.currentLocation)
           .map(host =>
             <Marker
@@ -49,7 +49,7 @@ ConscienceMap.propTypes = {
 
 const query = gql`query GetHostsForMap {
             hosts {
-                getAll {
+                all {
                         id,
                         account {
                             userName,

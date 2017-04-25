@@ -10,7 +10,7 @@ class RolesValidation extends React.Component {
     }
 
     if (this.props.allowed.length > 0 &&
-     !this.props.data.accounts.getCurrent.roles
+     !this.props.data.accounts.current.roles
             .some(role =>
                 this.props.allowed.some(r => r === role.name)
             )) {
@@ -18,8 +18,8 @@ class RolesValidation extends React.Component {
     }
 
     if (this.props.forbidden.length > 0 &&
-     this.props.data.accounts.getCurrent.roles.length === 1 &&
-     this.props.forbidden.some(r => r === this.props.data.accounts.getCurrent.roles[0])) {
+     this.props.data.accounts.current.roles.length === 1 &&
+     this.props.forbidden.some(r => r === this.props.data.accounts.current.roles[0])) {
       return null;
     }
 
@@ -44,7 +44,7 @@ const query = gql`
 query GetCurrentUserRoles {
   accounts
   {
-    getCurrent
+    current
     {
       roles {
           name

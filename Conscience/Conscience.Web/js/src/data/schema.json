@@ -969,7 +969,7 @@
         "description": null,
         "fields": [
           {
-            "name": "getAll",
+            "name": "all",
             "description": null,
             "args": [
               {
@@ -1016,7 +1016,7 @@
             "deprecationReason": null
           },
           {
-            "name": "getCurrent",
+            "name": "current",
             "description": null,
             "args": [
               {
@@ -2341,7 +2341,7 @@
         "description": null,
         "fields": [
           {
-            "name": "getAll",
+            "name": "all",
             "description": null,
             "args": [
               {
@@ -2399,7 +2399,7 @@
         "description": null,
         "fields": [
           {
-            "name": "getAll",
+            "name": "all",
             "description": null,
             "args": [
               {
