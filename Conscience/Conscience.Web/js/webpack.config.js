@@ -10,6 +10,7 @@ module.exports = {
     filename: '../../Scripts/conscience/[name].js',
     path: path.resolve(__dirname, 'dist')
   },
+  devtool: '#eval-source-map',
   module: {
     loaders: [
       {
