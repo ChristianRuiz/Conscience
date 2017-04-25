@@ -33,7 +33,11 @@ class LoginBox extends React.Component {
             if (document.location.hash) {
               redirectUrl += document.location.hash;
             }
-          } else if (data.accounts.login.roles.length === 1 && data.accounts.login.roles[0].name === Roles.Host) {
+          }
+
+          if (redirectUrl === '/'
+          && data.accounts.login.roles.length === 1
+          && data.accounts.login.roles[0].name === Roles.Host) {
             redirectUrl += '#client-test';
           }
 
