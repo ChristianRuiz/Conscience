@@ -68,12 +68,8 @@ namespace Conscience.Web.Controllers.Api
 
                 json = JArray.Parse("[" + string.Join(",", jsons) + "]").ToString();
             }
-
-            var httpResult = hasAnyErrors
-                ? HttpStatusCode.BadRequest
-                : HttpStatusCode.OK;
             
-            var response = request.CreateResponse(httpResult);
+            var response = request.CreateResponse(HttpStatusCode.OK);
             response.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
             return response;

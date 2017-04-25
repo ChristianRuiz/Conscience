@@ -3,6 +3,8 @@ import { graphql, gql } from 'react-apollo';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import Roles from '../../enums/roles';
+
 const style = {
   margin: 12
 };
@@ -24,13 +26,15 @@ class LoginBox extends React.Component {
     this.props.mutate({
       variables: { userName: this.state.userName, password: this.state.password }
     })
-        .then(() => {
+        .then(({ data }) => {
           let redirectUrl = '/';
           if (document.location.search && document.location.search.indexOf('ReturnUrl') > 0) {
             redirectUrl = decodeURIComponent(document.location.search.substring(document.location.search.indexOf('=') + 1));
             if (document.location.hash) {
               redirectUrl += document.location.hash;
             }
+          } else if (data.accounts.login.roles.length === 1 && data.accounts.login.roles[0].name === Roles.Host) {
+            redirectUrl += '#client-test';
           }
 
           document.location.href = redirectUrl;
@@ -76,7 +80,10 @@ mutation Login($userName: String!, $password: String!) {
   {
     login(userName:$userName, password:$password)
     {
-      id
+      id,
+      roles {
+        name
+      }
     }
   }
 }

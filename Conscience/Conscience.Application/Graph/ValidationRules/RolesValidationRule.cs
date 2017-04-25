@@ -22,16 +22,21 @@ namespace Conscience.Application.Graph.ValidationRules
             {
                 if (account != null)
                 {
+                    var isCurrentUser = false;
+
                     _.Match<Field>(fieldAst =>
                     {
                         var fieldDef = context.TypeInfo.GetFieldDef();
                         
                         if (fieldDef != null)
                         {
+                            isCurrentUser = isCurrentUser || fieldDef.IsCurrentUserQuery();
+
                             var permissions = fieldDef.GetAllPermission();
                             var userRoles = account.Roles.Select(r => r.Name).ToList();
 
-                            if (permissions.Any() && !permissions.Any(p => userRoles.Contains(p)))
+                            if ((permissions.Any() && !permissions.Any(p => userRoles.Contains(p)))
+                                && !(isCurrentUser && fieldDef.IsAllowedToCurrentUser()))
                             {
                                 context.ReportError(new ValidationError(
                                     context.OriginalQuery,

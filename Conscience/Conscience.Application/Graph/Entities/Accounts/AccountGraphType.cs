@@ -23,7 +23,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
             Field<HostGraphType>("host", resolve: context => context.Source.Host);
             Field<EmployeeGraphType>("employee", resolve: context => context.Source.Employee);
             Field<DeviceGraphType>("device", resolve: context => context.Source.Device);
-            Field<ListGraphType<RoleGraphType>>("roles", resolve: context => context.Source.Roles).AddAdminPermissions();
+            Field<ListGraphType<RoleGraphType>>("roles", resolve: context => context.Source.Roles).AddAdminPermissions().AllowCurrentUser();
         }
     }
 

@@ -39,7 +39,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
                     ),
-                resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password")));
+                resolve: context => accountService.LoginAsync(context.GetArgument<string>("userName"), context.GetArgument<string>("password"))).CurrentUserQuery();
 
             Field<AccountGraphType>("logout",
                 resolve: context => { accountService.LogoffAsync(); return null; }).RequiresMembership();

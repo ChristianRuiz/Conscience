@@ -16,6 +16,8 @@ namespace Conscience.Application.Graph
     {
         public static readonly string PermissionsKey = "Permissions";
         public static readonly string RequiresMembershipKey = "RequiresMembership";
+        public static readonly string AllowCurrentUserKey = "AllowCurrentUser";
+        public static readonly string CurrentUserQueryKey = "CurrentUserQuery";
 
         public static bool DoesFieldRequiresMembership(this IProvideMetadata type)
         {
@@ -25,6 +27,26 @@ namespace Conscience.Application.Graph
         public static void RequiresMembership(this IProvideMetadata type)
         {
             type.Metadata[RequiresMembershipKey] = true;
+        }
+
+        public static bool IsCurrentUserQuery(this IProvideMetadata type)
+        {
+            return type.GetMetadata(CurrentUserQueryKey, false);
+        }
+
+        public static void CurrentUserQuery(this IProvideMetadata type)
+        {
+            type.Metadata[CurrentUserQueryKey] = true;
+        }
+
+        public static bool IsAllowedToCurrentUser(this IProvideMetadata type)
+        {
+            return type.GetMetadata(AllowCurrentUserKey, false);
+        }
+
+        public static void AllowCurrentUser(this IProvideMetadata type)
+        {
+            type.Metadata[AllowCurrentUserKey] = true;
         }
 
         public static bool HasSpecificPermissions(this IProvideMetadata type)

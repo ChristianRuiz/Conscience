@@ -25,7 +25,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
             
             Field<AccountGraphType>("getCurrent",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountService.CurrentUser);
+                resolve: context => accountService.CurrentUser).CurrentUserQuery();
         }
     }
 }
