@@ -43,17 +43,9 @@ namespace Conscience.DataAccess.Repositories
             return employee;
         }
         
-        public Host GetById(int userId)
+        public Host GetById(Account currentUser, int userId)
         {
-            var host = DbSet.Include(u => u.Account).FirstOrDefault(u => u.Id == userId);
-            if (host == null)
-                throw new ArgumentException("There is no host with id: " + userId);
-            return host;
-        }
-
-        public Host GetByAccountId(int accountId)
-        {
-            return DbSet.FirstOrDefault(u => u.Account.Id == accountId);
+            return GetAllHosts(currentUser).FirstOrDefault(u => u.Id == userId);
         }
     }
 }

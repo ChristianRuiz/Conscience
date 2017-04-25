@@ -25,7 +25,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public Account Account
+        public virtual Account Account
         {
             get;
             set;

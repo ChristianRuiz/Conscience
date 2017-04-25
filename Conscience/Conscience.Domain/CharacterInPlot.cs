@@ -20,7 +20,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public Plot Plot
+        public virtual Plot Plot
         {
             get;
             set;

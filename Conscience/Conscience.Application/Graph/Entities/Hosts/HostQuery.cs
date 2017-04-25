@@ -22,6 +22,13 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemories, h => h.CurrentCharacter, h => h.Account, h => h.Account.Device))
                 .AddBehaviourAndPlotPermissions();
+
+            Field<HostGraphType>("byId",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "host id" }
+                    ),
+                resolve: context => hostRepo.GetById(accountService.CurrentUser, context.GetArgument<int>("id")))
+                .AddBehaviourAndPlotPermissions();
         }
     }
 }

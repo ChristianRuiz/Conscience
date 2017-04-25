@@ -13,7 +13,7 @@ namespace Conscience.Domain
             Characters = new HashSet<Character>();
         }
 
-        public Plot Plot
+        public virtual Plot Plot
         {
             get;
             set;

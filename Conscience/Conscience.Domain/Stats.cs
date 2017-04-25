@@ -26,7 +26,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public Host Host
+        public virtual Host Host
         {
             get;
             set;

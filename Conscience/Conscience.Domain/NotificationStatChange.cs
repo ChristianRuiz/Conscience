@@ -8,7 +8,7 @@ namespace Conscience.Domain
 {
     public class NotificationStatChange : Notification
     {
-        public Stats Stat
+        public virtual Stats Stat
         {
             get;
             set;
