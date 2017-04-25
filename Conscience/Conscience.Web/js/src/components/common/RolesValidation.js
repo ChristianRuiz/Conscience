@@ -19,7 +19,7 @@ class RolesValidation extends React.Component {
 
     if (this.props.forbidden.length > 0 &&
      this.props.data.accounts.current.roles.length === 1 &&
-     this.props.forbidden.some(r => r === this.props.data.accounts.current.roles[0])) {
+     this.props.forbidden.some(r => r === this.props.data.accounts.current.roles[0].name)) {
       return null;
     }
 
