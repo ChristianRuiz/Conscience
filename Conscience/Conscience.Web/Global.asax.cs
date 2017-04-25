@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Conscience.Web.Logger;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,11 @@ namespace Conscience.Web
     {
         protected void Application_Start()
         {
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Log4NetLogger.Current.WriteError("Unhandled error", HttpContext.Current.Error);
         }
     }
 }
