@@ -6,13 +6,15 @@ import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
 import HostPopup from './HostPopup';
+import InfoPanel from './InfoPanel';
 
 class ConscienceMap extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      defaultPosition: [37.048601, -2.4216117]
+      defaultPosition: [37.048601, -2.4216117],
+      selectedHost: null
     };
   }
 
@@ -32,6 +34,7 @@ class ConscienceMap extends React.Component {
               key={host.id}
               position={[host.account.device.currentLocation.latitude,
                 host.account.device.currentLocation.longitude]}
+              onclick={e => this.setState({ defaultPosition: this.state.defaultPosition, selectedHost: host })}
             >
               <Popup>
                 <HostPopup host={host} />
@@ -39,6 +42,7 @@ class ConscienceMap extends React.Component {
             </Marker>)
         }
       </Map>
+      <InfoPanel host={this.state.selectedHost} />
     </div>);
   }
 }
