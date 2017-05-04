@@ -34,7 +34,7 @@ class ConscienceMap extends React.Component {
               key={host.id}
               position={[host.account.device.currentLocation.latitude,
                 host.account.device.currentLocation.longitude]}
-              onclick={e => this.setState({ defaultPosition: this.state.defaultPosition, selectedHost: host })}
+              onclick={() => this.setState(Object.assign({}, this.state, { selectedHost: host }))}
             >
               <Popup>
                 <HostPopup host={host} />
