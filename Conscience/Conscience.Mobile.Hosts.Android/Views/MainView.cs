@@ -14,7 +14,7 @@ using Conscience.Mobile.Hosts.Android.Services;
 
 namespace Conscience.Mobile.Hosts.Android.Views
 {
-    [Activity(Label = "Conscience", MainLauncher = true)]
+    [Activity(Label = "Conscience")]
     public class MainView : MvxActivity
     {
         protected override void OnCreate(Bundle bundle)

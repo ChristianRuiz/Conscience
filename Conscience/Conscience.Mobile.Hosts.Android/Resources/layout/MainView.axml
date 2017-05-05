@@ -4,12 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-   <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
         android:text="Location:" />
-   <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
@@ -29,25 +29,25 @@
         android:layout_height="wrap_content"
         android:textSize="40dp"
         local:MvxBind="Text Error" />
-  <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
         android:text="Battery:" />
-  <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
         local:MvxBind="Text BatteryStatus" />
-  <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40dp"
         local:MvxBind="Text BatteryLevel" />
-  <Button  
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Play number"
-        android:id="@+id/btnNumber" 
+        android:id="@+id/btnNumber"
         local:MvxBind="Click PlayRandomNumberCommand" />
 </LinearLayout>

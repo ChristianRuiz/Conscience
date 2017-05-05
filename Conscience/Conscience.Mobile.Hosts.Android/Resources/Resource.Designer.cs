@@ -26,6 +26,8 @@ namespace Conscience.Mobile.Hosts.Android
 		
 		public static void UpdateIdValues()
 		{
+			global::Cheesebaron.MvxPlugins.DeviceInfo.Droid.Resource.String.ApplicationName = global::Conscience.Mobile.Hosts.Android.Resource.String.ApplicationName;
+			global::Cheesebaron.MvxPlugins.DeviceInfo.Droid.Resource.String.Hello = global::Conscience.Mobile.Hosts.Android.Resource.String.Hello;
 			global::Conscience.Plugins.Droid.Resource.Attribute.MvxBind = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxBind;
 			global::Conscience.Plugins.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxDropDownItemTemplate;
 			global::Conscience.Plugins.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Conscience.Mobile.Hosts.Android.Resource.Attribute.MvxGroupItemTemplate;
@@ -116,6 +118,9 @@ namespace Conscience.Mobile.Hosts.Android
 			// aapt resource value: 0x7f020000
 			public const int Icon = 2130837504;
 			
+			// aapt resource value: 0x7f020001
+			public const int logo = 2130837505;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -135,8 +140,17 @@ namespace Conscience.Mobile.Hosts.Android
 			// aapt resource value: 0x7f050001
 			public const int MvxBindingTagUnique = 2131034113;
 			
+			// aapt resource value: 0x7f050005
+			public const int btnNumber = 2131034117;
+			
+			// aapt resource value: 0x7f050004
+			public const int btn_login = 2131034116;
+			
+			// aapt resource value: 0x7f050003
+			public const int input_password = 2131034115;
+			
 			// aapt resource value: 0x7f050002
-			public const int btnNumber = 2131034114;
+			public const int input_userName = 2131034114;
 			
 			static Id()
 			{
@@ -152,7 +166,10 @@ namespace Conscience.Mobile.Hosts.Android
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int MainView = 2130903040;
+			public const int LoginView = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int MainView = 2130903041;
 			
 			static Layout()
 			{

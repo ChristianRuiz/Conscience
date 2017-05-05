@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Conscience.Mobile.Hosts.Core.ViewModels
 {
@@ -122,8 +123,8 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
             BatteryStatus = _batteryService.Status.ToString();
         }
 
-        private System.Windows.Input.ICommand _playRandomNumberCommand;
-        public System.Windows.Input.ICommand PlayRandomNumberCommand
+        private ICommand _playRandomNumberCommand;
+        public ICommand PlayRandomNumberCommand
         {
             get
             {

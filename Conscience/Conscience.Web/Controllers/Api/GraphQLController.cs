@@ -40,7 +40,7 @@ namespace Conscience.Web.Controllers.Api
         {
             var queries = await TryGetQueriesFromRequestAsync(request);
             
-            var hasAnyErrors = false;
+            var hasAnySuccess = false;
             var json = string.Empty;
             
             if (queries == null)
@@ -49,7 +49,7 @@ namespace Conscience.Web.Controllers.Api
 
                 var result = await _executer.ExecuteQuery(query, _usersService.CurrentUser);
 
-                hasAnyErrors = hasAnyErrors || result.Errors?.Count > 0;
+                hasAnySuccess = hasAnySuccess || result.Errors == null || result.Errors?.Count == 0;
 
                 json = _executer.GetJSON(result);
             }
@@ -61,15 +61,19 @@ namespace Conscience.Web.Controllers.Api
                 {
                     var result = await _executer.ExecuteQuery(query, _usersService.CurrentUser);
 
-                    hasAnyErrors = hasAnyErrors || result.Errors?.Count > 0;
+                    hasAnySuccess = hasAnySuccess || result.Errors == null || result.Errors?.Count == 0;
 
                     jsons.Add(_executer.GetJSON(result));
                 }
 
                 json = JArray.Parse("[" + string.Join(",", jsons) + "]").ToString();
             }
-            
-            var response = request.CreateResponse(HttpStatusCode.OK);
+
+            var httpResult = !hasAnySuccess
+                ? HttpStatusCode.BadRequest
+                : HttpStatusCode.OK;
+
+            var response = request.CreateResponse(httpResult);
             response.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
             return response;

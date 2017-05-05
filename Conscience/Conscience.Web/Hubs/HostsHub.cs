@@ -18,16 +18,32 @@ namespace Conscience.Web.Hubs
     [HubName("HostsHub")]
     public class HostsHub : Hub
     {
-        private IUnityContainer _container;
+        private IUnityContainer _parentContainer;
+
+        private IUnityContainer _childContainer;
+
+        private IUnityContainer ChildContainer
+        {
+            get
+            {
+                if (_childContainer == null)
+                    _childContainer = _parentContainer.CreateChildContainer();
+                return _childContainer;
+            }
+        }
 
         public HostsHub(IUnityContainer container)
         {
-            _container = container.CreateChildContainer();
+            _parentContainer = container;
         }
 
         protected override void Dispose(bool disposing)
         {
-            _container.Dispose(); // child container destroyed. all resolved objects disposed.
+            if (_childContainer != null)
+            {
+                _childContainer.Dispose(); // child container destroyed. all resolved objects disposed.
+                _childContainer = null;
+            }
             base.Dispose(disposing);
         }
 
@@ -35,7 +51,7 @@ namespace Conscience.Web.Hubs
         {
             get
             {
-                return _container.Resolve<AccountRepository>();
+                return ChildContainer.Resolve<AccountRepository>();
             }
         }
         
@@ -98,10 +114,10 @@ namespace Conscience.Web.Hubs
         public void LocationUpdates(List<Location> locations)
         {
             var accountId = Users[Context.ConnectionId];
-
-            //ToDo: Location must be send by the client
+            
             foreach (var location in locations)
-                location.TimeStamp = DateTime.Now;
+                if (location.TimeStamp == default(DateTime))
+                    location.TimeStamp = DateTime.Now;
 
             var account = AccountRepository.UpdateLocations(accountId, locations);
             

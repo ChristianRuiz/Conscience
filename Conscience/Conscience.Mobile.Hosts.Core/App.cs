@@ -15,8 +15,10 @@ namespace Conscience.Mobile.Hosts.Core
         public override void Initialize()
         {
             CreatableTypes();
+            Mvx.ConstructAndRegisterSingleton<AppState, AppState>();
+            Mvx.ConstructAndRegisterSingleton<GraphQLService, GraphQLService>();
             Mvx.ConstructAndRegisterSingleton<HostsService, HostsService>();
-            Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<MainViewModel>());
+            Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<LoginViewModel>());
         }
     }
 }
