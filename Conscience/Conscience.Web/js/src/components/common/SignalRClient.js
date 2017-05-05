@@ -75,6 +75,10 @@ class SignalRClient extends React.Component {
     }
 
     if (location) {
+      if (!host.account.device) {
+        host.account.device = { currentLocation: {} };
+      }
+
       host.account.device.currentLocation.latitude = location.Latitude;
       host.account.device.currentLocation.longitude = location.Longitude;
     }

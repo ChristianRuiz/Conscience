@@ -1,7 +1,7 @@
 # Conscience
 
 There are two main Apps:
-  - Aleph Site: WebApp for the company to manage the hosts
+  - Aleph Site: WebApp for the company to manage hosts and employees
   - Hosts Mobile App: Xamarin App for iOS and Android that is connected to the Aleph Site
 
 ### Frontend configuration
@@ -35,12 +35,12 @@ The urls on the environment:
 | Url | Description |
 | ------ | ------ |
 | /GraphQL | GraphiQL environment to test queries |
-| /Login | Login page (work in progress) |
-| / | List of employees (work in progress) |
+| /Login | Login page |
+| / | SPA (work in progress) |
 
 ### GraphQL
 
-To start testing GraphQL you need to perform a login mutation on the GraphiQL test environment ("/"):
+To start testing GraphQL you need login. You can do it either by using the UI or performing a login mutation on the GraphiQL test environment ("/GraphQL"):
 
 ```sh
 mutation Login($userName: String!, $password: String!) {
@@ -60,7 +60,7 @@ With Query Variables:
 {"userName": "arnold", "password": "123456" }
 ```
 
-Once logged, you can browse the "/Home" page and you should be retreaving multiple Employees. You can also test some queries or logout using the GraphiQL interface:
+Once logged, you can start testing some queries or logout using the GraphiQL interface or the UI:
 
 ```sh
 query GetAll {
