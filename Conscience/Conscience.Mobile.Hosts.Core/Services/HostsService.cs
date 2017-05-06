@@ -23,6 +23,8 @@ namespace Conscience.Mobile.Hosts.Core.Services
         private Timer _hubTimer;
         private HubConnection _hubConn;
         private IHubProxy _hostsHub;
+        private object _syncReconnect = new object();
+        private bool _isReconnecting;
 
         private object _locationLock = new object();
         private List<Location> LocationsBuffer = new List<Location>();
@@ -42,25 +44,59 @@ namespace Conscience.Mobile.Hosts.Core.Services
         public async void Start()
         {
             _locationWatcher.Start(new MvxLocationOptions() { Accuracy = MvxLocationAccuracy.Fine, TrackingMode = MvxLocationTrackingMode.Background }, GeoLocationSuccess, GeoLocationFailure);
-            
+
             _hubTimer = new Timer(HubTimerTick, null, TimeSpan.FromMinutes(0), TimeSpan.FromSeconds(10));
+            
+            await Connect();
+        }
 
-            _hubConn = new HubConnection(_appState.ServerUrl + "/signalr/hubs");
-            _hubConn.CookieContainer = _appState.CookieContainer;
-            _hostsHub = _hubConn.CreateHubProxy("HostsHub");
+        private async Task Connect()
+        {
+            Stop();
 
-            _hubConn.Closed += async () => await _hubConn.Start();
-            _hubConn.Error += async ex => await _hubConn.Start();
-            await _hubConn.Start();
+            try
+            {
+                _hubConn = new HubConnection(_appState.ServerUrl + "/signalr/hubs");
+                _hubConn.CookieContainer = _appState.CookieContainer;
+                _hostsHub = _hubConn.CreateHubProxy("HostsHub");
 
-            _hostsHub.On<NotificationAudio>("NotificationAudio", HandleNotificationSound);
+                _hubConn.Closed += () => Reconnect();
+                _hubConn.Error += ex => Reconnect(); //TODO: Log exception
 
-            await _hostsHub.Invoke("SubscribeHost", _deviceInfo.DeviceId);
+                await _hubConn.Start();
+
+                _hostsHub.On<NotificationAudio>("NotificationAudio", HandleNotificationSound);
+
+                await _hostsHub.Invoke("SubscribeHost", _deviceInfo.DeviceId);
+
+                _isReconnecting = false;
+            }
+            catch
+            {
+                _isReconnecting = false;
+                Reconnect();
+            }
+        }
+
+        private void Reconnect()
+        {
+            lock (_syncReconnect)
+            {
+                if (!_isReconnecting)
+                {
+                    _isReconnecting = true;
+
+                    Task.Delay(TimeSpan.FromSeconds(5)).Wait();
+
+                    Connect();
+                }
+            }
         }
 
         public void Stop()
         {
-            _hubConn.Dispose();
+            if (_hubConn != null && _hubConn.State != ConnectionState.Disconnected)
+                _hubConn.Dispose();
         }
 
 
@@ -111,19 +147,22 @@ namespace Conscience.Mobile.Hosts.Core.Services
         
         private async void HubTimerTick(object status)
         {
-            List<Location> locationsToSend = new List<Location>();
-
-            lock (_locationLock)
+            if (_hubConn != null && _hubConn.State == ConnectionState.Connected)
             {
-                if (LocationsBuffer.Any() && _hubConn.State == ConnectionState.Connected)
+                List<Location> locationsToSend = new List<Location>();
+
+                lock (_locationLock)
                 {
-                    locationsToSend = LocationsBuffer.ToList();
+                    if (LocationsBuffer.Any())
+                    {
+                        locationsToSend = LocationsBuffer.ToList();
 
-                    LocationsBuffer.Clear();
+                        LocationsBuffer.Clear();
+                    }
                 }
-            }
 
-            await _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList(), _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
+                await _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList(), _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
+            }
         }
 
         public void HandleNotificationSound(NotificationAudio notification)

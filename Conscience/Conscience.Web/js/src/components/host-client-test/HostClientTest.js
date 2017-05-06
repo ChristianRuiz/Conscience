@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { graphql, gql } from 'react-apollo';
 import $ from 'jquery';
 import 'ms-signalr-client';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -24,7 +25,7 @@ class HostClientTest extends React.Component {
     this.connection.start()
     .done(() => {
       console.log(`Now connected, connection ID=${this.connection.id}`);
-      this.proxy.invoke('subscribeHost', 'TestReactClient').done(() => { this.setState({ isConnected: true }); });
+      this.proxy.invoke('subscribeHost', `TestReactClient ${this.props.data.accounts.current.id}`).done(() => { this.setState({ isConnected: true }); });
     })
     .fail(() => { console.log('Could not connect'); });
   }
@@ -60,4 +61,21 @@ class HostClientTest extends React.Component {
   }
 }
 
-export default withRouter(HostClientTest);
+HostClientTest.propTypes = {
+  data: React.PropTypes.object.isRequired
+};
+
+const query = gql`
+query GetCurrentUser {
+  accounts
+  {
+    current
+    {
+      id,
+      userName
+    }
+  }
+}
+`;
+
+export default withRouter(graphql(query)(HostClientTest));

@@ -46,6 +46,7 @@ query GetCurrentUser {
   {
     current
     {
+      id,
       userName
     }
   }
