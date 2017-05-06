@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CoreMemory : Memory
+    public class CoreMemory
     {
+        public int Id
+        {
+            get;
+            set;
+        }
+
+        public Audio Audio
+        {
+            get;
+            set;
+        }
+
+        public bool Locked
+        {
+            get;
+            set;
+        }
     }
 }

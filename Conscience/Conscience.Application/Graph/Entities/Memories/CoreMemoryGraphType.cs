@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Memories
 {
-    public class CoreMemoryGraphType : MemoryGraphType<CoreMemory>
+    public class CoreMemoryGraphType : ConscienceGraphType<CoreMemory>
     {
         public CoreMemoryGraphType()
         {
             Name = "CoreMemory";
+
+            Field<AudioGraphType>("audio", resolve: context => context.Source.Audio);
+            Field(c => c.Locked);
         }
     }
 }

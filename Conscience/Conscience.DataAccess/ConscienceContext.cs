@@ -64,6 +64,12 @@ namespace Conscience.DataAccess
             set;
         }
 
+        public DbSet<CoreMemory> CoreMemories
+        {
+            get;
+            set;
+        }
+
         public DbSet<Plot> Plots
         {
             get;
@@ -92,12 +98,15 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Employee>().HasRequired(e => e.Account).WithOptional(a => a.Employee);
             modelBuilder.Entity<Host>().HasRequired(e => e.Account).WithOptional(a => a.Host);
             modelBuilder.Entity<Host>().HasMany(h => h.Stats).WithRequired(s => s.Host);
-            modelBuilder.Entity<Host>().HasMany(h => h.CoreMemories);
+            modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory1);
+            modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory2);
+            modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory3);
             modelBuilder.Entity<Host>().HasMany(h => h.Characters);
             modelBuilder.Entity<CoreMemory>().ToTable("CoreMemories");
             modelBuilder.Entity<CharacterInHost>().HasRequired(c => c.Character);
             modelBuilder.Entity<Character>().HasMany(c => c.Memories);
             modelBuilder.Entity<Character>().HasMany(c => c.Triggers);
+            modelBuilder.Entity<Character>().HasMany(c => c.Relations);
             modelBuilder.Entity<Character>().HasMany(c => c.PlotEvents).WithMany(e => e.Characters);
             modelBuilder.Entity<Character>().HasMany(c => c.Plots);
             modelBuilder.Entity<CharacterInPlot>().HasRequired(c => c.Plot);

@@ -13,7 +13,8 @@ namespace Conscience.Application.Graph.Entities.Audios
         public AudioGraphType()
         {
             Name = "Audio";
-            
+
+            Field(c => c.Transcription);
             Field(c => c.IsEmbeded);
             Field(c => c.Path);
         }

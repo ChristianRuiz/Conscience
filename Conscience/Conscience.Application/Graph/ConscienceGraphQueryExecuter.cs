@@ -59,7 +59,7 @@ namespace Conscience.Application.Graph
                     _.ValidationRules = new List<IValidationRule> { new MembershipValidationRule(), new RolesValidationRule() };
                     _.UserContext = userContext;
 
-                    _.ComplexityConfiguration = new ComplexityConfiguration { MaxDepth = 15 };
+                    _.ComplexityConfiguration = new ComplexityConfiguration { MaxDepth = 20 };
                     _.FieldMiddleware.Use<InstrumentFieldsMiddleware>();
 
                 }).ConfigureAwait(false);

@@ -16,6 +16,7 @@ namespace Conscience.Application.Graph.Entities.Plots
             Name = "PlotEvent";
             
             Field(p => p.Description);
+            Field(p => p.Location);
             Field(p => p.Hour);
             Field(p => p.Minute);
             Field<PlotGraphType>("plot", resolve: context => context.Source.Plot);

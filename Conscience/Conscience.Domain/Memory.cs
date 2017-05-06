@@ -13,20 +13,8 @@ namespace Conscience.Domain
             get;
             set;
         }
-
-        public int Name
-        {
-            get;
-            set;
-        }
-
-        public int Description
-        {
-            get;
-            set;
-        }
-
-        public Audio Audio
+        
+        public string Description
         {
             get;
             set;

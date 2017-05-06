@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Audio
+    public class CharacterRelation
     {
         public int Id
         {
@@ -14,19 +14,13 @@ namespace Conscience.Domain
             set;
         }
 
-        public string Transcription
+        public virtual Character Character
         {
             get;
             set;
         }
 
-        public bool IsEmbeded
-        {
-            get;
-            set;
-        }
-
-        public string Path
+        public string Description
         {
             get;
             set;

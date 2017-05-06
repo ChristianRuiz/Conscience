@@ -19,10 +19,12 @@ namespace Conscience.Application.Graph.Entities.Hosts
             Name = "Host";
 
             Field<AccountGraphType>("account", resolve: context => context.Source.Account);
-            Field<CharacterGraphType>("currentCharacter", resolve: context => context.Source.CurrentCharacter);
-            Field<ListGraphType<CharacterGraphType>>("characters", resolve: context => context.Source.Characters);
-            Field<ListGraphType<CoreMemoryGraphType>>("coreMemories", resolve: context => context.Source.CoreMemories);
+            Field<CharacterInHostGraphType>("currentCharacter", resolve: context => context.Source.CurrentCharacter);
+            Field<ListGraphType<CharacterInHostGraphType>>("characters", resolve: context => context.Source.Characters);
             Field<ListGraphType<StatsGraphType>>("stats", resolve: context => context.Source.Stats);
+            Field<CoreMemoryGraphType>("coreMemory1", resolve: context => context.Source.CoreMemory1);
+            Field<CoreMemoryGraphType>("coreMemory2", resolve: context => context.Source.CoreMemory1);
+            Field<CoreMemoryGraphType>("coreMemory3", resolve: context => context.Source.CoreMemory1);
         }
     }
 }

@@ -32,4 +32,27 @@ namespace Conscience.Domain
             set;
         }
     }
+
+    public enum StatNames
+    {
+        Candor,
+        Vivacity,
+        Coordination,
+        Meekness,
+        Humility,
+        Cruelty,
+        SelfPreservation,
+        Patience,
+        Decisiveness,
+        Imagination,
+        Curiosity,
+        Agression,
+        Loyalty,
+        Empathy,
+        Tenacity,
+        Courage,
+        Sensuality,
+        Charm,
+        Humor
+    }
 }

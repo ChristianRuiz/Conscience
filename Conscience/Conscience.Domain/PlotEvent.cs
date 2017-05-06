@@ -31,6 +31,12 @@ namespace Conscience.Domain
             set;
         }
 
+        public string Location
+        {
+            get;
+            set;
+        }
+
         public string Description
         {
             get;

@@ -13,8 +13,9 @@ namespace Conscience.Domain
         {
             Notifications = new HashSet<Notification>();
             Characters = new HashSet<CharacterInHost>();
-            CoreMemories = new HashSet<CoreMemory>();
             Stats = new HashSet<Stats>();
+            foreach (var statName in Enum.GetNames(typeof(StatNames)))
+                Stats.Add(new Stats { Name = statName, Value = 10 });
         }
 
         public int Id
@@ -45,11 +46,23 @@ namespace Conscience.Domain
         {
             get
             {
-                return Characters.Last();
+                return Characters.OrderByDescending(c => c.AssignedOn).FirstOrDefault();
             }
         }
 
-        public virtual ICollection<CoreMemory> CoreMemories
+        public virtual CoreMemory CoreMemory1
+        {
+            get;
+            set;
+        }
+
+        public virtual CoreMemory CoreMemory2
+        {
+            get;
+            set;
+        }
+
+        public virtual CoreMemory CoreMemory3
         {
             get;
             set;

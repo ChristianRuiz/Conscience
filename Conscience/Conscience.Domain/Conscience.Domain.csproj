@@ -38,6 +38,7 @@
     <Compile Include="Character.cs" />
     <Compile Include="CharacterInHost.cs" />
     <Compile Include="CharacterInPlot.cs" />
+    <Compile Include="CharacterRelation.cs" />
     <Compile Include="CoreMemory.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Enums\BatteryStatus.cs" />

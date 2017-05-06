@@ -20,7 +20,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
             Field<ListGraphType<HostGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context)
-                .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemories, h => h.CurrentCharacter, h => h.Account, h => h.Account.Device))
+                .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemory1, h => h.CoreMemory2, h => h.CoreMemory3, h => h.CurrentCharacter, h => h.Account, h => h.Account.Device))
                 .AddBehaviourAndPlotPermissions();
 
             Field<HostGraphType>("byId",

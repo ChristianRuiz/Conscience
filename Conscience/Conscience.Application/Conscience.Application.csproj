@@ -84,6 +84,8 @@
     <Compile Include="Graph\Entities\Accounts\AccountMutation.cs" />
     <Compile Include="Graph\Entities\Accounts\AccountQuery.cs" />
     <Compile Include="Graph\Entities\Audios\AudioGraphType.cs" />
+    <Compile Include="Graph\Entities\Characters\CharacterRelationGraphType.cs" />
+    <Compile Include="Graph\Entities\Characters\CharacterInHostGraphType.cs" />
     <Compile Include="Graph\Entities\Characters\CharacterGraphType.cs" />
     <Compile Include="Graph\Entities\ConscienceGraphType.cs" />
     <Compile Include="Graph\Entities\Devices\DeviceGraphType.cs" />

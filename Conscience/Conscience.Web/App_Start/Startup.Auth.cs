@@ -34,7 +34,8 @@ namespace Conscience.Web
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentityCallback: (manager, user) => user.GenerateUserIdentityAsync(manager),
                         getUserIdCallback: (user) => user.GetUserId<int>())
-                }
+                },
+                ExpireTimeSpan = TimeSpan.FromDays(7)
             });            
         }
     }

@@ -20,13 +20,19 @@ namespace Conscience.Domain
             set;
         }
 
-        public int Name
+        public string Code
         {
             get;
             set;
         }
 
-        public int Description
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        public string Description
         {
             get;
             set;

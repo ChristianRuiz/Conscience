@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Memories
 {
-    public class MemoryGraphType<T> : ConscienceGraphType<T> where T : Memory
+    public class MemoryGraphType : ConscienceGraphType<Memory>
     {
         public MemoryGraphType()
         {
             Name = "Memory";
             
-            Field(c => c.Name);
             Field(c => c.Description);
-            Field<AudioGraphType>("audio", resolve: context => context.Source.Audio);
         }
     }
 }

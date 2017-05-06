@@ -17,11 +17,24 @@ namespace Conscience.Application.Graph.Entities.Characters
         {
             Name = "Character";
             
-            Field(c => c.Description);
-            Field<ListGraphType<MemoryGraphType<Memory>>>("memories", resolve: context => context.Source.Memories);
+            Field(c => c.Name);
+            Field(c => c.Age);
+            Field(c => c.Story);
+            Field(c => c.NarrativeFunction);
+            Field<GenderEnumeration>("gender", resolve: context => context.Source.Gender);
+            Field<ListGraphType<MemoryGraphType>>("memories", resolve: context => context.Source.Memories);
             Field<ListGraphType<TriggerGraphType>>("triggers", resolve: context => context.Source.Triggers);
             Field<ListGraphType<CharacterInPlotGraphType>>("plots", resolve: context => context.Source.Plots);
-            Field<ListGraphType<CharacterInPlotGraphType>>("plotEvents", resolve: context => context.Source.PlotEvents);
+            Field<ListGraphType<PlotEventGraphType>>("plotEvents", resolve: context => context.Source.PlotEvents);
+            Field<ListGraphType<CharacterRelationGraphType>>("relations", resolve: context => context.Source.Relations);
+        }
+    }
+
+    public class GenderEnumeration : EnumerationGraphType<Genders>
+    {
+        public GenderEnumeration()
+        {
+            Name = "Genders";
         }
     }
 }

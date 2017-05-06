@@ -14,6 +14,7 @@ namespace Conscience.Domain
             Triggers = new HashSet<Trigger>();
             Plots = new HashSet<CharacterInPlot>();
             PlotEvents = new HashSet<PlotEvent>();
+            Relations = new HashSet<CharacterRelation>();
         }
 
         public int Id
@@ -22,7 +23,31 @@ namespace Conscience.Domain
             set;
         }
 
-        public int Description
+        public string Name
+        {
+            get;
+            set;
+        }
+        
+        public int Age
+        {
+            get;
+            set;
+        }
+
+        public Genders Gender
+        {
+            get;
+            set;
+        }
+
+        public string Story
+        {
+            get;
+            set;
+        }
+
+        public string NarrativeFunction
         {
             get;
             set;
@@ -51,5 +76,17 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public virtual ICollection<CharacterRelation> Relations
+        {
+            get;
+            set;
+        }
+    }
+
+    public enum Genders
+    {
+        Male,
+        Female
     }
 }
