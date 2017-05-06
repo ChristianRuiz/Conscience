@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Conscience.Domain.Enums;
 
 namespace Conscience.DataAccess.Repositories
 {
@@ -62,11 +63,21 @@ namespace Conscience.DataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public Account UpdateLocations(int accountId, List<Location> locations)
+        public Account UpdateLocations(int accountId, List<Location> locations, BatteryStatus? status = null, PowerSource? powerSouce = null, int? batteryLevel = null)
         {
             var account = GetById(accountId);
             account.Device.Locations.AddRange(locations);
             account.Device.LastConnection = DateTime.Now;
+
+            if (status.HasValue)
+                account.Device.BatteryStatus = status.Value;
+
+            if (powerSouce.HasValue)
+                account.Device.PowerSource = powerSouce.Value;
+
+            if (batteryLevel.HasValue)
+                account.Device.BatteryLevel = batteryLevel.Value;
+
             _context.SaveChanges();
             return account;
         }

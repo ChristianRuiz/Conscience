@@ -113,13 +113,9 @@ namespace Conscience.Mobile.Hosts.Core.Services
             {
                 if (LocationsBuffer.Any() && _hubConn.State == ConnectionState.Connected)
                 {
-                    _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList());
+                    _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList(), _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
 
                     LocationsBuffer.Clear();
-
-                    //TODO: Send battery level
-                    //BatteryLevel = _batteryService.RemainingChargePercent;
-                    //BatteryStatus = _batteryService.Status.ToString();
                 }
             }
         }

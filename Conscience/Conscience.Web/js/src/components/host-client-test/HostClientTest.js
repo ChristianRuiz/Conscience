@@ -40,7 +40,7 @@ class HostClientTest extends React.Component {
 
     location.Longitude += random;
 
-    this.proxy.invoke('locationUpdates', [location]);
+    this.proxy.invoke('locationUpdates', [location], null, null, null);
   }
 
   _disconnect() {

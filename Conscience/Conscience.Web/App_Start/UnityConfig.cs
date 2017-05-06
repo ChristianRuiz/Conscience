@@ -34,17 +34,17 @@ namespace Conscience.Web
             {
                 if (_container == null)
                 {
-                    _container = CreateConfiguredContainer(() => DefaultLifetimeManager);
+                    _container = CreateConfiguredContainer();
                 }
             }
 
             return _container;
         }
 
-        public static IUnityContainer CreateConfiguredContainer(Func<LifetimeManager> getLifetimeManager = null)
+        protected static IUnityContainer CreateConfiguredContainer()
         {
             var container = new UnityContainer();
-            RegisterTypes(container, getLifetimeManager);
+            RegisterTypes(container);
             return container;
         }
         #endregion
@@ -53,26 +53,13 @@ namespace Conscience.Web
         /// <param name="container">The unity container to configure.</param>
         /// <remarks>There is no need to register concrete types such as controllers or API controllers (unless you want to 
         /// change the defaults), as Unity allows resolving a concrete type even if it was not previously registered.</remarks>
-        public static void RegisterTypes(IUnityContainer container, Func<LifetimeManager> getLifetimeManager = null)
+        protected static void RegisterTypes(IUnityContainer container)
         {
-            if (getLifetimeManager == null)
-                getLifetimeManager = () => DefaultLifetimeManager;
-
-            container.RegisterTypes(AllClasses.FromLoadedAssemblies(), WithMappings.None, WithName.Default, x => getLifetimeManager());
-            
             container.RegisterInstance<IDocumentExecuter>(new DocumentExecuter());
             container.RegisterInstance<IDocumentWriter>(new DocumentWriter(true));
-            container.RegisterInstance(new ConscienceSchema(type => (GraphType)container.Resolve(type)));
-
-            container.RegisterType<IUsersIdentityService, UsersIdentityService>(getLifetimeManager());
-        }
-
-        protected static LifetimeManager DefaultLifetimeManager
-        {
-            get
-            {
-                return new PerRequestLifetimeManager();
-            }
+            
+            container.RegisterType<ConscienceContext, ConscienceContext>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUsersIdentityService, UsersIdentityService>(new HierarchicalLifetimeManager());
         }
     }
 }

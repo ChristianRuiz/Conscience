@@ -45,7 +45,8 @@ namespace Conscience.DataAccess.Repositories
         
         public Host GetById(Account currentUser, int userId)
         {
-            return GetAllHosts(currentUser).FirstOrDefault(u => u.Id == userId);
+            var host = GetAllHosts(currentUser).FirstOrDefault(u => u.Id == userId);
+            return host;
         }
     }
 }

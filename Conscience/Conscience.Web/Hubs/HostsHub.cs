@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Conscience.Application.Services;
 using Conscience.DataAccess.Repositories;
 using Microsoft.Practices.Unity;
+using Conscience.Domain.Enums;
 
 namespace Conscience.Web.Hubs
 {
@@ -111,7 +112,7 @@ namespace Conscience.Web.Hubs
             Groups.Add(Context.ConnectionId, GroupWeb);
         }
 
-        public void LocationUpdates(List<Location> locations)
+        public void LocationUpdates(List<Location> locations, BatteryStatus? status = null, PowerSource? powerSouce = null, int? batteryLevel = null)
         {
             var accountId = Users[Context.ConnectionId];
             
@@ -119,7 +120,7 @@ namespace Conscience.Web.Hubs
                 if (location.TimeStamp == default(DateTime))
                     location.TimeStamp = DateTime.Now;
 
-            var account = AccountRepository.UpdateLocations(accountId, locations);
+            var account = AccountRepository.UpdateLocations(accountId, locations, status, powerSouce, batteryLevel);
             
             Clients.Group(GroupWeb).LocationUpdated(account.Host.Id, account.UserName, account.Device.CurrentLocation);
         }
