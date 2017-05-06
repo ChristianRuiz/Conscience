@@ -78,7 +78,7 @@ namespace Conscience.Mobile.Hosts.Core.Services
             }
         }
 
-        private void Reconnect()
+        public void Reconnect()
         {
             lock (_syncReconnect)
             {

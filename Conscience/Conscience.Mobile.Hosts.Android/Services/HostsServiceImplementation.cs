@@ -33,6 +33,13 @@ namespace Conscience.Mobile.Hosts.Android.Services
             return StartCommandResult.StickyCompatibility;
         }
 
+        public override void OnRebind(Intent intent)
+        {
+            _service.Reconnect();
+
+            base.OnRebind(intent);
+        }
+
         public override void OnDestroy()
         {
             _service.Stop();
