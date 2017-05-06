@@ -66,7 +66,9 @@ namespace Conscience.DataAccess.Repositories
         public Account UpdateLocations(int accountId, List<Location> locations, BatteryStatus? status = null, PowerSource? powerSouce = null, int? batteryLevel = null)
         {
             var account = GetById(accountId);
-            account.Device.Locations.AddRange(locations);
+            if (locations.Any())
+                account.Device.Locations.AddRange(locations);
+
             account.Device.LastConnection = DateTime.Now;
 
             if (status.HasValue)

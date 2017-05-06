@@ -49,6 +49,8 @@ namespace Conscience.Mobile.Hosts.Core.Services
             _hubConn.CookieContainer = _appState.CookieContainer;
             _hostsHub = _hubConn.CreateHubProxy("HostsHub");
 
+            _hubConn.Closed += async () => await _hubConn.Start();
+            _hubConn.Error += async ex => await _hubConn.Start();
             await _hubConn.Start();
 
             _hostsHub.On<NotificationAudio>("NotificationAudio", HandleNotificationSound);
@@ -107,17 +109,21 @@ namespace Conscience.Mobile.Hosts.Core.Services
             _audioService.PlaySound(stream);
         }
         
-        private void HubTimerTick(object status)
+        private async void HubTimerTick(object status)
         {
+            List<Location> locationsToSend = new List<Location>();
+
             lock (_locationLock)
             {
                 if (LocationsBuffer.Any() && _hubConn.State == ConnectionState.Connected)
                 {
-                    _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList(), _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
+                    locationsToSend = LocationsBuffer.ToList();
 
                     LocationsBuffer.Clear();
                 }
             }
+
+            await _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList(), _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
         }
 
         public void HandleNotificationSound(NotificationAudio notification)

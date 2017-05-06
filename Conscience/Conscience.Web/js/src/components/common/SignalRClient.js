@@ -36,6 +36,17 @@ class SignalRClient extends React.Component {
       proxy.invoke('subscribeWeb');
     })
     .fail(() => { console.log('Could not connect'); });
+
+    connection.disconnected(() => {
+      setTimeout(() => {
+        connection.start()
+        .done(() => {
+          console.log(`Now reconnected, connection ID=${connection.id}`);
+          proxy.invoke('subscribeWeb');
+        })
+        .fail(() => { console.log('Could not connect'); });
+      }, 5000); // Restart connection after 5 seconds.
+    });
   }
 
   addHost(userId, userName, location) {
