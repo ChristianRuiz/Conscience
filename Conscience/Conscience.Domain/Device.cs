@@ -59,7 +59,7 @@ namespace Conscience.Domain
                 if (Locations == null)
                     return null;
 
-                return Locations.LastOrDefault();
+                return Locations.OrderByDescending(l => l.TimeStamp).FirstOrDefault();
             }
         }
 

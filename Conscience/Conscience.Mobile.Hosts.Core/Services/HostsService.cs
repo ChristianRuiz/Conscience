@@ -161,7 +161,13 @@ namespace Conscience.Mobile.Hosts.Core.Services
                     }
                 }
 
-                await _hostsHub.Invoke("LocationUpdates", LocationsBuffer.ToList(), _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
+                try
+                {
+                    await _hostsHub.Invoke("LocationUpdates", locationsToSend, _batteryService.Status, _batteryService.PowerSource, _batteryService.RemainingChargePercent);
+                }catch
+                {
+                    LocationsBuffer.AddRange(locationsToSend);
+                }
             }
         }
 

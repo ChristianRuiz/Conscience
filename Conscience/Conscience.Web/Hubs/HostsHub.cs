@@ -12,6 +12,7 @@ using Conscience.Application.Services;
 using Conscience.DataAccess.Repositories;
 using Microsoft.Practices.Unity;
 using Conscience.Domain.Enums;
+using Conscience.Web.Logger;
 
 namespace Conscience.Web.Hubs
 {
@@ -59,6 +60,7 @@ namespace Conscience.Web.Hubs
         private const string GroupHosts = "Hosts";
         private const string GroupWeb = "Web";
 
+        private static object _syncUsers = new object();
         private static Dictionary<string, int> Users = new Dictionary<string, int>();
         
         public override Task OnConnected()
@@ -89,10 +91,13 @@ namespace Conscience.Web.Hubs
         
         private void RegisterCurrentUser()
         {
-            if (!Users.ContainsKey(Context.ConnectionId))
+            lock (_syncUsers)
             {
-                var accountId = Context.Request.User.Identity.GetUserId<int>();
-                Users.Add(Context.ConnectionId, accountId);
+                if (!Users.ContainsKey(Context.ConnectionId))
+                {
+                    var accountId = Context.Request.User.Identity.GetUserId<int>();
+                    Users.Add(Context.ConnectionId, accountId);
+                }
             }
         }
 
@@ -114,8 +119,12 @@ namespace Conscience.Web.Hubs
 
         public void LocationUpdates(List<Location> locations, BatteryStatus? status = null, PowerSource? powerSouce = null, int? batteryLevel = null)
         {
-            var accountId = Users[Context.ConnectionId];
+            var firstLocation = locations.FirstOrDefault();
             
+            var accountId = Users[Context.ConnectionId];
+
+            Log4NetLogger.Current.WriteDebug(string.Format("Location Updates - {0} - {1} - {2} - {3}", accountId, locations.Count, firstLocation != null ? firstLocation.Latitude : 0, firstLocation != null ? firstLocation.Longitude : 0));
+
             foreach (var location in locations)
                 if (location.TimeStamp == default(DateTime))
                     location.TimeStamp = DateTime.Now;
