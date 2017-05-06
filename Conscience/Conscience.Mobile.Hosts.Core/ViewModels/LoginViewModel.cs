@@ -80,7 +80,7 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
 
             try
             {
-                _appState.CurrentUser = await _graphService.ExecuteAsync<Account>(
+                var query =
 @"mutation Login($userName: String!, $password: String!) {
   accounts
   {
@@ -93,17 +93,18 @@ namespace Conscience.Mobile.Hosts.Core.ViewModels
       }
     }
   }
-}",
-    new Dictionary<string, object>
-    {
-        { "userName", UserName },
-        { "password", Password }
-    },
-    json => json["accounts"]["login"]);
+}";
+                var variables = new Dictionary<string, object>
+                                {
+                                    { "userName", UserName },
+                                    { "password", Password }
+                                };
+
+                _appState.CurrentUser = await _graphService.ExecuteAsync<Account>(query, variables, json => json["accounts"]["login"]);
 
                 ShowViewModel<MainViewModel>();
             }
-            catch(GraphQLException)
+            catch
             {
                 HasError = true;
             }
