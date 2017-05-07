@@ -12,7 +12,7 @@ class EmployeesList extends React.Component {
     const employeeRows =
     this.props.data.employees.all.map(employee =>
       <TableRow key={employee.id}>
-        <TableRowColumn>{employee.account.userName}</TableRowColumn>
+        <TableRowColumn>{employee.name}</TableRowColumn>
         <TableRowColumn>{employee.department}</TableRowColumn>
       </TableRow>);
 
@@ -38,6 +38,7 @@ const query = gql`query GetEmployees {
             employees {
                 all {
                         id,
+                        name,
                         account {
                             userName
                         },

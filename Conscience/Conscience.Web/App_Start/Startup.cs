@@ -38,7 +38,7 @@ namespace Conscience.Web
                 
                 var context = container.Resolve<ConscienceContext>();
                 context.Database.CreateIfNotExists();
-                context.Database.Initialize(false);
+                context.Database.Initialize(true);
             }
             catch (Exception ex)
             {
