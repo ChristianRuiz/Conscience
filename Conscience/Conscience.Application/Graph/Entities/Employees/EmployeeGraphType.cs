@@ -15,6 +15,7 @@ namespace Conscience.Application.Graph.Entities.Employees
         {
             Name = "Employee";
 
+            Field(e => e.Name);
             Field<AccountGraphType>("account", resolve: context => context.Source.Account);
             Field<StringGraphType>("department", resolve: c => {
                 var role = c.Source.Account.Roles.FirstOrDefault(r => r.Name.StartsWith("Company"));

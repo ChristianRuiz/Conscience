@@ -25,5 +25,11 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public virtual Character Character
+        {
+            get;
+            set;
+        }
     }
 }

@@ -53,12 +53,30 @@ namespace Conscience.Domain
             set;
         }
 
-        public virtual ICollection<Memory> Memories
+        public virtual CharacterInHost CurrentHost
+        {
+            get
+            {
+                var host = Hosts.OrderByDescending(h => h.AssignedOn).FirstOrDefault();
+                if (host.Host.CurrentCharacter.Character == this)
+                    return host;
+                else
+                    return null;
+            }
+        }
+
+        public virtual ICollection<CharacterInHost> Hosts
         {
             get;
             set;
         }
 
+        public virtual ICollection<Memory> Memories
+        {
+            get;
+            set;
+        }
+        
         public virtual ICollection<Trigger> Triggers
         {
             get;

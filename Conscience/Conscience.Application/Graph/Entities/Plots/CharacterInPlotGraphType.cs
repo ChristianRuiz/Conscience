@@ -1,4 +1,5 @@
-﻿using Conscience.Domain;
+﻿using Conscience.Application.Graph.Entities.Characters;
+using Conscience.Domain;
 using GraphQL.Types;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Conscience.Application.Graph.Entities.Plots
             
             Field(c => c.Description);
             Field<PlotGraphType>("plot", resolve: context => context.Source.Plot);
+            Field<CharacterGraphType>("character", resolve: context => context.Source.Character);
         }
     }
 }

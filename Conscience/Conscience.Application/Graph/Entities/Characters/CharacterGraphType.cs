@@ -27,6 +27,8 @@ namespace Conscience.Application.Graph.Entities.Characters
             Field<ListGraphType<CharacterInPlotGraphType>>("plots", resolve: context => context.Source.Plots);
             Field<ListGraphType<PlotEventGraphType>>("plotEvents", resolve: context => context.Source.PlotEvents);
             Field<ListGraphType<CharacterRelationGraphType>>("relations", resolve: context => context.Source.Relations);
+            Field<ListGraphType<CharacterInHostGraphType>>("hosts", resolve: context => context.Source.Hosts);
+            Field<CharacterInHostGraphType>("currentHost", resolve: context => context.Source.CurrentHost);
         }
     }
 

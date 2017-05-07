@@ -14,6 +14,12 @@ namespace Conscience.Domain
             set;
         }
 
+        public virtual Host Host
+        {
+            get;
+            set;
+        }
+
         public virtual Character Character
         {
             get;

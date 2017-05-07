@@ -19,6 +19,12 @@ namespace Conscience.Domain
             set;
         }
 
+        public string Name
+        {
+            get;
+            set;
+        }
+
         public virtual ICollection<Notification> Notifications
         {
             get;

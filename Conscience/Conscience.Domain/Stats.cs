@@ -35,6 +35,7 @@ namespace Conscience.Domain
 
     public enum StatNames
     {
+        Apperception,
         Candor,
         Vivacity,
         Coordination,
