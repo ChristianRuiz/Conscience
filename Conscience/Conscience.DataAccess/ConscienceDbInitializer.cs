@@ -151,7 +151,7 @@ namespace Conscience.DataAccess
                 var hMaeve = new Host { Account = maeve };
                 context.Hosts.Add(hMaeve);
                 var hEscaton = new Host { Account = escaton };
-                context.Hosts.Add(new Host { Account = escaton });
+                context.Hosts.Add(hEscaton);
 
                 context.SaveChanges();
 
@@ -311,26 +311,26 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
 
                 context.SaveChanges();
 
-                //var cEscaton = new Character()
-                //{
-                //    Name = "Hector Escaton",
-                //    Gender = Genders.Male,
-                //    Age = 33,
-                //    Story = @"Stereotypical outlaw.",
-                //    NarrativeFunction = "Outlaw to bring to justice or kill. Can also accept a guest in his band."
-                //};
-                //context.Characters.Add(cEscaton);
+                var cEscaton = new Character()
+                {
+                    Name = "Hector Escaton",
+                    Gender = Genders.Male,
+                    Age = 33,
+                    Story = @"Stereotypical outlaw.",
+                    NarrativeFunction = "Outlaw to bring to justice or kill. Can also accept a guest in his band."
+                };
+                context.Characters.Add(cEscaton);
 
-                //context.SaveChanges();
+                context.SaveChanges();
 
-                //hEscaton.Characters.Add(new CharacterInHost { Character = cEscaton, AssignedOn = DateTime.Now - TimeSpan.FromDays(8 * 365) });
-                
-                //cEscaton.Memories.Add(new Memory { Description = "You killed for the first time when you were 12 years old." });
-                //cEscaton.Memories.Add(new Memory { Description = "You've recruited a gang and you a robbing everything that you can." });
+                hEscaton.Characters.Add(new CharacterInHost { Character = cEscaton, AssignedOn = DateTime.Now - TimeSpan.FromDays(8 * 365) });
 
-                //cEscaton.Triggers.Add(new Trigger { Description = "If a guest is chasing him, he will try to make the scene last as long as posible but finally let himself get caught or killed." });
+                cEscaton.Memories.Add(new Memory { Description = "You killed for the first time when you were 12 years old." });
+                cEscaton.Memories.Add(new Memory { Description = "You've recruited a gang and you a robbing everything that you can." });
 
-                //context.SaveChanges();
+                cEscaton.Triggers.Add(new Trigger { Description = "If a guest is chasing him, he will try to make the scene last as long as posible but finally let himself get caught or killed." });
+
+                context.SaveChanges();
 
                 var plotLove = new Plot
                 {
@@ -388,11 +388,11 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
                     Description = "She will stand up during the robbery, but will try to keep everyone out of the way."
                 });
 
-                //cEscaton.Plots.Add(new CharacterInPlot
-                //{
-                //    Plot = plotRobbery,
-                //    Description = "He will bring the gang, leave the horse outside and enter the brothel to get the safe."
-                //});
+                cEscaton.Plots.Add(new CharacterInPlot
+                {
+                    Plot = plotRobbery,
+                    Description = "He will bring the gang, leave the horse outside and enter the brothel to get the safe."
+                });
 
                 context.SaveChanges();
 
@@ -406,7 +406,7 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
                 };
 
                 cMaeve.PlotEvents.Add(eventRobbery);
-                //cEscaton.PlotEvents.Add(eventRobbery);
+                cEscaton.PlotEvents.Add(eventRobbery);
 
                 context.SaveChanges();
             }
