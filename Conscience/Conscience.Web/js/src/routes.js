@@ -13,7 +13,7 @@ const Routes = () =>
   <Switch>
     <Route path="/" exact component={MapPage} />
     <Route path="/hosts" component={HostsPage} />
-    <Route path="/host-detail/*" component={HostDetailPage} />
+    <Route path="/host-detail/:hostId" component={HostDetailPage} />
     <Route path="/employees" exact component={EmployeesPage} />
     <Route path="/client-test" component={HostClientTestPage} />
     <Route path="/bulk-import" component={BulkImportPage} />
