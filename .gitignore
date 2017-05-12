@@ -161,3 +161,8 @@ Conscience/Conscience.Web/_bin_deployableAssemblies/
 
 node_modules/
 Conscience/Components/
+server/Conscience/Components/
+server/Conscience/Conscience.Web/Content/audio/uploads/
+server/Conscience/Conscience.Web/Properties/PublishProfiles/
+server/Conscience/Conscience.Web/Mobile/
+server/Conscience/Conscience.Web/Scripts/conscience/
