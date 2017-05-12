@@ -1,3 +1,11 @@
 rootProject.name = 'Conscience'
+include ':react-native-vector-icons'
+project(':react-native-vector-icons').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-vector-icons/android')
+include ':react-native-sound'
+project(':react-native-sound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fs/android')
+include ':react-native-device-battery'
+project(':react-native-device-battery').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-device-battery/android')
 
 include ':app'
