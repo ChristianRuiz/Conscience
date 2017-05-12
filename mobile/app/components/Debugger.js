@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  StyleSheet,
   Text,
   View
 } from 'react-native';
@@ -21,7 +22,7 @@ class Debugger extends React.Component {
 
   componentDidMount() {
     signalRService = new SignalRService(navigator);
-    signalRService.addListener(changes => {
+    signalRService.addListener((changes) => {
       this.setState(changes);
     });
   }
@@ -35,14 +36,14 @@ class Debugger extends React.Component {
         <Text>lat: {currentLocation.coords.latitude}</Text>
         <Text>long: {currentLocation.coords.longitude}</Text>
         <Text>time: {currentLocation.timestamp}</Text>
-        </View>);
+      </View>);
     }
 
     return (
-      <View>
+      <View style={styles.container}>
         <Text>level: {this.state.batteryLevel}</Text>
         <Text>charging: {this.state.charging.toString()}</Text>
-        
+
         {locationsComp}
 
         <Button raised text="1" onPress={() => audioService.playSound('1.mp3')} />
@@ -52,5 +53,13 @@ class Debugger extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
 
 export default Debugger;

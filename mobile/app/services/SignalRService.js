@@ -1,68 +1,68 @@
 import DeviceBattery from 'react-native-device-battery';
 
 class SignalRService {
-    constructor(navigator) {
-        this.addListener = this.addListener.bind(this);
-        this._onTimer = this._onTimer.bind(this);
-        
-        const onBatteryStateChanged = (state) => {
-            const initialized = this.batteryLevel;
+  constructor(navigator) {
+    this.addListener = this.addListener.bind(this);
+    this._onTimer = this._onTimer.bind(this);
 
-            this.batteryLevel = state.level;
-            this.charging = state.charging;
+    const onBatteryStateChanged = (state) => {
+      const initialized = this.batteryLevel;
 
-            if (!initialized) {
-                this._onTimer();
-            }
-        };
+      this.batteryLevel = state.level;
+      this.charging = state.charging;
 
-        DeviceBattery.addListener(onBatteryStateChanged);
+      if (!initialized) {
+        this._onTimer();
+      }
+    };
 
-        this.locations = [];
-        this.locationsInitilized = false;
+    DeviceBattery.addListener(onBatteryStateChanged);
 
-        this.watchID = navigator.geolocation.watchPosition((location) => {
-            this.locations.push(location);
+    this.locations = [];
+    this.locationsInitilized = false;
 
-            if (!this.locationsInitilized) {
-                this.locationsInitilized = true;
-                this._onTimer();
-            }
+    this.watchID = navigator.geolocation.watchPosition((location) => {
+      this.locations.push(location);
+
+      if (!this.locationsInitilized) {
+        this.locationsInitilized = true;
+        this._onTimer();
+      }
+    });
+
+    setInterval(this._onTimer, 1000 * 15);
+  }
+
+  listener = null;
+
+  addListener(listener) {
+    this.listener = listener;
+    this._onTimer();
+  }
+
+  _onTimer() {
+    if (this.listener) {
+      const update = {};
+
+      if (this.batteryLevel) {
+        Object.assign(update, {
+          batteryLevel: this.batteryLevel,
+          charging: this.charging
+        });
+      }
+
+      if (this.locations.length > 0) {
+                // TODO: Consolidate locations
+        Object.assign(update, {
+          locations: this.locations
         });
 
-        setInterval(this._onTimer, 1000 * 15);
+        this.locations = [];
+      }
+
+      this.listener(update);
     }
-
-    listener = null;
-
-    addListener(listener) {
-        this.listener = listener;
-        this._onTimer();
-    }
-
-    _onTimer() {
-        if (this.listener) {
-            var update = {};
-
-            if (this.batteryLevel) {
-                Object.assign(update, {
-                    batteryLevel: this.batteryLevel,
-                    charging: this.charging
-                })
-            }
-
-            if (this.locations.length > 0) {
-                //TODO: Consolidate locations
-                Object.assign(update, {
-                    locations: this.locations
-                });
-
-                this.locations = [];
-            }
-
-            this.listener(update);
-        }
-    }
+  }
 }
 
 export default SignalRService;

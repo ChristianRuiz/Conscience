@@ -21,6 +21,7 @@
     "react-native-sound": "^0.10.1",
     "react-native-tab-view": "0.0.65",
     "react-native-vector-icons": "^4.1.1",
+    "react-router-native": "^4.1.1",
     "redux": "^3.6.0"
   },
   "devDependencies": {

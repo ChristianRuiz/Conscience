@@ -1,11 +1,30 @@
 import React from 'react';
 import {
   StyleSheet,
-  Text,
   View
 } from 'react-native';
+import { NativeRouter, Route, Switch } from 'react-router-native';
+import {
+  ApolloClient,
+  ApolloProvider
+} from 'react-apollo';
+import { createBatchingNetworkInterface } from 'apollo-client';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
+
+import Constants from './constants';
+
+import Login from './components/login/Login';
 import Debugger from './components/Debugger';
+
+const client = new ApolloClient({
+  networkInterface: createBatchingNetworkInterface({
+    uri: `${Constants.SERVER_URL }/api/graphql`,
+    batchInterval: 10,
+    opts: {
+      credentials: 'same-origin'
+    }
+  })
+});
 
 const uiTheme = {
   palette: {
@@ -22,9 +41,16 @@ class Root extends React.Component {
   render() {
     return (
       <ThemeProvider>
-        <View style={styles.container}>
-          <Debugger />
-        </View>
+        <ApolloProvider client={client}>
+          <NativeRouter>
+            <View style={styles.container}>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Route path="/tabs" component={Debugger} />
+              </Switch>
+            </View>
+          </NativeRouter>
+        </ApolloProvider>
       </ThemeProvider>
     );
   }
@@ -33,8 +59,6 @@ class Root extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF'
   }
 });

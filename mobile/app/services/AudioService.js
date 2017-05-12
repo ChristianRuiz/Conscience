@@ -17,7 +17,7 @@ class AudioService {
 
     Sound.setCategory('Playback');
 
-    //this._soundLoop();
+    this._soundLoop();
   }
 
   audioQueue = [];
