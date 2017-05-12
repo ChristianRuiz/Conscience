@@ -23,12 +23,19 @@ class Login extends React.Component {
   }
 
   _doLogin() {
-    console.log(`${this.state.userName} - ${this.state.password}`);
-    this.setState({ logged: true });
+    this.props.mutate({
+      variables: { userName: this.state.userName, password: this.state.password }
+    })
+    .then((result) => {
+      this.setState({ currentUser: result.data.accounts.login });
+    }).catch((error) => {
+      console.log(`Unable to login ${JSON.stringify(error)}`);
+      this.state.hasError = true;
+    });
   }
 
   render() {
-    if (this.state.logged) {
+    if (this.state.currentUser) {
       return <Redirect to="/tabs" />;
     }
 
@@ -55,6 +62,25 @@ class Login extends React.Component {
   }
 }
 
+Login.propTypes = {
+  mutate: React.PropTypes.func.isRequired
+};
+
+const mutation = gql`
+mutation Login($userName: String!, $password: String!) {
+  accounts
+  {
+    login(userName:$userName, password:$password)
+    {
+      id,
+      roles {
+        name
+      }
+    }
+  }
+}
+`;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -66,4 +92,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+export default graphql(mutation)(Login);
