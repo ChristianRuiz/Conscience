@@ -43,6 +43,7 @@ class Debugger extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Text>deviceId: {this.state.deviceId}</Text>
         <Text>level: {this.state.batteryLevel}</Text>
         <Text>charging: {this.state.charging.toString()}</Text>
 

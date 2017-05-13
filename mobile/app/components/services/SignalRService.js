@@ -1,12 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
 import DeviceBattery from 'react-native-device-battery';
+import DeviceInfo from 'react-native-device-info';
 
 class SignalRService extends React.Component {
   constructor(props) {
     super(props);
 
     this._onTimer = this._onTimer.bind(this);
+
+    this.deviceId = DeviceInfo.getDeviceId();
 
     this.batteryLevel = -1;
     this.charging = false;
@@ -48,7 +51,9 @@ class SignalRService extends React.Component {
 
   _onTimer() {
     if (this.props.listener) {
-      const update = {};
+      const update = {
+        deviceId: this.deviceId
+      };
 
       Object.assign(update, {
         batteryLevel: this.batteryLevel,
