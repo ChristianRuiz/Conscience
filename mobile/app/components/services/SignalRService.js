@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import DeviceBattery from 'react-native-device-battery';
 import DeviceInfo from 'react-native-device-info';
 import signalr from 'react-native-signalr';
+import { withApollo, gql } from 'react-apollo';
 
 import Constants from '../../constants';
 
@@ -99,6 +100,54 @@ class SignalRService extends React.Component {
         } catch (e) {
           console.warn(`Unable to send updates to SignalR: ${e}`);
         }
+
+        if (serviceLocations.length > 0) {
+          const currentLocation = serviceLocations[serviceLocations.length - 1];
+
+          const query = gql`{
+  accounts {
+    current {
+      device {
+        deviceId,
+        batteryLevel,
+        batteryStatus,
+        currentLocation {
+          latitude,
+          longitude,
+          timeStamp
+        }
+      }
+    }
+  }
+}`;
+
+          let data;
+
+          try {
+            data = this.props.client.readQuery({ query });
+          } catch (e) {
+            console.warn('There is no current account on the cache');
+            return;
+          }
+
+          if (!data.accounts.current.device) {
+            data.accounts.current.device = {};
+          }
+
+          const device = data.accounts.current.device;
+
+          device.deviceId = this.deviceId;
+          device.batteryLevel = this.batteryLevel;
+          device.batteryStatus = this.charging ? 'CHARGING' : 'NOT_CHARGING';
+          device.currentLocation = {
+            latitude: currentLocation.Latitude,
+            longitude: currentLocation.Longitude,
+            timeStamp: currentLocation.TimeStamp,
+            __typename: 'Location'
+          };
+
+          this.props.client.writeQuery({ query, data });
+        }
       }
 
       this.props.listener(update);
@@ -111,6 +160,7 @@ class SignalRService extends React.Component {
 }
 
 SignalRService.propTypes = {
+  client: React.PropTypes.object.isRequired,
   listener: React.PropTypes.func
 };
 
@@ -118,4 +168,4 @@ SignalRService.defaultProps = {
   listener: changes => changes
 };
 
-export default SignalRService;
+export default withApollo(SignalRService);

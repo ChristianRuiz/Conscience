@@ -2,6 +2,7 @@ import React from 'react';
 import { Animated, View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import type { NavigationState } from 'react-native-tab-view/types';
 
 import HostDetails from './host/HostDetails';
 import PlotEvents from './host/PlotEvents';
@@ -9,7 +10,7 @@ import Memories from './host/Memories';
 import Notifications from './host/Notifications';
 import Debugger from './Debugger';
 
-import type { NavigationState } from 'react-native-tab-view/types';
+import SignalRService from './services/SignalRService';
 
 type Route = {
   key: string,
@@ -19,7 +20,7 @@ type Route = {
 
 type State = NavigationState<Route>;
 
-class Tabs extends React.Component {
+class HostTabs extends React.Component {
   static title = 'Bottom bar with indicator';
   static appbarElevation = 4;
 
@@ -82,7 +83,10 @@ class Tabs extends React.Component {
     switch (route.key) {
       case '1':
         return (
-          <HostDetails />
+          <View style={styles.container}>
+            <HostDetails />
+            <SignalRService />
+          </View>
         );
       case '2':
         return (
@@ -106,15 +110,13 @@ class Tabs extends React.Component {
   };
 
   render() {
-    return (
-      <TabViewAnimated
+    return (<TabViewAnimated
         style={[styles.container, this.props.style]}
         navigationState={this.state}
         renderScene={this._renderScene}
         renderFooter={this._renderFooter}
         onRequestChangeTab={this._handleChangeTab}
-      />
-    );
+      />);
   }
 }
 
@@ -157,4 +159,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Tabs;
+export default HostTabs;
