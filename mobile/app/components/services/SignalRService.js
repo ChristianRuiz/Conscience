@@ -1,9 +1,15 @@
+import React from 'react';
+import { View } from 'react-native';
 import DeviceBattery from 'react-native-device-battery';
 
-class SignalRService {
-  constructor(navigator) {
-    this.addListener = this.addListener.bind(this);
+class SignalRService extends React.Component {
+  constructor(props) {
+    super(props);
+
     this._onTimer = this._onTimer.bind(this);
+
+    this.batteryLevel = -1;
+    this.charging = false;
 
     const onBatteryStateChanged = (state) => {
       const initialized = this.batteryLevel;
@@ -17,6 +23,13 @@ class SignalRService {
     };
 
     DeviceBattery.addListener(onBatteryStateChanged);
+
+    DeviceBattery.getBatteryLevel().then((batteryLevel) => {
+      this.batteryLevel = batteryLevel;
+    });
+    DeviceBattery.isCharging().then((charging) => {
+      this.charging = charging;
+    });
 
     this.locations = [];
     this.locationsInitilized = false;
@@ -33,26 +46,17 @@ class SignalRService {
     setInterval(this._onTimer, 1000 * 15);
   }
 
-  listener = null;
-
-  addListener(listener) {
-    this.listener = listener;
-    this._onTimer();
-  }
-
   _onTimer() {
-    if (this.listener) {
+    if (this.props.listener) {
       const update = {};
 
-      if (this.batteryLevel) {
-        Object.assign(update, {
-          batteryLevel: this.batteryLevel,
-          charging: this.charging
-        });
-      }
+      Object.assign(update, {
+        batteryLevel: this.batteryLevel,
+        charging: this.charging
+      });
 
       if (this.locations.length > 0) {
-                // TODO: Consolidate locations
+        // TODO: Consolidate locations
         Object.assign(update, {
           locations: this.locations
         });
@@ -60,9 +64,21 @@ class SignalRService {
         this.locations = [];
       }
 
-      this.listener(update);
+      this.props.listener(update);
     }
   }
+
+  render() {
+    return <View />;
+  }
 }
+
+SignalRService.propTypes = {
+  listener: React.PropTypes.func
+};
+
+SignalRService.defaultProps = {
+  listener: changes => changes
+};
 
 export default SignalRService;

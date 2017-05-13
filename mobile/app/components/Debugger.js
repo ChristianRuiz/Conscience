@@ -8,23 +8,25 @@ import {
 import { Button } from 'react-native-material-ui';
 
 import AudioService from '../services/AudioService';
-import SignalRService from '../services/SignalRService';
+import SignalRService from './services/SignalRService';
 
-const audioService = new AudioService();
-let signalRService = null;
+let audioService = null;
 
 class Debugger extends React.Component {
   constructor(props) {
     super(props);
 
+    this._signalRListener = this._signalRListener.bind(this);
+
     this.state = { batteryLevel: 0, charging: false };
   }
 
   componentDidMount() {
-    signalRService = new SignalRService(navigator);
-    signalRService.addListener((changes) => {
-      this.setState(changes);
-    });
+    audioService = new AudioService();
+  }
+
+  _signalRListener(changes) {
+    this.setState(changes);
   }
 
   render() {
@@ -49,6 +51,8 @@ class Debugger extends React.Component {
         <Button raised text="1" onPress={() => audioService.playSound('1.mp3')} />
         <Button raised text="8" onPress={() => audioService.playSound('8.mp3')} />
         <Button raised text="Moderna" onPress={() => audioService.playSound('uploads/moderna.mp3')} />
+
+        <SignalRService listener={this._signalRListener} />
       </View>
     );
   }

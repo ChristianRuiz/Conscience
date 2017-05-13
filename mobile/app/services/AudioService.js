@@ -40,7 +40,7 @@ class AudioService {
 
   _playSoundFromFile(filePath) {
     return new Promise((resolve, reject) => {
-      console.log(`loading audio: ${filePath}`);
+      //console.log(`loading audio: ${filePath}`);
       if (this.currentAudio) {
         this.currentAudio.stop();
       }
@@ -52,15 +52,20 @@ class AudioService {
           return;
         }
         // loaded successfully
-        console.log(`duration in seconds: ${this.currentAudio.getDuration()}number of channels: ${this.currentAudio.getNumberOfChannels()}`);
+        // console.log(`duration in seconds: ${this.currentAudio.getDuration()}number of channels: ${this.currentAudio.getNumberOfChannels()}`);
 
         this.currentAudio.play((success) => {
           if (success) {
-            console.log('successfully finished playing');
+            // console.log('successfully finished playing');
+            this.currentAudio.release();
             resolve();
           } else {
             console.log('playback failed due to audio decoding errors');
-            this._soundLoop();
+            this.currentAudio.release();
+            
+            setTimeout(() => {
+              this._soundLoop();
+            }, 1000);
           }
         });
       });

@@ -51,6 +51,7 @@
 		11960F9C1E7844A9A7CD27C6 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 312139C05F484C3C895D8197 /* Zocial.ttf */; };
 		6B80EE9776A24DCAB64CEF93 /* libRNBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5020547676C149899431DF46 /* libRNBackgroundGeolocation.a */; };
 		69C6CD76DF6E43FB9542B1AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C4889F863146DF93DF1A00 /* libsqlite3.tbd */; };
+		361EA1AAAC45428B8890D344 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CC212924F4E01AF3A7ABA /* libRNDeviceInfo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,8 @@
 		3B64E562CFE1452F94895B4B /* RNBackgroundGeolocation.xcodeproj */ = {isa = PBXFileReference; name = "RNBackgroundGeolocation.xcodeproj"; path = "../node_modules/react-native-background-geolocation/ios/RNBackgroundGeolocation.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		5020547676C149899431DF46 /* libRNBackgroundGeolocation.a */ = {isa = PBXFileReference; name = "libRNBackgroundGeolocation.a"; path = "libRNBackgroundGeolocation.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		64C4889F863146DF93DF1A00 /* libsqlite3.tbd */ = {isa = PBXFileReference; name = "libsqlite3.tbd"; path = "usr/lib/libsqlite3.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		0C4D617B262B4D278ACD98C0 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; name = "RNDeviceInfo.xcodeproj"; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		F05CC212924F4E01AF3A7ABA /* libRNDeviceInfo.a */ = {isa = PBXFileReference; name = "libRNDeviceInfo.a"; path = "libRNDeviceInfo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +326,7 @@
 				6F81E2F88E8B4BC2A79978D3 /* libRNVectorIcons.a in Frameworks */,
 				6B80EE9776A24DCAB64CEF93 /* libRNBackgroundGeolocation.a in Frameworks */,
 				69C6CD76DF6E43FB9542B1AE /* libsqlite3.tbd in Frameworks */,
+				361EA1AAAC45428B8890D344 /* libRNDeviceInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +498,7 @@
 				439800BCEFA541CEBC5ACFF5 /* RNSound.xcodeproj */,
 				99B19180CBCC4F6FBCC76E34 /* RNVectorIcons.xcodeproj */,
 				3B64E562CFE1452F94895B4B /* RNBackgroundGeolocation.xcodeproj */,
+				0C4D617B262B4D278ACD98C0 /* RNDeviceInfo.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1065,6 +1070,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1073,6 +1079,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
+					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
 				);
 			};
 			name = Debug;
@@ -1098,6 +1105,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1106,6 +1114,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
+					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
 				);
 			};
 			name = Release;
@@ -1132,6 +1141,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
+					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
 				);
 			};
 			name = Debug;
@@ -1157,6 +1167,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
+					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
 				);
 			};
 			name = Release;
@@ -1191,6 +1202,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1199,6 +1211,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
+					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
 				);
 			};
 			name = Debug;
@@ -1233,6 +1246,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1241,6 +1255,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-sound\RNSound",
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
+					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
 				);
 			};
 			name = Release;
@@ -1270,6 +1285,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1294,6 +1310,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
