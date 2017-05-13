@@ -374,6 +374,7 @@
     <Content Include="Scripts\conscience\main.js" />
     <Content Include="Scripts\graphi\graphiql.css" />
     <Content Include="Scripts\graphi\graphiql.min.js" />
+    <Content Include="Scripts\graphi\jquery.js" />
     <Content Include="Scripts\graphi\react-dom.min.js" />
     <Content Include="Scripts\graphi\react.min.js" />
     <Content Include="Scripts\graphi\swapi.js" />
