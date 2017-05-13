@@ -51,6 +51,17 @@ class SignalRService extends React.Component {
       });
     })
     .fail(() => { console.log('Could not connect to SignalR'); });
+
+    this.connection.disconnected(() => {
+      setTimeout(() => {
+        this.connection.start()
+        .done(() => {
+          console.log(`Now reconnected, connection ID=${this.connection.id}`);
+          this.proxy.invoke('subscribeHost', this.deviceId);
+        })
+        .fail(() => { console.log('Could not connect'); });
+      }, 5000); // Restart connection after 5 seconds.
+    });
   }
 
   _onTimer() {
@@ -81,9 +92,13 @@ class SignalRService extends React.Component {
           TimeStamp: new Date(l.timestamp).toISOString()
         }));
 
-        // TODO: Consolidate locations
-        this.proxy.invoke('locationUpdates', serviceLocations, this.charging ? 1 : 0, null, this.batteryLevel);
-        this.locations = [];
+        try {
+          // TODO: Consolidate locations
+          this.proxy.invoke('locationUpdates', serviceLocations, this.charging ? 1 : 0, null, this.batteryLevel);
+          this.locations = [];
+        } catch (e) {
+          console.warn(`Unable to send updates to SignalR: ${e}`);
+        }
       }
 
       this.props.listener(update);
