@@ -14,7 +14,7 @@ import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import Constants from './constants';
 
 import Login from './components/login/Login';
-import Debugger from './components/Debugger';
+import Tabs from './components/Tabs';
 
 const client = new ApolloClient({
   networkInterface: createBatchingNetworkInterface({
@@ -46,7 +46,7 @@ class Root extends React.Component {
             <View style={styles.container}>
               <Switch>
                 <Route exact path="/" component={Login} />
-                <Route path="/tabs" component={Debugger} />
+                <Route path="/tabs" component={Tabs} />
               </Switch>
             </View>
           </NativeRouter>
