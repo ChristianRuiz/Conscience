@@ -8,10 +8,8 @@ namespace Conscience.Domain.Enums
 {
     public enum BatteryStatus
     {
-        Charging,
-        Discharging,
-        Full,
-        NotCharging,
+        NotCharging = 0,
+        Charging = 1,
         Unknown
     }
 }

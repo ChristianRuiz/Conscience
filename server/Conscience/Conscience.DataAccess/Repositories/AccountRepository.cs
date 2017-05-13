@@ -77,7 +77,7 @@ namespace Conscience.DataAccess.Repositories
             if (powerSouce.HasValue)
                 account.Device.PowerSource = powerSouce.Value;
 
-            if (batteryLevel.HasValue)
+            if (batteryLevel.HasValue && batteryLevel.Value >= 0)
                 account.Device.BatteryLevel = batteryLevel.Value;
 
             _context.SaveChanges();

@@ -12,6 +12,7 @@ namespace Conscience.Domain
         public Device()
         {
             Locations = new List<Location>();
+            BatteryStatus = BatteryStatus.Unknown;
         }
 
         public int Id
