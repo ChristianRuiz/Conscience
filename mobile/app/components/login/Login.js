@@ -16,7 +16,7 @@ class Login extends React.Component {
     this._doLogin = this._doLogin.bind(this);
 
     this.state = {
-      userName: 'dolores', // TODO: This values are just for development
+      userName: 'maeve', // TODO: This values are just for development
       password: '123456',
       hasError: false
     };

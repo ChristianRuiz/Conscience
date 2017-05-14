@@ -19,8 +19,8 @@ class Debugger extends React.Component {
   }
 
   render() {
-    if (this.props.data.loading) {
-      return null;
+    if (this.props.data.loading || !this.props.data.accounts) {
+      return <View />;
     }
 
     const device = this.props.data.accounts.current.device;
@@ -35,9 +35,11 @@ class Debugger extends React.Component {
         <Text>level: {device.batteryLevel}</Text>
         <Text>charging: {device.batteryStatus}</Text>
 
-        <Text>lat: {device.currentLocation.latitude}</Text>
-        <Text>long: {device.currentLocation.longitude}</Text>
-        <Text>time: {device.currentLocation.timeStamp}</Text>
+        {device.currentLocation ? (<View>
+          <Text>lat: {device.currentLocation.latitude}</Text>
+          <Text>long: {device.currentLocation.longitude}</Text>
+          <Text>time: {device.currentLocation.timeStamp}</Text>
+        </View>) : <View /> }
 
         <Button raised text="1" onPress={() => audioService.playSound('1.mp3')} />
         <Button raised text="8" onPress={() => audioService.playSound('8.mp3')} />

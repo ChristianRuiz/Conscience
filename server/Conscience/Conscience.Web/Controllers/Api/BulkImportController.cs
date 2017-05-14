@@ -161,6 +161,9 @@ namespace Conscience.Web.Controllers.Api
 
                                 var host = new Host { Account = account };
                                 context.Hosts.Add(host);
+                                
+                                foreach (var statName in Enum.GetNames(typeof(StatNames)))
+                                    host.Stats.Add(new Stats { Name = statName, Value = 10 });
 
                                 host.Stats.First(s => s.Name == StatNames.Apperception.ToString())
                                     .Value = int.Parse(row.GetCell(7).ToCleanString().Trim());

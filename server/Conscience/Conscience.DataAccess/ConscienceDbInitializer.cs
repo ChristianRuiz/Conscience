@@ -140,18 +140,26 @@ namespace Conscience.DataAccess
                 context.Employees.Add(new Employee { Account = bernard, Name = "Bernard Lowe" });
                 context.Employees.Add(new Employee { Account = sizemore, Name = "Lee Sizemore" });
 
+                var hosts = new List<Host>();
                 var hBernard = new Host { Account = bernard, Hidden = true };
-                context.Hosts.Add(hBernard);
+                hosts.Add(hBernard);
                 var hDolores = new Host { Account = dolores };
-                context.Hosts.Add(hDolores);
+                hosts.Add(hDolores);
                 var hPeter = new Host { Account = peter };
-                context.Hosts.Add(hPeter);
+                hosts.Add(hPeter);
                 var hTeddy = new Host { Account = teddy };
-                context.Hosts.Add(hTeddy);
+                hosts.Add(hTeddy);
                 var hMaeve = new Host { Account = maeve };
-                context.Hosts.Add(hMaeve);
+                hosts.Add(hMaeve);
                 var hEscaton = new Host { Account = escaton };
-                context.Hosts.Add(hEscaton);
+                hosts.Add(hEscaton);
+
+                foreach (var host in hosts)
+                {
+                    foreach (var statName in Enum.GetNames(typeof(StatNames)))
+                        host.Stats.Add(new Stats { Name = statName, Value = 10 });
+                    context.Hosts.Add(host);
+                }
 
                 context.SaveChanges();
 

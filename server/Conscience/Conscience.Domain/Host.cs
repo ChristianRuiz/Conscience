@@ -14,8 +14,6 @@ namespace Conscience.Domain
             Notifications = new HashSet<Notification>();
             Characters = new HashSet<CharacterInHost>();
             Stats = new HashSet<Stats>();
-            foreach (var statName in Enum.GetNames(typeof(StatNames)))
-                Stats.Add(new Stats { Name = statName, Value = 10 });
         }
 
         public int Id
