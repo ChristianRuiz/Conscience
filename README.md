@@ -2,11 +2,11 @@
 
 There are two main Apps:
   - Aleph Site: WebApp for the company to manage hosts and employees
-  - Hosts Mobile App: Xamarin App for iOS and Android that is connected to the Aleph Site
+  - Hosts Mobile App: React Native App for iOS and Android that is connected to the Aleph Site
 
 ### Frontend configuration
 
-You need to browse a cmd to "\Conscience\Conscience.Web\js\" and run:
+You need to browse a cmd to "\client\" and run:
 
 ```sh
 $ npm install
@@ -28,7 +28,7 @@ $ npm run build
 
 ### Backend configuration
 
-You need to open the "Conscience.Web.sln" with Visual Studio 2015 and build the entire solution. It will restore the NuGet packages and build the project. Once build, you can configure the Conscience.Web proejct to run with the local IIS on "http://localhost" or you can enable the IIS Express and let Visual Studio configure and start it on F5.
+You need to open the "Conscience.sln" with Visual Studio 2015 and build the entire solution. It will restore the NuGet packages and build the project. Once build, you can configure the Conscience.Web proejct to run with the local IIS on "http://localhost" or you can enable the IIS Express and let Visual Studio configure and start it on F5.
 
 The urls on the environment:
 
