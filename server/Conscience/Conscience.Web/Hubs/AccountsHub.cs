@@ -17,8 +17,8 @@ using Conscience.Web.Logger;
 namespace Conscience.Web.Hubs
 {
     [Authorize]
-    [HubName("HostsHub")]
-    public class HostsHub : Hub
+    [HubName("AccountsHub")]
+    public class AccountsHub : Hub
     {
         private IUnityContainer _parentContainer;
 
@@ -34,7 +34,7 @@ namespace Conscience.Web.Hubs
             }
         }
 
-        public HostsHub(IUnityContainer container)
+        public AccountsHub(IUnityContainer container)
         {
             _parentContainer = container;
         }
@@ -81,8 +81,8 @@ namespace Conscience.Web.Hubs
         {
             if (Users.ContainsKey(Context.ConnectionId))
             {
-                var userId = Users[Context.ConnectionId];
-                Clients.Group("Web").HostDisconnected(userId);
+                var accountId = Users[Context.ConnectionId];
+                Clients.Group("Web").AccountDisconnected(accountId);
                 Users.Remove(Context.ConnectionId);
             }
 
@@ -108,7 +108,7 @@ namespace Conscience.Web.Hubs
             var accountId = Users[Context.ConnectionId];
             var account = AccountRepository.GetById(accountId);
             AccountRepository.UpdateDevice(account, deviceId);
-            Clients.Group(GroupWeb).HostConnected(account.Host.Id, account.UserName, account.Device.CurrentLocation);
+            Clients.Group(GroupWeb).AccountConnected(account.Id, account.Device.CurrentLocation);
             Groups.Add(Context.ConnectionId, GroupHosts);
         }
 
@@ -117,7 +117,7 @@ namespace Conscience.Web.Hubs
             Groups.Add(Context.ConnectionId, GroupWeb);
         }
 
-        public void LocationUpdates(List<Location> locations, BatteryStatus? status = null, PowerSource? powerSouce = null, int? batteryLevel = null)
+        public void LocationUpdates(List<Location> locations, BatteryStatus? batteryStatus = null, double? batteryLevel = null)
         {
             var firstLocation = locations.FirstOrDefault();
             
@@ -128,10 +128,10 @@ namespace Conscience.Web.Hubs
             foreach (var location in locations)
                 if (location.TimeStamp == default(DateTime))
                     location.TimeStamp = DateTime.Now;
-
-            var account = AccountRepository.UpdateLocations(accountId, locations, status, powerSouce, batteryLevel);
             
-            Clients.Group(GroupWeb).LocationUpdated(account.Host.Id, account.UserName, account.Device.CurrentLocation);
+            var account = AccountRepository.UpdateLocations(accountId, locations, batteryStatus, batteryLevel);
+            
+            Clients.Group(GroupWeb).LocationUpdated(account.Id, account.Device.CurrentLocation);
         }
 
         public void SendNotification(int userId)

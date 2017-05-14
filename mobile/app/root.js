@@ -18,8 +18,8 @@ import HostPage from './pages/HostPage';
 
 const client = new ApolloClient({
   networkInterface: createBatchingNetworkInterface({
-    uri: `${Constants.SERVER_URL }/api/graphql`,
-    batchInterval: 100,
+    uri: `${Constants.SERVER_URL}/api/graphql`,
+    batchInterval: 10,
     opts: {
       credentials: 'same-origin'
     }

@@ -22,7 +22,6 @@ namespace Conscience.Application.Graph.Entities.Devices
             Field(d => d.Online);
             Field(d => d.BatteryLevel);
             Field<BatteryStatusEnumGraphType>("batteryStatus", resolve: context => context.Source.BatteryStatus);
-            Field<PowerSourceEnumGraphType>("powerSource", resolve: context => context.Source.PowerSource);
             Field<LocationGraphType>("currentLocation", resolve: context => context.Source.CurrentLocation);
             Field<ListGraphType<LocationGraphType>>("locations", resolve: context => context.Source.Locations);
         }
@@ -33,14 +32,6 @@ namespace Conscience.Application.Graph.Entities.Devices
         public BatteryStatusEnumGraphType()
         {
             Name = "BatteryStatus";
-        }
-    }
-
-    public class PowerSourceEnumGraphType : EnumerationGraphType<PowerSource>
-    {
-        public PowerSourceEnumGraphType()
-        {
-            Name = "PowerSources";
         }
     }
 }

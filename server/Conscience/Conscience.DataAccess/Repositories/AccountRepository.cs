@@ -63,7 +63,7 @@ namespace Conscience.DataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public Account UpdateLocations(int accountId, List<Location> locations, BatteryStatus? status = null, PowerSource? powerSouce = null, int? batteryLevel = null)
+        public Account UpdateLocations(int accountId, List<Location> locations, BatteryStatus? status = null, double? batteryLevel = null)
         {
             var account = GetById(accountId);
             if (locations.Any())
@@ -73,10 +73,7 @@ namespace Conscience.DataAccess.Repositories
 
             if (status.HasValue)
                 account.Device.BatteryStatus = status.Value;
-
-            if (powerSouce.HasValue)
-                account.Device.PowerSource = powerSouce.Value;
-
+            
             if (batteryLevel.HasValue && batteryLevel.Value >= 0)
                 account.Device.BatteryLevel = batteryLevel.Value;
 

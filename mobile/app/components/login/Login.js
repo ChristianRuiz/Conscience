@@ -1,13 +1,14 @@
 import React from 'react';
-import { graphql, gql } from 'react-apollo';
+import { graphql, gql, withApollo } from 'react-apollo';
 import {
   StyleSheet,
-  Text,
   TextInput,
   View
 } from 'react-native';
 import { Redirect } from 'react-router-native';
 import { Button } from 'react-native-material-ui';
+
+import query from '../../queries/HostDetailQuery';
 
 class Login extends React.Component {
   constructor(props) {
@@ -16,10 +17,23 @@ class Login extends React.Component {
     this._doLogin = this._doLogin.bind(this);
 
     this.state = {
-      userName: 'maeve', // TODO: This values are just for development
+      userName: 'dolores', // TODO: This values are just for development
       password: '123456',
       hasError: false
     };
+  }
+
+  componentDidMount() {
+    let data;
+
+    try {
+      data = this.props.client.readQuery({ query });
+    } catch (e) {
+      console.log('There is no current account on the cache');
+      return;
+    }
+
+    this.state.currentUser = data.accounts.current;
   }
 
   _doLogin() {
@@ -63,6 +77,7 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
+  client: React.PropTypes.object.isRequired,
   mutate: React.PropTypes.func.isRequired
 };
 
@@ -92,4 +107,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default graphql(mutation)(Login);
+export default withApollo(graphql(mutation)(Login));

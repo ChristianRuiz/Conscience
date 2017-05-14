@@ -18,7 +18,7 @@ class HostClientTest extends React.Component {
     };
 
     this.connection = $.hubConnection('/signalr/hubs');
-    this.proxy = this.connection.createHubProxy('HostsHub');
+    this.proxy = this.connection.createHubProxy('AccountsHub');
   }
 
   _connect() {
@@ -41,7 +41,7 @@ class HostClientTest extends React.Component {
 
     location.Longitude += random;
 
-    this.proxy.invoke('locationUpdates', [location], null, null, null);
+    this.proxy.invoke('locationUpdates', [location], null, null);
   }
 
   _disconnect() {

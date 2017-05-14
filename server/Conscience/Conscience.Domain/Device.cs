@@ -33,7 +33,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public int BatteryLevel
+        public double BatteryLevel
         {
             get;
             set;
@@ -44,13 +44,7 @@ namespace Conscience.Domain
             get;
             set;
         }
-
-        public PowerSource PowerSource
-        {
-            get;
-            set;
-        }
-
+        
         public virtual List<Location> Locations { get; set; }
 
         public Location CurrentLocation

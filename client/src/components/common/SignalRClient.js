@@ -7,25 +7,25 @@ class SignalRClient extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addHost = this.addHost.bind(this);
+    this.addAccount = this.addAccount.bind(this);
 
     const connection = $.hubConnection('/signalr/hubs');
-    const proxy = connection.createHubProxy('HostsHub');
+    const proxy = connection.createHubProxy('AccountsHub');
 
-    proxy.on('hostConnected', (userId, userName, location) => {
-      console.log(`hostConnected ${userId} ${userName} ${JSON.stringify(location)}`);
+    proxy.on('accountConnected', (accountId, location) => {
+      console.log(`accountConnected ${accountId} ${JSON.stringify(location)}`);
 
-      this.addHost(userId, userName, location);
+      this.addAccount(accountId, location);
     });
 
-    proxy.on('locationUpdated', (userId, userName, location) => {
-      console.log(`locationUpdated ${userId} ${userName} ${JSON.stringify(location)}`);
+    proxy.on('locationUpdated', (accountId, location) => {
+      console.log(`locationUpdated ${accountId} ${JSON.stringify(location)}`);
 
-      this.addHost(userId, userName, location);
+      this.addAccount(accountId, location);
     });
 
-    proxy.on('hostDisconnected', (userId) => {
-      console.log(`hostDisconnected ${userId}`);
+    proxy.on('accountDisconnected', (accountId) => {
+      console.log(`accountDisconnected ${accountId}`);
 
       // TODO: Implement
     });
@@ -49,24 +49,23 @@ class SignalRClient extends React.Component {
     });
   }
 
-  addHost(userId, userName, location) {
-    const query = gql`query GetHostsForMap {
-            hosts {
-                all {
-                        id,
-                        account {
-                            userName,
-                            device {
-                              currentLocation {
-                                latitude,
-                                longitude
-                              },
-                              online
-                            }
-                        }
-                }
+  addAccount(accountId, location) {
+    const query = gql`query GetAccountsForMap {
+        accounts {
+          all {
+            id
+            userName
+            device {
+              id
+              currentLocation {
+                latitude
+                longitude
+              }
+              online
             }
+          }
         }
+      }
     `;
 
     let data;
@@ -74,25 +73,49 @@ class SignalRClient extends React.Component {
     try {
       data = this.props.client.readQuery({ query });
     } catch (e) {
-      console.log('There are no hosts on the cache');
+      console.log('There are no accounts on the cache');
       return;
     }
 
-    const host = data.hosts.all.find(h => h.id === userId);
+    const account = data.accounts.all.find(h => h.id === accountId);
 
-    if (!host) {
-      console.warn(`There is no host cached with id: ${userId}`);
+    if (!account) {
+      console.warn(`There is no account cached with id: ${accountId}`);
       return;
     }
 
-    if (location) {
-      if (!host.account.device) {
-        host.account.device = { currentLocation: {} };
-      }
-
-      host.account.device.currentLocation.latitude = location.Latitude;
-      host.account.device.currentLocation.longitude = location.Longitude;
+    if (!location) {
+      return;
     }
+
+    if (!account.device || !account.device.currentLocation) {
+      const updateQuery = gql`query UpdateAccount($accountId:Int!) {
+          accounts {
+            byId(id: $accountId) {
+              id
+              userName
+              device {
+                id
+                currentLocation {
+                  latitude
+                  longitude
+                }
+                online
+              }
+            }
+          }
+        }
+    `;
+
+      this.props.client.query({
+        query: updateQuery,
+        variables: { accountId }
+      });
+      return;
+    }
+
+    account.device.currentLocation.latitude = location.Latitude;
+    account.device.currentLocation.longitude = location.Longitude;
 
     this.props.client.writeQuery({ query, data });
   }

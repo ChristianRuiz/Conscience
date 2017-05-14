@@ -50,7 +50,6 @@
     <Compile Include="Device.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Enums\BatteryStatus.cs" />
-    <Compile Include="Enums\PowerSource.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Memory.cs" />

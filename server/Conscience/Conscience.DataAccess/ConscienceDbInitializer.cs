@@ -113,7 +113,7 @@ namespace Conscience.DataAccess
                     UserName = "teddy",
                     PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
                 };
-                peter.Roles.Add(hostRole);
+                teddy.Roles.Add(hostRole);
                 context.Accounts.Add(teddy);
 
                 var maeve = new ConscienceAccount
@@ -121,7 +121,7 @@ namespace Conscience.DataAccess
                     UserName = "maeve",
                     PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
                 };
-                peter.Roles.Add(hostRole);
+                maeve.Roles.Add(hostRole);
                 context.Accounts.Add(maeve);
 
                 var escaton = new ConscienceAccount
@@ -129,7 +129,7 @@ namespace Conscience.DataAccess
                     UserName = "escaton",
                     PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
                 };
-                peter.Roles.Add(hostRole);
+                escaton.Roles.Add(hostRole);
                 context.Accounts.Add(escaton);
                 
                 context.SaveChanges();

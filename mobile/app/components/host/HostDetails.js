@@ -5,7 +5,8 @@ import {
   View,
   ScrollView
 } from 'react-native';
-import { graphql, gql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import query from '../../queries/HostDetailQuery';
 
 class HostDetails extends React.Component {
   render() {
@@ -57,76 +58,6 @@ class HostDetails extends React.Component {
 HostDetails.propTypes = {
   data: React.PropTypes.object.isRequired
 };
-
-const query = gql`{
-  accounts {
-    current {
-      host {
-        id
-        account {
-          userName
-          device {
-            lastConnection
-            online
-            batteryLevel
-          }
-        }
-        currentCharacter {
-          assignedOn
-          character {
-            name
-            age
-            gender
-            story
-            narrativeFunction
-            triggers {
-              id
-              description
-            }
-            plots {
-              id
-              plot {
-                name
-                description
-              }
-              description
-            }
-            memories {
-              id
-              description
-            }
-            relations {
-              id
-              description
-              character {
-                name
-              }
-            }
-            plotEvents {
-              id
-              plot {
-                name
-              }
-              description
-              location
-              hour
-              minute
-              characters {
-                id
-                name
-              }
-            }
-          }
-        }
-        stats {
-          name
-          value
-        }
-      }
-    }
-  }
-}
-`;
 
 const styles = StyleSheet.create({
   container: {

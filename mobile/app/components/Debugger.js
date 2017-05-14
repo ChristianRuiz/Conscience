@@ -9,15 +9,9 @@ import { Button } from 'react-native-material-ui';
 
 import { graphql, gql } from 'react-apollo';
 
-import AudioService from '../services/AudioService';
-
-let audioService = null;
+import LogoutButton from './login/LogoutButton';
 
 class Debugger extends React.Component {
-  componentDidMount() {
-    audioService = new AudioService();
-  }
-
   render() {
     if (this.props.data.loading || !this.props.data.accounts) {
       return <View />;
@@ -41,27 +35,32 @@ class Debugger extends React.Component {
           <Text>time: {device.currentLocation.timeStamp}</Text>
         </View>) : <View /> }
 
-        <Button raised text="1" onPress={() => audioService.playSound('1.mp3')} />
-        <Button raised text="8" onPress={() => audioService.playSound('8.mp3')} />
-        <Button raised text="Moderna" onPress={() => audioService.playSound('uploads/moderna.mp3')} />
+        <Button raised text="1" onPress={() => this.props.audioService.playSound('1.mp3')} />
+        <Button raised text="8" onPress={() => this.props.audioService.playSound('8.mp3')} />
+        <Button raised text="Moderna" onPress={() => this.props.audioService.playSound('uploads/moderna.mp3')} />
+        <LogoutButton />
       </View>
     );
   }
 }
 
 Debugger.propTypes = {
-  data: React.PropTypes.object.isRequired
+  data: React.PropTypes.object.isRequired,
+  audioService: React.PropTypes.object.isRequired
 };
 
 const query = gql`
 {
   accounts {
     current {
+      id,
       device {
+        id,
         deviceId,
         batteryLevel,
         batteryStatus,
         currentLocation {
+          id,
           latitude,
           longitude,
           timeStamp

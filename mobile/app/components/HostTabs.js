@@ -4,13 +4,16 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import type { NavigationState } from 'react-native-tab-view/types';
 
+import { withApollo } from 'react-apollo';
+
 import HostDetails from './host/HostDetails';
 import PlotEvents from './host/PlotEvents';
 import Memories from './host/Memories';
 import Notifications from './host/Notifications';
 import Debugger from './Debugger';
 
-import SignalRService from './services/SignalRService';
+import AudioService from '../services/AudioService';
+import SignalRService from '../services/SignalRService';
 
 type Route = {
   key: string,
@@ -20,8 +23,11 @@ type Route = {
 
 type State = NavigationState<Route>;
 
+let audioService = null;
+let signalRService = null;
+
 class HostTabs extends React.Component {
-  static title = 'Bottom bar with indicator';
+  static title = 'Conscience';
   static appbarElevation = 4;
 
   state: State = {
@@ -83,10 +89,7 @@ class HostTabs extends React.Component {
     switch (route.key) {
       case '1':
         return (
-          <View style={styles.container}>
-            <HostDetails />
-            <SignalRService />
-          </View>
+          <HostDetails />
         );
       case '2':
         return (
@@ -102,23 +105,34 @@ class HostTabs extends React.Component {
         );
       case '5':
         return (
-          <Debugger />
+          <Debugger audioService={audioService} />
         );
       default:
         return null;
     }
   };
 
+  componentDidMount() {
+    if (audioService == null) {
+      audioService = new AudioService();
+      signalRService = new SignalRService(this.props.client, navigator, audioService);
+    }
+  }
+
   render() {
     return (<TabViewAnimated
-        style={[styles.container, this.props.style]}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderFooter={this._renderFooter}
-        onRequestChangeTab={this._handleChangeTab}
-      />);
+      style={[styles.container, this.props.style]}
+      navigationState={this.state}
+      renderScene={this._renderScene}
+      renderFooter={this._renderFooter}
+      onRequestChangeTab={this._handleChangeTab}
+    />);
   }
 }
+
+HostTabs.propTypes = {
+  client: React.PropTypes.object.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -159,4 +173,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HostTabs;
+export default withApollo(HostTabs);

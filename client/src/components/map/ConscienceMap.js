@@ -6,7 +6,6 @@ import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
 import HostPopup from './HostPopup';
-import InfoPanel from './InfoPanel';
 
 class ConscienceMap extends React.Component {
   constructor(props) {
@@ -27,22 +26,20 @@ class ConscienceMap extends React.Component {
       <Map center={this.state.defaultPosition} zoom={18} style={{ height: 500 }}>
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
         {
-          this.props.data.hosts.all
-          .filter(host => host.account.device && host.account.device.currentLocation)
-          .map(host =>
+          this.props.data.accounts.all
+          .filter(account => account.host && account.device && account.device.currentLocation)
+          .map(account =>
             <Marker
-              key={host.id}
-              position={[host.account.device.currentLocation.latitude,
-                host.account.device.currentLocation.longitude]}
-              onclick={() => this.setState(Object.assign({}, this.state, { selectedHost: host }))}
+              key={account.id}
+              position={[account.device.currentLocation.latitude,
+                account.device.currentLocation.longitude]}
             >
               <Popup>
-                <HostPopup host={host} />
+                <HostPopup account={account} />
               </Popup>
             </Marker>)
         }
       </Map>
-      <InfoPanel host={this.state.selectedHost} />
     </div>);
   }
 }
@@ -51,22 +48,36 @@ ConscienceMap.propTypes = {
   data: React.PropTypes.object.isRequired
 };
 
-const query = gql`query GetHostsForMap {
-            hosts {
-                all {
-                        id,
-                        account {
-                            userName,
-                            device {
-                              currentLocation {
-                                latitude,
-                                longitude
-                              },
-                              online
-                            }
-                        }
+const query = gql`query GetAllAccountsForMap
+        {
+          accounts {
+            all {
+              id
+              userName
+              device {
+                id
+                currentLocation {
+                  latitude
+                  longitude
                 }
+                online
+              },
+              host {
+                id,
+                currentCharacter {
+                  id,
+                  character {
+                    id,
+                    name
+                  }
+                }
+              },
+              employee {
+                id,
+                name
+              }
             }
+          }
         }
       `;
 

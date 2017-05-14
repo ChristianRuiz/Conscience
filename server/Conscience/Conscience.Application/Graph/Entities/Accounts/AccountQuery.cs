@@ -26,6 +26,12 @@ namespace Conscience.Application.Graph.Entities.Accounts
             Field<AccountGraphType>("current",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
                 resolve: context => accountService.CurrentUser).CurrentUserQuery();
+
+            Field<AccountGraphType>("byId",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "account id" }
+                    ),
+                resolve: context => accountRepo.GetById(context.GetArgument<int>("id")));
         }
     }
 }
