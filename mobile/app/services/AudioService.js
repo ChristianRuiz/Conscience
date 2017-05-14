@@ -1,3 +1,4 @@
+import BackgroundTimer from 'react-native-background-timer';
 import RNFS from 'react-native-fs';
 import Sound from 'react-native-sound';
 
@@ -63,7 +64,7 @@ class AudioService {
             console.log('playback failed due to audio decoding errors');
             this.currentAudio.release();
             
-            setTimeout(() => {
+            BackgroundTimer.setTimeout(() => {
               this._soundLoop();
             }, 1000);
           }

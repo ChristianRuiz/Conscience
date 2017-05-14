@@ -13,6 +13,7 @@
     "react": "16.0.0-alpha.6",
     "react-apollo": "^1.2.0",
     "react-native": "0.44.0",
+    "react-native-background-timer": "^1.0.1",
     "react-native-device-battery": "git+https://git@github.com/robinpowered/react-native-device-battery.git#b7cc53a51810389c226efec8da9e45a38e49c2ca",
     "react-native-device-info": "^0.10.2",
     "react-native-fs": "^2.3.2",

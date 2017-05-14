@@ -1,4 +1,4 @@
-import React from 'react';
+import BackgroundTimer from 'react-native-background-timer';
 import DeviceBattery from 'react-native-device-battery';
 import DeviceInfo from 'react-native-device-info';
 import signalr from 'react-native-signalr';
@@ -46,14 +46,17 @@ class SignalRService {
     .done(() => {
       console.log(`Now connected, connection ID=${this.connection.id}`);
       this.proxy.invoke('subscribeHost', this.deviceId).done(() => {
-        setInterval(this._onTimer, 1000 * 15);
+        BackgroundTimer.setInterval(() => {
+          this._onTimer();
+        }, 1000 * 15);
+
         this._onTimer();
       });
     })
     .fail(() => { console.log('Could not connect to SignalR'); });
 
     this.connection.disconnected(() => {
-      setTimeout(() => {
+      BackgroundTimer.setTimeout(() => {
         this.connection.start()
         .done(() => {
           console.log(`Now reconnected, connection ID=${this.connection.id}`);

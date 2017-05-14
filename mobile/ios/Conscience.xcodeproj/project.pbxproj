@@ -52,6 +52,7 @@
 		6B80EE9776A24DCAB64CEF93 /* libRNBackgroundGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5020547676C149899431DF46 /* libRNBackgroundGeolocation.a */; };
 		69C6CD76DF6E43FB9542B1AE /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C4889F863146DF93DF1A00 /* libsqlite3.tbd */; };
 		361EA1AAAC45428B8890D344 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F05CC212924F4E01AF3A7ABA /* libRNDeviceInfo.a */; };
+		98E932CCA0D942CDAECB58DC /* libRNBackgroundTimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B68DFFE8E84A6098BFA9DF /* libRNBackgroundTimer.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +295,8 @@
 		64C4889F863146DF93DF1A00 /* libsqlite3.tbd */ = {isa = PBXFileReference; name = "libsqlite3.tbd"; path = "usr/lib/libsqlite3.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		0C4D617B262B4D278ACD98C0 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; name = "RNDeviceInfo.xcodeproj"; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		F05CC212924F4E01AF3A7ABA /* libRNDeviceInfo.a */ = {isa = PBXFileReference; name = "libRNDeviceInfo.a"; path = "libRNDeviceInfo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		7CB35B99FCFC40EF824C0349 /* RNBackgroundTimer.xcodeproj */ = {isa = PBXFileReference; name = "RNBackgroundTimer.xcodeproj"; path = "../node_modules/react-native-background-timer/ios/RNBackgroundTimer.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		54B68DFFE8E84A6098BFA9DF /* libRNBackgroundTimer.a */ = {isa = PBXFileReference; name = "libRNBackgroundTimer.a"; path = "libRNBackgroundTimer.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +330,7 @@
 				6B80EE9776A24DCAB64CEF93 /* libRNBackgroundGeolocation.a in Frameworks */,
 				69C6CD76DF6E43FB9542B1AE /* libsqlite3.tbd in Frameworks */,
 				361EA1AAAC45428B8890D344 /* libRNDeviceInfo.a in Frameworks */,
+				98E932CCA0D942CDAECB58DC /* libRNBackgroundTimer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +503,7 @@
 				99B19180CBCC4F6FBCC76E34 /* RNVectorIcons.xcodeproj */,
 				3B64E562CFE1452F94895B4B /* RNBackgroundGeolocation.xcodeproj */,
 				0C4D617B262B4D278ACD98C0 /* RNDeviceInfo.xcodeproj */,
+				7CB35B99FCFC40EF824C0349 /* RNBackgroundTimer.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1071,6 +1076,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1080,6 +1086,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
+					"$(SRCROOT)\..\node_modules\react-native-background-timer\ios",
 				);
 			};
 			name = Debug;
@@ -1106,6 +1113,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1115,6 +1123,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
+					"$(SRCROOT)\..\node_modules\react-native-background-timer\ios",
 				);
 			};
 			name = Release;
@@ -1142,6 +1151,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
+					"$(SRCROOT)\..\node_modules\react-native-background-timer\ios",
 				);
 			};
 			name = Debug;
@@ -1168,6 +1178,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
+					"$(SRCROOT)\..\node_modules\react-native-background-timer\ios",
 				);
 			};
 			name = Release;
@@ -1203,6 +1214,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1212,6 +1224,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
+					"$(SRCROOT)\..\node_modules\react-native-background-timer\ios",
 				);
 			};
 			name = Debug;
@@ -1247,6 +1260,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1256,6 +1270,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-vector-icons\RNVectorIconsManager",
 					"$(SRCROOT)\..\node_modules\react-native-background-geolocation\ios\RNBackgroundGeolocation/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\RNDeviceInfo",
+					"$(SRCROOT)\..\node_modules\react-native-background-timer\ios",
 				);
 			};
 			name = Release;
@@ -1286,6 +1301,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 			};
 			name = Debug;
@@ -1310,6 +1326,7 @@
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
