@@ -10,7 +10,7 @@ import query from '../../queries/HostDetailQuery';
 
 class Memories extends React.Component {
   render() {
-    if (this.props.data.loading || !this.props.data.accounts) {
+    if (this.props.data.loading || !this.props.data.accounts || !this.props.data.accounts.current) {
       return <View style={styles.container}><Text>Loading...</Text></View>;
     }
 

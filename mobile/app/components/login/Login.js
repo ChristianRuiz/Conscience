@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    width: 200
+    width: 200,
+    height: 50
   }
 });
 

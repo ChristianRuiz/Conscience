@@ -1,18 +1,23 @@
+import { Platform } from 'react-native';
 import BackgroundTimer from 'react-native-background-timer';
 import DeviceBattery from 'react-native-device-battery';
 import DeviceInfo from 'react-native-device-info';
 import signalr from 'react-native-signalr';
 import { gql } from 'react-apollo';
+import Location from 'react-native-location';
 
 import Constants from '../constants';
 
 class SignalRService {
   constructor(apolloClient, navigator, audioService) {
     this.client = apolloClient;
+    this.audioService = audioService;
 
     this._onTimer = this._onTimer.bind(this);
-
-    this.audioService = audioService;
+    
+    if (Platform.OS === 'ios') {
+      Location.requestAlwaysAuthorization();
+    }
 
     this.deviceId = DeviceInfo.getDeviceId();
 
@@ -40,6 +45,7 @@ class SignalRService {
     });
 
     this.connection = signalr.hubConnection(`${Constants.SERVER_URL}/signalr/hubs`);
+    
     this.proxy = this.connection.createHubProxy('AccountsHub');
 
     this.connection.start()

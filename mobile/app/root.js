@@ -1,14 +1,15 @@
 import React from 'react';
 import {
   StyleSheet,
-  View
+  View,
+  Platform
 } from 'react-native';
 import { NativeRouter, Route, Switch } from 'react-router-native';
 import {
   ApolloClient,
   ApolloProvider
 } from 'react-apollo';
-import { createBatchingNetworkInterface } from 'apollo-client';
+import { createBatchingNetworkInterface, createNetworkInterface } from 'apollo-client';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
 
 import Constants from './constants';
@@ -16,14 +17,43 @@ import Constants from './constants';
 import LoginPage from './pages/LoginPage';
 import HostPage from './pages/HostPage';
 
-const client = new ApolloClient({
-  networkInterface: createBatchingNetworkInterface({
+const networkInterface = createNetworkInterface({
     uri: `${Constants.SERVER_URL}/api/graphql`,
     batchInterval: 10,
     opts: {
       credentials: 'same-origin'
     }
-  })
+  });
+
+//Hack: iOS is not sending the cookie credentials, so we force them
+if (Platform.OS === 'ios') {
+  networkInterface.useAfter([{
+    applyAfterware({ response }, next) {
+      if (response.headers) {
+        const cookie = response.headers.get("Set-Cookie");
+        if (cookie) {
+          global.cookieValue = cookie.split(';')[0];
+        }
+      }
+      next();
+    }
+  }]);
+
+  networkInterface.use([{
+    applyMiddleware(req, next) {
+      if (global.cookieValue) {
+        if (!req.options.headers) {
+          req.options.headers = {};
+        }
+        req.options.headers['Cookie'] = global.cookieValue;
+      }
+      next();
+    }
+  }]);
+}
+
+const client = new ApolloClient({
+  networkInterface
 });
 
 const uiTheme = {
