@@ -57,6 +57,8 @@ class SignalRService {
 
     this.connection.disconnected(() => {
       BackgroundTimer.setTimeout(() => {
+        this.connection = signalr.hubConnection(`${Constants.SERVER_URL}/signalr/hubs`);
+        this.proxy = this.connection.createHubProxy('AccountsHub');
         this.connection.start()
         .done(() => {
           console.log(`Now reconnected, connection ID=${this.connection.id}`);
@@ -98,10 +100,10 @@ class SignalRService {
         this.proxy.invoke('locationUpdates', serviceLocations, this.charging ? 1 : 0, this.batteryLevel).then(() => {
           this.locations = [];
         }).fail((error) => {
-          console.warn(`Unable to to send location updates to SignalR ${error}`);
+          console.log(`Unable to to send location updates to SignalR ${error}`);
         });
       } catch (e) {
-        console.warn(`Unable to send updates to SignalR: ${e}`);
+        console.log(`Unable to send updates to SignalR: ${e}`);
       }
 
       if (serviceLocations.length > 0) {
@@ -132,7 +134,7 @@ accounts {
         try {
           data = this.client.readQuery({ query });
         } catch (e) {
-          console.warn('There is no current account on the cache');
+          console.log('There is no current account on the cache');
           return;
         }
 

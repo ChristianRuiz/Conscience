@@ -18,7 +18,7 @@ class LogoutButton extends React.Component {
         .then(() => {
           this.setState({ logout: true });
         }).catch(() => {
-          console.warn('Unable to logout');
+          console.log('Unable to logout');
         });
   }
 

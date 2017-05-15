@@ -35,8 +35,10 @@ class Debugger extends React.Component {
           <Text>time: {device.currentLocation.timeStamp}</Text>
         </View>) : <View /> }
 
-        <Button raised text="1" onPress={() => this.props.audioService.playSound('1.mp3')} />
-        <Button raised text="8" onPress={() => this.props.audioService.playSound('8.mp3')} />
+        <Button raised text="Play 1" onPress={() => this.props.audioService.playSound('1.mp3')} />
+        <Button raised text="Play 8" onPress={() => this.props.audioService.playSound('8.mp3')} />
+        <Button raised text="Queue 1" onPress={() => this.props.audioService.queueSound('1.mp3')} />
+        <Button raised text="Queue 8" onPress={() => this.props.audioService.queueSound('8.mp3')} />
         <Button raised text="Moderna" onPress={() => this.props.audioService.playSound('uploads/moderna.mp3')} />
         <LogoutButton />
       </View>

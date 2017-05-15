@@ -16,7 +16,7 @@ class AudioService {
     this._soundLoop = this._soundLoop.bind(this);
     this.playSound = this.playSound.bind(this);
 
-    Sound.setCategory('Playback');
+    Sound.setCategory('PlayAndRecord');
 
     this._soundLoop();
   }
@@ -24,59 +24,59 @@ class AudioService {
   audioQueue = [];
 
   _soundLoop() {
-    if (this.audioQueue.length > 0) {
-      const audio = this.audioQueue.shift();
-      this._playSound(audio.fileName).then(() => {
-        audio.resolve();
+    // Playing an empty sound in background to avoid the OS to release our App
+    this._playSound('empty.mp3', true).catch(() => {
+      BackgroundTimer.setTimeout(() => {
         this._soundLoop();
-      }).catch((reason) => {
-        audio.reject(reason);
-      });
-    } else {
-      this._playSound('empty.mp3').then(() => {
-        this._soundLoop();
-      });
-    }
+      }, 1000);
+    });
   }
 
-  _playSoundFromFile(filePath) {
+  _playSoundFromFile(filePath, loop) {
     return new Promise((resolve, reject) => {
-      //console.log(`loading audio: ${filePath}`);
-      if (this.currentAudio) {
-        this.currentAudio.stop();
+      // console.log(`loading audio: ${filePath}`);
+      if (!loop && this.currentAudio) {
+        try {
+          this.currentAudio.stop();
+          this.currentAudio.release();
+        } catch (e) {
+        }
       }
 
-      this.currentAudio = new Sound(filePath, '', (error) => {
+      const sound = new Sound(filePath, '', (error) => {
         if (error) {
           console.log('failed to load the sound', error);
           reject('failed to load the sound');
           return;
         }
-        // loaded successfully
-        // console.log(`duration in seconds: ${this.currentAudio.getDuration()}number of channels: ${this.currentAudio.getNumberOfChannels()}`);
 
-        this.currentAudio.play((success) => {
+        if (loop) {
+          sound.setNumberOfLoops(-1);
+        }
+
+        sound.play((success) => {
           if (success) {
             // console.log('successfully finished playing');
-            this.currentAudio.release();
+            sound.release();
             resolve();
           } else {
             console.log('playback failed due to audio decoding errors');
-            this.currentAudio.release();
-            
-            BackgroundTimer.setTimeout(() => {
-              this._soundLoop();
-            }, 1000);
+            sound.release();
+            reject('playback failed');
           }
         });
       });
+
+      if (!loop) {
+        this.currentAudio = sound;
+      }
     });
   }
 
-  _playSound(fileName) {
+  _playSound(fileName, loop = false) {
     return new Promise((resolve, reject) => {
       const self = this;
-      var a = '';
+
       const localFileName = fileName.split('/').reverse()[0];
 
       const filePath = `${RNFS.DocumentDirectoryPath}/${localFileName}`;
@@ -90,16 +90,29 @@ class AudioService {
             console.log('file downloaded');
             console.log(JSON.stringify(r));
 
-            self._playSoundFromFile(filePath).then(resolve).catch(reject);
+            self._playSoundFromFile(filePath, loop).then(resolve).catch(reject);
           });
         } else {
-          self._playSoundFromFile(filePath).then(resolve).catch(reject);
+          self._playSoundFromFile(filePath, loop).then(resolve).catch(reject);
         }
       });
     });
   }
 
   playSound(fileName) {
+    return this._playSound(fileName).then(() => {
+      if (this.audioQueue.length > 0) {
+        const audio = this.audioQueue.shift();
+        this.playSound(audio);
+      }
+    });
+  }
+
+  queueSound(fileName) {
+    if (this.audioQueue.length === 0) {
+      return this.playSound(fileName);
+    }
+
     return new Promise((resolve, reject) => {
       this.audioQueue.push({
         fileName,
