@@ -19,8 +19,15 @@ import HostPage from './pages/HostPage';
 
 import reportException from './services/ReportException';
 
+const defaultHandler = ErrorUtils.getGlobalHandler && ErrorUtils.getGlobalHandler() || ErrorUtils._globalHandler;
+
 async function wrapGlobalHandler(error, isFatal) {
   reportException(error, isFatal);
+
+  if (__DEV__) {
+    // after you're finished, call the defaultHandler so that react-native also gets the error
+    global.defaultHandler(error, isFatal);
+  }
 }
 
 ErrorUtils.setGlobalHandler(wrapGlobalHandler);
