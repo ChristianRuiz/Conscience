@@ -40,6 +40,8 @@ class Debugger extends React.Component {
         <Button raised text="Queue 1" onPress={() => this.props.audioService.queueSound('1.mp3')} />
         <Button raised text="Queue 8" onPress={() => this.props.audioService.queueSound('8.mp3')} />
         <Button raised text="Moderna" onPress={() => this.props.audioService.playSound('uploads/moderna.mp3')} />
+        <Button raised text="Error" onPress={() => { const a = null; a.test; }} />
+        <Button raised text="Alert" onPress={() => alert('Testing!')} />
         <LogoutButton />
       </View>
     );
@@ -48,7 +50,11 @@ class Debugger extends React.Component {
 
 Debugger.propTypes = {
   data: React.PropTypes.object.isRequired,
-  audioService: React.PropTypes.object.isRequired
+  audioService: React.PropTypes.object
+};
+
+Debugger.defaultProps = {
+  audioService: { }
 };
 
 const query = gql`

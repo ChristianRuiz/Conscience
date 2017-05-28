@@ -333,6 +333,7 @@
     <Compile Include="App_Start\UnityActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\BulkImportController.cs" />
+    <Compile Include="Controllers\Api\ErrorsController.cs" />
     <Compile Include="Controllers\Api\GraphQLController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GraphQLController.cs" />

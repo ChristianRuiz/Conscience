@@ -14,7 +14,9 @@ class SignalRService {
     this.audioService = audioService;
 
     this._onTimer = this._onTimer.bind(this);
-    
+    this._connect = this._connect.bind(this);
+    this.reconnect = this.reconnect.bind(this);
+
     if (Platform.OS === 'ios') {
       Location.requestAlwaysAuthorization();
     }
@@ -42,40 +44,69 @@ class SignalRService {
 
     this.watchID = navigator.geolocation.watchPosition((location) => {
       this.locations.push(location);
-    });
+    }, (error) => {
+      throw error;
+    },
+      {
+        enableHighAccuracy: false,
+        timeout: 10000,
+        maximumAge: 0
+      });
+
+    this._connect();
+  }
+
+  reconnect() {
+    if (!this.reconnecting) {
+      this.reconnecting = true;
+
+      this.audioService.playSound('2.mp3');
+
+      BackgroundTimer.setTimeout(() => {
+        this._connect();
+      }, 5000); // Restart connection after 5 seconds.
+    }
+  }
+
+  _connect() {
+    this.audioService.playSound('3.mp3');
+
+    if (this.connection) {
+      try {
+        this.connection.stop();
+      } catch (e) {}
+    }
 
     this.connection = signalr.hubConnection(`${Constants.SERVER_URL}/signalr/hubs`);
-    
     this.proxy = this.connection.createHubProxy('AccountsHub');
-
     this.connection.start()
-    .done(() => {
-      console.log(`Now connected, connection ID=${this.connection.id}`);
-      this.proxy.invoke('subscribeHost', this.deviceId).done(() => {
-        BackgroundTimer.setInterval(() => {
-          this._onTimer();
-        }, 1000 * 15);
+      .done(() => {
+        console.log(`Now reconnected, connection ID=${this.connection.id}`);
+        this.proxy.invoke('subscribeHost', this.deviceId).done(() => {
+          this.reconnecting = false;
 
-        this._onTimer();
-      });
-    })
-    .fail(() => { console.log('Could not connect to SignalR'); });
+          if (this.intervalId) {
+            BackgroundTimer.clearInterval(this.intervalId);
+          }
+
+          this.intervalId = BackgroundTimer.setInterval(() => {
+            this._onTimer();
+          }, 1000 * 15);
+
+          this._onTimer();
+        });
+      })
+      .fail(() => { this.reconnecting = false; this.reconnect(); });
 
     this.connection.disconnected(() => {
-      BackgroundTimer.setTimeout(() => {
-        this.connection = signalr.hubConnection(`${Constants.SERVER_URL}/signalr/hubs`);
-        this.proxy = this.connection.createHubProxy('AccountsHub');
-        this.connection.start()
-        .done(() => {
-          console.log(`Now reconnected, connection ID=${this.connection.id}`);
-          this.proxy.invoke('subscribeHost', this.deviceId);
-        })
-        .fail(() => { console.log('Could not connect'); });
-      }, 5000); // Restart connection after 5 seconds.
+      this.reconnect();
     });
   }
 
   _onTimer() {
+    // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
+    this.audioService.playSound('empty.mp3');
+
     const update = {
       deviceId: this.deviceId
     };
@@ -107,9 +138,11 @@ class SignalRService {
           this.locations = [];
         }).fail((error) => {
           console.log(`Unable to to send location updates to SignalR ${error}`);
+          this.reconnect();
         });
       } catch (e) {
         console.log(`Unable to send updates to SignalR: ${e}`);
+        this.reconnect();
       }
 
       if (serviceLocations.length > 0) {

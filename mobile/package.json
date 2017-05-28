@@ -24,7 +24,8 @@
     "react-native-tab-view": "0.0.65",
     "react-native-vector-icons": "^4.1.1",
     "react-router-native": "^4.1.1",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "stacktrace-parser": "^0.1.4"
   },
   "devDependencies": {
     "babel": "^6.23.0",

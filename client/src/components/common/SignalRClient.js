@@ -8,45 +8,54 @@ class SignalRClient extends React.Component {
     super(props);
 
     this.addAccount = this.addAccount.bind(this);
+    this.reconnect = this.reconnect.bind(this);
 
-    const connection = $.hubConnection('/signalr/hubs');
-    const proxy = connection.createHubProxy('AccountsHub');
+    this.connection = $.hubConnection('/signalr/hubs');
+    this.proxy = this.connection.createHubProxy('AccountsHub');
 
-    proxy.on('accountConnected', (accountId, location) => {
+    this.proxy.on('accountConnected', (accountId, location) => {
       console.log(`accountConnected ${accountId} ${JSON.stringify(location)}`);
 
       this.addAccount(accountId, location);
     });
 
-    proxy.on('locationUpdated', (accountId, location) => {
+    this.proxy.on('locationUpdated', (accountId, location) => {
       console.log(`locationUpdated ${accountId} ${JSON.stringify(location)}`);
 
       this.addAccount(accountId, location);
     });
 
-    proxy.on('accountDisconnected', (accountId) => {
+    this.proxy.on('accountDisconnected', (accountId) => {
       console.log(`accountDisconnected ${accountId}`);
 
       // TODO: Implement
     });
 
-    connection.start()
+    this.proxy.on('broadcastError', (context, error) => {
+      console.log(`Client error: ${context} \n ${error}`);
+    });
+
+    this.connection.start()
     .done(() => {
-      console.log(`Now connected, connection ID=${connection.id}`);
-      proxy.invoke('subscribeWeb');
+      console.log(`Now connected, connection ID=${this.connection.id}`);
+      this.proxy.invoke('subscribeWeb');
     })
     .fail(() => { console.log('Could not connect'); });
 
-    connection.disconnected(() => {
-      setTimeout(() => {
-        connection.start()
-        .done(() => {
-          console.log(`Now reconnected, connection ID=${connection.id}`);
-          proxy.invoke('subscribeWeb');
-        })
-        .fail(() => { console.log('Could not connect'); });
-      }, 5000); // Restart connection after 5 seconds.
+    this.connection.disconnected(() => {
+      this.reconnect();
     });
+  }
+
+  reconnect() {
+    setTimeout(() => {
+      this.connection.start()
+        .done(() => {
+          console.log(`Now reconnected, connection ID=${this.connection.id}`);
+          this.proxy.invoke('subscribeWeb');
+        })
+        .fail(() => { this.reconnect(); });
+    }, 5000); // Restart connection after 5 seconds.
   }
 
   addAccount(accountId, location) {
