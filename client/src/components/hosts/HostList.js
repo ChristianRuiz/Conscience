@@ -75,21 +75,27 @@ const query = gql`query GetHosts {
               all {
                 id,
                 account {
+                  id,
                   userName
                 },
                 currentCharacter {
+                  id,
                   assignedOn,
                   character {
+                    id,
                     name
                   }
                 },
                 coreMemory1 {
+                  id,
                    locked
                 },
                 coreMemory2 {
+                  id,
                    locked
                 },
                 coreMemory3 {
+                  id,
                    locked
                 }
               }
