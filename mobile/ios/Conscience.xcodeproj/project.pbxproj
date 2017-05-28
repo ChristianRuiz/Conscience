@@ -54,7 +54,6 @@
 		98E932CCA0D942CDAECB58DC /* libRNBackgroundTimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B68DFFE8E84A6098BFA9DF /* libRNBackgroundTimer.a */; };
 		9FCA747749A0483C992F5F6E /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB2FEA02EDF24314A3CE4D78 /* EvilIcons.ttf */; };
 		AECDEA2BAC6645C4A3D6E25A /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B4A36E3E734F02AD79D23B /* libRNFS.a */; };
-		
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -760,7 +759,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = FA2NP3CNML;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = FA2NP3CNML;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1237,6 +1240,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FA2NP3CNML;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1249,7 +1253,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-device-infoRNDeviceInfo",
 					"$(SRCROOT)..\node_modules\neact-native-background-timerios",
-					"$(SRCROOT)..\node_modules\react-native-location",
+					"$(SRCROOT)..\node_modules\neact-native-location",
 				);
 				INFOPLIST_FILE = ConscienceTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1280,6 +1284,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = FA2NP3CNML;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-device-batteryiosDeviceBattery",
@@ -1288,7 +1293,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-device-infoRNDeviceInfo",
 					"$(SRCROOT)..\node_modules\neact-native-background-timerios",
-					"$(SRCROOT)..\node_modules\react-native-location",
+					"$(SRCROOT)..\node_modules\neact-native-location",
 				);
 				INFOPLIST_FILE = ConscienceTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1320,6 +1325,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = FA2NP3CNML;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-device-batteryiosDeviceBattery",
@@ -1328,7 +1334,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-device-infoRNDeviceInfo",
 					"$(SRCROOT)..\node_modules\neact-native-background-timerios",
-					"$(SRCROOT)..\node_modules\react-native-location",
+					"$(SRCROOT)..\node_modules\neact-native-location",
 				);
 				INFOPLIST_FILE = Conscience/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1337,7 +1343,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.notonlylarp.Conscience;
+				PRODUCT_BUNDLE_IDENTIFIER = net.beezy.Conscience;
 				PRODUCT_NAME = Conscience;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1348,6 +1354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FA2NP3CNML;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-device-batteryiosDeviceBattery",
@@ -1357,7 +1364,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-background-geolocationiosRNBackgroundGeolocation/**",
 					"$(SRCROOT)..\node_modules\neact-native-device-infoRNDeviceInfo",
 					"$(SRCROOT)..\node_modules\neact-native-background-timerios",
-					"$(SRCROOT)..\node_modules\react-native-location",
+					"$(SRCROOT)..\node_modules\neact-native-location",
 				);
 				INFOPLIST_FILE = Conscience/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1366,7 +1373,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.notonlylarp.Conscience;
+				PRODUCT_BUNDLE_IDENTIFIER = net.beezy.Conscience;
 				PRODUCT_NAME = Conscience;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1393,7 +1400,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-background-geolocationiosRNBackgroundGeolocation/**",
 					"$(SRCROOT)..\node_modules\neact-native-device-infoRNDeviceInfo",
 					"$(SRCROOT)..\node_modules\neact-native-background-timerios",
-					"$(SRCROOT)..\node_modules\react-native-location",
+					"$(SRCROOT)..\node_modules\neact-native-location",
 				);
 				INFOPLIST_FILE = "Conscience-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1442,7 +1449,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-background-geolocationiosRNBackgroundGeolocation/**",
 					"$(SRCROOT)..\node_modules\neact-native-device-infoRNDeviceInfo",
 					"$(SRCROOT)..\node_modules\neact-native-background-timerios",
-					"$(SRCROOT)..\node_modules\react-native-location",
+					"$(SRCROOT)..\node_modules\neact-native-location",
 				);
 				INFOPLIST_FILE = "Conscience-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
