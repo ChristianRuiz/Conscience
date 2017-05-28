@@ -5,6 +5,7 @@ import MapPage from './components/map/MapPage';
 import EmployeesPage from './components/employees/EmployeesPage';
 import HostsPage from './components/hosts/HostPage';
 import HostDetailPage from './components/hosts/HostDetailPage';
+import HostStatsPage from './components/hosts/HostStatsPage';
 import HostClientTestPage from './components/host-client-test/HostClientTestPage';
 import BulkImportPage from './components/bulk-import/BulkImportPage';
 import NotFound from './components/common/NotFound';
@@ -14,6 +15,7 @@ const Routes = () =>
     <Route path="/" exact component={MapPage} />
     <Route path="/hosts" component={HostsPage} />
     <Route path="/host-detail/:hostId" component={HostDetailPage} />
+    <Route path="/host-stats/:hostId" component={HostStatsPage} />
     <Route path="/employees" exact component={EmployeesPage} />
     <Route path="/client-test" component={HostClientTestPage} />
     <Route path="/bulk-import" component={BulkImportPage} />

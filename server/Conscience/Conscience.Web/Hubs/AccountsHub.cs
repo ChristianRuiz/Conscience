@@ -34,8 +34,11 @@ namespace Conscience.Web.Hubs
             }
         }
 
+        public static AccountsHub Current;
+
         public AccountsHub(IUnityContainer container)
         {
+            Current = this;
             _parentContainer = container;
         }
 
@@ -59,20 +62,21 @@ namespace Conscience.Web.Hubs
         
         private const string GroupHosts = "Hosts";
         private const string GroupWeb = "Web";
+        private const string GroupAdmins = "Admins";
 
         private static object _syncUsers = new object();
         private static Dictionary<string, int> Users = new Dictionary<string, int>();
         
         public override Task OnConnected()
         {
-            RegisterCurrentUser();
+            RegisterCurrentUserIfNeeded();
 
             return base.OnConnected();
         }
 
         public override Task OnReconnected()
         {
-            RegisterCurrentUser();
+            RegisterCurrentUserIfNeeded();
 
             return base.OnReconnected();
         }
@@ -82,14 +86,14 @@ namespace Conscience.Web.Hubs
             if (Users.ContainsKey(Context.ConnectionId))
             {
                 var accountId = Users[Context.ConnectionId];
-                Clients.Group("Web").AccountDisconnected(accountId);
+                Clients.Group(GroupWeb).AccountDisconnected(accountId);
                 Users.Remove(Context.ConnectionId);
             }
 
             return base.OnDisconnected(stopCalled);
         }
         
-        private void RegisterCurrentUser()
+        private void RegisterCurrentUserIfNeeded()
         {
             lock (_syncUsers)
             {
@@ -103,7 +107,7 @@ namespace Conscience.Web.Hubs
 
         public void SubscribeHost(string deviceId)
         {
-            RegisterCurrentUser();
+            RegisterCurrentUserIfNeeded();
 
             var accountId = Users[Context.ConnectionId];
             var account = AccountRepository.GetById(accountId);
@@ -115,10 +119,19 @@ namespace Conscience.Web.Hubs
         public void SubscribeWeb()
         {
             Groups.Add(Context.ConnectionId, GroupWeb);
+
+            var accountId = Context.Request.User.Identity.GetUserId<int>();
+            var account = AccountRepository.GetById(accountId);
+            if (account.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
+            {
+                Groups.Add(Context.ConnectionId, GroupAdmins);
+            }
         }
 
         public void LocationUpdates(List<Location> locations, BatteryStatus? batteryStatus = null, double? batteryLevel = null)
         {
+            RegisterCurrentUserIfNeeded();
+
             var firstLocation = locations.FirstOrDefault();
             
             var accountId = Users[Context.ConnectionId];
@@ -138,6 +151,25 @@ namespace Conscience.Web.Hubs
         {
             var userRegistration = Users.First(u => u.Value == userId);
             Clients.Client(userRegistration.Key).NotificationAudio(new NotificationAudio());
+        }
+        
+        public void ReportError(string error)
+        {
+            var errorContext = string.Empty;
+
+            if (Context.User != null && Context.User.Identity != null)
+            {
+                var accountId = Context.User.Identity.GetUserId<int>();
+                var account = AccountRepository.GetById(accountId);
+
+                if (account != null)
+                    errorContext += "Account: " + account.Id + " " + account.UserName + Environment.NewLine;
+
+                if (account.Device != null)
+                    errorContext += "Device: " + account.Device.DeviceId;
+            }
+
+            Clients.Group(GroupAdmins).BroadcastError(errorContext, error);
         }
     }
 }

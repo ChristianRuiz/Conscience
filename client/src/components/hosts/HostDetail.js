@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 
 class HostsDetail extends React.Component {
@@ -29,8 +29,10 @@ class HostsDetail extends React.Component {
 
       <ul>
         {host.stats.filter(stat => stat.value !== 10).map(stat =>
-          <li id={stat.name}><b>{stat.name}: </b> {stat.value}</li>)}
+          <li key={stat.name}><b>{stat.name}: </b> {stat.value}</li>)}
       </ul>
+
+      <Link to={`/host-stats/${host.id}`} >Stats chart</Link>
 
       {host.currentCharacter ? (<div>
 
@@ -38,21 +40,21 @@ class HostsDetail extends React.Component {
 
         <ul>
           {host.currentCharacter.character.memories.map(memory =>
-            <li id={memory.id}>{memory.description}</li>)}
+            <li key={memory.id}>{memory.description}</li>)}
         </ul>
 
         <h3>Triggers</h3>
 
         <ul>
           {host.currentCharacter.character.triggers.map(trigger =>
-            <li id={trigger.id}>{trigger.description}</li>)}
+            <li key={trigger.id}>{trigger.description}</li>)}
         </ul>
 
         <h3>Plots</h3>
 
         <ul>
           {host.currentCharacter.character.plots.map(plot =>
-            <li id={plot.id}>
+            <li key={plot.id}>
               <p><b>Plot: </b> {plot.plot.name}</p>
               <p><b>Plot description: </b></p>
               <p>{plot.plot.description}</p>
@@ -66,7 +68,7 @@ class HostsDetail extends React.Component {
 
           <ul>
             {host.currentCharacter.character.plotEvents.map(event =>
-              <li id={event.id}>
+              <li key={event.id}>
                 <p><b>{event.description}</b></p>
                 <p><b>Plot: </b>{event.plot.name}</p>
                 <p><b>Location: </b>{event.location}</p>
@@ -79,7 +81,7 @@ class HostsDetail extends React.Component {
 
           <ul>
             {host.currentCharacter.character.relations.map(relation =>
-              <li id={relation.id}>
+              <li key={relation.id}>
                 <p><b>{relation.character.name}: </b>{relation.description}</p>
               </li>)}
           </ul></div>) : '' }
@@ -99,16 +101,20 @@ const query = gql`query GetHostDetails($hostId:Int!) {
     {
       id,
       account {
+        id,
         userName,
         device {
+          id,
           lastConnection,
           online,
           batteryLevel
         }
       },
       currentCharacter {
+        id,
         assignedOn,
         character {
+          id,
           name,
           age,
           gender,
@@ -125,6 +131,7 @@ const query = gql`query GetHostDetails($hostId:Int!) {
           plots {
             id,
             plot {
+              id,
               name,
               description
             },
@@ -133,6 +140,7 @@ const query = gql`query GetHostDetails($hostId:Int!) {
           plotEvents {
             id,
             plot {
+              id,
               name
             },
             description,
@@ -148,6 +156,7 @@ const query = gql`query GetHostDetails($hostId:Int!) {
             id,
             description,
             character {
+              id,
               name
             }
           }
@@ -155,20 +164,24 @@ const query = gql`query GetHostDetails($hostId:Int!) {
       },
       coreMemory1
       {
+        id,
         audio { transcription },
         locked
       },
       coreMemory2
       {
+        id,
         audio { transcription },
         locked
       },
       coreMemory3
       {
+        id,
         audio { transcription },
         locked
       },
       stats {
+        id,
         name,
         value
       }

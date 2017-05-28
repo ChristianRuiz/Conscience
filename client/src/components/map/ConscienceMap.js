@@ -57,6 +57,7 @@ const query = gql`query GetAllAccountsForMap
               device {
                 id
                 currentLocation {
+                  id,
                   latitude
                   longitude
                 }

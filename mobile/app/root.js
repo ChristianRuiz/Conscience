@@ -17,20 +17,31 @@ import Constants from './constants';
 import LoginPage from './pages/LoginPage';
 import HostPage from './pages/HostPage';
 
-const networkInterface = createNetworkInterface({
-    uri: `${Constants.SERVER_URL}/api/graphql`,
-    batchInterval: 10,
-    opts: {
-      credentials: 'same-origin'
-    }
-  });
+import reportException from './services/ReportException';
 
-//Hack: iOS is not sending the cookie credentials, so we force them
+async function wrapGlobalHandler(error, isFatal) {
+  reportException(error, isFatal);
+}
+
+ErrorUtils.setGlobalHandler(wrapGlobalHandler);
+
+
+const createNetwork = Platform.OS === 'ios' ? createNetworkInterface : createBatchingNetworkInterface;
+
+const networkInterface = createNetwork({
+  uri: `${Constants.SERVER_URL}/api/graphql`,
+  batchInterval: 10,
+  opts: {
+    credentials: 'same-origin'
+  }
+});
+
+// Hack: iOS is not sending the cookie credentials, so we force them
 if (Platform.OS === 'ios') {
   networkInterface.useAfter([{
     applyAfterware({ response }, next) {
       if (response.headers) {
-        const cookie = response.headers.get("Set-Cookie");
+        const cookie = response.headers.get('Set-Cookie');
         if (cookie) {
           global.cookieValue = cookie.split(';')[0];
         }
@@ -45,7 +56,7 @@ if (Platform.OS === 'ios') {
         if (!req.options.headers) {
           req.options.headers = {};
         }
-        req.options.headers['Cookie'] = global.cookieValue;
+        req.options.headers.Cookie = global.cookieValue;
       }
       next();
     }
