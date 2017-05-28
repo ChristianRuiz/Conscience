@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 
 class HostsDetail extends React.Component {
@@ -31,6 +31,8 @@ class HostsDetail extends React.Component {
         {host.stats.filter(stat => stat.value !== 10).map(stat =>
           <li key={stat.name}><b>{stat.name}: </b> {stat.value}</li>)}
       </ul>
+
+      <Link to={`/host-stats/${host.id}`} >Stats chart</Link>
 
       {host.currentCharacter ? (<div>
 
