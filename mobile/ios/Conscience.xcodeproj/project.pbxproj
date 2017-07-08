@@ -54,6 +54,7 @@
 		98E932CCA0D942CDAECB58DC /* libRNBackgroundTimer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54B68DFFE8E84A6098BFA9DF /* libRNBackgroundTimer.a */; };
 		9FCA747749A0483C992F5F6E /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB2FEA02EDF24314A3CE4D78 /* EvilIcons.ttf */; };
 		AECDEA2BAC6645C4A3D6E25A /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B4A36E3E734F02AD79D23B /* libRNFS.a */; };
+		DA42608612274129843F1DCC /* DejaVuSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA999656E18346B6AF406007 /* DejaVuSans.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -546,6 +547,7 @@
 				55DACF103C0F4A798DE93069 /* Octicons.ttf */,
 				3D4CF88EECD54C439734959A /* SimpleLineIcons.ttf */,
 				312139C05F484C3C895D8197 /* Zocial.ttf */,
+				BA999656E18346B6AF406007 /* DejaVuSans.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1122,6 +1124,7 @@
 				41CF65D7AD1F431BA345880F /* Octicons.ttf in Resources */,
 				034AE8BEC46341C6899A0D54 /* SimpleLineIcons.ttf in Resources */,
 				11960F9C1E7844A9A7CD27C6 /* Zocial.ttf in Resources */,
+				DA42608612274129843F1DCC /* DejaVuSans.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

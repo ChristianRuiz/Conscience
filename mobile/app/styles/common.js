@@ -36,13 +36,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   text: {
+    fontFamily: 'DejaVuSans',
     color: 'white',
     textAlign: 'justify'
   },
   textInput: {
+    fontFamily: 'DejaVuSans',
     color: 'white'
   },
   button: {
+    fontFamily: 'DejaVuSans',
     color: 'pink'
   }
 });
