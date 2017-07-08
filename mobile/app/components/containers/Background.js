@@ -1,4 +1,4 @@
-import React from 'react';
+import { React, PropTypes } from 'react';
 
 import {
   StyleSheet,
@@ -6,13 +6,17 @@ import {
   View
 } from 'react-native';
 
-class Notifications extends React.Component {
+class Background extends React.Component {
   render() {
     return (<View style={styles.container}>
-      <Text>You've got no notifications yet!</Text>
+      {this.props.children}
     </View>);
   }
 }
+
+Background.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -22,4 +26,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Notifications;
+export default Background;
