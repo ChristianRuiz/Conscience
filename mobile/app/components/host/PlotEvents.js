@@ -1,45 +1,49 @@
 import React from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   ScrollView
 } from 'react-native';
 import { graphql } from 'react-apollo';
+
+import Background from '../background/Background';
+import commonStyles from '../../styles/common';
+
 import query from '../../queries/HostDetailQuery';
 
 class PlotEvents extends React.Component {
   render() {
     if (this.props.data.loading || !this.props.data.accounts || !this.props.data.accounts.current) {
-      return <View style={styles.container}><Text>Loading...</Text></View>;
+      return (<View style={commonStyles.container}>
+        <Background />
+        <Text>Loading...</Text>
+      </View>);
     }
 
     const host = this.props.data.accounts.current.host;
 
     return (<ScrollView>
-      <View style={styles.container}>
-        {host.currentCharacter ? (<View>
-          <Text style={styles.h3}>Plots</Text>
+      <Background />
 
-          {host.currentCharacter.character.plots.map(plot =>
-            <View id={plot.id} style={styles.p}>
-              <Text><Text style={styles.bold}>Plot: </Text> {plot.plot.name}</Text>
-              <Text><Text style={styles.bold}b>Plot description: </Text></Text>
-              <Text>{plot.plot.description}</Text>
-              <Text><Text style={styles.bold}>Character involvement: </Text></Text>
-              <Text>{plot.description}</Text>
-            </View>)}
+      <View style={commonStyles.scrollBoxContainer}>
 
-          <Text style={styles.h3}>Plot events</Text>
+        {host.currentCharacter && host.currentCharacter.character.plotEvents.length > 0 ? (<View>
+          <Text style={commonStyles.h3}>Plot events</Text>
 
           {host.currentCharacter.character.plotEvents.map(event =>
-            <View id={event.id}>
-              <Text style={styles.bold}>{event.description}</Text>
-              <Text><Text style={styles.bold}>Plot: </Text><Text>{event.plot.name}</Text></Text>
-              <Text><Text style={styles.bold}>Location: </Text><Text>{event.location}</Text></Text>
-              <Text><Text style={styles.bold}>Time: </Text><Text>{event.hour}:{event.minutes}</Text></Text>
+            <View key={event.id}>
+              <Text style={commonStyles.bold}>{event.description}</Text>
+              <Text><Text style={commonStyles.bold}>Plot: </Text>
+                <Text>{event.plot.name}</Text>
+              </Text>
+              <Text><Text style={commonStyles.bold}>Location: </Text>
+                <Text>{event.location}</Text>
+              </Text>
+              <Text><Text style={commonStyles.bold}>Time: </Text>
+                <Text>{event.hour}:{event.minutes}</Text>
+              </Text>
             </View>)}
-        </View>) : <View><Text>You have no events assigned</Text></View> }
+        </View>) : <View><Text>You have no events assigned yet!</Text></View> }
       </View>
     </ScrollView>);
   }
@@ -48,30 +52,6 @@ class PlotEvents extends React.Component {
 PlotEvents.propTypes = {
   data: React.PropTypes.object.isRequired
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    paddingBottom: 40
-  },
-  center: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  p: {
-    marginTop: 10
-  },
-  h3: {
-    fontSize: 16,
-    marginTop: 20,
-    marginBottom: 10,
-    fontWeight: 'bold'
-  },
-  bold: {
-    fontWeight: 'bold'
-  }
-});
 
 export default graphql(query)(PlotEvents);
 

@@ -8,7 +8,17 @@ import {
 import { Redirect } from 'react-router-native';
 import { Button } from 'react-native-material-ui';
 
+import Background from '../background/Background';
+import commonStyles from '../../styles/common';
+
 import query from '../../queries/HostDetailQuery';
+
+const styles = StyleSheet.create({
+  text: {
+    width: 200,
+    height: 50
+  }
+});
 
 class Login extends React.Component {
   constructor(props) {
@@ -53,25 +63,31 @@ class Login extends React.Component {
       return <Redirect to="/tabs" />;
     }
 
-    return (<View style={styles.container}>
-      <TextInput
-        style={styles.text}
-        placeholder="User name"
-        value={this.state.userName}
-        onChangeText={text => this.setState({ userName: text })}
-      />
-      <TextInput
-        style={styles.text}
-        type="password"
-        placeholder="Password"
-        secureTextEntry
-        value={this.state.password}
-        onChangeText={text => this.setState({ password: text })}
-      />
-      {this.state.hasError &&
-      <h3>Login error</h3>
-                        }
-      <Button raised text="Login" onPress={this._doLogin} />
+    return (<View style={commonStyles.container}>
+
+      <Background />
+
+      <View>
+        <TextInput
+          style={styles.text}
+          placeholder="User name"
+          value={this.state.userName}
+          onChangeText={text => this.setState({ userName: text })}
+        />
+        <TextInput
+          style={styles.text}
+          type="password"
+          placeholder="Password"
+          secureTextEntry
+          value={this.state.password}
+          onChangeText={text => this.setState({ password: text })}
+        />
+        {this.state.hasError &&
+        <h3>Login error</h3>
+                          }
+        <Button raised text="Login" onPress={this._doLogin} />
+      </View>
+     
     </View>);
   }
 }
@@ -95,17 +111,5 @@ mutation Login($userName: String!, $password: String!) {
   }
 }
 `;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  text: {
-    width: 200,
-    height: 50
-  }
-});
 
 export default withApollo(graphql(mutation)(Login));
