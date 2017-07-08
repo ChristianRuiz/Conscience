@@ -2,13 +2,14 @@ import React from 'react';
 import { graphql, gql, withApollo } from 'react-apollo';
 import {
   StyleSheet,
-  TextInput,
-  View
+  View,
+  Text
 } from 'react-native';
 import { Redirect } from 'react-router-native';
-import { Button } from 'react-native-material-ui';
 
-import Background from '../background/Background';
+import TextInput from '../common/TextInput';
+import Button from '../common/Button';
+import Background from '../common/Background';
 import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';
@@ -16,7 +17,18 @@ import query from '../../queries/HostDetailQuery';
 const styles = StyleSheet.create({
   text: {
     width: 200,
-    height: 50
+    height: 50,
+    marginBottom: 10
+  },
+  loginBox: {
+    borderWidth: 1,
+    borderColor: '#276077',
+    padding: 10
+  },
+  loginBoxDoubleBorder: {
+    borderWidth: 1,
+    borderColor: '#276077',
+    padding: 2
   }
 });
 
@@ -67,27 +79,28 @@ class Login extends React.Component {
 
       <Background />
 
-      <View>
-        <TextInput
-          style={styles.text}
-          placeholder="User name"
-          value={this.state.userName}
-          onChangeText={text => this.setState({ userName: text })}
-        />
-        <TextInput
-          style={styles.text}
-          type="password"
-          placeholder="Password"
-          secureTextEntry
-          value={this.state.password}
-          onChangeText={text => this.setState({ password: text })}
-        />
-        {this.state.hasError &&
-        <h3>Login error</h3>
-                          }
-        <Button raised text="Login" onPress={this._doLogin} />
+      <View style={styles.loginBoxDoubleBorder}>
+        <View style={styles.loginBox}>
+          <TextInput
+            style={styles.text}
+            placeholder="User name"
+            value={this.state.userName}
+            onChangeText={text => this.setState({ userName: text })}
+          />
+          <TextInput
+            style={styles.text}
+            type="password"
+            placeholder="Password"
+            secureTextEntry
+            value={this.state.password}
+            onChangeText={text => this.setState({ password: text })}
+          />
+          {this.state.hasError &&
+          <Text style={commonStyles.h3}>Login error</Text>
+                            }
+          <Button title="Login" onPress={this._doLogin} />
+        </View>
       </View>
-     
     </View>);
   }
 }

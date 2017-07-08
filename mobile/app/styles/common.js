@@ -32,6 +32,15 @@ const styles = StyleSheet.create({
   },
   bold: {
     fontWeight: 'bold'
+  },
+  text: {
+    color: 'white'
+  },
+  textInput: {
+    color: 'white'
+  },
+  button: {
+    color: 'pink'
   }
 });
 

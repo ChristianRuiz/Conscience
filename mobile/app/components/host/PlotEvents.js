@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { graphql } from 'react-apollo';
 
-import Background from '../background/Background';
+import Background from '../common/Background';
 import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';

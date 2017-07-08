@@ -5,7 +5,7 @@ import {
   View
 } from 'react-native';
 
-import Background from '../background/Background';
+import Background from '../common/Background';
 import commonStyles from '../../styles/common';
 
 class Notifications extends React.Component {
