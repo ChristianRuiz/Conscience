@@ -5,6 +5,7 @@ import DeviceInfo from 'react-native-device-info';
 import signalr from 'react-native-signalr';
 import { gql } from 'react-apollo';
 import Location from 'react-native-location';
+import reportException from '../services/ReportException';
 
 import Constants from '../constants';
 
@@ -48,7 +49,7 @@ class SignalRService {
       throw error;
     },
       {
-        enableHighAccuracy: false,
+        enableHighAccuracy: true,
         timeout: 10000,
         maximumAge: 0
       });
@@ -61,6 +62,8 @@ class SignalRService {
       this.reconnecting = true;
 
       this.audioService.playSound('2.mp3');
+
+      reportException('Reconnecting SignalR', false);
 
       BackgroundTimer.setTimeout(() => {
         this._connect();
@@ -96,7 +99,11 @@ class SignalRService {
           this._onTimer();
         });
       })
-      .fail(() => { this.reconnecting = false; this.reconnect(); });
+      .fail((error) => {
+        this.reconnecting = false;
+        reportException(error, false);
+        this.reconnect();
+      });
 
     this.connection.disconnected(() => {
       this.reconnect();
@@ -106,6 +113,7 @@ class SignalRService {
   _onTimer() {
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
     this.audioService.playSound('empty.mp3');
+    reportException('Timer tick', false);
 
     const update = {
       deviceId: this.deviceId
