@@ -10,15 +10,16 @@
     "apollo": "^0.2.2",
     "apollo-client": "^1.0.2",
     "graphql": "^0.9.2",
-    "react": "16.0.0-alpha.6",
+    "react": "16.0.0-alpha.12",
     "react-apollo": "^1.2.0",
-    "react-native": "0.44.0",
+    "react-native": "0.45.1",
     "react-native-background-timer": "^1.0.1",
     "react-native-device-battery": "git+https://git@github.com/robinpowered/react-native-device-battery.git#b7cc53a51810389c226efec8da9e45a38e49c2ca",
     "react-native-device-info": "^0.10.2",
     "react-native-fs": "^2.3.2",
     "react-native-location": "^0.27.0",
     "react-native-material-ui": "^1.9.0",
+    "react-native-pathjs-charts": "0.0.29",
     "react-native-signalr": "^1.0.4",
     "react-native-sound": "git+https://git@github.com/zmxv/react-native-sound.git#ba1b2440a423ded5b4f14516fd1f583e058d523b",
     "react-native-tab-view": "0.0.65",
@@ -45,8 +46,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-      "assets": [
-        "./assets/fonts/"
-      ]
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }

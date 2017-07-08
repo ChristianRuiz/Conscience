@@ -1,15 +1,32 @@
 import React from 'react';
 import {
-  Text,
   View,
-  ScrollView
+  ScrollView,
+  StyleSheet
 } from 'react-native';
 import { graphql } from 'react-apollo';
 
 import Background from '../common/Background';
+import Text from '../common/Text';
+import Divider from '../common/Divider';
+import StatsChart from './StatsChart';
 import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';
+
+const styles = StyleSheet.create({
+  statsTitle: {
+    marginTop: -20
+  },
+  statSummaryLine: {
+    width: 130,
+    justifyContent: 'space-between',
+    flexDirection: 'row'
+  },
+  statName: {
+    width: 105
+  }
+});
 
 class Stats extends React.Component {
   render() {
@@ -26,13 +43,19 @@ class Stats extends React.Component {
       <Background />
 
       <View style={commonStyles.scrollBoxContainer}>
-        
+
         <View>
-          <Text style={commonStyles.h3}>Stats summary</Text>
+          <Text style={[commonStyles.h3, styles.statsTitle]}>STATS SUMMARY</Text>
 
           {host.stats.filter(stat => stat.value !== 10).map(stat =>
-            <Text key={stat.name}><Text style={commonStyles.bold}>{stat.name}
-              : </Text> {stat.value}</Text>)}
+            <View style={styles.statSummaryLine} key={stat.name}>
+              <Text style={styles.statName} numberOfLines={1}>-{stat.name}: </Text>
+              <Text>{stat.value}</Text>
+            </View>)}
+
+          <Divider />
+
+          <StatsChart stats={host.stats} />
         </View>
       </View>
     </ScrollView>);
