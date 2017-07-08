@@ -2,7 +2,8 @@ import React from 'react';
 import {
   View,
   ScrollView,
-  Image
+  Image,
+  StyleSheet
 } from 'react-native';
 import { graphql } from 'react-apollo';
 
@@ -12,6 +13,49 @@ import Text from '../common/Text';
 import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';
+
+const styles = StyleSheet.create({
+  image: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    height: 110,
+    width: 110,
+    borderRadius: 55
+  },
+  name: {
+    position: 'absolute',
+    top: 42,
+    left: 165,
+    color: '#34FFFC',
+    fontWeight: 'bold',
+    fontSize: 16,
+    width: 140
+  },
+  serialNumber: {
+    position: 'absolute',
+    top: 93,
+    left: 245,
+    width: 55
+  },
+  battery: {
+    position: 'absolute',
+    top: 160,
+    left: 170,
+    width: 55,
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  narrative: {
+    position: 'absolute',
+    top: 200,
+    left: 45,
+    width: 260,
+    fontSize: 12,
+    fontWeight: 'bold',
+    lineHeight: 25
+  }
+});
 
 class HostDetails extends React.Component {
   render() {
@@ -30,15 +74,6 @@ class HostDetails extends React.Component {
 /*
 <Text>Age: {host.currentCharacter.character.age}</Text>
 <Text>Gender: {host.currentCharacter.character.gender}</Text>
-
-<Text style={commonStyles.h3}>{host.account.userName.toUpperCase()}</Text>
-
-{host.currentCharacter ? <Text>{host.currentCharacter.character.name}</Text> : <Text />}
-
-<Text style={commonStyles.p}>
-            <Text style={commonStyles.bold}>Narrative function: </Text>
-            {host.currentCharacter.character.narrativeFunction}
-          </Text>
 */
 
     return (<ScrollView>
@@ -46,7 +81,22 @@ class HostDetails extends React.Component {
 
       <View style={commonStyles.scrollBoxContainer}>
 
-        <Image source={require('../../img/sample/card.png')} style={{height:234, width:299, marginLeft: -10}} />
+        <Image source={require('../../img/sample/dolores.png')} style={styles.image} />
+
+        <Image source={require('../../img/card.png')} style={{ height: 234, width: 299, marginLeft: -10 }} />
+
+        {host.currentCharacter ?
+          <Text style={styles.name} numberOfLines={1}>
+            {host.currentCharacter.character.name}</Text> : <Text />}
+
+        <Text style={styles.serialNumber} numberOfLines={1}>{host.account.userName}</Text>
+
+        <Text style={styles.battery} numberOfLines={1}>
+          {host.account.device.batteryLevel * 100}%</Text>
+
+        {host.currentCharacter ?
+          <Text style={styles.narrative} numberOfLines={2}>
+            {host.currentCharacter.character.narrativeFunction.toUpperCase()} </Text> : <Text />}
 
         {host.currentCharacter ? (<View>
 

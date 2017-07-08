@@ -8,7 +8,7 @@ class ImageRepeater extends React.Component {
     let height = 0;
 
     if (this.props.fullscreen) {
-      height = Dimensions.get('window').height * 2;
+      height = Dimensions.get('window').height * 2.5;
     } else if (this.props.style && this.props.style.height) {
       height = this.props.style.height;
     }

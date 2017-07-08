@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'DejaVuSans',
     color: 'white',
-    textAlign: 'justify'
+    textAlign: 'justify',
+    lineHeight: 30
   },
   textInput: {
     fontFamily: 'DejaVuSans',
