@@ -1,12 +1,14 @@
 import React from 'react';
 import {
-  Text,
   View,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 import { graphql } from 'react-apollo';
 
 import Background from '../common/Background';
+import Divider from '../common/Divider';
+import Text from '../common/Text';
 import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';
@@ -28,6 +30,15 @@ class HostDetails extends React.Component {
 /*
 <Text>Age: {host.currentCharacter.character.age}</Text>
 <Text>Gender: {host.currentCharacter.character.gender}</Text>
+
+<Text style={commonStyles.h3}>{host.account.userName.toUpperCase()}</Text>
+
+{host.currentCharacter ? <Text>{host.currentCharacter.character.name}</Text> : <Text />}
+
+<Text style={commonStyles.p}>
+            <Text style={commonStyles.bold}>Narrative function: </Text>
+            {host.currentCharacter.character.narrativeFunction}
+          </Text>
 */
 
     return (<ScrollView>
@@ -35,43 +46,44 @@ class HostDetails extends React.Component {
 
       <View style={commonStyles.scrollBoxContainer}>
 
-        <Text style={commonStyles.h3}>{host.account.userName}</Text>
-
-        {host.currentCharacter ? <Text>{host.currentCharacter.character.name}</Text> : <Text />}
+        <Image source={require('../../img/sample/card.png')} style={{height:234, width:299, marginLeft: -10}} />
 
         {host.currentCharacter ? (<View>
-          <Text style={commonStyles.p}>
-            <Text style={commonStyles.bold}>Narrative function: </Text>
-            {host.currentCharacter.character.narrativeFunction}
-          </Text>
 
-          <Text style={commonStyles.h3}>History</Text>
+          <Text style={commonStyles.h3}>HISTORY</Text>
           <Text>{host.currentCharacter.character.story}</Text>
 
-          <Text style={commonStyles.h3}>Memories</Text>
+          <Divider />
+
+          <Text style={commonStyles.h3}>MEMORIES</Text>
 
           {host.currentCharacter.character.memories.map(memory =>
             <View key={memory.id}>
-              <Text>{memory.description}</Text>
+              <Text>- {memory.description}</Text>
             </View>)}
 
-          <Text style={commonStyles.h3}>Triggers</Text>
+          <Divider />
+
+          <Text style={commonStyles.h3}>TRIGGERS</Text>
 
           {host.currentCharacter.character.triggers.map(trigger =>
-            <Text key={trigger.id}>{trigger.description}</Text>)}
+            <Text key={trigger.id}>- {trigger.description}</Text>)}
 
-          <Text style={commonStyles.h3}>Plotlines</Text>
+          <Divider />
+
+          <Text style={commonStyles.h3}>PLOTLINES</Text>
 
           {host.currentCharacter.character.plots.map(plot =>
             <View key={plot.id} style={commonStyles.p}>
-              <Text><Text style={commonStyles.bold}>Plot: </Text> {plot.plot.name}</Text>
-              <Text><Text style={commonStyles.bold}b>Plot description: </Text></Text>
+              <Text style={[commonStyles.bold, commonStyles.center]}>
+                --{plot.plot.name}--</Text>
               <Text>{plot.plot.description}</Text>
-              <Text><Text style={commonStyles.bold}>Character involvement: </Text></Text>
-              <Text>{plot.description}</Text>
+              <Text style={{ marginTop: 20 }}>{plot.description}</Text>
             </View>)}
 
-          <Text style={commonStyles.h3}>Relationships</Text>
+          <Divider />
+
+          <Text style={commonStyles.h3}>RELATIONSHIPS</Text>
 
           {host.currentCharacter.character.relations.map(relation =>
             <Text key={relation.id}>

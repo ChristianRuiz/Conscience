@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   },
   scrollBoxContainer: {
     flex: 1,
-    minHeight: 600
+    minHeight: 600,
+    padding: 30
   },
   center: {
     justifyContent: 'center',
@@ -28,13 +29,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 20,
     marginBottom: 10,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#26D639'
   },
   bold: {
     fontWeight: 'bold'
   },
   text: {
-    color: 'white'
+    color: 'white',
+    textAlign: 'justify'
   },
   textInput: {
     color: 'white'
