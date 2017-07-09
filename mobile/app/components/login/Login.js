@@ -104,7 +104,7 @@ class Login extends React.Component {
           />
           {this.state.hasError &&
           <Text style={styles.loginError}>Login error</Text>}
-          <Button title="Login" onPress={this._doLogin} />
+          <Button title="Login" color="white" onPress={this._doLogin} />
         </View>
       </View>
 

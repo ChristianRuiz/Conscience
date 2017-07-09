@@ -19,6 +19,8 @@ import HostPage from './pages/HostPage';
 
 import reportException from './services/ReportException';
 
+import commonStyles from './styles/common';
+
 const defaultHandler = ErrorUtils.getGlobalHandler && ErrorUtils.getGlobalHandler() || ErrorUtils._globalHandler;
 
 async function wrapGlobalHandler(error, isFatal) {
@@ -91,7 +93,7 @@ class Root extends React.Component {
       <ThemeProvider>
         <ApolloProvider client={client}>
           <NativeRouter>
-            <View style={styles.container}>
+            <View style={commonStyles.mainContainer}>
               <Switch>
                 <Route exact path="/" component={LoginPage} />
                 <Route path="/tabs" component={HostPage} />
@@ -103,12 +105,5 @@ class Root extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF'
-  }
-});
 
 export default Root;

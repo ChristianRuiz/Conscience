@@ -1,8 +1,16 @@
 import {
-  StyleSheet
+  StyleSheet,
+  Platform
 } from 'react-native';
 
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
+
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: '#27293E',
+    marginTop: STATUSBAR_HEIGHT
+  },
   container: {
     position: 'absolute',
     flex: 1,
@@ -39,15 +47,15 @@ const styles = StyleSheet.create({
     fontFamily: 'DejaVuSans',
     color: 'white',
     textAlign: 'justify',
-    lineHeight: 30
+    lineHeight: 30,
+    backgroundColor: 'transparent'
   },
   textInput: {
     fontFamily: 'DejaVuSans',
     color: 'white'
   },
   button: {
-    fontFamily: 'DejaVuSans',
-    color: 'pink'
+    fontFamily: 'DejaVuSans'
   }
 });
 
