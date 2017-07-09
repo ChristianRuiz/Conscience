@@ -92,7 +92,7 @@ class HostDetails extends React.Component {
         <Text style={styles.serialNumber} numberOfLines={1}>{host.account.userName}</Text>
 
         <Text style={styles.battery} numberOfLines={1}>
-          {host.account.device.batteryLevel * 100}%</Text>
+          {Math.trunc(host.account.device.batteryLevel * 100)}%</Text>
 
         {host.currentCharacter ?
           <Text style={styles.narrative} numberOfLines={2}>

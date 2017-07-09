@@ -75,8 +75,8 @@ class HostTabs extends React.Component {
       { key: '1', title: 'Me', icon: 'ios-contact' },
       { key: '2', title: 'Stats', icon: 'ios-body' },
       { key: '3', title: 'Events', icon: 'ios-calendar' },
-      { key: '4', title: 'Nots', icon: 'ios-notifications' },
-      { key: '5', title: 'Debug', icon: 'ios-bug' }
+      { key: '4', title: 'Nots', icon: 'ios-notifications' }
+      // { key: '5', title: 'Debug', icon: 'ios-bug' }
     ]
   };
 
@@ -142,10 +142,10 @@ class HostTabs extends React.Component {
         return (
           <Notifications />
         );
-      case '5':
-        return (
-          <Debugger audioService={audioService} />
-        );
+      // case '5':
+      //   return (
+      //     <Debugger audioService={audioService} />
+      //   );
       default:
         return null;
     }

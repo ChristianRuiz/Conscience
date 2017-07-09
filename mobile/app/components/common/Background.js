@@ -32,15 +32,22 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     bottom: 0
+  },
+  leftLinesView: {
+    position: 'absolute',
+    width: 5.4,
+    top: 0,
+    left: 5.5,
+    bottom: 0,
+    borderWidth: 1,
+    borderColor: '#276077'
   }
 });
 
 class Background extends React.Component {
   render() {
     return (<View style={styles.background} >
-      <ImageRepeater style={styles.leftLines} fullscreen >
-        <Image source={require('../../img/background/left.png')} style={{height:4, width:11}} />
-      </ImageRepeater>
+      <View style={styles.leftLinesView} />
       <View style={styles.rightLines} >
         <Image source={require('../../img/background/right-top.png')} style={{height:174, width:13}} />
         <ImageRepeater style={{height:80}}>
