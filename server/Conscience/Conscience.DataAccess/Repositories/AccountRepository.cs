@@ -23,7 +23,7 @@ namespace Conscience.DataAccess.Repositories
             }
         }
 
-        public Account GetById(int accountId)
+        public ConscienceAccount GetById(int accountId)
         {
             var account = DbSet.Include(a => a.Host).Include(a => a.Employee).Where(a => a.Id == accountId).ToList().FirstOrDefault();
             if (account == null)

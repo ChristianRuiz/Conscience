@@ -20,6 +20,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
             
             Field(a => a.UserName);
             Field(a => a.Email);
+            Field(a => a.PictureUrl);
             Field<HostGraphType>("host", resolve: context => context.Source.Host);
             Field<EmployeeGraphType>("employee", resolve: context => context.Source.Employee);
             Field<DeviceGraphType>("device", resolve: context => context.Source.Device);

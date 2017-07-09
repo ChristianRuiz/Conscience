@@ -335,6 +335,7 @@
     <Compile Include="Controllers\Api\BulkImportController.cs" />
     <Compile Include="Controllers\Api\ErrorsController.cs" />
     <Compile Include="Controllers\Api\GraphQLController.cs" />
+    <Compile Include="Controllers\Api\PictureUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GraphQLController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -388,6 +389,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\audio\uploads\moderna.mp3" />
+    <Content Include="Content\images\sample\dolores.png" />
     <Content Include="Content\leaflet.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -429,6 +431,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\uploaded\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

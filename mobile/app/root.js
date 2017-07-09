@@ -26,7 +26,7 @@ async function wrapGlobalHandler(error, isFatal) {
 
   if (__DEV__) {
     // after you're finished, call the defaultHandler so that react-native also gets the error
-    global.defaultHandler(error, isFatal);
+    defaultHandler(error, isFatal);
   }
 }
 

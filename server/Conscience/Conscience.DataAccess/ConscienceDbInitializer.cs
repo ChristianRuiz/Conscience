@@ -95,7 +95,8 @@ namespace Conscience.DataAccess
                 var dolores = new ConscienceAccount
                 {
                     UserName = "dolores",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/dolores.png"
                 };
                 dolores.Roles.Add(hostRole);
                 context.Accounts.Add(dolores);
@@ -415,6 +416,20 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
 
                 cMaeve.PlotEvents.Add(eventRobbery);
                 cEscaton.PlotEvents.Add(eventRobbery);
+
+                context.SaveChanges();
+
+                cDolores.Relations.Add(new CharacterRelation
+                {
+                    Character = cPeter,
+                    Description = "Your lovely father. Bacon ipsum dolor amet flank cupim pork chop t-bone strip steak ham hock. Shankle andouille leberkas sirloin shoulder prosciutto hamburger chuck tri-tip ground round pork belly cupim. Landjaeger jerky ham pancetta, pork loin beef drumstick meatball bacon. Shoulder ground round frankfurter salami filet mignon, tail beef bacon. Turducken chuck prosciutto jowl sirloin pork belly shoulder, ribeye meatloaf corned beef boudin alcatra tail tri-tip. Andouille salami chicken, corned beef cupim pork loin chuck filet mignon beef ground round. Jowl beef ribs turducken tenderloin ham hock."
+                });
+
+                cDolores.Relations.Add(new CharacterRelation
+                {
+                    Character = cTeddy,
+                    Description = "You are in love with Teddy. Beef flank tenderloin, ribeye sausage ball tip cupim bresaola. Kevin t-bone turducken, tenderloin leberkas chuck sirloin swine filet mignon ham. Sirloin jerky swine corned beef tail frankfurter beef ribs tri-tip pig cow pork loin pancetta pork chop. Pastrami prosciutto filet mignon, turducken tri-tip salami biltong short ribs pork belly shoulder fatback boudin t-bone chuck shank. Beef ribs doner turducken, strip steak shoulder shank porchetta capicola prosciutto kielbasa."
+                });
 
                 context.SaveChanges();
             }

@@ -24,6 +24,7 @@ namespace Conscience.Domain
             get;
             set;
         }
+
         public string UserName
         {
             get;
@@ -31,6 +32,12 @@ namespace Conscience.Domain
         }
 
         public string PasswordHash
+        {
+            get;
+            set;
+        }
+
+        public string PictureUrl
         {
             get;
             set;

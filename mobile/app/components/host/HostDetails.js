@@ -11,6 +11,9 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Background from '../common/Background';
 import Divider from '../common/Divider';
 import Text from '../common/Text';
+import ProfileImage from '../common/ProfileImage';
+import ImageUploader from '../common/ImageUploader';
+
 import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';
@@ -79,18 +82,21 @@ class HostDetails extends React.Component {
 
       <View style={commonStyles.scrollBoxContainer}>
 
-        <Image source={require('../../img/sample/dolores.png')} style={styles.image} />
+        <ProfileImage style={styles.image} source={host.account.pictureUrl} />
 
         <Image source={require('../../img/card.png')} style={{ height: 234, width: 299, marginLeft: -10 }} />
+
+        <ImageUploader style={styles.image} />
 
         {host.currentCharacter ?
           <Text style={styles.name} numberOfLines={1}>
             {host.currentCharacter.character.name}</Text> : <Text />}
 
-        <Text style={styles.serialNumber} numberOfLines={1}>{host.account.userName}</Text>
+        <Text onPress={() => alert('Picture!')} style={styles.serialNumber} numberOfLines={1}>{host.account.userName}</Text>
 
-        <Text style={styles.battery} numberOfLines={1}>
-          {Math.trunc(host.account.device.batteryLevel * 100)}%</Text>
+        {host.account.device ?
+          <Text style={styles.battery} numberOfLines={1}>
+            {Math.trunc(host.account.device.batteryLevel * 100)}%</Text> : <Text />}
 
         {host.currentCharacter ?
           <Text style={styles.narrative} numberOfLines={2}>
@@ -135,7 +141,7 @@ class HostDetails extends React.Component {
 
           {host.currentCharacter.character.relations.map(relation =>
             <Text key={relation.id}>
-              <Text><b>{relation.character.name}: </b>{relation.description}</Text>
+              <Text>{relation.character.name}: {relation.description}</Text>
             </Text>)}
         </View>) : ''}
       </View>

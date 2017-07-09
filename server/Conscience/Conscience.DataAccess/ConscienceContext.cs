@@ -106,7 +106,7 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<CharacterInHost>().HasRequired(c => c.Character).WithMany(c => c.Hosts);
             modelBuilder.Entity<Character>().HasMany(c => c.Memories);
             modelBuilder.Entity<Character>().HasMany(c => c.Triggers);
-            modelBuilder.Entity<Character>().HasMany(c => c.Relations);
+            modelBuilder.Entity<Character>().HasMany(c => c.Relations).WithMany(r => r.Characters);
             modelBuilder.Entity<Character>().HasMany(c => c.PlotEvents).WithMany(e => e.Characters);
             modelBuilder.Entity<Character>().HasMany(c => c.Plots).WithRequired(p => p.Character);
             modelBuilder.Entity<Plot>().HasMany(c => c.Events).WithRequired(e => e.Plot);

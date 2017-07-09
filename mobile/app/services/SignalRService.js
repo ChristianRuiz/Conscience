@@ -5,7 +5,8 @@ import DeviceInfo from 'react-native-device-info';
 import signalr from 'react-native-signalr';
 import { gql } from 'react-apollo';
 import Location from 'react-native-location';
-import reportException from '../services/ReportException';
+import reportException from './ReportException';
+import updateCache from './CacheService';
 
 import Constants from '../constants';
 
@@ -113,7 +114,6 @@ class SignalRService {
   _onTimer() {
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
     this.audioService.playSound('empty.mp3');
-    reportException('Timer tick', false);
 
     const update = {
       deviceId: this.deviceId
@@ -130,103 +130,43 @@ class SignalRService {
       });
     }
 
-    if (this.locations) {
-      const serviceLocations = this.locations.map(l => ({
-        Latitude: l.coords.latitude,
-        Longitude: l.coords.longitude,
-        Accuracy: l.coords.accuracy,
-        Altitude: l.coords.altitude,
-        Heading: l.coords.heading,
-        Speed: l.coords.speed,
-        TimeStamp: new Date(l.timestamp).toISOString()
-      }));
+    const serviceLocations = this.locations.map(l => ({
+      Latitude: l.coords.latitude,
+      Longitude: l.coords.longitude,
+      Accuracy: l.coords.accuracy,
+      Altitude: l.coords.altitude,
+      Heading: l.coords.heading,
+      Speed: l.coords.speed,
+      TimeStamp: new Date(l.timestamp).toISOString()
+    }));
 
-      try {
-        this.proxy.invoke('locationUpdates', serviceLocations, this.charging ? 1 : 0, this.batteryLevel).then(() => {
-          this.locations = [];
-        }).fail((error) => {
-          console.log(`Unable to to send location updates to SignalR ${error}`);
-          this.reconnect();
-        });
-      } catch (e) {
-        console.log(`Unable to send updates to SignalR: ${e}`);
+    try {
+      this.proxy.invoke('locationUpdates', serviceLocations, this.charging ? 1 : 0, this.batteryLevel).then(() => {
+        this.locations = [];
+      }).fail((error) => {
+        console.log(`Unable to to send location updates to SignalR ${error}`);
         this.reconnect();
-      }
-
-      if (serviceLocations.length > 0) {
-        const currentLocation = serviceLocations[serviceLocations.length - 1];
-
-        const query = gql`{
-accounts {
-  current {
-    id,
-    device {
-      id,
-      deviceId,
-      batteryLevel,
-      batteryStatus,
-      currentLocation {
-        id,
-        latitude,
-        longitude,
-        timeStamp
-      }
+      });
+    } catch (e) {
+      console.log(`Unable to send updates to SignalR: ${e}`);
+      this.reconnect();
     }
-  }
-}
-}`;
 
-        let data;
+    updateCache(this.client, (data) => {
+      const device = data.accounts.current.host.account.device;
 
-        try {
-          data = this.client.readQuery({ query });
-        } catch (e) {
-          console.log('There is no current account on the cache');
-          return;
-        }
+      device.deviceId = this.deviceId;
+      device.batteryLevel = this.batteryLevel;
+      device.batteryStatus = this.charging ? 'CHARGING' : 'NOT_CHARGING';
 
-        if (!data.accounts.current.device || !data.accounts.current.device.currentLocation) {
-          const updateQuery = gql`query UpdateCurrentAccount {
-                accounts {
-                  current {
-                    id,
-                    device {
-                      id,
-                      deviceId,
-                      batteryLevel,
-                      batteryStatus,
-                      currentLocation {
-                        id,
-                        latitude,
-                        longitude,
-                        timeStamp
-                      }
-                    }
-                  }
-                }
-              }
-        `;
-
-          this.client.query({
-            query: updateQuery
-          });
-
-          return;
-        }
-
-        const device = data.accounts.current.device;
-
-        device.deviceId = this.deviceId;
-        device.batteryLevel = this.batteryLevel;
-        device.batteryStatus = this.charging ? 'CHARGING' : 'NOT_CHARGING';
+      if (device.currentLocation && serviceLocations.length > 0) {
+        const currentLocation = serviceLocations[serviceLocations.length - 1];
 
         device.currentLocation.latitude = currentLocation.Latitude;
         device.currentLocation.longitude = currentLocation.Longitude;
         device.currentLocation.timeStamp = currentLocation.TimeStamp;
-
-        this.client.writeQuery({ query, data });
       }
-    }
+    });
   }
 }
 

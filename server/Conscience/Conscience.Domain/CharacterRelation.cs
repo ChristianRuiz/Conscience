@@ -13,11 +13,29 @@ namespace Conscience.Domain
             get;
             set;
         }
-
-        public virtual Character Character
+        
+        public virtual ICollection<Character> Characters
         {
             get;
             set;
+        }
+
+        //Hack: Using a collection to avoid EF exception referencing the same table on a relationship
+        public Character Character
+        {
+            get
+            {
+                if (Characters == null)
+                    return null;
+                return Characters.FirstOrDefault();
+            }
+            set
+            {
+                if (Characters == null)
+                    Characters = new List<Character>();
+                Characters.Clear();
+                Characters.Add(value);
+            }
         }
 
         public string Description

@@ -8,6 +8,7 @@ const query = gql`{
         id
         account {
           userName
+          pictureUrl
           device {
             lastConnection
             online
