@@ -2,7 +2,8 @@ import React from 'react';
 import { graphql, gql, withApollo } from 'react-apollo';
 import {
   StyleSheet,
-  View
+  View,
+  Platform
 } from 'react-native';
 import { Redirect } from 'react-router-native';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -104,7 +105,11 @@ class Login extends React.Component {
           />
           {this.state.hasError &&
           <Text style={styles.loginError}>Login error</Text>}
-          <Button title="Login" color="white" onPress={this._doLogin} />
+          {Platform.OS === 'ios' ?
+            <Button title="Login" color="white" onPress={this._doLogin} />
+            :
+            <Button title="Login" onPress={this._doLogin} />
+          }
         </View>
       </View>
 
