@@ -6,6 +6,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { graphql } from 'react-apollo';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import Background from '../common/Background';
 import Divider from '../common/Divider';
@@ -59,15 +60,12 @@ const styles = StyleSheet.create({
 
 class HostDetails extends React.Component {
   render() {
-    console.log('HostDetail Render');
     if (this.props.data.loading || !this.props.data.accounts || !this.props.data.accounts.current) {
       return (<View style={commonStyles.container}>
         <Background />
-        <Text>Loading...</Text>
+        <Spinner visible />
       </View>);
     }
-
-    console.log('HostDetail Render with data');
 
     const host = this.props.data.accounts.current.host;
 

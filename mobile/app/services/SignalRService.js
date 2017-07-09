@@ -61,7 +61,7 @@ class SignalRService {
     if (!this.reconnecting) {
       this.reconnecting = true;
 
-      this.audioService.playSound('2.mp3');
+      // this.audioService.playSound('2.mp3');
 
       reportException('Reconnecting SignalR', false);
 
@@ -72,7 +72,7 @@ class SignalRService {
   }
 
   _connect() {
-    this.audioService.playSound('3.mp3');
+    // this.audioService.playSound('3.mp3');
 
     if (this.connection) {
       try {

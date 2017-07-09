@@ -5,6 +5,7 @@ import {
   StyleSheet
 } from 'react-native';
 import { graphql } from 'react-apollo';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import Background from '../common/Background';
 import Text from '../common/Text';
@@ -33,7 +34,7 @@ class Stats extends React.Component {
     if (this.props.data.loading || !this.props.data.accounts || !this.props.data.accounts.current) {
       return (<View style={commonStyles.container}>
         <Background />
-        <Text>Loading...</Text>
+        <Spinner visible />
       </View>);
     }
 

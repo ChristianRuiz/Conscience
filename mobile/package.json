@@ -17,6 +17,7 @@
     "react-native-device-battery": "git+https://git@github.com/robinpowered/react-native-device-battery.git#b7cc53a51810389c226efec8da9e45a38e49c2ca",
     "react-native-device-info": "^0.10.2",
     "react-native-fs": "^2.3.2",
+    "react-native-loading-spinner-overlay": "^0.5.1",
     "react-native-location": "^0.27.0",
     "react-native-material-ui": "^1.9.0",
     "react-native-pathjs-charts": "0.0.29",

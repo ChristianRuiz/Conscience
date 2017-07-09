@@ -2,12 +2,13 @@ import React from 'react';
 import { graphql, gql, withApollo } from 'react-apollo';
 import {
   StyleSheet,
-  View,
-  Text
+  View
 } from 'react-native';
 import { Redirect } from 'react-router-native';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import TextInput from '../common/TextInput';
+import Text from '../common/Text';
 import Button from '../common/Button';
 import Background from '../common/Background';
 import commonStyles from '../../styles/common';
@@ -29,6 +30,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#276077',
     padding: 2
+  },
+  loginError: {
+    marginBottom: 20
   }
 });
 
@@ -41,7 +45,8 @@ class Login extends React.Component {
     this.state = {
       userName: 'dolores', // TODO: This values are just for development
       password: '123456',
-      hasError: false
+      hasError: false,
+      loading: false
     };
   }
 
@@ -59,14 +64,16 @@ class Login extends React.Component {
   }
 
   _doLogin() {
+    this.setState({ loading: true });
+
     this.props.mutate({
       variables: { userName: this.state.userName, password: this.state.password }
     })
     .then((result) => {
-      this.setState({ currentUser: result.data.accounts.login });
+      this.setState({ currentUser: result.data.accounts.login, loading: false });
     }).catch((error) => {
       console.log(`Unable to login ${JSON.stringify(error)}`);
-      this.state.hasError = true;
+      this.setState({ currentUser: null, hasError: true, loading: false });
     });
   }
 
@@ -96,11 +103,12 @@ class Login extends React.Component {
             onChangeText={text => this.setState({ password: text })}
           />
           {this.state.hasError &&
-          <Text style={commonStyles.h3}>Login error</Text>
-                            }
+          <Text style={styles.loginError}>Login error</Text>}
           <Button title="Login" onPress={this._doLogin} />
         </View>
       </View>
+
+      <Spinner visible={this.state.loading} />
     </View>);
   }
 }
