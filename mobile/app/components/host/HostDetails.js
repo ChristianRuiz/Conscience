@@ -58,6 +58,22 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     lineHeight: 25
+  },
+  relationView: {
+    marginBottom: 20
+  },
+  relationTitleView: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  relationPicture: {
+    height: 80,
+    width: 80,
+    borderRadius: 40
+  },
+  relationName: {
+    marginLeft: 15,
+    width: 190
   }
 });
 
@@ -140,9 +156,13 @@ class HostDetails extends React.Component {
           <Text style={commonStyles.h3}>RELATIONSHIPS</Text>
 
           {host.currentCharacter.character.relations.map(relation =>
-            <Text key={relation.id}>
-              <Text>{relation.character.name}: {relation.description}</Text>
-            </Text>)}
+            <View key={relation.id} style={styles.relationView}>
+              <View style={styles.relationTitleView}>
+                <ProfileImage style={styles.relationPicture} source={relation.character.currentHost.host.account.pictureUrl} />
+                <Text style={styles.relationName} numberOfLines={1}>{relation.character.name.toUpperCase()}</Text>
+              </View>
+              <Text>{relation.description}</Text>
+            </View>)}
         </View>) : ''}
       </View>
     </ScrollView>);

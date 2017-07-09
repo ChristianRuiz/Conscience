@@ -45,7 +45,14 @@ const query = gql`{
               id
               description
               character {
-                name
+                name,
+                currentHost {
+                  host {
+                    account {
+                      pictureUrl
+                    }
+                  }
+                }
               }
             }
             plotEvents {

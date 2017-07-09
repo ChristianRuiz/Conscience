@@ -1,4 +1,5 @@
-﻿using Conscience.Application.Graph.Entities.Memories;
+﻿using Conscience.Application.Graph.Entities.Hosts;
+using Conscience.Application.Graph.Entities.Memories;
 using Conscience.Application.Graph.Entities.Plots;
 using Conscience.Application.Graph.Entities.Triggers;
 using Conscience.Domain;
@@ -18,6 +19,7 @@ namespace Conscience.Application.Graph.Entities.Characters
             Name = "CharacterInHost";
             
             Field(c => c.AssignedOn);
+            Field<HostGraphType>("host", resolve: context => context.Source.Host);
             Field<CharacterGraphType>("character", resolve: context => context.Source.Character);
         }
     }

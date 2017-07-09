@@ -389,7 +389,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\audio\uploads\moderna.mp3" />
+    <Content Include="Content\images\sample\bernard.PNG" />
     <Content Include="Content\images\sample\dolores.png" />
+    <Content Include="Content\images\sample\elsie.PNG" />
+    <Content Include="Content\images\sample\escaton.PNG" />
+    <Content Include="Content\images\sample\ford.PNG" />
+    <Content Include="Content\images\sample\maeve.PNG" />
+    <Content Include="Content\images\sample\peter.PNG" />
+    <Content Include="Content\images\sample\sizemore.PNG" />
+    <Content Include="Content\images\sample\teddy.PNG" />
+    <Content Include="Content\images\sample\theresa.PNG" />
     <Content Include="Content\leaflet.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

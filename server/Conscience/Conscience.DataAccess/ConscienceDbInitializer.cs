@@ -54,7 +54,8 @@ namespace Conscience.DataAccess
                 var ford = new ConscienceAccount
                 {
                     UserName = "ford",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/ford.png"
                 };
                 ford.Roles.Add(companyAdminRole);
                 context.Accounts.Add(ford);
@@ -62,7 +63,8 @@ namespace Conscience.DataAccess
                 var theresa = new ConscienceAccount
                 {
                     UserName = "theresa",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/theresa.png"
                 };
                 theresa.Roles.Add(companyQARole);
                 context.Accounts.Add(theresa);
@@ -70,7 +72,8 @@ namespace Conscience.DataAccess
                 var elsie = new ConscienceAccount
                 {
                     UserName = "elsie",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/elsie.png"
                 };
                 elsie.Roles.Add(companyBehaviourRole);
                 context.Accounts.Add(elsie);
@@ -78,7 +81,8 @@ namespace Conscience.DataAccess
                 var bernard = new ConscienceAccount
                 {
                     UserName = "bernard",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/bernard.png"
                 };
                 bernard.Roles.Add(companyBehaviourRole);
                 bernard.Roles.Add(hostRole);
@@ -87,7 +91,8 @@ namespace Conscience.DataAccess
                 var sizemore = new ConscienceAccount
                 {
                     UserName = "sizemore",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/sizemore.png"
                 };
                 sizemore.Roles.Add(companyPlotRole);
                 context.Accounts.Add(sizemore);
@@ -104,7 +109,8 @@ namespace Conscience.DataAccess
                 var peter = new ConscienceAccount
                 {
                     UserName = "peter",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/peter.png"
                 };
                 peter.Roles.Add(hostRole);
                 context.Accounts.Add(peter);
@@ -112,7 +118,8 @@ namespace Conscience.DataAccess
                 var teddy = new ConscienceAccount
                 {
                     UserName = "teddy",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/teddy.png"
                 };
                 teddy.Roles.Add(hostRole);
                 context.Accounts.Add(teddy);
@@ -120,7 +127,8 @@ namespace Conscience.DataAccess
                 var maeve = new ConscienceAccount
                 {
                     UserName = "maeve",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/maeve.png"
                 };
                 maeve.Roles.Add(hostRole);
                 context.Accounts.Add(maeve);
@@ -128,7 +136,8 @@ namespace Conscience.DataAccess
                 var escaton = new ConscienceAccount
                 {
                     UserName = "escaton",
-                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q==",
+                    PictureUrl = "/Content/images/sample/escaton.png"
                 };
                 escaton.Roles.Add(hostRole);
                 context.Accounts.Add(escaton);
@@ -422,13 +431,13 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
                 cDolores.Relations.Add(new CharacterRelation
                 {
                     Character = cPeter,
-                    Description = "Your lovely father. Bacon ipsum dolor amet flank cupim pork chop t-bone strip steak ham hock. Shankle andouille leberkas sirloin shoulder prosciutto hamburger chuck tri-tip ground round pork belly cupim. Landjaeger jerky ham pancetta, pork loin beef drumstick meatball bacon. Shoulder ground round frankfurter salami filet mignon, tail beef bacon. Turducken chuck prosciutto jowl sirloin pork belly shoulder, ribeye meatloaf corned beef boudin alcatra tail tri-tip. Andouille salami chicken, corned beef cupim pork loin chuck filet mignon beef ground round. Jowl beef ribs turducken tenderloin ham hock."
+                    Description = "Your lovely father. Bacon ipsum dolor amet flank cupim pork chop t-bone strip steak ham hock. Shankle andouille leberkas sirloin shoulder prosciutto hamburger chuck tri-tip ground round pork belly cupim. Landjaeger jerky ham pancetta, pork loin beef drumstick meatball bacon."
                 });
 
                 cDolores.Relations.Add(new CharacterRelation
                 {
                     Character = cTeddy,
-                    Description = "You are in love with Teddy. Beef flank tenderloin, ribeye sausage ball tip cupim bresaola. Kevin t-bone turducken, tenderloin leberkas chuck sirloin swine filet mignon ham. Sirloin jerky swine corned beef tail frankfurter beef ribs tri-tip pig cow pork loin pancetta pork chop. Pastrami prosciutto filet mignon, turducken tri-tip salami biltong short ribs pork belly shoulder fatback boudin t-bone chuck shank. Beef ribs doner turducken, strip steak shoulder shank porchetta capicola prosciutto kielbasa."
+                    Description = "You are in love with Teddy. Beef flank tenderloin, ribeye sausage ball tip cupim bresaola. Kevin t-bone turducken, tenderloin leberkas chuck sirloin swine filet mignon ham. Sirloin jerky swine corned beef tail frankfurter beef ribs tri-tip pig cow pork loin pancetta pork chop."
                 });
 
                 context.SaveChanges();

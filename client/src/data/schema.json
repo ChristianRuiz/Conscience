@@ -1363,6 +1363,18 @@
             "deprecationReason": null
           },
           {
+            "name": "host",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Host",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "character",
             "description": null,
             "args": [],
