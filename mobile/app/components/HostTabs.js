@@ -10,6 +10,7 @@ import HostDetails from './host/HostDetails';
 import PlotEvents from './host/PlotEvents';
 import Stats from './host/Stats';
 import Notifications from './host/Notifications';
+import HostButtons from './host/HostButtons';
 import Debugger from './Debugger';
 
 import AudioService from '../services/AudioService';
@@ -75,8 +76,8 @@ class HostTabs extends React.Component {
       { key: '1', title: 'Me', icon: 'ios-contact' },
       { key: '2', title: 'Stats', icon: 'ios-body' },
       { key: '3', title: 'Events', icon: 'ios-calendar' },
-      { key: '4', title: 'Nots', icon: 'ios-notifications' }
-      // { key: '5', title: 'Debug', icon: 'ios-bug' }
+      { key: '4', title: 'Nots', icon: 'ios-notifications' },
+      { key: '5', title: 'Status', icon: 'ios-warning' }
     ]
   };
 
@@ -141,6 +142,10 @@ class HostTabs extends React.Component {
       case '4':
         return (
           <Notifications />
+        );
+      case '5':
+        return (
+          <HostButtons />
         );
       // case '5':
       //   return (

@@ -66,7 +66,9 @@ class ImageUploader extends React.Component {
   }
 
   render() {
-    return (<TouchableHighlight onPress={this._pickImage} style={this.props.style}>
+    return (<TouchableHighlight
+      onPress={this._pickImage} style={this.props.style}
+      underlayColor="transparent">
       <View style={this.props.style} />
     </TouchableHighlight>);
   }
