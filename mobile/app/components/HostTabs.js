@@ -14,7 +14,7 @@ import HostButtons from './host/HostButtons';
 import Debugger from './Debugger';
 
 import AudioService from '../services/AudioService';
-import SignalRService from '../services/SignalRService';
+import NotificationsService from '../services/NotificationsService.js';
 
 type Route = {
   key: string,
@@ -25,7 +25,6 @@ type Route = {
 type State = NavigationState<Route>;
 
 let audioService = null;
-let signalRService = null;
 
 const styles = StyleSheet.create({
   container: {
@@ -157,9 +156,10 @@ class HostTabs extends React.Component {
   };
 
   componentDidMount() {
-    if (audioService == null) {
+    if (audioService == null && !global.notificationsService) {
       audioService = new AudioService();
-      signalRService = new SignalRService(this.props.client, navigator, audioService);
+      global.notificationsService = new NotificationsService(this.props.client,
+            navigator, audioService);
     }
   }
 

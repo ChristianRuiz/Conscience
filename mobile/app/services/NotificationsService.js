@@ -1,23 +1,16 @@
-import { Platform } from 'react-native';
-import BackgroundTimer from 'react-native-background-timer';
 import DeviceBattery from 'react-native-device-battery';
 import DeviceInfo from 'react-native-device-info';
-import Location from 'react-native-location';
 import reportException from './ReportException';
 import updateCache from './CacheService';
 
 import Constants from '../constants';
 
-class SignalRService {
+class NotificationsService {
   constructor(apolloClient, navigator, audioService) {
     this.client = apolloClient;
     this.audioService = audioService;
 
-    this._onTimer = this._onTimer.bind(this);
-
-    if (Platform.OS === 'ios') {
-      Location.requestAlwaysAuthorization();
-    }
+    this.tick = this.tick.bind(this);
 
     this.deviceId = DeviceInfo.getDeviceId();
 
@@ -50,19 +43,10 @@ class SignalRService {
         timeout: 10000,
         maximumAge: 0
       });
-
-    if (this.intervalId) {
-      BackgroundTimer.clearInterval(this.intervalId);
-    }
-
-    this.intervalId = BackgroundTimer.setInterval(() => {
-      this._onTimer();
-    }, 1000 * 15);
-
-    this._onTimer();
   }
 
-  _onTimer() {
+  tick() {
+    console.log('Timer tick');
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
     this.audioService.playSound('empty.mp3');
 
@@ -125,4 +109,4 @@ class SignalRService {
   }
 }
 
-export default SignalRService;
+export default NotificationsService;
