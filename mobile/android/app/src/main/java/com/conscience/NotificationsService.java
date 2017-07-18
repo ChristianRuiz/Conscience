@@ -20,6 +20,7 @@ public class NotificationsService extends Service {
 
     @Override
     public void onCreate() {
+        Log.i("NotificationsService", "Service started");
     }
 
     @Override
@@ -35,6 +36,7 @@ public class NotificationsService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+        Log.i("NotificationsService", "onBind");
         return mBinder;
     }
 
