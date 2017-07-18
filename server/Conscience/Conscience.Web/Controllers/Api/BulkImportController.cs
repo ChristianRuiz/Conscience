@@ -369,7 +369,7 @@ namespace Conscience.Web.Controllers.Api
                 return;
 
             var reader = new StringReader(relation);
-            var name = reader.ReadLine();
+            var name = reader.ReadLine().Trim();
             var description = reader.ReadLine();
             
             var relatedCharacter = characters.Values.FirstOrDefault(c => c.Name.ToLowerInvariant() == name.ToLowerInvariant());
@@ -422,7 +422,8 @@ namespace Conscience.Web.Controllers.Api
             {
                 account = new ConscienceAccount
                 {
-                    UserName = name
+                    UserName = name,
+                    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
                 };
                 var roleName = Enum.GetNames(typeof(RoleTypes)).First(r => r.ToLowerInvariant() == role.ToLowerInvariant());
                 account.Roles.Add(new Role
@@ -501,6 +502,9 @@ namespace Conscience.Web.Controllers.Api
     {
         public static string ToCleanString(this ICell cell)
         {
+            if (cell == null)
+                return string.Empty;
+
             cell.RemoveHyperlink();
             try
             {

@@ -158,7 +158,11 @@ class HostDetails extends React.Component {
           {host.currentCharacter.character.relations.map(relation =>
             <View key={relation.id} style={styles.relationView}>
               <View style={styles.relationTitleView}>
-                <ProfileImage style={styles.relationPicture} source={relation.character.currentHost.host.account.pictureUrl} />
+                <ProfileImage
+                  style={styles.relationPicture}
+                  source={relation.character.currentHost ?
+                  relation.character.currentHost.host.account.pictureUrl : null}
+                />
                 <Text style={styles.relationName} numberOfLines={1}>{relation.character.name.toUpperCase()}</Text>
               </View>
               <Text>{relation.description}</Text>

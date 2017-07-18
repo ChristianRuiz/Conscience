@@ -28,14 +28,10 @@ namespace Conscience.Web
                 BundleConfig.RegisterBundles(BundleTable.Bundles);
 
                 ConfigureAuth(app);
+                
+                app.MapSignalR();
 
                 var container = UnityActivator.Start();
-
-                app.MapSignalR(new Microsoft.AspNet.SignalR.HubConfiguration
-                {
-                    Resolver = new SignalRDependencyResolver(container)
-                });
-                
                 var context = container.Resolve<ConscienceContext>();
                 context.Database.CreateIfNotExists();
                 context.Database.Initialize(true);

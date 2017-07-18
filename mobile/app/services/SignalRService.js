@@ -2,8 +2,6 @@ import { Platform } from 'react-native';
 import BackgroundTimer from 'react-native-background-timer';
 import DeviceBattery from 'react-native-device-battery';
 import DeviceInfo from 'react-native-device-info';
-import signalr from 'react-native-signalr';
-import { gql } from 'react-apollo';
 import Location from 'react-native-location';
 import reportException from './ReportException';
 import updateCache from './CacheService';
@@ -16,8 +14,6 @@ class SignalRService {
     this.audioService = audioService;
 
     this._onTimer = this._onTimer.bind(this);
-    this._connect = this._connect.bind(this);
-    this.reconnect = this.reconnect.bind(this);
 
     if (Platform.OS === 'ios') {
       Location.requestAlwaysAuthorization();
@@ -55,80 +51,32 @@ class SignalRService {
         maximumAge: 0
       });
 
-    this._connect();
-  }
-
-  reconnect() {
-    if (!this.reconnecting) {
-      this.reconnecting = true;
-
-      // this.audioService.playSound('2.mp3');
-
-      reportException('Reconnecting SignalR', false);
-
-      BackgroundTimer.setTimeout(() => {
-        this._connect();
-      }, 5000); // Restart connection after 5 seconds.
-    }
-  }
-
-  _connect() {
-    // this.audioService.playSound('3.mp3');
-
-    if (this.connection) {
-      try {
-        this.connection.stop();
-      } catch (e) {}
+    if (this.intervalId) {
+      BackgroundTimer.clearInterval(this.intervalId);
     }
 
-    this.connection = signalr.hubConnection(`${Constants.SERVER_URL}/signalr/hubs`);
-    this.proxy = this.connection.createHubProxy('AccountsHub');
-    this.connection.start()
-      .done(() => {
-        console.log(`Now reconnected, connection ID=${this.connection.id}`);
-        this.proxy.invoke('subscribeHost', this.deviceId).done(() => {
-          this.reconnecting = false;
+    this.intervalId = BackgroundTimer.setInterval(() => {
+      this._onTimer();
+    }, 1000 * 15);
 
-          if (this.intervalId) {
-            BackgroundTimer.clearInterval(this.intervalId);
-          }
-
-          this.intervalId = BackgroundTimer.setInterval(() => {
-            this._onTimer();
-          }, 1000 * 15);
-
-          this._onTimer();
-        });
-      })
-      .fail((error) => {
-        this.reconnecting = false;
-        reportException(error, false);
-        this.reconnect();
-      });
-
-    this.connection.disconnected(() => {
-      this.reconnect();
-    });
+    this._onTimer();
   }
 
   _onTimer() {
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
     this.audioService.playSound('empty.mp3');
 
+    // this.audioService.playSound('1.mp3');
+
     const update = {
-      deviceId: this.deviceId
+      deviceId: this.deviceId,
+      locations: []
     };
 
     Object.assign(update, {
       batteryLevel: this.batteryLevel,
       charging: this.charging
     });
-
-    if (this.locations.length > 0) {
-      Object.assign(update, {
-        locations: this.locations
-      });
-    }
 
     const serviceLocations = this.locations.map(l => ({
       Latitude: l.coords.latitude,
@@ -140,16 +88,23 @@ class SignalRService {
       TimeStamp: new Date(l.timestamp).toISOString()
     }));
 
-    try {
-      this.proxy.invoke('locationUpdates', serviceLocations, this.charging ? 1 : 0, this.batteryLevel).then(() => {
-        this.locations = [];
-      }).fail((error) => {
-        console.log(`Unable to to send location updates to SignalR ${error}`);
-        this.reconnect();
+    if (this.locations.length > 0) {
+      Object.assign(update, {
+        locations: serviceLocations
       });
+    }
+
+    try {
+      fetch(`${Constants.SERVER_URL}/api/Notifications`, {
+        method: 'POST',
+        body: JSON.stringify(update)
+      }).then(() => {
+        this.locations = [];
+      })
+      .catch((e) => { console.log(`Unable to to send location updates to the server (ajax): ${e}`); });
     } catch (e) {
-      console.log(`Unable to send updates to SignalR: ${e}`);
-      this.reconnect();
+      console.log(`Unable to send updates to the server: ${e}`);
+      reportException(`Unable to send updates to the server: ${e}`);
     }
 
     updateCache(this.client, (data) => {

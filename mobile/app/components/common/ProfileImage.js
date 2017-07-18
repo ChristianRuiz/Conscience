@@ -31,17 +31,22 @@ class ProfileImage extends React.Component {
     let source = this._getDefaultProfileImage();
 
     if (!this.state.errorLoadingImage && this.props.source) {
-      source = { uri: Constants.SERVER_URL + this.props.source + '?_ts=' + new Date().toISOString() };
+      source = { uri: `${Constants.SERVER_URL + this.props.source  }?_ts=${  new Date().toISOString()}` };
     }
 
-    return (<Image source={source} style={[styles.image, this.props.style]}
+    return (<Image
+      source={source} style={[styles.image, this.props.style]}
       onError={() => this.setState({ errorLoadingImage: true })}
     />);
   }
 }
 
 ProfileImage.propTypes = {
-  source: React.PropTypes.any.isRequired
+  source: React.PropTypes.any
+};
+
+ProfileImage.defaultProps = {
+  source: ''
 };
 
 export default ProfileImage;

@@ -34,6 +34,18 @@ namespace Conscience.Application.Graph.Entities.Accounts
                 resolve: context => accountRepo.AddRole(context.GetArgument<int>("accountId"), context.GetArgument<RoleTypes>("role")))
                 .AddPermission(RoleTypes.Admin).RequiresMembership();
 
+            Field<AccountGraphType>("changePassword",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "accountId", Description = "account id" },
+                    new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "password", Description = "password" }
+                    ),
+                resolve: context =>
+                {
+                    accountService.ChangePasswordAsync(context.GetArgument<int>("accountId"), context.GetArgument<string>("password")).Wait();
+                    return accountRepo.GetById(context.GetArgument<int>("accountId"));
+                })
+                .AddPermission(RoleTypes.Admin).RequiresMembership();
+
             Field<AccountGraphType>("login",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "userName", Description = "user name" },

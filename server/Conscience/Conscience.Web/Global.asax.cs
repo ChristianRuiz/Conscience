@@ -1,4 +1,5 @@
 ﻿using Conscience.Web.Logger;
+using Microsoft.AspNet.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace Conscience.Web
     {
         protected void Application_Start()
         {
+            //Here your SignalR dependency resolver
+            GlobalHost.DependencyResolver = new SignalRDependencyResolver(UnityConfig.GetConfiguredContainer());
         }
 
         protected void Application_Error(object sender, EventArgs e)

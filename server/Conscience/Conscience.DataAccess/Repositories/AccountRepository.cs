@@ -50,6 +50,12 @@ namespace Conscience.DataAccess.Repositories
             return account;
         }
 
+        public void UpdateDevice(int accountId, string deviceId)
+        {
+            var account = GetById(accountId);
+            UpdateDevice(account, deviceId);
+        }
+
         public void UpdateDevice(Account account, string deviceId)
         {
             if (account.Device == null)

@@ -1,7 +1,8 @@
 ﻿using Conscience.Application.Graph;
 using Conscience.Application.Services;
+using Conscience.DataAccess.Repositories;
 using Conscience.Web.Hubs;
-using Microsoft.AspNet.SignalR;
+using Conscience.Web.Logger;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -17,10 +18,11 @@ using System.Web.Http;
 
 namespace Conscience.Web.Controllers.Api
 {
+    [Authorize]
     public class ErrorsController : ApiController
     {
         private readonly IUsersIdentityService _usersService;
-
+        
         public ErrorsController(
             IUsersIdentityService usersService)
         {
@@ -36,12 +38,22 @@ namespace Conscience.Web.Controllers.Api
         [HttpPost]
         public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
         {
-            var stream = await request.Content.ReadAsStreamAsync();
-            stream.Position = 0;
-            var error = new StreamReader(stream).ReadToEnd();
+            var error = await request.Content.ReadToEndAsync();
 
-            if (AccountsHub.Current != null)
-                AccountsHub.Current.ReportError(error);
+            var errorContext = string.Empty;
+
+            if (_usersService.CurrentUser != null)
+            {
+                errorContext += "Account: " + _usersService.CurrentUser.Id + " " + _usersService.CurrentUser.UserName + Environment.NewLine;
+
+                if (_usersService.CurrentUser.Device != null)
+                    errorContext += "Device: " + _usersService.CurrentUser.Device.DeviceId;
+            }
+
+            Log4NetLogger.Current.WriteError(errorContext + Environment.NewLine + error);
+
+            var hub = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
+            hub.Clients.Group(AccountsHub.GroupAdmins).broadcastError(errorContext, error);
 
             var response = request.CreateResponse(HttpStatusCode.OK);
             return response;

@@ -107,11 +107,7 @@ namespace Conscience.Web.Controllers.Api
         {
             try
             {
-                var stream = await request.Content.ReadAsStreamAsync();
-                stream.Position = 0;
-                var json = new StreamReader(stream).ReadToEnd();
-                var query = JsonConvert.DeserializeObject<T>(json);
-                return query;
+                return await request.Content.DeserializeAsync<T>();
             }
             catch
             {

@@ -33,12 +33,9 @@ namespace Conscience.Web.Hubs
                 return _childContainer;
             }
         }
-
-        public static AccountsHub Current;
-
+        
         public AccountsHub(IUnityContainer container)
         {
-            Current = this;
             _parentContainer = container;
         }
 
@@ -60,9 +57,9 @@ namespace Conscience.Web.Hubs
             }
         }
         
-        private const string GroupHosts = "Hosts";
-        private const string GroupWeb = "Web";
-        private const string GroupAdmins = "Admins";
+        public const string GroupHosts = "Hosts";
+        public const string GroupWeb = "Web";
+        public const string GroupAdmins = "Admins";
 
         private static object _syncUsers = new object();
         private static Dictionary<string, int> Users = new Dictionary<string, int>();
@@ -126,50 +123,6 @@ namespace Conscience.Web.Hubs
             {
                 Groups.Add(Context.ConnectionId, GroupAdmins);
             }
-        }
-
-        public void LocationUpdates(List<Location> locations, BatteryStatus? batteryStatus = null, double? batteryLevel = null)
-        {
-            RegisterCurrentUserIfNeeded();
-
-            var firstLocation = locations.FirstOrDefault();
-            
-            var accountId = Users[Context.ConnectionId];
-
-            Log4NetLogger.Current.WriteDebug(string.Format("Location Updates - {0} - {1} - {2} - {3}", accountId, locations.Count, firstLocation != null ? firstLocation.Latitude : 0, firstLocation != null ? firstLocation.Longitude : 0));
-
-            foreach (var location in locations)
-                if (location.TimeStamp == default(DateTime))
-                    location.TimeStamp = DateTime.Now;
-            
-            var account = AccountRepository.UpdateLocations(accountId, locations, batteryStatus, batteryLevel);
-            
-            Clients.Group(GroupWeb).LocationUpdated(account.Id, account.Device.CurrentLocation);
-        }
-
-        public void SendNotification(int userId)
-        {
-            var userRegistration = Users.First(u => u.Value == userId);
-            Clients.Client(userRegistration.Key).NotificationAudio(new NotificationAudio());
-        }
-        
-        public void ReportError(string error)
-        {
-            var errorContext = string.Empty;
-
-            if (Context.User != null && Context.User.Identity != null)
-            {
-                var accountId = Context.User.Identity.GetUserId<int>();
-                var account = AccountRepository.GetById(accountId);
-
-                if (account != null)
-                    errorContext += "Account: " + account.Id + " " + account.UserName + Environment.NewLine;
-
-                if (account.Device != null)
-                    errorContext += "Device: " + account.Device.DeviceId;
-            }
-
-            Clients.Group(GroupAdmins).BroadcastError(errorContext, error);
         }
     }
 }

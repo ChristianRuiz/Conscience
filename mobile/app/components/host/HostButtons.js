@@ -11,6 +11,8 @@ import Text from '../common/Text';
 import HostButton from './HostButton';
 import commonStyles from '../../styles/common';
 
+import Constants from '../../constants';
+
 const styles = StyleSheet.create({
   text: {
     fontSize: 18
@@ -31,6 +33,20 @@ const styles = StyleSheet.create({
 });
 
 class HostButtons extends React.Component {
+  _reportError() {
+    const error = 'Test from device.';
+
+    fetch(`${Constants.SERVER_URL}/api/Errors`, {
+      method: 'POST',
+      body: JSON.stringify({
+        error,
+        isFatal: false
+      })
+    }).catch((e) => { console.log(`Unable to report error (ajax): ${e}`); }).then(() => {
+      console.log(`Error reported '${JSON.stringify(error)}'`);
+    });
+  }
+
   render() {
     const underlayColor = '#2980B9';
 
@@ -40,7 +56,7 @@ class HostButtons extends React.Component {
       <View style={[commonStyles.scrollBoxContainer, styles.buttonsContainer]}>
         <Background />
         <View>
-          <HostButton style={styles.button} underlayColor={underlayColor} onPress={() => alert('OK')}>
+          <HostButton style={styles.button} underlayColor={underlayColor} onPress={this._reportError}>
             <Text style={styles.text}>OK</Text>
           </HostButton>
           <HostButton style={styles.button}>
