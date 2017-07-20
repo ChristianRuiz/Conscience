@@ -105,6 +105,7 @@ namespace Conscience.Domain
     public enum Genders
     {
         Male,
-        Female
+        Female,
+        NonGender
     }
 }

@@ -207,7 +207,8 @@ namespace Conscience.Web.Controllers.Api
                                     .Value = int.Parse(row.GetCell(26).ToCleanString().Trim());
 
                                 var charName = row.GetCell(2).ToCleanString().Trim();
-                                var gender = row.GetCell(3).ToCleanString().Trim().ToLowerInvariant() == "female" ? Genders.Female : Genders.Male;
+                                var genderValue = row.GetCell(3).ToCleanString().Trim().ToLowerInvariant();
+                                var gender = genderValue == "female" ? Genders.Female : (genderValue == "male" ? Genders.Male : Genders.NonGender);
                                 var age = int.Parse(row.GetCell(4).ToCleanString().Trim());
                                 var assignedOnMonths = int.Parse(row.GetCell(5).ToCleanString().Trim());
                                 var narrativeFunction = row.GetCell(27).ToCleanString().Trim();

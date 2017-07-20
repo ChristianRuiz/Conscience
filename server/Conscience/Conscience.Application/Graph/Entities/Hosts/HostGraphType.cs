@@ -25,6 +25,15 @@ namespace Conscience.Application.Graph.Entities.Hosts
             Field<CoreMemoryGraphType>("coreMemory1", resolve: context => context.Source.CoreMemory1);
             Field<CoreMemoryGraphType>("coreMemory2", resolve: context => context.Source.CoreMemory1);
             Field<CoreMemoryGraphType>("coreMemory3", resolve: context => context.Source.CoreMemory1);
+            Field<HostStatusEnumeration>("status", resolve: context => context.Source.Status);
+        }
+    }
+
+    public class HostStatusEnumeration : EnumerationGraphType<HostStatus>
+    {
+        public HostStatusEnumeration()
+        {
+            Name = "HostStatus";
         }
     }
 }

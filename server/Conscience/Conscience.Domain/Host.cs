@@ -14,6 +14,7 @@ namespace Conscience.Domain
             Notifications = new HashSet<Notification>();
             Characters = new HashSet<CharacterInHost>();
             Stats = new HashSet<Stats>();
+            Status = HostStatus.Ok;
         }
 
         public int Id
@@ -77,5 +78,18 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public HostStatus Status
+        {
+            get;
+            set;
+        }
+    }
+
+    public enum HostStatus
+    {
+        Ok,
+        Hurt,
+        Dead
     }
 }
