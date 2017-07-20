@@ -1,37 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
-import $ from 'jquery';
-import 'ms-signalr-client';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class HostClientTest extends React.Component {
   constructor(props) {
     super(props);
 
-    this._connect = this._connect.bind(this);
     this._updateLocation = this._updateLocation.bind(this);
-    this._disconnect = this._disconnect.bind(this);
-
-    this.state = {
-      isConnected: false
-    };
-
-    this.connection = $.hubConnection('/signalr/hubs');
-    this.proxy = this.connection.createHubProxy('AccountsHub');
-  }
-
-  _connect() {
-    this.connection.start()
-    .done(() => {
-      console.log(`Now connected, connection ID=${this.connection.id}`);
-      this.proxy.invoke('subscribeHost', `TestReactClient ${this.props.data.accounts.current.id}`).done(() => { this.setState({ isConnected: true }); });
-    })
-    .fail(() => { console.log('Could not connect'); });
   }
 
   _updateLocation() {
-    const location = { Latitude: 37.048601, Longitude: -2.4216117 };
+    const location = { Latitude: 37.048601, Longitude: -2.4216117, TimeStamp: new Date().toISOString() };
 
     let random = Math.random() / 1000;
 
@@ -41,21 +21,25 @@ class HostClientTest extends React.Component {
 
     location.Longitude += random;
 
-    this.proxy.invoke('locationUpdates', [location], null, null);
-  }
+    const update = {
+      deviceId: 'DevTest',
+      batteryLevel: 91,
+      charging: false,
+      locations: [location]
+    };
 
-  _disconnect() {
-    this.connection.stop();
-    this.setState({ isConnected: false });
+      fetch('/api/Notifications', {
+        method: 'POST',
+        body: JSON.stringify(update),
+        credentials: 'same-origin'
+      }).then(() => {
+        console.log('Location sent');
+      })
+      .catch((e) => { console.log(`Unable to to send location updates to the server (ajax): ${e}`); });
   }
 
   render() {
-    if (!this.state.isConnected) {
-      return <RaisedButton label="Connect" onClick={this._connect} />;
-    }
-
     return (<div>
-      <RaisedButton label="Disconnect" onClick={this._disconnect} />
       <RaisedButton label="Update Location" onClick={this._updateLocation} />
     </div>);
   }

@@ -3,6 +3,8 @@ import { withApollo, gql } from 'react-apollo';
 import $ from 'jquery';
 import 'ms-signalr-client';
 
+import query from '../../queries/MapQuery';
+
 class SignalRClient extends React.Component {
   constructor(props) {
     super(props);
@@ -59,24 +61,6 @@ class SignalRClient extends React.Component {
   }
 
   addAccount(accountId, location) {
-    const query = gql`query GetAccountsForMap {
-        accounts {
-          all {
-            id
-            userName
-            device {
-              id
-              currentLocation {
-                latitude
-                longitude
-              }
-              online
-            }
-          }
-        }
-      }
-    `;
-
     let data;
 
     try {

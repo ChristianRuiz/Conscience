@@ -4,9 +4,12 @@ const query = gql`{
   accounts {
     current {
       id
+      userName
+      pictureUrl
       host {
         id
         account {
+          id
           userName
           pictureUrl
           device {

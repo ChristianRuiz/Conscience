@@ -1,11 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { graphql, gql } from 'react-apollo';
+import { graphql } from 'react-apollo';
 
 import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
 import HostPopup from './HostPopup';
+
+import query from '../../queries/MapQuery';
 
 class ConscienceMap extends React.Component {
   constructor(props) {
@@ -47,39 +49,5 @@ class ConscienceMap extends React.Component {
 ConscienceMap.propTypes = {
   data: React.PropTypes.object.isRequired
 };
-
-const query = gql`query GetAllAccountsForMap
-        {
-          accounts {
-            all {
-              id
-              userName
-              device {
-                id
-                currentLocation {
-                  id,
-                  latitude
-                  longitude
-                }
-                online
-              },
-              host {
-                id,
-                currentCharacter {
-                  id,
-                  character {
-                    id,
-                    name
-                  }
-                }
-              },
-              employee {
-                id,
-                name
-              }
-            }
-          }
-        }
-      `;
 
 export default withRouter(graphql(query)(ConscienceMap));

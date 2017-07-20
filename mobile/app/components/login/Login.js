@@ -44,7 +44,7 @@ class Login extends React.Component {
     this._doLogin = this._doLogin.bind(this);
 
     this.state = {
-      userName: 'n62f', // TODO: This values are just for development
+      userName: '', // TODO: This values are just for development
       password: '123456',
       hasError: false,
       loading: false
@@ -92,6 +92,7 @@ class Login extends React.Component {
           <TextInput
             style={styles.text}
             placeholder="User name"
+            placeholderTextColor="#CED0CA"
             value={this.state.userName}
             onChangeText={text => this.setState({ userName: text })}
           />
@@ -99,6 +100,7 @@ class Login extends React.Component {
             style={styles.text}
             type="password"
             placeholder="Password"
+            placeholderTextColor="#CED0CA"
             secureTextEntry
             value={this.state.password}
             onChangeText={text => this.setState({ password: text })}
