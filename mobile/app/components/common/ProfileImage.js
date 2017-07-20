@@ -31,7 +31,7 @@ class ProfileImage extends React.Component {
     let source = this._getDefaultProfileImage();
 
     if (!this.state.errorLoadingImage && this.props.source) {
-      source = { uri: `${Constants.SERVER_URL + this.props.source  }?_ts=${  new Date().toISOString()}` };
+      source = { uri: Constants.SERVER_URL + this.props.source };
     }
 
     return (<Image

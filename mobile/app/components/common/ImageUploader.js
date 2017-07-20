@@ -60,7 +60,7 @@ class ImageUploader extends React.Component {
   _updateImage(response) {
     response.text().then((url) => {
       updateCache(this.props.client, (data) => {
-        data.accounts.current.host.account.pictureUrl = url + '?ts_=' + new Date().toISOString();
+        data.accounts.current.host.account.pictureUrl = url;
       });
     });
   }

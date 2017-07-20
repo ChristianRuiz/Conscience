@@ -13,6 +13,7 @@ import Text from '../common/Text';
 import Button from '../common/Button';
 import Background from '../common/Background';
 import commonStyles from '../../styles/common';
+import Constants from '../../constants';
 
 import query from '../../queries/HostDetailQuery';
 
@@ -66,6 +67,11 @@ class Login extends React.Component {
 
   _doLogin() {
     this.setState({ loading: true });
+
+    if (!Constants.serverUrlInitialized) {
+      setTimeout(this._doLogin, 1000);
+      return;
+    }
 
     this.props.mutate({
       variables: { userName: this.state.userName, password: this.state.password }

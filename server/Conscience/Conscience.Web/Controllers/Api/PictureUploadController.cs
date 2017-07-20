@@ -46,7 +46,7 @@ namespace Conscience.Web.Controllers.Api
 
                 CompressImageAndSave(file.InputStream, filePath, fileName);
 
-                account.PictureUrl = ImagesUrl + fileName;
+                account.PictureUrl = ImagesUrl + fileName + "?_ts=" + DateTime.Now.ToFileTime();
                 _accountsRepo.Modify(account);
 
                 result = Request.CreateResponse(HttpStatusCode.Created);

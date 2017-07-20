@@ -45,6 +45,10 @@ const networkInterface = createNetwork({
   }
 });
 
+Constants.addServerUrlInitializedAction(() => {
+  networkInterface._uri = `${Constants.SERVER_URL}/api/graphql`;
+});
+
 // Hack: iOS is not sending the cookie credentials, so we force them
 if (Platform.OS === 'ios') {
   networkInterface.useAfter([{
