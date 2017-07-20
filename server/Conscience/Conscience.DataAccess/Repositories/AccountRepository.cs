@@ -84,7 +84,7 @@ namespace Conscience.DataAccess.Repositories
                 account.Device.BatteryLevel = batteryLevel.Value;
 
             _context.SaveChanges();
-            return account;
+            return GetById(account.Id);
         }
     }
 }

@@ -7,8 +7,6 @@ function sleep(ms) {
 const AndroidService = async (taskData) => {
   //eslint-disable-next-line
   while(true) {
-    console.log('Android Service Tick');
-
     if (global.notificationsService) {
       global.notificationsService.tick();
     }

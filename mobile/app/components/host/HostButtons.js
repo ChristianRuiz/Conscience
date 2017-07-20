@@ -4,7 +4,6 @@ import {
   View,
   ScrollView,
   StyleSheet,
-  Image,
   Slider
 } from 'react-native';
 
@@ -23,7 +22,8 @@ const styles = StyleSheet.create({
     fontSize: 22
   },
   button: {
-    marginBottom: 20
+    marginBottom: 20,
+    width: 80
   },
   panicButton: {
     height: 160,
@@ -32,12 +32,18 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     justifyContent: 'space-between'
   },
-  stateImage: {
+  stateContainer: {
     justifyContent: 'center',
     alignItems: 'center'
   },
-  stateSlider: {
-    marginTop: 40
+  stateButtonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  stateText: {
+    fontSize: 26,
+    marginTop: 20,
+    marginBottom: 60
   }
 });
 
@@ -46,23 +52,23 @@ class HostButtons extends React.Component {
     super(props);
 
     this.state = {
-      sliderValue: 2
+      stateValue: 2
     };
   }
 
-  _sliderChanged(value) {
-
+  _stateChanged(value) {
+    this.setState({ stateValue: value });
   }
 
   render() {
     const underlayColor = '#2980B9';
 
-    let source = require('../../img/states/fine.png');
+    let status = 'OK';
 
-    if (this.state.sliderValue === 1) {
-      source = require('../../img/states/hurt.png');
-    } else if (this.state.sliderValue === 0) {
-      source = require('../../img/states/dead.png');
+    if (this.state.stateValue === 1) {
+      status = 'HURT';
+    } else if (this.state.stateValue === 0) {
+      status = 'DEAD';
     }
 
     return (<ScrollView>
@@ -70,17 +76,39 @@ class HostButtons extends React.Component {
 
       <View style={[commonStyles.scrollBoxContainer, styles.buttonsContainer]}>
         <View>
-          <View style={styles.stateImage}>
-            <Image source={source} style={[commonStyles.image, styles.stateImage]} />
+          <View style={styles.stateContainer}>
+            <Text style={styles.stateText}>Status: {status}</Text>
           </View>
-          <Slider
-            value={this.state.sliderValue} minimumValue={0} maximumValue={2} step={1}
-            onValueChange={value => this.setState({ sliderValue: value })}
-            onSlidingComplete={this._sliderChanged}
-            style={styles.stateSlider}
-          />
+          <View style={styles.stateButtonsContainer}>
+            <HostButton
+              style={styles.button}
+              underlayColor={underlayColor}
+              onPress={() => this._stateChanged(0)}
+            >
+              <Text style={styles.text}>Dead</Text>
+            </HostButton>
+            <HostButton
+              style={styles.button}
+              underlayColor={underlayColor}
+              onPress={() => this._stateChanged(1)}
+            >
+              <Text style={styles.text}>Hurt</Text>
+            </HostButton>
+            <HostButton
+              style={styles.button}
+              underlayColor={underlayColor}
+              onPress={() => this._stateChanged(2)}
+            >
+              <Text style={styles.text}>OK</Text>
+            </HostButton>
+              
+          </View>
         </View>
-        <HostButton style={styles.panicButton} onPress={() => alert('Sorry, not implemented yet. Find an organizer.')}>
+        <HostButton
+          style={styles.panicButton}
+          onPress={() => alert('Sorry, not implemented yet. Find an organizer.')}
+          underlayColor={underlayColor}
+        >
           <Text style={styles.textPanic} underlayColor={underlayColor}>Panic</Text>
         </HostButton>
       </View>

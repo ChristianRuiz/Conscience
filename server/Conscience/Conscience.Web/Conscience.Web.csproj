@@ -357,6 +357,7 @@
     <Compile Include="Identity\UsersIdentityService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\app.txt" />
     <Content Include="Content\audio\1.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

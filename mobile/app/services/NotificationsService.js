@@ -46,11 +46,8 @@ class NotificationsService {
   }
 
   tick() {
-    console.log('Timer tick');
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
     this.audioService.playSound('empty.mp3');
-
-    // this.audioService.playSound('1.mp3');
 
     const update = {
       deviceId: this.deviceId,
