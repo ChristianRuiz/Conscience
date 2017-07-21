@@ -38,7 +38,7 @@ ErrorUtils.setGlobalHandler(wrapGlobalHandler);
 const createNetwork = Platform.OS === 'ios' ? createNetworkInterface : createBatchingNetworkInterface;
 
 const networkInterface = createNetwork({
-  uri: `${Constants.SERVER_URL}/api/graphql`,
+  uri: `${Constants.SERVER_URL}/api/graphql?_ts=${new Date().getDate()}`,
   batchInterval: 10,
   opts: {
     credentials: 'same-origin'
@@ -46,7 +46,7 @@ const networkInterface = createNetwork({
 });
 
 Constants.addServerUrlInitializedAction(() => {
-  networkInterface._uri = `${Constants.SERVER_URL}/api/graphql`;
+  networkInterface._uri = `${Constants.SERVER_URL}/api/graphql?_ts=${new Date().getDate()}`;
 });
 
 // Hack: iOS is not sending the cookie credentials, so we force them

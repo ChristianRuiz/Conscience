@@ -5,6 +5,7 @@ class Constants {
     this.serverUrlInitializedPendingActions = [];
 
     this.SERVER_URL = '';
+    this.NOTIFICATIONS_INTERVAL_SECONDS = 10;
 
     this._testServerUrl = this._testServerUrl.bind(this);
     this._initServerUrl = this._initServerUrl.bind(this);

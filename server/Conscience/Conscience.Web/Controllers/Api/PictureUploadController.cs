@@ -48,6 +48,7 @@ namespace Conscience.Web.Controllers.Api
 
                 account.PictureUrl = ImagesUrl + fileName + "?_ts=" + DateTime.Now.ToFileTime();
                 _accountsRepo.Modify(account);
+                account = _accountsRepo.GetById(account.Id);
 
                 result = Request.CreateResponse(HttpStatusCode.Created);
                 result.Content = new StringContent(account.PictureUrl, Encoding.UTF8, "text/plain");

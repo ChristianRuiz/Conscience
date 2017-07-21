@@ -41,7 +41,8 @@ class NotificationsService {
       {
         enableHighAccuracy: true,
         timeout: 10000,
-        maximumAge: 0
+        maximumAge: 0,
+        distanceFilter: 1
       });
   }
 
@@ -59,6 +60,7 @@ class NotificationsService {
       charging: this.charging
     });
 
+    // TODO: Filter only 1 location per second
     const serviceLocations = this.locations.map(l => ({
       Latitude: l.coords.latitude,
       Longitude: l.coords.longitude,

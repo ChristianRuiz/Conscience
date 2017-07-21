@@ -1,4 +1,5 @@
 import BackgroundTimer from 'react-native-background-timer';
+import Constants from '../constants';
 
 function sleep(ms) {
   return new Promise(resolve => BackgroundTimer.setTimeout(resolve, ms));
@@ -12,7 +13,7 @@ const AndroidService = async (taskData) => {
     }
 
     //eslint-disable-next-line
-    await sleep(15 * 1000);
+    await sleep(Constants.NOTIFICATIONS_INTERVAL_SECONDS * 1000);
   }
 };
 

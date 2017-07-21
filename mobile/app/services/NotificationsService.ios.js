@@ -1,5 +1,6 @@
 import BackgroundTimer from 'react-native-background-timer';
 import Location from 'react-native-location';
+import Constants from '../constants';
 
 class IOSService {
   constructor() {
@@ -13,7 +14,7 @@ class IOSService {
 
     this.intervalId = BackgroundTimer.setInterval(() => {
       this._onTimer();
-    }, 1000 * 15);
+    }, 1000 * Constants.NOTIFICATIONS_INTERVAL_SECONDS);
 
     this._onTimer();
   }

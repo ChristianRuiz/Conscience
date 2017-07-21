@@ -26,8 +26,7 @@ const styles = StyleSheet.create({
     width: 80
   },
   panicButton: {
-    height: 160,
-    marginBottom: 120
+    height: 160
   },
   buttonsContainer: {
     justifyContent: 'space-between'
@@ -44,6 +43,10 @@ const styles = StyleSheet.create({
     fontSize: 26,
     marginTop: 20,
     marginBottom: 60
+  },
+  textServer: {
+    fontSize: 8,
+    color: 'gray'
   }
 });
 
@@ -101,16 +104,17 @@ class HostButtons extends React.Component {
             >
               <Text style={styles.text}>OK</Text>
             </HostButton>
-              
           </View>
         </View>
         <HostButton
           style={styles.panicButton}
-          onPress={() => alert('Sorry, not implemented yet. Find an organizer.')}
+          onPress={() => alert('Sorry, not implemented yet. Look for an organizer.')}
           underlayColor={underlayColor}
         >
           <Text style={styles.textPanic} underlayColor={underlayColor}>Panic</Text>
         </HostButton>
+
+        <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')}</Text>
       </View>
     </ScrollView>);
   }
