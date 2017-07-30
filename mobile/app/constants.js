@@ -1,10 +1,10 @@
 class Constants {
   constructor() {
     this._serverUrls = ['http://192.168.1.100', 'http://192.168.1.104', 'https://consciencelarp.azurewebsites.net'];
-    this.serverUrlInitialized = false;
+    this.serverUrlInitialized = true;
     this.serverUrlInitializedPendingActions = [];
 
-    this.SERVER_URL = '';
+    this.SERVER_URL = 'https://consciencelarp.azurewebsites.net';
     this.NOTIFICATIONS_INTERVAL_SECONDS = 10;
 
     this._testServerUrl = this._testServerUrl.bind(this);

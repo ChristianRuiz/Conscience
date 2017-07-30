@@ -157,6 +157,9 @@ namespace Conscience.Web.Controllers.Api
                                 name = row.GetCell(0).ToCleanString().Trim();
                                 var password = row.GetCell(1).ToCleanString().Trim();
 
+                                if (characters.Any(c => c.Value.CurrentHost.Host.Account.UserName.ToLowerInvariant() == name.ToLowerInvariant()))
+                                    throw new Exception("There is already a host with the name: " + name);
+
                                 var account = await CreateOrUpdateAccount(identityService, context, name, password, RoleTypes.Host.ToString());
 
                                 var host = new Host { Account = account };
@@ -371,7 +374,7 @@ namespace Conscience.Web.Controllers.Api
 
             var reader = new StringReader(relation);
             var name = reader.ReadLine().Trim();
-            var description = reader.ReadLine();
+            var description = reader.ReadToEnd();
             
             var relatedCharacter = characters.Values.FirstOrDefault(c => c.Name.ToLowerInvariant() == name.ToLowerInvariant());
 
@@ -434,6 +437,9 @@ namespace Conscience.Web.Controllers.Api
                 context.Accounts.Add(account);
                 context.SaveChanges();
             }
+
+            account.PictureUrl = "/Content/images/uploaded/" + account.Id + ".jpg?_ts=101";
+            context.SaveChanges();
 
             await identityService.ChangePasswordAsync(account.Id, password);
 

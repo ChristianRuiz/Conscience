@@ -90,8 +90,8 @@ android {
         applicationId "com.conscience"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 5
-        versionName "1.04"
+        versionCode 7
+        versionName "1.06"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }

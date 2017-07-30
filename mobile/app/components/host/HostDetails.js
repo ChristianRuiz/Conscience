@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   narrative: {
     position: 'absolute',
-    top: 200,
+    top: 170,
     left: 45,
     width: 260,
     fontSize: 12,
@@ -110,12 +110,12 @@ class HostDetails extends React.Component {
 
         <Text onPress={() => alert('Picture!')} style={styles.serialNumber} numberOfLines={1}>{host.account.userName}</Text>
 
-        {host.account.device ?
+        {/* {host.account.device ?
           <Text style={styles.battery} numberOfLines={1}>
-            {Math.trunc(host.account.device.batteryLevel * 100)}%</Text> : <Text />}
+            {Math.trunc(host.account.device.batteryLevel * 100)}%</Text> : <Text />} */}
 
         {host.currentCharacter ?
-          <Text style={styles.narrative} numberOfLines={2}>
+          <Text style={styles.narrative} numberOfLines={3}>
             {host.currentCharacter.character.narrativeFunction.toUpperCase()} </Text> : <Text />}
 
         {host.currentCharacter ? (<View>
