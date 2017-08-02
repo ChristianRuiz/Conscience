@@ -6,6 +6,7 @@ const query = gql`query GetAllAccountsForMap
             all {
               id
               userName
+              pictureUrl
               device {
                 id
                 currentLocation {

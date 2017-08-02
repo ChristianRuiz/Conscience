@@ -1,8 +1,8 @@
 import React from 'react';
 
 const HostPopup = ({ account }) =>
-  <div>
-    <p><b>{account.userName}</b></p>
+  <div className="popup">
+    <p><b>#{account.userName}</b></p>
     <p>{account.host.currentCharacter ? account.host.currentCharacter.character.name : ''}</p>
   </div>;
 

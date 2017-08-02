@@ -5,6 +5,7 @@ import { graphql } from 'react-apollo';
 import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
+import InfoPanel from './InfoPanel';
 import HostPopup from './HostPopup';
 
 import query from '../../queries/MapQuery';
@@ -17,22 +18,9 @@ class ConscienceMap extends React.Component {
 
     this.state = {
       defaultPosition: [37.048601, -2.4216117],
-      selectedHost: null,
-      height: 0
+      selectedAccount: null,
+      height: parseInt(window.innerHeight)
     };
-  }
-
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({ height: parseInt(window.innerHeight) });
   }
 
   render() {
@@ -40,8 +28,14 @@ class ConscienceMap extends React.Component {
       return <div />;
     }
 
-    return (<div>
-      <Map className="map" center={this.state.defaultPosition} zoom={18} style={{ height: this.state.height - 110 }}>
+    return (<div className="mapContainer">
+      <Map
+        className="map"
+        center={this.state.defaultPosition}
+        zoom={18}
+        style={{ height: this.state.height - 110 }}
+        onclick={() =>  this.setState({ selectedAccount: null })}
+      >
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
         {
           this.props.data.accounts.all
@@ -51,6 +45,7 @@ class ConscienceMap extends React.Component {
               key={account.id}
               position={[account.device.currentLocation.latitude,
                 account.device.currentLocation.longitude]}
+              onclick={() => this.setState({ selectedAccount: account })}
             >
               <Popup>
                 <HostPopup account={account} />
@@ -58,6 +53,8 @@ class ConscienceMap extends React.Component {
             </Marker>)
         }
       </Map>
+
+      <InfoPanel account={this.state.selectedAccount} />
     </div>);
   }
 }

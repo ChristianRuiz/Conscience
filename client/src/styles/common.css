@@ -15,6 +15,14 @@ html, body {
     margin-right: 40px;
 }
 
-input {
+input, p {
     color: #F1F1F3 !important;
+}
+
+h1, h2, h3 {
+    color: #34FFFB !important;
+}
+
+h1 {
+    font-size: 20px;
 }

@@ -1,23 +1,26 @@
 import React from 'react';
-import Drawer from 'material-ui/Drawer';
 
-const InfoPanel = ({ host }) => {
-  if (host !== null) {
-    return (<Drawer open={host !== null} openSecondary>
-      <p>Name: {host.account.userName}</p>
-      <p>Online: {host.account.device.online}</p>
-    </Drawer>);
+const InfoPanel = ({ account }) => {
+  if (account !== null) {
+    return (<div className="infoPanel">
+      <div className="picture" style={{ backgroundImage: `url(${account.pictureUrl})` }} />
+      <div className="card">
+        <h1 className="charName">{account.host.currentCharacter ? account.host.currentCharacter.character.name : ''}</h1>
+        <p className="serialNumber">#{account.userName}</p>
+        <p className="online">{account.device.online ? 'On Line' : 'Off Line'}</p>
+      </div>
+    </div>);
   }
 
   return <div />;
 };
 
 InfoPanel.propTypes = {
-  host: React.PropTypes.object
+  account: React.PropTypes.object
 };
 
 InfoPanel.defaultProps = {
-  host: null
+  account: null
 };
 
 export default InfoPanel;

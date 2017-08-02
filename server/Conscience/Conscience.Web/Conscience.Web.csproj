@@ -398,6 +398,10 @@
     <Content Include="Content\images\background\center-left.png" />
     <Content Include="Content\images\background\center-right.png" />
     <Content Include="Content\images\background\top-right.png" />
+    <Content Include="Content\images\card\card.png" />
+    <Content Include="Content\images\card\status-dead.png" />
+    <Content Include="Content\images\card\status-hurt.png" />
+    <Content Include="Content\images\card\status-ok.png" />
     <Content Include="Content\images\common\logo.png" />
     <Content Include="Content\images\menu\behaviour.png" />
     <Content Include="Content\images\menu\character.png" />
