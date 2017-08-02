@@ -11,7 +11,9 @@ const App = () =>
       <Header />
     </div>
 
-    <Routes />
+    <div className="mainContent">
+      <Routes />
+    </div>
 
     <SignalRClient />
   </div>;

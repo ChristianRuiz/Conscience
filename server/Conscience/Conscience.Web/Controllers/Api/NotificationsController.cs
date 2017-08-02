@@ -55,13 +55,12 @@ namespace Conscience.Web.Controllers.Api
                 foreach (var location in updates.locations)
                     if (location.TimeStamp == default(DateTime))
                         location.TimeStamp = DateTime.Now;
+                
+                _accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
+                var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
 
-                //TODO: Uncomment this lines for the local execution
-                //_accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
-                //var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
-
-                //var hub = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
-                //hub.Clients.Group(AccountsHub.GroupWeb).locationUpdated(account.Id, account.Device.CurrentLocation);
+                var hub = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
+                hub.Clients.Group(AccountsHub.GroupWeb).locationUpdated(account.Id, account.Device.CurrentLocation);
 
                 //TODO: Return unread notifications
 

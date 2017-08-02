@@ -10,8 +10,11 @@ html, body {
     width: 100%;
 }
 
-.background {
-    background-color: pink;
-    height: 100%;
-    width: 100%;
+.mainContent {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+input {
+    color: #F1F1F3 !important;
 }

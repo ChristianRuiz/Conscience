@@ -1,0 +1,88 @@
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #27293E;
+    z-index: -1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.background-left {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.background-left-top {
+    width: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+/* .background-left-top .deco-top {
+    background-image: url("/content/images/background/bottom-left-logo.png");
+    width: 100%;
+    height: 100px;
+} */
+
+.background-left-top .deco-center {
+    background-image: url("/content/images/background/center-left.png");
+    background-size: 19px 1px;
+    background-repeat: repeat;
+    width: 20px;
+    flex: 1;
+}
+
+.background-left-top .deco-bottom {
+    background-image: url("/content/images/background/bottom-left.png");
+    background-size: 28px;
+    background-repeat: no-repeat;
+    width: 27px;
+    height: 80px;
+    margin-bottom: 40px;
+}
+
+.background-left-bottom {
+    width: 100%;
+    height: 40px;
+}
+
+.background-left-bottom img {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.background-right {
+    width: 27px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+ .background-right .deco-top {
+    background-image: url("/content/images/background/top-right.png");
+    background-size: 27px 344px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 344px;
+} 
+
+.background-right .deco-center {
+    background-image: url("/content/images/background/center-right.png");
+    background-size: 27px 1px;
+    background-repeat: repeat;
+    width: 20px;
+    flex: 1;
+}
+
+.background-right .deco-bottom {
+    background-image: url("/content/images/background/bottom-right.png");
+    background-size: 27px 87px;
+    background-repeat: no-repeat;
+    width: 27px;
+    height: 87px;
+}

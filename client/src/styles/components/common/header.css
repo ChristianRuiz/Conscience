@@ -1,0 +1,28 @@
+.menuContainer {
+    height: 50px;
+    width: 100%;
+}
+
+.menuLinks {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 70px;
+}
+
+.menuLinks a {
+    margin-left: 10px;
+}
+
+.menuContainer .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    float: left;
+    z-index: 100;
+}
+
+.menuContainer .notifications {
+    margin-left: 20px;
+}

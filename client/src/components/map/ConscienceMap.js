@@ -9,14 +9,30 @@ import HostPopup from './HostPopup';
 
 import query from '../../queries/MapQuery';
 
+import styles from '../../styles/components/map/map.css';
+
 class ConscienceMap extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       defaultPosition: [37.048601, -2.4216117],
-      selectedHost: null
+      selectedHost: null,
+      height: 0
     };
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions();
+    window.addEventListener('resize', this.updateWindowDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  updateWindowDimensions() {
+    this.setState({ height: parseInt(window.innerHeight) });
   }
 
   render() {
@@ -25,7 +41,7 @@ class ConscienceMap extends React.Component {
     }
 
     return (<div>
-      <Map center={this.state.defaultPosition} zoom={18} style={{ height: 500 }}>
+      <Map className="map" center={this.state.defaultPosition} zoom={18} style={{ height: this.state.height - 110 }}>
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
         {
           this.props.data.accounts.all

@@ -1,0 +1,34 @@
+.loginPage {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginBox {
+    border: 1px solid #276077;
+    padding: 30px;
+}
+
+.loginBoxDoubleBorder {
+    border: 1px solid #276077;
+    padding: 4px;
+}
+
+.loginButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    height: 72px;
+    width: 72px;
+    margin-bottom: 20px;
+}

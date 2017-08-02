@@ -392,6 +392,21 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\audio\uploads\moderna.mp3" />
+    <Content Include="Content\images\background\bottom-left-logo.png" />
+    <Content Include="Content\images\background\bottom-left.png" />
+    <Content Include="Content\images\background\bottom-right.png" />
+    <Content Include="Content\images\background\center-left.png" />
+    <Content Include="Content\images\background\center-right.png" />
+    <Content Include="Content\images\background\top-right.png" />
+    <Content Include="Content\images\common\logo.png" />
+    <Content Include="Content\images\menu\behaviour.png" />
+    <Content Include="Content\images\menu\character.png" />
+    <Content Include="Content\images\menu\logo.png" />
+    <Content Include="Content\images\menu\maintenance.png" />
+    <Content Include="Content\images\menu\nots-unread.png" />
+    <Content Include="Content\images\menu\nots.png" />
+    <Content Include="Content\images\menu\plot.png" />
+    <Content Include="Content\images\menu\security.png" />
     <Content Include="Content\images\sample\bernard.PNG" />
     <Content Include="Content\images\sample\dolores.png" />
     <Content Include="Content\images\sample\elsie.PNG" />
