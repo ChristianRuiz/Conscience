@@ -90,7 +90,7 @@ namespace Conscience.DataAccess
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("Conscience");
+            //modelBuilder.HasDefaultSchema("Conscience");
             
             modelBuilder.Entity<Account>().HasMany(a => a.Roles).WithMany(r => r.Accounts);
             modelBuilder.Entity<Account>().HasOptional(u => u.Device);

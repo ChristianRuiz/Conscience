@@ -1,0 +1,17 @@
+html, body {
+    margin:0;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.container, #main {
+    height: 100%;
+    width: 100%;
+}
+
+.background {
+    background-color: pink;
+    height: 100%;
+    width: 100%;
+}

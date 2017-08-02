@@ -8,6 +8,7 @@ import {
 import { createBatchingNetworkInterface } from 'apollo-client';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import commonStyles from '../styles/common.css';
 
 const client = new ApolloClient({
   networkInterface: createBatchingNetworkInterface({
@@ -27,7 +28,9 @@ export default function buildConciencePage(rootComponent) {
     <MuiThemeProvider>
       <ApolloProvider client={client}>
         <Router hashType="noslash">
-          { React.createElement(rootComponent) }
+          <div className="background">
+            { React.createElement(rootComponent) }
+          </div>
         </Router>
       </ApolloProvider>
     </MuiThemeProvider>

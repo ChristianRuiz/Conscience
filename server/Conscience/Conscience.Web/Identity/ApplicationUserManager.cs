@@ -13,14 +13,24 @@ namespace Conscience.Web.Identity
     // Configure the application ConscienceIdentityUser manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ConscienceAccount, int>
     {
-        public ApplicationUserManager(ApplicationUserStore store)
+        private readonly IUnityContainer _container;
+
+        public ApplicationUserManager(ApplicationUserStore store, IUnityContainer container)
             : base(store)
         {
+            _container = container;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            if (_container != null)
+                _container.Dispose();
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            var container = UnityConfig.GetConfiguredContainer();
+            var container = UnityConfig.GetConfiguredContainer().CreateChildContainer();
             var manager = container.Resolve<ApplicationUserManager>();
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ConscienceAccount, int>(manager)

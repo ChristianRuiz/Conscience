@@ -1,4 +1,5 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 require('babel-polyfill');
 
 module.exports = {
@@ -24,7 +25,22 @@ module.exports = {
       {
         test: require.resolve('jquery'),
         loader: 'expose-loader?jQuery!expose-loader?$'
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: { importLoaders: 1 }
+            },
+            'postcss-loader'
+          ]
+        })
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('../../server/Conscience/Conscience.Web/Scripts/conscience/[name].bundle.css')
+  ]
 };
