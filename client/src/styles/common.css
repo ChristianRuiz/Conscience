@@ -32,6 +32,7 @@ html, body {
 
 .scrollableContainer {
     overflow: auto;
+    padding-left: 20px;
 }
 
 .picture {
@@ -48,7 +49,7 @@ html, body {
     font-style: normal;
 }
 
-input, p, li, h1, h2, h3, a {
+div, input, p, li, h1, h2, h3, a {
     color: #F1F1F3 !important;
     font-family: 'DejaVuSans';
     font-size: 14px;
