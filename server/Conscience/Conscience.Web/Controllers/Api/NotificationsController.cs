@@ -55,7 +55,7 @@ namespace Conscience.Web.Controllers.Api
                 foreach (var location in updates.locations)
                     if (location.TimeStamp == default(DateTime))
                         location.TimeStamp = DateTime.Now;
-                
+
                 _accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
                 var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
 

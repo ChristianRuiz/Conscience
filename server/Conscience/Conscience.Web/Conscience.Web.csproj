@@ -438,6 +438,7 @@
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <Content Include="Scripts\conscience\login.bundle.css" />
     <Content Include="Scripts\conscience\login.js" />
+    <Content Include="Scripts\conscience\main.bundle.css" />
     <Content Include="Scripts\conscience\main.js" />
     <Content Include="Scripts\graphi\graphiql.css" />
     <Content Include="Scripts\graphi\graphiql.min.js" />
@@ -447,7 +448,9 @@
     <Content Include="Scripts\graphi\swapi.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.js" />
     <Content Include="Scripts\jquery.signalR-2.2.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

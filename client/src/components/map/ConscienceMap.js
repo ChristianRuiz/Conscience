@@ -17,7 +17,8 @@ class ConscienceMap extends React.Component {
     super(props);
 
     this.state = {
-      defaultPosition: [37.048601, -2.4216117],
+      // defaultPosition: [37.048601, -2.4216117],
+      defaultPosition: [37.1275825, -4.6669954],
       selectedAccount: null,
       height: parseInt(window.innerHeight)
     };
