@@ -1,8 +1,13 @@
 import React from 'react';
 
+import PlotDetail from './PlotDetail';
+import ScrollableContainer from '../common/ScrollableContainer';
+
 const PlotDetailPage = ({ match }) =>
-  <div>
-    <h1>Plot {match.params.plotId} </h1>
+  <div className="mainContainer">
+    <ScrollableContainer>
+      <PlotDetail plotId={match.params.plotId} />
+    </ScrollableContainer>
   </div>;
 
 export default PlotDetailPage;

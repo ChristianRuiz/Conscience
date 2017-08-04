@@ -434,6 +434,7 @@
     </Content>
     <Content Include="Mobile\Conscience.apk" />
     <Content Include="log4net.config" />
+    <Content Include="Content\fonts\DejaVuSans.ttf" />
     <None Include="Properties\PublishProfiles\consciencelarp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <Content Include="Scripts\conscience\login.bundle.css" />

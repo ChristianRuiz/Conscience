@@ -100,6 +100,7 @@
     <Compile Include="Graph\Entities\Memories\CoreMemoryGraphType.cs" />
     <Compile Include="Graph\Entities\Memories\MemoryGraphType.cs" />
     <Compile Include="Graph\Entities\Plots\CharacterInPlotGraphType.cs" />
+    <Compile Include="Graph\Entities\Plots\PlotQuery.cs" />
     <Compile Include="Graph\Entities\Plots\PlotEventGraphType.cs" />
     <Compile Include="Graph\Entities\Plots\PlotGraphType.cs" />
     <Compile Include="Graph\Entities\Roles\RoleGraphType.cs" />

@@ -1,8 +1,10 @@
 import React from 'react';
 
+import PlotsList from './PlotsList';
+
 const PlotsPage = () =>
   <div>
-    <h1>Plots</h1>
+    <PlotsList />
   </div>;
 
 export default PlotsPage;

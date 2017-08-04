@@ -21,5 +21,10 @@ namespace Conscience.DataAccess.Repositories
                 return _context.Plots;
             }
         }
+
+        public Plot GetById(int id)
+        {
+            return DbSet.FirstOrDefault(p => p.Id == id);
+        }
     }
 }

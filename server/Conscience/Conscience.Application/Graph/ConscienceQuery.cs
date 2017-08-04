@@ -1,6 +1,7 @@
 ﻿using Conscience.Application.Graph.Entities.Accounts;
 using Conscience.Application.Graph.Entities.Employees;
 using Conscience.Application.Graph.Entities.Hosts;
+using Conscience.Application.Graph.Entities.Plots;
 using GraphQL.Types;
 using Microsoft.Practices.Unity;
 using System;
@@ -20,6 +21,7 @@ namespace Conscience.Application.Graph
             Field<AccountQuery>("accounts", resolve: context => container.Resolve<AccountQuery>()).RequiresMembership();
             Field<EmployeeQuery>("employees", resolve: context => container.Resolve<EmployeeQuery>()).RequiresMembership();
             Field<HostQuery>("hosts", resolve: context => container.Resolve<HostQuery>()).RequiresMembership();
+            Field<PlotQuery>("plots", resolve: context => container.Resolve<PlotQuery>()).RequiresMembership();
         }
     }
 }
