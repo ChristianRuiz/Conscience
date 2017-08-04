@@ -1,9 +1,9 @@
 import React from 'react';
 import HostList from './HostList';
 
-const HostPage = () =>
+const CharactersPage = () =>
   <div>
     <HostList />
   </div>;
 
-export default HostPage;
+export default CharactersPage;

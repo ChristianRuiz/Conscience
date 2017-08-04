@@ -31,11 +31,7 @@ class HostStats extends React.Component {
       dataSet.data.push(stat.value);
     }, this);
 
-    return (<div>
-      <div>{host.account.userName}</div>
-
-      {host.currentCharacter ? <div>{host.currentCharacter.character.name}</div> : ''}
-
+    return (<div className="mainContent itemsCentered">
       <Radar data={chartData} width="600" height="500" />
     </div>);
   }

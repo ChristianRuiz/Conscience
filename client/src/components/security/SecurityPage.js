@@ -1,9 +1,9 @@
 import React from 'react';
 import EmployeesList from './EmployeesList';
 
-const EmployeesPage = () =>
+const SecurityPage = () =>
   <div>
     <EmployeesList />
   </div>;
 
-export default EmployeesPage;
+export default SecurityPage;

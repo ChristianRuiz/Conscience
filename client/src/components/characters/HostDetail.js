@@ -11,46 +11,30 @@ class HostsDetail extends React.Component {
     const host = this.props.data.hosts.byId;
 
     return (<div>
-      <div>{host.account.userName}</div>
-
-      {host.currentCharacter ? <div>{host.currentCharacter.character.name}</div> : ''}
+      <h1>{host.currentCharacter ? host.currentCharacter.character.name : ''}</h1>
 
       {host.currentCharacter ? (<div>
-        <p>Age: {host.currentCharacter.character.age}</p>
-        <p>Gender: {host.currentCharacter.character.gender}</p>
-        <h3>Story</h3>
+        <h2>Character History:</h2>
         <p>{host.currentCharacter.character.story}</p>
-        <div>
-          <b>Narrative function: </b>{host.currentCharacter.character.narrativeFunction}
-        </div>
       </div>) : ''}
 
-      <h3>Stats summary</h3>
-
-      <ul>
-        {host.stats.filter(stat => stat.value !== 10).map(stat =>
-          <li key={stat.name}><b>{stat.name}: </b> {stat.value}</li>)}
-      </ul>
-
-      <Link to={`/host-stats/${host.id}`} >Stats chart</Link>
-
       {host.currentCharacter ? (<div>
 
-        <h3>Memories</h3>
-
-        <ul>
-          {host.currentCharacter.character.memories.map(memory =>
-            <li key={memory.id}>{memory.description}</li>)}
-        </ul>
-
-        <h3>Triggers</h3>
+        <h2>Triggers:</h2>
 
         <ul>
           {host.currentCharacter.character.triggers.map(trigger =>
             <li key={trigger.id}>{trigger.description}</li>)}
         </ul>
 
-        <h3>Plots</h3>
+        <h2>Memories:</h2>
+
+        <ul>
+          {host.currentCharacter.character.memories.map(memory =>
+            <li key={memory.id}>{memory.description}</li>)}
+        </ul>
+
+        <h2>Plots:</h2>
 
         <ul>
           {host.currentCharacter.character.plots.map(plot =>
@@ -64,7 +48,7 @@ class HostsDetail extends React.Component {
         </ul>
 
         {host.currentCharacter.character.plotEvents.length > 0 ? (<div>
-          <h3>Plot events</h3>
+          <h2>Plot events:</h2>
 
           <ul>
             {host.currentCharacter.character.plotEvents.map(event =>
@@ -77,12 +61,15 @@ class HostsDetail extends React.Component {
           </ul></div>) : '' }
 
         {host.currentCharacter.character.relations.length > 0 ? (<div>
-          <h3>Relations</h3>
+          <h2>Relations:</h2>
 
           <ul>
             {host.currentCharacter.character.relations.map(relation =>
               <li key={relation.id}>
-                <p><b>{relation.character.name}: </b>{relation.description}</p>
+                <p>
+                  <Link to={`/character-detail/${relation.character.currentHost.host.id}`} ><b>{relation.character.name}: </b></Link>
+                  {relation.description}
+                </p>
               </li>)}
           </ul></div>) : '' }
 
@@ -158,6 +145,15 @@ const query = gql`query GetHostDetails($hostId:Int!) {
             character {
               id,
               name
+              currentHost {
+                  host {
+                    id
+                    account {
+                      id
+                      pictureUrl
+                    }
+                  }
+                }
             }
           }
         }

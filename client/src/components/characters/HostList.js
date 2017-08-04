@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import ScrollableContainer from '../common/ScrollableContainer';
 import RolesValidation from '../common/RolesValidation';
 import Roles from '../../enums/roles';
 
@@ -29,7 +30,7 @@ class HostsList extends React.Component {
     this.props.data.hosts.all.map(host =>
       <TableRow key={host.id}>
         <TableRowColumn>
-           <Link to={`/host-detail/${host.id}`} >{host.account.userName}</Link>
+           <Link to={`/character-detail/${host.id}`} >{host.account.userName}</Link>
         </TableRowColumn>
         <TableRowColumn>{host.currentCharacter ? host.currentCharacter.character.name : ''}</TableRowColumn>
         <RolesValidation allowed={[Roles.Admin]}>
@@ -43,26 +44,28 @@ class HostsList extends React.Component {
         </RolesValidation>
       </TableRow>);
 
-    return (<Table>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderColumn>Name</TableHeaderColumn>
-          <TableHeaderColumn>Character</TableHeaderColumn>
-          <RolesValidation allowed={[Roles.Admin]}>
-            <TableHeaderColumn>Core Memory 1</TableHeaderColumn>
-          </RolesValidation>
-          <RolesValidation allowed={[Roles.Admin]}>
-            <TableHeaderColumn>Core Memory 2</TableHeaderColumn>
-          </RolesValidation>
-          <RolesValidation allowed={[Roles.Admin]}>
-            <TableHeaderColumn>Core Memory 3</TableHeaderColumn>
-          </RolesValidation>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        { hostRows }
-      </TableBody>
-    </Table>);
+    return (<ScrollableContainer>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Character</TableHeaderColumn>
+            <RolesValidation allowed={[Roles.Admin]}>
+              <TableHeaderColumn>Core Memory 1</TableHeaderColumn>
+            </RolesValidation>
+            <RolesValidation allowed={[Roles.Admin]}>
+              <TableHeaderColumn>Core Memory 2</TableHeaderColumn>
+            </RolesValidation>
+            <RolesValidation allowed={[Roles.Admin]}>
+              <TableHeaderColumn>Core Memory 3</TableHeaderColumn>
+            </RolesValidation>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          { hostRows }
+        </TableBody>
+      </Table>
+    </ScrollableContainer>);
   }
 }
 

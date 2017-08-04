@@ -13,12 +13,12 @@ const Header = () =>
       <div>
         <Link className="logo" to="/" ><img alt="Aleph" src="/content/images/menu/logo.png" /></Link>
         <div className="menuLinks">
-          <Link to="/hosts" ><img alt="Plot" src="/content/images/menu/plot.png" /></Link>
-          <Link to="/hosts" ><img alt="Character" src="/content/images/menu/character.png" /></Link>
-          <Link to="/hosts" ><img alt="Behaviour" src="/content/images/menu/behaviour.png" /></Link>
-          <Link to="/hosts" ><img alt="Maintenance" src="/content/images/menu/maintenance.png" /></Link>
+          <Link to="/plots" ><img alt="Plot" src="/content/images/menu/plot.png" /></Link>
+          <Link to="/characters" ><img alt="Character" src="/content/images/menu/character.png" /></Link>
+          <Link to="/behaviour" ><img alt="Behaviour" src="/content/images/menu/behaviour.png" /></Link>
+          <Link to="/maintenance" ><img alt="Maintenance" src="/content/images/menu/maintenance.png" /></Link>
           <RolesValidation allowed={[Roles.Admin, Roles.CompanyAdmin, Roles.CompanyQA]}>
-            <Link to="/employees" ><img alt="Security" src="/content/images/menu/security.png" /></Link>
+            <Link to="/security" ><img alt="Security" src="/content/images/menu/security.png" /></Link>
           </RolesValidation>
           <img className="notifications" alt="Notifications" src="/content/images/menu/nots.png" />
         </div>

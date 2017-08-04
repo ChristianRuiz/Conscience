@@ -1,0 +1,44 @@
+.infoPanel {
+    width: 310px;
+    padding-left: 10px;
+}
+
+.infoPanel .card {
+    background-image: url("/content/images/card/card.png");
+    background-size: 300px 235px;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 235px;
+    z-index: 1;
+}
+
+.infoPanel .card .charName {
+    margin-left: 132px;
+    padding-top: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 145px;
+}
+
+.infoPanel .card .serialNumber {
+    padding-top: 6px;
+    margin-left: 215px;
+    font-size: 14px;
+}
+
+.infoPanel .card .online {
+    padding-top: 78px;
+    margin-left: 144px;
+}
+
+.infoPanel .picture {
+    float:left;
+    z-index: -1;
+    margin-top: 29px;
+    margin-left: 12px;
+}
+
+.popup p {
+    color: black !important;
+}

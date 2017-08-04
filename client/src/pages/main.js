@@ -11,7 +11,7 @@ const App = () =>
       <Header />
     </div>
 
-    <div className="mainContent">
+    <div className="mainPageContent">
       <Routes />
     </div>
 

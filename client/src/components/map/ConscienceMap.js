@@ -5,12 +5,10 @@ import { graphql } from 'react-apollo';
 import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
-import InfoPanel from './InfoPanel';
+import HostsInfoPanel from '../info-panel/HostsInfoPanel';
 import HostPopup from './HostPopup';
 
 import query from '../../queries/MapQuery';
-
-import styles from '../../styles/components/map/map.css';
 
 class ConscienceMap extends React.Component {
   constructor(props) {
@@ -29,9 +27,9 @@ class ConscienceMap extends React.Component {
       return <div />;
     }
 
-    return (<div className="mapContainer">
+    return (<div className="mainContainer">
       <Map
-        className="map"
+        className="mainContent"
         center={this.state.defaultPosition}
         zoom={18}
         style={{ height: this.state.height - 110 }}
@@ -55,7 +53,8 @@ class ConscienceMap extends React.Component {
         }
       </Map>
 
-      <InfoPanel account={this.state.selectedAccount} />
+      {this.state.selectedAccount ?
+        <HostsInfoPanel hostId={this.state.selectedAccount.host.id} /> : <div /> }
     </div>);
   }
 }

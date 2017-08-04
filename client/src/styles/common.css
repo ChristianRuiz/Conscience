@@ -3,26 +3,83 @@ html, body {
     position: relative;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 .container, #main {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
-.mainContent {
+.mainPageContent {
     margin-left: 40px;
     margin-right: 40px;
 }
 
-input, p {
+.mainContainer {
+    display: flex;
+}
+
+.mainContent {
+    z-index: 1;
+    flex: 1;
+}
+
+.itemsCentered {
+    align-items: center;
+}
+
+.scrollableContainer {
+    overflow: auto;
+}
+
+.picture {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    background-size:cover;
+}
+
+@font-face {
+    font-family: 'DejaVuSans';
+    src: url('/Content/fonts/DejaVuSans.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+input, p, li, h1, h2, h3, a {
+    color: #F1F1F3 !important;
+    font-family: 'DejaVuSans';
+    font-size: 14px;
+    line-height: 22px;
+}
+
+a:link, a:visited, a:hover, a:active {
     color: #F1F1F3 !important;
 }
 
-h1, h2, h3 {
-    color: #34FFFB !important;
+table a:link, table a:visited, table a:hover, table a:active {
+    color: black !important;
+}
+
+li {
+    margin-bottom: 10px;
 }
 
 h1 {
+    color: #34FFFB !important;
     font-size: 20px;
+}
+
+h2 {
+    color: #40D855 !important;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: #3FCCD2 !important;
+    font-size: 16px;
+    text-transform: uppercase;
 }
