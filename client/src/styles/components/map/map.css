@@ -1,0 +1,12 @@
+.searchText {
+    position: absolute;
+    z-index: 101;
+    top: 50px;
+    left: 100px;
+}
+
+.searchText input {
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+}

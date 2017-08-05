@@ -4,7 +4,7 @@
 }
 
 .infoPanel .card {
-    background-image: url("/content/images/card/card.png");
+    background-image: url("/content/images/card/cardWithoutStatus.png");
     background-size: 300px 235px;
     background-repeat: no-repeat;
     width: 300px;
@@ -27,9 +27,16 @@
     font-size: 14px;
 }
 
-.infoPanel .card .online {
-    padding-top: 78px;
+.infoPanel .card .battery {
+    padding-top: 36px;
     margin-left: 144px;
+}
+
+.infoPanel .card .narrativeFunction {
+    margin-left: 20px;
+    max-height: 47px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .infoPanel .picture {
@@ -37,6 +44,14 @@
     z-index: -1;
     margin-top: 29px;
     margin-left: 12px;
+}
+
+.infoPanel h3 {
+    margin-left: 10px;
+}
+
+.infoPanel li {
+    margin-bottom: 5px;
 }
 
 .popup p {

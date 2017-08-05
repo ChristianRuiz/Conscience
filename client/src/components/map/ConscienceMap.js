@@ -8,7 +8,11 @@ import { BingLayer } from 'react-leaflet-bing';
 import HostsInfoPanel from '../info-panel/HostsInfoPanel';
 import HostPopup from './HostPopup';
 
+import TextField from 'material-ui/TextField';
+
 import query from '../../queries/MapQuery';
+
+import style from '../../styles/components/map/map.css';
 
 class ConscienceMap extends React.Component {
   constructor(props) {
@@ -18,7 +22,8 @@ class ConscienceMap extends React.Component {
       // defaultPosition: [37.048601, -2.4216117],
       defaultPosition: [37.1275825, -4.6669954],
       selectedAccount: null,
-      height: parseInt(window.innerHeight)
+      height: parseInt(window.innerHeight),
+      search: ''
     };
   }
 
@@ -38,7 +43,12 @@ class ConscienceMap extends React.Component {
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
         {
           this.props.data.accounts.all
-          .filter(account => account.host && account.device && account.device.currentLocation)
+          .filter(account =>
+          account.host && account.host.currentCharacter
+          && account.device && account.device.currentLocation
+          && (this.state.search.trim() === ''
+            || account.userName.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0
+            || account.host.currentCharacter.character.name.toLowerCase().indexOf(this.state.search.toLowerCase()) >= 0))
           .map(account =>
             <Marker
               key={account.id}
@@ -52,6 +62,14 @@ class ConscienceMap extends React.Component {
             </Marker>)
         }
       </Map>
+
+      <div className="searchText">
+        <TextField
+          hintText="Search..."
+          value={this.state.search}
+          onChange={e => this.setState({ search: e.target.value })}
+        />
+      </div>
 
       {this.state.selectedAccount ?
         <HostsInfoPanel hostId={this.state.selectedAccount.host.id} /> : <div /> }

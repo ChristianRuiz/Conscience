@@ -84,3 +84,9 @@ h3 {
     font-size: 16px;
     text-transform: uppercase;
 }
+
+/* Hack: Remove after TDN */
+.itemsCentered canvas {
+    margin-left: 100px;
+    margin-top: 10px;
+}

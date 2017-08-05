@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import PlotDetail from './PlotDetail';
 import ScrollableContainer from '../common/ScrollableContainer';
@@ -10,4 +11,4 @@ const PlotDetailPage = ({ match }) =>
     </ScrollableContainer>
   </div>;
 
-export default PlotDetailPage;
+export default withRouter(PlotDetailPage);

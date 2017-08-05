@@ -1,9 +1,9 @@
 import React from 'react';
-import HostList from './HostList';
+import CharactersList from './CharactersList';
 
 const CharactersPage = () =>
   <div>
-    <HostList />
+    <CharactersList />
   </div>;
 
 export default CharactersPage;

@@ -18,7 +18,7 @@ class PlotDetail extends React.Component {
         {plot.characters.map(c =>
           <li key={c.character.id}>
             <p>
-              <Link to={`/character-detail/${c.character.id}`} ><b>{c.character.name}: </b></Link>
+              <Link to={`/character-detail/${c.character.currentHost.host.id}`} ><b>{c.character.name}: </b></Link>
               {c.description}
             </p>
           </li>)}
@@ -43,7 +43,9 @@ const query = gql`query GetPlotDetails($plotId:Int!) {
           name,
           currentHost {
             host {
+              id
               account {
+                id
                 pictureUrl
               }
             }

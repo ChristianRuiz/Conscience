@@ -1,8 +1,10 @@
 import React from 'react';
 
+import BehaviourList from './BehaviourList';
+
 const BehaviourPage = () =>
   <div>
-    <h1>Behaviour</h1>
+    <BehaviourList />
   </div>;
 
 export default BehaviourPage;
