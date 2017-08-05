@@ -6,6 +6,19 @@ html, body {
     overflow: hidden;
 }
 
+.flex {
+    display: flex;
+}
+
+.flexColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.marginTop {
+    margin-top: 20px;
+}
+
 .container, #main {
     height: 100%;
     width: 100%;

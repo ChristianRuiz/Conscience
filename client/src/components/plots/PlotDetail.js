@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
+
+import PictureDescriptionBox from '../common/PictureDescriptionBox';
 
 class PlotDetail extends React.Component {
   render() {
@@ -14,15 +16,16 @@ class PlotDetail extends React.Component {
       <h2>{plot.name}</h2>
       <p>{plot.description}</p>
 
-      <ul>
+      <div className="flexColumn marginTop">
         {plot.characters.map(c =>
-          <li key={c.character.id}>
-            <p>
-              <Link to={`/character-detail/${c.character.currentHost.host.id}`} ><b>{c.character.name}: </b></Link>
-              {c.description}
-            </p>
-          </li>)}
-      </ul>
+          <PictureDescriptionBox
+            key={c.character.id}
+            pictureUrl={c.character.currentHost.host.account.pictureUrl}
+            title={c.character.name}
+            link={`/character-detail/${c.character.currentHost.host.id}`}
+            description={c.description}
+          />)}
+      </div>
     </div>);
   }
 }

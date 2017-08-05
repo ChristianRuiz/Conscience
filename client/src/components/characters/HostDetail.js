@@ -2,6 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 
+import PictureDescriptionBox from '../common/PictureDescriptionBox';
+
 class HostsDetail extends React.Component {
   render() {
     if (this.props.data.loading) {
@@ -37,13 +39,11 @@ class HostsDetail extends React.Component {
         <h2>Plots:</h2>
 
         <ul>
-          {host.currentCharacter.character.plots.map(plot =>
-            <li key={plot.id}>
-              <p><b>Plot: </b> {plot.plot.name}</p>
-              <p><b>Plot description: </b></p>
-              <p>{plot.plot.description}</p>
+          {host.currentCharacter.character.plots.map(p =>
+            <li key={p.plot.id}>
+              <p><Link to={`/plot-detail/${p.plot.id}`} >{p.plot.name}</Link>: {p.plot.description}</p>
               <p><b>Character involvement: </b></p>
-              <p>{plot.description}</p>
+              <p>{p.description}</p>
             </li>)}
         </ul>
 
@@ -63,15 +63,17 @@ class HostsDetail extends React.Component {
         {host.currentCharacter.character.relations.length > 0 ? (<div>
           <h2>Relations:</h2>
 
-          <ul>
+          <div className="flexColumn marginTop">
             {host.currentCharacter.character.relations.map(relation =>
-              <li key={relation.id}>
-                <p>
-                  <Link to={`/character-detail/${relation.character.currentHost.host.id}`} ><b>{relation.character.name}: </b></Link>
-                  {relation.description}
-                </p>
-              </li>)}
-          </ul></div>) : '' }
+              <PictureDescriptionBox
+                key={relation.id}
+                pictureUrl={relation.character.currentHost.host.account.pictureUrl}
+                title={relation.character.name}
+                link={`/character-detail/${relation.character.currentHost.host.id}`}
+                description={relation.description}
+              />)}
+          </div>
+        </div>) : '' }
 
       </div>) : ''}
     </div>);
