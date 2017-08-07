@@ -399,6 +399,7 @@
     <Content Include="Content\images\background\center-right.png" />
     <Content Include="Content\images\background\top-right.png" />
     <Content Include="Content\images\card\card.png" />
+    <Content Include="Content\images\card\defaultProfile.png" />
     <Content Include="Content\images\card\status-dead.png" />
     <Content Include="Content\images\card\status-hurt.png" />
     <Content Include="Content\images\card\status-ok.png" />

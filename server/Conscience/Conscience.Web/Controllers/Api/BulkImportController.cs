@@ -37,30 +37,18 @@ namespace Conscience.Web.Controllers.Api
 
             try
             {
-                var hostsRepo = childContainer.Resolve<HostRepository>();
-                var hosts = hostsRepo.GetAll();
-                foreach(var host in hosts.ToList())
+                var accountRepo = childContainer.Resolve<AccountRepository>();
+                var accounts = accountRepo.GetAll();
+                foreach (var account in accounts.ToList())
                 {
-                    var randomLat = new Random().Next(100) / 100000f;
-                    var randomLon = new Random().Next(100) / 100000f;
-
-                    host.Account.Device = new Device
+                    if (account.Device != null)
                     {
-                        DeviceId = "Dummy",
-                        BatteryLevel = 100,
-                        BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
-                        LastConnection = DateTime.Now,
-                        Locations = new List<Location>
+                        if (account.Device.Locations.Any())
                         {
-                            new Location
-                            {
-                                Latitude = 37.1274884 + randomLat,
-                                Longitude = -4.6715981 + randomLon,
-                                TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
-                            }
+                            account.Device.CurrentLocation = account.Device.Locations.Last();
+                            accountRepo.Modify(account);
                         }
-                    };
-                    hostsRepo.Modify(host);
+                    }
                 }
             }
             catch (Exception ex)
@@ -76,7 +64,55 @@ namespace Conscience.Web.Controllers.Api
             response.Content = new StringContent("OK", Encoding.UTF8, "text/plain");
             return response;
         }
-        }
+    }
+
+    //    [HttpPost]
+    //    public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
+    //    {
+    //        var childContainer = _container.CreateChildContainer();
+
+    //        try
+    //        {
+    //            var hostsRepo = childContainer.Resolve<HostRepository>();
+    //            var hosts = hostsRepo.GetAll();
+    //            foreach(var host in hosts.ToList())
+    //            {
+    //                var randomLat = new Random().Next(100) / 100000f;
+    //                var randomLon = new Random().Next(100) / 100000f;
+
+    //                host.Account.Device = new Device
+    //                {
+    //                    DeviceId = "Dummy",
+    //                    BatteryLevel = 100,
+    //                    BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+    //                    LastConnection = DateTime.Now,
+    //                    Locations = new List<Location>
+    //                    {
+    //                        new Location
+    //                        {
+    //                            Latitude = 37.1274884 + randomLat,
+    //                            Longitude = -4.6715981 + randomLon,
+    //                            TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+    //                        }
+    //                    }
+    //                };
+    //                hostsRepo.Modify(host);
+    //            }
+    //        }
+    //        catch (Exception ex)
+    //        {
+
+    //        }
+    //        finally
+    //        {
+    //            childContainer.Dispose();
+    //        }
+
+    //        var response = request.CreateResponse(HttpStatusCode.OK);
+    //        response.Content = new StringContent("OK", Encoding.UTF8, "text/plain");
+    //        return response;
+    //    }
+    //}
 
     //    [HttpPost]
     //    public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)

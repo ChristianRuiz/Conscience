@@ -73,7 +73,10 @@ namespace Conscience.DataAccess.Repositories
         {
             var account = GetById(accountId);
             if (locations.Any())
+            {
                 account.Device.Locations.AddRange(locations);
+                account.Device.CurrentLocation = locations.OrderByDescending(l => l.TimeStamp).First();
+            }
 
             account.Device.LastConnection = DateTime.Now;
 

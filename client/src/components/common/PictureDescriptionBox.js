@@ -7,7 +7,7 @@ import styles from '../../styles/components/common/pictureDescriptionBox.css';
 
 const PictureDescriptionBox = ({ pictureUrl, title, link, description }) =>
   <div className="pictureDescriptionBox">
-    <AccountPicture pictureUrl={pictureUrl} />
+    <Link to={link}><AccountPicture pictureUrl={pictureUrl} /></Link>
     <div className="titleDescription">
       <h1><Link to={link}>{title}</Link></h1>
       <p>{description}</p>

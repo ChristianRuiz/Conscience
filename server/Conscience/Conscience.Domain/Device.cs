@@ -47,15 +47,10 @@ namespace Conscience.Domain
         
         public virtual List<Location> Locations { get; set; }
 
-        public Location CurrentLocation
+        public virtual Location CurrentLocation
         {
-            get
-            {
-                if (Locations == null)
-                    return null;
-
-                return Locations.OrderByDescending(l => l.TimeStamp).FirstOrDefault();
-            }
+            get;
+            set;
         }
 
         public bool Online
