@@ -1,8 +1,18 @@
 import React from 'react';
+import EmployeeDetail from './EmployeeDetail';
+import ScrollableContainer from '../common/ScrollableContainer';
+import EmployeesInfoPanel from '../info-panel/EmployeesInfoPanel';
 
-const EmployeeDetailPage = ({ match }) =>
-  <div>
-    <h1>Employee {match.params.employeeId} </h1>
+const HostDetailPage = ({ match }) =>
+  <div className="mainContainer">
+    <ScrollableContainer>
+      <EmployeeDetail employeeId={match.params.employeeId} />
+    </ScrollableContainer>
+    <EmployeesInfoPanel employeeId={match.params.employeeId} />
   </div>;
 
-export default EmployeeDetailPage;
+HostDetailPage.propTypes = {
+  match: React.PropTypes.object.isRequired
+};
+
+export default HostDetailPage;

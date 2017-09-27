@@ -13,15 +13,22 @@ namespace Conscience.Application.Graph.Entities.Employees
 {
     public class EmployeeQuery : ObjectGraphType<object>
     {
-        public EmployeeQuery(EmployeeRepository userRepo)
+        public EmployeeQuery(EmployeeRepository employeeRepo)
         {
             Name = "EmployeeQuery";
 
             Field<ListGraphType<EmployeeGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => userRepo.GetAllEmployees().ApplyPaginationAndOrderBy(context)
+                resolve: context => employeeRepo.GetAllEmployees().ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, e => e.Account, e => e.Notifications))
                 .AddQAPermissions();
+
+            Field<EmployeeGraphType>("byId",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "host id" }
+                    ),
+                resolve: context => employeeRepo.GetById(context.GetArgument<int>("id")))
+                .AddBehaviourAndPlotPermissions();
         }
     }
 }

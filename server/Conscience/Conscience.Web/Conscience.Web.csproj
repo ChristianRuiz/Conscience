@@ -404,6 +404,14 @@
     <Content Include="Content\images\card\status-hurt.png" />
     <Content Include="Content\images\card\status-ok.png" />
     <Content Include="Content\images\common\logo.png" />
+    <Content Include="Content\images\maintenance\heartrate.png" />
+    <Content Include="Content\images\maintenance\scan.png" />
+    <Content Include="Content\images\maintenance\status.png" />
+    <Content Include="Content\images\maintenance\wound.png" />
+    <Content Include="Content\images\map\markerAleph.png" />
+    <Content Include="Content\images\map\markerDead.png" />
+    <Content Include="Content\images\map\markerHost.png" />
+    <Content Include="Content\images\map\markerSelected.png" />
     <Content Include="Content\images\menu\behaviour.png" />
     <Content Include="Content\images\menu\character.png" />
     <Content Include="Content\images\menu\logo.png" />

@@ -1,0 +1,51 @@
+.maintenanceDetailContainer {
+    display: flex;
+    flex: 1;
+    margin-right: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.scanContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center
+}
+
+.scan {
+    background-image: url("/content/images/maintenance/scan.png");
+    background-size: 329px 593px;
+    background-repeat: no-repeat;
+    width: 329px;
+    height: 593px;
+    z-index: 1;
+}
+
+.statusContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.statusBox {
+    background-image: url("/content/images/maintenance/status.png");
+    background-size: 479px 139px;
+    background-repeat: no-repeat;
+    width: 479px;
+    height: 139px;
+    z-index: 1;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.statusCenter {
+    flex: 1;
+}
+
+.statusLines {
+    background-image: url("/content/images/maintenance/heartrate.png");
+    background-size: 488px 156px;
+    background-repeat: no-repeat;
+    width: 488px;
+    height: 156px;
+    z-index: 1;
+}

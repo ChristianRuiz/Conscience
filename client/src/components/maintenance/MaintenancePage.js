@@ -1,8 +1,10 @@
 import React from 'react';
 
+import MaintenanceList from './MaintenanceList';
+
 const MaintenancePage = () =>
   <div>
-    <h1>Maintenance</h1>
+    <MaintenanceList />
   </div>;
 
 export default MaintenancePage;

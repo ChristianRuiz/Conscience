@@ -30,6 +30,95 @@ namespace Conscience.Web.Controllers.Api
             _container = container;
         }
 
+        //    [HttpPost]
+        //    public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
+        //    {
+        //        var childContainer = _container.CreateChildContainer();
+
+        //        try
+        //        {
+        //            var accountRepo = childContainer.Resolve<AccountRepository>();
+        //            var accounts = accountRepo.GetAll();
+        //            foreach (var account in accounts.ToList())
+        //            {
+        //                if (account.Device != null)
+        //                {
+        //                    if (account.Device.Locations.Any())
+        //                    {
+        //                        account.Device.CurrentLocation = account.Device.Locations.Last();
+        //                        accountRepo.Modify(account);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+
+        //        }
+        //        finally
+        //        {
+        //            childContainer.Dispose();
+        //        }
+
+        //        var response = request.CreateResponse(HttpStatusCode.OK);
+        //        response.Content = new StringContent("OK", Encoding.UTF8, "text/plain");
+        //        return response;
+        //    }
+        //}
+
+        //[HttpPost]
+        //public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
+        //{
+        //    var childContainer = _container.CreateChildContainer();
+
+        //    try
+        //    {
+        //        var hostsRepo = childContainer.Resolve<HostRepository>();
+        //        var hosts = hostsRepo.GetAll();
+        //        foreach (var host in hosts.ToList())
+        //        {
+        //            var randomLat = new Random().Next(100) / 100000f;
+        //            var randomLon = new Random().Next(100) / 100000f;
+
+        //            host.Account.Device = new Device
+        //            {
+        //                DeviceId = "Dummy",
+        //                BatteryLevel = 100,
+        //                BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+        //                LastConnection = DateTime.Now
+        //            };
+
+        //            hostsRepo.Modify(host);
+
+        //            host.Account.Device.Locations = new List<Location>
+        //                {
+        //                    new Location
+        //                    {
+        //                        Latitude = 37.048601 + randomLat,
+        //                        Longitude = -2.4216117 + randomLon,
+        //                        TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+        //                    }
+        //                };
+        //            hostsRepo.Modify(host);
+
+        //            host.Account.Device.CurrentLocation = host.Account.Device.Locations.Last();
+        //            hostsRepo.Modify(host);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+        //    finally
+        //    {
+        //        childContainer.Dispose();
+        //    }
+
+        //    var response = request.CreateResponse(HttpStatusCode.OK);
+        //    response.Content = new StringContent("OK", Encoding.UTF8, "text/plain");
+        //    return response;
+        //}
+
         [HttpPost]
         public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
         {
@@ -37,18 +126,36 @@ namespace Conscience.Web.Controllers.Api
 
             try
             {
-                var accountRepo = childContainer.Resolve<AccountRepository>();
-                var accounts = accountRepo.GetAll();
-                foreach (var account in accounts.ToList())
+                var empRepo = childContainer.Resolve<EmployeeRepository>();
+                var employees = empRepo.GetAll();
+                foreach (var employee in employees.ToList())
                 {
-                    if (account.Device != null)
+                    var randomLat = new Random().Next(100) / 100000f;
+                    var randomLon = new Random().Next(100) / 100000f;
+
+                    employee.Account.Device = new Device
                     {
-                        if (account.Device.Locations.Any())
+                        DeviceId = "Dummy",
+                        BatteryLevel = 100,
+                        BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+                        LastConnection = DateTime.Now
+                    };
+
+                    empRepo.Modify(employee);
+
+                    employee.Account.Device.Locations = new List<Location>
+                    {
+                        new Location
                         {
-                            account.Device.CurrentLocation = account.Device.Locations.Last();
-                            accountRepo.Modify(account);
+                            Latitude = 37.048601 + randomLat,
+                            Longitude = -2.4216117 + randomLon,
+                            TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
                         }
-                    }
+                    };
+                    empRepo.Modify(employee);
+
+                    employee.Account.Device.CurrentLocation = employee.Account.Device.Locations.Last();
+                    empRepo.Modify(employee);
                 }
             }
             catch (Exception ex)
@@ -65,54 +172,6 @@ namespace Conscience.Web.Controllers.Api
             return response;
         }
     }
-
-    //    [HttpPost]
-    //    public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
-    //    {
-    //        var childContainer = _container.CreateChildContainer();
-
-    //        try
-    //        {
-    //            var hostsRepo = childContainer.Resolve<HostRepository>();
-    //            var hosts = hostsRepo.GetAll();
-    //            foreach(var host in hosts.ToList())
-    //            {
-    //                var randomLat = new Random().Next(100) / 100000f;
-    //                var randomLon = new Random().Next(100) / 100000f;
-
-    //                host.Account.Device = new Device
-    //                {
-    //                    DeviceId = "Dummy",
-    //                    BatteryLevel = 100,
-    //                    BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
-    //                    LastConnection = DateTime.Now,
-    //                    Locations = new List<Location>
-    //                    {
-    //                        new Location
-    //                        {
-    //                            Latitude = 37.1274884 + randomLat,
-    //                            Longitude = -4.6715981 + randomLon,
-    //                            TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
-    //                        }
-    //                    }
-    //                };
-    //                hostsRepo.Modify(host);
-    //            }
-    //        }
-    //        catch (Exception ex)
-    //        {
-
-    //        }
-    //        finally
-    //        {
-    //            childContainer.Dispose();
-    //        }
-
-    //        var response = request.CreateResponse(HttpStatusCode.OK);
-    //        response.Content = new StringContent("OK", Encoding.UTF8, "text/plain");
-    //        return response;
-    //    }
-    //}
 
     //    [HttpPost]
     //    public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)

@@ -1,7 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import ScrollableContainer from '../common/ScrollableContainer';
 
 class EmployeesList extends React.Component {
   render() {
@@ -9,24 +9,19 @@ class EmployeesList extends React.Component {
       return (<div>Loading...</div>);
     }
 
-    const employeeRows =
-    this.props.data.employees.all.map(employee =>
-      <TableRow key={employee.id}>
-        <TableRowColumn>{employee.name}</TableRowColumn>
-        <TableRowColumn>{employee.department}</TableRowColumn>
-      </TableRow>);
-
-    return (<Table>
-      <TableHeader>
-        <TableRow>
-          <TableHeaderColumn>Name</TableHeaderColumn>
-          <TableHeaderColumn>Department</TableHeaderColumn>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        { employeeRows }
-      </TableBody>
-    </Table>);
+    return (<ScrollableContainer>
+      <div>
+        <h2>Maintenance</h2>
+        <ul>
+          {this.props.data.employees.all.map(employee =>
+            <li key={employee.id}>
+              <p>
+                <Link to={`/security-detail/${employee.id}`} ><b>{employee.name} ({employee.department})</b></Link>
+              </p>
+            </li>)}
+        </ul>
+      </div>
+    </ScrollableContainer>);
   }
 }
 
@@ -40,6 +35,7 @@ const query = gql`query GetEmployees {
                         id,
                         name,
                         account {
+                            id,
                             userName
                         },
                         department
