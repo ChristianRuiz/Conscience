@@ -11,10 +11,10 @@ import PlotEvents from './host/PlotEvents';
 import Stats from './host/Stats';
 import Notifications from './host/Notifications';
 import HostButtons from './host/HostButtons';
-import Debugger from './Debugger';
+// import Debugger from './Debugger';
 
-import AudioService from '../services/AudioService';
-import NotificationsService from '../services/NotificationsService.js';
+// import AudioService from '../services/AudioService';
+// import NotificationsService from '../services/NotificationsService.js';
 
 type Route = {
   key: string,
@@ -157,9 +157,10 @@ class HostTabs extends React.Component {
 
   componentDidMount() {
     if (audioService == null && !global.notificationsService) {
-      audioService = new AudioService();
+      // TODO: Uncomment after it has been published on the Apple Store
+      /* audioService = new AudioService();
       global.notificationsService = new NotificationsService(this.props.client,
-            navigator, audioService);
+            navigator, audioService);*/
     }
   }
 
