@@ -110,7 +110,7 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Character>().HasMany(c => c.PlotEvents).WithMany(e => e.Characters);
             modelBuilder.Entity<Character>().HasMany(c => c.Plots).WithRequired(p => p.Character);
             modelBuilder.Entity<Plot>().HasMany(c => c.Events).WithRequired(e => e.Plot);
-            modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot);
+            modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot).HasForeignKey(c => c.PlotId);
             modelBuilder.Entity<NotificationStatChange>().ToTable("NotificationsStatChange");
             modelBuilder.Entity<NotificationPlotChange>().ToTable("NotificationsPlotChange");
             modelBuilder.Entity<NotificationAudio>().ToTable("NotificationsAudio");
