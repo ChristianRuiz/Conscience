@@ -19,7 +19,7 @@ namespace Conscience.Application.Graph.Entities.Plots
 
             Field<PlotGraphType>("addOrModifyPlot",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<PlotInputGraphType>> { Name = "plot", Description = "new plot" }
+                    new QueryArgument<NonNullGraphType<PlotInputGraphType>> { Name = "plot", Description = "new or edited plot" }
                     ),
                 resolve: context => {
                     var plot = context.GetArgument<Plot>("plot");
