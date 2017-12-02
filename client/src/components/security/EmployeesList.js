@@ -11,7 +11,7 @@ class EmployeesList extends React.Component {
 
     return (<ScrollableContainer>
       <div>
-        <h2>Maintenance</h2>
+        <h2>Security</h2>
         <ul>
           {this.props.data.employees.all.map(employee =>
             <li key={employee.id}>

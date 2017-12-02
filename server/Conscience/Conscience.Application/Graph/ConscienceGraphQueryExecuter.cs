@@ -7,6 +7,7 @@ using GraphQL.Validation;
 using GraphQL.Validation.Complexity;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace Conscience.Application.Graph
                     _.Schema = schema;
                     _.Query = queryToExecute;
                     _.OperationName = query.OperationName;
-                    _.Inputs = new Inputs(query.Variables);
+                    _.Inputs = JObject.FromObject(query.Variables).ToString().ToInputs();
 
                     _.ValidationRules = new List<IValidationRule> { new MembershipValidationRule(), new RolesValidationRule() };
                     _.UserContext = userContext;

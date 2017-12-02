@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node ./node_modules/webpack/bin/webpack.js",
+    "build-pro": "node ./node_modules/webpack/bin/webpack.js -p --config ./webpack.production.config.js",
     "watch": "node ./node_modules/webpack/bin/webpack.js --watch",
     "schema": "node ./node_modules/get-graphql-schema/dist/index.js http://localhost/api/graphql > ./src/data/schema.json"
   },
@@ -45,8 +46,8 @@
     "babel-preset-stage-1": "^6.22.0",
     "babel-preset-stage-2": "^6.22.0",
     "babelify": "^7.3.0",
+    "compression-webpack-plugin": "^1.0.1",
     "css-loader": "^0.28.4",
-    "extract-text-webpack-plugin": "^3.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-graphql": "^0.7.0",
@@ -54,8 +55,9 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "expose-loader": "^0.7.3",
-    "get-graphql-schema": "^1.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
+    "get-graphql-schema": "^1.0.1",
     "postcss": "^6.0.8",
     "postcss-cssnext": "^3.0.2",
     "postcss-flexbox": "^1.0.3",

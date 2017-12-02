@@ -13,14 +13,17 @@ namespace Conscience.Application.Graph.Entities.Employees
 {
     public class EmployeeQuery : ObjectGraphType<object>
     {
-        public EmployeeQuery(EmployeeRepository employeeRepo)
+        public EmployeeQuery(EmployeeRepository employeeRepo, IUsersIdentityService accountService)
         {
             Name = "EmployeeQuery";
 
             Field<ListGraphType<EmployeeGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => employeeRepo.GetAllEmployees().ApplyPaginationAndOrderBy(context)
-                .AvoidLazyLoad(context, e => e.Account, e => e.Notifications))
+                resolve: context => employeeRepo.GetAllEmployees()
+                                                .ApplyPaginationAndOrderBy(context)
+                .AvoidLazyLoad(context, e => e.Account, e => e.Notifications)
+                .ToList().Where(e => !accountService.CurrentUser.UserName.Contains("-") || e.Account.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First())) //TODO: Remove this line, only to send both runs pre game 
+                )
                 .AddQAPermissions();
 
             Field<EmployeeGraphType>("byId",

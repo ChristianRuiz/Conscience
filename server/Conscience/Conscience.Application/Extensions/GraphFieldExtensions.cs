@@ -128,7 +128,8 @@ namespace Conscience.Application.Graph
 
         public static IProvideMetadata AddBehaviourAndPlotPermissions(this IProvideMetadata type)
         {
-            return type.AddBehaviourPermissions().AddPermission(RoleTypes.CompanyPlot);
+            return type
+                .AddBehaviourPermissions().AddPermission(RoleTypes.CompanyPlot);
         }
 
         public static IProvideMetadata AddMaintenancePermissions(this IProvideMetadata type)
