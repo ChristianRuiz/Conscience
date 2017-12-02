@@ -1,5 +1,6 @@
 ﻿using Conscience.Application.Graph.Entities.Accounts;
 using Conscience.Application.Graph.Entities.Employees;
+using Conscience.Application.Graph.Entities.Hosts;
 using GraphQL.Types;
 using Microsoft.Practices.Unity;
 using System;
@@ -18,7 +19,9 @@ namespace Conscience.Application.Graph
 
             Field<AccountMutation>("accounts", resolve: context => container.Resolve<AccountMutation>());
 
-            Field<EmployeeMutation>("employees", resolve: context => container.Resolve<EmployeeMutation>()).RequiresMembership(); ;
+            Field<EmployeeMutation>("employees", resolve: context => container.Resolve<EmployeeMutation>()).RequiresMembership();
+
+            Field<HostMutation>("hosts", resolve: context => container.Resolve<HostMutation>()).RequiresMembership();
         }
     }
 }

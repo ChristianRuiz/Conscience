@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
+using Conscience.Application.Graph.Entities.Stats;
 
 namespace Conscience.Application.Graph.Entities.Hosts
 {
@@ -17,11 +18,17 @@ namespace Conscience.Application.Graph.Entities.Hosts
         {
             Name = "HostMutation";
 
-            Field<HostGraphType>("addHost", 
+            Field<HostGraphType>("modifyStats", 
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "accountId", Description = "account id" }
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "hostId", Description = "host id" },
+                    new QueryArgument<ListGraphType<StatsInputGraphType>> { Name = "stats", Description = "stats" }
                     ),
-                resolve: context => hostRepo.AddHost(context.GetArgument<int>("accountId")))
+                resolve: context => {
+                    var hostId = context.GetArgument<int>("hostId");
+                    var stats = context.GetArgument<List<Domain.Stats>>("stats");
+                    var host = hostRepo.ModifyStats(hostId, stats);
+                    return host;
+                    })
                 .AddQAPermissions();
         }
     }

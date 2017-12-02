@@ -31,21 +31,20 @@ namespace Conscience.DataAccess.Repositories
             return hosts;
         }
         
-        public Host AddHost(int accountId)
-        {
-            var account = _context.Accounts.First(a => a.Id == accountId);
-            var employee = new Host
-            {
-                Account = account
-            };
-            DbSet.Add(employee);
-            _context.SaveChanges();
-            return employee;
-        }
-        
         public Host GetById(Account currentUser, int userId)
         {
             var host = GetAllHosts(currentUser).FirstOrDefault(u => u.Id == userId);
+            return host;
+        }
+
+        public Host ModifyStats(int hostId, List<Stats> stats)
+        {
+            var host = DbSet.FirstOrDefault(u => u.Id == hostId);
+            foreach (var stat in stats)
+            {
+                host.Stats.First(s => s.Name.ToLowerInvariant() == stat.Name.ToLowerInvariant()).Value = stat.Value;
+            }
+            Modify(host);
             return host;
         }
     }

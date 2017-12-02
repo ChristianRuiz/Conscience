@@ -95,7 +95,7 @@
     <Compile Include="Graph\Entities\Hosts\HostMutation.cs" />
     <Compile Include="Graph\Entities\Hosts\HostQuery.cs" />
     <Compile Include="Graph\Entities\Hosts\HostGraphType.cs" />
-    <Compile Include="Graph\Entities\InputConscienceGraphType.cs" />
+    <Compile Include="Graph\Entities\ConscienceInputGraphType.cs" />
     <Compile Include="Graph\Entities\Locations\LocationGraphType.cs" />
     <Compile Include="Graph\Entities\Memories\CoreMemoryGraphType.cs" />
     <Compile Include="Graph\Entities\Memories\MemoryGraphType.cs" />
@@ -104,6 +104,7 @@
     <Compile Include="Graph\Entities\Plots\PlotEventGraphType.cs" />
     <Compile Include="Graph\Entities\Plots\PlotGraphType.cs" />
     <Compile Include="Graph\Entities\Roles\RoleGraphType.cs" />
+    <Compile Include="Graph\Entities\Stats\StatsInputGraphType.cs" />
     <Compile Include="Graph\Entities\Stats\StatsGraphType.cs" />
     <Compile Include="Graph\Entities\Triggers\TriggerGraphType.cs" />
     <Compile Include="Graph\GraphQLQuery.cs" />
