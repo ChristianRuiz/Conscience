@@ -25,40 +25,50 @@ namespace Conscience.Application.Graph.Entities.Plots
                     var plot = context.GetArgument<Plot>("plot");
                     if (plot.Id == 0)
                     {
-                        plot = plotRepo.Add(plot);
+                        var dbPlot = plotRepo.Add(new Plot());
+                        plot.Id = dbPlot.Id;
+                        plot = ModifyPlot(plotRepo, characterRepo, plot);
                     }
                     else
                     {
-                        var dbPlot = plotRepo.GetById(plot.Id);
-                        dbPlot.Name = plot.Name;
-                        dbPlot.Description = plot.Description;
-
-                        var charactersToRemove = dbPlot.Characters.Where(dbc => !plot.Characters.Any(c => dbc.Id == c.Id || dbc.Character.Id == c.Character.Id)).ToList();
-                        foreach (var characterToRemove in charactersToRemove)
-                        {
-                            dbPlot.Characters.Remove(characterToRemove);
-                        }
-
-                        foreach(var characterInPlot in plot.Characters)
-                        {
-                            var dbCharacter = dbPlot.Characters.FirstOrDefault(c => c.Id == characterInPlot.Id || c.Character.Id == characterInPlot.Character.Id);
-                            if (dbCharacter == null)
-                            {
-                                dbCharacter = new CharacterInPlot
-                                {
-                                    Character = characterRepo.GetById(characterInPlot.Character.Id)
-                                };
-                                dbPlot.Characters.Add(dbCharacter);
-                            }
-
-                            dbCharacter.Description = characterInPlot.Description;
-                        }
-
-                        plot = plotRepo.Modify(dbPlot);
+                        plot = ModifyPlot(plotRepo, characterRepo, plot);
                     }
                     return plot;
                 })
                 .AddQAPermissions();
+        }
+
+        private Plot ModifyPlot(PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)
+        {
+            var dbPlot = plotRepo.GetById(plot.Id);
+
+            dbPlot.Name = plot.Name;
+            dbPlot.Description = plot.Description;
+
+            var charactersToRemove = dbPlot.Characters.Where(dbc => !plot.Characters.Any(c => dbc.Id == c.Id || dbc.Character.Id == c.Character.Id)).ToList();
+            foreach (var characterToRemove in charactersToRemove)
+            {
+                dbPlot.Characters.Remove(characterToRemove);
+            }
+
+            foreach (var characterInPlot in plot.Characters)
+            {
+                var dbCharacter = dbPlot.Characters.FirstOrDefault(c => (characterInPlot.Id != 0 && c.Id == characterInPlot.Id) 
+                                                                        || c.Character.Id == characterInPlot.Character.Id);
+                if (dbCharacter == null)
+                {
+                    dbCharacter = new CharacterInPlot
+                    {
+                        Character = characterRepo.GetById(characterInPlot.Character.Id)
+                    };
+                    dbPlot.Characters.Add(dbCharacter);
+                }
+
+                dbCharacter.Description = characterInPlot.Description;
+            }
+
+            plot = plotRepo.Modify(dbPlot);
+            return plot;
         }
     }
 }
