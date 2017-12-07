@@ -461,6 +461,7 @@ namespace Conscience.Web.Controllers.Api
         {
             var roles = currentUser.Roles.ToList();
 
+#if DEBUG
             context.Database.Delete();
             context.Database.Create();
 
@@ -473,6 +474,7 @@ namespace Conscience.Web.Controllers.Api
             foreach (var role in roles)
                 account.Roles.Add(new Role { Name = role.Name });
             context.SaveChanges();
+#endif
         }
 
         private void ClearSet<T>(ConscienceContext context, DbSet<T> set, Expression<Func<T, bool>> excludePredicate = null) where T : class

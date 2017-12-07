@@ -18,8 +18,8 @@ class LoginBox extends React.Component {
     this._doLogin = this._doLogin.bind(this);
 
     this.state = {
-      userName: 'arnold', // TODO: This values are just for development
-      password: '123456',
+      userName: '', // 'arnold', // TODO: This values are just for development
+      password: '', // '123456',
       hasError: false
     };
   }

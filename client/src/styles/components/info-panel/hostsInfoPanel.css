@@ -57,3 +57,7 @@
 .popup p {
     color: black !important;
 }
+
+.infoPanel .scrollableContainer {
+    padding-left: 0;
+}

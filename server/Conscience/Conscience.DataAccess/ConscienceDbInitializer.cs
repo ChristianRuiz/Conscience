@@ -16,10 +16,18 @@ namespace Conscience.DataAccess
     {
         public override void InitializeDatabase(ConscienceContext context)
         {
-            if (!context.Roles.Any())
+            try
             {
                 base.InitializeDatabase(context);
-                Seed(context);
+
+                if (!context.Roles.Any())
+                {
+                    Seed(context);
+                }
+            }
+            catch (Exception ex)
+            {
+                //Unable to initialize the db
             }
         }
 
@@ -50,6 +58,8 @@ namespace Conscience.DataAccess
                 };
                 arnold.Roles.Add(adminRole);
                 context.Accounts.Add(arnold);
+
+                #if DEBUG
 
                 var ford = new ConscienceAccount
                 {
@@ -441,6 +451,8 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
                 });
 
                 context.SaveChanges();
+
+#endif
             }
         }
     }

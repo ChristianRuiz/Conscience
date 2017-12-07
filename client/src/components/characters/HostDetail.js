@@ -16,7 +16,7 @@ class HostsDetail extends React.Component {
       <h1>{host.currentCharacter ? host.currentCharacter.character.name : ''}</h1>
 
       {host.currentCharacter ? (<div>
-        <h2>Character History:</h2>
+        <h2>Character Story:</h2>
         <p>{host.currentCharacter.character.story}</p>
       </div>) : ''}
 

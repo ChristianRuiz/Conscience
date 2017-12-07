@@ -32,9 +32,12 @@ namespace Conscience.Web
                 app.MapSignalR();
 
                 var container = UnityActivator.Start();
-                var context = container.Resolve<ConscienceContext>();
-                context.Database.CreateIfNotExists();
-                context.Database.Initialize(true);
+                using (var child = container.CreateChildContainer())
+                {
+                    var context = child.Resolve<ConscienceContext>();
+                    context.Database.CreateIfNotExists();
+                    context.Database.Initialize(true);
+                }
             }
             catch (Exception ex)
             {
