@@ -36,6 +36,19 @@ namespace Conscience.Application.Graph.Entities.Plots
                     return plot;
                 })
                 .AddQAPermissions();
+
+            Field<IntGraphType>("deletePlot",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "id of the plot to delete" }
+                    ),
+                resolve: context =>
+                {
+                    var id = context.GetArgument<int>("id");
+                    var plot = plotRepo.GetById(id);
+                    plotRepo.Delete(plot);
+                    return id;
+                })
+                .AddQAPermissions();
         }
 
         private Plot ModifyPlot(PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)
@@ -51,7 +64,16 @@ namespace Conscience.Application.Graph.Entities.Plots
                     dbCharacter.Description = character.Description;
                 },
                 (c, dbc) => dbc.Character.Id == c.Character.Id);
-            
+
+            ModifyCollection(plotRepo, plot.Events, dbPlot.Events,
+                (e, dbe) =>
+                {
+                    e.Description = dbe.Description;
+                    e.Location = dbe.Location;
+                    e.Hour = dbe.Hour;
+                    e.Minute = dbe.Minute;
+                });
+
             plot = plotRepo.Modify(dbPlot);
             return plot;
         }

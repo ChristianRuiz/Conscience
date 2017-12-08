@@ -43,6 +43,19 @@ namespace Conscience.Application.Graph.Entities.Characters
                     return character;
                 })
                 .AddQAPermissions();
+
+            Field<IntGraphType>("deleteCharacter",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "id of the character to delete" }
+                    ),
+                resolve: context =>
+                {
+                    var id = context.GetArgument<int>("id");
+                    var character = characterRepo.GetById(id);
+                    characterRepo.Delete(character);
+                    return id;
+                })
+                .AddQAPermissions();
         }
 
         private Character ModifyCharacter(Character character)

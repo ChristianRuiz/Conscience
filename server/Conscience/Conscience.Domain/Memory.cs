@@ -8,6 +8,12 @@ namespace Conscience.Domain
 {
     public class Memory : IdentityEntity
     {
+        public Character Character
+        {
+            get;
+            set;
+        }
+
         public string Description
         {
             get;
