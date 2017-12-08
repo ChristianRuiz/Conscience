@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Audio
+    public class Audio : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public string Transcription
         {
             get;

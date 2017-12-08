@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CharacterInHost
+    public class CharacterInHost : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public virtual Host Host
         {
             get;

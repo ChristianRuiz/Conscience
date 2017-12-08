@@ -107,10 +107,9 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Character>().HasMany(c => c.Memories);
             modelBuilder.Entity<Character>().HasMany(c => c.Triggers);
             modelBuilder.Entity<Character>().HasMany(c => c.Relations).WithMany(r => r.Characters);
-            modelBuilder.Entity<Character>().HasMany(c => c.PlotEvents).WithMany(e => e.Characters);
-            modelBuilder.Entity<Character>().HasMany(c => c.Plots).WithRequired(p => p.Character);
+            modelBuilder.Entity<Character>().HasMany(c => c.Plots).WithRequired(p => p.Character).HasForeignKey(p => p.CharacterId).WillCascadeOnDelete();
             modelBuilder.Entity<Plot>().HasMany(c => c.Events).WithRequired(e => e.Plot);
-            modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot).HasForeignKey(c => c.PlotId);
+            modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot).HasForeignKey(c => c.PlotId).WillCascadeOnDelete();
             modelBuilder.Entity<NotificationStatChange>().ToTable("NotificationsStatChange");
             modelBuilder.Entity<NotificationPlotChange>().ToTable("NotificationsPlotChange");
             modelBuilder.Entity<NotificationAudio>().ToTable("NotificationsAudio");

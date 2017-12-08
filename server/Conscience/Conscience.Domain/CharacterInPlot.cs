@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CharacterInPlot
+    public class CharacterInPlot : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public string Description
         {
             get;
@@ -27,6 +21,12 @@ namespace Conscience.Domain
         }
 
         public virtual Plot Plot
+        {
+            get;
+            set;
+        }
+
+        public int CharacterId
         {
             get;
             set;

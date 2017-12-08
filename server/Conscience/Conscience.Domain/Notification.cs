@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Notification
+    public class Notification : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public DateTime TimeStamp
         {
             get;

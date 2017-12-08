@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Location
+    public class Location : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public double? Accuracy { get; set; }

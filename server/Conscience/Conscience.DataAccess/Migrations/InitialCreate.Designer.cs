@@ -13,7 +13,7 @@ namespace Conscience.DataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712061632145_InitialCreate"; }
+            get { return "201712081059498_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

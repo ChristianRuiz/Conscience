@@ -1,4 +1,5 @@
-﻿using GraphQL.Types;
+﻿using Conscience.Domain;
+using GraphQL.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,11 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities
 {
-    public class ConscienceGraphType<T> : ObjectGraphType<T>
+    public class ConscienceGraphType<T> : ObjectGraphType<T> where T : IdentityEntity
     {
         public ConscienceGraphType()
         {
-            Field<IntGraphType>("id", resolve: context => {
-                var id = context.Source.GetType().GetProperty("Id");
-                return id.GetValue(context.Source);
-                });
+            Field<IntGraphType>("id", resolve: context => context.Source.Id);
         }
     }
 }

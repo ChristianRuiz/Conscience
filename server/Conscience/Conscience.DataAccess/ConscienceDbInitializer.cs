@@ -423,19 +423,15 @@ Now trys to take good jobs to pay for his past and he is in love with Dolores.",
                 });
 
                 context.SaveChanges();
-
-                var eventRobbery = new PlotEvent
+                
+                plotRobbery.Events.Add(new PlotEvent
                 {
-                    Plot = plotRobbery,
                     Description = "Brothel Robbery",
                     Location = "Brothel",
                     Hour = 22,
                     Minute = 00
-                };
-
-                cMaeve.PlotEvents.Add(eventRobbery);
-                cEscaton.PlotEvents.Add(eventRobbery);
-
+                });
+                
                 context.SaveChanges();
 
                 cDolores.Relations.Add(new CharacterRelation

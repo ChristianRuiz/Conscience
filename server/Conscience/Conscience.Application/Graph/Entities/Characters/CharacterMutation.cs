@@ -13,9 +13,15 @@ namespace Conscience.Application.Graph.Entities.Characters
 {
     public class CharacterMutation : ObjectGraphType<object>
     {
-        public CharacterMutation(CharacterRepository characterRepo)
+        private readonly CharacterRepository _characterRepo;
+        private readonly PlotRepository _plotRepo;
+
+        public CharacterMutation(CharacterRepository characterRepo, PlotRepository plotRepo)
         {
             Name = "CharacterMutation";
+
+            _characterRepo = characterRepo;
+            _plotRepo = plotRepo;
 
             Field<CharacterGraphType>("addOrModifyCharacter",
                 arguments: new QueryArguments(
@@ -28,20 +34,20 @@ namespace Conscience.Application.Graph.Entities.Characters
                     {
                         var dbCharacter = characterRepo.Add(new Character());
                         character.Id = dbCharacter.Id;
-                        character = ModifyCharacter(characterRepo, character);
+                        character = ModifyCharacter(character);
                     }
                     else
                     {
-                        character = ModifyCharacter(characterRepo, character);
+                        character = ModifyCharacter(character);
                     }
                     return character;
                 })
                 .AddQAPermissions();
         }
 
-        private Character ModifyCharacter(CharacterRepository characterRepo, Character character)
+        private Character ModifyCharacter(Character character)
         {
-            var dbCharacter = characterRepo.GetById(character.Id);
+            var dbCharacter = _characterRepo.GetById(character.Id);
 
             dbCharacter.Name = character.Name;
             dbCharacter.Age = character.Age;
@@ -49,26 +55,56 @@ namespace Conscience.Application.Graph.Entities.Characters
             dbCharacter.NarrativeFunction = character.NarrativeFunction;
             dbCharacter.Gender = character.Gender;
 
-            var memoriesToRemove = dbCharacter.Memories.Where(dbm => !character.Memories.Any(m => dbm.Id == m.Id)).ToList();
-            foreach (var memoryToRemove in memoriesToRemove)
+            ModifyCollection(character.Memories, dbCharacter.Memories, (memory, dbMemory) =>
             {
-                dbCharacter.Memories.Remove(memoryToRemove);
+                dbMemory.Description = memory.Description;
+            });
+
+            ModifyCollection(character.Triggers, dbCharacter.Triggers, (trigger, dbTrigger) =>
+            {
+                dbTrigger.Description = trigger.Description;
+            });
+
+            ModifyCollection(character.Plots, dbCharacter.Plots, (plot, dbPlot) =>
+            {
+                dbPlot.Description = plot.Description;
+                if (dbPlot.Plot == null)
+                    dbPlot.Plot = _plotRepo.GetById(plot.Plot.Id);
+            },
+            (plot, dbPlot) => plot.Plot.Id == dbPlot.Plot.Id);
+
+            ModifyCollection(character.Relations, dbCharacter.Relations, (relation, dbRelation) =>
+            {
+                dbRelation.Description = relation.Description;
+                dbRelation.Character = _characterRepo.GetById(relation.Character.Id);
+            },
+            (relation, dbRelation) => relation.Character.Id == dbRelation.Character.Id);
+
+            character = _characterRepo.Modify(dbCharacter);
+            return character;
+        }
+
+        private void ModifyCollection<T>(ICollection<T> collection, ICollection<T> dbCollection, Action<T, T> setProperties, Func<T, T, bool> additionalPredicate = null)
+            where T : IdentityEntity, new()
+        {
+            var itemsToRemove = dbCollection.Where(dbItem => !collection.Any(item => dbItem.Id == item.Id && (additionalPredicate == null || additionalPredicate(item, dbItem)))).ToList();
+            foreach (var itemToRemove in itemsToRemove)
+            {
+                dbCollection.Remove(itemToRemove);
+                _characterRepo.DeleteChild(itemToRemove);
             }
 
-            foreach (var memory in character.Memories)
+            foreach (var item in collection)
             {
-                var dbMemory = dbCharacter.Memories.FirstOrDefault(c => memory.Id != 0 && c.Id == memory.Id);
-                if (dbMemory == null)
+                var dbItem = dbCollection.FirstOrDefault(c => item.Id != 0 && c.Id == item.Id);
+                if (dbItem == null)
                 {
-                    dbMemory = new Memory();
-                    dbCharacter.Memories.Add(dbMemory);
+                    dbItem = new T();
+                    dbCollection.Add(dbItem);
                 }
 
-                dbMemory.Description = memory.Description;
+                setProperties(item, dbItem);
             }
-
-            character = characterRepo.Modify(dbCharacter);
-            return character;
         }
     }
 }

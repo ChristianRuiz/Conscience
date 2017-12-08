@@ -45,5 +45,10 @@ namespace Conscience.DataAccess.Repositories
             DbSet.Remove(entity);
             _context.SaveChanges();
         }
+
+        public void DeleteChild(object child)
+        {
+            _context.Entry(child).State = EntityState.Deleted;
+        }
     }
 }

@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CharacterRelation
+    public class CharacterRelation : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-        
         public virtual ICollection<Character> Characters
         {
             get;
@@ -32,7 +26,7 @@ namespace Conscience.Domain
             set
             {
                 if (Characters == null)
-                    Characters = new List<Character>();
+                    Characters = new HashSet<Character>();
                 Characters.Clear();
                 Characters.Add(value);
             }

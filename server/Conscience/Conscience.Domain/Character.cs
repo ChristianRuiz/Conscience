@@ -6,23 +6,16 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Character
+    public class Character : IdentityEntity
     {
         public Character()
         {
             Memories = new HashSet<Memory>();
             Triggers = new HashSet<Trigger>();
             Plots = new HashSet<CharacterInPlot>();
-            PlotEvents = new HashSet<PlotEvent>();
             Relations = new HashSet<CharacterRelation>();
         }
-
-        public int Id
-        {
-            get;
-            set;
-        }
-
+        
         public string Name
         {
             get;
@@ -84,12 +77,6 @@ namespace Conscience.Domain
         }
 
         public virtual ICollection<CharacterInPlot> Plots
-        {
-            get;
-            set;
-        }
-
-        public virtual ICollection<PlotEvent> PlotEvents
         {
             get;
             set;

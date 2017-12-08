@@ -49,6 +49,7 @@ namespace Conscience.Application.Graph.Entities.Plots
             foreach (var characterToRemove in charactersToRemove)
             {
                 dbPlot.Characters.Remove(characterToRemove);
+                plotRepo.DeleteChild(characterToRemove);
             }
 
             foreach (var characterInPlot in plot.Characters)

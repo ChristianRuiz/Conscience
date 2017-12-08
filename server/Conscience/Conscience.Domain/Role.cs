@@ -6,17 +6,11 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Role
+    public class Role : IdentityEntity
     {
         public Role()
         {
             Accounts = new HashSet<Account>();
-        }
-
-        public int Id
-        {
-            get;
-            set;
         }
         
         public string Name

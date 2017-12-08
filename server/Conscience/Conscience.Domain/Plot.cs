@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Plot
+    public class Plot : IdentityEntity
     {
         public Plot()
         {
             Characters = new HashSet<CharacterInPlot>();
             Events = new HashSet<PlotEvent>();
         }
-
-        public int Id
-        {
-            get;
-            set;
-        }
-
+        
         public string Code
         {
             get;

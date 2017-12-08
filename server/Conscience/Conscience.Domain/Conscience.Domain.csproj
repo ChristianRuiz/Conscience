@@ -51,6 +51,7 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Enums\BatteryStatus.cs" />
     <Compile Include="Host.cs" />
+    <Compile Include="IdentityEntity.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Notification.cs" />

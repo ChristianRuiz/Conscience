@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Memory
+    public class Memory : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-        
         public string Description
         {
             get;

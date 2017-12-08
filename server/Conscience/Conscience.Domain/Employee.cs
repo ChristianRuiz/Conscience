@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Employee
+    public class Employee : IdentityEntity
     {
         public Employee()
         {
             Notifications = new HashSet<Notification>();
         }
-
-        public int Id
-        {
-            get;
-            set;
-        }
-
+        
         public string Name
         {
             get;
