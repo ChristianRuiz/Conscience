@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Characters
 {
-    public class CharacterMutation : ObjectGraphType<object>
+    public class CharacterMutation : ConscienceMutation
     {
         private readonly CharacterRepository _characterRepo;
         private readonly PlotRepository _plotRepo;
@@ -55,17 +55,17 @@ namespace Conscience.Application.Graph.Entities.Characters
             dbCharacter.NarrativeFunction = character.NarrativeFunction;
             dbCharacter.Gender = character.Gender;
 
-            ModifyCollection(character.Memories, dbCharacter.Memories, (memory, dbMemory) =>
+            ModifyCollection(_characterRepo, character.Memories, dbCharacter.Memories, (memory, dbMemory) =>
             {
                 dbMemory.Description = memory.Description;
             });
 
-            ModifyCollection(character.Triggers, dbCharacter.Triggers, (trigger, dbTrigger) =>
+            ModifyCollection(_characterRepo, character.Triggers, dbCharacter.Triggers, (trigger, dbTrigger) =>
             {
                 dbTrigger.Description = trigger.Description;
             });
 
-            ModifyCollection(character.Plots, dbCharacter.Plots, (plot, dbPlot) =>
+            ModifyCollection(_characterRepo, character.Plots, dbCharacter.Plots, (plot, dbPlot) =>
             {
                 dbPlot.Description = plot.Description;
                 if (dbPlot.Plot == null)
@@ -73,7 +73,7 @@ namespace Conscience.Application.Graph.Entities.Characters
             },
             (plot, dbPlot) => plot.Plot.Id == dbPlot.Plot.Id);
 
-            ModifyCollection(character.Relations, dbCharacter.Relations, (relation, dbRelation) =>
+            ModifyCollection(_characterRepo, character.Relations, dbCharacter.Relations, (relation, dbRelation) =>
             {
                 dbRelation.Description = relation.Description;
                 dbRelation.Character = _characterRepo.GetById(relation.Character.Id);
@@ -82,29 +82,6 @@ namespace Conscience.Application.Graph.Entities.Characters
 
             character = _characterRepo.Modify(dbCharacter);
             return character;
-        }
-
-        private void ModifyCollection<T>(ICollection<T> collection, ICollection<T> dbCollection, Action<T, T> setProperties, Func<T, T, bool> additionalPredicate = null)
-            where T : IdentityEntity, new()
-        {
-            var itemsToRemove = dbCollection.Where(dbItem => !collection.Any(item => dbItem.Id == item.Id && (additionalPredicate == null || additionalPredicate(item, dbItem)))).ToList();
-            foreach (var itemToRemove in itemsToRemove)
-            {
-                dbCollection.Remove(itemToRemove);
-                _characterRepo.DeleteChild(itemToRemove);
-            }
-
-            foreach (var item in collection)
-            {
-                var dbItem = dbCollection.FirstOrDefault(c => item.Id != 0 && c.Id == item.Id);
-                if (dbItem == null)
-                {
-                    dbItem = new T();
-                    dbCollection.Add(dbItem);
-                }
-
-                setProperties(item, dbItem);
-            }
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Plots
 {
-    public class PlotMutation : ObjectGraphType<object>
+    public class PlotMutation : ConscienceMutation
     {
         public PlotMutation(PlotRepository plotRepo, CharacterRepository characterRepo)
         {
@@ -45,29 +45,13 @@ namespace Conscience.Application.Graph.Entities.Plots
             dbPlot.Name = plot.Name;
             dbPlot.Description = plot.Description;
 
-            var charactersToRemove = dbPlot.Characters.Where(dbc => !plot.Characters.Any(c => dbc.Id == c.Id || dbc.Character.Id == c.Character.Id)).ToList();
-            foreach (var characterToRemove in charactersToRemove)
-            {
-                dbPlot.Characters.Remove(characterToRemove);
-                plotRepo.DeleteChild(characterToRemove);
-            }
-
-            foreach (var characterInPlot in plot.Characters)
-            {
-                var dbCharacter = dbPlot.Characters.FirstOrDefault(c => (characterInPlot.Id != 0 && c.Id == characterInPlot.Id) 
-                                                                        || c.Character.Id == characterInPlot.Character.Id);
-                if (dbCharacter == null)
+            ModifyCollection(plotRepo, plot.Characters, dbPlot.Characters,
+                (character, dbCharacter) =>
                 {
-                    dbCharacter = new CharacterInPlot
-                    {
-                        Character = characterRepo.GetById(characterInPlot.Character.Id)
-                    };
-                    dbPlot.Characters.Add(dbCharacter);
-                }
-
-                dbCharacter.Description = characterInPlot.Description;
-            }
-
+                    dbCharacter.Description = character.Description;
+                },
+                (c, dbc) => dbc.Character.Id == c.Character.Id);
+            
             plot = plotRepo.Modify(dbPlot);
             return plot;
         }

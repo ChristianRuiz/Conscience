@@ -91,6 +91,7 @@
     <Compile Include="Graph\Entities\Characters\CharacterGraphType.cs" />
     <Compile Include="Graph\Entities\Characters\CharacterMutation.cs" />
     <Compile Include="Graph\Entities\Characters\CharacterQuery.cs" />
+    <Compile Include="Graph\Entities\ConscienceMutation.cs" />
     <Compile Include="Graph\Entities\ConscienceGraphType.cs" />
     <Compile Include="Graph\Entities\Devices\DeviceGraphType.cs" />
     <Compile Include="Graph\Entities\Employees\EmployeeMutation.cs" />
