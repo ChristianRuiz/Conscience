@@ -19,6 +19,7 @@ namespace Conscience.Application.Graph.Entities.Characters
             Name = "CharacterInHost";
             
             Field(c => c.AssignedOn);
+            Field(c => c.UnassignedOn, true);
             Field<HostGraphType>("host", resolve: context => context.Source.Host);
             Field<CharacterGraphType>("character", resolve: context => context.Source.Character);
         }

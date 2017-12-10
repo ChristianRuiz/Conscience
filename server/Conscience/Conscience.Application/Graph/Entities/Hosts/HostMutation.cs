@@ -57,7 +57,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     host = hostRepo.AssignHost(host, character);
                     return host;
                 })
-                .AddBehaviourAndPlotPermissions();
+                .AddPlotAssignHostPermissions();
         }
     }
 }

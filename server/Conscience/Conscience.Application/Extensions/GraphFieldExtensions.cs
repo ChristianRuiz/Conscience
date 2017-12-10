@@ -111,6 +111,16 @@ namespace Conscience.Application.Graph
             return type.AddPermissions(RoleTypes.Admin, RoleTypes.CompanyAdmin);
         }
 
+        public static IProvideMetadata AddPlotEditorPermissions(this IProvideMetadata type)
+        {
+            return type.AddAdminPermissions().AddPermission(RoleTypes.CompanyPlotEditor);
+        }
+
+        public static IProvideMetadata AddPlotAssignHostPermissions(this IProvideMetadata type)
+        {
+            return type.AddPlotEditorPermissions().AddPermission(RoleTypes.CompanyPlotAssignHost);
+        }
+
         public static IProvideMetadata AddQAPermissions(this IProvideMetadata type)
         {
             return type.AddAdminPermissions().AddPermission(RoleTypes.CompanyQA);
@@ -118,7 +128,7 @@ namespace Conscience.Application.Graph
 
         public static IProvideMetadata AddPlotPermissions(this IProvideMetadata type)
         {
-            return type.AddQAPermissions().AddPermission(RoleTypes.CompanyPlot);
+            return type.AddQAPermissions().AddPlotEditorPermissions().AddPermission(RoleTypes.CompanyPlot);
         }
 
         public static IProvideMetadata AddBehaviourPermissions(this IProvideMetadata type)
@@ -129,7 +139,7 @@ namespace Conscience.Application.Graph
         public static IProvideMetadata AddBehaviourAndPlotPermissions(this IProvideMetadata type)
         {
             return type
-                .AddBehaviourPermissions().AddPermission(RoleTypes.CompanyPlot);
+                .AddBehaviourPermissions().AddPlotPermissions();
         }
 
         public static IProvideMetadata AddMaintenancePermissions(this IProvideMetadata type)

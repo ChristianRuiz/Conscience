@@ -24,14 +24,14 @@ namespace Conscience.Application.Graph.Entities.Employees
                 .AvoidLazyLoad(context, e => e.Account, e => e.Notifications)
                 .ToList().Where(e => !accountService.CurrentUser.UserName.Contains("-") || e.Account.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First())) //TODO: Remove this line, only to send both runs pre game 
                 )
-                .AddBehaviourAndPlotPermissions();
+                .AddMaintenancePermissions();
 
             Field<EmployeeGraphType>("byId",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "host id" }
                     ),
                 resolve: context => employeeRepo.GetById(context.GetArgument<int>("id")))
-                .AddBehaviourAndPlotPermissions();
+                .AddMaintenancePermissions();
         }
     }
 }

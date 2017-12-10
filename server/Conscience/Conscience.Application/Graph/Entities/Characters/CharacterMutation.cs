@@ -47,7 +47,7 @@ namespace Conscience.Application.Graph.Entities.Characters
                     }
                     return character;
                 })
-                .AddQAPermissions();
+                .AddPlotEditorPermissions();
 
             Field<IntGraphType>("deleteCharacter",
                 arguments: new QueryArguments(
@@ -61,7 +61,7 @@ namespace Conscience.Application.Graph.Entities.Characters
                     _logService.Log($"Deleted a character with name '{character.Name}'");
                     return id;
                 })
-                .AddQAPermissions();
+                .AddPlotEditorPermissions();
         }
         
         private Character ModifyCharacter(Character character)

@@ -25,7 +25,8 @@ namespace Conscience.Application.Graph.Entities.LogEntries
                     ),
                 resolve: context => logRepo.GetByEmployee(context.GetArgument<int>("id")).OrderByDescending(l => l.Id)
                                         .ApplyPagination(context)
-                );
+                )
+                .AddQAPermissions();
 
             Field<ListGraphType<LogEntryGraphType>>("byHost",
                 arguments: new QueryArguments(
@@ -35,7 +36,8 @@ namespace Conscience.Application.Graph.Entities.LogEntries
                     ),
                 resolve: context => logRepo.GetByHost(context.GetArgument<int>("id")).OrderByDescending(l => l.Id)
                                         .ApplyPagination(context)
-                );
+                )
+                .AddMaintenancePermissions();
         }
     }
 }

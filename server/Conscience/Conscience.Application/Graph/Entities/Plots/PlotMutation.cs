@@ -37,7 +37,7 @@ namespace Conscience.Application.Graph.Entities.Plots
                     }
                     return plot;
                 })
-                .AddQAPermissions();
+                .AddPlotEditorPermissions();
 
             Field<IntGraphType>("deletePlot",
                 arguments: new QueryArguments(
@@ -51,7 +51,7 @@ namespace Conscience.Application.Graph.Entities.Plots
                     plotRepo.Delete(plot);
                     return id;
                 })
-                .AddQAPermissions();
+                .AddPlotEditorPermissions();
         }
 
         private Plot ModifyPlot(LogEntryService logService, PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)

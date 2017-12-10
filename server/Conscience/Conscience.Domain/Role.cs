@@ -33,6 +33,8 @@ namespace Conscience.Domain
         CompanyQA,
         CompanyBehaviour,
         CompanyPlot,
+        CompanyPlotEditor,
+        CompanyPlotAssignHost,
         CompanyMaintenance,
         Host
     }
