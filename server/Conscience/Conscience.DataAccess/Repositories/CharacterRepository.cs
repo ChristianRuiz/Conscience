@@ -24,7 +24,7 @@ namespace Conscience.DataAccess.Repositories
 
         public Character GetById(int id)
         {
-            return DbSet.FirstOrDefault(c => c.Id == id);
+            return DbSet.Include(c => c.Relations).FirstOrDefault(c => c.Id == id);
         }
     }
 }

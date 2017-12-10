@@ -61,6 +61,7 @@ namespace Conscience.Web.Controllers.Api
                     ISheet sheet;
 
                     var plots = new Dictionary<int, Dictionary<string, Plot>>();
+                    var hosts = new Dictionary<int, Dictionary<int, Host>>();
                     var characters = new Dictionary<int, Dictionary<int, Character>>();
 
                     for (int run = 0; run <= 1; run++)
@@ -149,6 +150,7 @@ namespace Conscience.Web.Controllers.Api
                             }
                         }
                         
+                        hosts[run] = new Dictionary<int, Host>();
                         characters[run] = new Dictionary<int, Character>();
 
                         sheet = workbook.GetSheet("hosts");
@@ -157,66 +159,77 @@ namespace Conscience.Web.Controllers.Api
                         {
                             try
                             {
-                                if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(0) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
+                                if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(2) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(2).ToCleanString())) //null is when the row only contains empty cells 
                                 {
                                     var row = sheet.GetRow(rowIndex);
 
-                                    name = (run+1) + "-" + row.GetCell(0).ToCleanString().Trim();
-                                    var password = row.GetCell(1).ToCleanString().Trim();
+                                    var loginName = row.GetCell(0) != null ? row.GetCell(0).ToCleanString().Trim() : null;
 
-                                    if (characters[run].Any(c => c.Value.CurrentHost.Host.Account.UserName.ToLowerInvariant() == name.ToLowerInvariant()))
-                                        throw new Exception("There is already a host with the name: " + name);
+                                    name = (run+1) + "-" + loginName;
+                                    
+                                    Host host = null;
 
-                                    var account = await CreateOrUpdateAccount(identityService, context, name, password, RoleTypes.Host.ToString());
+                                    if (!string.IsNullOrEmpty(loginName))
+                                    {
+                                        if (hosts[run].Any(h => h.Value.Account.UserName.ToLowerInvariant() == name.ToLowerInvariant()))
+                                            throw new Exception("There is already a host with the name: " + name);
 
-                                    var host = new Host { Account = account };
-                                    context.Hosts.Add(host);
+                                        var password = row.GetCell(1).ToCleanString().Trim();
 
-                                    foreach (var statName in Enum.GetNames(typeof(StatNames)))
-                                        host.Stats.Add(new Stats { Name = statName, Value = 10 });
+                                        var account = await CreateOrUpdateAccount(identityService, context, name, password, RoleTypes.Host.ToString());
 
-                                    host.Stats.First(s => s.Name == StatNames.Apperception.ToString())
-                                        .Value = int.Parse(row.GetCell(7).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Candor.ToString())
-                                        .Value = int.Parse(row.GetCell(8).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Vivacity.ToString())
-                                        .Value = int.Parse(row.GetCell(9).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Coordination.ToString())
-                                        .Value = int.Parse(row.GetCell(10).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Meekness.ToString())
-                                        .Value = int.Parse(row.GetCell(11).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Humility.ToString())
-                                        .Value = int.Parse(row.GetCell(12).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Cruelty.ToString())
-                                        .Value = int.Parse(row.GetCell(13).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.SelfPreservation.ToString())
-                                        .Value = int.Parse(row.GetCell(14).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Patience.ToString())
-                                        .Value = int.Parse(row.GetCell(15).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Decisiveness.ToString())
-                                        .Value = int.Parse(row.GetCell(16).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Imagination.ToString())
-                                        .Value = int.Parse(row.GetCell(17).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Curiosity.ToString())
-                                        .Value = int.Parse(row.GetCell(18).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Agression.ToString())
-                                        .Value = int.Parse(row.GetCell(19).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Loyalty.ToString())
-                                        .Value = int.Parse(row.GetCell(20).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Empathy.ToString())
-                                        .Value = int.Parse(row.GetCell(21).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Tenacity.ToString())
-                                        .Value = int.Parse(row.GetCell(22).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Courage.ToString())
-                                        .Value = int.Parse(row.GetCell(23).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Sensuality.ToString())
-                                        .Value = int.Parse(row.GetCell(24).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Charm.ToString())
-                                        .Value = int.Parse(row.GetCell(25).ToCleanString().Trim());
-                                    host.Stats.First(s => s.Name == StatNames.Humor.ToString())
-                                        .Value = int.Parse(row.GetCell(26).ToCleanString().Trim());
+                                        host = new Host { Account = account };
+                                        context.Hosts.Add(host);
+
+                                        hosts[run].Add(rowIndex, host);
+
+                                        foreach (var statName in Enum.GetNames(typeof(StatNames)))
+                                            host.Stats.Add(new Stats { Name = statName, Value = 10 });
+
+                                        host.Stats.First(s => s.Name == StatNames.Apperception.ToString())
+                                            .Value = int.Parse(row.GetCell(7).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Candor.ToString())
+                                            .Value = int.Parse(row.GetCell(8).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Vivacity.ToString())
+                                            .Value = int.Parse(row.GetCell(9).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Coordination.ToString())
+                                            .Value = int.Parse(row.GetCell(10).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Meekness.ToString())
+                                            .Value = int.Parse(row.GetCell(11).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Humility.ToString())
+                                            .Value = int.Parse(row.GetCell(12).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Cruelty.ToString())
+                                            .Value = int.Parse(row.GetCell(13).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.SelfPreservation.ToString())
+                                            .Value = int.Parse(row.GetCell(14).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Patience.ToString())
+                                            .Value = int.Parse(row.GetCell(15).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Decisiveness.ToString())
+                                            .Value = int.Parse(row.GetCell(16).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Imagination.ToString())
+                                            .Value = int.Parse(row.GetCell(17).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Curiosity.ToString())
+                                            .Value = int.Parse(row.GetCell(18).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Agression.ToString())
+                                            .Value = int.Parse(row.GetCell(19).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Loyalty.ToString())
+                                            .Value = int.Parse(row.GetCell(20).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Empathy.ToString())
+                                            .Value = int.Parse(row.GetCell(21).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Tenacity.ToString())
+                                            .Value = int.Parse(row.GetCell(22).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Courage.ToString())
+                                            .Value = int.Parse(row.GetCell(23).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Sensuality.ToString())
+                                            .Value = int.Parse(row.GetCell(24).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Charm.ToString())
+                                            .Value = int.Parse(row.GetCell(25).ToCleanString().Trim());
+                                        host.Stats.First(s => s.Name == StatNames.Humor.ToString())
+                                            .Value = int.Parse(row.GetCell(26).ToCleanString().Trim());
+                                    }
 
                                     var charName = row.GetCell(2).ToCleanString().Trim();
+                                    name += " - " + charName;
                                     var genderValue = row.GetCell(3).ToCleanString().Trim().ToLowerInvariant();
                                     var gender = genderValue == "female" ? Genders.Female : (genderValue == "male" ? Genders.Male : Genders.NonGender);
                                     var age = int.Parse(row.GetCell(4).ToCleanString().Trim());
@@ -237,11 +250,14 @@ namespace Conscience.Web.Controllers.Api
                                     context.Characters.Add(character);
                                     characters[run].Add(rowIndex, character);
 
-                                    host.Characters.Add(new CharacterInHost
+                                    if (host != null)
                                     {
-                                        Character = character,
-                                        AssignedOn = DateTime.Now - TimeSpan.FromDays(30 * assignedOnMonths)
-                                    });
+                                        host.Characters.Add(new CharacterInHost
+                                        {
+                                            Character = character,
+                                            AssignedOn = DateTime.Now - TimeSpan.FromDays(30 * assignedOnMonths)
+                                        });
+                                    }
 
                                     using (var reader = new StringReader(memories))
                                     {
@@ -273,11 +289,14 @@ namespace Conscience.Web.Controllers.Api
 
                                     AddCharacterInPlot(context, plots[run], row, character, 51);
 
-                                    host.CoreMemory1 = GetCoreMemory(row, 66);
+                                    if (host != null)
+                                    {
+                                        host.CoreMemory1 = GetCoreMemory(row, 66);
 
-                                    host.CoreMemory2 = GetCoreMemory(row, 67);
+                                        host.CoreMemory2 = GetCoreMemory(row, 67);
 
-                                    host.CoreMemory3 = GetCoreMemory(row, 68);
+                                        host.CoreMemory3 = GetCoreMemory(row, 68);
+                                    }
 
                                     context.SaveChanges();
 
@@ -294,11 +313,11 @@ namespace Conscience.Web.Controllers.Api
                         {
                             try
                             {
-                                if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(0) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
+                                if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(2) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
                                 {
                                     var row = sheet.GetRow(rowIndex);
 
-                                    name = row.GetCell(0).ToCleanString().Trim();
+                                    name = row.GetCell(0) != null ? row.GetCell(0).ToCleanString().Trim() : null;
                                     var lastCharacter = row.GetCell(6).ToCleanString().Trim();
 
                                     if (!string.IsNullOrWhiteSpace(lastCharacter))
@@ -307,7 +326,18 @@ namespace Conscience.Web.Controllers.Api
 
                                         if (relatedCharacter == null)
                                         {
-                                            result.Errors.Add(new BulkImportError { Line = "Characrer relations - " + name, Error = "There is no character with name " + lastCharacter });
+                                            result.Errors.Add(new BulkImportError { Line = "Previous character - " + name, Error = "There is no character with name " + lastCharacter });
+                                        }
+                                        else
+                                        {
+                                            var host = hosts[run][rowIndex];
+                                            host.Characters.Add(new CharacterInHost
+                                            {
+                                                AssignedOn = host.CurrentCharacter.AssignedOn - TimeSpan.FromDays(400),
+                                                Character = relatedCharacter,
+                                                UnassignedOn = host.CurrentCharacter.AssignedOn
+                                            });
+                                            context.SaveChanges();
                                         }
                                     }
 
@@ -423,10 +453,7 @@ namespace Conscience.Web.Controllers.Api
                 Description = plotFunction,
                 Plot = plot
             });
-
-            if (hasEvent)
-                plot.Events.First().Characters.Add(character);
-
+            
             context.SaveChanges();
         }
 

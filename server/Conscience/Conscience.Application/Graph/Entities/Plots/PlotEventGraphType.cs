@@ -20,7 +20,6 @@ namespace Conscience.Application.Graph.Entities.Plots
             Field(p => p.Hour);
             Field(p => p.Minute);
             Field<PlotGraphType>("plot", resolve: context => context.Source.Plot);
-            Field<ListGraphType<CharacterGraphType>>("characters", resolve: context => context.Source.Characters);
         }
     }
 }

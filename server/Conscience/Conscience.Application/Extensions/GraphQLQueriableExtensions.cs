@@ -1,5 +1,5 @@
 ﻿using GraphQL.Types;
-﻿using GraphQL.Language.AST;
+using GraphQL.Language.AST;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +7,32 @@ using System.Linq.Dynamic;
 using System.Linq.Expressions;
 using Conscience.DataAccess;
 using System.Web;
+using Conscience.Domain;
 
 namespace Conscience.Application
 {
     public static class GraphQLQueriableExtensions
     {
         public static IQueryable<T> ApplyPaginationAndOrderBy<T>(this IQueryable<T> queryable, ResolveFieldContext<object> context)
+            where T : IdentityEntity
         {
             var result = queryable;
 
-            if (context.Arguments["orderby"] != null)
+            if (context.Arguments.ContainsKey("orderby") && context.Arguments["orderby"] != null)
                 result = result.OrderBy(context.GetArgument<string>("orderby"));
             else
-                result = result.OrderBy("Id");
+                result = result.OrderBy(i => i.Id);
 
+            result = result.ApplyPagination(context);
+
+            return result;
+        }
+
+        public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> queryable, ResolveFieldContext<object> context)
+            where T : IdentityEntity
+        {
+            var result = queryable;
+            
             if (context.Arguments["offset"] != null)
                 result = result.Skip(context.GetArgument<int>("offset"));
 

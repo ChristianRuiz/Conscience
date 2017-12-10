@@ -8,11 +8,6 @@ namespace Conscience.Domain
 {
     public class PlotEvent : IdentityEntity
     {
-        public PlotEvent()
-        {
-            Characters = new HashSet<Character>();
-        }
-        
         public int Hour
         {
             get;
@@ -43,10 +38,9 @@ namespace Conscience.Domain
             set;
         }
 
-        public virtual ICollection<Character> Characters
+        public override string ToString()
         {
-            get;
-            set;
+            return Description;
         }
     }
 }

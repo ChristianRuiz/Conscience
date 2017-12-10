@@ -14,7 +14,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
 {
     public class HostMutation : ObjectGraphType<object>
     {
-        public HostMutation(HostRepository hostRepo)
+        public HostMutation(HostRepository hostRepo, CharacterRepository characterRepo, LogEntryService logService)
         {
             Name = "HostMutation";
 
@@ -26,10 +26,38 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 resolve: context => {
                     var hostId = context.GetArgument<int>("hostId");
                     var stats = context.GetArgument<List<Domain.Stats>>("stats");
-                    var host = hostRepo.ModifyStats(hostId, stats);
+                    var host = hostRepo.GetAll().First(h => h.Id == hostId);
+
+                    var modifiedStats = stats.Where(s => host.Stats.Any(hs => s.Name.ToLowerInvariant() == hs.Name.ToLowerInvariant() && s.Value != hs.Value));
+                    foreach(var modifiedStat in modifiedStats)
+                    {
+                        var originalStat = host.Stats.First(s => s.Name.ToLowerInvariant() == modifiedStat.Name.ToLowerInvariant());
+                        logService.Log(host, $"Modified stat '{modifiedStat.Name}' from '{originalStat.Value}' to '{modifiedStat.Value}'");
+                    }
+
+                    host = hostRepo.ModifyStats(hostId, stats);
                     return host;
                     })
-                .AddQAPermissions();
+                .AddBehaviourAndPlotPermissions();
+
+            Field<HostGraphType>("assignHost",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "hostId", Description = "host id" },
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "characterId", Description = "character id" }
+                    ),
+                resolve: context => {
+                    var hostId = context.GetArgument<int>("hostId");
+                    var characterId = context.GetArgument<int>("characterId");
+                    var host = hostRepo.GetAll().First(h => h.Id == hostId);
+                    var character = characterRepo.GetAll().First(h => h.Id == characterId);
+
+                    
+                    logService.Log(host, $"Assign character '{host.Account.UserName}' to host '{character.Name}'");
+                    
+                    host = hostRepo.AssignHost(host, character);
+                    return host;
+                })
+                .AddBehaviourAndPlotPermissions();
         }
     }
 }

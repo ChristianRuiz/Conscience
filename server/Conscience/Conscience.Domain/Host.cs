@@ -39,7 +39,7 @@ namespace Conscience.Domain
         {
             get
             {
-                return Characters.OrderByDescending(c => c.AssignedOn).FirstOrDefault();
+                return Characters.Where(c => !c.UnassignedOn.HasValue).OrderByDescending(c => c.AssignedOn).FirstOrDefault();
             }
         }
 

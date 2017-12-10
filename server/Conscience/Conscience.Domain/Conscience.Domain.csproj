@@ -53,6 +53,7 @@
     <Compile Include="Host.cs" />
     <Compile Include="IdentityEntity.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="LogEntry.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="NotificationAudio.cs" />

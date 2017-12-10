@@ -8,34 +8,33 @@ namespace Conscience.Domain
 {
     public class CharacterRelation : IdentityEntity
     {
-        public virtual ICollection<Character> Characters
+        public virtual Character ParentCharacter
         {
             get;
             set;
         }
 
-        //Hack: Using a collection to avoid EF exception referencing the same table on a relationship
-        public Character Character
+        public int ParentCharacterId
         {
-            get
-            {
-                if (Characters == null)
-                    return null;
-                return Characters.FirstOrDefault();
-            }
-            set
-            {
-                if (Characters == null)
-                    Characters = new HashSet<Character>();
-                Characters.Clear();
-                Characters.Add(value);
-            }
+            get;
+            set;
+        }
+
+        public virtual Character Character
+        {
+            get;
+            set;
         }
 
         public string Description
         {
             get;
             set;
+        }
+
+        public override string ToString()
+        {
+            return Character != null ? Character.Name : Description;
         }
     }
 }

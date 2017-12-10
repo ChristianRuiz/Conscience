@@ -6,41 +6,30 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CharacterInPlot : IdentityEntity
+    public class LogEntry : IdentityEntity
     {
+        public Host Host
+        {
+            get;
+            set;
+        }
+
+        public Employee Employee
+        {
+            get;
+            set;
+        }
+
         public string Description
         {
             get;
             set;
         }
 
-        public int PlotId
+        public DateTime Date
         {
             get;
             set;
-        }
-
-        public virtual Plot Plot
-        {
-            get;
-            set;
-        }
-
-        public int CharacterId
-        {
-            get;
-            set;
-        }
-
-        public virtual Character Character
-        {
-            get;
-            set;
-        }
-
-        public override string ToString()
-        {
-            return Character.Name;
         }
     }
 }

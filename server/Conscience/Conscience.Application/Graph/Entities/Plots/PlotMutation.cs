@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.Plots
 {
     public class PlotMutation : ConscienceMutation
     {
-        public PlotMutation(PlotRepository plotRepo, CharacterRepository characterRepo)
+        public PlotMutation(PlotRepository plotRepo, CharacterRepository characterRepo, LogEntryService logService)
         {
             Name = "PlotMutation";
 
@@ -27,11 +27,13 @@ namespace Conscience.Application.Graph.Entities.Plots
                     {
                         var dbPlot = plotRepo.Add(new Plot());
                         plot.Id = dbPlot.Id;
-                        plot = ModifyPlot(plotRepo, characterRepo, plot);
+                        plot = ModifyPlot(logService, plotRepo, characterRepo, plot);
+                        logService.Log($"Added a new plot with name '{plot.Name}'");
                     }
                     else
                     {
-                        plot = ModifyPlot(plotRepo, characterRepo, plot);
+                        logService.Log($"Edited a plot with name '{plot.Name}'");
+                        plot = ModifyPlot(logService, plotRepo, characterRepo, plot);
                     }
                     return plot;
                 })
@@ -45,33 +47,35 @@ namespace Conscience.Application.Graph.Entities.Plots
                 {
                     var id = context.GetArgument<int>("id");
                     var plot = plotRepo.GetById(id);
+                    logService.Log($"Deleted a plot with name '{plot.Name}'");
                     plotRepo.Delete(plot);
                     return id;
                 })
                 .AddQAPermissions();
         }
 
-        private Plot ModifyPlot(PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)
+        private Plot ModifyPlot(LogEntryService logService, PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)
         {
             var dbPlot = plotRepo.GetById(plot.Id);
 
             dbPlot.Name = plot.Name;
             dbPlot.Description = plot.Description;
 
-            ModifyCollection(plotRepo, plot.Characters, dbPlot.Characters,
+            ModifyCollection(plotRepo, logService, plot.Characters, dbPlot.Characters,
                 (character, dbCharacter) =>
                 {
                     dbCharacter.Description = character.Description;
+                    dbCharacter.Character = characterRepo.GetById(character.Character.Id);
                 },
                 (c, dbc) => dbc.Character.Id == c.Character.Id);
 
-            ModifyCollection(plotRepo, plot.Events, dbPlot.Events,
+            ModifyCollection(plotRepo, logService, plot.Events, dbPlot.Events,
                 (e, dbe) =>
                 {
-                    e.Description = dbe.Description;
-                    e.Location = dbe.Location;
-                    e.Hour = dbe.Hour;
-                    e.Minute = dbe.Minute;
+                    dbe.Description = e.Description;
+                    dbe.Location = e.Location;
+                    dbe.Hour = e.Hour;
+                    dbe.Minute = e.Minute;
                 });
 
             plot = plotRepo.Modify(dbPlot);

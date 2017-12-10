@@ -25,5 +25,16 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public DateTime? UnassignedOn
+        {
+            get;
+            set;
+        }
+
+        public override string ToString()
+        {
+            return Character.Name;
+        }
     }
 }

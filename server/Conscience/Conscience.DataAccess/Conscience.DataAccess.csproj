@@ -69,6 +69,7 @@
     <Compile Include="Repositories\DeviceRepository.cs" />
     <Compile Include="Repositories\MemoryRepository.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\LogEntryRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\PlotRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />

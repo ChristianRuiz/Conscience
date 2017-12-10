@@ -26,7 +26,7 @@ namespace Conscience.Application.Graph.Entities.Characters
             Field<ListGraphType<TriggerGraphType>>("triggers", resolve: context => context.Source.Triggers);
             Field<ListGraphType<CharacterInPlotGraphType>>("plots", resolve: context => context.Source.Plots);
             Field<ListGraphType<PlotEventGraphType>>("plotEvents", resolve: context => context.Source.Plots.SelectMany(p => p.Plot.Events).ToList());
-            Field<ListGraphType<CharacterRelationGraphType>>("relations", resolve: context => context.Source.Relations.Where(r => r.Character.Id != context.Source.Id));
+            Field<ListGraphType<CharacterRelationGraphType>>("relations", resolve: context => context.Source.Relations);
             Field<ListGraphType<CharacterInHostGraphType>>("hosts", resolve: context => context.Source.Hosts);
             Field<CharacterInHostGraphType>("currentHost", resolve: context => context.Source.CurrentHost);
         }

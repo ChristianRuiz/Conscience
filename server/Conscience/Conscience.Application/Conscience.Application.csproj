@@ -80,6 +80,8 @@
     <Compile Include="Graph\ConscienceMutation.cs" />
     <Compile Include="Graph\ConscienceQuery.cs" />
     <Compile Include="Graph\ConscienceSchema.cs" />
+    <Compile Include="Graph\Entities\LogEntries\LogEntryGraphType.cs" />
+    <Compile Include="Graph\Entities\LogEntries\LogEntryQuery.cs" />
     <Compile Include="Graph\Entities\Accounts\AccountGraphType.cs" />
     <Compile Include="Graph\Entities\Accounts\AccountMutation.cs" />
     <Compile Include="Graph\Entities\Accounts\AccountQuery.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Graph\ValidationRules\MembershipValidationRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IUsersIdentityService.cs" />
+    <Compile Include="Services\LogEntryService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Conscience.DataAccess\Conscience.DataAccess.csproj">

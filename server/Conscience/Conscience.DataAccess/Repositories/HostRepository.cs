@@ -47,5 +47,21 @@ namespace Conscience.DataAccess.Repositories
             Modify(host);
             return host;
         }
+
+        public Host AssignHost(Host host, Character character)
+        {
+            var currentCharacter = host.CurrentCharacter;
+            if (currentCharacter != null)
+            {
+                currentCharacter.UnassignedOn = DateTime.Now;
+            }
+            host.Characters.Add(new CharacterInHost
+            {
+                AssignedOn = DateTime.Now,
+                Character = character
+            });
+            Modify(host);
+            return host;
+        }
     }
 }

@@ -13,5 +13,10 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public override string ToString()
+        {
+            return Id.ToString();
+        }
     }
 }
