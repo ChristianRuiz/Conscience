@@ -82,9 +82,9 @@ namespace Conscience.DataAccess.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Account", t => t.Id)
-                .ForeignKey("dbo.CoreMemories", t => t.CoreMemory1_Id)
-                .ForeignKey("dbo.CoreMemories", t => t.CoreMemory2_Id)
-                .ForeignKey("dbo.CoreMemories", t => t.CoreMemory3_Id)
+                .ForeignKey("dbo.CoreMemory", t => t.CoreMemory1_Id)
+                .ForeignKey("dbo.CoreMemory", t => t.CoreMemory2_Id)
+                .ForeignKey("dbo.CoreMemory", t => t.CoreMemory3_Id)
                 .Index(t => t.Id)
                 .Index(t => t.CoreMemory1_Id)
                 .Index(t => t.CoreMemory2_Id)
@@ -116,11 +116,8 @@ namespace Conscience.DataAccess.Migrations
                         Gender = c.Int(nullable: false),
                         Story = c.String(),
                         NarrativeFunction = c.String(),
-                        NotificationPlotChange_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.NotificationsPlotChange", t => t.NotificationPlotChange_Id)
-                .Index(t => t.NotificationPlotChange_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Memory",
@@ -203,15 +200,15 @@ namespace Conscience.DataAccess.Migrations
                 .Index(t => t.Character_Id);
             
             CreateTable(
-                "dbo.CoreMemories",
+                "dbo.CoreMemory",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Locked = c.Boolean(nullable: false),
-                        Audio_Id = c.Int(),
+                        Audio_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Audio", t => t.Audio_Id)
+                .ForeignKey("dbo.Audio", t => t.Audio_Id, cascadeDelete: true)
                 .Index(t => t.Audio_Id);
             
             CreateTable(
@@ -220,7 +217,6 @@ namespace Conscience.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Transcription = c.String(),
-                        IsEmbeded = c.Boolean(nullable: false),
                         Path = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
@@ -230,16 +226,25 @@ namespace Conscience.DataAccess.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Int(nullable: false),
                         TimeStamp = c.DateTime(nullable: false),
                         Processed = c.Boolean(nullable: false),
-                        Host_Id = c.Int(),
+                        Read = c.Boolean(nullable: false),
+                        Description = c.String(),
+                        NotificationType = c.Int(nullable: false),
+                        Audio_Id = c.Int(),
                         Employee_Id = c.Int(),
+                        Host_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Host", t => t.Host_Id)
+                .ForeignKey("dbo.Audio", t => t.Audio_Id)
                 .ForeignKey("dbo.Employee", t => t.Employee_Id)
-                .Index(t => t.Host_Id)
-                .Index(t => t.Employee_Id);
+                .ForeignKey("dbo.Host", t => t.Host_Id)
+                .ForeignKey("dbo.Account", t => t.OwnerId, cascadeDelete: true)
+                .Index(t => t.OwnerId)
+                .Index(t => t.Audio_Id)
+                .Index(t => t.Employee_Id)
+                .Index(t => t.Host_Id);
             
             CreateTable(
                 "dbo.Stats",
@@ -269,7 +274,7 @@ namespace Conscience.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Description = c.String(),
-                        Date = c.DateTime(nullable: false),
+                        TimeStamp = c.DateTime(nullable: false),
                         Employee_Id = c.Int(),
                         Host_Id = c.Int(),
                     })
@@ -292,68 +297,24 @@ namespace Conscience.DataAccess.Migrations
                 .Index(t => t.Account_Id)
                 .Index(t => t.Role_Id);
             
-            CreateTable(
-                "dbo.NotificationsStatChange",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Stat_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Notification", t => t.Id)
-                .ForeignKey("dbo.Stats", t => t.Stat_Id, cascadeDelete: true)
-                .Index(t => t.Id)
-                .Index(t => t.Stat_Id);
-            
-            CreateTable(
-                "dbo.NotificationsPlotChange",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Plot_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Notification", t => t.Id)
-                .ForeignKey("dbo.Plot", t => t.Plot_Id, cascadeDelete: true)
-                .Index(t => t.Id)
-                .Index(t => t.Plot_Id);
-            
-            CreateTable(
-                "dbo.NotificationsAudio",
-                c => new
-                    {
-                        Id = c.Int(nullable: false),
-                        Audio_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Notification", t => t.Id)
-                .ForeignKey("dbo.Audio", t => t.Audio_Id, cascadeDelete: true)
-                .Index(t => t.Id)
-                .Index(t => t.Audio_Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.NotificationsAudio", "Audio_Id", "dbo.Audio");
-            DropForeignKey("dbo.NotificationsAudio", "Id", "dbo.Notification");
-            DropForeignKey("dbo.NotificationsPlotChange", "Plot_Id", "dbo.Plot");
-            DropForeignKey("dbo.NotificationsPlotChange", "Id", "dbo.Notification");
-            DropForeignKey("dbo.NotificationsStatChange", "Stat_Id", "dbo.Stats");
-            DropForeignKey("dbo.NotificationsStatChange", "Id", "dbo.Notification");
             DropForeignKey("dbo.LogEntry", "Host_Id", "dbo.Host");
             DropForeignKey("dbo.LogEntry", "Employee_Id", "dbo.Employee");
-            DropForeignKey("dbo.Notification", "Employee_Id", "dbo.Employee");
             DropForeignKey("dbo.Employee", "Id", "dbo.Account");
             DropForeignKey("dbo.AccountRole", "Role_Id", "dbo.Role");
             DropForeignKey("dbo.AccountRole", "Account_Id", "dbo.Account");
             DropForeignKey("dbo.Stats", "Host_Id", "dbo.Host");
+            DropForeignKey("dbo.Notification", "OwnerId", "dbo.Account");
             DropForeignKey("dbo.Notification", "Host_Id", "dbo.Host");
-            DropForeignKey("dbo.Character", "NotificationPlotChange_Id", "dbo.NotificationsPlotChange");
-            DropForeignKey("dbo.Host", "CoreMemory3_Id", "dbo.CoreMemories");
-            DropForeignKey("dbo.Host", "CoreMemory2_Id", "dbo.CoreMemories");
-            DropForeignKey("dbo.Host", "CoreMemory1_Id", "dbo.CoreMemories");
-            DropForeignKey("dbo.CoreMemories", "Audio_Id", "dbo.Audio");
+            DropForeignKey("dbo.Notification", "Employee_Id", "dbo.Employee");
+            DropForeignKey("dbo.Notification", "Audio_Id", "dbo.Audio");
+            DropForeignKey("dbo.Host", "CoreMemory3_Id", "dbo.CoreMemory");
+            DropForeignKey("dbo.Host", "CoreMemory2_Id", "dbo.CoreMemory");
+            DropForeignKey("dbo.Host", "CoreMemory1_Id", "dbo.CoreMemory");
+            DropForeignKey("dbo.CoreMemory", "Audio_Id", "dbo.Audio");
             DropForeignKey("dbo.CharacterInHost", "Host_Id", "dbo.Host");
             DropForeignKey("dbo.CharacterInHost", "Character_Id", "dbo.Character");
             DropForeignKey("dbo.Trigger", "Character_Id", "dbo.Character");
@@ -367,20 +328,16 @@ namespace Conscience.DataAccess.Migrations
             DropForeignKey("dbo.Account", "Device_Id", "dbo.Device");
             DropForeignKey("dbo.Location", "Device_Id", "dbo.Device");
             DropForeignKey("dbo.Device", "CurrentLocation_Id", "dbo.Location");
-            DropIndex("dbo.NotificationsAudio", new[] { "Audio_Id" });
-            DropIndex("dbo.NotificationsAudio", new[] { "Id" });
-            DropIndex("dbo.NotificationsPlotChange", new[] { "Plot_Id" });
-            DropIndex("dbo.NotificationsPlotChange", new[] { "Id" });
-            DropIndex("dbo.NotificationsStatChange", new[] { "Stat_Id" });
-            DropIndex("dbo.NotificationsStatChange", new[] { "Id" });
             DropIndex("dbo.AccountRole", new[] { "Role_Id" });
             DropIndex("dbo.AccountRole", new[] { "Account_Id" });
             DropIndex("dbo.LogEntry", new[] { "Host_Id" });
             DropIndex("dbo.LogEntry", new[] { "Employee_Id" });
             DropIndex("dbo.Stats", new[] { "Host_Id" });
-            DropIndex("dbo.Notification", new[] { "Employee_Id" });
             DropIndex("dbo.Notification", new[] { "Host_Id" });
-            DropIndex("dbo.CoreMemories", new[] { "Audio_Id" });
+            DropIndex("dbo.Notification", new[] { "Employee_Id" });
+            DropIndex("dbo.Notification", new[] { "Audio_Id" });
+            DropIndex("dbo.Notification", new[] { "OwnerId" });
+            DropIndex("dbo.CoreMemory", new[] { "Audio_Id" });
             DropIndex("dbo.Trigger", new[] { "Character_Id" });
             DropIndex("dbo.CharacterRelation", new[] { "Character_Id" });
             DropIndex("dbo.CharacterRelation", new[] { "ParentCharacterId" });
@@ -388,7 +345,6 @@ namespace Conscience.DataAccess.Migrations
             DropIndex("dbo.CharacterInPlot", new[] { "CharacterId" });
             DropIndex("dbo.CharacterInPlot", new[] { "PlotId" });
             DropIndex("dbo.Memory", new[] { "Character_Id" });
-            DropIndex("dbo.Character", new[] { "NotificationPlotChange_Id" });
             DropIndex("dbo.CharacterInHost", new[] { "Host_Id" });
             DropIndex("dbo.CharacterInHost", new[] { "Character_Id" });
             DropIndex("dbo.Host", new[] { "CoreMemory3_Id" });
@@ -399,16 +355,13 @@ namespace Conscience.DataAccess.Migrations
             DropIndex("dbo.Location", new[] { "Device_Id" });
             DropIndex("dbo.Device", new[] { "CurrentLocation_Id" });
             DropIndex("dbo.Account", new[] { "Device_Id" });
-            DropTable("dbo.NotificationsAudio");
-            DropTable("dbo.NotificationsPlotChange");
-            DropTable("dbo.NotificationsStatChange");
             DropTable("dbo.AccountRole");
             DropTable("dbo.LogEntry");
             DropTable("dbo.Role");
             DropTable("dbo.Stats");
             DropTable("dbo.Notification");
             DropTable("dbo.Audio");
-            DropTable("dbo.CoreMemories");
+            DropTable("dbo.CoreMemory");
             DropTable("dbo.Trigger");
             DropTable("dbo.CharacterRelation");
             DropTable("dbo.PlotEvent");

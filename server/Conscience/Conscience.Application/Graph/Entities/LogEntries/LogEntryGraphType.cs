@@ -19,6 +19,7 @@ namespace Conscience.Application.Graph.Entities.LogEntries
             Name = "LogEntry";
             
             Field(a => a.Description);
+            Field(a => a.TimeStamp);
             Field<HostGraphType>("host", resolve: context => context.Source.Host);
             Field<EmployeeGraphType>("employee", resolve: context => context.Source.Employee);
         }

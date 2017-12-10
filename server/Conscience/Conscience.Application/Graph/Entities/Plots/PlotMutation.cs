@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Plots
 {
-    public class PlotMutation : ConscienceMutation
+    public class PlotMutation : ConscienceMutationBase
     {
         public PlotMutation(PlotRepository plotRepo, CharacterRepository characterRepo, LogEntryService logService)
         {

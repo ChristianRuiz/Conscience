@@ -8,13 +8,13 @@ namespace Conscience.Domain
 {
     public class LogEntry : IdentityEntity
     {
-        public Host Host
+        public virtual Host Host
         {
             get;
             set;
         }
 
-        public Employee Employee
+        public virtual Employee Employee
         {
             get;
             set;
@@ -26,7 +26,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public DateTime Date
+        public DateTime TimeStamp
         {
             get;
             set;

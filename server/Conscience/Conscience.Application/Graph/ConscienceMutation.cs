@@ -2,6 +2,7 @@
 using Conscience.Application.Graph.Entities.Characters;
 using Conscience.Application.Graph.Entities.Employees;
 using Conscience.Application.Graph.Entities.Hosts;
+using Conscience.Application.Graph.Entities.Notifications;
 using Conscience.Application.Graph.Entities.Plots;
 using GraphQL.Types;
 using Microsoft.Practices.Unity;
@@ -28,6 +29,8 @@ namespace Conscience.Application.Graph
             Field<PlotMutation>("plots", resolve: context => container.Resolve<PlotMutation>()).RequiresMembership();
 
             Field<CharacterMutation>("characters", resolve: context => container.Resolve<CharacterMutation>()).RequiresMembership();
+
+            Field<NotificationMutation>("notifications", resolve: context => container.Resolve<NotificationMutation>()).RequiresMembership();
         }
     }
 }

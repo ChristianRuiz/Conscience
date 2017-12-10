@@ -13,13 +13,7 @@ namespace Conscience.Domain
             get;
             set;
         }
-
-        public bool IsEmbeded
-        {
-            get;
-            set;
-        }
-
+        
         public string Path
         {
             get;

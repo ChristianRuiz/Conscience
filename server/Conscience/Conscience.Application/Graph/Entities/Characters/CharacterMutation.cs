@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities.Characters
 {
-    public class CharacterMutation : ConscienceMutation
+    public class CharacterMutation : ConscienceMutationBase
     {
         private readonly CharacterRepository _characterRepo;
         private readonly PlotRepository _plotRepo;

@@ -58,8 +58,9 @@ namespace Conscience.DataAccess
                 };
                 arnold.Roles.Add(adminRole);
                 context.Accounts.Add(arnold);
+                context.Employees.Add(new Employee { Account = arnold, Name = "Admin" });
 
-                #if DEBUG
+#if DEBUG
 
                 var ford = new ConscienceAccount
                 {

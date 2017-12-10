@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Application.Graph.Entities
 {
-    public abstract class ConscienceMutation : ObjectGraphType<object>
+    public abstract class ConscienceMutationBase : ObjectGraphType<object>
     {
         protected void ModifyCollection<T, R>(BaseRepository<R> repository, LogEntryService logService, ICollection<T> collection, ICollection<T> dbCollection, Action<T, T> setProperties, Func<T, T, bool> additionalPredicate = null)
             where T : IdentityEntity, new()

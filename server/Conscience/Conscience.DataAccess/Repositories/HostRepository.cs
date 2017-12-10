@@ -30,7 +30,7 @@ namespace Conscience.DataAccess.Repositories
                 hosts = hosts.Where(h => !h.Hidden);
             return hosts;
         }
-        
+
         public Host GetById(Account currentUser, int userId)
         {
             var host = GetAllHosts(currentUser).FirstOrDefault(u => u.Id == userId);
@@ -60,6 +60,14 @@ namespace Conscience.DataAccess.Repositories
                 AssignedOn = DateTime.Now,
                 Character = character
             });
+            Modify(host);
+            return host;
+        }
+
+        public Host ChangeStatus(int hostId, HostStatus status)
+        {
+            var host = GetAll().First(h => h.Id == hostId);
+            host.Status = status;
             Modify(host);
             return host;
         }

@@ -28,7 +28,7 @@ namespace Conscience.Application
             return result;
         }
 
-        public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> queryable, ResolveFieldContext<object> context)
+        public static IQueryable<T> ApplyPagination<T>(this IQueryable<T> queryable, ResolveFieldContext<object> context, int? first = null)
             where T : IdentityEntity
         {
             var result = queryable;
@@ -36,7 +36,9 @@ namespace Conscience.Application
             if (context.Arguments["offset"] != null)
                 result = result.Skip(context.GetArgument<int>("offset"));
 
-            if (context.Arguments["first"] != null)
+            if (first.HasValue)
+                result = result.Take(first.Value);
+            else if (context.Arguments["first"] != null)
                 result = result.Take(context.GetArgument<int>("first"));
 
             return result;

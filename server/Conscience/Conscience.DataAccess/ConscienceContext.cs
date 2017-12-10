@@ -106,7 +106,7 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory2);
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory3);
             modelBuilder.Entity<Host>().HasMany(h => h.Characters).WithOptional(c => c.Host);
-            modelBuilder.Entity<CoreMemory>().ToTable("CoreMemories");
+            modelBuilder.Entity<CoreMemory>().HasRequired(c => c.Audio);
             modelBuilder.Entity<CharacterInHost>().HasRequired(c => c.Character).WithMany(c => c.Hosts);
             modelBuilder.Entity<Character>().HasMany(c => c.Memories).WithRequired(m => m.Character).WillCascadeOnDelete();
             modelBuilder.Entity<Character>().HasMany(c => c.Triggers).WithRequired(m => m.Character).WillCascadeOnDelete();
@@ -117,13 +117,10 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot).HasForeignKey(c => c.PlotId).WillCascadeOnDelete();
             modelBuilder.Entity<LogEntry>().HasOptional(c => c.Host);
             modelBuilder.Entity<LogEntry>().HasOptional(c => c.Employee);
-            modelBuilder.Entity<NotificationStatChange>().ToTable("NotificationsStatChange");
-            modelBuilder.Entity<NotificationPlotChange>().ToTable("NotificationsPlotChange");
-            modelBuilder.Entity<NotificationAudio>().ToTable("NotificationsAudio");
-            modelBuilder.Entity<NotificationStatChange>().HasRequired(c => c.Stat);
-            modelBuilder.Entity<NotificationPlotChange>().HasRequired(c => c.Plot);
-            modelBuilder.Entity<NotificationPlotChange>().HasMany(c => c.Characters);
-            modelBuilder.Entity<NotificationAudio>().HasRequired(c => c.Audio);
+            modelBuilder.Entity<Notification>().HasRequired(c => c.Owner);
+            modelBuilder.Entity<Notification>().HasOptional(c => c.Host);
+            modelBuilder.Entity<Notification>().HasOptional(c => c.Employee);
+            modelBuilder.Entity<Notification>().HasOptional(c => c.Audio);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

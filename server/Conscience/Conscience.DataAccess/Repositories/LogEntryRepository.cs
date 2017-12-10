@@ -54,9 +54,9 @@ namespace Conscience.DataAccess.Repositories
             Add(new LogEntry
             {
                 Host = host,
-                Employee = employee != null ? _context.Employees.First(e => e.Id == employee.Id) : null,
+                Employee = employee,
                 Description = text,
-                Date = DateTime.Now
+                TimeStamp = DateTime.Now
             });
         }
     }
