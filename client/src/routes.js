@@ -5,7 +5,7 @@ import MapPage from './components/map/MapPage';
 import PlotsPage from './components/plots/PlotsPage';
 import PlotDetailPage from './components/plots/PlotDetailPage';
 import CharactersPage from './components/characters/CharactersPage';
-import HostDetailPage from './components/characters/HostDetailPage';
+import CharacterDetailPage from './components/characters/CharacterDetailPage';
 import BehaviourPage from './components/behaviour/BehaviourPage';
 import HostStatsPage from './components/behaviour/HostStatsPage';
 import MaintenancePage from './components/maintenance/MaintenancePage';
@@ -22,7 +22,7 @@ const Routes = () =>
     <Route path="/plots" component={PlotsPage} />
     <Route path="/plot-detail/:plotId" component={PlotDetailPage} />
     <Route path="/characters" component={CharactersPage} />
-    <Route path="/character-detail/:hostId" component={HostDetailPage} />
+    <Route path="/character-detail/:characterId" component={CharacterDetailPage} />
     <Route path="/behaviour" component={BehaviourPage} />
     <Route path="/behaviour-detail/:hostId" component={HostStatsPage} />
     <Route path="/maintenance" component={MaintenancePage} />

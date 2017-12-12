@@ -1,14 +1,14 @@
 import React from 'react';
-import HostDetail from './HostDetail';
+import HostDetail from './CharacterDetail';
 import ScrollableContainer from '../common/ScrollableContainer';
-import HostsInfoPanel from '../info-panel/HostsInfoPanel';
+import CharacterInfoPanel from '../info-panel/CharacterInfoPanel';
 
 const HostDetailPage = ({ match }) =>
   <div className="mainContainer">
     <ScrollableContainer>
-      <HostDetail hostId={match.params.hostId} />
+      <HostDetail characterId={match.params.characterId} />
     </ScrollableContainer>
-    <HostsInfoPanel hostId={match.params.hostId} />
+    <CharacterInfoPanel characterId={match.params.characterId} />
   </div>;
 
 HostDetailPage.propTypes = {

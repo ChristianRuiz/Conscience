@@ -16,7 +16,7 @@ class EmployeesInfoPanel extends React.Component {
     const employee = this.props.data.employees.byId;
 
     if (employee !== null) {
-      return (<div className="infoPanel">
+      return (<div className="infoPanel employee">
         <ScrollableContainer>
           <Link to={`/security-detail/${employee.id}`} ><AccountPicture pictureUrl={employee.account.pictureUrl} /></Link>
           <div className="card">

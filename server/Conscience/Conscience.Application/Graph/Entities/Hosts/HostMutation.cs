@@ -70,7 +70,8 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
 
                     logService.Log(host, $"Called host '{host.Account.UserName}' by employee '{usersService.CurrentUser.Employee.Name}'");
-                    notificationsService.Notify(host.Account.Id, "You are being called", NotificationTypes.CallHost, host: host, employee: employee);
+                    notificationsService.Notify(host.Account.Id, $"You are being called by {employee.Name} from {employee.Account.Roles.FirstOrDefault().Name.Replace("Company", "")}", 
+                        NotificationTypes.CallHost, host: host, employee: employee);
 
                     return host;
                 })

@@ -42,8 +42,12 @@
 .infoPanel .picture {
     float:left;
     z-index: -1;
-    margin-top: 29px;
+    margin-top: 16px;
     margin-left: 12px;
+}
+
+.infoPanel.employee .picture {
+    margin-top: 29px;
 }
 
 .infoPanel h3 {
