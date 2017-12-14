@@ -1,9 +1,10 @@
 import React from 'react';
-import EmployeesList from './EmployeesList';
+
+import SecurityList from './SecurityList';
 
 const SecurityPage = () =>
   <div>
-    <EmployeesList />
+    <SecurityList />
   </div>;
 
 export default SecurityPage;

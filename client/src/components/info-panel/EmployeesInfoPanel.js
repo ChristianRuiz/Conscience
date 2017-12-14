@@ -16,13 +16,15 @@ class EmployeesInfoPanel extends React.Component {
     const employee = this.props.data.employees.byId;
 
     if (employee !== null) {
-      return (<div className="infoPanel employee">
+      return (<div className="infoPanel">
         <ScrollableContainer>
-          <Link to={`/security-detail/${employee.id}`} ><AccountPicture pictureUrl={employee.account.pictureUrl} /></Link>
-          <div className="card">
-            <Link to={`/security-detail/${employee.id}`} ><h1 className="charName">{employee.name}</h1></Link>
+          <div>
+            <Link to={`/security-employee/${employee.id}`} ><AccountPicture pictureUrl={employee.account.pictureUrl} /></Link>
+            <div className="card">
+              <Link to={`/security-employee/${employee.id}`} ><h1 className="charName">{employee.name}</h1></Link>
 
-            <p className="narrativeFunction">{employee.department}</p>
+              <p className="narrativeFunction">{employee.department}</p>
+            </div>
           </div>
         </ScrollableContainer>
       </div>);

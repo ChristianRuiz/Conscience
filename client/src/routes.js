@@ -12,6 +12,7 @@ import MaintenancePage from './components/maintenance/MaintenancePage';
 import MaintenanceDetailPage from './components/maintenance/MaintenanceDetailPage';
 import SecurityPage from './components/security/SecurityPage';
 import EmployeeDetailPage from './components/security/EmployeeDetailPage';
+import HostDetailPage from './components/security/HostDetailPage';
 import HostClientTestPage from './components/host-client-test/HostClientTestPage';
 import BulkImportPage from './components/bulk-import/BulkImportPage';
 import NotFound from './components/common/NotFound';
@@ -28,7 +29,8 @@ const Routes = () =>
     <Route path="/maintenance" component={MaintenancePage} />
     <Route path="/maintenance-detail/:hostId" component={MaintenanceDetailPage} />
     <Route path="/security" exact component={SecurityPage} />
-    <Route path="/security-detail/:employeeId" component={EmployeeDetailPage} />
+    <Route path="/security-employee/:employeeId" component={EmployeeDetailPage} />
+    <Route path="/security-host/:hostId" component={HostDetailPage} />
     <Route path="/client-test" component={HostClientTestPage} />
     <Route path="/bulk-import" component={BulkImportPage} />
     <Route component={NotFound} />
