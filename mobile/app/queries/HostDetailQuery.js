@@ -6,18 +6,13 @@ const query = gql`{
       id
       userName
       pictureUrl
+      device {
+        lastConnection
+        online
+        batteryLevel
+      }
       host {
         id
-        account {
-          id
-          userName
-          pictureUrl
-          device {
-            lastConnection
-            online
-            batteryLevel
-          }
-        }
         currentCharacter {
           id
           assignedOn
