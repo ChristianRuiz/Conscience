@@ -86,7 +86,8 @@ class HostDetails extends React.Component {
       </View>);
     }
 
-    const host = this.props.data.accounts.current.host;
+    const account = this.props.data.accounts.current;
+    const host = account.host;
 
 /*
 <Text>Age: {host.currentCharacter.character.age}</Text>
@@ -98,21 +99,21 @@ class HostDetails extends React.Component {
 
       <View style={commonStyles.scrollBoxContainer}>
 
-        <ProfileImage style={styles.image} source={host.account.pictureUrl} />
+        <ProfileImage style={styles.image} source={account.pictureUrl} />
 
         <Image source={require('../../img/card.png')} style={{ height: 234, width: 299, marginLeft: -10 }} />
 
-        <ImageUploader style={styles.image} />
+        <ImageUploader style={styles.image} accountId={account.id} />
 
         {host.currentCharacter ?
           <Text style={styles.name} numberOfLines={1}>
             {host.currentCharacter.character.name}</Text> : <Text />}
 
-        <Text onPress={() => alert('Picture!')} style={styles.serialNumber} numberOfLines={1}>{host.account.userName}</Text>
+        <Text onPress={() => alert('Picture!')} style={styles.serialNumber} numberOfLines={1}>{account.userName}</Text>
 
-        {/* {host.account.device ?
+        {/* {account.device ?
           <Text style={styles.battery} numberOfLines={1}>
-            {Math.trunc(host.account.device.batteryLevel * 100)}%</Text> : <Text />} */}
+            {Math.trunc(account.device.batteryLevel * 100)}%</Text> : <Text />} */}
 
         {host.currentCharacter ?
           <Text style={styles.narrative} numberOfLines={3}>
@@ -120,7 +121,7 @@ class HostDetails extends React.Component {
 
         {host.currentCharacter ? (<View>
 
-          <Text style={commonStyles.h3}>HISTORY</Text>
+          <Text style={commonStyles.h3}>STORY</Text>
           <Text>{host.currentCharacter.character.story}</Text>
 
           <Divider />

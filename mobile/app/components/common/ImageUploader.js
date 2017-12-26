@@ -53,14 +53,14 @@ class ImageUploader extends React.Component {
       config.headers.Cookie = global.cookieValue;
     }
 
-    return fetch(`${Constants.SERVER_URL}/api/PictureUpload`, config)
+    return fetch(`${Constants.SERVER_URL}/api/PictureUpload?accountId=${this.props.accountId}`, config)
       .then(this._updateImage);
   }
 
   _updateImage(response) {
     response.text().then((url) => {
       updateCache(this.props.client, (data) => {
-        data.accounts.current.host.account.pictureUrl = url;
+        data.accounts.current.pictureUrl = `${url}?_ts=${new Date().getTime()}`;
       });
     });
   }
@@ -73,5 +73,10 @@ class ImageUploader extends React.Component {
     </TouchableHighlight>);
   }
 }
+
+ImageUploader.propTypes = {
+  client: React.PropTypes.object.isRequired,
+  accountId: React.PropTypes.number.isRequired
+};
 
 export default withApollo(ImageUploader);
