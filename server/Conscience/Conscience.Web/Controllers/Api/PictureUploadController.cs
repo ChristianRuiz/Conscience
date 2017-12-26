@@ -39,28 +39,39 @@ namespace Conscience.Web.Controllers.Api
 
             try
             {
-                Log4NetLogger.Current.WriteWarning("HttpRequest: " + httpRequest);
-                Log4NetLogger.Current.WriteWarning("Files: " + httpRequest.Files);
-                Log4NetLogger.Current.WriteWarning("Count: " + httpRequest.Files.Count);
+                Log4NetLogger.Current.WriteDebug("Files: " + httpRequest.Files);
+                Log4NetLogger.Current.WriteDebug("Count: " + httpRequest.Files.Count);
                 if (httpRequest.Files.Count > 0)
                 {
                     var file = httpRequest.Files[0];
 
-                    Log4NetLogger.Current.WriteWarning("File: " + file);
+                    Log4NetLogger.Current.WriteDebug("File: " + file);
 
-                    Log4NetLogger.Current.WriteWarning("User: " + _usersService.CurrentUser);
-                    Log4NetLogger.Current.WriteWarning("User id: " + _usersService.CurrentUser.Id);
-                    var account = _accountsRepo.GetById(_usersService.CurrentUser.Id);
-                    var fileName = account.Id + "." + file.FileName.Split('.').Last().ToLowerInvariant();
+                    var accountId = 0;
 
-                    Log4NetLogger.Current.WriteWarning("File name: " + fileName);
+                    if (_usersService.CurrentUser != null)
+                    {
+                        Log4NetLogger.Current.WriteDebug("User: " + _usersService.CurrentUser);
+                        accountId = _usersService.CurrentUser.Id;
+                    }
+                    else
+                    {
+                        accountId = int.Parse(httpRequest.QueryString["accountId"]);
+                    }
+
+                    Log4NetLogger.Current.WriteDebug("User id: " + accountId);
+
+                    var fileName = accountId + "." + file.FileName.Split('.').Last().ToLowerInvariant();
+
+                    Log4NetLogger.Current.WriteDebug("File name: " + fileName);
 
                     var filePath = ServerUploadFolder + fileName;
 
                     CompressImageAndSave(file.InputStream, filePath, fileName);
 
-                    Log4NetLogger.Current.WriteWarning("File uploaded.");
+                    Log4NetLogger.Current.WriteDebug("File uploaded.");
 
+                    var account = _accountsRepo.GetById(accountId);
                     account.PictureUrl = ImagesUrl + fileName + "?_ts=" + DateTime.Now.ToFileTime();
                     _accountsRepo.Modify(account);
                     account = _accountsRepo.GetById(account.Id);
