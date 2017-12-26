@@ -67,10 +67,6 @@ const query = gql`{
               location
               hour
               minute
-              characters {
-                id
-                name
-              }
             }
           }
         }

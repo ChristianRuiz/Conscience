@@ -2,17 +2,17 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 
+import LogConsole from './LogConsole';
+
 class EmployeeDetail extends React.Component {
   render() {
     if (this.props.data.loading) {
       return (<div>Loading...</div>);
     }
 
-    const employee = this.props.data.employees.byId;
+    const logs = this.props.data.logEntries.byEmployee;
 
-    return (<div>
-      <h1>{employee.name}</h1>
-    </div>);
+    return (<LogConsole title={`${this.props.data.accounts.current.employee.name} log`} logEntries={logs} />);
   }
 }
 
@@ -20,23 +20,38 @@ EmployeeDetail.propTypes = {
   data: React.PropTypes.object.isRequired
 };
 
-const query = gql`query GetEmployeeDetails($employeeId:Int!) {
-  employees {
-    byId(id:$employeeId)
-    {
-      id,
-      name,
-      department,
-      account {
-        id,
-        userName,
-        pictureUrl,
-        device {
-          id,
-          lastConnection,
-          online,
-          batteryLevel
+const query = gql`query GetEmployeeLogEntries($employeeId:Int!) {
+  logEntries {
+    byEmployee(id: $employeeId) {
+      id
+      description
+      timeStamp
+      host {
+        id
+        account {
+          id
+          userName
         }
+        currentCharacter {
+          id
+          character {
+            id
+            name
+          }
+        }
+      }
+      employee {
+        id
+        name
+      }
+    }
+  }
+  accounts {
+    current {
+      id
+      employee {
+        id
+        name
       }
     }
   }

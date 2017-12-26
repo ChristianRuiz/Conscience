@@ -19,16 +19,19 @@ namespace Conscience.Application.Graph.Entities.Hosts
 
             Field<ListGraphType<HostGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser).ApplyPaginationAndOrderBy(context)
-                .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemory1, h => h.CoreMemory2, h => h.CoreMemory3, h => h.Account, h => h.Account.Device))
-                .AddBehaviourAndPlotPermissions();
+                resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser)
+                                            .ApplyPaginationAndOrderBy(context)
+                .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemory1, h => h.CoreMemory2, h => h.CoreMemory3, h => h.Account, h => h.Account.Device)
+                .ToList().Where(h => !accountService.CurrentUser.UserName.Contains("-") || h.Account.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First())) //TODO: Remove this line, only to send both runs pre game 
+                )
+                .AddMaintenancePermissions();
 
             Field<HostGraphType>("byId",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "host id" }
                     ),
                 resolve: context => hostRepo.GetById(accountService.CurrentUser, context.GetArgument<int>("id")))
-                .AddBehaviourAndPlotPermissions();
+                .AddMaintenancePermissions();
         }
     }
 }

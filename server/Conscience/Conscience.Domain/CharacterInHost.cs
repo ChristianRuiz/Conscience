@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CharacterInHost
+    public class CharacterInHost : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public virtual Host Host
         {
             get;
@@ -30,6 +24,17 @@ namespace Conscience.Domain
         {
             get;
             set;
+        }
+
+        public DateTime? UnassignedOn
+        {
+            get;
+            set;
+        }
+
+        public override string ToString()
+        {
+            return Character.Name;
         }
     }
 }

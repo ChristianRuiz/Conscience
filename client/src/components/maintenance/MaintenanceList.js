@@ -9,11 +9,14 @@ class MaintenanceList extends React.Component {
       return (<div>Loading...</div>);
     }
 
+    const hostsWithCharacter = this.props.data.hosts.all.filter(h => h.currentCharacter);
+    const hostsWithoutCharacter = this.props.data.hosts.all.filter(h => !h.currentCharacter);
+
     return (<ScrollableContainer>
       <div>
-        <h2>Maintenance</h2>
+        <h2>Maintenance - Hosts</h2>
         <ul>
-          {this.props.data.hosts.all.map(host =>
+          {hostsWithCharacter.map(host =>
             <li key={host.id}>
               <p>
                 <Link to={`/maintenance-detail/${host.id}`} ><b>{host.account.userName}: </b></Link>
@@ -21,6 +24,19 @@ class MaintenanceList extends React.Component {
               </p>
             </li>)}
         </ul>
+        { (hostsWithoutCharacter.length > 0) ?
+        (<div>
+          <h2>Unasigned Hosts</h2>
+          <ul>
+            {hostsWithoutCharacter.map(host =>
+              <li key={host.id}>
+                <p>
+                  <Link to={`/maintenance-detail/${host.id}`} ><b>{host.account.userName}: </b></Link>
+                  {host.currentCharacter ? host.currentCharacter.character.name : ''}
+                </p>
+              </li>)}
+          </ul>
+        </div>) : '' }
       </div>
     </ScrollableContainer>);
   }

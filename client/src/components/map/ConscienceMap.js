@@ -7,6 +7,7 @@ import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
 import HostsInfoPanel from '../info-panel/HostsInfoPanel';
+import CharacterInfoPanel from '../info-panel/CharacterInfoPanel';
 import EmployeesInfoPanel from '../info-panel/EmployeesInfoPanel';
 
 import TextField from 'material-ui/TextField';
@@ -33,13 +34,25 @@ class ConscienceMap extends React.Component {
       return <div />;
     }
 
+    let hostPanel = <div />;
+
+    if (this.state.selectedAccount && this.state.selectedAccount.host) {
+      if (this.state.selectedAccount.host.currentCharacter) {
+        hostPanel = (<CharacterInfoPanel
+          characterId={this.state.selectedAccount.host.currentCharacter.character.id}
+        />);
+      } else {
+        hostPanel = <HostsInfoPanel hostId={this.state.selectedAccount.host.id} />;
+      }
+    }
+
     return (<div className="mainContainer">
       <Map
         className="mainContent"
         center={this.state.defaultPosition}
         zoom={18}
         style={{ height: this.state.height - 110 }}
-        onclick={() =>  this.setState({ selectedAccount: null })}
+        onclick={() => this.setState({ selectedAccount: null })}
       >
         <BingLayer bingkey="Aqh7oaz-q_8iKzjPjvzPaac4jn2HAU7iPF36ftyQ9u6-34rJktZsKTO_JNJsHUKB" />
 
@@ -79,8 +92,7 @@ class ConscienceMap extends React.Component {
         />
       </div>
 
-      {this.state.selectedAccount && this.state.selectedAccount.host ?
-        <HostsInfoPanel hostId={this.state.selectedAccount.host.id} /> : <div /> }
+      { hostPanel }
 
       {this.state.selectedAccount && this.state.selectedAccount.employee ?
         <EmployeesInfoPanel employeeId={this.state.selectedAccount.employee.id} /> : <div /> }

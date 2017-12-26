@@ -391,7 +391,11 @@
     <Content Include="Content\audio\empty.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\audio\uploads\moderna.mp3" />
+    <Content Include="Content\audio\notifications\callhost.mp3" />
+    <Content Include="Content\audio\notifications\lowbattery.mp3" />
+    <Content Include="Content\audio\notifications\noreset.mp3" />
+    <Content Include="Content\audio\notifications\reset.mp3" />
+    <Content Include="Content\audio\notifications\systemfailure.mp3" />
     <Content Include="Content\images\background\bottom-left-logo.png" />
     <Content Include="Content\images\background\bottom-left.png" />
     <Content Include="Content\images\background\bottom-right.png" />
@@ -478,6 +482,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\audio\uploads\" />
     <Folder Include="Content\images\uploaded\" />
   </ItemGroup>
   <ItemGroup>

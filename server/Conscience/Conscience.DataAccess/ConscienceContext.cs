@@ -88,10 +88,14 @@ namespace Conscience.DataAccess
             set;
         }
 
+        public DbSet<LogEntry> LogEntries
+        {
+            get;
+            set;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.HasDefaultSchema("Conscience");
-            
             modelBuilder.Entity<Account>().HasMany(a => a.Roles).WithMany(r => r.Accounts);
             modelBuilder.Entity<Account>().HasOptional(u => u.Device);
             modelBuilder.Entity<Device>().HasMany(d => d.Locations);
@@ -101,23 +105,22 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory1);
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory2);
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory3);
-            modelBuilder.Entity<Host>().HasMany(h => h.Characters).WithRequired(c => c.Host);
-            modelBuilder.Entity<CoreMemory>().ToTable("CoreMemories");
+            modelBuilder.Entity<Host>().HasMany(h => h.Characters).WithOptional(c => c.Host);
+            modelBuilder.Entity<CoreMemory>().HasRequired(c => c.Audio);
             modelBuilder.Entity<CharacterInHost>().HasRequired(c => c.Character).WithMany(c => c.Hosts);
-            modelBuilder.Entity<Character>().HasMany(c => c.Memories);
-            modelBuilder.Entity<Character>().HasMany(c => c.Triggers);
-            modelBuilder.Entity<Character>().HasMany(c => c.Relations).WithMany(r => r.Characters);
-            modelBuilder.Entity<Character>().HasMany(c => c.PlotEvents).WithMany(e => e.Characters);
-            modelBuilder.Entity<Character>().HasMany(c => c.Plots).WithRequired(p => p.Character);
+            modelBuilder.Entity<Character>().HasMany(c => c.Memories).WithRequired(m => m.Character).WillCascadeOnDelete();
+            modelBuilder.Entity<Character>().HasMany(c => c.Triggers).WithRequired(m => m.Character).WillCascadeOnDelete();
+            modelBuilder.Entity<Character>().HasMany(c => c.Relations).WithRequired(r => r.ParentCharacter).HasForeignKey(r => r.ParentCharacterId).WillCascadeOnDelete(false);
+            modelBuilder.Entity<Character>().HasMany(c => c.Plots).WithRequired(p => p.Character).HasForeignKey(p => p.CharacterId).WillCascadeOnDelete();
+            modelBuilder.Entity<CharacterRelation>().HasRequired(r => r.Character);
             modelBuilder.Entity<Plot>().HasMany(c => c.Events).WithRequired(e => e.Plot);
-            modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot);
-            modelBuilder.Entity<NotificationStatChange>().ToTable("NotificationsStatChange");
-            modelBuilder.Entity<NotificationPlotChange>().ToTable("NotificationsPlotChange");
-            modelBuilder.Entity<NotificationAudio>().ToTable("NotificationsAudio");
-            modelBuilder.Entity<NotificationStatChange>().HasRequired(c => c.Stat);
-            modelBuilder.Entity<NotificationPlotChange>().HasRequired(c => c.Plot);
-            modelBuilder.Entity<NotificationPlotChange>().HasMany(c => c.Characters);
-            modelBuilder.Entity<NotificationAudio>().HasRequired(c => c.Audio);
+            modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot).HasForeignKey(c => c.PlotId).WillCascadeOnDelete();
+            modelBuilder.Entity<LogEntry>().HasOptional(c => c.Host);
+            modelBuilder.Entity<LogEntry>().HasOptional(c => c.Employee);
+            modelBuilder.Entity<Notification>().HasRequired(c => c.Owner);
+            modelBuilder.Entity<Notification>().HasOptional(c => c.Host);
+            modelBuilder.Entity<Notification>().HasOptional(c => c.Employee);
+            modelBuilder.Entity<Notification>().HasOptional(c => c.Audio);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }

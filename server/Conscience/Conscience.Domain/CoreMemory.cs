@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CoreMemory
+    public class CoreMemory : IdentityEntity
     {
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public Audio Audio
         {
             get;

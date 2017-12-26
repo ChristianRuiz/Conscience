@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Host
+    public class Host : IdentityEntity
     {
         public Host()
         {
@@ -16,13 +16,7 @@ namespace Conscience.Domain
             Stats = new HashSet<Stats>();
             Status = HostStatus.Ok;
         }
-
-        public int Id
-        {
-            get;
-            set;
-        }
-
+        
         public virtual ICollection<Notification> Notifications
         {
             get;
@@ -45,7 +39,7 @@ namespace Conscience.Domain
         {
             get
             {
-                return Characters.OrderByDescending(c => c.AssignedOn).FirstOrDefault();
+                return Characters.Where(c => !c.UnassignedOn.HasValue).OrderByDescending(c => c.AssignedOn).FirstOrDefault();
             }
         }
 

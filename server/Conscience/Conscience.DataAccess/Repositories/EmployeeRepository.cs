@@ -24,7 +24,7 @@ namespace Conscience.DataAccess.Repositories
         
         public IQueryable<Employee> GetAllEmployees()
         {
-            return GetAll().OfType<Employee>();
+            return GetAll().OfType<Employee>().Where(e => !e.Account.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()));
         }
 
         public Employee AddEmployee(int accountId)
@@ -39,11 +39,11 @@ namespace Conscience.DataAccess.Repositories
             return employee;
         }
         
-        public Employee GetById(int userId)
+        public Employee GetById(int employeeId)
         {
-            var employee = DbSet.OfType<Employee>().Include(u => u.Account).FirstOrDefault(u => u.Id == userId);
+            var employee = DbSet.OfType<Employee>().Include(e => e.Account).FirstOrDefault(e => e.Id == employeeId);
             if (employee == null)
-                throw new ArgumentException("There is no employee with id: " + userId);
+                throw new ArgumentException("There is no employee with id: " + employeeId);
             return employee;
         }
         

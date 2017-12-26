@@ -22,7 +22,7 @@ namespace Conscience.Application.Graph.Entities.Employees
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "accountId", Description = "account id" }
                     ),
                 resolve: context => userRepo.AddEmployee(context.GetArgument<int>("accountId")))
-                .AddQAPermissions();
+                .AddAdminPermissions();
         }
     }
 }

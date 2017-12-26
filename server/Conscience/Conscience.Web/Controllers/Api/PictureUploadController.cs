@@ -1,5 +1,6 @@
 ﻿using Conscience.Application.Services;
 using Conscience.DataAccess.Repositories;
+using Conscience.Web.Logger;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -23,7 +24,7 @@ namespace Conscience.Web.Controllers.Api
 
         private readonly IUsersIdentityService _usersService;
         private readonly AccountRepository _accountsRepo;
-
+        
         public PictureUploadController(IUsersIdentityService usersService, AccountRepository accountsRepo)
         {
             _usersService = usersService;
@@ -35,29 +36,51 @@ namespace Conscience.Web.Controllers.Api
         {
             HttpResponseMessage result = null;
             var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count > 0)
+
+            try
             {
-                var file = httpRequest.Files[0];
+                Log4NetLogger.Current.WriteWarning("HttpRequest: " + httpRequest);
+                Log4NetLogger.Current.WriteWarning("Files: " + httpRequest.Files);
+                Log4NetLogger.Current.WriteWarning("Count: " + httpRequest.Files.Count);
+                if (httpRequest.Files.Count > 0)
+                {
+                    var file = httpRequest.Files[0];
 
-                var account = _accountsRepo.GetById(_usersService.CurrentUser.Id);
-                var fileName = account.Id + "." + file.FileName.Split('.').Last().ToLowerInvariant();
+                    Log4NetLogger.Current.WriteWarning("File: " + file);
 
-                var filePath = ServerUploadFolder + fileName;
+                    Log4NetLogger.Current.WriteWarning("User: " + _usersService.CurrentUser);
+                    Log4NetLogger.Current.WriteWarning("User id: " + _usersService.CurrentUser.Id);
+                    var account = _accountsRepo.GetById(_usersService.CurrentUser.Id);
+                    var fileName = account.Id + "." + file.FileName.Split('.').Last().ToLowerInvariant();
 
-                CompressImageAndSave(file.InputStream, filePath, fileName);
+                    Log4NetLogger.Current.WriteWarning("File name: " + fileName);
 
-                account.PictureUrl = ImagesUrl + fileName + "?_ts=" + DateTime.Now.ToFileTime();
-                _accountsRepo.Modify(account);
-                account = _accountsRepo.GetById(account.Id);
+                    var filePath = ServerUploadFolder + fileName;
 
-                result = Request.CreateResponse(HttpStatusCode.Created);
-                result.Content = new StringContent(account.PictureUrl, Encoding.UTF8, "text/plain");
+                    CompressImageAndSave(file.InputStream, filePath, fileName);
+
+                    Log4NetLogger.Current.WriteWarning("File uploaded.");
+
+                    account.PictureUrl = ImagesUrl + fileName + "?_ts=" + DateTime.Now.ToFileTime();
+                    _accountsRepo.Modify(account);
+                    account = _accountsRepo.GetById(account.Id);
+
+                    result = Request.CreateResponse(HttpStatusCode.Created);
+                    result.Content = new StringContent(account.PictureUrl, Encoding.UTF8, "text/plain");
+                }
+                else
+                {
+                    result = Request.CreateResponse(HttpStatusCode.BadRequest);
+
+                    var ms = new MemoryStream();
+                    httpRequest.InputStream.CopyTo(ms);
+                    var bytes = ms.ToArray();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+                Log4NetLogger.Current.WriteError("Unable to upload the picture.", ex);
             }
-
             return result;
         }
 

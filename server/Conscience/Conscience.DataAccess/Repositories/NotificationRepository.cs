@@ -21,5 +21,10 @@ namespace Conscience.DataAccess.Repositories
                 return _context.Notifications;
             }
         }
+
+        public IQueryable<Notification> GetByAccount(int accountId)
+        {
+            return DbSet.Where(n => n.Owner.Id == accountId);
+        }
     }
 }

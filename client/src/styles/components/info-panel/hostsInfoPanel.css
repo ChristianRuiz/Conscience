@@ -42,7 +42,7 @@
 .infoPanel .picture {
     float:left;
     z-index: -1;
-    margin-top: 29px;
+    margin-top: 16px;
     margin-left: 12px;
 }
 
@@ -56,4 +56,8 @@
 
 .popup p {
     color: black !important;
+}
+
+.infoPanel .scrollableContainer {
+    padding-left: 0;
 }

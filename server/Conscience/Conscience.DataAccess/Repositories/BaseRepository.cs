@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,11 @@ namespace Conscience.DataAccess.Repositories
         {
             DbSet.Remove(entity);
             _context.SaveChanges();
+        }
+
+        public void DeleteChild(object child)
+        {
+            _context.Entry(child).State = EntityState.Deleted;
         }
     }
 }

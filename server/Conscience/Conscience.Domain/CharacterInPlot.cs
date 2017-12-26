@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class CharacterInPlot
+    public class CharacterInPlot : IdentityEntity
     {
-        public int Id
+        public string Description
         {
             get;
             set;
         }
 
-        public string Description
+        public int PlotId
         {
             get;
             set;
@@ -26,10 +26,21 @@ namespace Conscience.Domain
             set;
         }
 
+        public int CharacterId
+        {
+            get;
+            set;
+        }
+
         public virtual Character Character
         {
             get;
             set;
+        }
+
+        public override string ToString()
+        {
+            return Character.Name;
         }
     }
 }

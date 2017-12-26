@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class NotificationAudio : Notification
+    public class IdentityEntity
     {
-        public virtual Audio Audio
+        public int Id
         {
             get;
             set;
+        }
+
+        public override string ToString()
+        {
+            return Id.ToString();
         }
     }
 }

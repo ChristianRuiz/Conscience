@@ -30,22 +30,45 @@ namespace Conscience.DataAccess.Repositories
                 hosts = hosts.Where(h => !h.Hidden);
             return hosts;
         }
-        
-        public Host AddHost(int accountId)
-        {
-            var account = _context.Accounts.First(a => a.Id == accountId);
-            var employee = new Host
-            {
-                Account = account
-            };
-            DbSet.Add(employee);
-            _context.SaveChanges();
-            return employee;
-        }
-        
+
         public Host GetById(Account currentUser, int userId)
         {
             var host = GetAllHosts(currentUser).FirstOrDefault(u => u.Id == userId);
+            return host;
+        }
+
+        public Host ModifyStats(int hostId, List<Stats> stats)
+        {
+            var host = DbSet.FirstOrDefault(u => u.Id == hostId);
+            foreach (var stat in stats)
+            {
+                host.Stats.First(s => s.Name.ToLowerInvariant() == stat.Name.ToLowerInvariant()).Value = stat.Value;
+            }
+            Modify(host);
+            return host;
+        }
+
+        public Host AssignHost(Host host, Character character)
+        {
+            var currentCharacter = host.CurrentCharacter;
+            if (currentCharacter != null)
+            {
+                currentCharacter.UnassignedOn = DateTime.Now;
+            }
+            host.Characters.Add(new CharacterInHost
+            {
+                AssignedOn = DateTime.Now,
+                Character = character
+            });
+            Modify(host);
+            return host;
+        }
+
+        public Host ChangeStatus(int hostId, HostStatus status)
+        {
+            var host = GetAll().First(h => h.Id == hostId);
+            host.Status = status;
+            Modify(host);
             return host;
         }
     }

@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 
 import AccountPicture from '../common/AccountPicture';
+import ScrollableContainer from '../common/ScrollableContainer';
 
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
@@ -16,12 +17,16 @@ class EmployeesInfoPanel extends React.Component {
 
     if (employee !== null) {
       return (<div className="infoPanel">
-        <Link to={`/security-detail/${employee.id}`} ><AccountPicture pictureUrl={employee.account.pictureUrl} /></Link>
-        <div className="card">
-          <Link to={`/security-detail/${employee.id}`} ><h1 className="charName">{employee.name}</h1></Link>
+        <ScrollableContainer>
+          <div>
+            <Link to={`/security-employee/${employee.id}`} ><AccountPicture pictureUrl={employee.account.pictureUrl} /></Link>
+            <div className="card">
+              <Link to={`/security-employee/${employee.id}`} ><h1 className="charName">{employee.name}</h1></Link>
 
-          <p className="narrativeFunction">{employee.department}</p>
-        </div>
+              <p className="narrativeFunction">{employee.department}</p>
+            </div>
+          </div>
+        </ScrollableContainer>
       </div>);
     }
 

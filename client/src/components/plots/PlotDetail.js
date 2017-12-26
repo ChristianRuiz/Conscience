@@ -20,11 +20,20 @@ class PlotDetail extends React.Component {
         {plot.characters.map(c =>
           <PictureDescriptionBox
             key={c.character.id}
-            pictureUrl={c.character.currentHost.host.account.pictureUrl}
+            pictureUrl={c.character.currentHost ? c.character.currentHost.host.account.pictureUrl : ''}
             title={c.character.name}
-            link={`/character-detail/${c.character.currentHost.host.id}`}
+            link={`/character-detail/${c.character.id}`}
             description={c.description}
           />)}
+      </div>
+
+      <div className="flexColumn marginTop">
+        {plot.events.map(e =>
+          <div key={e.id}>
+            <h3>Event: {e.description}</h3>
+            <p>{e.location}</p>
+            <p>{`0${e.hour}`.slice(-2)}:{`0${e.minute}`.slice(-2)}</p>
+          </div>)}
       </div>
     </div>);
   }
@@ -45,6 +54,7 @@ const query = gql`query GetPlotDetails($plotId:Int!) {
           id,
           name,
           currentHost {
+            id
             host {
               id
               account {
@@ -55,6 +65,13 @@ const query = gql`query GetPlotDetails($plotId:Int!) {
           }
         },
         description
+      }
+      events {
+        id
+        description
+        location
+        hour
+        minute
       }
     }
   }

@@ -90,6 +90,7 @@ class SignalRClient extends React.Component {
               device {
                 id
                 currentLocation {
+                  id
                   latitude
                   longitude
                 }

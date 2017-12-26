@@ -56,6 +56,11 @@
     <Compile Include="ConscienceDbInitializer.cs" />
     <Compile Include="ConscienceAccount.cs" />
     <Compile Include="Extensions\IQueryableExtensions.cs" />
+    <Compile Include="Migrations\InitialCreate.cs" />
+    <Compile Include="Migrations\InitialCreate.Designer.cs">
+      <DependentUpon>InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AudioRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
@@ -64,6 +69,7 @@
     <Compile Include="Repositories\DeviceRepository.cs" />
     <Compile Include="Repositories\MemoryRepository.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\LogEntryRepository.cs" />
     <Compile Include="Repositories\NotificationRepository.cs" />
     <Compile Include="Repositories\PlotRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
@@ -79,6 +85,11 @@
       <Project>{01827713-52b3-4713-8b0c-39a291e3efb7}</Project>
       <Name>Conscience.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\InitialCreate.resx">
+      <DependentUpon>InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

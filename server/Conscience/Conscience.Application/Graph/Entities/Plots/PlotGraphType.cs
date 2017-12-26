@@ -16,7 +16,7 @@ namespace Conscience.Application.Graph.Entities.Plots
             
             Field(p => p.Name);
             Field(p => p.Description);
-            Field<PlotEventGraphType>("events", resolve: context => context.Source.Events);
+            Field<ListGraphType<PlotEventGraphType>>("events", resolve: context => context.Source.Events);
             Field<ListGraphType<CharacterInPlotGraphType>>("characters", resolve: context => context.Source.Characters);
         }
     }

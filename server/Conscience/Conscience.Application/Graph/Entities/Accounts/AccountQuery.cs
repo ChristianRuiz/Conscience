@@ -19,9 +19,11 @@ namespace Conscience.Application.Graph.Entities.Accounts
 
             Field<ListGraphType<AccountGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => accountRepo.GetAll().ApplyPaginationAndOrderBy(context)
-                .AvoidLazyLoad(context, a => a.Host, a => a.Employee, a => a.Device))
-                .AddAdminPermissions();
+                resolve: context => accountRepo.GetAll()
+                                                .ApplyPaginationAndOrderBy(context)
+                .AvoidLazyLoad(context, a => a.Host, a => a.Employee, a => a.Device)
+                .ToList().Where(a => !accountService.CurrentUser.UserName.Contains("-") || a.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First())) //TODO: Remove this line, only to send both runs pre game
+                ).AddMaintenancePermissions();
             
             Field<AccountGraphType>("current",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
@@ -31,7 +33,8 @@ namespace Conscience.Application.Graph.Entities.Accounts
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "account id" }
                     ),
-                resolve: context => accountRepo.GetById(context.GetArgument<int>("id")));
+                resolve: context => accountRepo.GetById(context.GetArgument<int>("id")))
+                .AddMaintenancePermissions();
         }
     }
 }

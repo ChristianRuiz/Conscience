@@ -6,19 +6,13 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Account
+    public class Account : IdentityEntity
     {
         public Account()
         {
             Roles = new HashSet<Role>();
         }
-
-        public int Id
-        {
-            get;
-            set;
-        }
-
+        
         public string Email
         {
             get;

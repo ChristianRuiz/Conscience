@@ -7,18 +7,12 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Device
+    public class Device : IdentityEntity
     {
         public Device()
         {
             Locations = new List<Location>();
             BatteryStatus = BatteryStatus.Unknown;
-        }
-
-        public int Id
-        {
-            get;
-            set;
         }
         
         public DateTime LastConnection

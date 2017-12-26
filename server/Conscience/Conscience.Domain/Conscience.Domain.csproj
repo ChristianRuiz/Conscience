@@ -51,12 +51,11 @@
     <Compile Include="Employee.cs" />
     <Compile Include="Enums\BatteryStatus.cs" />
     <Compile Include="Host.cs" />
+    <Compile Include="IdentityEntity.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="LogEntry.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Notification.cs" />
-    <Compile Include="NotificationAudio.cs" />
-    <Compile Include="NotificationPlotChange.cs" />
-    <Compile Include="NotificationStatChange.cs" />
     <Compile Include="Plot.cs" />
     <Compile Include="PlotEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -17,9 +17,7 @@ const Header = () =>
           <Link to="/characters" ><img alt="Character" src="/content/images/menu/character.png" /></Link>
           <Link to="/behaviour" ><img alt="Behaviour" src="/content/images/menu/behaviour.png" /></Link>
           <Link to="/maintenance" ><img alt="Maintenance" src="/content/images/menu/maintenance.png" /></Link>
-          <RolesValidation allowed={[Roles.Admin, Roles.CompanyAdmin, Roles.CompanyQA]}>
-            <Link to="/security" ><img alt="Security" src="/content/images/menu/security.png" /></Link>
-          </RolesValidation>
+          <Link to="/security" ><img alt="Security" src="/content/images/menu/security.png" /></Link>
           <img className="notifications" alt="Notifications" src="/content/images/menu/nots.png" />
         </div>
       </div>

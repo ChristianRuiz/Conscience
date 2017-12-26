@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Conscience.Domain
 {
-    public class Trigger
+    public class Trigger : IdentityEntity
     {
-        public int Id
+        public Character Character
         {
             get;
             set;

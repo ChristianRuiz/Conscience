@@ -9,15 +9,28 @@ class CharactersList extends React.Component {
       return (<div>Loading...</div>);
     }
 
+    const charactersWithHost = this.props.data.characters.all.filter(c => c.currentHost);
+    const charactersWithoutHost = this.props.data.characters.all.filter(c => !c.currentHost);
+
     return (<ScrollableContainer>
       <div>
         <h2>Characters</h2>
         <ul>
-          {this.props.data.hosts.all.map(host =>
-            <li key={host.id}>
+          {charactersWithHost.map(character =>
+            <li key={character.id}>
               <p>
-                <Link to={`/character-detail/${host.id}`} ><b>{host.account.userName}: </b></Link>
-                {host.currentCharacter ? host.currentCharacter.character.name : ''}
+                <Link to={`/character-detail/${character.id}`} ><b>{character.name}</b></Link>
+                {character.currentHost ? ` (${character.currentHost.host.account.userName})` : ''}
+              </p>
+            </li>)}
+        </ul>
+        <h2>Unasigned characters</h2>
+        <ul>
+          {charactersWithoutHost.map(character =>
+            <li key={character.id}>
+              <p>
+                <Link to={`/character-detail/${character.id}`} ><b>{character.name}</b></Link>
+                {character.currentHost ? ` (${character.currentHost.host.account.userName})` : ''}
               </p>
             </li>)}
         </ul>
@@ -30,25 +43,23 @@ CharactersList.propTypes = {
   data: React.PropTypes.object.isRequired
 };
 
-const query = gql`query GetHosts {
-            hosts {
-              all {
-                id,
-                account {
-                  id,
-                  userName
-                },
-                currentCharacter {
-                  id,
-                  assignedOn,
-                  character {
-                    id,
-                    name
-                  }
-                }
-              }
-            }
+const query = gql`query GetCharacters {
+  characters {
+    all {
+      id,
+      name
+      currentHost {
+        id
+        host {
+          account {
+            id,
+            userName
+          }
         }
+      }
+    }
+  }
+}
       `;
 
 export default withRouter(graphql(query)(CharactersList));

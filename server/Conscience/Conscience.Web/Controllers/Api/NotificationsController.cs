@@ -23,8 +23,11 @@ namespace Conscience.Web.Controllers.Api
     [Authorize]
     public class NotificationsController : ApiController
     {
+        private const int MinimumBatteryLevel = 25;
+
         private readonly IUsersIdentityService _usersService;
         private readonly AccountRepository _accountsRepo;
+        private readonly NotificationsService _notificationsService;
 
         public NotificationsController(
             IUsersIdentityService usersService, AccountRepository accountsRepo)
@@ -56,15 +59,21 @@ namespace Conscience.Web.Controllers.Api
                     if (location.TimeStamp == default(DateTime))
                         location.TimeStamp = DateTime.Now;
 
+                var currentBatteryLevel = currentUser.Device != null ? currentUser.Device.BatteryLevel : 0;
+
                 _accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
                 var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
-
+                
                 var hub = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
                 hub.Clients.Group(AccountsHub.GroupWeb).locationUpdated(account.Id, account.Device.CurrentLocation);
 
-                //TODO: Return unread notifications
+                if (account.Host != null && currentBatteryLevel > MinimumBatteryLevel && updates.batteryLevel < MinimumBatteryLevel)
+                {
+                    _notificationsService.Notify(account.Id, "Low battery", NotificationTypes.LowBattery, account.Host);
+                    _notificationsService.Notify(RoleTypes.CompanyMaintenance, $"Low battery host '{account.Host.CurrentCharacter.Character.Name}'", NotificationTypes.LowBattery, account.Host);
+                }
 
-                var response = request.CreateResponse(HttpStatusCode.OK);
+                var response = request.CreateResponse(HttpStatusCode.OK, _notificationsService.HasUnprocessedNotifications(currentUser.Id).ToString(), "text/plain");
                 return response;
             }
             catch(Exception ex)
