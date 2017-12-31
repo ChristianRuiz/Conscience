@@ -17,16 +17,22 @@ namespace Conscience.Application.Graph.Entities.Notifications
         {
             Name = "NotificationMutation";
 
-            Field<NotificationGraphType>("markAsRead", 
+            Field<ListGraphType<NotificationGraphType>>("markAsRead", 
                 arguments: new QueryArguments(
-                    new QueryArgument<IntGraphType> { Name = "id", Description = "notification id" }
+                    new QueryArgument<ListGraphType<IntGraphType>> { Name = "ids", Description = "notification id" }
                     ),
                 resolve: context =>
                 {
-                    var notificationId = context.GetArgument<int>("id"); ;
-                    return notificationsService.MarkAsRead(notificationId);
-                }
-                )
+                    var notificationIds = context.GetArgument<List<int>>("ids"); ;
+                    var notifications = new List<Notification>();
+
+                    foreach (var notificationId in notificationIds)
+                    {
+                        notifications.Add(notificationsService.MarkAsRead(notificationId));
+                    }
+
+                    return notifications;
+                })
                 .CurrentUserQuery();
         }
     }

@@ -73,6 +73,25 @@ const query = gql`{
       }
     }
   }
+  notifications {
+    current {
+      id
+      description
+      timeStamp
+      read
+      notificationType
+      employee {
+        id
+        name
+        department
+      }
+      audio {
+        id
+        transcription
+        path
+      }
+    }
+  }
 }
 `;
 

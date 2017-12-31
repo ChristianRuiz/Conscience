@@ -13,8 +13,8 @@ import Notifications from './host/Notifications';
 import HostButtons from './host/HostButtons';
 // import Debugger from './Debugger';
 
-// import AudioService from '../services/AudioService';
-// import NotificationsService from '../services/NotificationsService.js';
+import AudioService from '../services/AudioService';
+import NotificationsService from '../services/NotificationsService';
 
 type Route = {
   key: string,
@@ -23,8 +23,6 @@ type Route = {
 };
 
 type State = NavigationState<Route>;
-
-let audioService = null;
 
 const styles = StyleSheet.create({
   container: {
@@ -156,11 +154,10 @@ class HostTabs extends React.Component {
   };
 
   componentDidMount() {
-    if (audioService == null && !global.notificationsService) {
-      // TODO: Uncomment after it has been published on the Apple Store
-      /* audioService = new AudioService();
+    if (!global.audioService && !global.notificationsService) {
+      global.audioService = new AudioService();
       global.notificationsService = new NotificationsService(this.props.client,
-            navigator, audioService);*/
+            navigator, global.audioService);
     }
   }
 

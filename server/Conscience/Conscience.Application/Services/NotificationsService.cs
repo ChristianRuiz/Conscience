@@ -49,16 +49,29 @@ namespace Conscience.Application.Services
             if (type == NotificationTypes.Reset)
                 Reset(accountId);
 
-            _notificationsRepo.Add(new Notification
+            var notification = _notificationsRepo.GetAll().OrderByDescending(n => n.Id).Take(2).FirstOrDefault(n => n.Description == text && n.NotificationType == type);
+
+            if (notification == null)
             {
-                Owner = _accountRepo.GetById(accountId),
-                Description = text,
-                NotificationType = type,
-                Host = host,
-                Employee = employee,
-                Audio = audio,
-                TimeStamp = DateTime.Now
-            });
+                _notificationsRepo.Add(new Notification
+                {
+                    Owner = _accountRepo.GetById(accountId),
+                    Description = text,
+                    NotificationType = type,
+                    Host = host,
+                    Employee = employee,
+                    Audio = audio,
+                    TimeStamp = DateTime.Now
+                });
+            }
+            else
+            {
+                notification.Processed = false;
+                notification.TimeStamp = DateTime.Now;
+                if (type != NotificationTypes.StatsModified)
+                    notification.Read = false;
+                _notificationsRepo.Modify(notification);
+            }
         }
 
         private void Reset(int accountId)
@@ -92,6 +105,18 @@ namespace Conscience.Application.Services
                     break;
                 case NotificationTypes.SystemFailure:
                     audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/systemfailure.mp3" };
+                    break;
+                case NotificationTypes.StatsModified:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/statsmodified.mp3" };
+                    break;
+                case NotificationTypes.CharacterModified:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/charactermodified.mp3" };
+                    break;
+                case NotificationTypes.CharacterAssigned:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/characterassigned.mp3" };
+                    break;
+                case NotificationTypes.PlotModified:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/plotmodified.mp3" };
                     break;
             }
 

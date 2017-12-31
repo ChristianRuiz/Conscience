@@ -30,10 +30,11 @@ namespace Conscience.Web.Controllers.Api
         private readonly NotificationsService _notificationsService;
 
         public NotificationsController(
-            IUsersIdentityService usersService, AccountRepository accountsRepo)
+            IUsersIdentityService usersService, AccountRepository accountsRepo, NotificationsService notificationsService)
         {
             _usersService = usersService;
             _accountsRepo = accountsRepo;
+            _notificationsService = notificationsService;
         }
 
         [HttpGet]
@@ -73,7 +74,7 @@ namespace Conscience.Web.Controllers.Api
                     _notificationsService.Notify(RoleTypes.CompanyMaintenance, $"Low battery host '{account.Host.CurrentCharacter.Character.Name}'", NotificationTypes.LowBattery, account.Host);
                 }
 
-                var response = request.CreateResponse(HttpStatusCode.OK, _notificationsService.HasUnprocessedNotifications(currentUser.Id).ToString(), "text/plain");
+                var response = request.CreateResponse(_notificationsService.HasUnprocessedNotifications(currentUser.Id) ? HttpStatusCode.Accepted : HttpStatusCode.OK);
                 return response;
             }
             catch(Exception ex)

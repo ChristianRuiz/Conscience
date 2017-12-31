@@ -3,6 +3,8 @@ import DeviceInfo from 'react-native-device-info';
 import reportException from './ReportException';
 import updateCache from './CacheService';
 
+import query from '../queries/HostDetailQuery';
+
 import Constants from '../constants';
 
 class NotificationsService {
@@ -85,7 +87,14 @@ class NotificationsService {
       fetch(`${Constants.SERVER_URL}/api/Notifications`, {
         method: 'POST',
         body: JSON.stringify(update)
-      }).then(() => {
+      }).then((result) => {
+        if (result.status === 202) {
+          this.client.query({
+            fetchPolicy: 'network-only',
+            fetchResults: true,
+            query
+          });
+        }
         this.locations = [];
       })
       .catch((e) => { console.log(`Unable to to send location updates to the server (ajax): ${e}`); });
@@ -95,7 +104,7 @@ class NotificationsService {
     }
 
     updateCache(this.client, (data) => {
-      const device = data.accounts.current.host.account.device;
+      const device = data.accounts.current.device;
 
       device.deviceId = this.deviceId;
       device.batteryLevel = this.batteryLevel;

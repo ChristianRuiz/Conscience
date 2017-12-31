@@ -78,6 +78,10 @@ namespace Conscience.Domain
         SystemFailure,
         LowBattery,
         HostHurt,
-        HostDead
+        HostDead,
+        StatsModified,
+        CharacterModified,
+        CharacterAssigned,
+        PlotModified
     }
 }

@@ -1,5 +1,5 @@
 import BackgroundTimer from 'react-native-background-timer';
-import Constants from '../constants';
+import Constants from '../../constants';
 
 function sleep(ms) {
   return new Promise(resolve => BackgroundTimer.setTimeout(resolve, ms));

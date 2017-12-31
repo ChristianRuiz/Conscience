@@ -392,9 +392,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\audio\notifications\callhost.mp3" />
+    <Content Include="Content\audio\notifications\characterassigned.mp3" />
+    <Content Include="Content\audio\notifications\charactermodified.mp3" />
     <Content Include="Content\audio\notifications\lowbattery.mp3" />
     <Content Include="Content\audio\notifications\noreset.mp3" />
+    <Content Include="Content\audio\notifications\plotmodified.mp3" />
     <Content Include="Content\audio\notifications\reset.mp3" />
+    <Content Include="Content\audio\notifications\statsmodified.mp3" />
     <Content Include="Content\audio\notifications\systemfailure.mp3" />
     <Content Include="Content\images\background\bottom-left-logo.png" />
     <Content Include="Content\images\background\bottom-left.png" />

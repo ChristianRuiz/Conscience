@@ -17,7 +17,8 @@ namespace Conscience.Application.Graph.Entities.Characters
         private readonly PlotRepository _plotRepo;
         private readonly LogEntryService _logService;
 
-        public CharacterMutation(CharacterRepository characterRepo, PlotRepository plotRepo, LogEntryService logService)
+        public CharacterMutation(CharacterRepository characterRepo, PlotRepository plotRepo, LogEntryService logService,
+            NotificationsService notificationsService, EmployeeRepository employeeRepo, IUsersIdentityService usersService)
         {
             Name = "CharacterMutation";
 
@@ -42,8 +43,12 @@ namespace Conscience.Application.Graph.Entities.Characters
                     else
                     {
                         var dbCharacter = _characterRepo.GetById(character.Id);
-                        _logService.Log(GetHost(dbCharacter), $"Modified character with name '{character.Name}'");
+                        var host = GetHost(dbCharacter);
+                        _logService.Log(host, $"Modified character with name '{character.Name}'");
                         character = ModifyCharacter(character);
+
+                        var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+                        notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified your character.", NotificationTypes.CharacterModified, host: host, employee: employee);
                     }
                     return character;
                 })

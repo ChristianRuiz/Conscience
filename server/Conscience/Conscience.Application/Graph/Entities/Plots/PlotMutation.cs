@@ -13,7 +13,8 @@ namespace Conscience.Application.Graph.Entities.Plots
 {
     public class PlotMutation : ConscienceMutationBase
     {
-        public PlotMutation(PlotRepository plotRepo, CharacterRepository characterRepo, LogEntryService logService)
+        public PlotMutation(PlotRepository plotRepo, CharacterRepository characterRepo, LogEntryService logService,
+             NotificationsService notificationsService, IUsersIdentityService usersService, EmployeeRepository employeeRepo)
         {
             Name = "PlotMutation";
 
@@ -29,11 +30,15 @@ namespace Conscience.Application.Graph.Entities.Plots
                         plot.Id = dbPlot.Id;
                         plot = ModifyPlot(logService, plotRepo, characterRepo, plot);
                         logService.Log($"Added a new plot with name '{plot.Name}'");
+
+                        NotifyPlotModification(notificationsService, usersService, employeeRepo, plot);
                     }
                     else
                     {
                         logService.Log($"Edited a plot with name '{plot.Name}'");
                         plot = ModifyPlot(logService, plotRepo, characterRepo, plot);
+
+                        NotifyPlotModification(notificationsService, usersService, employeeRepo, plot);
                     }
                     return plot;
                 })
@@ -49,9 +54,22 @@ namespace Conscience.Application.Graph.Entities.Plots
                     var plot = plotRepo.GetById(id);
                     logService.Log($"Deleted a plot with name '{plot.Name}'");
                     plotRepo.Delete(plot);
+
+                    NotifyPlotModification(notificationsService, usersService, employeeRepo, plot);
                     return id;
                 })
                 .AddPlotEditorPermissions();
+        }
+
+        private static void NotifyPlotModification(NotificationsService notificationsService, IUsersIdentityService usersService, EmployeeRepository employeeRepo, Plot plot)
+        {
+            var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+            foreach (var character in plot.Characters.Where(c => c.Character.CurrentHost != null))
+            {
+                var host = character.Character.CurrentHost.Host;
+                notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified the plot {plot.Name}.",
+                    NotificationTypes.PlotModified, host: host, employee: employee);
+            }
         }
 
         private Plot ModifyPlot(LogEntryService logService, PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)

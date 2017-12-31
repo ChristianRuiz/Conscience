@@ -37,6 +37,12 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     }
 
                     host = hostRepo.ModifyStats(hostId, stats);
+
+                    var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+
+                    notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified your stats.",
+                        NotificationTypes.StatsModified, host: host, employee: employee);
+
                     return host;
                     })
                 .AddBehaviourAndPlotPermissions();
@@ -51,10 +57,14 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     var characterId = context.GetArgument<int>("characterId");
                     var host = hostRepo.GetAll().First(h => h.Id == hostId);
                     var character = characterRepo.GetAll().First(h => h.Id == characterId);
-
                     
                     logService.Log(host, $"Assign character '{character.Name}' to host '{host.Account.UserName}'");
-                    
+
+                    var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+
+                    notificationsService.Notify(host.Account.Id, $"{employee.Name} has assigned you a new character '{character.Name}'.",
+                        NotificationTypes.CharacterAssigned, host: host, employee: employee);
+
                     host = hostRepo.AssignHost(host, character);
                     return host;
                 })
@@ -117,7 +127,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
 
                     memory.Locked = false;
 
-                    notificationsService.Notify(host.Account.Id, "Core memory unlocked", NotificationTypes.CoreMemory, host: host, employee: employee, audio: memory.Audio);
+                    notificationsService.Notify(host.Account.Id, $"Core memory {memoryId} unlocked", NotificationTypes.CoreMemory, host: host, employee: employee, audio: memory.Audio);
                     
                     return host;
                 })

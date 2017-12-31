@@ -24,7 +24,7 @@ namespace Conscience.Application.Graph.Entities.Notifications
                     ),
                 resolve: context =>
                 {
-                    var notifications = notificationsRepo.GetByAccount(userService.CurrentUser.Id).OrderByDescending(l => l.Id);
+                    var notifications = notificationsRepo.GetByAccount(userService.CurrentUser.Id).OrderByDescending(l => l.TimeStamp);
 
                     var unprocessedNotifications = notifications.Count(n => !n.Processed);
 
@@ -42,7 +42,7 @@ namespace Conscience.Application.Graph.Entities.Notifications
                     if (context.Arguments["first"] != null)
                         first = context.GetArgument<int>("first");
 
-                    if (unprocessedNotifications > 0 && (!first.HasValue || first.Value < unprocessedNotifications))
+                    if (unprocessedNotifications > 0 && (first.HasValue && first.Value < unprocessedNotifications))
                         first = unprocessedNotifications;
 
                     return notifications.ApplyPagination(context, first: first);

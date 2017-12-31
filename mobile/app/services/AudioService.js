@@ -80,11 +80,15 @@ class AudioService {
       const localFileName = fileName.split('/').reverse()[0];
 
       const filePath = `${RNFS.DocumentDirectoryPath}/${localFileName}`;
+      let fileUrl = fileName;
+      if (fileUrl.toLowerCase().indexOf('/content') < 0) {
+        fileUrl = `/content/audio/${fileName}`;
+      }
 
       RNFS.exists(filePath).then((exists) => {
         if (!exists) {
           RNFS.downloadFile({
-            fromUrl: `${Constants.SERVER_URL}/content/audio/${fileName}`,
+            fromUrl: `${Constants.SERVER_URL}${fileUrl}`,
             toFile: filePath
           }).promise.then((r) => {
             console.log('file downloaded');
