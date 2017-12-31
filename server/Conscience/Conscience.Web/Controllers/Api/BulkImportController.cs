@@ -291,11 +291,11 @@ namespace Conscience.Web.Controllers.Api
 
                                     if (host != null)
                                     {
-                                        host.CoreMemory1 = GetCoreMemory(row, 66);
+                                        host.CoreMemory1 = GetCoreMemory(row, 66, loginName, 1, result);
 
-                                        host.CoreMemory2 = GetCoreMemory(row, 67);
+                                        host.CoreMemory2 = GetCoreMemory(row, 67, loginName, 2, result);
 
-                                        host.CoreMemory3 = GetCoreMemory(row, 68);
+                                        host.CoreMemory3 = GetCoreMemory(row, 68, loginName, 3, result);
                                     }
 
                                     context.SaveChanges();
@@ -382,7 +382,7 @@ namespace Conscience.Web.Controllers.Api
             return response;
         }
 
-        private static CoreMemory GetCoreMemory(IRow row, int coreMemoryLine)
+        private static CoreMemory GetCoreMemory(IRow row, int coreMemoryLine, string hostName, int coreMemoryId, BulkImportResult result)
         {
             if (row.GetCell(coreMemoryLine) == null)
                 return null;
@@ -397,10 +397,35 @@ namespace Conscience.Web.Controllers.Api
                 Locked = true,
                 Audio = new Audio
                 {
+                    Path = GetCoreMemoryFile(hostName, coreMemoryId, result),
                     Transcription = transcription
                 }
             };
             return memory;
+        }
+
+        private static string GetCoreMemoryFile(string hostName, int coreMemoryId, BulkImportResult result)
+        {
+            var coreMemoriesFolderPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/audio/cm");
+            var hostFolders = Directory.GetDirectories(coreMemoriesFolderPath);
+            var folderHostCode = hostName.Split('-').Last().ToLowerInvariant();
+            var hostFolder = hostFolders.FirstOrDefault(f => f.Split('\\').Last().Split('.').First().ToLowerInvariant() == folderHostCode);
+            if (string.IsNullOrEmpty(hostFolder))
+            {
+                result.Errors.Add(new BulkImportError { Error = "Unable to find core memory folder for host: " + hostName });
+                return null;
+            }
+            var memoryFiles = Directory.GetFiles(hostFolder);
+            var memoryPath = memoryFiles.FirstOrDefault(m => m.ToLowerInvariant().EndsWith(coreMemoryId.ToString() + ".mp3"));
+            if (string.IsNullOrEmpty(memoryPath))
+            {
+                result.Errors.Add(new BulkImportError { Error = "Unable to find core memory file " + coreMemoryId + " for host: " + hostName });
+                return null;
+            }
+
+            var memoryUrl = memoryPath.Substring(memoryPath.IndexOf("\\Content")).Replace('\\', '/');
+
+            return memoryUrl;
         }
 
         private static void AddRelation(ConscienceContext context, BulkImportResult result, Dictionary<int, Character> characters, IRow row, Character character, string hostName, int relationColumn)

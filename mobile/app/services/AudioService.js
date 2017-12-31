@@ -13,24 +13,12 @@ class AudioService {
   constructor() {
     this._playSound = this._playSound.bind(this);
     this._playSoundFromFile = this._playSoundFromFile.bind(this);
-    this._soundLoop = this._soundLoop.bind(this);
     this.playSound = this.playSound.bind(this);
 
     Sound.setCategory('PlayAndRecord');
-
-    this._soundLoop();
   }
 
   audioQueue = [];
-
-  _soundLoop() {
-    // Playing an empty sound in background to avoid the OS to release our App
-    this._playSound('empty.mp3', true).catch(() => {
-      BackgroundTimer.setTimeout(() => {
-        this._soundLoop();
-      }, 1000);
-    });
-  }
 
   _playSoundFromFile(filePath, loop) {
     return new Promise((resolve, reject) => {
@@ -77,7 +65,14 @@ class AudioService {
     return new Promise((resolve, reject) => {
       const self = this;
 
-      const localFileName = fileName.split('/').reverse()[0];
+      let localFileName = fileName.split('/').reverse()[0];
+      const extension = localFileName.split('.').reverse()[0];
+      let name = localFileName.substring(0, localFileName.length - (extension.length + 1));
+
+      name = name.replace(new RegExp(' ', 'g'), '');
+      name = name.replace(new RegExp('\\.', 'g'), '');
+
+      localFileName = `${name}.${extension}`;
 
       const filePath = `${RNFS.DocumentDirectoryPath}/${localFileName}`;
       let fileUrl = fileName;
@@ -104,16 +99,18 @@ class AudioService {
   }
 
   playSound(fileName) {
+    this.playing = true;
     return this._playSound(fileName).then(() => {
+      this.playing = false;
       if (this.audioQueue.length > 0) {
         const audio = this.audioQueue.shift();
-        this.playSound(audio);
+        this.playSound(audio.fileName).then(audio.resolve).catch(audio.reject);
       }
     });
   }
 
   queueSound(fileName) {
-    if (this.audioQueue.length === 0) {
+    if (!this.playing && this.audioQueue.length === 0) {
       return this.playSound(fileName);
     }
 

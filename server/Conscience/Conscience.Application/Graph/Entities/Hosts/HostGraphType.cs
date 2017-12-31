@@ -23,8 +23,8 @@ namespace Conscience.Application.Graph.Entities.Hosts
             Field<ListGraphType<CharacterInHostGraphType>>("characters", resolve: context => context.Source.Characters);
             Field<ListGraphType<StatsGraphType>>("stats", resolve: context => context.Source.Stats);
             Field<CoreMemoryGraphType>("coreMemory1", resolve: context => context.Source.CoreMemory1);
-            Field<CoreMemoryGraphType>("coreMemory2", resolve: context => context.Source.CoreMemory1);
-            Field<CoreMemoryGraphType>("coreMemory3", resolve: context => context.Source.CoreMemory1);
+            Field<CoreMemoryGraphType>("coreMemory2", resolve: context => context.Source.CoreMemory2);
+            Field<CoreMemoryGraphType>("coreMemory3", resolve: context => context.Source.CoreMemory3);
             Field<HostStatusEnumeration>("status", resolve: context => context.Source.Status);
         }
     }

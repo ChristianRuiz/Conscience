@@ -8,7 +8,7 @@ namespace Conscience.Domain
 {
     public class CoreMemory : IdentityEntity
     {
-        public Audio Audio
+        public virtual Audio Audio
         {
             get;
             set;

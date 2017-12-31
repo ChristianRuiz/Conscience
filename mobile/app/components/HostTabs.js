@@ -9,11 +9,10 @@ import { withApollo } from 'react-apollo';
 import HostDetails from './host/HostDetails';
 import PlotEvents from './host/PlotEvents';
 import Stats from './host/Stats';
-import Notifications from './host/Notifications';
+import Notifications from './notifications/Notifications';
 import HostButtons from './host/HostButtons';
 // import Debugger from './Debugger';
 
-import AudioService from '../services/AudioService';
 import NotificationsService from '../services/NotificationsService';
 
 type Route = {
@@ -155,7 +154,6 @@ class HostTabs extends React.Component {
 
   componentDidMount() {
     if (!global.audioService && !global.notificationsService) {
-      global.audioService = new AudioService();
       global.notificationsService = new NotificationsService(this.props.client,
             navigator, global.audioService);
     }

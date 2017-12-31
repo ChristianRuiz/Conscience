@@ -18,6 +18,7 @@ import LoginPage from './pages/LoginPage';
 import HostPage from './pages/HostPage';
 
 import reportException from './services/ReportException';
+import AudioService from './services/AudioService';
 
 import commonStyles from './styles/common';
 
@@ -34,6 +35,7 @@ async function wrapGlobalHandler(error, isFatal) {
 
 ErrorUtils.setGlobalHandler(wrapGlobalHandler);
 
+global.audioService = new AudioService();
 
 const createNetwork = Platform.OS === 'ios' ? createNetworkInterface : createBatchingNetworkInterface;
 

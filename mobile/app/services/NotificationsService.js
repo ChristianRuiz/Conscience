@@ -50,7 +50,7 @@ class NotificationsService {
 
   tick() {
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
-    this.audioService.playSound('empty.mp3');
+    //this.audioService.queueSound('empty.mp3');
 
     if (Constants.SERVER_URL.indexOf('azurewebsites') > 0) {
       return;
