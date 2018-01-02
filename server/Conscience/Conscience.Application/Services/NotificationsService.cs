@@ -118,6 +118,15 @@ namespace Conscience.Application.Services
                 case NotificationTypes.PlotModified:
                     audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/plotmodified.mp3" };
                     break;
+                case NotificationTypes.HostHurt:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/hosthurt.mp3" };
+                    break;
+                case NotificationTypes.HostDead:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/hostdead.mp3" };
+                    break;
+                case NotificationTypes.Panic:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/panic.mp3" };
+                    break;
             }
 
             return audio;
