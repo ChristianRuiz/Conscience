@@ -3,12 +3,15 @@ import React from 'react';
 import {
   View,
   ScrollView,
-  StyleSheet,
-  Slider
+  StyleSheet
 } from 'react-native';
+import { Redirect } from 'react-router-native';
+
+import * as Keychain from 'react-native-keychain';
 
 import Background from '../common/Background';
 import Text from '../common/Text';
+import Button from '../common/Button';
 import HostButton from './HostButton';
 import commonStyles from '../../styles/common';
 
@@ -55,15 +58,30 @@ class HostButtons extends React.Component {
     super(props);
 
     this.state = {
-      stateValue: 2
+      stateValue: 2,
+      logout: false
     };
+
+    this._stateChanged = this._stateChanged.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   _stateChanged(value) {
     this.setState({ stateValue: value });
+    // TODO: Call server to update state
+  }
+
+  logout() {
+    Keychain
+    .resetGenericPassword()
+    .then(() => this.setState({ logout: true }));
   }
 
   render() {
+    if (this.state.logout) {
+      return <Redirect to="/" />;
+    }
+
     const underlayColor = '#2980B9';
 
     let status = 'OK';
@@ -115,6 +133,7 @@ class HostButtons extends React.Component {
         </HostButton>
 
         <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')}</Text>
+        <Button title="Logout" onPress={() => this.logout()} />
       </View>
     </ScrollView>);
   }

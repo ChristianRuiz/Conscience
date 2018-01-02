@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { Redirect } from 'react-router-native';
 import Spinner from 'react-native-loading-spinner-overlay';
+import * as Keychain from 'react-native-keychain';
 
 import TextInput from '../common/TextInput';
 import Text from '../common/Text';
@@ -48,8 +49,21 @@ class Login extends React.Component {
       userName: '', // TODO: This values are just for development
       password: '123456',
       hasError: false,
-      loading: false
+      loading: true
     };
+
+    Keychain
+      .getGenericPassword()
+      .then((credentials) => {
+        if (credentials) {
+          this.setState({ userName: credentials.username, password: credentials.password });
+          this._doLogin();
+        } else {
+          this.setState({ loading: false, currentUser: false });
+        }
+      }).catch(() => {
+        this.setState({ loading: false, currentUser: false });
+      });
   }
 
   componentDidMount() {
@@ -77,6 +91,7 @@ class Login extends React.Component {
       variables: { userName: this.state.userName, password: this.state.password }
     })
     .then((result) => {
+      Keychain.setGenericPassword(this.state.userName, this.state.password);
       this.setState({ currentUser: result.data.accounts.login, loading: false });
     }).catch((error) => {
       console.log(`Unable to login ${JSON.stringify(error)}`);
