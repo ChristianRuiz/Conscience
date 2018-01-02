@@ -14,6 +14,7 @@ class AudioService {
     this._playSound = this._playSound.bind(this);
     this._playSoundFromFile = this._playSoundFromFile.bind(this);
     this.playSound = this.playSound.bind(this);
+    this.stopPlaying = this.stopPlaying.bind(this);
 
     Sound.setCategory('PlayAndRecord');
   }
@@ -24,11 +25,7 @@ class AudioService {
     return new Promise((resolve, reject) => {
       // console.log(`loading audio: ${filePath}`);
       if (!loop && this.currentAudio) {
-        try {
-          this.currentAudio.stop();
-          this.currentAudio.release();
-        } catch (e) {
-        }
+        this.stopPlaying();
       }
 
       const sound = new Sound(filePath, '', (error) => {
@@ -99,6 +96,8 @@ class AudioService {
   }
 
   playSound(fileName) {
+    this.stopPlaying();
+
     this.playing = true;
     return this._playSound(fileName).then(() => {
       this.playing = false;
@@ -121,6 +120,16 @@ class AudioService {
         reject
       });
     });
+  }
+
+  stopPlaying() {
+    try {
+      if (this.currentAudio) {
+        this.currentAudio.stop();
+        this.currentAudio.release();
+      }
+    } catch (e) {
+    }
   }
 }
 

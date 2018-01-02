@@ -407,9 +407,10 @@ namespace Conscience.Web.Controllers.Api
         private static string GetCoreMemoryFile(string hostName, int coreMemoryId, BulkImportResult result)
         {
             var coreMemoriesFolderPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Content/audio/cm");
+            
             var hostFolders = Directory.GetDirectories(coreMemoriesFolderPath);
             var folderHostCode = hostName.Split('-').Last().ToLowerInvariant();
-            var hostFolder = hostFolders.FirstOrDefault(f => f.Split('\\').Last().Split('.').First().ToLowerInvariant() == folderHostCode);
+            var hostFolder = hostFolders.FirstOrDefault(f => f.Split('\\').Last().ToLowerInvariant() == folderHostCode);
             if (string.IsNullOrEmpty(hostFolder))
             {
                 result.Errors.Add(new BulkImportError { Error = "Unable to find core memory folder for host: " + hostName });
