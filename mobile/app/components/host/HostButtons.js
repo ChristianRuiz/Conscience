@@ -3,7 +3,8 @@ import React from 'react';
 import {
   View,
   ScrollView,
-  StyleSheet
+  StyleSheet,
+  Alert
 } from 'react-native';
 import { Redirect } from 'react-router-native';
 
@@ -16,6 +17,8 @@ import Button from '../common/Button';
 import HostButton from './HostButton';
 import commonStyles from '../../styles/common';
 
+import PanicButton from './PanicButton';
+
 import Constants from '../../constants';
 import query from '../../queries/HostDetailQuery';
 
@@ -23,15 +26,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 18
   },
-  textPanic: {
-    fontSize: 22
-  },
   button: {
     marginBottom: 20,
     width: 80
-  },
-  panicButton: {
-    height: 160
   },
   buttonsContainer: {
     justifyContent: 'space-between'
@@ -129,13 +126,8 @@ class HostButtons extends React.Component {
             </HostButton>
           </View>
         </View>
-        <HostButton
-          style={styles.panicButton}
-          onPress={() => alert('Sorry, not implemented yet. Look for an organizer.')}
-          underlayColor={underlayColor}
-        >
-          <Text style={styles.textPanic} underlayColor={underlayColor}>Panic</Text>
-        </HostButton>
+
+        <PanicButton />
 
         <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')}</Text>
         <Button title="Logout" onPress={() => this.logout()} />

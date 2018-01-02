@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
 {
     public class AccountMutation : ObjectGraphType<object>
     {
-        public AccountMutation(IUsersIdentityService accountService, AccountRepository accountRepo)
+        public AccountMutation(IUsersIdentityService accountService, AccountRepository accountRepo, NotificationsService notificationsService, HostRepository hostRepo)
         {
             Name = "AccountMutation";
             
@@ -55,6 +55,20 @@ namespace Conscience.Application.Graph.Entities.Accounts
 
             Field<AccountGraphType>("logout",
                 resolve: context => { accountService.LogoffAsync(); return null; }).RequiresMembership();
+
+            Field<AccountGraphType>("panic",
+                resolve: context => 
+                {
+                    var account = accountService.CurrentUser;
+                    if (account.Host != null && account.Host.CurrentCharacter != null)
+                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'. Host '{account.Host.CurrentCharacter.Character.Name}", NotificationTypes.Panic);
+                    else if (account.Employee != null)
+                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'. Employee '{account.Employee.Name}'", NotificationTypes.Panic);
+                    else
+                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'.'", NotificationTypes.Panic);
+
+                    return null;
+                }).RequiresMembership();
         }
     }
 }
