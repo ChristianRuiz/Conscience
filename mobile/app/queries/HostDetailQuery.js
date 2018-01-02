@@ -13,6 +13,7 @@ const query = gql`{
       }
       host {
         id
+        status
         currentCharacter {
           id
           assignedOn

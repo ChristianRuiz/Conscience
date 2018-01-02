@@ -49,7 +49,7 @@ namespace Conscience.Application.Services
             if (type == NotificationTypes.Reset)
                 Reset(accountId);
 
-            var notification = _notificationsRepo.GetAll().OrderByDescending(n => n.Id).Take(2).FirstOrDefault(n => n.Description == text && n.NotificationType == type);
+            var notification = _notificationsRepo.GetAll().Where(n => n.OwnerId == accountId).OrderByDescending(n => n.Id).Take(2).FirstOrDefault(n => n.Description == text && n.NotificationType == type);
 
             if (notification == null)
             {

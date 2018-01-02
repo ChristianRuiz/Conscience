@@ -142,9 +142,11 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 resolve: context => {
                     var status = context.GetArgument<HostStatus>("status");
 
-                    var host = hostRepo.ChangeStatus(usersService.CurrentUser.Host.Id, status);
+                    var host = hostRepo.GetAll().First(h => h.Id == usersService.CurrentUser.Host.Id);
+                    var currentStatus = host.Status;
+                    host = hostRepo.ChangeStatus(usersService.CurrentUser.Host.Id, status);
 
-                    if (status == HostStatus.Hurt)
+                    if (currentStatus == HostStatus.Ok && status == HostStatus.Hurt)
                         notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' hurt", NotificationTypes.HostHurt);
                     else if (status == HostStatus.Dead)
                         notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' dead", NotificationTypes.HostDead);
