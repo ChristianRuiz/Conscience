@@ -15,7 +15,7 @@ import { COLOR, ThemeProvider } from 'react-native-material-ui';
 import Constants from './constants';
 
 import LoginPage from './pages/LoginPage';
-import HostPage from './pages/HostPage';
+import TabsPage from './pages/TabsPage';
 
 import reportException from './services/ReportException';
 import AudioService from './services/AudioService';
@@ -102,7 +102,7 @@ class Root extends React.Component {
             <View style={commonStyles.mainContainer}>
               <Switch>
                 <Route exact path="/" component={LoginPage} />
-                <Route path="/tabs" component={HostPage} />
+                <Route path="/tabs" component={TabsPage} />
               </Switch>
             </View>
           </NativeRouter>

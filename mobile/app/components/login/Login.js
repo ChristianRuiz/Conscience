@@ -1,9 +1,8 @@
 import React from 'react';
-import { graphql, gql, withApollo } from 'react-apollo';
+import { graphql, gql } from 'react-apollo';
 import {
   StyleSheet,
-  View,
-  Platform
+  View
 } from 'react-native';
 import { Redirect } from 'react-router-native';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -15,8 +14,6 @@ import Button from '../common/Button';
 import Background from '../common/Background';
 import commonStyles from '../../styles/common';
 import Constants from '../../constants';
-
-import query from '../../queries/HostDetailQuery';
 
 const styles = StyleSheet.create({
   text: {
@@ -125,7 +122,6 @@ class Login extends React.Component {
 }
 
 Login.propTypes = {
-  client: React.PropTypes.object.isRequired,
   mutate: React.PropTypes.func.isRequired
 };
 
@@ -144,4 +140,4 @@ mutation Login($userName: String!, $password: String!) {
 }
 `;
 
-export default withApollo(graphql(mutation)(Login));
+export default graphql(mutation)(Login);

@@ -1,17 +1,18 @@
 import React from 'react';
-import { Animated, View, Text, StyleSheet } from 'react-native';
+import { Animated, View, StyleSheet, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
+import Spinner from 'react-native-loading-spinner-overlay';
 
-import { withApollo } from 'react-apollo';
+import { withApollo, graphql } from 'react-apollo';
 
-import HostDetails from './host/HostDetails';
-import PlotEvents from './host/PlotEvents';
-import Stats from './host/Stats';
-import Notifications from './notifications/Notifications';
-import Buttons from './buttons/Buttons';
+import HostTabs from './HostTabs';
 
-import NotificationsService from '../services/NotificationsService';
+import NotificationsService from '../../services/NotificationsService';
+import Constants from '../../constants';
+
+import query from '../../queries/HostDetailQuery';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   },
   badge: {
     marginTop: 4,
-    marginRight: 32,
+    marginRight: 16,
     backgroundColor: '#f44336',
     height: 16,
     width: 16,
@@ -52,24 +53,23 @@ const styles = StyleSheet.create({
   }
 });
 
-class HostTabs extends React.Component {
+class Tabs extends React.Component {
   static title = 'Conscience';
   static appbarElevation = 4;
 
   state = {
     index: 0,
-    routes: [
-      { key: '1', title: 'Me', icon: 'ios-contact' },
-      { key: '2', title: 'Stats', icon: 'ios-body' },
-      { key: '3', title: 'Events', icon: 'ios-calendar' },
-      { key: '4', title: 'Nots', icon: 'ios-notifications' },
-      { key: '5', title: 'Status', icon: 'ios-warning' }
-    ]
+    notificationsTab: '0',
+    notificationsCount: 0,
+    routes: [],
+    renderScene: () => null
   };
 
   _handleChangeTab = (index) => {
     this.setState({
-      index
+      index,
+      notificationsCount: (index + 1).toString() === this.state.notificationsTab ? 0
+                                                : this.state.notificationsCount
     });
   };
 
@@ -90,13 +90,13 @@ class HostTabs extends React.Component {
   _renderIcon = ({ route }) => <Icon name={route.icon} size={24} style={styles.icon} />;
 
   _renderBadge = ({ route }) => {
-    // if (route.key === '4') {
-    //   return (
-    //     <View style={styles.badge}>
-    //       <Text style={styles.count}>1</Text>
-    //     </View>
-    //   );
-    // }
+    if (route.key === this.state.notificationsTab && this.state.notificationsCount) {
+      return (
+        <View style={styles.badge}>
+          <Text style={styles.count}>{this.state.notificationsCount}</Text>
+        </View>
+      );
+    }
     return null;
   };
 
@@ -111,53 +111,46 @@ class HostTabs extends React.Component {
     />
     );
 
-  _renderScene = ({ route }) => {
-    switch (route.key) {
-      case '1':
-        return (
-          <HostDetails />
-        );
-      case '2':
-        return (
-          <Stats />
-        );
-      case '3':
-        return (
-          <PlotEvents />
-        );
-      case '4':
-        return (
-          <Notifications />
-        );
-      case '5':
-        return (
-          <Buttons />
-        );
-      default:
-        return null;
+  componentWillReceiveProps(props) {
+    if (!props.data.loading) {
+      if (this.state.routes.length === 0) {
+        if (props.data.accounts.current.employee) {
+
+        } else {
+          this.setState({ routes: HostTabs.routes, renderScene: HostTabs.renderScene, notificationsTab: HostTabs.notificationsTab });
+        }
+      }
+      this.setState({
+        notificationsCount: props.data.notifications.current.filter(n => !n.read).length + this.state.notificationsCount
+      });
     }
-  };
+  }
 
   componentDidMount() {
-    if (!global.audioService && !global.notificationsService) {
+    if (!global.notificationsService && Constants.SERVER_URL.indexOf('azurewebsites') === -1) {
       global.notificationsService = new NotificationsService(this.props.client,
             navigator, global.audioService);
     }
   }
 
   render() {
+    if (this.props.data.loading) {
+      return <Spinner visible />;
+    }
+
     return (<TabViewAnimated
       style={[styles.container, this.props.style]}
       navigationState={this.state}
-      renderScene={this._renderScene}
+      renderScene={this.state.renderScene}
       renderFooter={this._renderFooter}
       onRequestChangeTab={this._handleChangeTab}
     />);
   }
 }
 
-HostTabs.propTypes = {
-  client: React.PropTypes.object.isRequired
+Tabs.propTypes = {
+  client: React.PropTypes.object.isRequired,
+  data: React.PropTypes.object.isRequired
 };
 
-export default withApollo(HostTabs);
+export default withApollo(graphql(query)(Tabs));

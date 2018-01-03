@@ -50,6 +50,21 @@ class Notifications extends React.Component {
     this.stopAudio = this.stopAudio.bind(this);
   }
 
+  componentWillReceiveProps(props) {
+    const unreadNotifications = props.data.notifications.current.filter(n => !n.read).reverse();
+    unreadNotifications.forEach((notification) => {
+      if (notification.audio) {
+        global.audioService.queueSound(notification.audio.path);
+      }
+    });
+
+    if (unreadNotifications.length) {
+      this.props.mutate({
+        variables: { ids: unreadNotifications.map(n => n.id) }
+      });
+    }
+  }
+
   getNotificationTemplate(notification) {
     if (notification.audio && notification.audio.transcription) {
       return (<View key={notification.id}>
@@ -86,19 +101,6 @@ class Notifications extends React.Component {
     }
 
     const notifications = this.props.data.notifications.current;
-
-    const unreadNotifications = notifications.filter(n => !n.read).reverse();
-    unreadNotifications.forEach((notification) => {
-      if (notification.audio) {
-        global.audioService.queueSound(notification.audio.path);
-      }
-    });
-
-    if (unreadNotifications.length) {
-      this.props.mutate({
-        variables: { ids: unreadNotifications.map(n => n.id) }
-      });
-    }
 
     return (<ScrollView>
       <Background />
