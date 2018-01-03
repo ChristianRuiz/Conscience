@@ -2,7 +2,6 @@ import React from 'react';
 import { Animated, View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
-import type { NavigationState } from 'react-native-tab-view/types';
 
 import { withApollo } from 'react-apollo';
 
@@ -10,18 +9,9 @@ import HostDetails from './host/HostDetails';
 import PlotEvents from './host/PlotEvents';
 import Stats from './host/Stats';
 import Notifications from './notifications/Notifications';
-import HostButtons from './host/HostButtons';
-// import Debugger from './Debugger';
+import Buttons from './buttons/Buttons';
 
 import NotificationsService from '../services/NotificationsService';
-
-type Route = {
-  key: string,
-  title: string,
-  icon: string,
-};
-
-type State = NavigationState<Route>;
 
 const styles = StyleSheet.create({
   container: {
@@ -66,7 +56,7 @@ class HostTabs extends React.Component {
   static title = 'Conscience';
   static appbarElevation = 4;
 
-  state: State = {
+  state = {
     index: 0,
     routes: [
       { key: '1', title: 'Me', icon: 'ios-contact' },
@@ -141,12 +131,8 @@ class HostTabs extends React.Component {
         );
       case '5':
         return (
-          <HostButtons />
+          <Buttons />
         );
-      // case '5':
-      //   return (
-      //     <Debugger audioService={audioService} />
-      //   );
       default:
         return null;
     }

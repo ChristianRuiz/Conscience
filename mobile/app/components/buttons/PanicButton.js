@@ -1,24 +1,13 @@
 import React from 'react';
 
 import {
-  View,
-  ScrollView,
   StyleSheet,
   Alert
 } from 'react-native';
-import { Redirect } from 'react-router-native';
 
-import { graphql, compose, gql } from 'react-apollo';
-import * as Keychain from 'react-native-keychain';
-
-import Background from '../common/Background';
+import { graphql, gql } from 'react-apollo';
 import Text from '../common/Text';
-import Button from '../common/Button';
-import HostButton from './HostButton';
-import commonStyles from '../../styles/common';
-
-import Constants from '../../constants';
-import query from '../../queries/HostDetailQuery';
+import HostButton from './Button';
 
 const styles = StyleSheet.create({
   textPanic: {

@@ -7,8 +7,6 @@ import {
 
 import Text from '../common/Text';
 
-import commonStyles from '../../styles/common';
-
 const styles = StyleSheet.create({
   button: {
     width: 300,
@@ -20,7 +18,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class HostButton extends React.Component {
+class Button extends React.Component {
   render() {
     return (<TouchableHighlight {...this.props} style={[styles.button, this.props.style]} >
       <View>
@@ -30,4 +28,4 @@ class HostButton extends React.Component {
   }
 }
 
-export default HostButton;
+export default Button;

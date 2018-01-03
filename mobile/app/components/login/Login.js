@@ -59,24 +59,11 @@ class Login extends React.Component {
           this.setState({ userName: credentials.username, password: credentials.password });
           this._doLogin();
         } else {
-          this.setState({ loading: false, currentUser: false });
+          this.setState({ loading: false });
         }
       }).catch(() => {
-        this.setState({ loading: false, currentUser: false });
+        this.setState({ loading: false });
       });
-  }
-
-  componentDidMount() {
-    let data;
-
-    try {
-      data = this.props.client.readQuery({ query });
-    } catch (e) {
-      console.log('There is no current account on the cache');
-      return;
-    }
-
-    this.state.currentUser = data.accounts.current;
   }
 
   _doLogin() {
