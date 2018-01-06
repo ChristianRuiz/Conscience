@@ -7,6 +7,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { withApollo, graphql } from 'react-apollo';
 
 import HostTabs from './HostTabs';
+import EmployeeTabs from './EmployeeTabs';
 
 import NotificationsService from '../../services/NotificationsService';
 import Constants from '../../constants';
@@ -115,7 +116,7 @@ class Tabs extends React.Component {
     if (!props.data.loading) {
       if (this.state.routes.length === 0) {
         if (props.data.accounts.current.employee) {
-
+          this.setState({ routes: EmployeeTabs.routes, renderScene: EmployeeTabs.renderScene, notificationsTab: EmployeeTabs.notificationsTab });
         } else {
           this.setState({ routes: HostTabs.routes, renderScene: HostTabs.renderScene, notificationsTab: HostTabs.notificationsTab });
         }

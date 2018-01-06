@@ -109,7 +109,7 @@ class HostDetails extends React.Component {
           <Text style={styles.name} numberOfLines={1}>
             {host.currentCharacter.character.name}</Text> : <Text />}
 
-        <Text onPress={() => alert('Picture!')} style={styles.serialNumber} numberOfLines={1}>{account.userName}</Text>
+        <Text style={styles.serialNumber} numberOfLines={1}>{account.userName}</Text>
 
         {/* {account.device ?
           <Text style={styles.battery} numberOfLines={1}>

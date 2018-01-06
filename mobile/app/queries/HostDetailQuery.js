@@ -72,6 +72,11 @@ const query = gql`{
           value
         }
       }
+      employee {
+        id
+        name
+        department
+      }
     }
   }
   notifications {
