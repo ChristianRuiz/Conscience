@@ -20,6 +20,9 @@ namespace Conscience.Application.Graph.Entities.Plots
             Field(p => p.Hour);
             Field(p => p.Minute);
             Field<PlotGraphType>("plot", resolve: context => context.Source.Plot);
+            //TODO: Remove after a new version has been approved on the store
+            //Hack: Added to allow compatibility with the old versions published in the Apple Store
+            Field<ListGraphType<CharacterGraphType>>("characters", resolve: context => new List<Character>());
         }
     }
 }
