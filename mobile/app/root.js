@@ -55,7 +55,7 @@ Constants.addServerUrlInitializedAction(() => {
 if (Platform.OS === 'ios') {
   networkInterface.useAfter([{
     applyAfterware({ response }, next) {
-      if (response.headers) {
+      if (!global.cookieValue && response.headers) {
         const cookie = response.headers.get('Set-Cookie');
         if (cookie) {
           global.cookieValue = cookie.split(';')[0];

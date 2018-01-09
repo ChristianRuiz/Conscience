@@ -39,6 +39,10 @@
 	<string>Allows you to upload your own profile picture</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to upload your own profile picture</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>Allows other players to keep track of your location during the larp</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Allows other players to keep track of your location during the larp</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Entypo.ttf</string>

@@ -7,7 +7,7 @@ class Stats extends React.Component {
     const stats = {};
     const data = [stats];
 
-    this.props.stats.forEach((stat) => {
+    this.props.stats.filter(stat => stat.value != 10).forEach((stat) => {
       stats[stat.name] = stat.value;
     });
 
