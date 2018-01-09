@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-native';
 
 import { graphql } from 'react-apollo';
 import * as Keychain from 'react-native-keychain';
+import RNExitApp from 'react-native-exit-app';
 
 import Background from '../common/Background';
 import Text from '../common/Text';
@@ -63,9 +64,16 @@ class HostButtons extends React.Component {
   }
 
   logout() {
+    // Hack: Reseting the credentials two times to avoid Android chaching them.
     Keychain
     .resetGenericPassword()
-    .then(() => this.setState({ logout: true }));
+    .then(() => {
+      Keychain
+      .resetGenericPassword()
+      .then(() => {
+        RNExitApp.exitApp();
+      });
+    });
   }
 
   render() {

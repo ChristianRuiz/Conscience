@@ -51,6 +51,7 @@ const query = gql`query GetCharacters {
       currentHost {
         id
         host {
+          id
           account {
             id,
             userName

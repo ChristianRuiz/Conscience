@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using GraphQL;
+using Conscience.Web.Logger;
 
 namespace Conscience.Web.Controllers.Api
 {
@@ -51,6 +53,9 @@ namespace Conscience.Web.Controllers.Api
 
                 hasAnySuccess = hasAnySuccess || result.Errors == null || result.Errors?.Count == 0;
 
+                if (!hasAnySuccess)
+                    LogErrors(result.Errors);
+
                 json = _executer.GetJSON(result);
             }
             else
@@ -62,6 +67,9 @@ namespace Conscience.Web.Controllers.Api
                     var result = await _executer.ExecuteQuery(query, _usersService.CurrentUser);
 
                     hasAnySuccess = hasAnySuccess || result.Errors == null || result.Errors?.Count == 0;
+
+                    if (!hasAnySuccess)
+                        LogErrors(result.Errors);
 
                     jsons.Add(_executer.GetJSON(result));
                 }
@@ -77,6 +85,14 @@ namespace Conscience.Web.Controllers.Api
             response.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
             return response;
+        }
+
+        private void LogErrors(ExecutionErrors errors)
+        {
+            foreach (var error in errors)
+            {
+                Log4NetLogger.Current.WriteError("GraphQL Error", error);
+            }
         }
 
         private async Task<GraphQLQuery[]> TryGetQueriesFromRequestAsync(HttpRequestMessage request)

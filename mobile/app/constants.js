@@ -1,7 +1,7 @@
 class Constants {
   constructor() {
-    this._serverUrls = ['http://192.168.1.100', 'http://192.168.1.110', 'https://consciencelarp.azurewebsites.net'];
-    this.serverUrlInitialized = false; // new Date() < new Date(2018, 0, 25);
+    this._serverUrls = ['http://192.168.1.100', 'http://192.168.1.43', 'https://consciencelarp.azurewebsites.net'];
+    this.serverUrlInitialized = false; //new Date() < new Date(2018, 0, 25);
     this.serverUrlInitializedPendingActions = [];
 
     this.SERVER_URL = 'https://consciencelarp.azurewebsites.net';

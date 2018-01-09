@@ -106,6 +106,7 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory2);
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory3);
             modelBuilder.Entity<Host>().HasMany(h => h.Characters).WithOptional(c => c.Host);
+            modelBuilder.Entity<Host>().HasMany(h => h.HiddenHostAdministrators);
             modelBuilder.Entity<CoreMemory>().HasRequired(c => c.Audio);
             modelBuilder.Entity<CharacterInHost>().HasRequired(c => c.Character).WithMany(c => c.Hosts);
             modelBuilder.Entity<Character>().HasMany(c => c.Memories).WithRequired(m => m.Character).WillCascadeOnDelete();

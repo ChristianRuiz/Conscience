@@ -83,6 +83,7 @@ namespace Conscience.Domain
         CharacterModified,
         CharacterAssigned,
         PlotModified,
-        Panic
+        Panic,
+        Custom
     }
 }

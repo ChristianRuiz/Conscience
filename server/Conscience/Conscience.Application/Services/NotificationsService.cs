@@ -32,16 +32,20 @@ namespace Conscience.Application.Services
             return notification;
         }
 
-        public void Notify(RoleTypes role, string text, NotificationTypes type, Host host = null, Employee employee = null, Audio audio = null)
+        public List<Notification> Notify(RoleTypes role, string text, NotificationTypes type, Host host = null, Employee employee = null, Audio audio = null)
         {
+            List<Notification> notifications = new List<Notification>();
+
             var roleAccounts = _accountRepo.GetAll().Where(a => a.Roles.Any(r => r.Name == role.ToString())).Select(a => a.Id).ToList();
             foreach(var accountId in roleAccounts)
             {
-                Notify(accountId, text, type, host, employee, audio);
+                notifications.Add(Notify(accountId, text, type, host, employee, audio));
             }
+
+            return notifications;
         }
 
-        public void Notify(int accountId, string text, NotificationTypes type, Host host = null, Employee employee = null, Audio audio = null)
+        public Notification Notify(int accountId, string text, NotificationTypes type, Host host = null, Employee employee = null, Audio audio = null)
         {
             if (audio == null)
                 audio = GetDefaultAdioByType(type);
@@ -53,7 +57,7 @@ namespace Conscience.Application.Services
 
             if (notification == null)
             {
-                _notificationsRepo.Add(new Notification
+                notification = _notificationsRepo.Add(new Notification
                 {
                     Owner = _accountRepo.GetById(accountId),
                     Description = text,
@@ -70,8 +74,10 @@ namespace Conscience.Application.Services
                 notification.TimeStamp = DateTime.Now;
                 if (type != NotificationTypes.StatsModified)
                     notification.Read = false;
-                _notificationsRepo.Modify(notification);
+                notification = _notificationsRepo.Modify(notification);
             }
+
+            return notification;
         }
 
         private void Reset(int accountId)

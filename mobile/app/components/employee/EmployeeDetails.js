@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     lineHeight: 25
+  },
+  policy: {
+    marginTop: -60
   }
 });
 
@@ -72,6 +75,25 @@ class EmployeeDetails extends React.Component {
         <Text style={styles.name} numberOfLines={1}>{employee.name}</Text>
         <Text style={styles.department} numberOfLines={3}>{employee.department}</Text>
 
+        <Text style={styles.policy}>
+          { `Aleph Quality Policy
+
+Our Quality Policy reflects in our products and services, and is defined and driven by the following management principles and behaviors:
+
+• Each and every Aleph employee shall build a mutually profitable relationship with our customers, ensuring their total and absolute satisfaction, through the understanding of their needs and their desires.
+
+• We shall achieve our commitments for extreme quality, efficiency, and schedule
+
+• Everyone at Aleph shall enhance the systematic research and use of best preventive practices at all levels and ensure reliable risk management
+
+• We shall drive continuous improvement and innovation based on efficient business processes, well-defined measurements, best practices, and customer surveys
+
+• Aleph's staff shall push their competencies, creativity, empowerment, and accountability through appropriate development programs and show strong management involvement and commitment
+
+Aleph strives to be the best entertainment provider in the country, through continuous renovation and improvement of its products, to enhance the best possible experience for our beloved guest Their experience shall be so real, they will fully believe in Aleph alternate reality as their own.
+
+Aleph goal is 100% customer satisfaction 100% of the time.`}
+        </Text>
       </View>
     </ScrollView>);
   }

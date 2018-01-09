@@ -502,7 +502,7 @@ namespace Conscience.Web.Controllers.Api
                 context.SaveChanges();
             }
 
-            account.PictureUrl = "/Content/images/uploaded/" + account.Id + ".jpg?_ts=101";
+            account.PictureUrl = "/Content/images/uploaded/" + account.UserName + ".png?_ts=123";
             context.SaveChanges();
 
             await identityService.ChangePasswordAsync(account.Id, password);

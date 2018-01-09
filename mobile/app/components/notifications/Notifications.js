@@ -119,8 +119,11 @@ class Notifications extends React.Component {
         onRequestClose={() => global.audioService.stopPlaying()}
       >
         <ScrollView style={styles.modal}>
-          <Text style={styles.coreMemotyTitle}>/***** CORE MEMORY ACCESS ****/</Text>
-          <Text style={styles.coreMemotyTitle}>/* Do not share this with humans */</Text>
+          { this.props.data.accounts.current.host ? 
+          (<View>
+            <Text style={styles.coreMemotyTitle}>/***** CORE MEMORY ACCESS ****/</Text>
+            <Text style={styles.coreMemotyTitle}>/* Do not share this with humans */</Text>
+          </View>) : <View /> }
           <Text style={styles.transcriptText}>{this.state.audio ? this.state.audio.transcription.replace('\n', '\n\n') : ''}</Text>
           <Button title="Close" onPress={() => this.stopAudio()} />
         </ScrollView>
