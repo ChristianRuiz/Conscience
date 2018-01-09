@@ -69,7 +69,7 @@ class AudioService {
       name = name.replace(new RegExp(' ', 'g'), '');
       name = name.replace(new RegExp('\\.', 'g'), '');
 
-      localFileName = `${name}.${extension}`;
+      localFileName = `${global.userName}_${name}.${extension}`;
 
       const filePath = `${RNFS.DocumentDirectoryPath}/${localFileName}`;
       let fileUrl = fileName;

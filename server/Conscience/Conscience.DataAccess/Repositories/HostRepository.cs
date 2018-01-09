@@ -25,9 +25,8 @@ namespace Conscience.DataAccess.Repositories
         public IQueryable<Host> GetAllHosts(Account currentUser)
         {
             var hosts = GetAll().OfType<Host>();
-            if (!currentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()
-                                        || r.Name == RoleTypes.CompanyAdmin.ToString()))
-                hosts = hosts.Where(h => !h.Hidden);
+            if (!currentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
+                hosts = hosts.Where(h => !h.Hidden || (h.Hidden && h.HiddenHostAdministrators.Any(a => a.Account.Id == currentUser.Id)));
             return hosts;
         }
 

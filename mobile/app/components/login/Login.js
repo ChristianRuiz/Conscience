@@ -76,6 +76,7 @@ class Login extends React.Component {
     })
     .then((result) => {
       Keychain.setGenericPassword(this.state.userName, this.state.password);
+      global.userName = this.state.userName;
       this.setState({ currentUser: result.data.accounts.login, loading: false });
     }).catch((error) => {
       console.log(`Unable to login ${JSON.stringify(error)}`);

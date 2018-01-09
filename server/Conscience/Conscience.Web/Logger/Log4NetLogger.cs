@@ -11,7 +11,7 @@ namespace Conscience.Web.Logger
         private static Log4NetLogger _current;
         private static readonly ILog logger = LogManager.GetLogger("Conscience");
         
-        public Log4NetLogger()
+        static Log4NetLogger()
         {
             XmlConfigurator.Configure();
         }

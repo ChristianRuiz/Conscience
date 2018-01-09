@@ -48,20 +48,25 @@ namespace Conscience.Web.Controllers.Api
                     Log4NetLogger.Current.WriteDebug("File: " + file);
 
                     var accountId = 0;
+                    var loginName = string.Empty;
 
                     if (_usersService.CurrentUser != null)
                     {
                         Log4NetLogger.Current.WriteDebug("User: " + _usersService.CurrentUser);
-                        accountId = _usersService.CurrentUser.Id;
+                        var user = _usersService.CurrentUser;
+                        loginName = user.UserName;
+                        accountId = user.Id;
                     }
                     else
                     {
-                        accountId = int.Parse(httpRequest.QueryString["accountId"]);
+                        var user = _accountsRepo.GetById(int.Parse(httpRequest.QueryString["accountId"]));
+                        loginName = user.UserName;
+                        accountId = user.Id;
                     }
 
-                    Log4NetLogger.Current.WriteDebug("User id: " + accountId);
+                    Log4NetLogger.Current.WriteDebug("User id: " + loginName);
 
-                    var fileName = accountId + "." + file.FileName.Split('.').Last().ToLowerInvariant();
+                    var fileName = loginName + "." + file.FileName.Split('.').Last().ToLowerInvariant();
 
                     Log4NetLogger.Current.WriteDebug("File name: " + fileName);
 

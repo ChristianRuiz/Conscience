@@ -64,18 +64,21 @@ namespace Conscience.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false),
                         Name = c.String(),
+                        Host_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Host", t => t.Host_Id)
                 .ForeignKey("dbo.Account", t => t.Id)
-                .Index(t => t.Id);
+                .Index(t => t.Id)
+                .Index(t => t.Host_Id);
             
             CreateTable(
                 "dbo.Host",
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        Hidden = c.Boolean(nullable: false),
                         Status = c.Int(nullable: false),
+                        Hidden = c.Boolean(nullable: false),
                         CoreMemory1_Id = c.Int(),
                         CoreMemory2_Id = c.Int(),
                         CoreMemory3_Id = c.Int(),
@@ -311,6 +314,7 @@ namespace Conscience.DataAccess.Migrations
             DropForeignKey("dbo.Notification", "Host_Id", "dbo.Host");
             DropForeignKey("dbo.Notification", "Employee_Id", "dbo.Employee");
             DropForeignKey("dbo.Notification", "Audio_Id", "dbo.Audio");
+            DropForeignKey("dbo.Employee", "Host_Id", "dbo.Host");
             DropForeignKey("dbo.Host", "CoreMemory3_Id", "dbo.CoreMemory");
             DropForeignKey("dbo.Host", "CoreMemory2_Id", "dbo.CoreMemory");
             DropForeignKey("dbo.Host", "CoreMemory1_Id", "dbo.CoreMemory");
@@ -351,6 +355,7 @@ namespace Conscience.DataAccess.Migrations
             DropIndex("dbo.Host", new[] { "CoreMemory2_Id" });
             DropIndex("dbo.Host", new[] { "CoreMemory1_Id" });
             DropIndex("dbo.Host", new[] { "Id" });
+            DropIndex("dbo.Employee", new[] { "Host_Id" });
             DropIndex("dbo.Employee", new[] { "Id" });
             DropIndex("dbo.Location", new[] { "Device_Id" });
             DropIndex("dbo.Device", new[] { "CurrentLocation_Id" });

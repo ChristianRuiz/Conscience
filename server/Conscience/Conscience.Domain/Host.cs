@@ -66,6 +66,12 @@ namespace Conscience.Domain
             get;
             set;
         }
+        
+        public HostStatus Status
+        {
+            get;
+            set;
+        }
 
         public bool Hidden
         {
@@ -73,7 +79,7 @@ namespace Conscience.Domain
             set;
         }
 
-        public HostStatus Status
+        public virtual ICollection<Employee> HiddenHostAdministrators
         {
             get;
             set;
