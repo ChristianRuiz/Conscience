@@ -65,13 +65,13 @@ class HostButtons extends React.Component {
 
   logout() {
     // Hack: Reseting the credentials two times to avoid Android chaching them.
-    Keychain
-    .resetGenericPassword()
+    Keychain.resetGenericPassword()
     .then(() => {
-      Keychain
-      .resetGenericPassword()
+      Keychain.resetGenericPassword()
       .then(() => {
-        RNExitApp.exitApp();
+        setTimeout(() => {
+          RNExitApp.exitApp();
+        }, 1000);
       });
     });
   }

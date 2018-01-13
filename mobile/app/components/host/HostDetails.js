@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
   },
   battery: {
     position: 'absolute',
-    top: 160,
-    left: 170,
+    top: 115,
+    left: 260,
     width: 55,
-    fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 14
   },
   narrative: {
     position: 'absolute',
@@ -101,7 +100,7 @@ class HostDetails extends React.Component {
 
         <ProfileImage style={styles.image} source={account.pictureUrl} />
 
-        <Image source={require('../../img/card.png')} style={{ height: 234, width: 299, marginLeft: -10 }} />
+        <Image source={require('../../img/card.png')} style={{ height: 274, width: 299, marginLeft: -10 }} />
 
         <ImageUploader style={styles.image} accountId={account.id} />
 
@@ -111,12 +110,12 @@ class HostDetails extends React.Component {
 
         <Text style={styles.serialNumber} numberOfLines={1}>{account.userName}</Text>
 
-        {/* {account.device ?
+        {account.device ?
           <Text style={styles.battery} numberOfLines={1}>
-            {Math.trunc(account.device.batteryLevel * 100)}%</Text> : <Text />} */}
+            {account.device.batteryLevel > 1 ? '100' : Math.trunc(account.device.batteryLevel * 100)}%</Text> : <Text />}
 
         {host.currentCharacter ?
-          <Text style={styles.narrative} numberOfLines={3}>
+          <Text style={styles.narrative} numberOfLines={5}>
             {host.currentCharacter.character.narrativeFunction.toUpperCase()} </Text> : <Text />}
 
         {host.currentCharacter ? (<View>
