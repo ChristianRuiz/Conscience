@@ -61,3 +61,23 @@
 .infoPanel .scrollableContainer {
     padding-left: 0;
 }
+
+.infoPanel .cardEmployee {
+    background-image: url("/content/images/card/cardEmployee.png");
+    background-size: 300px 185px;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 185px;
+    z-index: 1;
+}
+
+.infoPanel .cardEmployee .charName {
+    margin-left: 132px;
+    padding-top: 25px;
+    max-width: 145px;
+}
+
+.infoPanel .cardEmployee .department {
+    padding-left: 133px;
+    font-weight: bold;
+}

@@ -127,6 +127,7 @@
     <Compile Include="Graph\ValidationRules\RolesValidationRule.cs" />
     <Compile Include="Graph\ValidationRules\MembershipValidationRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountUpdatesService.cs" />
     <Compile Include="Services\IUsersIdentityService.cs" />
     <Compile Include="Services\NotificationsService.cs" />
     <Compile Include="Services\LogEntryService.cs" />

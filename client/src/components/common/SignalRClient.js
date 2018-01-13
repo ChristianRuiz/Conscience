@@ -3,38 +3,50 @@ import { withApollo, gql } from 'react-apollo';
 import $ from 'jquery';
 import 'ms-signalr-client';
 
-import query from '../../queries/MapQuery';
+import queryMap from '../../queries/MapQuery';
+import queryCharacterDetail from '../../queries/CharacterDetailQuery';
+import queryHostStats from '../../queries/HostStatsQuery';
 
 class SignalRClient extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addAccount = this.addAccount.bind(this);
+    this.updateAccount = this.updateAccount.bind(this);
     this.reconnect = this.reconnect.bind(this);
 
     this.connection = $.hubConnection('/signalr/hubs');
     this.proxy = this.connection.createHubProxy('AccountsHub');
 
-    this.proxy.on('accountConnected', (accountId, location) => {
-      console.log(`accountConnected ${accountId} ${JSON.stringify(location)}`);
-
-      this.addAccount(accountId, location);
-    });
-
-    this.proxy.on('locationUpdated', (accountId, location) => {
-      console.log(`locationUpdated ${accountId} ${JSON.stringify(location)}`);
-
-      this.addAccount(accountId, location);
-    });
-
-    this.proxy.on('accountDisconnected', (accountId) => {
-      console.log(`accountDisconnected ${accountId}`);
-
-      // TODO: Implement
-    });
-
     this.proxy.on('broadcastError', (context, error) => {
       console.log(`Client error: ${context} \n ${error}`);
+    });
+
+    this.proxy.on('locationUpdated', (accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus) => {
+      this.updateAccount(accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus);
+    });
+
+    this.proxy.on('characterUpdated', (characterId) => {
+      this.props.client.query({
+        fetchPolicy: 'network-only',
+        fetchResults: true,
+        query: queryCharacterDetail,
+        variables: { characterId }
+      });
+    });
+
+    this.proxy.on('statsModified', (hostId) => {
+      this.props.client.query({
+        fetchPolicy: 'network-only',
+        fetchResults: true,
+        query: queryHostStats,
+        variables: { hostId }
+      });
+    });
+
+    this.proxy.on('panicButton', (notificationId) => {
+      // TODO: Alarm sound
+      alert('Panic button! Check notifications!');
+      console.warn(`Panic button pressed with notification: ${notificationId}`);
     });
 
     this.connection.start()
@@ -60,58 +72,47 @@ class SignalRClient extends React.Component {
     }, 5000); // Restart connection after 5 seconds.
   }
 
-  addAccount(accountId, location) {
+  updateAccount(accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus) {
     let data;
 
     try {
-      data = this.props.client.readQuery({ query });
+      data = this.props.client.readQuery({ queryMap });
     } catch (e) {
-      console.log('There are no accounts on the cache');
+      console.log(`The account ${accountId} is not cached, quering the server for it`);
+      this.props.client.query({
+        fetchPolicy: 'network-only',
+        fetchResults: true,
+        query: queryMap
+      });
       return;
     }
 
     const account = data.accounts.all.find(h => h.id === accountId);
 
-    if (!account) {
-      console.warn(`There is no account cached with id: ${accountId}`);
-      return;
-    }
-
-    if (!location) {
-      return;
-    }
-
-    if (!account.device || !account.device.currentLocation) {
-      const updateQuery = gql`query UpdateAccount($accountId:Int!) {
-          accounts {
-            byId(id: $accountId) {
-              id
-              userName
-              device {
-                id
-                currentLocation {
-                  id
-                  latitude
-                  longitude
-                }
-                online
-              }
-            }
-          }
-        }
-    `;
-
+    if (!account || !account.device || !account.device.currentLocation) {
+      console.warn(`There is no account cached with id: ${accountId}, quering the server for it`);
       this.props.client.query({
-        query: updateQuery,
-        variables: { accountId }
+        fetchPolicy: 'network-only',
+        fetchResults: true,
+        query: queryMap
       });
       return;
     }
 
-    account.device.currentLocation.latitude = location.Latitude;
-    account.device.currentLocation.longitude = location.Longitude;
+    account.device.batteryLevel = batteryLevel;
+    account.device.batteryStatus = batteryStatus;
+    account.device.lastConnection = lastConnection;
 
-    this.props.client.writeQuery({ query, data });
+    if (location) {
+      account.device.currentLocation.latitude = location.Latitude;
+      account.device.currentLocation.longitude = location.Longitude;
+    }
+
+    if (account.host) {
+      account.host.status = hostStatus;
+    }
+
+    this.props.client.writeQuery({ query: queryMap, data });
   }
 
   render() {

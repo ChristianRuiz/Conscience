@@ -8,6 +8,13 @@ import ScrollableContainer from '../common/ScrollableContainer';
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
 class CharacterInfoPanel extends React.Component {
+  shouldComponentUpdate(props) {
+    if (props.data.characters) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     if (this.props.data.loading) {
       return (<div>Loading...</div>);

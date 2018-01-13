@@ -8,6 +8,8 @@ import StatsChart from './StatsChart';
 
 import styles from '../../styles/components/behaviour/behaviour.css';
 
+import query from '../../queries/HostStatsQuery';
+
 class HostStats extends React.Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class HostStats extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (!props.data.loading) {
+    if (!props.data.loading && props.data.hosts) {
       const host = props.data.hosts.byId;
 
       const dataSet = {
@@ -41,7 +43,17 @@ class HostStats extends React.Component {
         dataSet.data.push(stat.value);
       }, this);
 
-      this.setState({ labels, dataSet, selectedLabel: labels[0], selectedValue: dataSet.data[0] });
+      const newState = { labels, dataSet };
+
+      if (!this.state.selectedLabel) {
+        newState.selectedLabel = labels[0];
+        newState.selectedValue = dataSet.data[0];
+      } else {
+        const index = labels.indexOf(this.state.selectedLabel);
+        newState.selectedValue = dataSet.data[index];
+      }
+
+      this.setState(newState);
     }
   }
 
@@ -60,7 +72,7 @@ class HostStats extends React.Component {
   }
 
   render() {
-    if (this.props.data.loading) {
+    if (this.props.data.loading || !this.state.selectedLabel) {
       return (<div>Loading...</div>);
     }
 
@@ -97,32 +109,6 @@ HostStats.propTypes = {
   data: React.PropTypes.object.isRequired,
   mutate: React.PropTypes.func.isRequired
 };
-
-const query = gql`query GetHostDetails($hostId:Int!) {
-  hosts {
-    byId(id:$hostId)
-    {
-      id,
-      account {
-        id,
-        userName
-      },
-      currentCharacter {
-        id,
-        character {
-          id,
-          name
-        }
-      },
-      stats {
-        id,
-        name,
-        value
-      }
-    }
-  }
-}
-      `;
 
 const mutation = gql`
 mutation ModifyStats($hostId:Int!, $stats:[StatsInput]) {

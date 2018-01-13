@@ -9,15 +9,18 @@ const query = gql`query GetAllAccountsForMap
               pictureUrl
               device {
                 id
+                batteryLevel
+                batteryStatus
+                lastConnection
                 currentLocation {
                   id,
                   latitude
                   longitude
                 }
-                online
               },
               host {
                 id,
+                status,
                 currentCharacter {
                   id,
                   character {
@@ -33,6 +36,6 @@ const query = gql`query GetAllAccountsForMap
             }
           }
         }
-`;
+        `;
 
 export default query;

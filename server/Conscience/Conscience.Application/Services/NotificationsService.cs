@@ -10,6 +10,8 @@ namespace Conscience.Application.Services
 {
     public class NotificationsService
     {
+        public static event EventHandler<NotificationEventArgs> NotificationSend;
+
         private readonly NotificationRepository _notificationsRepo;
         private readonly AccountRepository _accountRepo;
 
@@ -41,6 +43,9 @@ namespace Conscience.Application.Services
             {
                 notifications.Add(Notify(accountId, text, type, host, employee, audio));
             }
+
+            if (NotificationSend != null && notifications.Any())
+                NotificationSend(this, new NotificationEventArgs(notifications.First()));
 
             return notifications;
         }
@@ -76,6 +81,9 @@ namespace Conscience.Application.Services
                     notification.Read = false;
                 notification = _notificationsRepo.Modify(notification);
             }
+
+            if (NotificationSend != null)
+                NotificationSend(this, new NotificationEventArgs(notification));
 
             return notification;
         }
@@ -136,6 +144,20 @@ namespace Conscience.Application.Services
             }
 
             return audio;
+        }
+    }
+
+    public class NotificationEventArgs : EventArgs
+    {
+        public NotificationEventArgs(Notification notification)
+        {
+            Notification = notification;
+        }
+
+        public Notification Notification
+        {
+            get;
+            set;
         }
     }
 }

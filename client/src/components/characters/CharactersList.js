@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { graphql, gql } from 'react-apollo';
+import { graphql } from 'react-apollo';
 import ScrollableContainer from '../common/ScrollableContainer';
+
+import query from '../../queries/CharactersListQuery';
 
 class CharactersList extends React.Component {
   render() {
@@ -42,25 +44,5 @@ class CharactersList extends React.Component {
 CharactersList.propTypes = {
   data: React.PropTypes.object.isRequired
 };
-
-const query = gql`query GetCharacters {
-  characters {
-    all {
-      id,
-      name
-      currentHost {
-        id
-        host {
-          id
-          account {
-            id,
-            userName
-          }
-        }
-      }
-    }
-  }
-}
-      `;
 
 export default withRouter(graphql(query)(CharactersList));

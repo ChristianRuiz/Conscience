@@ -23,18 +23,20 @@ namespace Conscience.Web.Controllers.Api
     [Authorize]
     public class NotificationsController : ApiController
     {
-        private const int MinimumBatteryLevel = 25;
+        private const double MinimumBatteryLevel = 0.25;
 
         private readonly IUsersIdentityService _usersService;
         private readonly AccountRepository _accountsRepo;
         private readonly NotificationsService _notificationsService;
+        private readonly AccountUpdatesService _hostUpdatesService;
 
         public NotificationsController(
-            IUsersIdentityService usersService, AccountRepository accountsRepo, NotificationsService notificationsService)
+            IUsersIdentityService usersService, AccountRepository accountsRepo, NotificationsService notificationsService, AccountUpdatesService hostUpdatesService)
         {
             _usersService = usersService;
             _accountsRepo = accountsRepo;
             _notificationsService = notificationsService;
+            _hostUpdatesService = hostUpdatesService;
         }
 
         [HttpGet]
@@ -64,9 +66,8 @@ namespace Conscience.Web.Controllers.Api
 
                 _accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
                 var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
-                
-                var hub = Microsoft.AspNet.SignalR.GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
-                hub.Clients.Group(AccountsHub.GroupWeb).locationUpdated(account.Id, account.Device.CurrentLocation);
+
+                _hostUpdatesService.BroadcastAccountUpdated(account.Id);
 
                 if (account.Host != null && currentBatteryLevel > MinimumBatteryLevel && updates.batteryLevel < MinimumBatteryLevel)
                 {
