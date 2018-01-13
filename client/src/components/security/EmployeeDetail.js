@@ -12,7 +12,7 @@ class EmployeeDetail extends React.Component {
 
     const logs = this.props.data.logEntries.byEmployee;
 
-    return (<LogConsole title={`${this.props.data.accounts.current.employee.name} log`} logEntries={logs} />);
+    return (<LogConsole title={`${this.props.data.employees.byId.name} log`} logEntries={logs} />);
   }
 }
 
@@ -46,13 +46,10 @@ const query = gql`query GetEmployeeLogEntries($employeeId:Int!) {
       }
     }
   }
-  accounts {
-    current {
+  employees {
+    byId(id: $employeeId){
       id
-      employee {
-        id
-        name
-      }
+      name
     }
   }
 }

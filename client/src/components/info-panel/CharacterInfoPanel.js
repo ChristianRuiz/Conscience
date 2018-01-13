@@ -49,6 +49,12 @@ class CharacterInfoPanel extends React.Component {
               </ul>
             </div>)
             : '' }
+
+            {character.currentHost ?
+            (<div>
+              <Link to={`/security-host/${character.currentHost.host.id}`} ><h3>Log</h3></Link>
+            </div>)
+            : '' }
           </div>
         </ScrollableContainer>
       </div>);

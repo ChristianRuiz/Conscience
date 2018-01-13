@@ -34,6 +34,10 @@ class HostsInfoPanel extends React.Component {
               </ul>
             </div>
           </div>
+
+          <div>
+            <Link to={`/security-host/${host.id}`} ><h3>Log</h3></Link>
+          </div>
         </ScrollableContainer>
       </div>);
     }

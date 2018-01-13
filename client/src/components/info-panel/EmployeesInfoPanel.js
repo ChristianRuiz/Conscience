@@ -4,6 +4,8 @@ import { graphql, gql } from 'react-apollo';
 
 import AccountPicture from '../common/AccountPicture';
 import ScrollableContainer from '../common/ScrollableContainer';
+import RolesValidation from '../common/RolesValidation';
+import Roles from '../../enums/roles';
 
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
@@ -25,6 +27,11 @@ class EmployeesInfoPanel extends React.Component {
 
               <p className="narrativeFunction">{employee.department}</p>
             </div>
+            <RolesValidation allowed={[Roles.Admin, Roles.CompanyAdmin, Roles.CompanyQA]}>
+              <div>
+                <Link to={`/security-employee/${employee.id}`} ><h3>Log</h3></Link>
+              </div>
+            </RolesValidation>
           </div>
         </ScrollableContainer>
       </div>);
