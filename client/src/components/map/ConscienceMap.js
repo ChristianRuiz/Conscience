@@ -6,8 +6,7 @@ import { icon } from 'leaflet';
 import { Map, Marker, Popup } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
 
-import HostsInfoPanel from '../info-panel/HostsInfoPanel';
-import CharacterInfoPanel from '../info-panel/CharacterInfoPanel';
+import HostsOrCharacterInfoPanel from '../info-panel/HostsOrCharacterInfoPanel';
 import EmployeesInfoPanel from '../info-panel/EmployeesInfoPanel';
 
 import TextField from 'material-ui/TextField';
@@ -37,13 +36,7 @@ class ConscienceMap extends React.Component {
     let hostPanel = <div />;
 
     if (this.state.selectedAccount && this.state.selectedAccount.host) {
-      if (this.state.selectedAccount.host.currentCharacter) {
-        hostPanel = (<CharacterInfoPanel
-          characterId={this.state.selectedAccount.host.currentCharacter.character.id}
-        />);
-      } else {
-        hostPanel = <HostsInfoPanel hostId={this.state.selectedAccount.host.id} />;
-      }
+      hostPanel = <HostsOrCharacterInfoPanel hostId={this.state.selectedAccount.host.id} />;
     }
 
     return (<div className="mainContainer">

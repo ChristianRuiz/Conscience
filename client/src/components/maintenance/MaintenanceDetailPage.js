@@ -1,11 +1,11 @@
 import React from 'react';
 import MaintenanceDetail from './MaintenanceDetail';
-import HostsInfoPanel from '../info-panel/HostsInfoPanel';
+import HostsOrCharacterInfoPanel from '../info-panel/HostsOrCharacterInfoPanel';
 
 const MaintenanceDetailPage = ({ match }) =>
   <div className="mainContainer">
     <MaintenanceDetail hostId={match.params.hostId} />
-    <HostsInfoPanel hostId={match.params.hostId} />
+    <HostsOrCharacterInfoPanel hostId={match.params.hostId} />
   </div>;
 
 MaintenanceDetailPage.propTypes = {
