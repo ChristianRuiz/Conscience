@@ -76,7 +76,7 @@ class SignalRClient extends React.Component {
     let data;
 
     try {
-      data = this.props.client.readQuery({ queryMap });
+      data = this.props.client.readQuery({ query: queryMap });
     } catch (e) {
       console.log(`The account ${accountId} is not cached, quering the server for it`);
       this.props.client.query({
