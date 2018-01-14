@@ -13,6 +13,7 @@ import MaintenanceDetailPage from './components/maintenance/MaintenanceDetailPag
 import SecurityPage from './components/security/SecurityPage';
 import EmployeeDetailPage from './components/security/EmployeeDetailPage';
 import HostDetailPage from './components/security/HostDetailPage';
+import Notifications from './components/notifications/Notifications';
 import HostClientTestPage from './components/host-client-test/HostClientTestPage';
 import BulkImportPage from './components/bulk-import/BulkImportPage';
 import NotFound from './components/common/NotFound';
@@ -31,6 +32,7 @@ const Routes = () =>
     <Route path="/security" exact component={SecurityPage} />
     <Route path="/security-employee/:employeeId" component={EmployeeDetailPage} />
     <Route path="/security-host/:hostId" component={HostDetailPage} />
+    <Route path="/notifications" exact component={Notifications} />
     <Route path="/client-test" component={HostClientTestPage} />
     <Route path="/bulk-import" component={BulkImportPage} />
     <Route component={NotFound} />

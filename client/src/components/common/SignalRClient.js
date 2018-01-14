@@ -6,6 +6,7 @@ import 'ms-signalr-client';
 import queryMap from '../../queries/MapQuery';
 import queryCharacterDetail from '../../queries/CharacterDetailQuery';
 import queryHostStats from '../../queries/HostStatsQuery';
+import queryNotificationBell from '../../queries/NotificationBell';
 
 class SignalRClient extends React.Component {
   constructor(props) {
@@ -43,9 +44,19 @@ class SignalRClient extends React.Component {
       });
     });
 
+    this.proxy.on('notificationAdded', () => {
+      this.props.client.query({
+        fetchPolicy: 'network-only',
+        fetchResults: true,
+        query: queryNotificationBell
+      });
+    });
+
     this.proxy.on('panicButton', (notificationId) => {
-      // TODO: Alarm sound
-      alert('Panic button! Check notifications!');
+      if (!window.panicAudio || window.panicAudio.ended) {
+        window.panicAudio = new Audio('/Content/audio/panicalarm.mp3');
+        window.panicAudio.play();
+      }
       console.warn(`Panic button pressed with notification: ${notificationId}`);
     });
 

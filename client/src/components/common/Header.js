@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import RolesValidation from './RolesValidation';
 import Roles from '../../enums/roles';
-import LogoutButton from '../login/LogoutButton';
+import NotificationsBell from '../notifications/NotificationsBell';
 
 import styles from '../../styles/components/common/header.css';
 
@@ -18,7 +18,7 @@ const Header = () =>
           <Link to="/behaviour" ><img alt="Behaviour" src="/content/images/menu/behaviour.png" /></Link>
           <Link to="/maintenance" ><img alt="Maintenance" src="/content/images/menu/maintenance.png" /></Link>
           <Link to="/security" ><img alt="Security" src="/content/images/menu/security.png" /></Link>
-          <img className="notifications" alt="Notifications" src="/content/images/menu/nots.png" />
+          <NotificationsBell />
         </div>
       </div>
     </RolesValidation>

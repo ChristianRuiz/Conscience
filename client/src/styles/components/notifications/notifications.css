@@ -1,0 +1,35 @@
+.notifications {
+    margin-left: 45px;
+    margin-top: 15px;
+}
+
+.notifications .picture {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+
+.notifications .pictureDescriptionBox {
+    min-height: 110px;
+}
+
+.notificationsBell {
+    margin-left: 20px;
+}
+
+.notificationsBadge {
+    background-color: #C40000;
+    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 8px;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    height: 14px;
+    margin-left: -10px;
+}

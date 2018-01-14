@@ -42,7 +42,8 @@ namespace Conscience.Web.Hubs
 
         static AccountsHub()
         {
-            NotificationsService.NotificationSend += NotificationsService_NotificationSend;
+            NotificationsService.NotificationSendToUserOrGroup += NotificationsService_NotificationSendToUserOrGroup;
+            NotificationsService.NotificationSendToUser += NotificationsService_NotificationSendToUser;
             AccountUpdatesService.AccountUpdated += HostUpdatesService_HostUpdated;
         }
         
@@ -111,9 +112,11 @@ namespace Conscience.Web.Hubs
         
         public void SubscribeWeb()
         {
-            Groups.Add(Context.ConnectionId, GroupWeb);
-
             var accountId = Context.Request.User.Identity.GetUserId<int>();
+
+            Groups.Add(Context.ConnectionId, GroupWeb);
+            Groups.Add(Context.ConnectionId, accountId.ToString());
+            
             var account = AccountRepository.GetById(accountId);
             if (account.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
             {
@@ -133,7 +136,16 @@ namespace Conscience.Web.Hubs
             });
         }
 
-        private static void NotificationsService_NotificationSend(object sender, NotificationEventArgs e)
+        private static void NotificationsService_NotificationSendToUser(object sender, NotificationEventArgs e)
+        {
+            ExecuteWithChildContainerInANewThread(child =>
+            {
+                var hub = GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
+                hub.Clients.Group(e.Notification.OwnerId.ToString()).notificationAdded();
+            });
+        }
+
+        private static void NotificationsService_NotificationSendToUserOrGroup(object sender, NotificationEventArgs e)
         {
             ExecuteWithChildContainerInANewThread(child =>
             {
