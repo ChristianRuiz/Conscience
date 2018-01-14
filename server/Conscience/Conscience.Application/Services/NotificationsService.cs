@@ -38,7 +38,10 @@ namespace Conscience.Application.Services
         {
             List<Notification> notifications = new List<Notification>();
 
-            var roleAccounts = _accountRepo.GetAll().Where(a => a.Roles.Any(r => r.Name == role.ToString())).Select(a => a.Id).ToList();
+            var roleAccounts = _accountRepo.GetAll()
+                                            .Where(a => (role != RoleTypes.Host && a.Roles.Any(r => r.Name == role.ToString()))
+                                                        || (a.Roles.Count == 1 && a.Roles.First().Name == role.ToString()))
+                                            .Select(a => a.Id).ToList();
             foreach(var accountId in roleAccounts)
             {
                 notifications.Add(Notify(accountId, text, type, host, employee, audio));
