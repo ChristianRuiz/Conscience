@@ -5,6 +5,8 @@ import { graphql, gql } from 'react-apollo';
 import AccountPicture from '../common/AccountPicture';
 import ScrollableContainer from '../common/ScrollableContainer';
 
+import CallHostButton from './CallHostButton';
+
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
 class HostsInfoPanel extends React.Component {
@@ -35,6 +37,9 @@ class HostsInfoPanel extends React.Component {
             </div>
           </div>
 
+          <div>
+            <CallHostButton hostId={host.id} />
+          </div>
           <div>
             <Link to={`/security-host/${host.id}`} ><h3>Log</h3></Link>
           </div>
