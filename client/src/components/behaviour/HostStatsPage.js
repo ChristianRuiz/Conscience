@@ -1,11 +1,11 @@
 import React from 'react';
 import HostStats from './HostStats';
-import HostsInfoPanel from '../info-panel/HostsInfoPanel';
+import HostsOrCharacterInfoPanel from '../info-panel/HostsOrCharacterInfoPanel';
 
 const HostStatsPage = ({ match }) =>
   <div className="mainContainer">
     <HostStats hostId={match.params.hostId} />
-    <HostsInfoPanel hostId={match.params.hostId} />
+    <HostsOrCharacterInfoPanel hostId={match.params.hostId} />
   </div>;
 
 HostStatsPage.propTypes = {

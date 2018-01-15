@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
 {
     public class AccountMutation : ObjectGraphType<object>
     {
-        public AccountMutation(IUsersIdentityService accountService, AccountRepository accountRepo, NotificationsService notificationsService, HostRepository hostRepo)
+        public AccountMutation(IUsersIdentityService accountService, AccountRepository accountRepo, NotificationsService notificationsService, HostRepository hostRepo, EmployeeRepository employeeRepo)
         {
             Name = "AccountMutation";
             
@@ -61,9 +61,15 @@ namespace Conscience.Application.Graph.Entities.Accounts
                 {
                     var account = accountService.CurrentUser;
                     if (account.Host != null && account.Host.CurrentCharacter != null)
-                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'. Host '{account.Host.CurrentCharacter.Character.Name}", NotificationTypes.Panic);
+                    {
+                        var host = hostRepo.GetAll().First(h => h.Id == account.Host.Id);
+                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'. Host '{account.Host.CurrentCharacter.Character.Name}", NotificationTypes.Panic, host);
+                    }
                     else if (account.Employee != null)
-                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'. Employee '{account.Employee.Name}'", NotificationTypes.Panic);
+                    {
+                        var employee = employeeRepo.GetById(account.Employee.Id);
+                        notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'. Employee '{account.Employee.Name}'", NotificationTypes.Panic, null, employee);
+                    }
                     else
                         notificationsService.Notify(RoleTypes.Admin, $"PANIC! User: '{account.UserName}'.'", NotificationTypes.Panic);
 

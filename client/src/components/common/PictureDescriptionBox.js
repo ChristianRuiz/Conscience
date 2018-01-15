@@ -14,8 +14,12 @@ const PictureDescriptionBox = ({ pictureUrl, title, link, description }) =>
     </div>
   </div>;
 
+PictureDescriptionBox.defaultProps = {
+  pictureUrl: ''
+};
+
 PictureDescriptionBox.propTypes = {
-  pictureUrl: React.PropTypes.string.isRequired,
+  pictureUrl: React.PropTypes.string,
   title: React.PropTypes.string.isRequired,
   link: React.PropTypes.string.isRequired,
   description: React.PropTypes.string.isRequired

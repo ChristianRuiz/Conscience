@@ -13,6 +13,7 @@ using Conscience.DataAccess.Repositories;
 using Microsoft.Practices.Unity;
 using Conscience.Domain.Enums;
 using Conscience.Web.Logger;
+using System.Threading;
 
 namespace Conscience.Web.Hubs
 {
@@ -39,6 +40,13 @@ namespace Conscience.Web.Hubs
             _parentContainer = container;
         }
 
+        static AccountsHub()
+        {
+            NotificationsService.NotificationSendToUserOrGroup += NotificationsService_NotificationSendToUserOrGroup;
+            NotificationsService.NotificationSendToUser += NotificationsService_NotificationSendToUser;
+            AccountUpdatesService.AccountUpdated += HostUpdatesService_HostUpdated;
+        }
+        
         protected override void Dispose(bool disposing)
         {
             if (_childContainer != null)
@@ -101,28 +109,81 @@ namespace Conscience.Web.Hubs
                 }
             }
         }
-
-        public void SubscribeHost(string deviceId)
-        {
-            RegisterCurrentUserIfNeeded();
-
-            var accountId = Users[Context.ConnectionId];
-            var account = AccountRepository.GetById(accountId);
-            AccountRepository.UpdateDevice(account, deviceId);
-            Clients.Group(GroupWeb).AccountConnected(account.Id, account.Device.CurrentLocation);
-            Groups.Add(Context.ConnectionId, GroupHosts);
-        }
-
+        
         public void SubscribeWeb()
         {
-            Groups.Add(Context.ConnectionId, GroupWeb);
-
             var accountId = Context.Request.User.Identity.GetUserId<int>();
+
+            Groups.Add(Context.ConnectionId, GroupWeb);
+            Groups.Add(Context.ConnectionId, accountId.ToString());
+            
             var account = AccountRepository.GetById(accountId);
             if (account.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
             {
                 Groups.Add(Context.ConnectionId, GroupAdmins);
             }
+        }
+
+        private static void HostUpdatesService_HostUpdated(object sender, AccountUpdatedEventArgs e)
+        {
+            ExecuteWithChildContainerInANewThread(child =>
+            {
+                var accountRepo = child.Resolve<AccountRepository>();
+                var account = accountRepo.GetById(e.AccountId);
+
+                var hub = GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
+                hub.Clients.Group(GroupWeb).locationUpdated(account.Id, account.Device.CurrentLocation, account.Device.BatteryLevel, account.Device.BatteryStatus.ToString().ToUpperInvariant(), account.Device.LastConnection, account.Host != null ? account.Host.Status.ToString().ToUpperInvariant() : null);
+            });
+        }
+
+        private static void NotificationsService_NotificationSendToUser(object sender, NotificationEventArgs e)
+        {
+            ExecuteWithChildContainerInANewThread(child =>
+            {
+                var hub = GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
+                hub.Clients.Group(e.Notification.OwnerId.ToString()).notificationAdded();
+            });
+        }
+
+        private static void NotificationsService_NotificationSendToUserOrGroup(object sender, NotificationEventArgs e)
+        {
+            ExecuteWithChildContainerInANewThread(child =>
+            {
+                var hub = GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
+
+                switch (e.Notification.NotificationType)
+                {
+                    case NotificationTypes.CharacterModified:
+                        hub.Clients.Group(GroupWeb).characterUpdated(e.Notification.Host.CurrentCharacter.Id);
+                        break;
+                    case NotificationTypes.StatsModified:
+                        hub.Clients.Group(GroupWeb).statsModified(e.Notification.Host.Id);
+                        break;
+                    case NotificationTypes.CharacterAssigned:
+                        foreach(var character in e.Notification.Host.Characters)
+                            hub.Clients.Group(GroupWeb).characterUpdated(character.Id);
+                        break;
+                    case NotificationTypes.Panic:
+                        hub.Clients.Group(GroupAdmins).panicButton(e.Notification.Id);
+                        break;
+                }
+            });
+        }
+
+        private static void ExecuteWithChildContainerInANewThread(Action<IUnityContainer> action)
+        {
+            new Thread(new ThreadStart(() =>
+            {
+                var child = UnityConfig.GetConfiguredContainer().CreateChildContainer();
+                try
+                {
+                    action(child);
+                }
+                finally
+                {
+                    child.Dispose();
+                }
+            })).Start();
         }
     }
 }

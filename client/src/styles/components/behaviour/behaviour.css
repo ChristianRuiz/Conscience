@@ -1,0 +1,33 @@
+.maintenanceDetailContainer {
+    display: flex;
+    flex: 1;
+}
+
+.radarContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+
+.slidersAndTextContainer {
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+}
+
+.slidersContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.slider {
+    margin-left: 70px;
+    margin-top: 20px;
+    flex: 1;
+}
+
+.text {
+    height: 30px;
+    text-align: center;
+}

@@ -15,7 +15,8 @@ namespace Conscience.Application.Graph.Entities.Hosts
     public class HostMutation : ObjectGraphType<object>
     {
         public HostMutation(HostRepository hostRepo, CharacterRepository characterRepo, EmployeeRepository employeeRepo, 
-            LogEntryService logService, NotificationsService notificationsService, IUsersIdentityService usersService)
+            LogEntryService logService, NotificationsService notificationsService, IUsersIdentityService usersService,
+            AccountUpdatesService hostUpdatesService)
         {
             Name = "HostMutation";
 
@@ -147,9 +148,11 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     host = hostRepo.ChangeStatus(usersService.CurrentUser.Host.Id, status);
 
                     if (currentStatus == HostStatus.Ok && status == HostStatus.Hurt)
-                        notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' hurt", NotificationTypes.HostHurt);
+                        notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' hurt", NotificationTypes.HostHurt, host);
                     else if (status == HostStatus.Dead)
-                        notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' dead", NotificationTypes.HostDead);
+                        notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' dead", NotificationTypes.HostDead, host);
+
+                    hostUpdatesService.BroadcastAccountUpdated(usersService.CurrentUser.Host.Id);
 
                     return host;
                 })

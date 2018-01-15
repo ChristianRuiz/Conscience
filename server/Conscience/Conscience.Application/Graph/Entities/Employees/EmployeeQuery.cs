@@ -28,7 +28,7 @@ namespace Conscience.Application.Graph.Entities.Employees
 
             Field<EmployeeGraphType>("byId",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "host id" }
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "employee id" }
                     ),
                 resolve: context => employeeRepo.GetById(context.GetArgument<int>("id")))
                 .AddMaintenancePermissions();

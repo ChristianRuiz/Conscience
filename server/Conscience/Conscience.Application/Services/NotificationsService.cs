@@ -10,6 +10,9 @@ namespace Conscience.Application.Services
 {
     public class NotificationsService
     {
+        public static event EventHandler<NotificationEventArgs> NotificationSendToUserOrGroup;
+        public static event EventHandler<NotificationEventArgs> NotificationSendToUser;
+
         private readonly NotificationRepository _notificationsRepo;
         private readonly AccountRepository _accountRepo;
 
@@ -36,16 +39,22 @@ namespace Conscience.Application.Services
         {
             List<Notification> notifications = new List<Notification>();
 
-            var roleAccounts = _accountRepo.GetAll().Where(a => a.Roles.Any(r => r.Name == role.ToString())).Select(a => a.Id).ToList();
+            var roleAccounts = _accountRepo.GetAll()
+                                            .Where(a => (role != RoleTypes.Host && a.Roles.Any(r => r.Name == role.ToString()))
+                                                        || (a.Roles.Count == 1 && a.Roles.Any(r => r.Name == role.ToString())))
+                                            .Select(a => a.Id).ToList();
             foreach(var accountId in roleAccounts)
             {
-                notifications.Add(Notify(accountId, text, type, host, employee, audio));
+                notifications.Add(Notify(accountId, text, type, host, employee, audio, false));
             }
+
+            if (NotificationSendToUserOrGroup != null && notifications.Any())
+                NotificationSendToUserOrGroup(this, new NotificationEventArgs(notifications.First()));
 
             return notifications;
         }
 
-        public Notification Notify(int accountId, string text, NotificationTypes type, Host host = null, Employee employee = null, Audio audio = null)
+        public Notification Notify(int accountId, string text, NotificationTypes type, Host host = null, Employee employee = null, Audio audio = null, bool sendNotificationToGroup = true)
         {
             if (audio == null)
                 audio = GetDefaultAdioByType(type);
@@ -76,6 +85,15 @@ namespace Conscience.Application.Services
                     notification.Read = false;
                 notification = _notificationsRepo.Modify(notification);
             }
+
+            if (sendNotificationToGroup)
+            {
+                if (NotificationSendToUserOrGroup != null)
+                    NotificationSendToUserOrGroup(this, new NotificationEventArgs(notification));
+            }
+
+            if (NotificationSendToUser != null)
+                NotificationSendToUser(this, new NotificationEventArgs(notification));
 
             return notification;
         }
@@ -136,6 +154,20 @@ namespace Conscience.Application.Services
             }
 
             return audio;
+        }
+    }
+
+    public class NotificationEventArgs : EventArgs
+    {
+        public NotificationEventArgs(Notification notification)
+        {
+            Notification = notification;
+        }
+
+        public Notification Notification
+        {
+            get;
+            set;
         }
     }
 }

@@ -5,9 +5,18 @@ import { graphql, gql } from 'react-apollo';
 import AccountPicture from '../common/AccountPicture';
 import ScrollableContainer from '../common/ScrollableContainer';
 
+import CallHostButton from './CallHostButton';
+
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
 class CharacterInfoPanel extends React.Component {
+  shouldComponentUpdate(props) {
+    if (props.data.characters) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     if (this.props.data.loading) {
       return (<div>Loading...</div>);
@@ -47,6 +56,17 @@ class CharacterInfoPanel extends React.Component {
                 // .sort((a, b) => Math.abs(a.value - 10) + Math.abs(b.value - 10))
                   <li key={stat.name}>{stat.name}: {stat.value}</li>)}
               </ul>
+            </div>)
+            : '' }
+
+            {character.currentHost ?
+            (<div>
+              <div>
+                <CallHostButton hostId={character.currentHost.host.id} />
+              </div>
+              <div>
+                <Link to={`/security-host/${character.currentHost.host.id}`} ><h3>Log</h3></Link>
+              </div>
             </div>)
             : '' }
           </div>
