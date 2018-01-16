@@ -84,6 +84,7 @@ namespace Conscience.Domain
         CharacterAssigned,
         PlotModified,
         Panic,
-        Custom
+        Custom,
+        UpdateApp
     }
 }

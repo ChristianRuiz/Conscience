@@ -11,6 +11,7 @@ import {
 } from 'react-apollo';
 import { createBatchingNetworkInterface, createNetworkInterface } from 'apollo-client';
 import { COLOR, ThemeProvider } from 'react-native-material-ui';
+import codePush from 'react-native-code-push';
 
 import Constants from './constants';
 
@@ -112,4 +113,4 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+export default codePush(Root);

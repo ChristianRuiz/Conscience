@@ -10,6 +10,8 @@ import {
 import { graphql, compose, gql } from 'react-apollo';
 import Spinner from 'react-native-loading-spinner-overlay';
 
+import codePush from 'react-native-code-push';
+
 import Background from '../common/Background';
 import Text from '../common/Text';
 import Divider from '../common/Divider';
@@ -61,6 +63,13 @@ class Notifications extends React.Component {
     if (unreadNotifications.length) {
       this.props.mutate({
         variables: { ids: unreadNotifications.map(n => n.id) }
+      }).then(() => {
+        if (unreadNotifications.filter(n => n.notificationType === 'UPDATE_APP')) {
+          codePush.sync({
+            updateDialog: false,
+            installMode: codePush.InstallMode.IMMEDIATE
+          });
+        }
       });
     }
   }
@@ -100,7 +109,7 @@ class Notifications extends React.Component {
       </View>);
     }
 
-    const notifications = this.props.data.notifications.current;
+    const notifications = this.props.data.notifications.current.filter(n => n.notificationType !== 'UPDATE_APP');
 
     return (<ScrollView>
       <Background />

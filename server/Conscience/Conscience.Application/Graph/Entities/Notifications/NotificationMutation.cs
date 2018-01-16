@@ -99,6 +99,33 @@ namespace Conscience.Application.Graph.Entities.Notifications
                     return notifications;
                 })
                 .AddAdminPermissions();
+
+            Field<ListGraphType<NotificationGraphType>>("updateApp",
+                resolve: context =>
+                {
+                    var notifications = new List<Notification>();
+                    var accountsIds = accountRepo.GetAll().Select(a => a.Id).ToList();
+
+                    foreach (var id in accountsIds)
+                    {
+                        notifications.Add(notificationsService.Notify(id, "System reboot", NotificationTypes.UpdateApp));
+                    }
+
+                    return notifications;
+                })
+                .AddAdminPermissions();
+
+            Field<NotificationGraphType>("updateAppToAccount",
+                arguments: new QueryArguments(
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "account id" }
+                    ),
+                resolve: context =>
+                {
+                    var accountId = context.GetArgument<int>("id");
+                    
+                    return notificationsService.Notify(accountId, "System reboot", NotificationTypes.UpdateApp);
+                })
+                .AddAdminPermissions();
         }
     }
 }

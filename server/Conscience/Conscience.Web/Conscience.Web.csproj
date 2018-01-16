@@ -455,9 +455,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="iOS\Index.html" />
+    <Content Include="iOS\logo.png" />
     <Content Include="Mobile\Conscience.apk" />
     <Content Include="log4net.config" />
     <Content Include="Content\fonts\DejaVuSans.ttf" />
+    <Content Include="iOS\conscience.plist" />
     <None Include="Properties\PublishProfiles\consciencelarp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <Content Include="Scripts\conscience\login.bundle.css" />
