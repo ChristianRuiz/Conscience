@@ -1,16 +1,21 @@
 import React from 'react';
-import { Animated, View, StyleSheet, Text } from 'react-native';
+import { Animated, View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import { withApollo, graphql } from 'react-apollo';
 
+import Text from '../common/Text';
+
 import HostTabs from './HostTabs';
 import EmployeeTabs from './EmployeeTabs';
+import Background from '../common/Background';
 
 import NotificationsService from '../../services/NotificationsService';
 import Constants from '../../constants';
+
+import commonStyles from '../../styles/common';
 
 import query from '../../queries/HostDetailQuery';
 
@@ -135,8 +140,12 @@ class Tabs extends React.Component {
   }
 
   render() {
-    if (this.props.data.loading) {
-      return <Spinner visible />;
+    if (this.props.data.loading || !this.state.routes.length) {
+      return (<View style={commonStyles.container}>
+        <Background />
+        <Text>Loading...</Text>
+        <Spinner visible />
+      </View>);
     }
 
     return (<TabViewAnimated

@@ -6,8 +6,6 @@ class IOSService {
   constructor() {
     this._onTimer = this._onTimer.bind(this);
 
-    Location.requestAlwaysAuthorization();
-
     if (this.intervalId) {
       BackgroundTimer.clearInterval(this.intervalId);
     }
@@ -20,9 +18,13 @@ class IOSService {
   }
 
   _onTimer() {
-    console.log('iOS timer tick');
+    // console.log('iOS timer tick');
 
     if (global.notificationsService) {
+      if (!global.locationRequested) {
+        global.locationRequested = true;
+        Location.requestAlwaysAuthorization();
+      }
       global.notificationsService.tick();
     }
   }
