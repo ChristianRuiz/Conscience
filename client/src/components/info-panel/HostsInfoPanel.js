@@ -6,6 +6,7 @@ import AccountPicture from '../common/AccountPicture';
 import ScrollableContainer from '../common/ScrollableContainer';
 
 import CallHostButton from './CallHostButton';
+import ResetHostButton from './ResetHostButton';
 
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
@@ -39,6 +40,9 @@ class HostsInfoPanel extends React.Component {
 
           <div>
             <CallHostButton hostId={host.id} />
+          </div>
+          <div>
+            <ResetHostButton hostId={host.id} />
           </div>
           <div>
             <Link to={`/security-host/${host.id}`} ><h3>Log</h3></Link>

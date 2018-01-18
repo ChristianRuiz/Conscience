@@ -82,7 +82,7 @@ html, body {
     font-style: normal;
 }
 
-div, input, p, li, h1, h2, h3, a {
+div, input, p, li, h1, h2, h3, a, label, button {
     color: #F1F1F3 !important;
     font-family: 'DejaVuSans';
     font-size: 14px;
@@ -116,6 +116,18 @@ h3 {
     color: #3FCCD2 !important;
     font-size: 16px;
     text-transform: uppercase;
+}
+
+.linkButton {
+    background: none !important;
+    color: inherit;
+    border: none;
+    padding: 0! important;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit !important;
+    text-decoration: underline;
+    text-decoration-color: white;
 }
 
 /* Hack: Remove after TDN */

@@ -6,6 +6,7 @@ import AccountPicture from '../common/AccountPicture';
 import ScrollableContainer from '../common/ScrollableContainer';
 
 import CallHostButton from './CallHostButton';
+import ResetHostButton from './ResetHostButton';
 
 import styles from '../../styles/components/info-panel/hostsInfoPanel.css';
 
@@ -63,6 +64,9 @@ class CharacterInfoPanel extends React.Component {
             (<div>
               <div>
                 <CallHostButton hostId={character.currentHost.host.id} />
+              </div>
+              <div>
+                <ResetHostButton hostId={character.currentHost.host.id} />
               </div>
               <div>
                 <Link to={`/security-host/${character.currentHost.host.id}`} ><h3>Log</h3></Link>

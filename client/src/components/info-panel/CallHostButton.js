@@ -10,7 +10,7 @@ class CallHostButton extends React.Component {
   }
 
   render() {
-    return <a href="#" onClick={() => this.callHost()}><h3>Call host</h3></a>;
+    return <button className="linkButton" onClick={() => this.callHost()}><h3>Call host</h3></button>;
   }
 }
 
