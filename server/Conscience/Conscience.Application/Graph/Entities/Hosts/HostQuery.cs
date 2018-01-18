@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
 {
     public class HostQuery : ObjectGraphType<object>
     {
-        public HostQuery(HostRepository hostRepo, IUsersIdentityService accountService)
+        public HostQuery(HostRepository hostRepo, IUsersIdentityService accountService, LogEntryService logService, LogEntryRepository logRepo)
         {
             Name = "HostQuery";
 
@@ -31,6 +31,29 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id", Description = "host id" }
                     ),
                 resolve: context => hostRepo.GetById(accountService.CurrentUser, context.GetArgument<int>("id")))
+                .AddMaintenancePermissions();
+
+            Field<BooleanGraphType>("hasFailure",
+                arguments: new QueryArguments
+                {
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "hostId", Description = "host id" }
+                },
+                resolve: context => {
+                    var hostId = context.GetArgument<int>("hostId");
+                    var host = hostRepo.GetAll().First(h => h.Id == hostId);
+
+                    var lastFailure = logRepo.GetAll().OrderByDescending(l => l.Id).FirstOrDefault(l => l.Description.Contains("has a critical failure"));
+                    var lastFix = logRepo.GetAll().OrderByDescending(l => l.Id).FirstOrDefault(l => l.Description.Contains("fixed by employee"));
+
+                    if ((lastFailure == null || DateTime.Now - lastFailure.TimeStamp > TimeSpan.FromHours(1))
+                            && (lastFix != null && DateTime.Now - lastFix.TimeStamp < TimeSpan.FromHours(1)))
+                    {
+                        logService.Log(host, $"Host '{host.Account.UserName}' has a critical failure");
+                        return true;
+                    }
+
+                    return false;
+                })
                 .AddMaintenancePermissions();
         }
     }

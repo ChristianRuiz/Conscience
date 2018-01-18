@@ -147,6 +147,8 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     var currentStatus = host.Status;
                     host = hostRepo.ChangeStatus(usersService.CurrentUser.Host.Id, status);
 
+                    logService.Log(host, $"Host '{host.Account.UserName}' status changed to '{status.ToString()}'");
+
                     if (currentStatus == HostStatus.Ok && status == HostStatus.Hurt)
                         notificationsService.Notify(RoleTypes.CompanyQA, $"Host '{host.CurrentCharacter.Character.Name}' hurt", NotificationTypes.HostHurt, host);
                     else if (status == HostStatus.Dead)
@@ -157,6 +159,28 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     return host;
                 })
                 .AllowCurrentUser();
+            
+            Field<HostGraphType>("fixed",
+                arguments: new QueryArguments
+                {
+                    new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "hostId", Description = "host id" }
+                },
+                resolve: context => {
+                    var hostId = context.GetArgument<int>("hostId");
+                    var host = hostRepo.GetAll().First(h => h.Id == hostId);
+                    var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+
+                    host = hostRepo.ChangeStatus(host.Id, HostStatus.Ok);
+
+                    logService.Log(host, $"Host '{host.Account.UserName}' fixed by employee '{employee.Name}'");
+
+                    notificationsService.Notify(host.Account.Id, "You have been fixed", NotificationTypes.HostFixed, host: host, employee: employee);
+                    
+                    hostUpdatesService.BroadcastAccountUpdated(host.Id);
+
+                    return host;
+                })
+                .AddMaintenancePermissions();
         }
     }
 }

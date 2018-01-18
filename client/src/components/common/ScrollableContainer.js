@@ -6,9 +6,15 @@ class ScrollableContainer extends React.Component {
     super(props);
 
     this.state = {
-      height: parseInt(window.innerHeight),
+      height: props.parentHeight,
       margin: 100 + props.extraMargin
     };
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.parentHeight && this.state.height !== props.parentHeight) {
+      this.setState({ height: props.parentHeight });
+    }
   }
 
   render() {
@@ -20,12 +26,14 @@ class ScrollableContainer extends React.Component {
 }
 
 ScrollableContainer.defaultProps = {
-  extraMargin: 0
+  extraMargin: 0,
+  parentHeight: parseInt(window.innerHeight)
 };
 
 ScrollableContainer.propTypes = {
   children: React.PropTypes.element.isRequired,
-  extraMargin: React.PropTypes.number
+  extraMargin: React.PropTypes.number,
+  parentHeight: React.PropTypes.number
 };
 
 export default ScrollableContainer;

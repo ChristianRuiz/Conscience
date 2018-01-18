@@ -79,6 +79,7 @@ namespace Conscience.Domain
         LowBattery,
         HostHurt,
         HostDead,
+        HostFixed,
         StatsModified,
         CharacterModified,
         CharacterAssigned,
