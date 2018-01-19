@@ -5,10 +5,10 @@
 
 .infoPanel .card {
     background-image: url("/content/images/card/cardWithoutStatus.png");
-    background-size: 300px 235px;
+    background-size: 300px 300px;
     background-repeat: no-repeat;
     width: 300px;
-    height: 235px;
+    height: 300px;
     z-index: 1;
 }
 
@@ -34,7 +34,7 @@
 
 .infoPanel .card .narrativeFunction {
     margin-left: 20px;
-    max-height: 47px;
+    max-height: 107px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
