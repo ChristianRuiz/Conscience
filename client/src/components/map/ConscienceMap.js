@@ -3,13 +3,12 @@ import { withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 
 import { icon } from 'leaflet';
-import { Map, Marker, Popup } from 'react-leaflet';
+import { Map, Marker } from 'react-leaflet';
 import { BingLayer } from 'react-leaflet-bing';
+import TextField from 'material-ui/TextField';
 
 import HostsOrCharacterInfoPanel from '../info-panel/HostsOrCharacterInfoPanel';
 import EmployeesInfoPanel from '../info-panel/EmployeesInfoPanel';
-
-import TextField from 'material-ui/TextField';
 
 import query from '../../queries/MapQuery';
 
@@ -21,11 +20,52 @@ class ConscienceMap extends React.Component {
 
     this.state = {
       defaultPosition: [37.048601, -2.4216117],
-      // defaultPosition: [37.1275825, -4.6669954],
       selectedAccount: null,
       height: parseInt(window.innerHeight),
       search: ''
     };
+  }
+
+  getMarkerIcon(state, account) {
+    const markerBase = '/content/images/map';
+
+    let markerIcon = `${markerBase}/markerAleph.png`;
+
+    if (account.host) {
+      if (account.host.status === 'OK') {
+        markerIcon = `${markerBase}/markerHost.png`;
+      } else if (account.host.status === 'HURT') {
+        markerIcon = `${markerBase}/markerHurt.png`;
+      } else if (account.host.status === 'DEAD') {
+        markerIcon = `${markerBase}/markerDead.png`;
+      }
+    }
+
+    if (state.selectedAccount && state.selectedAccount.id === account.id) {
+      markerIcon = `${markerBase}/markerSelected.png`;
+    }
+
+    return markerIcon;
+  }
+
+  getMarkerZIndex(state, account) {
+    let zindex = 100;
+
+    if (account.host) {
+      if (account.host.status === 'OK') {
+        zindex = 200;
+      } else if (account.host.status === 'HURT') {
+        zindex = 300;
+      } else if (account.host.status === 'DEAD') {
+        zindex = 400;
+      }
+    }
+
+    if (state.selectedAccount && state.selectedAccount.id === account.id) {
+      zindex = 500;
+    }
+
+    return zindex;
   }
 
   render() {
@@ -71,8 +111,8 @@ class ConscienceMap extends React.Component {
               position={[account.device.currentLocation.latitude,
                 account.device.currentLocation.longitude]}
               onclick={() => this.setState({ selectedAccount: account })}
-              icon={icon({ iconUrl: this.state.selectedAccount === account ? '/content/images/map/markerSelected.png' :
-              (account.host ? '/content/images/map/markerHost.png' : '/content/images/map/markerAleph.png') })}
+              icon={icon({ iconUrl: this.getMarkerIcon(this.state, account) })}
+              zIndexOffset={this.getMarkerZIndex(this.state, account)}
             />)
         }
       </Map>
