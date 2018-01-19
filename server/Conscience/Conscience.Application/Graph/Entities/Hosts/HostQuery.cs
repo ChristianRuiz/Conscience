@@ -45,7 +45,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     var lastFailure = logRepo.GetAll().OrderByDescending(l => l.Id).FirstOrDefault(l => l.Description.Contains("has a critical failure"));
                     var lastFix = logRepo.GetAll().OrderByDescending(l => l.Id).FirstOrDefault(l => l.Description.Contains("fixed by employee"));
 
-                    if ((lastFailure == null || DateTime.Now - lastFailure.TimeStamp > TimeSpan.FromHours(1))
+                    if ((lastFailure == null || (DateTime.Now - lastFailure.TimeStamp > TimeSpan.FromHours(1) && lastFailure.Host.Id != hostId))
                             && (lastFix != null && DateTime.Now - lastFix.TimeStamp < TimeSpan.FromHours(1)))
                     {
                         logService.Log(host, $"Host '{host.Account.UserName}' has a critical failure");

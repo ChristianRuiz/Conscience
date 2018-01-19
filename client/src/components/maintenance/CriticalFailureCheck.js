@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
+import Modal from 'react-modal';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class CriticalFailureCheck extends React.Component {
   constructor(props) {
@@ -8,7 +10,8 @@ class CriticalFailureCheck extends React.Component {
 
     this.state = {
       hasFailure: false,
-      fixed: false
+      fixed1: false,
+      fixed2: false
     };
 
     this.errors = [
@@ -47,25 +50,55 @@ class CriticalFailureCheck extends React.Component {
     }
   }
 
+  secondErrorFixed() {
+    window.maintenanceAudio.pause();
+    window.maintenanceAudio = null;
+    this.setState({ fixed2: true });
+  }
+
   render() {
     if (this.props.data.loading) {
       return (<div />);
     }
 
-    if (this.state.hasFailure && !this.state.fixed) {
-      // TODO: Start alarm sound
+    const modalHeight = 150;
+    const modalWidth = 400;
+    const modalStyle = {
+      content: {
+        height: modalHeight,
+        width: modalWidth,
+        top: (window.innerHeight - modalHeight) / 2,
+        left: (window.innerWidth - modalWidth) / 2
+      }
+    };
+
+    const pStyle = {
+      height: 80
+    };
+
+    if (this.state.hasFailure && !this.state.fixed1) {
+      if (!window.maintenanceAudio) {
+        window.maintenanceAudio = new Audio('/Content/audio/maintenancealarm.mp3');
+        window.maintenanceAudio.loop = true;
+        window.maintenanceAudio.play();
+      }
 
       const firstError = this.errors.splice(Math.floor(Math.random() * this.errors.length), 1);
 
-      alert(firstError);
+      return (<Modal isOpen style={modalStyle} ariaHideApp={false}>
+        <p style={pStyle}>{firstError}</p>
+        <RaisedButton label="Fixed" primary onClick={() => this.setState({ fixed1: true })} />
+      </Modal>);
+    }
+
+    if (this.state.hasFailure && !this.state.fixed2) {
 
       const secondError = this.errors.splice(Math.floor(Math.random() * this.errors.length), 1);
 
-      alert(secondError);
-
-      // TODO: End alarm sound
-
-      this.setState({ fixed: true });
+      return (<Modal isOpen style={modalStyle} ariaHideApp={false}>
+        <p style={pStyle}>{secondError}</p>
+        <RaisedButton label="Fixed" primary onClick={() => this.secondErrorFixed()} />
+      </Modal>);
     }
 
     return <div />;

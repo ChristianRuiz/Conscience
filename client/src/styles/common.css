@@ -118,6 +118,10 @@ h3 {
     text-transform: uppercase;
 }
 
+button {
+    padding-top: 5px !important;
+}
+
 .linkButton {
     background: none !important;
     color: inherit;
@@ -128,10 +132,20 @@ h3 {
     outline: inherit !important;
     text-decoration: underline;
     text-decoration-color: white;
+    padding-top: 0px !important;
 }
 
 /* Hack: Remove after TDN */
 .itemsCentered canvas {
     margin-left: 40px;
     margin-top: 10px;
+}
+
+.ReactModal__Overlay {
+    z-index: 200;
+}
+
+.ReactModal__Content {
+    background-color: #27293E !important;
+    text-align: center;
 }
