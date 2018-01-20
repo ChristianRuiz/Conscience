@@ -54,6 +54,10 @@ const query = gql`query GetCharacterDetails($characterId: Int!) {
             }
           }
         }
+        inverseRelation {
+          id
+          description
+        }
       }
       currentHost {
         id

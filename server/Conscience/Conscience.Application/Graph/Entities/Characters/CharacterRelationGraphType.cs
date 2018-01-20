@@ -19,6 +19,7 @@ namespace Conscience.Application.Graph.Entities.Characters
             
             Field(c => c.Description);
             Field<CharacterGraphType>("character", resolve: context => context.Source.Character);
+            Field<CharacterRelationGraphType>("inverseRelation", resolve: context => context.Source.Character.Relations.FirstOrDefault(r => r.Character.Id == context.Source.ParentCharacterId));
         }
     }
 }

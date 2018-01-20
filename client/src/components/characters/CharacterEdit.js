@@ -26,6 +26,7 @@ class CharacterEdit extends React.Component {
       memories: [],
       plots: [],
       relations: [],
+      inverseRelations: [],
       autocompletePlots: [],
       autocompleteCharacters: []
     };
@@ -59,6 +60,10 @@ class CharacterEdit extends React.Component {
           relations: character.relations.map(relation => ({
             character: relation.character,
             description: relation.description
+          })),
+          inverseRelations: character.relations.map(relation => ({
+            character: relation.character,
+            description: relation.inverseRelation ? relation.inverseRelation.description : ''
           }))
         });
       } else {
@@ -117,7 +122,11 @@ class CharacterEdit extends React.Component {
             character: { id: r.character.id },
             description: r.description
           }))
-        }
+        },
+        inverseRelations: this.state.inverseRelations.map(r => ({
+          character: { id: r.character.id },
+          description: r.description
+        }))
       }
     }).then(r => this.setState({ edited: true, characterId: r.data.characters.addOrModifyCharacter.id }));
   }
@@ -172,6 +181,19 @@ class CharacterEdit extends React.Component {
         </div>
         <button style={{ marginRight: 20 }} className="linkButton" onClick={() => this.save()}><h3>Save</h3></button>
       </div>
+
+      <div>
+        <h2>Narrative function:</h2>
+        <TextField
+          multiLine
+          rows={2}
+          fullWidth
+          hintText="Narrative function"
+          value={this.state.narrativeFunction}
+          onChange={e => this.setState({ narrativeFunction: e.target.value })}
+        />
+      </div>
+
       <div>
         <h2>Character Story:</h2>
         <TextField
@@ -255,20 +277,31 @@ class CharacterEdit extends React.Component {
 
         <div className="flexColumn marginTop">
           {this.state.relations.map((relation, i) =>
-            <div className="pictureDescriptionBox" key={relation.character.id}>
-              <AccountPicture pictureUrl={relation.character.currentHost ? relation.character.currentHost.host.account.pictureUrl : ''} />
-              <div className="titleDescription">
-                <h1>{relation.character.name}</h1>
-                <TextField
-                  floatingLabelText="Characters relation"
-                  name={`relation${relation.character.id}`}
-                  multiLine
-                  rows={2}
-                  fullWidth
-                  value={relation.description}
-                  onChange={e => this.setState({ relations: this.replaceArrayPosition(this.state.relations, i, Object.assign(relation, { description: e.target.value })) })}
-                />
+            <div key={relation.character.id}>
+              <div className="pictureDescriptionBox">
+                <AccountPicture pictureUrl={relation.character.currentHost ? relation.character.currentHost.host.account.pictureUrl : ''} />
+                <div className="titleDescription">
+                  <h1>{relation.character.name}</h1>
+                  <TextField
+                    floatingLabelText="Characters relation"
+                    name={`relation${relation.character.id}`}
+                    multiLine
+                    rows={2}
+                    fullWidth
+                    value={relation.description}
+                    onChange={e => this.setState({ relations: this.replaceArrayPosition(this.state.relations, i, Object.assign(relation, { description: e.target.value })) })}
+                  />
+                </div>
               </div>
+              <TextField
+                floatingLabelText="Inverse relation"
+                name={`inverserelation${relation.character.id}`}
+                multiLine
+                rows={2}
+                fullWidth
+                value={this.state.inverseRelations[i].description}
+                onChange={e => this.setState({ inverseRelations: this.replaceArrayPosition(this.state.inverseRelations, i, Object.assign(this.state.inverseRelations[i], { description: e.target.value })) })}
+              />
             </div>)}
         </div>
       </div>
@@ -283,9 +316,9 @@ CharacterEdit.propTypes = {
 };
 
 const mutation = gql`
-mutation AddOrModifyCharacter($character:CharacterInput!) {
+mutation AddOrModifyCharacter($character:CharacterInput!, $inverseRelations:[CharacterRelationInput]) {
   characters {
-    addOrModifyCharacter(character: $character) {
+    addOrModifyCharacter(character: $character, inverseRelations: $inverseRelations) {
       id
       name
       age
@@ -312,6 +345,10 @@ mutation AddOrModifyCharacter($character:CharacterInput!) {
         description
         character {
           id
+        }
+        inverseRelation {
+          id
+          description
         }
       }
     }

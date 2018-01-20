@@ -73,13 +73,19 @@ class CharacterDetail extends React.Component {
 
         <div className="flexColumn marginTop">
           {character.relations.map(relation =>
-            <PictureDescriptionBox
-              key={relation.id}
-              pictureUrl={relation.character.currentHost ? relation.character.currentHost.host.account.pictureUrl : ''}
-              title={relation.character.name}
-              link={`/character-detail/${relation.character.id}`}
-              description={relation.description}
-            />)}
+            <div key={relation.id}>
+              <PictureDescriptionBox
+                pictureUrl={relation.character.currentHost ? relation.character.currentHost.host.account.pictureUrl : ''}
+                title={relation.character.name}
+                link={`/character-detail/${relation.character.id}`}
+                description={relation.description}
+              />
+              {relation.inverseRelation ?
+              (<div>
+                <p><b>{`${relation.character.name} relation to ${character.name}`}</b></p>
+                <p>{relation.inverseRelation.description}</p>
+              </div>) : '' }
+            </div>)}
         </div>
       </div>) : '' }
     </div>);

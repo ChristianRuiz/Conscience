@@ -28,16 +28,18 @@ namespace Conscience.Application.Graph.Entities.Characters
 
             Field<CharacterGraphType>("addOrModifyCharacter",
                 arguments: new QueryArguments(
-                    new QueryArgument<NonNullGraphType<CharacterInputGraphType>> { Name = "character", Description = "new or edited character" }
+                    new QueryArgument<NonNullGraphType<CharacterInputGraphType>> { Name = "character", Description = "new or edited character" },
+                    new QueryArgument<ListGraphType<CharacterRelationInputGraphType>> { Name = "inverseRelations", Description = "inverse relations" }
                     ),
                 resolve: context =>
                 {
                     var character = context.GetArgument<Character>("character");
+                    var inverseRelations = context.GetArgument<List<CharacterRelation>>("inverseRelations");
                     if (character.Id == 0)
                     {
                         var dbCharacter = characterRepo.Add(new Character());
                         character.Id = dbCharacter.Id;
-                        character = ModifyCharacter(character);
+                        character = ModifyCharacter(character, inverseRelations);
                         _logService.Log(GetHost(character), $"Added a new character with name '{character.Name}'");
                     }
                     else
@@ -45,7 +47,7 @@ namespace Conscience.Application.Graph.Entities.Characters
                         var dbCharacter = _characterRepo.GetById(character.Id);
                         var host = GetHost(dbCharacter);
                         _logService.Log(host, $"Modified character with name '{character.Name}'");
-                        character = ModifyCharacter(character);
+                        character = ModifyCharacter(character, inverseRelations);
 
                         var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
                         notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified your character.", NotificationTypes.CharacterModified, host: host, employee: employee);
@@ -69,7 +71,7 @@ namespace Conscience.Application.Graph.Entities.Characters
                 .AddPlotEditorPermissions();
         }
         
-        private Character ModifyCharacter(Character character)
+        private Character ModifyCharacter(Character character, List<CharacterRelation> inverseRelations)
         {
             var dbCharacter = _characterRepo.GetById(character.Id);
 
@@ -105,6 +107,45 @@ namespace Conscience.Application.Graph.Entities.Characters
             (relation, dbRelation) => relation.Character.Id == dbRelation.Character.Id);
 
             character = _characterRepo.Modify(dbCharacter);
+
+            if (inverseRelations != null)
+            {
+                foreach (var inverseRelation in inverseRelations)
+                {
+                    var relatedCharacter = _characterRepo.GetById(inverseRelation.Character.Id);
+
+                    if (string.IsNullOrEmpty(inverseRelation.Description))
+                    {
+                        var itemToRemove = relatedCharacter.Relations.FirstOrDefault(r => r.Character.Id == character.Id);
+                        if (itemToRemove != null)
+                        {
+                            relatedCharacter.Relations.Remove(itemToRemove);
+                            _characterRepo.DeleteChild(itemToRemove);
+                        }
+                    }
+                    else
+                    {
+                        var relationsToAddOrModify = new List<CharacterRelation>
+                        {
+                            new CharacterRelation
+                            {
+                                Id = inverseRelation.Id,
+                                Description = inverseRelation.Description,
+                                Character = character
+                            }
+                        };
+
+                        ModifyCollection(_characterRepo, _logService, relationsToAddOrModify, relatedCharacter.Relations, (relation, dbRelation) =>
+                        {
+                            dbRelation.Description = relation.Description;
+                            dbRelation.Character = relation.Character;
+                        },
+                        (relation, dbRelation) => relation.Character.Id == dbRelation.Character.Id,
+                        shouldRemove: false);
+                    }
+                }
+            }
+
             return _characterRepo.GetById(character.Id);
         }
 
