@@ -562,7 +562,7 @@ namespace Conscience.Web.Controllers.Api
                     host.Account.Device = new Device
                     {
                         DeviceId = "Dummy",
-                        BatteryLevel = 100,
+                        BatteryLevel = 1,
                         BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
                         LastConnection = DateTime.Now
                     };
@@ -610,7 +610,7 @@ namespace Conscience.Web.Controllers.Api
                     employee.Account.Device = new Device
                     {
                         DeviceId = "Dummy",
-                        BatteryLevel = 100,
+                        BatteryLevel = 1,
                         BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
                         LastConnection = DateTime.Now
                     };
