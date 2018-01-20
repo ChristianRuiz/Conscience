@@ -105,7 +105,7 @@ namespace Conscience.Application.Graph.Entities.Characters
             (relation, dbRelation) => relation.Character.Id == dbRelation.Character.Id);
 
             character = _characterRepo.Modify(dbCharacter);
-            return character;
+            return _characterRepo.GetById(character.Id);
         }
 
         private static Host GetHost(Character character)

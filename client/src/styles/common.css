@@ -35,6 +35,11 @@ html, body {
     flex-direction: column;
 }
 
+
+.flexStretch {
+    flex: 1;
+}
+
 .marginTop {
     margin-top: 20px;
 }

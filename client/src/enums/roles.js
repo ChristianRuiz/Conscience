@@ -5,6 +5,7 @@ Roles.CompanyAdmin = 'CompanyAdmin';
 Roles.CompanyQA = 'CompanyQA';
 Roles.CompanyBehaviour = 'CompanyBehaviour';
 Roles.CompanyPlot = 'CompanyPlot';
+Roles.CompanyPlotEditor = 'CompanyPlotEditor';
 Roles.CompanyMaintenance = 'CompanyMaintenance';
 Roles.Host = 'Host';
 

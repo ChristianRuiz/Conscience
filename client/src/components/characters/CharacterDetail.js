@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 
+import RolesValidation from '../common/RolesValidation';
+import Roles from '../../enums/roles';
+
 import PictureDescriptionBox from '../common/PictureDescriptionBox';
 
 import query from '../../queries/CharacterDetailQuery';
@@ -15,8 +18,13 @@ class CharacterDetail extends React.Component {
     const character = this.props.data.characters.byId;
 
     return (<div>
-      <h1>{character.name}</h1>
+      <div className="flex">
+        <h1 className="flexStretch">{character.name}</h1>
 
+        <RolesValidation allowed={[Roles.CompanyPlotEditor, Roles.Admin]}>
+          <Link style={{ marginRight: 20 }} to={`/character-edit/${character.id}`} ><h3>Edit</h3></Link>
+        </RolesValidation>
+      </div>
       <div>
         <h2>Character Story:</h2>
         <p>{character.story}</p>

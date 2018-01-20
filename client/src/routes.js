@@ -6,6 +6,7 @@ import PlotsPage from './components/plots/PlotsPage';
 import PlotDetailPage from './components/plots/PlotDetailPage';
 import CharactersPage from './components/characters/CharactersPage';
 import CharacterDetailPage from './components/characters/CharacterDetailPage';
+import CharacterEditPage from './components/characters/CharacterEditPage';
 import BehaviourPage from './components/behaviour/BehaviourPage';
 import HostStatsPage from './components/behaviour/HostStatsPage';
 import MaintenancePage from './components/maintenance/MaintenancePage';
@@ -25,6 +26,7 @@ const Routes = () =>
     <Route path="/plot-detail/:plotId" component={PlotDetailPage} />
     <Route path="/characters" component={CharactersPage} />
     <Route path="/character-detail/:characterId" component={CharacterDetailPage} />
+    <Route path="/character-edit/:characterId" component={CharacterEditPage} />
     <Route path="/behaviour" component={BehaviourPage} />
     <Route path="/behaviour-detail/:hostId" component={HostStatsPage} />
     <Route path="/maintenance" component={MaintenancePage} />

@@ -40,7 +40,7 @@ namespace Conscience.Domain
 
         public override string ToString()
         {
-            return Character.Name;
+            return Character != null ? Character.Name : Plot.Name;
         }
     }
 }
