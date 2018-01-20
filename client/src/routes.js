@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import MapPage from './components/map/MapPage';
 import PlotsPage from './components/plots/PlotsPage';
 import PlotDetailPage from './components/plots/PlotDetailPage';
+import PlotEditPage from './components/plots/PlotEditPage';
 import CharactersPage from './components/characters/CharactersPage';
 import CharacterDetailPage from './components/characters/CharacterDetailPage';
 import CharacterEditPage from './components/characters/CharacterEditPage';
@@ -24,6 +25,7 @@ const Routes = () =>
     <Route path="/" exact component={MapPage} />
     <Route path="/plots" component={PlotsPage} />
     <Route path="/plot-detail/:plotId" component={PlotDetailPage} />
+    <Route path="/plot-edit/:plotId" component={PlotEditPage} />
     <Route path="/characters" component={CharactersPage} />
     <Route path="/character-detail/:characterId" component={CharacterDetailPage} />
     <Route path="/character-edit/:characterId" component={CharacterEditPage} />

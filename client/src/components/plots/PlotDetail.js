@@ -1,6 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import { graphql, gql } from 'react-apollo';
+import { Link, withRouter } from 'react-router-dom';
+import { graphql } from 'react-apollo';
+
+import RolesValidation from '../common/RolesValidation';
+import Roles from '../../enums/roles';
+
+import query from '../../queries/PlotDetailQuery';
 
 import PictureDescriptionBox from '../common/PictureDescriptionBox';
 
@@ -13,7 +18,14 @@ class PlotDetail extends React.Component {
     const plot = this.props.data.plots.byId;
 
     return (<div>
-      <h2>{plot.name}</h2>
+      <div className="flex">
+        <h2 className="flexStretch">{plot.name}</h2>
+
+        <RolesValidation allowed={[Roles.CompanyPlotEditor, Roles.Admin]}>
+          <Link style={{ marginRight: 20 }} to={`/plot-edit/${plot.id}`} ><h3>Edit</h3></Link>
+        </RolesValidation>
+      </div>
+
       <p>{plot.description}</p>
 
       <div className="flexColumn marginTop">
@@ -42,40 +54,5 @@ class PlotDetail extends React.Component {
 PlotDetail.propTypes = {
   data: React.PropTypes.object.isRequired
 };
-
-const query = gql`query GetPlotDetails($plotId:Int!) {
-  plots {
-    byId(id: $plotId) {
-      id,
-      name,
-      description,
-      characters {
-        character {
-          id,
-          name,
-          currentHost {
-            id
-            host {
-              id
-              account {
-                id
-                pictureUrl
-              }
-            }
-          }
-        },
-        description
-      }
-      events {
-        id
-        description
-        location
-        hour
-        minute
-      }
-    }
-  }
-}
-      `;
 
 export default withRouter(graphql(query)(PlotDetail));
