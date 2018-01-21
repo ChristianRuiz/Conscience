@@ -77,6 +77,8 @@ namespace Conscience.Domain
         CoreMemory,
         SystemFailure,
         LowBattery,
+        BatteryCharged,
+        EventIn15Min,
         HostHurt,
         HostDead,
         HostFixed,

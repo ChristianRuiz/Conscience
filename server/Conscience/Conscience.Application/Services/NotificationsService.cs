@@ -77,6 +77,9 @@ namespace Conscience.Application.Services
                     TimeStamp = DateTime.Now
                 });
             }
+            else if(notification.NotificationType == NotificationTypes.EventIn15Min) {
+                return notification;
+            }
             else
             {
                 notification.Processed = false;
@@ -120,6 +123,12 @@ namespace Conscience.Application.Services
                     break;
                 case NotificationTypes.LowBattery:
                     audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/lowbattery.mp3" };
+                    break;
+                case NotificationTypes.BatteryCharged:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/batterycharged.mp3" };
+                    break;
+                case NotificationTypes.EventIn15Min:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/event.mp3" };
                     break;
                 case NotificationTypes.Reset:
                     audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/reset.mp3" };
