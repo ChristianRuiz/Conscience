@@ -58,15 +58,26 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     var characterId = context.GetArgument<int>("characterId");
                     var host = hostRepo.GetAll().First(h => h.Id == hostId);
                     var character = characterRepo.GetAll().First(h => h.Id == characterId);
-                    
+                    var currentHost = character.CurrentHost;
+                    var currentCharacter = host.CurrentCharacter;
+
                     logService.Log(host, $"Assign character '{character.Name}' to host '{host.Account.UserName}'");
 
                     var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+                    
+                    host = hostRepo.AssignHost(host, character);
+
+                    if (currentCharacter != null)
+                        notificationsService.Notify(host.Account.Id, $"{employee.Name} has unassigned your character '{currentCharacter.Character.Name}'.",
+                            NotificationTypes.CharacterAssigned, host: host, employee: employee);
 
                     notificationsService.Notify(host.Account.Id, $"{employee.Name} has assigned you a new character '{character.Name}'.",
                         NotificationTypes.CharacterAssigned, host: host, employee: employee);
 
-                    host = hostRepo.AssignHost(host, character);
+                    if (currentHost != null)
+                        notificationsService.Notify(currentHost.Host.Account.Id, $"{employee.Name} has unassigned your character '{character.Name}'.",
+                            NotificationTypes.CharacterAssigned, host: currentHost.Host, employee: employee);
+
                     return host;
                 })
                 .AddPlotAssignHostPermissions();

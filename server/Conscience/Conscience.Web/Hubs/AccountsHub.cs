@@ -151,17 +151,19 @@ namespace Conscience.Web.Hubs
             {
                 var hub = GlobalHost.ConnectionManager.GetHubContext<AccountsHub>();
 
+                var host = e.Notification.Host != null ? child.Resolve<HostRepository>().GetAll().First(h => h.Id == e.Notification.Host.Id) : null;
+
                 switch (e.Notification.NotificationType)
                 {
                     case NotificationTypes.CharacterModified:
-                        hub.Clients.Group(GroupWeb).characterUpdated(e.Notification.Host.CurrentCharacter.Id);
+                        hub.Clients.Group(GroupWeb).characterUpdated(host.CurrentCharacter.Id);
                         break;
                     case NotificationTypes.StatsModified:
-                        hub.Clients.Group(GroupWeb).statsModified(e.Notification.Host.Id);
+                        hub.Clients.Group(GroupWeb).statsModified(host.Id);
                         break;
                     case NotificationTypes.CharacterAssigned:
-                        foreach(var character in e.Notification.Host.Characters)
-                            hub.Clients.Group(GroupWeb).characterUpdated(character.Id);
+                        foreach(var character in host.Characters)
+                            hub.Clients.Group(GroupWeb).characterUpdated(character.Character.Id);
                         break;
                     case NotificationTypes.Panic:
                         hub.Clients.Group(GroupAdmins).panicButton(e.Notification.Id);

@@ -52,7 +52,7 @@ namespace Conscience.Domain
             get
             {
                 var host = Hosts.OrderByDescending(h => h.AssignedOn).FirstOrDefault();
-                if (host != null && host.Host.CurrentCharacter.Character == this)
+                if (host != null && host.Host.CurrentCharacter != null && host.Host.CurrentCharacter.Character == this)
                     return host;
                 else
                     return null;
