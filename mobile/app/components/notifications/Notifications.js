@@ -133,7 +133,7 @@ class Notifications extends React.Component {
             <Text style={styles.coreMemotyTitle}>/***** CORE MEMORY ACCESS ****/</Text>
             <Text style={styles.coreMemotyTitle}>/* Do not share this with humans */</Text>
           </View>) : <View /> }
-          <Text style={styles.transcriptText}>{this.state.audio ? this.state.audio.transcription.replace('\n', '\n\n') : ''}</Text>
+          <Text style={styles.transcriptText}>{this.state.audio ? this.state.audio.transcription.replace(new RegExp('\\n', 'g'), '\n\n') : ''}</Text>
           <Button title="Close" onPress={() => this.stopAudio()} />
         </ScrollView>
       </Modal>

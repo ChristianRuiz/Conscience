@@ -121,7 +121,7 @@ class HostDetails extends React.Component {
         {host.currentCharacter ? (<View>
 
           <Text style={commonStyles.h3}>STORY</Text>
-          <Text>{host.currentCharacter.character.story}</Text>
+          <Text>{host.currentCharacter.character.story.replace(new RegExp('\\n', 'g'), '\n\n')}</Text>
 
           <Divider />
 
