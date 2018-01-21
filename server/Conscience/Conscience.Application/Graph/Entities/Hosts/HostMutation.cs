@@ -67,10 +67,6 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     
                     host = hostRepo.AssignHost(host, character);
 
-                    if (currentCharacter != null)
-                        notificationsService.Notify(host.Account.Id, $"{employee.Name} has unassigned your character '{currentCharacter.Character.Name}'.",
-                            NotificationTypes.CharacterAssigned, host: host, employee: employee);
-
                     notificationsService.Notify(host.Account.Id, $"{employee.Name} has assigned you a new character '{character.Name}'.",
                         NotificationTypes.CharacterAssigned, host: host, employee: employee);
 
