@@ -8,6 +8,7 @@ import PlotEditPage from './components/plots/PlotEditPage';
 import CharactersPage from './components/characters/CharactersPage';
 import CharacterDetailPage from './components/characters/CharacterDetailPage';
 import CharacterEditPage from './components/characters/CharacterEditPage';
+import CharacterAssignPage from './components/characters/CharacterAssignPage';
 import BehaviourPage from './components/behaviour/BehaviourPage';
 import HostStatsPage from './components/behaviour/HostStatsPage';
 import MaintenancePage from './components/maintenance/MaintenancePage';
@@ -29,6 +30,7 @@ const Routes = () =>
     <Route path="/characters" component={CharactersPage} />
     <Route path="/character-detail/:characterId" component={CharacterDetailPage} />
     <Route path="/character-edit/:characterId" component={CharacterEditPage} />
+    <Route path="/character-assign/:characterId" component={CharacterAssignPage} />
     <Route path="/behaviour" component={BehaviourPage} />
     <Route path="/behaviour-detail/:hostId" component={HostStatsPage} />
     <Route path="/maintenance" component={MaintenancePage} />

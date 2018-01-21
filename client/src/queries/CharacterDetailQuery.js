@@ -61,6 +61,7 @@ const query = gql`query GetCharacterDetails($characterId: Int!) {
       }
       currentHost {
         id
+        assignedOn
         host {
           id
           account {

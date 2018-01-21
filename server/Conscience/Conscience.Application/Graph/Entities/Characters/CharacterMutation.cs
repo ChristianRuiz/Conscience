@@ -54,6 +54,10 @@ namespace Conscience.Application.Graph.Entities.Characters
                             var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
                             notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified your character.", NotificationTypes.CharacterModified, host: host, employee: employee);
                         }
+                        else
+                        {
+
+                        }
                     }
                     return character;
                 })

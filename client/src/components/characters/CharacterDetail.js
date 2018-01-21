@@ -22,7 +22,10 @@ class CharacterDetail extends React.Component {
         <h1 className="flexStretch">{character.name}</h1>
 
         <RolesValidation allowed={[Roles.CompanyPlotEditor, Roles.Admin]}>
-          <Link style={{ marginRight: 20 }} to={`/character-edit/${character.id}`} ><h3>Edit</h3></Link>
+          <div className="flex">
+            <Link style={{ marginRight: 20 }} to={`/character-assign/${character.id}`} ><h3>Assign</h3></Link>
+            <Link style={{ marginRight: 20 }} to={`/character-edit/${character.id}`} ><h3>Edit</h3></Link>
+          </div>
         </RolesValidation>
       </div>
       <div>
