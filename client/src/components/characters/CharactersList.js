@@ -3,6 +3,9 @@ import { Link, withRouter } from 'react-router-dom';
 import { graphql } from 'react-apollo';
 import ScrollableContainer from '../common/ScrollableContainer';
 
+import RolesValidation from '../common/RolesValidation';
+import Roles from '../../enums/roles';
+
 import query from '../../queries/CharactersListQuery';
 
 class CharactersList extends React.Component {
@@ -16,7 +19,13 @@ class CharactersList extends React.Component {
 
     return (<ScrollableContainer>
       <div>
-        <h2>Characters</h2>
+        <div className="flex">
+          <h2 className="flexStretch">Characters</h2>
+
+          <RolesValidation allowed={[Roles.CompanyPlotEditor, Roles.Admin]}>
+            <Link style={{ marginRight: 20 }} to={'/character-edit/0'} ><h3>New</h3></Link>
+          </RolesValidation>
+        </div>
         <ul>
           {charactersWithHost.map(character =>
             <li key={character.id}>

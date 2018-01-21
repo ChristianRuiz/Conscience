@@ -153,10 +153,15 @@ class CharacterEdit extends React.Component {
     if (i !== -1) {
       this.autocompleteCharacters.setState({ searchText: '' });
 
-      this.setState({ relations: [...this.state.relations, {
-        character,
-        description: ''
-      }]
+      this.setState({
+        relations: [...this.state.relations, {
+          character,
+          description: ''
+        }],
+        inverseRelations: [...this.state.inverseRelations, {
+          character: { id: character.id },
+          description: ''
+        }]
       });
     }
   }
@@ -373,4 +378,4 @@ query CharacterEditAutocomplete {
 }
       `;
 
-export default withRouter(compose(graphql(query), graphql(mutation), graphql(autocomplete, { name: 'autocomplete' }))(CharacterEdit));
+export default withRouter(compose(graphql(query), graphql(mutation), graphql(autocomplete, { name: 'autocomplete', options: { fetchPolicy: 'network-only' } }))(CharacterEdit));

@@ -49,8 +49,11 @@ namespace Conscience.Application.Graph.Entities.Characters
                         _logService.Log(host, $"Modified character with name '{character.Name}'");
                         character = ModifyCharacter(character, inverseRelations);
 
-                        var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
-                        notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified your character.", NotificationTypes.CharacterModified, host: host, employee: employee);
+                        if (host != null)
+                        {
+                            var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+                            notificationsService.Notify(host.Account.Id, $"{employee.Name} has modified your character.", NotificationTypes.CharacterModified, host: host, employee: employee);
+                        }
                     }
                     return character;
                 })

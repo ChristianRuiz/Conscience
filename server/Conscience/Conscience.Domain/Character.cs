@@ -10,6 +10,7 @@ namespace Conscience.Domain
     {
         public Character()
         {
+            Hosts = new HashSet<CharacterInHost>();
             Memories = new HashSet<Memory>();
             Triggers = new HashSet<Trigger>();
             Plots = new HashSet<CharacterInPlot>();

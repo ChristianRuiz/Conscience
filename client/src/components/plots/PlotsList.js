@@ -3,6 +3,9 @@ import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 import ScrollableContainer from '../common/ScrollableContainer';
 
+import RolesValidation from '../common/RolesValidation';
+import Roles from '../../enums/roles';
+
 class PlotsList extends React.Component {
   render() {
     if (this.props.data.loading) {
@@ -11,7 +14,13 @@ class PlotsList extends React.Component {
 
     return (<ScrollableContainer>
       <div>
-        <h2>Plots</h2>
+        <div className="flex">
+          <h2 className="flexStretch">Plots</h2>
+
+          <RolesValidation allowed={[Roles.CompanyPlotEditor, Roles.Admin]}>
+            <Link style={{ marginRight: 20 }} to={'/plot-edit/0'} ><h3>New</h3></Link>
+          </RolesValidation>
+        </div>
         <ul>
           {this.props.data.plots.all.map(plot =>
             <li key={plot.id}>
