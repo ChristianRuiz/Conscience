@@ -22,8 +22,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 resolve: context => hostRepo.GetAllHosts(accountService.CurrentUser)
                                             .ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, h => h.Account, h => h.Notifications, h => h.Characters, h => h.CoreMemory1, h => h.CoreMemory2, h => h.CoreMemory3, h => h.Account, h => h.Account.Device)
-                .ToList().Where(h => !accountService.CurrentUser.UserName.Contains("-") || h.Account.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First())) //TODO: Remove this line, only to send both runs pre game 
-                )
+                .ToList())
                 .AddMaintenancePermissions();
 
             Field<HostGraphType>("byId",

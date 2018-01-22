@@ -19,12 +19,9 @@ namespace Conscience.Application.Graph.Entities.Characters
 
             Field<ListGraphType<CharacterGraphType>>("all", 
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,
-                resolve: context => characterRepo.GetAll()
+                resolve: context => characterRepo.GetAllCharacters(accountService.CurrentUser)
                                             .ApplyPaginationAndOrderBy(context)
-                                            .ToList().Where(c => !accountService.CurrentUser.UserName.Contains("-") 
-                                                                || !c.Hosts.Any() 
-                                                                ||  c.Hosts.Any(h => h.Host.Account.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First()))) //TODO: Remove this line, only to send both runs pre game 
-                                            )
+                                            .ToList())
                                             .AddMaintenancePermissions();
 
             Field<CharacterGraphType>("byId",

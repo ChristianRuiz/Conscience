@@ -13,7 +13,7 @@ namespace Conscience.Application.Graph.Entities.LogEntries
 {
     public class LogEntryQuery : ObjectGraphType<object>
     {
-        public LogEntryQuery(LogEntryRepository logRepo)
+        public LogEntryQuery(LogEntryRepository logRepo, IUsersIdentityService userService)
         {
             Name = "LogEntryQuery";
 
@@ -23,7 +23,7 @@ namespace Conscience.Application.Graph.Entities.LogEntries
                     new QueryArgument<IntGraphType> { Name = "first", Description = "number of items to take" },
                     new QueryArgument<IntGraphType> { Name = "offset", Description = "offset of the first item to return" }
                     ),
-                resolve: context => logRepo.GetByEmployee(context.GetArgument<int>("id")).OrderByDescending(l => l.Id)
+                resolve: context => logRepo.GetByEmployee(context.GetArgument<int>("id"), userService.CurrentUser.Employee).OrderByDescending(l => l.Id)
                                         .ApplyPagination(context)
                 )
                 .AddQAPermissions();

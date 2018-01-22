@@ -11,6 +11,7 @@ namespace Conscience.Domain
         public Employee()
         {
             Notifications = new HashSet<Notification>();
+            HiddenHosts = new HashSet<Host>();
         }
         
         public string Name
@@ -20,6 +21,12 @@ namespace Conscience.Domain
         }
 
         public virtual ICollection<Notification> Notifications
+        {
+            get;
+            set;
+        }
+
+        public virtual ICollection<Host> HiddenHosts
         {
             get;
             set;

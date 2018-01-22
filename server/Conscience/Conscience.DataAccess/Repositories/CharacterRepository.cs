@@ -22,6 +22,14 @@ namespace Conscience.DataAccess.Repositories
             }
         }
 
+        public IQueryable<Character> GetAllCharacters(Account currentUser)
+        {
+            var characters = GetAll();
+            if (!currentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
+                characters = characters.Where(c => !c.Hosts.Any() || !c.Hosts.Any(h => h.UnassignedOn == null && h.Host.Hidden && !h.Host.HiddenHostAdministrators.Any(a => a.Account.Id == currentUser.Id)));
+            return characters;
+        }
+
         public Character GetById(int id)
         {
             return DbSet.Include(c => c.Relations).FirstOrDefault(c => c.Id == id);

@@ -22,9 +22,12 @@ namespace Conscience.DataAccess.Repositories
             }
         }
 
-        public IQueryable<LogEntry> GetByEmployee(int employeeId)
+        public IQueryable<LogEntry> GetByEmployee(int employeeId, Employee currentEmployee)
         {
-            return DbSet.Include(l => l.Host).Include(l => l.Employee).Where(l => l.Employee.Id == employeeId);
+            var logs = DbSet.Include(l => l.Host).Include(l => l.Employee).Where(l => l.Employee.Id == employeeId);
+            if (!currentEmployee.Account.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
+                logs = logs.Where(l => l.Host == null || !l.Host.Hidden || l.Host.HiddenHostAdministrators.Any(admin => admin.Id == currentEmployee.Id));
+            return logs;
         }
 
         public IQueryable<LogEntry> GetByHost(int hostId)

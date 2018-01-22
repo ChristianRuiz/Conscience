@@ -43,5 +43,11 @@ namespace Conscience.Domain
             get;
             set;
         }
+
+        public virtual Employee Writer
+        {
+            get;
+            set;
+        }
     }
 }

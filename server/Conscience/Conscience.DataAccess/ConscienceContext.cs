@@ -106,7 +106,7 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory2);
             modelBuilder.Entity<Host>().HasOptional(h => h.CoreMemory3);
             modelBuilder.Entity<Host>().HasMany(h => h.Characters).WithOptional(c => c.Host);
-            modelBuilder.Entity<Host>().HasMany(h => h.HiddenHostAdministrators);
+            modelBuilder.Entity<Host>().HasMany(h => h.HiddenHostAdministrators).WithMany(e => e.HiddenHosts);
             modelBuilder.Entity<CoreMemory>().HasRequired(c => c.Audio);
             modelBuilder.Entity<CharacterInHost>().HasRequired(c => c.Character).WithMany(c => c.Hosts);
             modelBuilder.Entity<Character>().HasMany(c => c.Memories).WithRequired(m => m.Character).WillCascadeOnDelete();
@@ -116,6 +116,7 @@ namespace Conscience.DataAccess
             modelBuilder.Entity<CharacterRelation>().HasRequired(r => r.Character);
             modelBuilder.Entity<Plot>().HasMany(c => c.Events).WithRequired(e => e.Plot);
             modelBuilder.Entity<Plot>().HasMany(c => c.Characters).WithRequired(c => c.Plot).HasForeignKey(c => c.PlotId).WillCascadeOnDelete();
+            modelBuilder.Entity<Plot>().HasOptional(c => c.Writer);
             modelBuilder.Entity<LogEntry>().HasOptional(c => c.Host);
             modelBuilder.Entity<LogEntry>().HasOptional(c => c.Employee);
             modelBuilder.Entity<Notification>().HasRequired(c => c.Owner);

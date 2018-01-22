@@ -11,6 +11,7 @@ namespace Conscience.Domain
     {
         public Host()
         {
+            HiddenHostAdministrators = new HashSet<Employee>();
             Notifications = new HashSet<Notification>();
             Characters = new HashSet<CharacterInHost>();
             Stats = new HashSet<Stats>();

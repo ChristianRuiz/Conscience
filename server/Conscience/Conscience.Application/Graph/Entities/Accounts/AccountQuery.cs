@@ -22,8 +22,7 @@ namespace Conscience.Application.Graph.Entities.Accounts
                 resolve: context => accountRepo.GetAll()
                                                 .ApplyPaginationAndOrderBy(context)
                 .AvoidLazyLoad(context, a => a.Host, a => a.Employee, a => a.Device)
-                .ToList().Where(a => !accountService.CurrentUser.UserName.Contains("-") || a.UserName.StartsWith(accountService.CurrentUser.UserName.Split('-').First())) //TODO: Remove this line, only to send both runs pre game
-                ).AddMaintenancePermissions();
+                .ToList()).AddMaintenancePermissions();
             
             Field<AccountGraphType>("current",
                 arguments: ConscienceArguments.PaginationsAndSortingArgument,

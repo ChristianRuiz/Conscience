@@ -64,13 +64,10 @@ namespace Conscience.DataAccess.Migrations
                     {
                         Id = c.Int(nullable: false),
                         Name = c.String(),
-                        Host_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Host", t => t.Host_Id)
                 .ForeignKey("dbo.Account", t => t.Id)
-                .Index(t => t.Id)
-                .Index(t => t.Host_Id);
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Host",
@@ -157,8 +154,11 @@ namespace Conscience.DataAccess.Migrations
                         Code = c.String(),
                         Name = c.String(),
                         Description = c.String(),
+                        Writer_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Employee", t => t.Writer_Id)
+                .Index(t => t.Writer_Id);
             
             CreateTable(
                 "dbo.PlotEvent",
@@ -288,6 +288,19 @@ namespace Conscience.DataAccess.Migrations
                 .Index(t => t.Host_Id);
             
             CreateTable(
+                "dbo.HostEmployee",
+                c => new
+                    {
+                        Host_Id = c.Int(nullable: false),
+                        Employee_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Host_Id, t.Employee_Id })
+                .ForeignKey("dbo.Host", t => t.Host_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Employee", t => t.Employee_Id, cascadeDelete: true)
+                .Index(t => t.Host_Id)
+                .Index(t => t.Employee_Id);
+            
+            CreateTable(
                 "dbo.AccountRole",
                 c => new
                     {
@@ -314,7 +327,8 @@ namespace Conscience.DataAccess.Migrations
             DropForeignKey("dbo.Notification", "Host_Id", "dbo.Host");
             DropForeignKey("dbo.Notification", "Employee_Id", "dbo.Employee");
             DropForeignKey("dbo.Notification", "Audio_Id", "dbo.Audio");
-            DropForeignKey("dbo.Employee", "Host_Id", "dbo.Host");
+            DropForeignKey("dbo.HostEmployee", "Employee_Id", "dbo.Employee");
+            DropForeignKey("dbo.HostEmployee", "Host_Id", "dbo.Host");
             DropForeignKey("dbo.Host", "CoreMemory3_Id", "dbo.CoreMemory");
             DropForeignKey("dbo.Host", "CoreMemory2_Id", "dbo.CoreMemory");
             DropForeignKey("dbo.Host", "CoreMemory1_Id", "dbo.CoreMemory");
@@ -325,6 +339,7 @@ namespace Conscience.DataAccess.Migrations
             DropForeignKey("dbo.CharacterRelation", "ParentCharacterId", "dbo.Character");
             DropForeignKey("dbo.CharacterRelation", "Character_Id", "dbo.Character");
             DropForeignKey("dbo.CharacterInPlot", "CharacterId", "dbo.Character");
+            DropForeignKey("dbo.Plot", "Writer_Id", "dbo.Employee");
             DropForeignKey("dbo.PlotEvent", "Plot_Id", "dbo.Plot");
             DropForeignKey("dbo.CharacterInPlot", "PlotId", "dbo.Plot");
             DropForeignKey("dbo.Memory", "Character_Id", "dbo.Character");
@@ -334,6 +349,8 @@ namespace Conscience.DataAccess.Migrations
             DropForeignKey("dbo.Device", "CurrentLocation_Id", "dbo.Location");
             DropIndex("dbo.AccountRole", new[] { "Role_Id" });
             DropIndex("dbo.AccountRole", new[] { "Account_Id" });
+            DropIndex("dbo.HostEmployee", new[] { "Employee_Id" });
+            DropIndex("dbo.HostEmployee", new[] { "Host_Id" });
             DropIndex("dbo.LogEntry", new[] { "Host_Id" });
             DropIndex("dbo.LogEntry", new[] { "Employee_Id" });
             DropIndex("dbo.Stats", new[] { "Host_Id" });
@@ -346,6 +363,7 @@ namespace Conscience.DataAccess.Migrations
             DropIndex("dbo.CharacterRelation", new[] { "Character_Id" });
             DropIndex("dbo.CharacterRelation", new[] { "ParentCharacterId" });
             DropIndex("dbo.PlotEvent", new[] { "Plot_Id" });
+            DropIndex("dbo.Plot", new[] { "Writer_Id" });
             DropIndex("dbo.CharacterInPlot", new[] { "CharacterId" });
             DropIndex("dbo.CharacterInPlot", new[] { "PlotId" });
             DropIndex("dbo.Memory", new[] { "Character_Id" });
@@ -355,12 +373,12 @@ namespace Conscience.DataAccess.Migrations
             DropIndex("dbo.Host", new[] { "CoreMemory2_Id" });
             DropIndex("dbo.Host", new[] { "CoreMemory1_Id" });
             DropIndex("dbo.Host", new[] { "Id" });
-            DropIndex("dbo.Employee", new[] { "Host_Id" });
             DropIndex("dbo.Employee", new[] { "Id" });
             DropIndex("dbo.Location", new[] { "Device_Id" });
             DropIndex("dbo.Device", new[] { "CurrentLocation_Id" });
             DropIndex("dbo.Account", new[] { "Device_Id" });
             DropTable("dbo.AccountRole");
+            DropTable("dbo.HostEmployee");
             DropTable("dbo.LogEntry");
             DropTable("dbo.Role");
             DropTable("dbo.Stats");

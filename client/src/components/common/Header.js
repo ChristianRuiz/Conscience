@@ -22,10 +22,11 @@ const Header = () =>
         </div>
       </div>
     </RolesValidation>
-    <RolesValidation allowed={[Roles.Host]}>
+
+    {/* <RolesValidation allowed={[Roles.Host]}>
       <Link to="/client-test" >Client test</Link>
     </RolesValidation>
-    {/* <RolesValidation allowed={[Roles.Admin]}>
+    <RolesValidation allowed={[Roles.Admin]}>
       <Link to="/bulk-import" >Bulk import</Link>
     </RolesValidation> */}
     {/* <LogoutButton /> */}
