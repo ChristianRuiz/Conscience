@@ -19,6 +19,7 @@ import HostDetailPage from './components/security/HostDetailPage';
 import Notifications from './components/notifications/Notifications';
 import HostClientTestPage from './components/host-client-test/HostClientTestPage';
 import BulkImportPage from './components/bulk-import/BulkImportPage';
+import CoreMemoriesPage from './components/core-memories/CoreMemoriesPage';
 import NotFound from './components/common/NotFound';
 
 const Routes = () =>
@@ -41,6 +42,7 @@ const Routes = () =>
     <Route path="/notifications" exact component={Notifications} />
     <Route path="/client-test" component={HostClientTestPage} />
     <Route path="/bulk-import" component={BulkImportPage} />
+    <Route path="/core-memories" component={CoreMemoriesPage} />
     <Route component={NotFound} />
   </Switch>;
 

@@ -1,0 +1,32 @@
+.coreMemories .checkbox {
+    width: auto !important;
+}
+
+.coreMemories span {
+    margin-top: 20px;
+}
+
+.coreMemories ul {
+    -webkit-padding-start: 0px;
+}
+
+.coreMemories li {
+    list-style-type: none;
+    margin-bottom: -20px;
+}
+
+.coreMemories button {
+    margin-right: 30px;
+}
+
+.coreMemories .cmUser {
+    width: 80px;
+}
+
+.coreMemories .cmCharacter {
+    width: 255px;
+}
+
+.coreMemories .coreMemory {
+    width: 120px;
+}
