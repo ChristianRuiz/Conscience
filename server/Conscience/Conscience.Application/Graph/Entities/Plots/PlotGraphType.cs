@@ -1,4 +1,5 @@
-﻿using Conscience.Domain;
+﻿using Conscience.Application.Graph.Entities.Employees;
+using Conscience.Domain;
 using GraphQL.Types;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Conscience.Application.Graph.Entities.Plots
             
             Field(p => p.Name);
             Field(p => p.Description);
+            Field<EmployeeGraphType>("writer", resolve: context => context.Source.Writer);
             Field<ListGraphType<PlotEventGraphType>>("events", resolve: context => context.Source.Events);
             Field<ListGraphType<CharacterInPlotGraphType>>("characters", resolve: context => context.Source.Characters);
         }

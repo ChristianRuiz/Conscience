@@ -23,9 +23,11 @@ class PlotEdit extends React.Component {
       description: '',
       characters: [],
       events: [],
-      autocompleteCharacters: []
+      autocompleteCharacters: [],
+      autocompleteWriters: []
     };
     this.charactersCount = -1;
+    this.employeesCount = -1;
   }
 
   componentWillReceiveProps(props) {
@@ -39,7 +41,8 @@ class PlotEdit extends React.Component {
           name: plot.name,
           description: plot.description,
           characters: plot.characters,
-          events: plot.events
+          events: plot.events,
+          writer: plot.writer
         });
       } else {
         this.setState({
@@ -67,6 +70,12 @@ class PlotEdit extends React.Component {
         state.characters.filter(r => r.character.id === c.id).length === 0);
     }
 
+    if (!props.autocomplete.loading && (this.employeesCount < 0 || this.employeesCount !== state.autocompleteWriters.length)) {
+      stateToSet.autocompleteWriters = props.autocomplete.employees.all.filter(e =>
+        e.department === 'Plot' || e.department === 'PlotEditor');
+      this.employeesCount = stateToSet.autocompleteWriters.length;
+    }
+
     if (Object.keys(stateToSet).length !== 0) {
       this.setState(stateToSet);
     }
@@ -89,7 +98,11 @@ class PlotEdit extends React.Component {
             location: e.location,
             hour: e.hour,
             minute: e.minute
-          }))
+          })),
+          writer: {
+            id: this.state.writer.id,
+            name: this.state.writer.name
+          }
         }
       }
     }).then(r => this.setState({ edited: true, plotId: r.data.plots.addOrModifyPlot.id }));
@@ -110,6 +123,14 @@ class PlotEdit extends React.Component {
         description: ''
       }]
       });
+    }
+  }
+
+  writerSelected(writer, i) {
+    if (i !== -1) {
+      this.autocompleteWriters.setState({ searchText: '' });
+
+      this.setState({ writer });
     }
   }
 
@@ -213,6 +234,18 @@ class PlotEdit extends React.Component {
             </div>)}
         </div>
       </div>
+
+      <AutoComplete
+        floatingLabelText="Select the writer"
+        menuStyle={{ backgroundColor: 'black' }}
+        filter={AutoComplete.caseInsensitiveFilter}
+        dataSource={this.state.autocompleteWriters}
+        dataSourceConfig={{ text: 'name', value: 'id' }}
+        ref={ref => this.autocompleteWriters = ref}
+        onNewRequest={(data, i) => this.writerSelected(data, i)}
+      />
+      {this.state.writer ?
+        (<p>Writer: {this.state.writer.name}</p>) : ''}
     </div>);
   }
 }
@@ -246,6 +279,10 @@ mutation AddOrModifyPlot($plot:PlotInput!) {
         hour
         minute
       }
+      writer {
+        id
+        name
+      }
     }
   }
 }
@@ -257,6 +294,13 @@ query PlotEditAutocomplete {
     all {
       id
       name
+    }
+  }
+  employees {
+    all {
+      id
+      name
+      department
     }
   }
 }

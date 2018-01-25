@@ -90,7 +90,7 @@ class HostButtons extends React.Component {
 
         <PanicButton />
 
-        <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')} v1.2.1</Text>
+        <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')} v1.2.2</Text>
         <Button title="Logout" onPress={() => this.logout()} />
       </View>
     </ScrollView>);

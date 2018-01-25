@@ -19,6 +19,8 @@ namespace Conscience.Application.Graph.Entities.Plots
             
             Field<ListGraphType<PlotEventInputGraphType>>("events");
             Field<ListGraphType<CharacterInPlotInputGraphType>>("characters");
+
+            Field<EmployeesInputGraphType>("writer");
         }
     }
 }

@@ -30,6 +30,10 @@ const query = gql`query GetPlotDetails($plotId:Int!) {
         hour
         minute
       }
+      writer {
+        id
+        name
+      }
     }
   }
 }

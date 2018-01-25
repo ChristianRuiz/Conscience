@@ -31,7 +31,7 @@ class ConscienceMap extends React.Component {
 
     let markerIcon = `${markerBase}/markerAleph.png`;
 
-    if (account.host) {
+    if (account.host && !account.employee) {
       if (account.host.status === 'OK') {
         markerIcon = `${markerBase}/markerHost.png`;
       } else if (account.host.status === 'HURT') {

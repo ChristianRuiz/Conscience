@@ -28,7 +28,7 @@ namespace Conscience.Application.Graph.Entities.Plots
                     {
                         var dbPlot = plotRepo.Add(new Plot());
                         plot.Id = dbPlot.Id;
-                        plot = ModifyPlot(logService, plotRepo, characterRepo, plot);
+                        plot = ModifyPlot(logService, plotRepo, characterRepo, employeeRepo, plot);
                         logService.Log($"Added a new plot with name '{plot.Name}'");
 
                         NotifyPlotModification(notificationsService, usersService, employeeRepo, plot);
@@ -36,7 +36,7 @@ namespace Conscience.Application.Graph.Entities.Plots
                     else
                     {
                         logService.Log($"Edited a plot with name '{plot.Name}'");
-                        plot = ModifyPlot(logService, plotRepo, characterRepo, plot);
+                        plot = ModifyPlot(logService, plotRepo, characterRepo, employeeRepo, plot);
 
                         NotifyPlotModification(notificationsService, usersService, employeeRepo, plot);
                     }
@@ -72,12 +72,13 @@ namespace Conscience.Application.Graph.Entities.Plots
             }
         }
 
-        private Plot ModifyPlot(LogEntryService logService, PlotRepository plotRepo, CharacterRepository characterRepo, Plot plot)
+        private Plot ModifyPlot(LogEntryService logService, PlotRepository plotRepo, CharacterRepository characterRepo, EmployeeRepository employeeRepo, Plot plot)
         {
             var dbPlot = plotRepo.GetById(plot.Id);
 
             dbPlot.Name = plot.Name;
             dbPlot.Description = plot.Description;
+            dbPlot.Writer = employeeRepo.GetById(plot.Writer.Id);
 
             ModifyCollection(plotRepo, logService, plot.Characters, dbPlot.Characters,
                 (character, dbCharacter) =>

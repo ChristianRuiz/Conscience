@@ -80,6 +80,7 @@
     <Compile Include="Graph\ConscienceMutation.cs" />
     <Compile Include="Graph\ConscienceQuery.cs" />
     <Compile Include="Graph\ConscienceSchema.cs" />
+    <Compile Include="Graph\Entities\Employees\EmployeesInputGraphType.cs" />
     <Compile Include="Graph\Entities\Notifications\NotificationGraphType.cs" />
     <Compile Include="Graph\Entities\Notifications\NotificationMutation.cs" />
     <Compile Include="Graph\Entities\Notifications\NotificationQuery.cs" />

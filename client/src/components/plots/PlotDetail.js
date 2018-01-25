@@ -47,6 +47,8 @@ class PlotDetail extends React.Component {
             <p>{`0${e.hour}`.slice(-2)}:{`0${e.minute}`.slice(-2)}</p>
           </div>)}
       </div>
+
+      <p>Writer: {plot.writer.name}</p>
     </div>);
   }
 }
