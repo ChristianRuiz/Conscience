@@ -65,8 +65,9 @@ namespace Conscience.Web.Controllers.Api
 
                 var currentBatteryLevel = currentUser.Device != null ? currentUser.Device.BatteryLevel : 0;
 
-                _accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
-                var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
+                //_accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
+                //var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
+                var account = _accountsRepo.GetById(currentUser.Id);
 
                 _hostUpdatesService.BroadcastAccountUpdated(account.Id);
 
