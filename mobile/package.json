@@ -29,6 +29,7 @@
     "react-native-sound": "git+https://git@github.com/zmxv/react-native-sound.git#ba1b2440a423ded5b4f14516fd1f583e058d523b",
     "react-native-tab-view": "0.0.65",
     "react-native-vector-icons": "^4.1.1",
+    "react-native-wakeful": "^0.1.0",
     "react-router-native": "^4.1.1",
     "redux": "^3.6.0",
     "stacktrace-parser": "^0.1.4"

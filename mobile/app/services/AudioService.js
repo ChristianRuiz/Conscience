@@ -1,4 +1,3 @@
-import BackgroundTimer from 'react-native-background-timer';
 import RNFS from 'react-native-fs';
 import Sound from 'react-native-sound';
 
@@ -16,49 +15,45 @@ class AudioService {
     this.playSound = this.playSound.bind(this);
     this.stopPlaying = this.stopPlaying.bind(this);
 
+    this.playing = false;
+
     Sound.setCategory('PlayAndRecord');
   }
 
   audioQueue = [];
 
-  _playSoundFromFile(filePath, loop) {
+  _playSoundFromFile(filePath) {
     return new Promise((resolve, reject) => {
-      // console.log(`loading audio: ${filePath}`);
-      if (!loop && this.currentAudio) {
+      if (this.currentAudio) {
         this.stopPlaying();
       }
 
+      const self = this;
+
       const sound = new Sound(filePath, '', (error) => {
         if (error) {
-          console.log('failed to load the sound', error);
           reject('failed to load the sound');
           return;
         }
-
-        if (loop) {
-          sound.setNumberOfLoops(-1);
-        }
-
+        
         sound.play((success) => {
           if (success) {
-            // console.log('successfully finished playing');
+            self.currentAudio = null;
             sound.release();
             resolve();
           } else {
-            console.log('playback failed due to audio decoding errors');
+            self.currentAudio = null;
             sound.release();
             reject('playback failed');
           }
         });
       });
 
-      if (!loop) {
-        this.currentAudio = sound;
-      }
+      this.currentAudio = sound;
     });
   }
 
-  _playSound(fileName, loop = false) {
+  _playSound(fileName) {
     return new Promise((resolve, reject) => {
       const self = this;
 
@@ -83,13 +78,10 @@ class AudioService {
             fromUrl: `${Constants.SERVER_URL}${fileUrl}`,
             toFile: filePath
           }).promise.then((r) => {
-            console.log('file downloaded');
-            console.log(JSON.stringify(r));
-
-            self._playSoundFromFile(filePath, loop).then(resolve).catch(reject);
+            self._playSoundFromFile(filePath).then(resolve).catch(reject);
           });
         } else {
-          self._playSoundFromFile(filePath, loop).then(resolve).catch(reject);
+          self._playSoundFromFile(filePath).then(resolve).catch(reject);
         }
       });
     });
@@ -100,6 +92,12 @@ class AudioService {
 
     this.playing = true;
     return this._playSound(fileName).then(() => {
+      this.playing = false;
+      if (this.audioQueue.length > 0) {
+        const audio = this.audioQueue.shift();
+        this.playSound(audio.fileName).then(audio.resolve).catch(audio.reject);
+      }
+    }).catch(() => {
       this.playing = false;
       if (this.audioQueue.length > 0) {
         const audio = this.audioQueue.shift();
@@ -124,9 +122,11 @@ class AudioService {
 
   stopPlaying() {
     try {
+      this.playing = false;
       if (this.currentAudio) {
         this.currentAudio.stop();
         this.currentAudio.release();
+        this.currentAudio = null;
       }
     } catch (e) {
     }

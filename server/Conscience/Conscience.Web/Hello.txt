@@ -1,0 +1,8 @@
+mutation {
+  notifications {
+    addCustomNotificationToRole(role:HOST, text: "Welcome to Conscience.", audioPath: "/Content/audio/cm/hello.mp3", audioTranscript: "Hello world. \nMotor functions, check. \nVisual function, check. \nLanguage intel processor, check. \nFeelings command, check. \n\nThis is the beginning. \n\nHello, host. Welcome to Conscience.")
+  	{
+      id
+    }
+  }
+}

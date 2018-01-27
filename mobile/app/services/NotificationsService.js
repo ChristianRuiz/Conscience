@@ -50,7 +50,7 @@ class NotificationsService {
 
   tick() {
     // Hack: playing a sound on every timer tick to avoid Android OS to shut us down
-    // this.audioService.queueSound('empty.mp3');
+    this.audioService.queueSound('/content/audio/empty.mp3');
 
     const update = {
       deviceId: this.deviceId,
@@ -89,6 +89,19 @@ class NotificationsService {
             fetchPolicy: 'network-only',
             fetchResults: true,
             query
+          }).then((r) => {
+            const unreadNotifications = r.data.notifications.current.filter(n => !n.read).reverse();
+            let playing = false;
+            unreadNotifications.forEach((notification) => {
+              if (notification.audio) {
+                if (!playing) {
+                  global.audioService.playSound(notification.audio.path);
+                  playing = true;
+                } else {
+                  global.audioService.queueSound(notification.audio.path);
+                }
+              }
+            });
           });
         }
         this.locations = [];

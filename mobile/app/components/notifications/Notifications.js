@@ -54,11 +54,6 @@ class Notifications extends React.Component {
 
   componentWillReceiveProps(props) {
     const unreadNotifications = props.data.notifications.current.filter(n => !n.read).reverse();
-    unreadNotifications.forEach((notification) => {
-      if (notification.audio) {
-        global.audioService.queueSound(notification.audio.path);
-      }
-    });
 
     if (unreadNotifications.length) {
       this.props.mutate({
