@@ -133,6 +133,9 @@ namespace Conscience.Application.Services
                 case NotificationTypes.Reset:
                     audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/reset.mp3" };
                     break;
+                case NotificationTypes.ResetHuman:
+                    audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/resethuman.mp3" };
+                    break;
                 case NotificationTypes.NoReset:
                     audio = new Audio { Transcription = "", Path = "/Content/audio/notifications/noreset.mp3" };
                     break;

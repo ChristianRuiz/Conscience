@@ -28,7 +28,10 @@ class CoreMemories extends React.Component {
         character: host.currentCharacter ? host.currentCharacter.character.name : '',
         cm1: host.coreMemory1 && host.coreMemory1.locked,
         cm2: host.coreMemory2 && host.coreMemory2.locked,
-        cm3: host.coreMemory3 && host.coreMemory3.locked
+        cm3: host.coreMemory3 && host.coreMemory3.locked,
+        cm1Empty: !host.coreMemory1,
+        cm2Empty: !host.coreMemory2,
+        cm3Empty: !host.coreMemory3
       }))
       });
     }
@@ -90,9 +93,9 @@ class CoreMemories extends React.Component {
                 />
                 <span className="cmUser">{host.name}</span>
                 <span className="cmCharacter">{host.character}</span>
-                <span className="coreMemory">1: {host.cm1 ? 'LOCKED' : 'UNLOCKED'}</span>
-                <span className="coreMemory">2: {host.cm2 ? 'LOCKED' : 'UNLOCKED'}</span>
-                <span className="coreMemory">3: {host.cm3 ? 'LOCKED' : 'UNLOCKED'}</span>
+                <span className="coreMemory">1: {host.cm1Empty ? 'EMPTY' : (host.cm1 ? 'LOCKED' : 'UNLOCKED')}</span>
+                <span className="coreMemory">2: {host.cm2Empty ? 'EMPTY' : (host.cm2 ? 'LOCKED' : 'UNLOCKED')}</span>
+                <span className="coreMemory">3: {host.cm3Empty ? 'EMPTY' : (host.cm3 ? 'LOCKED' : 'UNLOCKED')}</span>
               </div>
             </li>)}
         </ul>

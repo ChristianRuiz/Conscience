@@ -73,6 +73,7 @@ namespace Conscience.Domain
     {
         CallHost,
         Reset,
+        ResetHuman,
         NoReset,
         CoreMemory,
         SystemFailure,

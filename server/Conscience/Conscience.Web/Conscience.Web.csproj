@@ -396,6 +396,7 @@
     <Content Include="Content\audio\notifications\callhost.mp3" />
     <Content Include="Content\audio\notifications\characterassigned.mp3" />
     <Content Include="Content\audio\notifications\charactermodified.mp3" />
+    <Content Include="Content\audio\notifications\dayreset.mp3" />
     <Content Include="Content\audio\notifications\event.mp3" />
     <Content Include="Content\audio\notifications\hostdead.mp3" />
     <Content Include="Content\audio\notifications\hosthurt.mp3" />
@@ -404,6 +405,8 @@
     <Content Include="Content\audio\notifications\panic.mp3" />
     <Content Include="Content\audio\notifications\plotmodified.mp3" />
     <Content Include="Content\audio\notifications\reset.mp3" />
+    <Content Include="Content\audio\notifications\resetdayfailure.mp3" />
+    <Content Include="Content\audio\notifications\resethuman.mp3" />
     <Content Include="Content\audio\notifications\statsmodified.mp3" />
     <Content Include="Content\audio\notifications\systemfailure.mp3" />
     <Content Include="Content\audio\panicalarm.mp3" />

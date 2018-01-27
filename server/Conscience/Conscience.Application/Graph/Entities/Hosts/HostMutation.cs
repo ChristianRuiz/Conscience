@@ -107,6 +107,8 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     logService.Log(host, $"Reset host '{host.Account.UserName}' by employee '{usersService.CurrentUser.Employee.Name}'");
                     if (host.CoreMemory1.Locked)
                         notificationsService.Notify(host.Account.Id, "Reset", NotificationTypes.Reset, host: host, employee: employee);
+                    else if (host.Account.Employee != null)
+                        notificationsService.Notify(host.Account.Id, "Reset", NotificationTypes.ResetHuman, host: host, employee: employee);
                     else
                         notificationsService.Notify(host.Account.Id, "They are trying to reset you", NotificationTypes.NoReset, host: host, employee: employee);
 
