@@ -7,6 +7,7 @@ import {
 import { Redirect } from 'react-router-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import * as Keychain from 'react-native-keychain';
+import CheckBox from 'react-native-check-box'
 
 import TextInput from '../common/TextInput';
 import Text from '../common/Text';
@@ -45,15 +46,17 @@ class Login extends React.Component {
     this.state = {
       userName: '', // TODO: This values are just for development
       password: '123456',
+      inLarp: false,
       hasError: false,
-      loading: true
+      loading: true,
+      autoLogin: false
     };
 
     Keychain
       .getGenericPassword()
       .then((credentials) => {
         if (credentials) {
-          this.setState({ userName: credentials.username, password: credentials.password });
+          this.setState({ userName: credentials.username.split('|')[0], password: credentials.password, inLarp: credentials.username.split('|')[1] === 'true', autoLogin: true });
           this._doLogin();
         } else {
           this.setState({ loading: false });
@@ -66,21 +69,19 @@ class Login extends React.Component {
   _doLogin() {
     this.setState({ loading: true });
 
-    if (!Constants.serverUrlInitialized) {
-      setTimeout(this._doLogin, 1000);
-      return;
-    }
+    Constants.changeServerUrl(this.state.inLarp ? 'http://192.168.1.100' : 'https://consciencelarp.azurewebsites.net');
 
     this.props.mutate({
       variables: { userName: this.state.userName, password: this.state.password }
     })
     .then((result) => {
-      Keychain.setGenericPassword(this.state.userName, this.state.password);
+      const user = `${this.state.userName}|${this.state.inLarp}`;
+      Keychain.setGenericPassword(user, this.state.password);
       global.userName = this.state.userName;
       this.setState({ currentUser: result.data.accounts.login, loading: false });
     }).catch((error) => {
       console.log(`Unable to login ${JSON.stringify(error)}`);
-      this.setState({ currentUser: null, hasError: true, loading: false });
+      this.setState({ currentUser: null, hasError: true, loading: false, inLarp: this.state.autoLogin ? false : this.state.inLarp, autoLogin: false });
     });
   }
 
@@ -113,6 +114,15 @@ class Login extends React.Component {
           />
           {this.state.hasError &&
           <Text style={styles.loginError}>Login error</Text>}
+
+          <CheckBox
+              rightTextStyle={StyleSheet.flatten(commonStyles.text)}
+              onClick={() => this.setState({ inLarp: !this.state.inLarp })}
+              isChecked={this.state.inLarp}
+              rightText="Are you in the larp?"
+              checkBoxColor="white"
+          />
+
           <Button title="Login" onPress={this._doLogin} />
         </View>
       </View>

@@ -7,7 +7,7 @@ import {
   Modal
 } from 'react-native';
 
-import { graphql, compose, gql } from 'react-apollo';
+import { withApollo, graphql, compose, gql } from 'react-apollo';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import codePush from 'react-native-code-push';
@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
   coreMemotyTitle: {
     marginBottom: 10,
     color: '#F8BB3E'
+  },
+  errorText: {
+    color: 'red'
   }
 });
 
@@ -53,14 +56,14 @@ class Notifications extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const unreadNotifications = props.data.notifications.current.filter(n => !n.read).reverse();
-    unreadNotifications.forEach((notification) => {
+    const unreadNotifications = props.data.notifications.current.filter(n => !n.read);
+    
+    if (unreadNotifications.length) {
+      const notification = unreadNotifications[0];
       if (notification.audio) {
         global.audioService.queueSound(notification.audio.path);
       }
-    });
 
-    if (unreadNotifications.length) {
       this.props.mutate({
         variables: { ids: unreadNotifications.map(n => n.id) }
       }).then(() => {
@@ -101,8 +104,22 @@ class Notifications extends React.Component {
     global.audioService.stopPlaying();
   }
 
+  refresh() {
+    this.setState({ refreshing: true, errorRefreshing: false });
+
+    this.props.client.query({
+      fetchPolicy: 'network-only',
+      fetchResults: true,
+      query
+    }).catch((error) => {
+      this.setState({ refreshing: false, errorRefreshing: true });
+    }).then(() => {
+      this.setState({ refreshing: false });
+    });
+  }
+
   render() {
-    if (this.props.data.loading || !this.props.data.accounts || !this.props.data.accounts.current) {
+    if (this.state.refreshing || this.props.data.loading || !this.props.data.accounts || !this.props.data.accounts.current) {
       return (<View style={commonStyles.container}>
         <Background />
         <Spinner visible />
@@ -116,6 +133,16 @@ class Notifications extends React.Component {
 
       <View style={commonStyles.scrollBoxContainer}>
         <Background />
+
+        <Button title="Refresh" onPress={() => this.refresh()} />
+
+        <Divider />
+
+        {this.state.errorRefreshing ? (<View>
+          <Text style={styles.errorText}>Unable to refresh notifications, check your wifi connection or try later.</Text>
+          <Divider />
+        </View>) : <View />}
+
         {notifications && notifications.length ? (<View>
           {notifications.map(notification =>
             this.getNotificationTemplate(notification))}
@@ -142,6 +169,7 @@ class Notifications extends React.Component {
 }
 
 Notifications.propTypes = {
+  client: React.PropTypes.object.isRequired,
   data: React.PropTypes.object.isRequired,
   mutate: React.PropTypes.func.isRequired
 };
@@ -170,5 +198,5 @@ mutation MarkNotificationsAsRead ($ids:[Int]) {
 }
 `;
 
-export default compose(graphql(query),
-                graphql(mutation))(Notifications);
+export default withApollo(compose(graphql(query),
+                graphql(mutation))(Notifications));

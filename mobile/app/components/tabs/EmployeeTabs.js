@@ -7,7 +7,7 @@ import Buttons from '../buttons/Buttons';
 const routes = [
   { key: '1', title: 'Me', icon: 'ios-contact' },
   { key: '2', title: 'Nots', icon: 'ios-notifications' },
-  { key: '3', title: 'Panic', icon: 'ios-warning' }
+  { key: '3', title: 'Logout', icon: 'ios-power' }
 ];
 
 const renderScene = ({ route }) => {

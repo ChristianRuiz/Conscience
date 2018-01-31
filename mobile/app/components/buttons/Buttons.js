@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     width: 80
   },
   buttonsContainer: {
-    justifyContent: 'space-between'
   },
   stateContainer: {
     justifyContent: 'center',
@@ -47,6 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 60
   },
   textServer: {
+    marginTop: 100,
     fontSize: 8,
     color: 'gray'
   }
@@ -88,9 +88,7 @@ class HostButtons extends React.Component {
         {!this.props.data.loading && !this.props.data.accounts.current.employee ?
           (<HostStateButtons />) : <View />}
 
-        <PanicButton />
-
-        <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')} v1.2.4</Text>
+        <Text style={styles.textServer}>{Constants.SERVER_URL.replace('http://', '')} v1.2.5</Text>
         <Button title="Logout" onPress={() => this.logout()} />
       </View>
     </ScrollView>);

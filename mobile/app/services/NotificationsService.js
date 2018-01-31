@@ -62,7 +62,6 @@ class NotificationsService {
       charging: this.charging
     });
 
-    // TODO: Filter only 1 location per second
     const serviceLocations = this.locations.map(l => ({
       Latitude: l.coords.latitude,
       Longitude: l.coords.longitude,
@@ -75,7 +74,7 @@ class NotificationsService {
 
     if (this.locations.length > 0) {
       Object.assign(update, {
-        locations: serviceLocations
+        locations: [ serviceLocations[serviceLocations.length - 1] ]
       });
     }
 

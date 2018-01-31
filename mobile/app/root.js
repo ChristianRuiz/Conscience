@@ -48,7 +48,7 @@ const networkInterface = createNetwork({
   }
 });
 
-Constants.addServerUrlInitializedAction(() => {
+Constants.serverUrlChanged(() => {
   networkInterface._uri = `${Constants.SERVER_URL}/api/graphql?_ts=${new Date().getDate()}`;
 });
 
