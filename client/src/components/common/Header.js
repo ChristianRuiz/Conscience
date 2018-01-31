@@ -11,9 +11,14 @@ const Header = () =>
   <div className="menuContainer">
     <RolesValidation forbidden={[Roles.Host]}>
       <div>
-        <Link className="logo" to="/" ><img alt="Aleph" src="/content/images/menu/logo.png" /></Link>
+        <RolesValidation allowed={[Roles.CompanyQA, Roles.Admin]}>
+          <Link className="logo" to="/map" ><img alt="Aleph" src="/content/images/menu/logo.png" /></Link>
+        </RolesValidation>
+        <RolesValidation forbidden={[Roles.CompanyQA, Roles.Admin]}>
+          <Link className="logo" to="/" ><img alt="Aleph" src="/content/images/menu/logo.png" /></Link>
+        </RolesValidation>
         <div className="menuLinks">
-          <Link to="/plots" ><img alt="Plot" src="/content/images/menu/plot.png" /></Link>
+          <Link to="/" ><img alt="Plot" src="/content/images/menu/plot.png" /></Link>
           <Link to="/characters" ><img alt="Character" src="/content/images/menu/character.png" /></Link>
           <Link to="/behaviour" ><img alt="Behaviour" src="/content/images/menu/behaviour.png" /></Link>
           <Link to="/maintenance" ><img alt="Maintenance" src="/content/images/menu/maintenance.png" /></Link>

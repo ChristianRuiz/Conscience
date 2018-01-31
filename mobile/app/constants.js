@@ -4,7 +4,7 @@ class Constants {
     this.serverUrlInitialized = true; // new Date() < new Date(2018, 0, 25);
     this.serverUrlInitializedPendingActions = [];
 
-    this.SERVER_URL = 'https://consciencelarp.azurewebsites.net';
+    this.SERVER_URL = 'http://192.168.1.100';
     this.NOTIFICATIONS_INTERVAL_SECONDS = 10;
 
     this._testServerUrl = this._testServerUrl.bind(this);

@@ -4,6 +4,16 @@ import { graphql, gql } from 'react-apollo';
 import ScrollableContainer from '../common/ScrollableContainer';
 
 class MaintenanceList extends React.Component {
+  getColor(host) {
+    if (host.status === 'HURT') {
+      return 'yellow';
+    } else if (host.status === 'DEAD') {
+      return 'red';
+    }
+
+    return '';
+  }
+
   render() {
     if (this.props.data.loading) {
       return (<div>Loading...</div>);
@@ -18,9 +28,10 @@ class MaintenanceList extends React.Component {
         <ul>
           {hostsWithCharacter.map(host =>
             <li key={host.id}>
-              <p>
+              <p className={this.getColor(host)}>
                 <Link to={`/maintenance-detail/${host.id}`} ><b>{host.account.userName}: </b></Link>
                 {host.currentCharacter ? host.currentCharacter.character.name : ''}
+                {` - ${host.status}`}
               </p>
             </li>)}
         </ul>
@@ -30,7 +41,7 @@ class MaintenanceList extends React.Component {
           <ul>
             {hostsWithoutCharacter.map(host =>
               <li key={host.id}>
-                <p>
+                <p className={this.getColor(host)}>
                   <Link to={`/maintenance-detail/${host.id}`} ><b>{host.account.userName}: </b></Link>
                   {host.currentCharacter ? host.currentCharacter.character.name : ''}
                 </p>
@@ -47,24 +58,25 @@ MaintenanceList.propTypes = {
 };
 
 const query = gql`query GetHosts {
-            hosts {
-              all {
-                id,
-                account {
-                  id,
-                  userName
-                },
-                currentCharacter {
-                  id,
-                  assignedOn,
-                  character {
-                    id,
-                    name
-                  }
-                }
-              }
-            }
+  hosts {
+    all {
+      id,
+      status
+      account {
+        id,
+        userName
+      },
+      currentCharacter {
+        id,
+        assignedOn,
+        character {
+          id,
+          name
         }
+      }
+    }
+  }
+}
       `;
 
 export default withRouter(graphql(query)(MaintenanceList));

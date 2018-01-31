@@ -116,6 +116,32 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 })
                 .AddMaintenancePermissions();
 
+            Field<ListGraphType<HostGraphType>>("resetAll",
+                arguments: new QueryArguments(
+                    ),
+                resolve: context => {
+                    var hosts = hostRepo.GetAll().Where(h => !h.Hidden).ToList();
+                    var employee = employeeRepo.GetById(usersService.CurrentUser.Employee.Id);
+
+                    foreach (var host in hosts)
+                    {
+                        try
+                        {
+                            logService.Log(host, $"Reset host '{host.Account.UserName}' by employee '{usersService.CurrentUser.Employee.Name}'");
+                            if (host.CoreMemory1.Locked)
+                                notificationsService.Notify(host.Account.Id, "Reset", NotificationTypes.Reset, host: host, employee: employee);
+                            else if (host.Account.Employee != null)
+                                notificationsService.Notify(host.Account.Id, "Reset", NotificationTypes.ResetHuman, host: host, employee: employee);
+                            else
+                                notificationsService.Notify(host.Account.Id, "They are trying to reset you", NotificationTypes.NoReset, host: host, employee: employee);
+                        }
+                        catch { }
+                    }
+
+                    return hosts;
+                })
+                .AddMaintenancePermissions();
+
             Field<HostGraphType>("unlockCoreMemory",
                 arguments: new QueryArguments(
                     new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "hostId", Description = "host id" },

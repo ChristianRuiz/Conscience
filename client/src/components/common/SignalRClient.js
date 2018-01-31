@@ -15,61 +15,61 @@ class SignalRClient extends React.Component {
     this.updateAccount = this.updateAccount.bind(this);
     this.reconnect = this.reconnect.bind(this);
 
-    this.connection = $.hubConnection('/signalr/hubs');
-    this.proxy = this.connection.createHubProxy('AccountsHub');
+    // this.connection = $.hubConnection('/signalr/hubs');
+    // this.proxy = this.connection.createHubProxy('AccountsHub');
 
-    this.proxy.on('broadcastError', (context, error) => {
-      console.log(`Client error: ${context} \n ${error}`);
-    });
+    // this.proxy.on('broadcastError', (context, error) => {
+    //   console.log(`Client error: ${context} \n ${error}`);
+    // });
 
-    this.proxy.on('locationUpdated', (accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus) => {
-      this.updateAccount(accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus);
-    });
+    // this.proxy.on('locationUpdated', (accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus) => {
+    //   this.updateAccount(accountId, location, batteryLevel, batteryStatus, lastConnection, hostStatus);
+    // });
 
-    this.proxy.on('characterUpdated', (characterId) => {
-      this.props.client.query({
-        fetchPolicy: 'network-only',
-        fetchResults: true,
-        query: queryCharacterDetail,
-        variables: { characterId }
-      });
-    });
+    // this.proxy.on('characterUpdated', (characterId) => {
+    //   this.props.client.query({
+    //     fetchPolicy: 'network-only',
+    //     fetchResults: true,
+    //     query: queryCharacterDetail,
+    //     variables: { characterId }
+    //   });
+    // });
 
-    this.proxy.on('statsModified', (hostId) => {
-      this.props.client.query({
-        fetchPolicy: 'network-only',
-        fetchResults: true,
-        query: queryHostStats,
-        variables: { hostId }
-      });
-    });
+    // this.proxy.on('statsModified', (hostId) => {
+    //   this.props.client.query({
+    //     fetchPolicy: 'network-only',
+    //     fetchResults: true,
+    //     query: queryHostStats,
+    //     variables: { hostId }
+    //   });
+    // });
 
-    this.proxy.on('notificationAdded', () => {
-      this.props.client.query({
-        fetchPolicy: 'network-only',
-        fetchResults: true,
-        query: queryNotificationBell
-      });
-    });
+    // this.proxy.on('notificationAdded', () => {
+    //   this.props.client.query({
+    //     fetchPolicy: 'network-only',
+    //     fetchResults: true,
+    //     query: queryNotificationBell
+    //   });
+    // });
 
-    this.proxy.on('panicButton', (notificationId) => {
-      if (!window.panicAudio || window.panicAudio.ended) {
-        window.panicAudio = new Audio('/Content/audio/panicalarm.mp3');
-        window.panicAudio.play();
-      }
-      console.warn(`Panic button pressed with notification: ${notificationId}`);
-    });
+    // this.proxy.on('panicButton', (notificationId) => {
+    //   if (!window.panicAudio || window.panicAudio.ended) {
+    //     window.panicAudio = new Audio('/Content/audio/panicalarm.mp3');
+    //     window.panicAudio.play();
+    //   }
+    //   console.warn(`Panic button pressed with notification: ${notificationId}`);
+    // });
 
-    this.connection.start()
-    .done(() => {
-      console.log(`Now connected, connection ID=${this.connection.id}`);
-      this.proxy.invoke('subscribeWeb');
-    })
-    .fail(() => { console.log('Could not connect'); });
+    // this.connection.start()
+    // .done(() => {
+    //   console.log(`Now connected, connection ID=${this.connection.id}`);
+    //   this.proxy.invoke('subscribeWeb');
+    // })
+    // .fail(() => { console.log('Could not connect'); });
 
-    this.connection.disconnected(() => {
-      this.reconnect();
-    });
+    // this.connection.disconnected(() => {
+    //   this.reconnect();
+    // });
   }
 
   reconnect() {

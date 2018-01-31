@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { graphql } from 'react-apollo';
+import { graphql, withApollo } from 'react-apollo';
 
 import { icon } from 'leaflet';
 import { Map, Marker } from 'react-leaflet';
@@ -13,6 +13,7 @@ import EmployeesInfoPanel from '../info-panel/EmployeesInfoPanel';
 import query from '../../queries/MapQuery';
 
 import style from '../../styles/components/map/map.css';
+import { setInterval } from 'timers';
 
 class ConscienceMap extends React.Component {
   constructor(props) {
@@ -24,6 +25,14 @@ class ConscienceMap extends React.Component {
       height: parseInt(window.innerHeight),
       search: ''
     };
+
+    setInterval(() => {
+      props.client.query({
+        fetchPolicy: 'network-only',
+        fetchResults: true,
+        query
+      });
+    }, 1000 * 15);
   }
 
   getMarkerIcon(state, account) {
@@ -134,7 +143,8 @@ class ConscienceMap extends React.Component {
 }
 
 ConscienceMap.propTypes = {
-  data: React.PropTypes.object.isRequired
+  data: React.PropTypes.object.isRequired,
+  client: React.PropTypes.object.isRequired
 };
 
-export default withRouter(graphql(query)(ConscienceMap));
+export default withRouter(withApollo(graphql(query)(ConscienceMap)));

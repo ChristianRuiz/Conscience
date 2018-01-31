@@ -2,6 +2,7 @@
 using Conscience.Application.Graph.Entities.Characters;
 using Conscience.Application.Graph.Entities.Memories;
 using Conscience.Application.Graph.Entities.Stats;
+using Conscience.DataAccess.Repositories;
 using Conscience.Domain;
 using GraphQL.Types;
 using System;
@@ -14,7 +15,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
 {
     public class HostGraphType : ConscienceGraphType<Host>
     {
-        public HostGraphType()
+        public HostGraphType(NotificationRepository notsRepo)
         {
             Name = "Host";
 
@@ -26,6 +27,12 @@ namespace Conscience.Application.Graph.Entities.Hosts
             Field<CoreMemoryGraphType>("coreMemory2", resolve: context => context.Source.CoreMemory2);
             Field<CoreMemoryGraphType>("coreMemory3", resolve: context => context.Source.CoreMemory3);
             Field<HostStatusEnumeration>("status", resolve: context => context.Source.Status);
+
+            Field<BooleanGraphType>("coreMemory1readed", resolve: context =>
+            {
+                var notification = notsRepo.GetByAccount(context.Source.Id).FirstOrDefault(n => n.NotificationType == NotificationTypes.CoreMemory && n.Description.Contains("1"));
+                return notification != null && notification.Read;
+            });
         }
     }
 

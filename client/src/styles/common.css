@@ -158,3 +158,11 @@ button {
     background-color: #27293E !important;
     text-align: center;
 }
+
+.yellow {
+    color: yellow !important;
+}
+
+.red {
+    color: red !important;
+}

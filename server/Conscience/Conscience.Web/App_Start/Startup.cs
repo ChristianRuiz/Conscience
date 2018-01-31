@@ -29,7 +29,7 @@ namespace Conscience.Web
 
                 ConfigureAuth(app);
                 
-                app.MapSignalR();
+                //app.MapSignalR();
 
                 var container = UnityActivator.Start();
                 using (var child = container.CreateChildContainer())

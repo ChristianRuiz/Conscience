@@ -16,7 +16,7 @@ class Notifications extends React.Component {
 
     return (<div className="notifications">
       {
-        this.props.data.notifications.current.map((n) => {
+        this.props.data.notifications.current.filter(n => n.description.indexOf('Toll') < 0 && n.description.indexOf('Crawford') < 0).map((n) => {
           let account = { pictureUrl: '' };
           let link = '/';
           if (n.host) {
@@ -27,8 +27,10 @@ class Notifications extends React.Component {
               link = `/behaviour-detail/${n.host.id}`;
             }
           } else if (n.employee) {
-            account = n.employee.account;
-            link = `/security-employee/${n.host.id}`;
+            if (n.employee.account) {
+              account = n.employee.account;
+              link = `/security-employee/${n.employee.id}`;
+            }
           }
           return (<div key={n.id}>
             <PictureDescriptionBox

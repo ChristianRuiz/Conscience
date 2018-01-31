@@ -64,36 +64,39 @@ namespace Conscience.Web.Controllers.Api
                         location.TimeStamp = DateTime.Now;
 
                 var currentBatteryLevel = currentUser.Device != null ? currentUser.Device.BatteryLevel : 0;
+                try {
+                    //_accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
+                    var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
 
-                _accountsRepo.UpdateDevice(currentUser.Id, updates.deviceId);
-                var account = _accountsRepo.UpdateLocations(currentUser.Id, updates.locations, updates.charging ? BatteryStatus.Charging : BatteryStatus.NotCharging, updates.batteryLevel);
+                    //_hostUpdatesService.BroadcastAccountUpdated(account.Id);
 
-                _hostUpdatesService.BroadcastAccountUpdated(account.Id);
-
-                if (account.Host != null)
-                {
-                    if (currentBatteryLevel > MinimumBatteryLevel && updates.batteryLevel < MinimumBatteryLevel)
+                    if (account.Host != null)
                     {
-                        _notificationsService.Notify(account.Id, "Low battery", NotificationTypes.LowBattery, account.Host);
-                        _notificationsService.Notify(RoleTypes.CompanyMaintenance, $"Low battery host '{account.Host.CurrentCharacter.Character.Name}'", NotificationTypes.LowBattery, account.Host);
-                    }
-                    else if (currentBatteryLevel < MaximumBatteryLevel && updates.batteryLevel > MaximumBatteryLevel && updates.charging)
-                    {
-                        _notificationsService.Notify(account.Id, "Battery charged, bring the external battery to the Saloon.", NotificationTypes.BatteryCharged, account.Host);
-                    }
-                    
-                    if (account.Host.CurrentCharacter != null)
-                    {
-                        var events = account.Host.CurrentCharacter.Character.Plots.SelectMany(p => p.Plot.Events).ToList();
-                        var now = DateTime.Now;
-                        if (events.Select(e => new DateTime(now.Year, now.Month, now.Day, e.Hour, e.Minute, 0)).Any(date => date > DateTime.Now && (date - DateTime.Now).TotalMinutes < 15))
+                        if (currentBatteryLevel > MinimumBatteryLevel && updates.batteryLevel < MinimumBatteryLevel)
                         {
-                            _notificationsService.Notify(account.Id, "You have an event in 15 minutes.", NotificationTypes.EventIn15Min, account.Host);
+                            _notificationsService.Notify(account.Id, "Low battery", NotificationTypes.LowBattery, account.Host);
+                            _notificationsService.Notify(RoleTypes.CompanyMaintenance, $"Low battery host '{account.Host.CurrentCharacter.Character.Name}'", NotificationTypes.LowBattery, account.Host);
+                        }
+                        else if (currentBatteryLevel < MaximumBatteryLevel && updates.batteryLevel > MaximumBatteryLevel && updates.charging)
+                        {
+                            _notificationsService.Notify(account.Id, "Battery charged, bring the external battery to the Saloon.", NotificationTypes.BatteryCharged, account.Host);
+                        }
+
+                        if (account.Host.CurrentCharacter != null)
+                        {
+                            var events = account.Host.CurrentCharacter.Character.Plots.SelectMany(p => p.Plot.Events).ToList();
+                            var now = DateTime.Now;
+                            if (events.Select(e => new DateTime(now.Year, now.Month, now.Day, e.Hour, e.Minute, 0)).Any(date => date > DateTime.Now && (date - DateTime.Now).TotalMinutes < 15))
+                            {
+                                _notificationsService.Notify(account.Id, "You have an event in 15 minutes.", NotificationTypes.EventIn15Min, account.Host);
+                            }
                         }
                     }
                 }
-                
-
+                catch(Exception ex)
+                {
+                    Log4NetLogger.Current.WriteError("Error getting device updates", ex);
+                }
                 var response = request.CreateResponse(_notificationsService.HasUnprocessedNotifications(currentUser.Id) ? HttpStatusCode.Accepted : HttpStatusCode.OK);
                 return response;
             }

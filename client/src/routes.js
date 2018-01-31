@@ -24,8 +24,8 @@ import NotFound from './components/common/NotFound';
 
 const Routes = () =>
   <Switch>
-    <Route path="/" exact component={MapPage} />
-    <Route path="/plots" component={PlotsPage} />
+    <Route path="/" exact component={PlotsPage} />
+    <Route path="/map" component={MapPage} />
     <Route path="/plot-detail/:plotId" component={PlotDetailPage} />
     <Route path="/plot-edit/:plotId" component={PlotEditPage} />
     <Route path="/characters" component={CharactersPage} />
