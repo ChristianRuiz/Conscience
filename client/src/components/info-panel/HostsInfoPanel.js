@@ -84,4 +84,4 @@ const query = gql`query GetHostPanelDetails($hostId:Int!) {
       `;
 
 
-export default withRouter(graphql(query)(HostsInfoPanel));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(HostsInfoPanel));

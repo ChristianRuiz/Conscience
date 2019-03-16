@@ -117,4 +117,4 @@ const query = gql`query HasFailure($hostId:Int!) {
       `;
 
 
-export default withRouter(graphql(query)(CriticalFailureCheck));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(CriticalFailureCheck));

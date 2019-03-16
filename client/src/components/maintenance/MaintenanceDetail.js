@@ -23,7 +23,9 @@ class MaintenanceDetail extends React.Component {
 
   componentWillUpdate(props, state) {
     if (state.check1 && state.check2 && state.check3 && state.check4) {
-      props.mutate({ hostId: props.data.hosts.byId.id });
+      props.mutate({ hostId: props.data.hosts.byId.id }).then(() => {
+        props.data.refetch();
+      });
       this.setState({ fixed: true, check1: false, check2: false, check3: false, check4: false });
     }
   }
@@ -147,4 +149,4 @@ mutation HostFixed($hostId:Int!) {
 }
 `;
 
-export default withRouter(compose(graphql(query), graphql(mutation))(MaintenanceDetail));
+export default withRouter(compose(graphql(query, { options: { fetchPolicy: 'network-only' } }), graphql(mutation))(MaintenanceDetail));

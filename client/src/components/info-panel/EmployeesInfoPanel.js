@@ -69,4 +69,4 @@ const query = gql`query GetEmployeeDetails($employeeId:Int!) {
       `;
 
 
-export default withRouter(graphql(query)(EmployeesInfoPanel));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(EmployeesInfoPanel));

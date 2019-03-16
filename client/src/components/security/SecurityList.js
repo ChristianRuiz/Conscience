@@ -79,4 +79,4 @@ const query = gql`query GetEmployeesAndHosts {
         }
       `;
 
-export default withRouter(graphql(query)(EmployeesList));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(EmployeesList));

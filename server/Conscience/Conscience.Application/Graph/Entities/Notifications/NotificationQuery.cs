@@ -24,8 +24,11 @@ namespace Conscience.Application.Graph.Entities.Notifications
                     ),
                 resolve: context =>
                 {
-                    var notifications = notificationsRepo.GetByAccount(userService.CurrentUser.Id).OrderByDescending(l => l.TimeStamp);
+                    var notifications = notificationsRepo.GetByAccount(userService.CurrentUser.Id)
+                                        .Where(n => n.Host == null || (!n.Host.Hidden || n.Host.Id == n.OwnerId))
+                                        .OrderByDescending(l => l.TimeStamp);
 
+                    
                     var unprocessedNotifications = notifications.Count(n => !n.Processed);
 
                     if (notifications.Any(n => !n.Processed))

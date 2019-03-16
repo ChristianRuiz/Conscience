@@ -306,4 +306,4 @@ query PlotEditAutocomplete {
 }
       `;
 
-export default withRouter(compose(graphql(query), graphql(mutation), graphql(autocomplete, { name: 'autocomplete', options: { fetchPolicy: 'network-only' } }))(PlotEdit));
+export default withRouter(compose(graphql(query, { options: { fetchPolicy: 'network-only' } }), graphql(mutation), graphql(autocomplete, { name: 'autocomplete', options: { fetchPolicy: 'network-only' } }))(PlotEdit));

@@ -82,4 +82,4 @@ const query = gql`query GetHostLogEntries($hostId:Int!) {
 }
       `;
 
-export default withRouter(graphql(query)(HostDetail));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(HostDetail));

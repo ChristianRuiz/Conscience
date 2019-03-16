@@ -147,4 +147,4 @@ ConscienceMap.propTypes = {
   client: React.PropTypes.object.isRequired
 };
 
-export default withRouter(withApollo(graphql(query)(ConscienceMap)));
+export default withRouter(withApollo(graphql(query, { options: { fetchPolicy: 'network-only' } })(ConscienceMap)));

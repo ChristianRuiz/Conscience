@@ -62,4 +62,4 @@ query GetCurrentUser {
 }
 `;
 
-export default withRouter(graphql(query)(HostClientTest));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(HostClientTest));

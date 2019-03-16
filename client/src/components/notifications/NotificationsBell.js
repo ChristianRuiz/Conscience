@@ -53,4 +53,4 @@ mutation ReadNotifications($ids:[Int]) {
 }
 `;
 
-export default compose(graphql(query), graphql(mutation))(NotificationsBell);
+export default compose(graphql(query, { options: { fetchPolicy: 'network-only' } }), graphql(mutation))(NotificationsBell);

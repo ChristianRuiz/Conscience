@@ -48,4 +48,4 @@ const query = gql`query GetPlots {
 }
       `;
 
-export default withRouter(graphql(query)(PlotsList));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(PlotsList));

@@ -54,4 +54,4 @@ query GetCurrentUserRoles {
 }
 `;
 
-export default graphql(query)(RolesValidation);
+export default graphql(query, { options: { fetchPolicy: 'network-only' } })(RolesValidation);

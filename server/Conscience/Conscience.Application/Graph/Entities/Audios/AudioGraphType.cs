@@ -15,7 +15,7 @@ namespace Conscience.Application.Graph.Entities.Audios
             Name = "Audio";
 
             Field(c => c.Transcription);
-            Field(c => c.Path);
+            Field(c => c.Path, true);
         }
     }
 }

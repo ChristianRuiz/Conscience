@@ -46,7 +46,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
 
                     return host;
                     })
-                .AddBehaviourAndPlotPermissions();
+                .AddMaintenancePermissions();
 
             Field<HostGraphType>("assignCharacter",
                 arguments: new QueryArguments(
@@ -127,7 +127,7 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     {
                         try
                         {
-                            logService.Log(host, $"Reset host '{host.Account.UserName}' by employee '{usersService.CurrentUser.Employee.Name}'");
+                            logService.Log(host, $"Reset host '{host.Account.UserName}' by employee '{employee.Name}'");
                             if (host.CoreMemory1.Locked)
                                 notificationsService.Notify(host.Account.Id, "Reset", NotificationTypes.Reset, host: host, employee: employee);
                             else if (host.Account.Employee != null)
@@ -164,6 +164,11 @@ namespace Conscience.Application.Graph.Entities.Hosts
                     memory.Locked = false;
 
                     notificationsService.Notify(host.Account.Id, $"Core memory {memoryId} unlocked", NotificationTypes.CoreMemory, host: host, employee: employee, audio: memory.Audio);
+
+                    if (memoryId == 3)
+                    {
+                        notificationsService.Notify(host.Account.Id, $"You are completly unlocked, you will start remembering the events of the last few days.", NotificationTypes.CoreMemory, host: host, employee: employee);
+                    }
                     
                     return host;
                 })

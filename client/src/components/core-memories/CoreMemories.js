@@ -164,4 +164,4 @@ mutation UnlockCoreMemories($hostId:Int!, $coreMemoryId:Int!) {
 }
       `;
 
-export default withRouter(compose(graphql(query), graphql(mutation))(CoreMemories));
+export default withRouter(compose(graphql(query, { options: { fetchPolicy: 'network-only' } }), graphql(mutation))(CoreMemories));

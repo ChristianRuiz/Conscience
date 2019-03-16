@@ -1,0 +1,8 @@
+mutation {
+  hosts {
+    resetAll
+    {
+      id
+    }
+  }
+}

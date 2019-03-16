@@ -126,4 +126,4 @@ mutation ModifyStats($hostId:Int!, $stats:[StatsInput]) {
 }
       `;
 
-export default withRouter(compose(graphql(query), graphql(mutation))(HostStats));
+export default withRouter(compose(graphql(query, { options: { fetchPolicy: 'network-only' } }), graphql(mutation))(HostStats));

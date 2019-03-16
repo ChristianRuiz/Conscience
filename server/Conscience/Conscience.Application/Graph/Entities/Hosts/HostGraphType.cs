@@ -33,6 +33,16 @@ namespace Conscience.Application.Graph.Entities.Hosts
                 var notification = notsRepo.GetByAccount(context.Source.Id).FirstOrDefault(n => n.NotificationType == NotificationTypes.CoreMemory && n.Description.Contains("1"));
                 return notification != null && notification.Read;
             });
+            Field<BooleanGraphType>("coreMemory2readed", resolve: context =>
+            {
+                var notification = notsRepo.GetByAccount(context.Source.Id).FirstOrDefault(n => n.NotificationType == NotificationTypes.CoreMemory && n.Description.Contains("2"));
+                return notification != null && notification.Read;
+            });
+            Field<BooleanGraphType>("coreMemory3readed", resolve: context =>
+            {
+                var notification = notsRepo.GetByAccount(context.Source.Id).FirstOrDefault(n => n.NotificationType == NotificationTypes.CoreMemory && n.Description.Contains("3"));
+                return notification != null && notification.Read;
+            });
         }
     }
 

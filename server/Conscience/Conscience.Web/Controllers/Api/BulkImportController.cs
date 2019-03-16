@@ -23,7 +23,7 @@ namespace Conscience.Web.Controllers.Api
     [Authorize]
     public class BulkImportController : ApiController
     {
-        private const int run = 0;
+        private const int run = 1;
 
         private readonly IUnityContainer _container;
 
@@ -32,471 +32,642 @@ namespace Conscience.Web.Controllers.Api
             _container = container;
         }
 
-        [HttpPost]
-        public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
-        {
-            try
-            {
-                //var context = _container.Resolve<ConscienceContext>();
-                //var account = context.Accounts.First(h => h.Id == 84);
-                //context.Accounts.Remove(account as ConscienceAccount);
-                //context.SaveChanges();
-
-                //account = context.Accounts.First(h => h.Id == 85);
-                //context.Accounts.Remove(account as ConscienceAccount);
-                //context.SaveChanges();
-
-
-                var hostsRepo = _container.Resolve<HostRepository>();
-                var host = hostsRepo.GetAll().First(h => h.Id == 86);
-                var randomLat = new Random().Next(100) / 100000f;
-                var randomLon = new Random().Next(100) / 100000f;
-
-                host.Account.Device = new Device
-                {
-                    DeviceId = "Dummy",
-                    BatteryLevel = 1,
-                    BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
-                    LastConnection = DateTime.Now
-                };
-
-                hostsRepo.Modify(host);
-
-                host.Account.Device.Locations = new List<Location>
-                {
-                    new Location
-                    {
-                        Latitude = 37.048601 + randomLat,
-                        Longitude = -2.4248117 + randomLon,
-                        TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
-                    }
-                };
-                hostsRepo.Modify(host);
-
-                host.Account.Device.CurrentLocation = host.Account.Device.Locations.Last();
-                hostsRepo.Modify(host);
-
-                //var context = _container.Resolve<ConscienceContext>();
-                //var hostRole = context.Roles.First(r => r.Name == RoleTypes.Host.ToString());
-                //var rico = new ConscienceAccount
-                //{
-                //    UserName = @"1-r1c0",
-                //    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
-                //};
-                //rico.Roles.Add(hostRole);
-                //context.Accounts.Add(rico);
-                //var host = new Host { Account = rico };
-
-                //foreach (var statName in Enum.GetNames(typeof(StatNames)))
-                //    host.Stats.Add(new Stats { Name = statName, Value = 10 });
-                //context.Hosts.Add(host);
-                //context.SaveChanges();
-
-                var response = request.CreateResponse(HttpStatusCode.OK);
-                response.Content = new StringContent("Host added", Encoding.UTF8, "application/json");
-                return response;
-            }
-            catch (Exception ex)
-            {
-                var response = request.CreateResponse(HttpStatusCode.OK);
-                response.Content = new StringContent(ex.ToString(), Encoding.UTF8, "application/json");
-                return response;
-            }
-        }
-
-
         //[HttpPost]
         //public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
         //{
-        //    var result = new BulkImportResult();
-
-        //    var childContainer = _container.CreateChildContainer();
-
-        //    var rowIndex = 0;
-        //    var name = string.Empty;
-
         //    try
         //    {
-        //        var identityService = childContainer.Resolve<IUsersIdentityService>();
-        //        if (!identityService.CurrentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
-        //            throw new UnauthorizedAccessException("Current user is not a platform Admin");
+        //        //var context = _container.Resolve<ConscienceContext>();
+        //        //var host = context.Hosts.First(h => h.Id == 66);
+        //        //host.Hidden = true;
+        //        //host.Account.UserName = "2-W108-old";
+        //        //context.SaveChanges();
 
-        //        var httpRequest = HttpContext.Current.Request;
-        //        if (httpRequest.Files.Count > 0)
-        //        {
-        //            var file = httpRequest.Files[0];
+        //        //account = context.Accounts.First(h => h.Id == 85);
+        //        //context.Accounts.Remove(account as ConscienceAccount);
+        //        //context.SaveChanges();
 
-        //            //TODO: Use GraphQL instead of manually working with the Entity Framework context from a Controller
-        //            var context = childContainer.Resolve<ConscienceContext>();
+        //        //AddRico();
 
-        //            ClearDb(context, identityService.CurrentUser);
+        //        //var context = _container.Resolve<ConscienceContext>();
+        //        //var hostRole = context.Roles.First(r => r.Name == RoleTypes.Host.ToString());
+        //        //var rico = new ConscienceAccount
+        //        //{
+        //        //    UserName = @"2-W108",
+        //        //    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+        //        //};
+        //        //rico.Roles.Add(hostRole);
+        //        //context.Accounts.Add(rico);
+        //        //var host = new Host { Account = rico };
 
-        //            var workbook = WorkbookFactory.Create(file.InputStream);
+        //        //foreach (var statName in Enum.GetNames(typeof(StatNames)))
+        //        //    host.Stats.Add(new Stats { Name = statName, Value = 10 });
+        //        //context.Hosts.Add(host);
+        //        //context.SaveChanges();
 
-        //            ISheet sheet;
+        //        //var hostsRepo = _container.Resolve<HostRepository>();
+        //        //host = hostsRepo.GetAll().First(h => h.Id == host.Id);
+        //        //var randomLat = new Random().Next(100) / 100000f;
+        //        //var randomLon = new Random().Next(100) / 100000f;
 
-        //            var employeeAccounts = new Dictionary<int, Dictionary<string, Account>>();
-        //            var employees = new Dictionary<int, Dictionary<string, Employee>>();
-        //            var plots = new Dictionary<int, Dictionary<string, Plot>>();
-        //            var hosts = new Dictionary<int, Dictionary<int, Host>>();
-        //            var characters = new Dictionary<int, Dictionary<int, Character>>();
+        //        //host.Account.Device = new Device
+        //        //{
+        //        //    DeviceId = "Dummy",
+        //        //    BatteryLevel = 1,
+        //        //    BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+        //        //    LastConnection = DateTime.Now
+        //        //};
 
-        //            sheet = workbook.GetSheet("employees");
-        //            employeeAccounts[run] = new Dictionary<string, Account>();
-        //            employees[run] = new Dictionary<string, Employee>();
+        //        //hostsRepo.Modify(host);
 
-        //            for (rowIndex = 2; rowIndex <= sheet.LastRowNum; rowIndex++)
-        //            {
-        //                try
-        //                {
-        //                    if (sheet.GetRow(rowIndex) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
-        //                    {
-        //                        var row = sheet.GetRow(rowIndex);
+        //        //host.Account.Device.Locations = new List<Location>
+        //        //{
+        //        //    new Location
+        //        //    {
+        //        //        Latitude = 37.048601 + randomLat,
+        //        //        Longitude = -2.4248117 + randomLon,
+        //        //        TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+        //        //    }
+        //        //};
+        //        //hostsRepo.Modify(host);
 
-        //                        name = (run + 1) + "-" + row.GetCell(0).ToCleanString().Trim();
-        //                        var displayName = row.GetCell(1).ToCleanString().Trim();
-        //                        var password = row.GetCell(2).ToCleanString().Trim();
-        //                        var role = row.GetCell(3).ToCleanString().Trim();
+        //        //host.Account.Device.CurrentLocation = host.Account.Device.Locations.Last();
+        //        //hostsRepo.Modify(host);
 
-        //                        if (role.ToLowerInvariant() != RoleTypes.Host.ToString().ToLowerInvariant())
-        //                        {
-        //                            var account = await CreateOrUpdateAccount(identityService, context, name, password, role);
+        //        //var context = _container.Resolve<ConscienceContext>();
+        //        //var hostRole = context.Roles.First(r => r.Name == RoleTypes.CompanyQA.ToString());
+        //        //var rico = new ConscienceAccount
+        //        //{
+        //        //    UserName = @"2-fitz",
+        //        //    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+        //        //};
+        //        //rico.Roles.Add(hostRole);
+        //        //context.Accounts.Add(rico);
+        //        //var host = new Employee { Account = rico };
 
-        //                            if (account.Employee == null && role.ToLowerInvariant() != RoleTypes.Admin.ToString().ToLowerInvariant())
-        //                            {
-        //                                var employee = context.Employees.Add(new Employee { Name = displayName, Account = account });
-        //                                context.SaveChanges();
-        //                                employees[run].Add(name, employee);
-        //                            }
+        //        //host.Account.Device = new Device
+        //        //{
+        //        //    DeviceId = "Dummy",
+        //        //    BatteryLevel = 1,
+        //        //    BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+        //        //    LastConnection = DateTime.Now
+        //        //};
 
-        //                            employeeAccounts[run].Add(name, account);
-        //                            result.Successes.Add(rowIndex + " employee - " + name);
-        //                        }
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    result.Errors.Add(new BulkImportError { Line = rowIndex + " employee - " + name, Error = ex.ToString() });
-        //                }
-        //            }
+        //        //context.SaveChanges();
 
-        //            sheet = workbook.GetSheet("plots");
-        //            plots[run] = new Dictionary<string, Plot>();
+        //        //var hostsRepo = _container.Resolve<EmployeeRepository>();
+        //        //host = hostsRepo.GetAll().First(h => h.Id == host.Id);
+        //        //var randomLat = new Random().Next(100) / 100000f;
+        //        //var randomLon = new Random().Next(100) / 100000f;
 
-        //            for (rowIndex = 1; rowIndex <= sheet.LastRowNum; rowIndex++)
-        //            {
-        //                try
-        //                {
-        //                    if (sheet.GetRow(rowIndex) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
-        //                    {
-        //                        var row = sheet.GetRow(rowIndex);
+        //        //host.Account.Device.Locations = new List<Location>
+        //        //{
+        //        //    new Location
+        //        //    {
+        //        //        Latitude = 37.048601 + randomLat,
+        //        //        Longitude = -2.4248117 + randomLon,
+        //        //        TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+        //        //    }
+        //        //};
+        //        //hostsRepo.Modify(host);
 
-        //                        var plotCode = row.GetCell(0).ToCleanString().Trim();
-        //                        name = row.GetCell(1).ToCleanString();
-        //                        var description = row.GetCell(2).ToCleanString();
-        //                        var eventName = row.GetCell(3).ToCleanString();
-        //                        var eventLocation = row.GetCell(4).ToCleanString();
-        //                        var eventTime = row.GetCell(5).DateCellValue;
-        //                        var writer = row.GetCell(6).ToCleanString().Trim();
+        //        //host.Account.Device.CurrentLocation = host.Account.Device.Locations.Last();
+        //        //hostsRepo.Modify(host);
 
-        //                        var plot = new Plot
-        //                        {
-        //                            Code = plotCode,
-        //                            Name = name,
-        //                            Description = description
-        //                        };
+        //        //var context = _container.Resolve<ConscienceContext>();
+        //        //var hostRole = context.Roles.First(r => r.Name == RoleTypes.Host.ToString());
+        //        //var rico = new ConscienceAccount
+        //        //{
+        //        //    UserName = @"2-W108",
+        //        //    PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+        //        //};
+        //        //rico.Roles.Add(hostRole);
+        //        //context.Accounts.Add(rico);
+        //        //var host = new Host { Account = rico };
 
-        //                        if (!string.IsNullOrWhiteSpace(eventName))
-        //                        {
-        //                            plot.Events.Add(new PlotEvent
-        //                            {
-        //                                Description = eventName,
-        //                                Location = eventLocation,
-        //                                Hour = eventTime.Hour,
-        //                                Minute = eventTime.Minute
-        //                            });
-        //                        }
+        //        //foreach (var statName in Enum.GetNames(typeof(StatNames)))
+        //        //    host.Stats.Add(new Stats { Name = statName, Value = 10 });
+        //        //context.Hosts.Add(host);
+        //        //context.SaveChanges();
 
-        //                        if (!string.IsNullOrEmpty(writer))
-        //                        {
-        //                            var employee = employees[run].Values.FirstOrDefault(e => e.Name.ToLowerInvariant() == writer.ToLowerInvariant());
-        //                            if (employee == null)
-        //                                result.Errors.Add(new BulkImportError { Line = rowIndex + " plot - " + name, Error = "There is no writer with name " + writer });
-        //                            else
-        //                                plot.Writer = employee;
-        //                        }
+        //        //var hostsRepo = _container.Resolve<HostRepository>();
+        //        //host = hostsRepo.GetAll().First(h => h.Id == host.Id);
+        //        //var randomLat = new Random().Next(100) / 100000f;
+        //        //var randomLon = new Random().Next(100) / 100000f;
 
-        //                        context.Plots.Add(plot);
-        //                        context.SaveChanges();
+        //        //host.Account.Device = new Device
+        //        //{
+        //        //    DeviceId = "Dummy",
+        //        //    BatteryLevel = 1,
+        //        //    BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+        //        //    LastConnection = DateTime.Now
+        //        //};
 
-        //                        plots[run].Add(plotCode, plot);
-        //                        result.Successes.Add(rowIndex + " plot - " + name);
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    result.Errors.Add(new BulkImportError { Line = rowIndex + " plot - " + name, Error = ex.ToString() });
-        //                }
-        //            }
+        //        //hostsRepo.Modify(host);
 
-        //            hosts[run] = new Dictionary<int, Host>();
-        //            characters[run] = new Dictionary<int, Character>();
+        //        //host.Account.Device.Locations = new List<Location>
+        //        //{
+        //        //    new Location
+        //        //    {
+        //        //        Latitude = 37.048601 + randomLat,
+        //        //        Longitude = -2.4248117 + randomLon,
+        //        //        TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+        //        //    }
+        //        //};
+        //        //hostsRepo.Modify(host);
 
-        //            sheet = workbook.GetSheet("hosts");
+        //        //host.Account.Device.CurrentLocation = host.Account.Device.Locations.Last();
+        //        //hostsRepo.Modify(host);
 
-        //            for (rowIndex = 2; rowIndex <= sheet.LastRowNum; rowIndex++)
-        //            {
-        //                try
-        //                {
-        //                    if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(2) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(2).ToCleanString())) //null is when the row only contains empty cells 
-        //                    {
-        //                        var row = sheet.GetRow(rowIndex);
+        //        //var context = _container.Resolve<ConscienceContext>();
+        //        //var account = context.Accounts.First(a => a.Id == 84);
+        //        //account.Employee = new Employee { Name = "J. Fitzgerald" };
 
-        //                        var loginName = row.GetCell(0) != null ? row.GetCell(0).ToCleanString().Trim() : null;
-        //                        var hidden = row.GetCell(0) != null && row.GetCell(69).ToCleanString().Trim().ToLowerInvariant() == "yes";
-        //                        var hiddenHostAdministrators = row.GetCell(0) != null ? row.GetCell(70).ToCleanString().Trim() : null;
+        //        //var randomLat = new Random().Next(100) / 100000f;
+        //        //var randomLon = new Random().Next(100) / 100000f;
 
-        //                        name = (run + 1) + "-" + loginName;
+        //        //account.Device.Locations = new List<Location>
+        //        //{
+        //        //    new Location
+        //        //    {
+        //        //        Latitude = 37.048601 + randomLat,
+        //        //        Longitude = -2.4248117 + randomLon,
+        //        //        TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+        //        //    }
+        //        //};
 
-        //                        Host host = null;
+        //        //account.Device.CurrentLocation = account.Device.Locations.Last();
+        //        //context.SaveChanges();
 
-        //                        if (!string.IsNullOrEmpty(loginName))
-        //                        {
-        //                            if (hosts[run].Any(h => h.Value.Account.UserName.ToLowerInvariant() == name.ToLowerInvariant()))
-        //                                throw new Exception("There is already a host with the name: " + name);
+        //        //AddRico();
 
-        //                            var password = row.GetCell(1).ToCleanString().Trim();
+        //        var context = _container.Resolve<ConscienceContext>();
+        //        var employee = context.Employees.First(e => e.Id == 29);
+        //        var host = context.Hosts.First(h => h.Id == 29);
+        //        host.HiddenHostAdministrators.Add(employee);
+        //        context.SaveChanges();
 
-        //                            var account = employeeAccounts[run].Values.FirstOrDefault(a => a.UserName.ToLowerInvariant() == name);
+        //        //host = context.Hosts.First(h => h.Id == 18);
+        //        //host.HiddenHostAdministrators.Add(employee);
+        //        //context.SaveChanges();
 
-        //                            if (account != null)
-        //                            {
-        //                                account.Roles.Add(new Role
-        //                                {
-        //                                    Name = RoleTypes.Host.ToString()
-        //                                });
-        //                            }
-        //                            else
-        //                                account = await CreateOrUpdateAccount(identityService, context, name, password, RoleTypes.Host.ToString());
+        //        //host = context.Hosts.First(h => h.Id == 29);
+        //        //host.HiddenHostAdministrators.Add(employee);
+        //        //context.SaveChanges();
 
-        //                            host = new Host { Account = account, Hidden = hidden };
-        //                            context.Hosts.Add(host);
-
-        //                            if (hidden && !string.IsNullOrEmpty(hiddenHostAdministrators))
-        //                            {
-        //                                var administratorNames = hiddenHostAdministrators.Split(',');
-        //                                var admins = new List<Employee>();
-        //                                foreach (var adminName in administratorNames)
-        //                                {
-        //                                    var employee = employees[run].Values.FirstOrDefault(e => e.Name.ToLowerInvariant() == adminName.Trim().ToLowerInvariant());
-        //                                    if (employee == null)
-        //                                        result.Errors.Add(new BulkImportError { Line = "Hidden host admins - " + name, Error = "There is no employee with name " + adminName });
-        //                                    else
-        //                                    {
-        //                                        host.HiddenHostAdministrators.Add(employee);
-        //                                    }
-        //                                }
-        //                            }
-
-        //                            hosts[run].Add(rowIndex, host);
-
-        //                            foreach (var statName in Enum.GetNames(typeof(StatNames)))
-        //                                host.Stats.Add(new Stats { Name = statName, Value = 10 });
-
-        //                            host.Stats.First(s => s.Name == StatNames.Apperception.ToString())
-        //                                .Value = int.Parse(row.GetCell(7).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Candor.ToString())
-        //                                .Value = int.Parse(row.GetCell(8).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Vivacity.ToString())
-        //                                .Value = int.Parse(row.GetCell(9).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Coordination.ToString())
-        //                                .Value = int.Parse(row.GetCell(10).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Meekness.ToString())
-        //                                .Value = int.Parse(row.GetCell(11).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Humility.ToString())
-        //                                .Value = int.Parse(row.GetCell(12).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Cruelty.ToString())
-        //                                .Value = int.Parse(row.GetCell(13).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.SelfPreservation.ToString())
-        //                                .Value = int.Parse(row.GetCell(14).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Patience.ToString())
-        //                                .Value = int.Parse(row.GetCell(15).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Decisiveness.ToString())
-        //                                .Value = int.Parse(row.GetCell(16).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Imagination.ToString())
-        //                                .Value = int.Parse(row.GetCell(17).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Curiosity.ToString())
-        //                                .Value = int.Parse(row.GetCell(18).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Agression.ToString())
-        //                                .Value = int.Parse(row.GetCell(19).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Loyalty.ToString())
-        //                                .Value = int.Parse(row.GetCell(20).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Empathy.ToString())
-        //                                .Value = int.Parse(row.GetCell(21).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Tenacity.ToString())
-        //                                .Value = int.Parse(row.GetCell(22).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Courage.ToString())
-        //                                .Value = int.Parse(row.GetCell(23).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Sensuality.ToString())
-        //                                .Value = int.Parse(row.GetCell(24).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Charm.ToString())
-        //                                .Value = int.Parse(row.GetCell(25).ToCleanString().Trim());
-        //                            host.Stats.First(s => s.Name == StatNames.Humor.ToString())
-        //                                .Value = int.Parse(row.GetCell(26).ToCleanString().Trim());
-        //                        }
-
-        //                        var charName = row.GetCell(2).ToCleanString().Trim();
-        //                        name += " - " + charName;
-        //                        var genderValue = row.GetCell(3).ToCleanString().Trim().ToLowerInvariant();
-        //                        var gender = genderValue == "female" ? Genders.Female : (genderValue == "male" ? Genders.Male : Genders.NonGender);
-        //                        var age = int.Parse(row.GetCell(4).ToCleanString().Trim());
-        //                        var assignedOnMonths = int.Parse(row.GetCell(5).ToCleanString().Trim());
-        //                        var narrativeFunction = row.GetCell(27).ToCleanString().Trim();
-        //                        var story = row.GetCell(28).ToCleanString().Trim();
-        //                        var memories = row.GetCell(29).ToCleanString().Trim();
-        //                        var triggers = row.GetCell(30).ToCleanString().Trim();
-
-        //                        var character = new Character
-        //                        {
-        //                            Name = charName,
-        //                            Gender = gender,
-        //                            Age = age,
-        //                            NarrativeFunction = narrativeFunction,
-        //                            Story = story
-        //                        };
-        //                        context.Characters.Add(character);
-        //                        characters[run].Add(rowIndex, character);
-
-        //                        if (host != null)
-        //                        {
-        //                            host.Characters.Add(new CharacterInHost
-        //                            {
-        //                                Character = character,
-        //                                AssignedOn = DateTime.Now - TimeSpan.FromDays(30 * assignedOnMonths)
-        //                            });
-        //                        }
-
-        //                        using (var reader = new StringReader(memories))
-        //                        {
-        //                            for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
-        //                            {
-        //                                var memory = new Memory { Description = line };
-        //                                character.Memories.Add(memory);
-        //                            }
-        //                        }
-
-        //                        using (var reader = new StringReader(triggers))
-        //                        {
-        //                            for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
-        //                            {
-        //                                var trigger = new Trigger { Description = line };
-        //                                character.Triggers.Add(trigger);
-        //                            }
-        //                        }
-
-        //                        context.SaveChanges();
-
-        //                        AddCharacterInPlot(context, plots[run], row, character, 31);
-
-        //                        AddCharacterInPlot(context, plots[run], row, character, 36);
-
-        //                        AddCharacterInPlot(context, plots[run], row, character, 41);
-
-        //                        AddCharacterInPlot(context, plots[run], row, character, 46);
-
-        //                        AddCharacterInPlot(context, plots[run], row, character, 51);
-
-        //                        if (host != null)
-        //                        {
-        //                            host.CoreMemory1 = GetCoreMemory(row, 66, loginName, 1, result);
-
-        //                            host.CoreMemory2 = GetCoreMemory(row, 67, loginName, 2, result);
-
-        //                            host.CoreMemory3 = GetCoreMemory(row, 68, loginName, 3, result);
-        //                        }
-
-        //                        context.SaveChanges();
-
-        //                        result.Successes.Add(rowIndex + " host - " + name);
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    result.Errors.Add(new BulkImportError { Line = rowIndex + " host - " + name, Error = ex.ToString() });
-        //                }
-        //            }
-
-        //            for (rowIndex = 2; rowIndex <= sheet.LastRowNum; rowIndex++)
-        //            {
-        //                try
-        //                {
-        //                    if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(2) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
-        //                    {
-        //                        var row = sheet.GetRow(rowIndex);
-
-        //                        name = row.GetCell(0) != null ? row.GetCell(0).ToCleanString().Trim() : null;
-        //                        var lastCharacter = row.GetCell(6).ToCleanString().Trim();
-
-        //                        if (!string.IsNullOrWhiteSpace(lastCharacter))
-        //                        {
-        //                            var relatedCharacter = characters[run].Values.FirstOrDefault(c => c.Name.ToLowerInvariant() == lastCharacter.ToLowerInvariant());
-
-        //                            if (relatedCharacter == null)
-        //                            {
-        //                                result.Errors.Add(new BulkImportError { Line = "Previous character - " + name, Error = "There is no character with name " + lastCharacter });
-        //                            }
-        //                            else
-        //                            {
-        //                                var host = hosts[run][rowIndex];
-        //                                host.Characters.Add(new CharacterInHost
-        //                                {
-        //                                    AssignedOn = host.CurrentCharacter.AssignedOn - TimeSpan.FromDays(400),
-        //                                    Character = relatedCharacter,
-        //                                    UnassignedOn = host.CurrentCharacter.AssignedOn
-        //                                });
-        //                                context.SaveChanges();
-        //                            }
-        //                        }
-
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 56);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 57);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 58);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 59);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 60);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 61);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 62);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 63);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 64);
-        //                        AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 65);
-
-        //                        result.Successes.Add(rowIndex + " host relations - " + name);
-        //                    }
-        //                }
-        //                catch (Exception ex)
-        //                {
-        //                    result.Errors.Add(new BulkImportError { Line = rowIndex + " host - " + name, Error = ex.ToString() });
-        //                }
-        //            }
-        //        }
-        //        else
-        //            throw new Exception("Unable to open uploaded file");
+        //        var response = request.CreateResponse(HttpStatusCode.OK);
+        //        response.Content = new StringContent("Host added", Encoding.UTF8, "application/json");
+        //        return response;
         //    }
         //    catch (Exception ex)
         //    {
-        //        result.Errors.Add(new BulkImportError { Line = rowIndex + " " + name, Error = ex.ToString() });
+        //        var response = request.CreateResponse(HttpStatusCode.OK);
+        //        response.Content = new StringContent(ex.ToString(), Encoding.UTF8, "application/json");
+        //        return response;
         //    }
-        //    finally
-        //    {
-        //        childContainer.Dispose();
-        //    }
-
-        //    FakeLocationsHosts();
-        //    FakeLocationsForEmployees();
-
-        //    var response = request.CreateResponse(HttpStatusCode.OK);
-        //    response.Content = new StringContent(JsonConvert.SerializeObject(result), Encoding.UTF8, "application/json");
-        //    return response;
         //}
+
+        //private void AddRico()
+        //{
+        //    var context = _container.Resolve<ConscienceContext>();
+        //    var hostRole = context.Roles.First(r => r.Name == RoleTypes.Host.ToString());
+        //    var rico = new ConscienceAccount
+        //    {
+        //        UserName = @"2-r1c0",
+        //        PasswordHash = "AA+JyvawjlityY0fyaRSr1qZkCgaIvU+bqTe6uShANUqcoG0EH2F6BcXq7hwnN7N1Q=="
+        //    };
+        //    rico.Roles.Add(hostRole);
+        //    context.Accounts.Add(rico);
+        //    var host = new Host { Account = rico };
+
+        //    foreach (var statName in Enum.GetNames(typeof(StatNames)))
+        //        host.Stats.Add(new Stats { Name = statName, Value = 10 });
+        //    context.Hosts.Add(host);
+        //    context.SaveChanges();
+
+        //    var hostsRepo = _container.Resolve<HostRepository>();
+        //    host = hostsRepo.GetAll().First(h => h.Id == host.Id);
+        //    var randomLat = new Random().Next(100) / 100000f;
+        //    var randomLon = new Random().Next(100) / 100000f;
+
+        //    host.Account.Device = new Device
+        //    {
+        //        DeviceId = "Dummy",
+        //        BatteryLevel = 1,
+        //        BatteryStatus = Domain.Enums.BatteryStatus.NotCharging,
+        //        LastConnection = DateTime.Now
+        //    };
+
+        //    hostsRepo.Modify(host);
+
+        //    host.Account.Device.Locations = new List<Location>
+        //        {
+        //            new Location
+        //            {
+        //                Latitude = 37.048601 + randomLat,
+        //                Longitude = -2.4248117 + randomLon,
+        //                TimeStamp = DateTime.Now - TimeSpan.FromDays(1)
+        //            }
+        //        };
+        //    hostsRepo.Modify(host);
+
+        //    host.Account.Device.CurrentLocation = host.Account.Device.Locations.Last();
+        //    hostsRepo.Modify(host);
+        //}
+
+
+        [HttpPost]
+        public async Task<HttpResponseMessage> PostAsync(HttpRequestMessage request)
+        {
+            var result = new BulkImportResult();
+
+            var childContainer = _container.CreateChildContainer();
+
+            var rowIndex = 0;
+            var name = string.Empty;
+
+            try
+            {
+                var identityService = childContainer.Resolve<IUsersIdentityService>();
+                if (!identityService.CurrentUser.Roles.Any(r => r.Name == RoleTypes.Admin.ToString()))
+                    throw new UnauthorizedAccessException("Current user is not a platform Admin");
+
+                var httpRequest = HttpContext.Current.Request;
+                if (httpRequest.Files.Count > 0)
+                {
+                    var file = httpRequest.Files[0];
+
+                    //TODO: Use GraphQL instead of manually working with the Entity Framework context from a Controller
+                    var context = childContainer.Resolve<ConscienceContext>();
+
+                    ClearDb(context, identityService.CurrentUser);
+
+                    var workbook = WorkbookFactory.Create(file.InputStream);
+
+                    ISheet sheet;
+
+                    var employeeAccounts = new Dictionary<int, Dictionary<string, Account>>();
+                    var employees = new Dictionary<int, Dictionary<string, Employee>>();
+                    var plots = new Dictionary<int, Dictionary<string, Plot>>();
+                    var hosts = new Dictionary<int, Dictionary<int, Host>>();
+                    var characters = new Dictionary<int, Dictionary<int, Character>>();
+
+                    sheet = workbook.GetSheet("employees");
+                    employeeAccounts[run] = new Dictionary<string, Account>();
+                    employees[run] = new Dictionary<string, Employee>();
+
+                    for (rowIndex = 2; rowIndex <= sheet.LastRowNum; rowIndex++)
+                    {
+                        try
+                        {
+                            if (sheet.GetRow(rowIndex) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
+                            {
+                                var row = sheet.GetRow(rowIndex);
+
+                                name = (run + 1) + "-" + row.GetCell(0).ToCleanString().Trim();
+                                var displayName = row.GetCell(1).ToCleanString().Trim();
+                                var password = row.GetCell(2).ToCleanString().Trim();
+                                var role = row.GetCell(3).ToCleanString().Trim();
+
+                                if (role.ToLowerInvariant() != RoleTypes.Host.ToString().ToLowerInvariant())
+                                {
+                                    var account = await CreateOrUpdateAccount(identityService, context, name, password, role);
+
+                                    if (account.Employee == null && role.ToLowerInvariant() != RoleTypes.Admin.ToString().ToLowerInvariant())
+                                    {
+                                        var employee = context.Employees.Add(new Employee { Name = displayName, Account = account });
+                                        context.SaveChanges();
+                                        employees[run].Add(name, employee);
+                                    }
+
+                                    employeeAccounts[run].Add(name, account);
+                                    result.Successes.Add(rowIndex + " employee - " + name);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            result.Errors.Add(new BulkImportError { Line = rowIndex + " employee - " + name, Error = ex.ToString() });
+                        }
+                    }
+
+                    sheet = workbook.GetSheet("plots");
+                    plots[run] = new Dictionary<string, Plot>();
+
+                    for (rowIndex = 1; rowIndex <= sheet.LastRowNum; rowIndex++)
+                    {
+                        try
+                        {
+                            if (sheet.GetRow(rowIndex) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
+                            {
+                                var row = sheet.GetRow(rowIndex);
+
+                                var plotCode = row.GetCell(0).ToCleanString().Trim();
+                                name = row.GetCell(1).ToCleanString();
+                                var description = row.GetCell(2).ToCleanString();
+                                var eventName = row.GetCell(3).ToCleanString();
+                                var eventLocation = row.GetCell(4).ToCleanString();
+                                var eventTime = row.GetCell(5).DateCellValue;
+                                var writer = row.GetCell(6).ToCleanString().Trim();
+
+                                var plot = new Plot
+                                {
+                                    Code = plotCode,
+                                    Name = name,
+                                    Description = description
+                                };
+
+                                if (!string.IsNullOrWhiteSpace(eventName))
+                                {
+                                    plot.Events.Add(new PlotEvent
+                                    {
+                                        Description = eventName,
+                                        Location = eventLocation,
+                                        Hour = eventTime.Hour,
+                                        Minute = eventTime.Minute
+                                    });
+                                }
+
+                                if (!string.IsNullOrEmpty(writer))
+                                {
+                                    var employee = employees[run].Values.FirstOrDefault(e => e.Name.ToLowerInvariant() == writer.ToLowerInvariant());
+                                    if (employee == null)
+                                        result.Errors.Add(new BulkImportError { Line = rowIndex + " plot - " + name, Error = "There is no writer with name " + writer });
+                                    else
+                                        plot.Writer = employee;
+                                }
+
+                                context.Plots.Add(plot);
+                                context.SaveChanges();
+
+                                plots[run].Add(plotCode, plot);
+                                result.Successes.Add(rowIndex + " plot - " + name);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            result.Errors.Add(new BulkImportError { Line = rowIndex + " plot - " + name, Error = ex.ToString() });
+                        }
+                    }
+
+                    hosts[run] = new Dictionary<int, Host>();
+                    characters[run] = new Dictionary<int, Character>();
+
+                    sheet = workbook.GetSheet("hosts");
+
+                    for (rowIndex = 2; rowIndex <= sheet.LastRowNum; rowIndex++)
+                    {
+                        try
+                        {
+                            if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(2) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(2).ToCleanString())) //null is when the row only contains empty cells 
+                            {
+                                var row = sheet.GetRow(rowIndex);
+
+                                var loginName = row.GetCell(0) != null ? row.GetCell(0).ToCleanString().Trim() : null;
+                                var hidden = row.GetCell(0) != null && row.GetCell(69).ToCleanString().Trim().ToLowerInvariant() == "yes";
+                                var hiddenHostAdministrators = row.GetCell(0) != null ? row.GetCell(70).ToCleanString().Trim() : null;
+
+                                name = (run + 1) + "-" + loginName;
+
+                                Host host = null;
+
+                                if (!string.IsNullOrEmpty(loginName))
+                                {
+                                    if (hosts[run].Any(h => h.Value.Account.UserName.ToLowerInvariant() == name.ToLowerInvariant()))
+                                        throw new Exception("There is already a host with the name: " + name);
+
+                                    var password = row.GetCell(1).ToCleanString().Trim();
+
+                                    var account = employeeAccounts[run].Values.FirstOrDefault(a => a.UserName.ToLowerInvariant() == name);
+
+                                    if (account != null)
+                                    {
+                                        account.Roles.Add(new Role
+                                        {
+                                            Name = RoleTypes.Host.ToString()
+                                        });
+                                    }
+                                    else
+                                        account = await CreateOrUpdateAccount(identityService, context, name, password, RoleTypes.Host.ToString());
+
+                                    host = new Host { Account = account, Hidden = hidden };
+                                    context.Hosts.Add(host);
+
+                                    if (hidden && !string.IsNullOrEmpty(hiddenHostAdministrators))
+                                    {
+                                        var administratorNames = hiddenHostAdministrators.Split(',');
+                                        var admins = new List<Employee>();
+                                        foreach (var adminName in administratorNames)
+                                        {
+                                            var employee = employees[run].Values.FirstOrDefault(e => e.Name.ToLowerInvariant() == adminName.Trim().ToLowerInvariant());
+                                            if (employee == null)
+                                                result.Errors.Add(new BulkImportError { Line = "Hidden host admins - " + name, Error = "There is no employee with name " + adminName });
+                                            else
+                                            {
+                                                host.HiddenHostAdministrators.Add(employee);
+                                            }
+                                        }
+                                    }
+
+                                    hosts[run].Add(rowIndex, host);
+
+                                    foreach (var statName in Enum.GetNames(typeof(StatNames)))
+                                        host.Stats.Add(new Stats { Name = statName, Value = 10 });
+
+                                    host.Stats.First(s => s.Name == StatNames.Apperception.ToString())
+                                        .Value = int.Parse(row.GetCell(7).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Candor.ToString())
+                                        .Value = int.Parse(row.GetCell(8).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Vivacity.ToString())
+                                        .Value = int.Parse(row.GetCell(9).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Coordination.ToString())
+                                        .Value = int.Parse(row.GetCell(10).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Meekness.ToString())
+                                        .Value = int.Parse(row.GetCell(11).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Humility.ToString())
+                                        .Value = int.Parse(row.GetCell(12).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Cruelty.ToString())
+                                        .Value = int.Parse(row.GetCell(13).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.SelfPreservation.ToString())
+                                        .Value = int.Parse(row.GetCell(14).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Patience.ToString())
+                                        .Value = int.Parse(row.GetCell(15).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Decisiveness.ToString())
+                                        .Value = int.Parse(row.GetCell(16).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Imagination.ToString())
+                                        .Value = int.Parse(row.GetCell(17).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Curiosity.ToString())
+                                        .Value = int.Parse(row.GetCell(18).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Agression.ToString())
+                                        .Value = int.Parse(row.GetCell(19).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Loyalty.ToString())
+                                        .Value = int.Parse(row.GetCell(20).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Empathy.ToString())
+                                        .Value = int.Parse(row.GetCell(21).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Tenacity.ToString())
+                                        .Value = int.Parse(row.GetCell(22).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Courage.ToString())
+                                        .Value = int.Parse(row.GetCell(23).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Sensuality.ToString())
+                                        .Value = int.Parse(row.GetCell(24).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Charm.ToString())
+                                        .Value = int.Parse(row.GetCell(25).ToCleanString().Trim());
+                                    host.Stats.First(s => s.Name == StatNames.Humor.ToString())
+                                        .Value = int.Parse(row.GetCell(26).ToCleanString().Trim());
+                                }
+
+                                var charName = row.GetCell(2).ToCleanString().Trim();
+                                name += " - " + charName;
+                                var genderValue = row.GetCell(3).ToCleanString().Trim().ToLowerInvariant();
+                                var gender = genderValue == "female" ? Genders.Female : (genderValue == "male" ? Genders.Male : Genders.NonGender);
+                                var age = int.Parse(row.GetCell(4).ToCleanString().Trim());
+                                var assignedOnMonths = int.Parse(row.GetCell(5).ToCleanString().Trim());
+                                var narrativeFunction = row.GetCell(27).ToCleanString().Trim();
+                                var story = row.GetCell(28).ToCleanString().Trim();
+                                var memories = row.GetCell(29).ToCleanString().Trim();
+                                var triggers = row.GetCell(30).ToCleanString().Trim();
+
+                                var character = new Character
+                                {
+                                    Name = charName,
+                                    Gender = gender,
+                                    Age = age,
+                                    NarrativeFunction = narrativeFunction,
+                                    Story = story
+                                };
+                                context.Characters.Add(character);
+                                characters[run].Add(rowIndex, character);
+
+                                if (host != null)
+                                {
+                                    host.Characters.Add(new CharacterInHost
+                                    {
+                                        Character = character,
+                                        AssignedOn = DateTime.Now - TimeSpan.FromDays(30 * assignedOnMonths)
+                                    });
+                                }
+
+                                using (var reader = new StringReader(memories))
+                                {
+                                    for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
+                                    {
+                                        var memory = new Memory { Description = line };
+                                        character.Memories.Add(memory);
+                                    }
+                                }
+
+                                using (var reader = new StringReader(triggers))
+                                {
+                                    for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
+                                    {
+                                        var trigger = new Trigger { Description = line };
+                                        character.Triggers.Add(trigger);
+                                    }
+                                }
+
+                                context.SaveChanges();
+
+                                AddCharacterInPlot(context, plots[run], row, character, 31);
+
+                                AddCharacterInPlot(context, plots[run], row, character, 36);
+
+                                AddCharacterInPlot(context, plots[run], row, character, 41);
+
+                                AddCharacterInPlot(context, plots[run], row, character, 46);
+
+                                AddCharacterInPlot(context, plots[run], row, character, 51);
+
+                                if (host != null)
+                                {
+                                    host.CoreMemory1 = GetCoreMemory(row, 66, loginName, 1, result);
+
+                                    host.CoreMemory2 = GetCoreMemory(row, 67, loginName, 2, result);
+
+                                    host.CoreMemory3 = GetCoreMemory(row, 68, loginName, 3, result);
+                                }
+
+                                context.SaveChanges();
+
+                                result.Successes.Add(rowIndex + " host - " + name);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            result.Errors.Add(new BulkImportError { Line = rowIndex + " host - " + name, Error = ex.ToString() });
+                        }
+                    }
+
+                    for (rowIndex = 2; rowIndex <= sheet.LastRowNum; rowIndex++)
+                    {
+                        try
+                        {
+                            if (sheet.GetRow(rowIndex) != null && sheet.GetRow(rowIndex).GetCell(2) != null && !string.IsNullOrWhiteSpace(sheet.GetRow(rowIndex).GetCell(0).ToCleanString())) //null is when the row only contains empty cells 
+                            {
+                                var row = sheet.GetRow(rowIndex);
+
+                                name = row.GetCell(0) != null ? row.GetCell(0).ToCleanString().Trim() : null;
+                                var lastCharacter = row.GetCell(6).ToCleanString().Trim();
+
+                                if (!string.IsNullOrWhiteSpace(lastCharacter))
+                                {
+                                    var relatedCharacter = characters[run].Values.FirstOrDefault(c => c.Name.ToLowerInvariant() == lastCharacter.ToLowerInvariant());
+
+                                    if (relatedCharacter == null)
+                                    {
+                                        result.Errors.Add(new BulkImportError { Line = "Previous character - " + name, Error = "There is no character with name " + lastCharacter });
+                                    }
+                                    else
+                                    {
+                                        var host = hosts[run][rowIndex];
+                                        host.Characters.Add(new CharacterInHost
+                                        {
+                                            AssignedOn = host.CurrentCharacter.AssignedOn - TimeSpan.FromDays(400),
+                                            Character = relatedCharacter,
+                                            UnassignedOn = host.CurrentCharacter.AssignedOn
+                                        });
+                                        context.SaveChanges();
+                                    }
+                                }
+
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 56);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 57);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 58);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 59);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 60);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 61);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 62);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 63);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 64);
+                                AddRelation(context, result, characters[run], row, characters[run][rowIndex], name, 65);
+
+                                result.Successes.Add(rowIndex + " host relations - " + name);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            result.Errors.Add(new BulkImportError { Line = rowIndex + " host - " + name, Error = ex.ToString() });
+                        }
+                    }
+                }
+                else
+                    throw new Exception("Unable to open uploaded file");
+            }
+            catch (Exception ex)
+            {
+                result.Errors.Add(new BulkImportError { Line = rowIndex + " " + name, Error = ex.ToString() });
+            }
+            finally
+            {
+                childContainer.Dispose();
+            }
+
+            FakeLocationsHosts();
+            FakeLocationsForEmployees();
+
+            var response = request.CreateResponse(HttpStatusCode.OK);
+            response.Content = new StringContent(JsonConvert.SerializeObject(result), Encoding.UTF8, "application/json");
+            return response;
+        }
 
         private static CoreMemory GetCoreMemory(IRow row, int coreMemoryLine, string hostName, int coreMemoryId, BulkImportResult result)
         {

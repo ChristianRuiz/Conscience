@@ -99,4 +99,4 @@ CharacterDetail.propTypes = {
   data: React.PropTypes.object.isRequired
 };
 
-export default withRouter(graphql(query)(CharacterDetail));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(CharacterDetail));

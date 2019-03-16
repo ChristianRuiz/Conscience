@@ -130,4 +130,4 @@ const query = gql`query GetCharacterInfoPanelDetails($characterId:Int!) {
       `;
 
 
-export default withRouter(graphql(query)(CharacterInfoPanel));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(CharacterInfoPanel));

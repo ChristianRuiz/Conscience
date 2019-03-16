@@ -79,4 +79,4 @@ const query = gql`query GetHosts {
 }
       `;
 
-export default withRouter(graphql(query)(MaintenanceList));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(MaintenanceList));

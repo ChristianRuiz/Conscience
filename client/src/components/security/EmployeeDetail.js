@@ -55,4 +55,4 @@ const query = gql`query GetEmployeeLogEntries($employeeId:Int!) {
 }
       `;
 
-export default withRouter(graphql(query)(EmployeeDetail));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(EmployeeDetail));

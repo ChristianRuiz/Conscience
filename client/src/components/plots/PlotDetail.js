@@ -57,4 +57,4 @@ PlotDetail.propTypes = {
   data: React.PropTypes.object.isRequired
 };
 
-export default withRouter(graphql(query)(PlotDetail));
+export default withRouter(graphql(query, { options: { fetchPolicy: 'network-only' } })(PlotDetail));
