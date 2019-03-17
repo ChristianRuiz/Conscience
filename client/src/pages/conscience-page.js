@@ -22,7 +22,7 @@ const client = new ApolloClient({
   })
 });
 
-export default function buildConciencePage(rootComponent) {
+export default function buildConciencePage(rootComponent, background) {
         // Needed for onTouchTap
   injectTapEventPlugin();
 
@@ -31,7 +31,7 @@ export default function buildConciencePage(rootComponent) {
       <ApolloProvider client={client}>
         <Router hashType="noslash">
           <div className="container">
-            <Background />
+            { background ? <Background /> : '' }
             { React.createElement(rootComponent) }
           </div>
         </Router>

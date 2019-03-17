@@ -85,3 +85,20 @@
     margin-bottom: 20px;
     margin-top: 20px; 
 }
+
+.statusDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.statusTitle {
+    flex: 1
+}
+
+.statusButtons {
+    margin-right: 40px;
+}
+
+.statusButtons button {
+    margin-left: 20px;
+}

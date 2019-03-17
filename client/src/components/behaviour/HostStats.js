@@ -68,7 +68,7 @@ class HostStats extends React.Component {
 
     this.setState({ dataSet });
 
-    this.props.mutate({ variables: { hostId: this.props.data.hosts.byId.id, stats: [{ name: this.state.selectedLabel, value }] } });
+    this.props.mutate({ variables: { hostId: this.props.hostId, stats: [{ name: this.state.selectedLabel, value }] } });
   }
 
   render() {

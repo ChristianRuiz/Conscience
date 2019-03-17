@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -422,6 +423,18 @@
     <Content Include="Content\images\card\status-hurt.png" />
     <Content Include="Content\images\card\status-ok.png" />
     <Content Include="Content\images\common\logo.png" />
+    <Content Include="Content\images\host\background\divider.png" />
+    <Content Include="Content\images\host\background\left.png" />
+    <Content Include="Content\images\host\background\right-bottom.png" />
+    <Content Include="Content\images\host\background\right-center.png" />
+    <Content Include="Content\images\host\background\right-top.png" />
+    <Content Include="Content\images\host\card.png" />
+    <Content Include="Content\images\host\cardEmployee.png" />
+    <Content Include="Content\images\host\cardWithBattery.png" />
+    <Content Include="Content\images\host\defaultProfile.png" />
+    <Content Include="Content\images\host\states\dead.png" />
+    <Content Include="Content\images\host\states\fine.png" />
+    <Content Include="Content\images\host\states\hurt.png" />
     <Content Include="Content\images\maintenance\heartrate.png" />
     <Content Include="Content\images\maintenance\scan.png" />
     <Content Include="Content\images\maintenance\status.png" />
@@ -469,6 +482,7 @@
     <Content Include="Content\fonts\DejaVuSans.ttf" />
     <Content Include="iOS\conscience.plist" />
     <None Include="Properties\PublishProfiles\consciencelarp - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\consciencelarp - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy.pubxml" />
     <Content Include="Scripts\conscience\login.bundle.css" />
     <Content Include="Scripts\conscience\login.js" />
@@ -499,6 +513,8 @@
     <Content Include="Views\GraphQL\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\consciencelarp - Web Deploy1.pubxml" />
+    <None Include="Properties\PublishProfiles\filesystem.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

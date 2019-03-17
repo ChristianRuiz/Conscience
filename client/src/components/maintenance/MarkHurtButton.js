@@ -3,14 +3,14 @@ import { graphql, gql } from 'react-apollo';
 
 class MarkDeadButton extends React.Component {
   markDead() {
-    const shouldMark = confirm('Mark the host as critically injured?');
+    const shouldMark = confirm('Mark the host as injured?');
     if (shouldMark) {
       this.props.mutate({ variables: { hostId: this.props.hostId } });
     }
   }
 
   render() {
-    return <button className="linkButton" onClick={() => this.markDead()}><h3>DEAD</h3></button>;
+    return <button className="linkButton" onClick={() => this.markDead()}><h3>HURT</h3></button>;
   }
 }
 
@@ -22,7 +22,7 @@ MarkDeadButton.propTypes = {
 const mutation = gql`
 mutation MarkAsDead($hostId:Int!) {
   hosts {
-    changeStatusToHost(hostId:$hostId, status: DEAD){
+    changeStatusToHost(hostId:$hostId, status: HURT){
       id
       status
     }

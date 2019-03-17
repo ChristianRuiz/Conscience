@@ -31,3 +31,16 @@
     height: 30px;
     text-align: center;
 }
+
+.behaviourTitleSection {
+    display: flex;
+    flex-direction: row;
+}
+
+.behaviourTitle {
+    flex: 1;
+}
+
+.behaviourButtons {
+    margin-right: 20px;
+}

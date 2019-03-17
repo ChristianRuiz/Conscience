@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 import ScrollableContainer from '../common/ScrollableContainer';
+import RolesValidation from '../common/RolesValidation';
+import AddHostButton from './AddHostButton';
+import Roles from '../../enums/roles';
 
 class BehaviourList extends React.Component {
   render() {
@@ -14,7 +17,14 @@ class BehaviourList extends React.Component {
 
     return (<ScrollableContainer>
       <div>
-        <h2>Behaviour - Hosts</h2>
+        <div className="behaviourTitleSection">
+          <h2 className="behaviourTitle">Behaviour - Hosts</h2>
+          <div className="behaviourButtons">
+            <RolesValidation allowed={[Roles.Admin]}>
+              <AddHostButton onHostAdded={() => this.props.data.refetch()} />
+            </RolesValidation>
+          </div>
+        </div>
         <ul>
           {hostsWithCharacter.map(host =>
             <li key={host.id}>

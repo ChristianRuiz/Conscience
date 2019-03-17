@@ -6,6 +6,8 @@ import Checkbox from 'material-ui/Checkbox';
 
 import ScrollableContainer from '../common/ScrollableContainer';
 import CriticalFailureCheck from './CriticalFailureCheck';
+import MarkDeadButton from './MarkDeadButton';
+import MarkHurtButton from './MarkHurtButton';
 
 import styles from '../../styles/components/maintenance/maintenance.css';
 import { setTimeout } from 'timers';
@@ -64,8 +66,14 @@ class MaintenanceDetail extends React.Component {
         </div>
         <div className="statusContainer">
           <div className="statusBox">
-            <h2>STATUS</h2>
-            <p>{ statusText }</p>
+          <div className="statusDisplay">
+            <h2 className="statusTitle">STATUS</h2>
+            { host.status === 'OK' ? <div className="statusButtons">
+              <MarkHurtButton hostId={host.id}/>
+              <MarkDeadButton hostId={host.id} />
+            </div> : '' }
+          </div>
+          <p>{ statusText }</p>
           </div>
           <div className="statusCenter" ref={checksDiv => this.setChecksHeight(checksDiv)}>
             <ScrollableContainer parentHeight={this.state.checksHeight} extraMargin={-100}>

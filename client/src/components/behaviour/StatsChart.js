@@ -30,8 +30,8 @@ class StatsChart extends React.Component {
     this.rendered = true;
     return (<Radar
       data={this.props.charData}
-      width="600"
-      height="500"
+      width={this.props.style && this.props.style.width ? this.props.style.width : '600' }
+      height={this.props.style && this.props.style.height ? this.props.style.height : '500' }
       onClick={event => this.onRadarClick(event)}
       ref={ref => this.radar = ref}
     />);

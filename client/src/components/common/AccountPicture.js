@@ -1,7 +1,7 @@
 import React from 'react';
 
-const AccountPicture = ({ pictureUrl }) =>
-  <div>
+const AccountPicture = ({ pictureUrl, style }) =>
+  <div style={style}>
     <div className="picture" style={{ backgroundImage: `url('${pictureUrl}'), url('/Content/images/card/defaultProfile.png')` }} />
   </div>;
 
