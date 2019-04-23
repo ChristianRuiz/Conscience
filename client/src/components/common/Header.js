@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import RolesValidation from './RolesValidation';
 import Roles from '../../enums/roles';
 import NotificationsBell from '../notifications/NotificationsBell';
+import Redirect from './Redirect';
 
 import styles from '../../styles/components/common/header.css';
 
@@ -26,6 +27,14 @@ const Header = () =>
           <NotificationsBell />
         </div>
       </div>
+    </RolesValidation>
+
+    <RolesValidation
+      forbidden={[Roles.CompanyQA, Roles.Admin, Roles.CompanyAdmin, Roles.CompanyBehaviour, Roles.CompanyPlot, Roles.CompanyPlotEditor, Roles.CompanyMaintenance]}
+    >
+      <RolesValidation allowed={[Roles.Host]}>
+        <Redirect href="?host/#host" />
+      </RolesValidation>
     </RolesValidation>
 
     {/* <RolesValidation allowed={[Roles.Host]}>
