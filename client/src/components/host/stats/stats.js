@@ -70,7 +70,7 @@ const Stats = ({ data }) => {
         <div style={commonStyles.scrollBoxContainer}>
   
           <div>
-            <p style={[commonStyles.h3, styles.statsTitle]}>STATS SUMMARY</p>
+            <p style={{ ...commonStyles.h3, ...styles.statsTitle }}>STATS SUMMARY</p>
   
             {host.stats.filter(stat => stat.value !== 10).map(stat =>
               <div style={styles.statSummaryLine} key={stat.name}>

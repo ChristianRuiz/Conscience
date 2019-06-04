@@ -21,7 +21,7 @@ class ProfileImage extends React.Component {
         }
 
         return (<img
-            src={source} style={[styles.image, this.props.style]}
+            src={source} style={this.props.style ? { ...styles.image, ...this.props.style } : styles.image}
             onError={() => this.setState({ errorLoadingImage: true })}
         />);
     }

@@ -167,7 +167,7 @@ const Me = ({ data, client }) => {
 
         {host.currentCharacter.character.plots.map(plot =>
           <div key={plot.id} style={commonStyles.p}>
-            <p style={[commonStyles.bold, commonStyles.center]}>
+            <p style={{...commonStyles.bold, ...commonStyles.center}}>
               --{plot.plot.name}--</p>
             <p>{plot.plot.description}</p>
             <p style={{ marginTop: 20 }}>{plot.description}</p>

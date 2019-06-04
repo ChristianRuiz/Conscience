@@ -42,7 +42,7 @@ const Events = ({ data }) => {
 
     <div style={commonStyles.scrollBoxContainer}>
 
-        <p style={[commonStyles.h3, styles.plotTitle]}>PLOT EVENTS</p>
+        <p style={{ ...commonStyles.h3, ...styles.plotTitle }}>PLOT EVENTS</p>
 
         {host.currentCharacter && host.currentCharacter.character.plotEvents.length > 0 ? (<div>
           {host.currentCharacter.character.plotEvents.map(event =>
